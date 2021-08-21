@@ -31,6 +31,7 @@ class JukeboxState extends MusicBeatState
         {name:"Thriller", cover:"week2", bpm:150},
         {name:"Legendary", cover:"week2", bpm:160},
         {name:"Bazinga", cover:"week2taki", bpm:190},
+	{name:"Crucify", cover:"week2taki", bpm:200},    
         {name:"Makomelon", cover:"week3", bpm:160},
         {name:"VIP", song:"vipCurrent", cover:"week3", bpm:170},
         {name:"Farmed", cover:"week3", bpm:160},
