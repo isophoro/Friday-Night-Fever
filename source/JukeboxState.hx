@@ -52,8 +52,10 @@ class JukeboxState extends MusicBeatState
         {display:'Chicken Sandwich', cover:'week6', bpm:150},
         {display:'Funkin God', cover:'flippy', bpm:190},
         {display:'Hallow', cover:'hallow', bpm:130},
-        {display:'Portrait', song:'calamity', cover:'hallow', bpm:140},
+        {display:'Portrait', cover:'hallow', bpm:140},
+        {display:'Soul', cover:'hallow', bpm:165},
         {display:'Hardships', cover:'hardships', bpm:120},
+        {display:'Space Demons', cover:'extras', bpm:170},
         {display:'Beta VIP', song:'VIP', cover:'extras', bpm:155, special:true}
     ];
 
@@ -131,7 +133,7 @@ class JukeboxState extends MusicBeatState
 
         screen.zoom = FlxMath.lerp(0.9, screen.zoom, 0.95);
 
-        if(controls.LEFT_P || controls.RIGHT_P)
+        if(loaded && controls.LEFT_P || loaded && controls.RIGHT_P)
             changeSong(controls.LEFT_P ? -1 : 1);
 
         if(controls.BACK)

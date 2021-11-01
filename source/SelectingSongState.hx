@@ -25,18 +25,18 @@ using StringTools;
 
 class SelectingSongState extends MusicBeatState
 {
+	var selectors:Array<String> = FreeplayState.FreeplayStyle.getArrayInOrder();
 
-	var selectors:Array<String> = ['normal', 'halloween'];
 	var selectorIcon:FlxTypedGroup<FlxSprite>;
 
-	var curSelected:Int = 0;
+	static var curSelected:Int = 0;
 
 	override function create()
 	{
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
 		add(bg);
 
-		if (!FlxG.sound.music.playing)
+		if (FlxG.sound.music == null || !FlxG.sound.music.playing)
 		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
@@ -61,38 +61,28 @@ class SelectingSongState extends MusicBeatState
 			});
 		}
 
-
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Deciding Song Type for Freeplay", null);
+		DiscordClient.changePresence("In Freeplay", null);
 		#end
-
 
 		changeItem();
 	
 		super.create();
-
-
 	}
 
 	function changeItem(huh:Int = 0)
 	{
-			curSelected += huh;
+		curSelected += huh;
 
-			if (curSelected >= selectorIcon.length)
-				curSelected = 0;
-			if (curSelected < 0)
-				curSelected = selectorIcon.length - 1;
+		if (curSelected >= selectorIcon.length)
+			curSelected = 0;
+		if (curSelected < 0)
+			curSelected = selectorIcon.length - 1;
 
 		selectorIcon.forEach(function(spr:FlxSprite)
 		{
-			spr.animation.play('idle');
-
-			if (spr.ID == curSelected)
-			{
-				spr.animation.play('selected');
-				//camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
-			}
+			spr.animation.play(spr.ID == curSelected ? 'selected' : 'idle');
 
 			spr.updateHitbox();
 		});
@@ -147,17 +137,11 @@ class SelectingSongState extends MusicBeatState
 
 	function goToState()
 	{
-		var daChoice:String = selectors[curSelected];
+		FreeplayState.currentStyle = selectors[curSelected];
 
 		FlxTransitionableState.skipNextTransIn = true;
 		FlxTransitionableState.skipNextTransOut = true;
 
-		switch (daChoice)
-		{
-			case 'halloween':
-				FlxG.switchState(new HalloweenState());
-			case 'normal':
-				FlxG.switchState(new FreeplayState());
-		}
+		FlxG.switchState(new FreeplayState());
 	}
 }

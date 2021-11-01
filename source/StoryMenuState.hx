@@ -227,17 +227,13 @@ class StoryMenuState extends MusicBeatState
 		leftArrow.animation.play('idle');
 		difficultySelectors.add(leftArrow);
 
-		sprDifficulty = new FlxSprite(1100, 640);
+		sprDifficulty = new FlxSprite(1100, 600);
 		sprDifficulty.frames = ui_tex;
 		sprDifficulty.animation.addByPrefix('easy', 'EASY');
 		sprDifficulty.animation.addByPrefix('normal', 'NORMAL');
 		sprDifficulty.animation.addByPrefix('hard', 'NOTHARD');
-		sprDifficulty.animation.addByPrefix('baby', 'BABY');
-		sprDifficulty.animation.play('easy');
-		sprDifficulty.screenCenter(X);
-		changeDifficulty();
-
 		//sprDifficulty.animation.addByPrefix('hard plus', 'HARD +');
+		sprDifficulty.animation.addByPrefix('baby', 'BABY');
 
 		difficultySelectors.add(sprDifficulty);
 
@@ -259,8 +255,7 @@ class StoryMenuState extends MusicBeatState
 		add(txtWeekTitle);
 
 		updateText();
-
-		trace("Line 165");
+		changeDifficulty();
 
 		super.create();
 	}
@@ -289,16 +284,11 @@ class StoryMenuState extends MusicBeatState
 			}
 		}
 
-		// scoreText.setFormat('VCR OSD Mono', 32);
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.5));
 
 		scoreText.text = "WEEK SCORE:" + lerpScore;
 
 		txtWeekTitle.text = weekNames[curWeek].toUpperCase();
-		//txtWeekTitle.x = FlxG.width - (txtWeekTitle.width + 10);
-		//txtWeekTitle.screenCenter(X);
-
-		// FlxG.watch.addQuick('font', scoreText.font);
 
 		difficultySelectors.visible = weekUnlocked[curWeek];
 
@@ -418,43 +408,28 @@ class StoryMenuState extends MusicBeatState
 		if (curDifficulty > 3)
 			curDifficulty = 0;
 
-		sprDifficulty.offset.x = 0;
-
 		switch (curDifficulty)
 		{
 			case 0:
-				filters.remove(ShadersHandler.chromaticAberration);
 				sprDifficulty.animation.play('easy');
-				sprDifficulty.offset.x = 65;
-				FlxG.camera.filtersEnabled = false;
 			case 1:
-				filters.remove(ShadersHandler.chromaticAberration);
 				sprDifficulty.animation.play('normal');
-				sprDifficulty.offset.x = 120;
-				FlxG.camera.filtersEnabled = false;
 			case 2:
-				filters.remove(ShadersHandler.chromaticAberration);
 				sprDifficulty.animation.play('hard');
-				sprDifficulty.offset.x = 85;
-				FlxG.camera.filtersEnabled = false;
 			case 3:
-				filters.remove(ShadersHandler.chromaticAberration);
-				FlxG.camera.filtersEnabled = false;
 				sprDifficulty.animation.play('baby');
-				sprDifficulty.offset.x = 65;
 		}
+		
+		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
 
-		//sprDifficulty.alpha = 0;
-
+		sprDifficulty.updateHitbox();
+		sprDifficulty.screenCenter(X);
 		// USING THESE WEIRD VALUES SO THAT IT DOESNT FLOAT UP
-		sprDifficulty.y = leftArrow.y - 15;
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
+		sprDifficulty.y = leftArrow.y - 25;
+		leftArrow.x = sprDifficulty.x - 55;
+		rightArrow.x = sprDifficulty.x + sprDifficulty.width + 15;
 
-		#if !switch
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
-		#end
-
-		FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15}, 0.07);
+		FlxTween.tween(sprDifficulty, {y: sprDifficulty.y + 15}, 0.07);
 	}
 
 	var lerpScore:Int = 0;
@@ -493,11 +468,13 @@ class StoryMenuState extends MusicBeatState
 		grpWeekCharacters.members[1].setCharacter(weekCharacters[curWeek][1]);
 		grpWeekCharacters.members[2].setCharacter(weekCharacters[curWeek][2]);
 
-		if(lime.utils.Assets.exists(Paths.image('newStory/week'+curWeek))){
+		if(lime.utils.Assets.exists(Paths.image('newStory/week'+curWeek)))
+		{
 			peakek.loadGraphic(Paths.image('newStory/week'+curWeek));
 			peakek.visible = true;
-		}else
-		peakek.visible = false;
+		}
+		else
+			peakek.visible = false;
 
 		txtTracklist.text = "Tracks\n";
 		var stringThing:Array<String> = weekData[curWeek];
@@ -506,7 +483,7 @@ class StoryMenuState extends MusicBeatState
 		for (i in stringThing)
 		{
 			if(!hiddenSongs.contains(i))
-				txtTracklist.text += "\n" + i;
+				txtTracklist.text += "\n" + StringTools.replace(i, "-", " ");
 		}
 
 		txtTracklist.text = txtTracklist.text.toUpperCase();

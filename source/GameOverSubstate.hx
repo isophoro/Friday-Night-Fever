@@ -81,10 +81,6 @@ class GameOverSubstate extends MusicBeatSubstate
 			else
 				FlxG.switchState(new FreeplayState());
 
-			if (PlayState.isHalloweenFreeplay)
-				FlxG.switchState(new HalloweenState());
-			else 
-				FlxG.switchState(new FreeplayState());
 			PlayState.loadRep = false;
 		}
 

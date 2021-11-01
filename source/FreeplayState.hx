@@ -19,14 +19,29 @@ import Discord.DiscordClient;
 
 using StringTools;
 
+@:enum abstract FreeplayStyle(String) from String to String
+{
+	var NORMAL = "normal";
+	var HALLOWEEN = "halloween";
+
+	@:keep
+	public static function getArrayInOrder():Array<String>
+	{
+		return [NORMAL, HALLOWEEN];
+	}
+}
+
 class FreeplayState extends MusicBeatState
 {
+	@:allow(SelectingSongState)
+	static var currentStyle:FreeplayStyle = NORMAL;
+
 	var songs:Array<SongMetadata> = [];
 
-	var selector:FlxText;
-	var curSelected:Int = 0;
+	static var curSelected:Int = 0;
 	var curDifficulty:Int = 1;
 
+	var bghalloween:FlxSprite;
 	var halloween:FlxText;
 
 	var scoreText:FlxText;
@@ -36,20 +51,25 @@ class FreeplayState extends MusicBeatState
 	final secretCode:String = '354';
 	var userInput:String;
 	var secretFound:Bool = false;
-	var bghalloween:FlxSprite;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
-	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
 
 	override function create()
 	{
+		var initSonglist:Array<String> = [];
 
-		PlayState.isHalloweenFreeplay = false;
+		switch(currentStyle)
+		{
+			case NORMAL:
+				initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+			case HALLOWEEN:
+				initSonglist = CoolUtil.coolTextFile(Paths.txt('halloweenfreeplaySonglist'));
+		}
 
-
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+		if(curSelected >= initSonglist.length)
+			curSelected = 0;
 
 		for (i in 0...initSonglist.length)
 		{
@@ -57,33 +77,15 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-		/* 
-			if (FlxG.sound.music != null)
-			{
-				if (!FlxG.sound.music.playing)
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
-			}
-		 */
-
-		 #if windows
-		 // Updating Discord Rich Presence
-		 DiscordClient.changePresence("In the Freeplay Menu", null);
-		 #end
-
-		var isDebug:Bool = false;
-
-		#if debug
-		isDebug = true;
+		#if windows
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Freeplay Menu", null);
 		#end
-
-		// LOAD MUSIC
-
-		// LOAD CHARACTERS
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
 		add(bg);
 
-		bghalloween = new FlxSprite().loadGraphic(Paths.image('weekSix'));
+		bghalloween = new FlxSprite().loadGraphic(Paths.image('halloweenBG'));
 		add(bghalloween);
 		bghalloween.alpha = 0;
 
@@ -117,9 +119,7 @@ class FreeplayState extends MusicBeatState
 		}
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
-		// scoreText.autoSize = false;
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
-		// scoreText.alignment = RIGHT;
 
 		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
@@ -136,35 +136,12 @@ class FreeplayState extends MusicBeatState
 
 		// FlxG.sound.playMusic(Paths.music('title'), 0);
 		// FlxG.sound.music.fadeIn(2, 0, 0.8);
-		selector = new FlxText();
-
-		selector.size = 40;
-		selector.text = ">";
-		// add(selector);
 
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
-
-		// JUST DOIN THIS SHIT FOR TESTING!!!
-		/* 
-			var md:String = Markdown.markdownToHtml(Assets.getText('CHANGELOG.md'));
-
-			var texFel:TextField = new TextField();
-			texFel.width = FlxG.width;
-			texFel.height = FlxG.height;
-			// texFel.
-			texFel.htmlText = md;
-
-			FlxG.stage.addChild(texFel);
-
-			// scoreText.textField.htmlText = md;
-
-			trace(md);
-		 */
 
 		super.create();
 
 		userInput = secretCode;
-
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String)
@@ -189,8 +166,6 @@ class FreeplayState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		PlayState.isHalloweenFreeplay = false;
-		
 		super.update(elapsed);
 
 		if (FlxG.sound.music.volume < 0.7)
@@ -218,71 +193,72 @@ class FreeplayState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if (songs[curSelected].songName != 'Hallow' || songs[curSelected].songName == 'Hardships' || songs[curSelected].songName == 'Portrait')
-		{
-			if (controls.LEFT_P)
-				changeDiff(-1);
-			if (controls.RIGHT_P)
-				changeDiff(1);
-		}
+		if (controls.LEFT_P)
+			changeDiff(-1);
+		if (controls.RIGHT_P)
+			changeDiff(1);
 
 		if (controls.BACK)
 		{
+			if (currentStyle == NORMAL)
+			{
+				FlxTransitionableState.skipNextTransIn = true;
+				FlxTransitionableState.skipNextTransOut = true;
+			}
+	
 			FlxG.switchState(new SelectingSongState());
 		}
 
 		if (FlxG.keys.justPressed.ANY && !secretFound)
+		{
+			var keyPressed = FlxG.keys.getIsDown()[0].ID.toString().toLowerCase();
+
+			var numbers:Map<String, String> = [
+				'one' => '1', 
+				'two' => '2', 
+				'three' => '3', 
+				'four' => '4', 
+				'five' => '5', 
+				'six' => '6', 
+				'seven' => '7',
+				'eight' => '8', 
+				'nine' => '9', 
+				'zero' => '0'
+			];
+
+			if(numbers.get(keyPressed) != null)
+				keyPressed = numbers.get(keyPressed);
+
+			if (userInput.charAt(0) == keyPressed)
 			{
-				var keyPressed = FlxG.keys.getIsDown()[0].ID.toString().toLowerCase();
-	
-				var numbers:Map<String, String> = [
-					'one' => '1', 
-					'two' => '2', 
-					'three' => '3', 
-					'four' => '4', 
-					'five' => '5', 
-					'six' => '6', 
-					'seven' => '7',
-					'eight' => '8', 
-					'nine' => '9', 
-					'zero' => '0'
-				];
-	
-				if(numbers.get(keyPressed) != null)
-					keyPressed = numbers.get(keyPressed);
+				userInput = userInput.substring(1, userInput.length);
+				trace(userInput);
 
-				if (userInput.charAt(0) == keyPressed)
+				if (userInput.length <= 0)
 				{
-					userInput = userInput.substring(1, userInput.length);
-					trace(userInput);
-	
-					if (userInput.length <= 0)
-					{
-						secretFound = true;
-						trace('swag');
-	
-						var poop:String = Highscore.formatSong("C354R", 2);
+					secretFound = true;
+					trace('swag');
 
-						PlayState.SONG = Song.loadFromJson(poop, "C354R");
-						PlayState.isStoryMode = false;
-						PlayState.storyDifficulty = 2;
-		
-						PlayState.storyWeek = 0;
-						PlayState.loadRep = false;
-						LoadingState.loadAndSwitchState(new PlayState());
+					var poop:String = Highscore.formatSong("C354R", 2);
+
+					PlayState.SONG = Song.loadFromJson(poop, "C354R");
+					PlayState.isStoryMode = false;
+					PlayState.storyDifficulty = 2;
 	
-					}
-				}
-				else
-				{
-					userInput = secretCode;
+					PlayState.storyWeek = 0;
+					PlayState.loadRep = false;
+					LoadingState.loadAndSwitchState(new PlayState());
+
 				}
 			}
+			else
+			{
+				userInput = secretCode;
+			}
+		}
 
 		if (accepted)
 		{
-
-			PlayState.isHalloweenFreeplay = false;
 			FlxTransitionableState.skipNextTransIn = false;
 			FlxTransitionableState.skipNextTransOut = false;
 			
@@ -303,9 +279,17 @@ class FreeplayState extends MusicBeatState
 	{
 		curDifficulty += change;
 
-		if (songs[curSelected].songName == 'Hallow' || songs[curSelected].songName == 'Hardships' || songs[curSelected].songName == 'Portrait'){
-			curDifficulty = 2;
-			diffText.color = FlxColor.ORANGE;
+		switch(currentStyle)
+		{
+			case HALLOWEEN:
+				FlxTween.tween(bghalloween, {alpha: 1}, 1, {onComplete: (twn) -> {
+					halloween.visible = true;
+				}});
+
+				curDifficulty = 2;
+				diffText.color = FlxColor.ORANGE;
+			default:
+				// penis
 		}
 
 		if (curDifficulty < 0)
@@ -317,78 +301,22 @@ class FreeplayState extends MusicBeatState
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 		#end
 
-		switch (curDifficulty)
-		{
-			case 0:
-				diffText.text = "EASY";
-			case 1:
-				diffText.text = 'NORMAL';
-			case 2:
-				diffText.text = "HARD";
-			case 3:
-				diffText.text = "BABY";
-		}
+		diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
 	}
 
 	function changeSelection(change:Int = 0)
 	{
-		#if !switch
-		// NGio.logEvent('Fresh');
-		#end
-
-		// NGio.logEvent('Fresh');
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
 		curSelected += change;
-
-		
-
 
 		if (curSelected < 0)
 			curSelected = songs.length - 1;
 		if (curSelected >= songs.length)
 			curSelected = 0;
 
-		
-		if(songs[curSelected].songName == 'Ur-girl' || songs[curSelected].songName == 'Chicken-sandwich' || songs[curSelected].songName == 'Funkin-god'){
-			bghalloween.visible = true;
-		}
-		else
-		{
-			bghalloween.visible = false;
-		}
-
-		if (songs[curSelected].songName == 'Hallow' || songs[curSelected].songName == 'Hardships' || songs[curSelected].songName == 'Portrait'){
-			curDifficulty = 2;
-			changeDiff();
-			halloween.visible = true;
-			diffText.color = FlxColor.ORANGE;
-			FlxTween.tween(bghalloween, {alpha: 1}, 1);
-			
-			#if windows
-			// Updating Discord Rich Presence
-			DiscordClient.changePresence("In the Halloween Selection (Freeplay)", null);
-			#end
-
-			
-		}
-		else
-		{
-			diffText.color = FlxColor.WHITE;
-			halloween.visible = false;
-			FlxTween.tween(bghalloween, {alpha: 0}, 1);
-
-			#if windows
-			// Updating Discord Rich Presence
-			DiscordClient.changePresence("In the Freeplay Menu", null);
-			#end
-		}
-
-		// selector.y = (70 * curSelected) + 30;
-
 		#if !switch
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
-		// lerpScore = 0;
 		#end
 
 		#if PRELOAD_ALL
@@ -419,9 +347,6 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 	}
-
-	function get_secretCode():String
-		return '354';
 }
 
 class SongMetadata
