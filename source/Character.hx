@@ -790,13 +790,12 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'takiright', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", -80, 17);
+				addOffset("singUP", -39, 17);
 				addOffset("singRIGHT", -21, -5);
 				addOffset("singLEFT", 38, -18);
-				addOffset("singDOWN", -30, -210);
+				addOffset("singDOWN", 91, -210);
 
 				playAnim('idle');
-
 			case 'monster': // TAKI
 				iconColor = 'D34470';
 				tex = Paths.getSparrowAtlas('characters/taki_assets');
@@ -815,8 +814,6 @@ class Character extends FlxSprite
 
 				setGraphicSize(Std.int(width * 1.4));
 				
-				
-
 				playAnim('idle');
 
 			case 'robo-cesar': // MAKO
@@ -894,10 +891,10 @@ class Character extends FlxSprite
 
 
 				addOffset('idle', 0, 4);
-				addOffset("singUP", -37, 47);
-				addOffset("singLEFT", 122, -22);
-				addOffset("singRIGHT", -136, -54);
-				addOffset("singDOWN", -140, -255);
+				addOffset("singUP", 63, 37);
+				addOffset("singLEFT", 92, 8);
+				addOffset("singRIGHT", 5, -24);
+				addOffset("singDOWN", -20, -193);
 
 				setGraphicSize(Std.int(width * 0.8));
 
@@ -918,10 +915,10 @@ class Character extends FlxSprite
 
 
 				addOffset('idle', 0, 4);
-				addOffset("singUP", -37, 47);
-				addOffset("singLEFT", 122, -22);
-				addOffset("singRIGHT", -136, -54);
-				addOffset("singDOWN", -140, -255);
+				addOffset("singUP", 63, 37);
+				addOffset("singLEFT", 92, 8);
+				addOffset("singRIGHT", 5, -24);
+				addOffset("singDOWN", -20, -193);
 
 				setGraphicSize(Std.int(width * 0.8));
 

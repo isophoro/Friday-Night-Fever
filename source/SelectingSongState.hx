@@ -137,6 +137,9 @@ class SelectingSongState extends MusicBeatState
 
 	function goToState()
 	{
+		if(FreeplayState.currentStyle != selectors[curSelected])
+			FreeplayState.curSelected = 0;
+		
 		FreeplayState.currentStyle = selectors[curSelected];
 
 		FlxTransitionableState.skipNextTransIn = true;

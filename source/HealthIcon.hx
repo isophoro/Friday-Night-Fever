@@ -19,7 +19,6 @@ class HealthIcon extends FlxSprite
 		{
 			case 'bfiso-pixel' | 'bfiso':
 				loadGraphic(Paths.image('isoiconslmao'), true, 150, 150);
-
 			case 'feverbob':
 				loadGraphic(Paths.image('feverRunICON'), true, 150, 150);
 			case 'spooky':

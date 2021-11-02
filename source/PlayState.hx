@@ -205,7 +205,6 @@ class PlayState extends MusicBeatState {
 	var songScoreDef:Int = 0;
 	var scoreTxt:FlxText;
 	var replayTxt:FlxText;
-	var scanlines:FlxSprite;
 	var hitit:FlxSprite;
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
@@ -1096,14 +1095,9 @@ class PlayState extends MusicBeatState {
 		add(healthBar);
 
 		scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
-		if (!FlxG.save.data.accuracyDisplay)
-			scoreTxt.x = healthBarBG.x + healthBarBG.width / 2;
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
-		if (offsetTesting)
-			scoreTxt.x += 300;
-		if (FlxG.save.data.botplay)
-			scoreTxt.x = FlxG.width / 2 - 20;
+		scoreTxt.screenCenter(X);
 		add(scoreTxt);
 
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
@@ -1133,11 +1127,6 @@ class PlayState extends MusicBeatState {
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
 		if (SONG.song.toLowerCase() == 'party-crasher') {
-			scanlines = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/Scanlines'));
-			scanlines.cameras = [camHUD];
-			add(scanlines);
-			scanlines.visible = false;
-
 			dark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/darkShit'));
 			dark.cameras = [camHUD];
 			add(dark);
@@ -2112,6 +2101,8 @@ class PlayState extends MusicBeatState {
 		#end
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore, songScoreDef, nps, maxNPS, accuracy);
+		scoreTxt.screenCenter(X);
+		
 		if (!FlxG.save.data.accuracyDisplay)
 			scoreTxt.text = "Score: " + songScore;
 
@@ -2350,7 +2341,7 @@ class PlayState extends MusicBeatState {
 				// camFollow.setPosition(lucky.getMidpoint().x - 120, lucky.getMidpoint().y + 210);
 
 				switch (dad.curCharacter) {
-					case 'mom':
+					case 'mom' | 'mom-carnight' | 'mom-car':
 						camFollow.y = dad.getMidpoint().y;
 					case 'senpai':
 						camFollow.y = dad.getMidpoint().y - 430;
@@ -2367,9 +2358,8 @@ class PlayState extends MusicBeatState {
 					case 'spookyBOO':
 						camFollow.x = dad.getMidpoint().x - -400;
 					case 'taki':
-							camFollow.x = dad.getMidpoint().x - -400;
-							camFollow.y = dad.getMidpoint().y - -100;
-						
+						camFollow.x = dad.getMidpoint().x - -400;
+						camFollow.y = dad.getMidpoint().y - -100;
 					case 'monster':
 						if (SONG.song.toLowerCase() == 'prayer') {
 							camFollow.x = dad.getMidpoint().x - -560;
@@ -2378,7 +2368,6 @@ class PlayState extends MusicBeatState {
 							camFollow.x = dad.getMidpoint().x - -400;
 							camFollow.y = dad.getMidpoint().y - -100;
 						}
-
 					case 'spookyHALLOW':
 						camFollow.x = dad.getMidpoint().x - -400;
 					case 'hallow':
@@ -2396,16 +2385,11 @@ class PlayState extends MusicBeatState {
 					case 'yukichi':
 						camFollow.x = dad.getMidpoint().x - -423;
 						camFollow.y = dad.getMidpoint().y - 280;
-					case 'pico':
-						camFollow.x = dad.getMidpoint().x - -350;
-					case 'makocorrupt':
+					case 'pico' | 'makocorrupt':
 						camFollow.x = dad.getMidpoint().x - -350;
 					case 'bdbfever':
 						camFollow.y = dad.getMidpoint().y - 200;
 				}
-
-				if (dad.curCharacter == 'mom')
-					vocals.volume = 1;
 			}
 
 			if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && camFollow.x != boyfriend.getMidpoint().x - 100) {
@@ -3127,8 +3111,6 @@ class PlayState extends MusicBeatState {
 			currentTimingShown.velocity.x += comboSpr.velocity.x;
 			if (!FlxG.save.data.botplay)
 				add(rating);
-			remove(scanlines);
-			add(scanlines);
 
 			if (!curStage.startsWith('school')) {
 				rating.setGraphicSize(Std.int(rating.width * 0.7));
@@ -3161,7 +3143,8 @@ class PlayState extends MusicBeatState {
 			}
 
 			var daLoop:Int = 0;
-			for (i in seperatedScore) {
+			for (i in seperatedScore)
+			{
 				var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
 				numScore.screenCenter();
 				numScore.x = rating.x + (43 * daLoop) - 50;
@@ -3192,10 +3175,6 @@ class PlayState extends MusicBeatState {
 
 				daLoop++;
 			}
-			/* 
-				trace(combo);
-				trace(seperatedScore);
-			 */
 
 			coolText.text = Std.string(seperatedScore);
 			// add(coolText);
@@ -3683,8 +3662,6 @@ class PlayState extends MusicBeatState {
 		}
 
 		if (curStep == 384 && curSong == 'Party-Crasher') {
-			// scanlines.visible = true;
-			// dark.visible = true;
 			shadersLoaded = true;
 
 			filters.push(ShadersHandler.chromaticAberration);
@@ -3702,9 +3679,9 @@ class PlayState extends MusicBeatState {
 			scoreTxt.setFormat(Paths.font("Retro Gaming.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			font = true;
 		}
-		if (curStep == 640 && curSong == 'Party-Crasher') {
-			// scanlines.visible = false;
-			// dark.visible = false;
+
+		if (curStep == 640 && curSong == 'Party-Crasher') 
+		{
 			filters.remove(ShadersHandler.chromaticAberration);
 
 			camfilters.remove(ShadersHandler.scanline);

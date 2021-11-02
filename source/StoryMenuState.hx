@@ -39,20 +39,24 @@ class StoryMenuState extends MusicBeatState
 {
 	var scoreText:FlxText;
 
-	var weekSongs:Array<Dynamic> = [
-		['Tutorial'],
-		['Metamorphosis', 'Void', 'Down-bad'],
-		['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
-		['Prayer', 'Bad-Nun'],
-		['Mako', 'VIM', "Farmed"],
-		['Honey', "Bunnii", "Throw-it-back"],
-		['Mild', 'Spice', 'Party-Crasher'],
-		['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
-		['Hallow', 'Portrait', 'Soul']
-		//['bowling time']
-	];
+	@:isVar public static var weekData(get, never):Array<Dynamic> = [];
 
-	public static var weekData:Array<Dynamic> = [];
+	public static function get_weekData():Array<Dynamic>
+	{
+		return [
+			['Tutorial'],
+			['Metamorphosis', 'Void', 'Down-bad'],
+			['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
+			['Prayer', 'Bad-Nun'],
+			['Mako', 'VIM', "Farmed"],
+			['Honey', "Bunnii", "Throw-it-back"],
+			['Mild', 'Spice', 'Party-Crasher'],
+			['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
+			['Hallow', 'Portrait', 'Soul']
+			//['bowling time']
+		];	
+	}
+
 	var curDifficulty:Int = 1;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var wiggleEffect:WiggleEffect;
@@ -116,9 +120,6 @@ class StoryMenuState extends MusicBeatState
 
 		// ADDING SO MANY FUCKING EASTER EGGS LMAO -iso
 		userInput = secretCode;
-
-		// VERY SHITTY SOLUTION TO THE WEEKDATA RESETTING PROBLEM LMAO BUT ITS WORKS -rifxii
-		weekData = weekSongs;
 
 		#if windows
 		// Updating Discord Rich Presence

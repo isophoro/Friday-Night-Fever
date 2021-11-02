@@ -38,7 +38,9 @@ class FreeplayState extends MusicBeatState
 
 	var songs:Array<SongMetadata> = [];
 
+	@:allow(SelectingSongState)
 	static var curSelected:Int = 0;
+
 	var curDifficulty:Int = 1;
 
 	var bghalloween:FlxSprite;
@@ -67,9 +69,6 @@ class FreeplayState extends MusicBeatState
 			case HALLOWEEN:
 				initSonglist = CoolUtil.coolTextFile(Paths.txt('halloweenfreeplaySonglist'));
 		}
-
-		if(curSelected >= initSonglist.length)
-			curSelected = 0;
 
 		for (i in 0...initSonglist.length)
 		{
