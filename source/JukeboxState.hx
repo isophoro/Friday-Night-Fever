@@ -21,6 +21,23 @@ typedef JukeboxSong = {
     var ?special:Bool;
 }
 
+@:enum abstract Playback(Int) to Int from Int
+{
+    var DUAL = 0;
+    var INST = 1;
+    var VOCALS = 2;
+
+    public static function getString(pb:Playback):String
+    {
+        switch(pb)
+        {
+            case DUAL: return 'Normal';
+            case INST: return 'Inst';
+            case VOCALS: return 'Vocals';
+        }
+    }
+}
+
 class JukeboxState extends MusicBeatState
 {
     var vocals:FlxSound = new FlxSound();
@@ -30,32 +47,38 @@ class JukeboxState extends MusicBeatState
     var overlay:FlxSprite;
     var songText:AlphabetQuick;
     var lengthText:AlphabetQuick;
+    var playText:AlphabetQuick;
+
+    var playbackText:AlphabetQuick;
+    var playback:Playback = DUAL;
+
     var songs:Array<JukeboxSong> = [
-        {display:"Metamorphosis", cover:"week1", bpm:160},
-        {display:"Void", cover:"week1", bpm:140},
-        {display:"Down Bad", cover:"week1", bpm:180},
-        {display:"Star Baby", cover:"week2", bpm:180},
-        {display:"Last Meow", cover:"week2", bpm:195},
-        {display:"Bazinga", cover:"week2taki", bpm:190},
-        {display:"Crucify", cover:"week2taki", bpm:200},
-        {display:'Prayer', cover:'taki', bpm:140},
-        {display:'Bad Nun', cover:'taki', bpm:140},
-        {display:"Mako", cover:"week3", bpm:160},
-        {display:"VIM", cover:"week3", bpm:170},
-        {display:"Farmed", cover:"week3", bpm:160},
-        {display:"Honey", cover:"week4", bpm:130},
-        {display:"Bunnii", cover:"week4", bpm:165},
-        {display:"Throw It Back", cover:"week4", bpm:160},
-        {display:'Mild', cover:'week5', bpm:100},
-        {display:'Spice', cover:'week5', bpm:150},
-        {display:'Party Crasher', cover:'week5', bpm:159},
-        {display:'Ur Girl', cover:'week6', bpm:144},
-        {display:'Chicken Sandwich', cover:'week6', bpm:150},
+        {display:"Tutorial", cover:"tea", bpm:100},
+        {display:"Metamorphosis", cover:"peakek", bpm:160},
+        {display:"Void", cover:"peakek", bpm:140},
+        {display:"Down Bad", cover:"peakek", bpm:180},
+        {display:"Star Baby", cover:"wee", bpm:180},
+        {display:"Last Meow", cover:"wee", bpm:195},
+        {display:"Bazinga", cover:"taki", bpm:190},
+        {display:"Crucify", cover:"taki", bpm:200},
+        {display:'Prayer', cover:'taki-update', bpm:140},
+        {display:'Bad Nun', cover:'taki-update', bpm:140},
+        {display:"Mako", cover:"mako", bpm:160},
+        {display:"VIM", cover:"mako", bpm:170},
+        {display:"Farmed", cover:"mako", bpm:160},
+        {display:"Honey", cover:"hunni", bpm:130},
+        {display:"Bunnii", cover:"hunni", bpm:165},
+        {display:"Throw It Back", cover:"hunni", bpm:160},
+        {display:'Mild', cover:'pepper', bpm:100},
+        {display:'Spice', cover:'pepper', bpm:150},
+        {display:'Party Crasher', cover:'pepper', bpm:159},
+        {display:'Ur Girl', cover:'mega', bpm:144},
+        {display:'Chicken Sandwich', cover:'mega', bpm:150},
         {display:'Funkin God', cover:'flippy', bpm:190},
         {display:'Hallow', cover:'hallow', bpm:130},
         {display:'Portrait', cover:'hallow', bpm:140},
         {display:'Soul', cover:'hallow', bpm:165},
-        {display:'Hardships', cover:'hardships', bpm:120},
+        {display:'Hardships', cover:'tea-bat', bpm:120},
         {display:'Space Demons', cover:'extras', bpm:170},
         {display:'Beta VIP', song:'VIP', cover:'extras', bpm:155, special:true}
     ];
@@ -63,7 +86,7 @@ class JukeboxState extends MusicBeatState
     var curSelected:Int = 0;
     private var screen:FlxCamera;
 	private var cam:FlxCamera;
-    var cover:FlxSprite = new FlxSprite(0, 155);
+    var cover:JukeboxImage = new JukeboxImage(0, 155);
 
     override function create()
     {
@@ -92,9 +115,6 @@ class JukeboxState extends MusicBeatState
         add(screenbg);
         screenbg.cameras = [screen];
 
-        cover.loadGraphic(Paths.image('troll'));
-        cover.screenCenter(X);
-        cover.antialiasing = true;
         cover.cameras = [screen];
         add(cover);
 
@@ -106,22 +126,23 @@ class JukeboxState extends MusicBeatState
         songText.cameras = [screen];
         add(songText);
 
-        lengthText = new AlphabetQuick(0, Std.int(FlxG.height * 0.72), '',{bold:false,size:0.5,spacing:3,screenCenterX:true});
+        lengthText = new AlphabetQuick(0, Std.int(FlxG.height * 0.73), '',{bold:false,size:0.5,spacing:3,screenCenterX:true});
         lengthText.cameras = [screen];
         add(lengthText);
 
-        var playText:AlphabetQuick = new AlphabetQuick(0, Std.int(FlxG.height * 0.82), 'Press SPACE to play',{bold:false,size:0.5,spacing:3,screenCenterX:true});
+        playText = new AlphabetQuick(0, Std.int(FlxG.height * 0.82), 'Press SPACE to play',{bold:false,size:0.5,spacing:3,screenCenterX:true});
         playText.cameras = [screen];
         add(playText);
 
-        var leaveText:AlphabetQuick = new AlphabetQuick(0, Std.int(FlxG.height * 0.88), 'Press ESC to leave', {bold:false,size:0.5,spacing:3,screenCenterX:true});
-        leaveText.cameras = [screen];
-        add(leaveText);
+        playbackText = new AlphabetQuick(0, Std.int(FlxG.height * 0.88), 'Playback Mode: ' + Playback.getString(playback), {bold:false,size:0.5,spacing:3,screenCenterX:true});
+        playbackText.cameras = [screen];
+        add(playbackText);
 
         songText.cameras = [screen];
 
         var scanlines:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Scanlines'));
         scanlines.antialiasing = true;
+        scanlines.alpha = 0.45;
         add(scanlines);
 
         overlay = new FlxSprite(0,0).loadGraphic(Paths.image('LMAO'));
@@ -131,6 +152,8 @@ class JukeboxState extends MusicBeatState
         changeSong();
     }
 
+    var elapsedTimer:Float = 0;
+
     override function update(elapsed:Float)
     {
         super.update(elapsed);
@@ -139,6 +162,9 @@ class JukeboxState extends MusicBeatState
 
         if(loaded && controls.LEFT_P || loaded && controls.RIGHT_P)
             changeSong(controls.LEFT_P ? -1 : 1);
+
+        if(controls.UP_P || controls.DOWN_P)
+            changePlayback(controls.UP_P ? -1 : 1);
 
         if(controls.BACK)
         {
@@ -150,23 +176,56 @@ class JukeboxState extends MusicBeatState
         {
             Conductor.songPosition = FlxG.sound.music.time;
 
-            if(controls.ACCEPT && loaded)
+            if(loaded)
             {
-                if(!FlxG.sound.music.playing)
+                switch(playback)
                 {
-                    FlxG.sound.music.play();
+                    case DUAL:
+                        FlxG.sound.music.volume = 1;
+                        vocals.volume = 1;
+                    case INST:
+                        FlxG.sound.music.volume = 1;
+                        vocals.volume = 0;  
+                    case VOCALS:
+                        FlxG.sound.music.volume = 0;
+                        vocals.volume = 1;
+                }
 
-                    if(!songs[curSelected].special)
+                if(controls.ACCEPT)
+                {
+                    if(!FlxG.sound.music.playing)
                     {
-                        vocals.play();
-                        vocals.time = FlxG.sound.music.time;
+                        playText.text = 'Press SPACE to pause';
+                        FlxG.sound.music.play();
+    
+                        if(!songs[curSelected].special)
+                        {
+                            vocals.play();
+                            vocals.time = FlxG.sound.music.time;
+                        }
+                    }
+                    else
+                    {
+                        playText.text = 'Press SPACE to play';
+                        FlxG.sound.music.pause();
+                        if(!songs[curSelected].special)
+                            vocals.pause();
                     }
                 }
-                else
+            }
+
+            if(FlxG.sound.music.playing)
+            {
+                elapsedTimer += elapsed;
+                if(elapsedTimer >= 1)
                 {
-                    FlxG.sound.music.pause();
-                    if(!songs[curSelected].special)
-                        vocals.pause();
+                    var seconds:String = '' + Std.int(FlxG.sound.music.time / 1000) % 60;
+    
+                    if(seconds.length == 1)
+                        seconds = '0' + seconds;
+            
+                    lengthText.text = 'Playing : ${Std.int(FlxG.sound.music.time / 1000 / 60)}:$seconds';
+                    elapsedTimer = 0;
                 }
             }
         }
@@ -184,11 +243,8 @@ class JukeboxState extends MusicBeatState
         else if(curSelected < 0)
             curSelected = songs.length - 1;
 
-        if(lime.utils.Assets.exists(Paths.image('covers/${songs[curSelected].cover}', 'preload')))
-        {
-            cover.loadGraphic(Paths.image('covers/${songs[curSelected].cover}', 'preload'));
-            cover.screenCenter(X);
-        }
+        cover.animation.play(songs[curSelected].cover);
+        cover.screenCenter(X);
 
         songText.text = '< ${songs[curSelected].display} >';
         Conductor.changeBPM(songs[curSelected].bpm);
@@ -232,7 +288,10 @@ class JukeboxState extends MusicBeatState
         }
 
         lengthText.text = "Loading song...";
+        playText.text = 'Press SPACE to play';
+        
         FlxG.sound.music.loadEmbedded(songs[curSelected].special ? Paths.music(songName) : Paths.inst(songName));
+        elapsedTimer = 1;
 
         if(!songs[curSelected].special)
             vocals.loadEmbedded(Paths.voices(songName));
@@ -247,6 +306,20 @@ class JukeboxState extends MusicBeatState
         lengthText.text = 'Length : ${Std.int(FlxG.sound.music.length / 1000 / 60)}:$seconds';
         loadedSongs.push(songName);
     }
+
+    function changePlayback(change:Int)
+    {
+        var curp:Int = playback;
+        curp += change;
+
+        if(curp > 2)
+            curp = 0;
+        else if (curp < 0)
+            curp = 2;
+
+        playback = curp;
+        playbackText.text = 'Playback Mode: ' + Playback.getString(playback);
+    }
     
     function addC354R()
     {
@@ -260,5 +333,26 @@ class JukeboxState extends MusicBeatState
                 break;
             }
         }
+    }
+}
+
+class JukeboxImage extends FlxSprite
+{
+    public function new(X:Float, Y:Float)
+    {
+        super(X,Y);
+        loadGraphic(Paths.image('jukebox_covers', 'preload'), true, 420, 285);
+        antialiasing = true;
+
+        var anims:Array<String> = [
+            'tea', 'peakek', 'wee', 'taki', 'taki-update',
+            'mako', 'hunni', 'pepper', 'mega', 'flippy',
+            'hallow', 'tea-bat', 'C354R', 'extras'
+        ];
+        
+        for(i in 0...anims.length)
+            animation.add(anims[i], [i], 0, false);
+
+        animation.play('tea');
     }
 }
