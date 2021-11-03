@@ -248,7 +248,6 @@ class CreditsState extends MusicBeatState
                 FlxG.sound.music.fadeOut(2.2, 0.7);
         }
     }
-
 }
 
 class KeyCombo

@@ -1,17 +1,13 @@
 package;
 
 import flixel.tweens.FlxTween;
-import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import lime.utils.Assets;
-
 
 #if windows
 import Discord.DiscordClient;
@@ -19,11 +15,11 @@ import Discord.DiscordClient;
 
 using StringTools;
 
-@:enum abstract FreeplayStyle(String) from String to String
+@:enum abstract FreeplayStyle(String) from String to String 
 {
 	var NORMAL = "normal";
 	var HALLOWEEN = "halloween";
-
+	
 	@:keep
 	public static function getArrayInOrder():Array<String>
 	{
@@ -36,39 +32,29 @@ class FreeplayState extends MusicBeatState
 	@:allow(SelectingSongState)
 	static var currentStyle:FreeplayStyle = NORMAL;
 
-	var songs:Array<SongMetadata> = [];
-
 	@:allow(SelectingSongState)
 	static var curSelected:Int = 0;
 
+	var songs:Array<SongMetadata> = [];
+	private var grpSongs:FlxTypedGroup<Alphabet>;
+	private var iconArray:Array<HealthIcon> = [];
+
 	var curDifficulty:Int = 1;
+	var lerpScore:Int = 0;
+	var intendedScore:Int = 0;
 
 	var bghalloween:FlxSprite;
 	var halloween:FlxText;
-
 	var scoreText:FlxText;
 	var diffText:FlxText;
-	var lerpScore:Int = 0;
-	var intendedScore:Int = 0;
+
 	final secretCode:String = '354';
 	var userInput:String;
 	var secretFound:Bool = false;
 
-	private var grpSongs:FlxTypedGroup<Alphabet>;
-
-	private var iconArray:Array<HealthIcon> = [];
-
 	override function create()
 	{
-		var initSonglist:Array<String> = [];
-
-		switch(currentStyle)
-		{
-			case NORMAL:
-				initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
-			case HALLOWEEN:
-				initSonglist = CoolUtil.coolTextFile(Paths.txt('halloweenfreeplaySonglist'));
-		}
+		var initSonglist:Array<String> = CoolUtil.coolTextFile(Paths.txt(currentStyle + 'Songlist'));
 
 		for (i in 0...initSonglist.length)
 		{
@@ -76,9 +62,11 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
+		//FlxG.random.shuffle(songs);
+
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Freeplay Menu", null);
+		DiscordClient.changePresence("In the Freeplay Menu" + "[" + CoolUtil.capitalizeFirstLetters(currentStyle) + "]", null);
 		#end
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
@@ -133,11 +121,6 @@ class FreeplayState extends MusicBeatState
 		changeSelection();
 		changeDiff();
 
-		// FlxG.sound.playMusic(Paths.music('title'), 0);
-		// FlxG.sound.music.fadeIn(2, 0, 0.8);
-
-		var swag:Alphabet = new Alphabet(1, 0, "swag");
-
 		super.create();
 
 		userInput = secretCode;
@@ -179,33 +162,48 @@ class FreeplayState extends MusicBeatState
 
 		scoreText.text = "PERSONAL BEST:" + lerpScore;
 
-		var upP = controls.UP_P;
-		var downP = controls.DOWN_P;
-		var accepted = controls.ACCEPT;
 
-		if (upP)
+		if (controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (downP)
+		else if (controls.DOWN_P)
 		{
 			changeSelection(1);
 		}
 
 		if (controls.LEFT_P)
+		{
 			changeDiff(-1);
-		if (controls.RIGHT_P)
+		}
+		else if (controls.RIGHT_P)
+		{
 			changeDiff(1);
+		}
 
 		if (controls.BACK)
 		{
-			if (currentStyle == NORMAL)
+			if (currentStyle != HALLOWEEN)
 			{
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
 			}
 	
 			FlxG.switchState(new SelectingSongState());
+		}
+
+		if (controls.ACCEPT)
+		{	
+			var poop:String = Highscore.formatSong(StringTools.replace(songs[curSelected].songName," ", "-").toLowerCase(), curDifficulty);
+
+			trace(poop);
+
+			PlayState.SONG = Song.loadFromJson(poop, StringTools.replace(songs[curSelected].songName," ", "-").toLowerCase());
+			PlayState.isStoryMode = false;
+			PlayState.storyDifficulty = curDifficulty;
+			PlayState.storyWeek = songs[curSelected].week;
+			trace('CUR WEEK' + PlayState.storyWeek);
+			LoadingState.loadAndSwitchState(new PlayState());
 		}
 
 		if (FlxG.keys.justPressed.ANY && !secretFound)
@@ -254,23 +252,6 @@ class FreeplayState extends MusicBeatState
 			{
 				userInput = secretCode;
 			}
-		}
-
-		if (accepted)
-		{
-			FlxTransitionableState.skipNextTransIn = false;
-			FlxTransitionableState.skipNextTransOut = false;
-			
-			var poop:String = Highscore.formatSong(StringTools.replace(songs[curSelected].songName," ", "-").toLowerCase(), curDifficulty);
-
-			trace(poop);
-
-			PlayState.SONG = Song.loadFromJson(poop, StringTools.replace(songs[curSelected].songName," ", "-").toLowerCase());
-			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
-			PlayState.storyWeek = songs[curSelected].week;
-			trace('CUR WEEK' + PlayState.storyWeek);
-			LoadingState.loadAndSwitchState(new PlayState());
 		}
 	}
 

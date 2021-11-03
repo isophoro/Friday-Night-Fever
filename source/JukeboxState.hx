@@ -1,5 +1,6 @@
 package;
 
+import flixel.ui.FlxBar;
 import flixel.system.FlxSound;
 import flixel.FlxSprite;
 import flixel.util.FlxGradient;
@@ -68,6 +69,9 @@ class JukeboxState extends MusicBeatState
     {
         super.create();
 
+        addC354R();
+
+        FlxG.mouse.visible = true;
         FlxG.autoPause = false;
         #if windows
         DiscordClient.changePresence("In the Jukebox Menu, Listening to music", null);
@@ -145,6 +149,7 @@ class JukeboxState extends MusicBeatState
         if(FlxG.sound.music != null)
         {
             Conductor.songPosition = FlxG.sound.music.time;
+
             if(controls.ACCEPT && loaded)
             {
                 if(!FlxG.sound.music.playing)
@@ -241,5 +246,19 @@ class JukeboxState extends MusicBeatState
 
         lengthText.text = 'Length : ${Std.int(FlxG.sound.music.length / 1000 / 60)}:$seconds';
         loadedSongs.push(songName);
+    }
+    
+    function addC354R()
+    {
+        for(i in 0...CoolUtil.difficultyArray.length)
+        {
+            if(Highscore.getScore('C354R', i) > 0)
+            {
+                var c354r:JukeboxSong = {display:"C354R",bpm:150, cover:"C354R"};
+                if(!songs.contains(c354r))
+                    songs.push(c354r);
+                break;
+            }
+        }
     }
 }

@@ -9,6 +9,17 @@ class CoolUtil
 {
 	public static var difficultyArray:Array<String> = ['EASY', "NORMAL", "HARD", "BABY"];
 
+	// GITHUB CO-PILOT IS GOATED
+	public static function capitalizeFirstLetters(str:String):String
+	{
+		var words:Array<String> = str.split(" ");
+		var newWords:Array<String> = new Array<String>();
+		for (i in 0...words.length)
+		{
+			newWords.push(words[i].charAt(0).toUpperCase() + words[i].substr(1));
+		}
+		return newWords.join(" ");
+	}
 
 	public static function difficultyString():String
 	{
