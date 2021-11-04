@@ -1,4 +1,4 @@
-:song:downbadinst
+:inst:down-bad
 :bg:room
 :peacorrupt: Huff....huff...this is the most fun I've had in a long time.
 :peacorrupt: Especially compared to my days at the lab...

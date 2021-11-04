@@ -73,7 +73,7 @@ class Highscore
 		else if (diff == 2)
 			daSong += '-hard';
 
-		trace(daSong);
+		//trace(daSong);
 		return daSong;
 	}
 

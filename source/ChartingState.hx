@@ -1185,13 +1185,13 @@ class ChartingState extends MusicBeatState
 	{
 		if (check_mustHitSection.checked)
 		{
-			leftIcon.animation.play(_song.player1);
-			rightIcon.animation.play(_song.player2);
+			leftIcon.swapCharacter(_song.player1);
+			rightIcon.swapCharacter(_song.player2);
 		}
 		else
 		{
-			leftIcon.animation.play(_song.player2);
-			rightIcon.animation.play(_song.player1);
+			leftIcon.swapCharacter(_song.player2);
+			rightIcon.swapCharacter(_song.player1);
 		}
 	}
 

@@ -8,7 +8,7 @@
 :teaannoy: It's ALWAYS nothing with you, isn't it?
 :feverworry: Yeah, yeah, I know. Maybe I should cut that shit out a bit.
 :feversmile: But hey, I'm just glad I can still sing without getting too tired.
-:song:metainst
+:inst:metamorphosis
 :bg:peakekisanidiot
 :narrator: Yeah! I'd say that was really cute!
 :narrator: Fever: Aww. thanks ba-
@@ -39,7 +39,7 @@
 :sfx:recordscratch
 :feverscaredjump: What.
 :teasmile: He's not wrong.
-:song:metainst
+:inst:metamorphosis
 :kekhappy: Besides, things have been boring ever since I got here... this place needs more chaos like the old days. I already have the perfect smear campaign ready.
 :feverconfuse: You've only been here for like a month-
 :peacorrupt: People will surely begin to understand that we'll have a lot more fun when I'M ruling over.

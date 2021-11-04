@@ -289,6 +289,8 @@ class JukeboxState extends MusicBeatState
 
         lengthText.text = "Loading song...";
         playText.text = 'Press SPACE to play';
+        playback = DUAL;
+        playbackText.text = 'Playback Mode: ' + Playback.getString(playback);
         
         FlxG.sound.music.loadEmbedded(songs[curSelected].special ? Paths.music(songName) : Paths.inst(songName));
         elapsedTimer = 1;

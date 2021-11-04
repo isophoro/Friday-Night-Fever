@@ -48,11 +48,11 @@ class StoryMenuState extends MusicBeatState
 			['Metamorphosis', 'Void', 'Down-bad'],
 			['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
 			['Prayer', 'Bad-Nun'],
+			['Hallow', 'Portrait', 'Soul'],
 			['Mako', 'VIM', "Farmed"],
 			['Honey', "Bunnii", "Throw-it-back"],
 			['Mild', 'Spice', 'Party-Crasher'],
-			['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
-			['Hallow', 'Portrait', 'Soul']
+			['Ur-girl', 'Chicken-sandwich', 'Funkin-god']
 			//['bowling time']
 		];	
 	}
@@ -81,11 +81,11 @@ class StoryMenuState extends MusicBeatState
 		"STICKY SITUATION!",
 		"SWEET AND SOUR!",
 		"TAKI'S REVENGE!",
+		"???",
 		"MELONCHOLY!",
 		"BUNNI MURDER!",
 		"DINNER TIME!",
-		"GOD DAMN!",
-		"???"
+		"GOD DAMN!"
 		//"BOWLING TILL YOU'RE DEAD"
 	];
 

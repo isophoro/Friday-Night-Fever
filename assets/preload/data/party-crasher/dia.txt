@@ -1,4 +1,4 @@
-:song: partinst
+:inst:party-crasher
 :bg:week5
 :teaworry: Is everyone alright?
 :feverworry: Goddammit... It's always the third song, is this some sort of curse?

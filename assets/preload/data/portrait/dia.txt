@@ -1,4 +1,4 @@
-:song: calamityInst
+:inst:portrait
 :defrown: (Shit. This is a lot different than just punching someone.)
 :defrown: (Doesn't help that I just now realized that, they're not alone.)
 :hallownorm: Nananana!~

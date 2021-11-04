@@ -40,7 +40,7 @@
 :teathink: British?
 :hidebg:
 :bg:ripmako
-:song:makoinsty
+:inst:mako
 :makoangry: Yo! Down here!
 :makoangry: Also I'm AUSTRALIAN, not bri'ish!
 :casualscared: Is that a fucking talking melon?

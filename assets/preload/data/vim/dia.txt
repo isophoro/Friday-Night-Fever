@@ -1,4 +1,4 @@
-:song: viminst
+:inst:vim
 :makohappy: Aight, I see you. You're pretty okay.
 :casualsilly: For a melon, that wasn't too bad!
 :makoew: Huh?

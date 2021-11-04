@@ -18,7 +18,7 @@
 :narrator: ???: If you're tired of running, how about we give you a ride?
 :feverconfuse: Huh?
 :bg: hunni
-:song: honeyinst
+:inst:honey
 :hunnismile: Sup, Fever.
 :feverscared: Huh, wait, YOU?...
 :teaneutral: Oh? Who's this?

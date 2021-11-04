@@ -8,9 +8,63 @@ import flixel.FlxG;
 import openfl.display.FPS;
 import openfl.Lib;
 
+class Options
+{
+	public static function checkSaveCompatibility()
+	{
+		var currentVersion = Application.current.meta.get("version");
+		trace('Running $currentVersion');
+
+		//Highscore.saveWeekScore(8, 9999999, 2); debugging purposes
+
+		if(FlxG.save.data.lastVersion == null || FlxG.save.data.lastVersion != currentVersion)
+		{
+			trace('Updating save file to latest version');
+
+			function getArrayOfWeekScores(week:Int):Array<Int>
+			{
+				var coolArray:Array<Int> = [];
+				for(i in 0...3)
+				{
+					coolArray.push(Highscore.getWeekScore(week, i));
+				}
+
+				return coolArray;
+			}
+
+			if(FlxG.save.data.lastVersion == null)
+			{
+				// v1.4.3 save compat
+				var weekScores:Array<Array<Int>> = [];
+				for(i in 0...StoryMenuState.weekData.length)
+				{
+					weekScores.push(getArrayOfWeekScores(i));
+				}
+
+				var week8:Array<Int> = weekScores[8];
+				weekScores.insert(4, week8);
+				weekScores.pop();
+				trace(weekScores);
+
+				for(i in 0...StoryMenuState.weekData.length)
+				{
+					for(x in 0...3)
+					{
+						Highscore.saveWeekScore(i, weekScores[i][x], x);
+					}
+				}
+			}
+
+			FlxG.save.data.lastVersion = currentVersion;
+			FlxG.save.flush();
+		}
+	}
+}
+
 class OptionCategory
 {
 	private var _options:Array<Option> = new Array<Option>();
+	 
 	public final function getOptions():Array<Option>
 	{
 		return _options;

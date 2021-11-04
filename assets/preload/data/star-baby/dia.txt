@@ -23,7 +23,7 @@
 :feverscared: HUH? It's-
 :feversmile: Oh, it's just some kid.
 :feversmile: Or, a cat. A kid cat..
-:song:starBabyinst
+:inst:star-baby
 :weenormal: Sup.
 :feversmile: Uh, hey. You uh, live here?
 :weenormal: Maybe I do. Why, you here to kick me out?

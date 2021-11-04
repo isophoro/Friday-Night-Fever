@@ -1,4 +1,4 @@
-:song:voidinst
+:inst:void
 :bg:room
 :peahappy: Hey, hey! You're a lotta fun to play with than I thought you'd be! But...
 :peacorrupt: I think it's time to get a bit more serious. . .
@@ -20,7 +20,7 @@
 :teaannoy: BRUH.
 :feverpointtwo: I'm gonna beat your ass if you don't shut up and start singing.
 :peahappy: You guys don't know how much I'm loving your expressions right now.
-:song:voidinst
+:inst:void
 :feverpointtwo: You can’t embarrass us anymore than how you’ve humiliated yourself today!
 :peahappy: I don’t see this as humiliating!
 :desmile: Yeah? Well, how about fall off a cliff, you stupid fu-

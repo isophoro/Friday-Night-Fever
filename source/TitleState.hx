@@ -101,6 +101,7 @@ class TitleState extends MusicBeatState
 		KadeEngineData.initSave();
 
 		Highscore.load();
+		Options.checkSaveCompatibility();
 
 		if (FlxG.save.data.weekUnlocked != null)
 		{

@@ -30,7 +30,7 @@
 :fuckoff:
 :hidebg:
 :bg:room
-:song:milkteaINST
+:inst:milk-tea
 :teasmile: Hey, wake up!
 :feverscaredjump: Huh? What?-
 :teasmile: You were having a nightmare. These have been ramping up, haven't they?

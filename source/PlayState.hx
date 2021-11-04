@@ -380,6 +380,7 @@ class PlayState extends MusicBeatState {
 				}
 			case 'hallowhalloween':
 				{
+					summonPainting(true);
 					curStage = 'spookyHALLOW';
 					defaultCamZoom = 0.6;
 					halloweenLevel = true;
@@ -2103,20 +2104,22 @@ class PlayState extends MusicBeatState {
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent > 80 && healthBar.percent > 20)
-			iconP1.animation.curAnim.curFrame = 2;
-		else if (healthBar.percent < 80 && healthBar.percent < 20)
-			iconP1.animation.curAnim.curFrame = 1;
-		else if (healthBar.percent < 80 && healthBar.percent > 20)
-			iconP1.animation.curAnim.curFrame = 0;
-
-		if (healthBar.percent > 80 && healthBar.percent > 20)
-			iconP2.animation.curAnim.curFrame = 1;
-		else if (healthBar.percent < 80 && healthBar.percent < 20)
-			iconP2.animation.curAnim.curFrame = 2;
-		else if (healthBar.percent < 80 && healthBar.percent > 20)
-			iconP2.animation.curAnim.curFrame = 0;
-
+		if(healthBar.percent >= 80)
+		{
+			iconP2.animation.play('hurt');
+			iconP1.animation.play('winning');
+		}
+		else if (healthBar.percent <= 35)
+		{
+			iconP2.animation.play('winning');
+			iconP1.animation.play('hurt');
+		}
+		else
+		{
+			iconP2.animation.play('healthy');
+			iconP1.animation.play('healthy');
+		}
+	
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
@@ -2481,17 +2484,7 @@ class PlayState extends MusicBeatState {
 				if (daNote.type == 1 && !daNote.animPlayed && daNote.strumTime - 750 < Conductor.songPosition && daNote.mustPress)
 				{
 					daNote.animPlayed = true;
-					var mechanic = new FlxSprite(1240, 300);
-					mechanic.frames = Paths.getSparrowAtlas('mechanicShit/paintingShit');
-					mechanic.animation.addByPrefix('idle', 'paintingShit', false);
-					mechanic.antialiasing = true;
-
-			
-					mechanic.animation.play('idle');
-					add(mechanic);
-					mechanic.animation.finishCallback = function(anim){
-						remove(mechanic);
-					}
+					summonPainting();
 				}
 
 				if (daNote.tooLate) {
@@ -3748,6 +3741,23 @@ class PlayState extends MusicBeatState {
 			if (FlxG.save.data.distractions) {
 				lightningStrikeShit();
 			}
+		}
+	}
+
+	function summonPainting(?preload:Bool)
+	{
+		var mechanic = new FlxSprite(1240, 300);
+		mechanic.frames = Paths.getSparrowAtlas('mechanicShit/paintingShit');
+		mechanic.animation.addByPrefix('idle', 'paintingShit', false);
+		mechanic.antialiasing = true;
+
+		if(preload)
+			mechanic.visible = false;
+
+		mechanic.animation.play('idle');
+		add(mechanic);
+		mechanic.animation.finishCallback = function(anim){
+			remove(mechanic);
 		}
 	}
 
