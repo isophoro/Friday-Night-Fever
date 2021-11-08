@@ -44,7 +44,7 @@ class StoryMenuState extends MusicBeatState
 	public static function get_weekData():Array<Dynamic>
 	{
 		return [
-			['Tutorial'],
+			['Milk-Tea'],
 			['Metamorphosis', 'Void', 'Down-bad'],
 			['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
 			['Prayer', 'Bad-Nun'],

@@ -40,6 +40,8 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-mom'), true, 150, 150);
 			case 'bfiso' | 'bfiso-pixel':
 				loadGraphic(Paths.image('icons/icon-iso'), true, 150, 150);
+			case 'taki' | 'monster':
+				loadGraphic(Paths.image('icons/icon-monster'), true, 150, 150);
 			default: 
 				loadGraphic(Paths.image('icons/icon-$char'), true, 150, 150);
 		}

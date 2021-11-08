@@ -645,10 +645,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'dad sing note LEFT', 24);
 
 				addOffset('idle');
-				addOffset("singUP", -133, 74);
-				addOffset("singRIGHT", -208, 4);
-				addOffset("singLEFT", -8, 20);
-				addOffset("singDOWN", -179, -48);
+				addOffset("singUP", -141, 25);
+				addOffset("singRIGHT", -181, 6);
+				addOffset("singLEFT", -29, 12);
+				addOffset("singDOWN", -189, -68);
 
 				playAnim('idle');
 
@@ -793,7 +793,7 @@ class Character extends FlxSprite
 				addOffset("singUP", -39, 17);
 				addOffset("singRIGHT", -21, -5);
 				addOffset("singLEFT", 38, -18);
-				addOffset("singDOWN", 91, -210);
+				addOffset("singDOWN", 21, -180);
 
 				playAnim('idle');
 			case 'monster': // TAKI

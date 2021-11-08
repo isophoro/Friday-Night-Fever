@@ -110,4 +110,53 @@ function update (elapsed)
 			setActorX(_G['defaultStrum'..i..'X'] + 25 * math.sin((currentBeat + i*0.25) * math.pi), i)
 		end
 		end
+
+
+if curStep == 642 or curStep == 646 or curStep == 650 or curStep == 654 then
+	setCamZoom(0.52)
+	setHudZoom(1.02)
+	end
+
+if curStep == 674 or curStep == 678 or curStep == 682 or curStep == 686 then
+	setCamZoom(0.52)
+	setHudZoom(1.02)
+	end
+
+if curStep == 706 or curStep == 710 or curStep == 714 or curStep == 718 then
+	setCamZoom(0.52)
+	setHudZoom(1.02)
+	end
+
+if curStep == 738 or curStep == 742 or curStep == 746 or curStep == 750 then
+	setCamZoom(0.52)
+	setHudZoom(1.02)
+	end
+
+
+if curStep == 1680 then
+	setCamZoom(0.51)
+	setHudZoom(1.01)
+	showOnlyStrums = true
+	end
+
+if curStep == 1936 then
+	setCamZoom(0.51)
+	setHudZoom(1.01)
+	showOnlyStrums = false
+	end
+	end
+
+
+function beatHit(beat)
+	if curStep >= 256 and curStep < 478 or curStep >= 510 and curStep < 654 or curStep >= 670 and curStep < 686 or curStep >= 702 and curStep < 718 or curStep >= 734 and curStep < 750 or curStep >= 782 and curStep < 1038 or curStep >= 1422 and curStep < 1566 or curStep >= 1582 and curStep < 1598 or curStep >= 1614 and curStep < 1630 or curStep >= 1646 and curStep < 1662 then
+	setCamZoom(0.52)
+	setHudZoom(1.02)
+		end
+		end
+
+function stepHit (step)
+	if curStep >= 1215 and curStep < 1231 or curStep >= 1279 and curStep < 1291 or curStep >= 1295 and curStep < 1407 then
+	setCamZoom(0.51)
+	setHudZoom(1.01)
+		end
 		end

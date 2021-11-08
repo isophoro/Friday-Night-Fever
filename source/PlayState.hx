@@ -229,6 +229,7 @@ class PlayState extends MusicBeatState {
 	public static var curBoyfriend:Null<String>;
 	public static var isHalloweenFreeplay:Bool = false;
 	var wiggleEffect:WiggleEffect;
+	public var overrideModchart:Bool = false;
 
 
 	override public function create() {
@@ -343,7 +344,7 @@ class PlayState extends MusicBeatState {
 		persistentDraw = true;
 
 		if (SONG == null)
-			SONG = Song.loadFromJson('tutorial');
+			SONG = Song.loadFromJson('Milk-Tea');
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -928,6 +929,15 @@ class PlayState extends MusicBeatState {
 				gf.y = 149;
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				gf.scrollFactor.set(0.9, 0.9);
+		}
+
+		if(SONG.song.toLowerCase() == 'bazinga' || SONG.song.toLowerCase() == 'crucify')
+		{
+			// fnf really needs a better fuckin way of handling this, lowkey aboutta make an engine with an actual proper way for character placement in protest
+			gf.y -= 15;
+			gf.x += 180;
+			boyfriend.x += 160;
+			dad.x += 95;
 		}
 
 		add(gf);
@@ -1955,18 +1965,22 @@ class PlayState extends MusicBeatState {
 			FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
 			camHUD.angle = luaModchart.getVar('camHudAngle', 'float');
 
-			if (luaModchart.getVar("showOnlyStrums", 'bool')) {
-				healthBarBG.visible = false;
-				healthBar.visible = false;
-				iconP1.visible = false;
-				iconP2.visible = false;
-				scoreTxt.visible = false;
-			} else {
-				healthBarBG.visible = true;
-				healthBar.visible = true;
-				iconP1.visible = true;
-				iconP2.visible = true;
-				scoreTxt.visible = true;
+			if(!overrideModchart)
+			{
+				if (luaModchart.getVar("showOnlyStrums", 'bool')) 
+				{
+					healthBarBG.visible = false;
+					healthBar.visible = false;
+					iconP1.visible = false;
+					iconP2.visible = false;
+					scoreTxt.visible = false;
+				} else {
+					healthBarBG.visible = true;
+					healthBar.visible = true;
+					iconP1.visible = true;
+					iconP2.visible = true;
+					scoreTxt.visible = true;
+				}
 			}
 
 			var p1 = luaModchart.getVar("strumLine1Visible", 'bool');
@@ -2298,8 +2312,8 @@ class PlayState extends MusicBeatState {
 					case 'spookyBOO':
 						camFollow.x = dad.getMidpoint().x - -400;
 					case 'taki':
-						camFollow.x = dad.getMidpoint().x - -400;
-						camFollow.y = dad.getMidpoint().y - -100;
+						camFollow.x = dad.getMidpoint().x + 120;
+						camFollow.y = dad.getMidpoint().y - 50;
 					case 'monster':
 						if (SONG.song.toLowerCase() == 'prayer') {
 							camFollow.x = dad.getMidpoint().x - -560;
@@ -2575,7 +2589,7 @@ class PlayState extends MusicBeatState {
 				}
 
 				if (!daNote.mustPress && daNote.wasGoodHit) {
-					if (SONG.song != 'Tutorial')
+					if (SONG.song != 'Milk-Tea')
 						camZooming = true;
 
 					var altAnim:String = "";
@@ -2713,8 +2727,20 @@ class PlayState extends MusicBeatState {
 		if (!inCutscene)
 			keyShit();
 
+
 		if (FlxG.keys.justPressed.ONE)
-			endSong();
+		{
+			#if debug
+			if(FlxG.keys.pressed.CONTROL)
+				endSong();
+			#end
+			overrideModchart = !overrideModchart;
+			healthBarBG.visible = !healthBarBG.visible;
+			healthBar.visible = healthBarBG.visible;
+			iconP1.visible = healthBarBG.visible;
+			iconP2.visible = healthBarBG.visible;
+			scoreTxt.visible = healthBarBG.visible;
+		}
 	}
 
 	function endSong():Void {
@@ -3656,7 +3682,7 @@ class PlayState extends MusicBeatState {
 		}
 		#end
 
-		if (curSong == 'Tutorial') 
+		if (curSong == 'Milk-Tea') 
 		{
 			if (curBeat % 2 == 1 && dad.animOffsets.exists('danceLeft'))
 				dad.playAnim('danceLeft');
@@ -3706,7 +3732,7 @@ class PlayState extends MusicBeatState {
 			}
 		}
 
-		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48) {
+		if (curBeat % 16 == 15 && SONG.song == 'Milk-Tea' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48) {
 			boyfriend.playAnim('hey', true);
 			dad.playAnim('cheer', true);
 		}

@@ -17,6 +17,17 @@ class Options
 
 		//Highscore.saveWeekScore(8, 9999999, 2); debugging purposes
 
+		if(Highscore.songScores.exists('tutorial'))
+		{
+			trace('Found tutorial score - Converting');
+			for(i in 0...3)
+			{
+				Highscore.saveScore('milk-tea', Highscore.songScores.get('tutorial'), i);
+			}
+			
+			Highscore.songScores.remove('tutorial');
+		}
+
 		if(FlxG.save.data.lastVersion == null || FlxG.save.data.lastVersion != currentVersion)
 		{
 			trace('Updating save file to latest version');

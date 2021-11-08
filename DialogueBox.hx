@@ -86,7 +86,7 @@ class DialogueBox extends FlxSpriteGroup
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'ur-girl' | 'makomelon' | 'tutorial' | 'metamorphosis' | 'void' | 'bazinga' | 'down-bad' | 'party-crasher' | 'chicken-sandwich' | 'funkin-god':
+			case 'ur-girl' | 'makomelon' | 'milk-tea' | 'metamorphosis' | 'void' | 'bazinga' | 'down-bad' | 'party-crasher' | 'chicken-sandwich' | 'funkin-god':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('dialogue/textbox');
 				box.animation.addByPrefix('normalOpen', 'textbox idle', 24, false);

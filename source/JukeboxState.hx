@@ -53,7 +53,7 @@ class JukeboxState extends MusicBeatState
     var playback:Playback = DUAL;
 
     var songs:Array<JukeboxSong> = [
-        {display:"Tutorial", cover:"tea", bpm:100},
+        {display:"Milk Tea", cover:"tea", bpm:100},
         {display:"Metamorphosis", cover:"peakek", bpm:160},
         {display:"Void", cover:"peakek", bpm:140},
         {display:"Down Bad", cover:"peakek", bpm:180},
