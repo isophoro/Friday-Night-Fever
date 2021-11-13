@@ -47,6 +47,7 @@ class FreeplayState extends MusicBeatState
 	var halloween:FlxText;
 	var scoreText:FlxText;
 	var diffText:FlxText;
+	var scoreBG:FlxSprite;
 
 	final secretCode:String = '354';
 	var userInput:String;
@@ -108,7 +109,7 @@ class FreeplayState extends MusicBeatState
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 
-		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
+		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.31), 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
 		add(scoreBG);
 
@@ -280,7 +281,9 @@ class FreeplayState extends MusicBeatState
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 		#end
 
-		diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
+		diffText.text = '< ' +CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';
+		diffText.alignment = CENTER;
+		diffText.x = scoreBG.x + (scoreBG.width / 2) - (diffText.width / 2);
 	}
 
 	function changeSelection(change:Int = 0)
