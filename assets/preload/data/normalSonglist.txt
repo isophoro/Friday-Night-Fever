@@ -8,6 +8,7 @@ Bazinga:monster:2
 Crucify:monster:2
 Mako:pico:4
 VIM:pico:4
+Retribution:makocorrupt:4
 Farmed:makocorrupt:4
 Honey:mom:5
 Bunnii:mom:5

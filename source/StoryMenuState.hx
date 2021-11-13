@@ -49,7 +49,7 @@ class StoryMenuState extends MusicBeatState
 			['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
 			['Prayer', 'Bad-Nun'],
 			['Hallow', 'Portrait', 'Soul'],
-			['Mako', 'VIM', "Farmed"],
+			['Mako', 'VIM', "Retribution"],
 			['Honey', "Bunnii", "Throw-it-back"],
 			['Mild', 'Spice', 'Party-Crasher'],
 			['Ur-girl', 'Chicken-sandwich', 'Funkin-god']
