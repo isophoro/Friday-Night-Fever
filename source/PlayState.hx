@@ -71,15 +71,6 @@ class PlayState extends MusicBeatState {
 
 	var halloweenLevel:Bool = false;
 
-	var makoCaptions1:FlxSprite;
-	var makoCaptions2:FlxSprite;
-	var makoCaptions3:FlxSprite;
-	var makoCaptions4:FlxSprite;
-	var makoCaptions5:FlxSprite;
-	var makoCaptions6:FlxSprite;
-	var makoCaptions7:FlxSprite;
-	var makoCaptions8:FlxSprite;
-
 	var songLength:Float = 0;
 
 	#if windows
@@ -363,10 +354,10 @@ class PlayState extends MusicBeatState {
 
 		// dialogue shit, it does the dialogue = txt file shit for u
 		var dialogueString:String = SONG.song.toLowerCase() + '/dia';
-		// if(SONG.song.toLowerCase() == 'spice' && FlxG.random.bool(1))
-		//	dialogueString = 'spice/dia2';
+
 		if (Assets.exists(Paths.txt(dialogueString))) {
 			dialogue = CoolUtil.coolTextFile(Paths.txt(dialogueString));
+			//trace(dialogue);
 		}
 
 		switch (SONG.stage) {
@@ -469,7 +460,7 @@ class PlayState extends MusicBeatState {
 					defaultCamZoom = 0.9;
 
 					var bg:FlxSprite = new FlxSprite(-90, -20).loadGraphic(Paths.image('sky'));
-					bg.scrollFactor.set(0.1, 0.1);
+					bg.scrollFactor.set(0.1, 0.235);
 					add(bg);
 
 					var city:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('bg'));
@@ -1119,50 +1110,6 @@ class PlayState extends MusicBeatState {
 		if (loadRep)
 			replayTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
-		if(curSong == 'Retribution'){
-			makoCaptions1 = new FlxSprite(0, 0).loadGraphic(Paths.image('captions/captionsmako1'));
-			makoCaptions1.cameras = [camHUD];
-			add(makoCaptions1);
-			makoCaptions1.visible = false;
-
-			makoCaptions2 = new FlxSprite(0, 0).loadGraphic(Paths.image('captions/captionsmako2'));
-			makoCaptions2.cameras = [camHUD];
-			add(makoCaptions2);
-			makoCaptions2.visible = false;
-
-			makoCaptions3 = new FlxSprite(0, 0).loadGraphic(Paths.image('captions/captionsmako3'));
-			makoCaptions3.cameras = [camHUD];
-			add(makoCaptions3);
-			makoCaptions3.visible = false;
-
-			makoCaptions4 = new FlxSprite(0, 0).loadGraphic(Paths.image('captions/captionsmako4'));
-			makoCaptions4.cameras = [camHUD];
-			add(makoCaptions4);
-			makoCaptions4.visible = false;
-
-			makoCaptions5 = new FlxSprite(0, 0).loadGraphic(Paths.image('captions/captionsmako5'));
-			makoCaptions5.cameras = [camHUD];
-			add(makoCaptions5);
-			makoCaptions5.visible = false;
-
-			makoCaptions6 = new FlxSprite(0, 0).loadGraphic(Paths.image('captions/captionsmako6'));
-			makoCaptions6.cameras = [camHUD];
-			add(makoCaptions6);
-			makoCaptions6.visible = false;
-
-			makoCaptions7 = new FlxSprite(0, 0).loadGraphic(Paths.image('captions/captionsmako7'));
-			makoCaptions7.cameras = [camHUD];
-			add(makoCaptions7);
-			makoCaptions7.visible = false;
-
-			makoCaptions8 = new FlxSprite(0, 0).loadGraphic(Paths.image('captions/captionsmako8'));
-			makoCaptions8.cameras = [camHUD];
-			add(makoCaptions8);
-			makoCaptions8.visible = false;
-
-
-		}
-
 		startingSong = true;
 
 		if (isStoryMode) {
@@ -1485,6 +1432,7 @@ class PlayState extends MusicBeatState {
 		inCutscene = true;
 		Conductor.changeBPM(0);
 		vocals.stop();
+		vocals.volume = 0;
 		FlxG.sound.music.stop();
 		var endingDialogue:Array<String> = [];
 		endingDialogue = switch (SONG.song.toLowerCase()) {
@@ -2393,6 +2341,7 @@ class PlayState extends MusicBeatState {
 						camFollow.y = dad.getMidpoint().y - 280;
 					case 'pico' | 'makocorrupt':
 						camFollow.x = dad.getMidpoint().x - -350;
+						camFollow.y = dad.getMidpoint().y - 60;
 					case 'bdbfever':
 						camFollow.y = dad.getMidpoint().y - 200;
 				}
@@ -3052,6 +3001,9 @@ class PlayState extends MusicBeatState {
 			currentTimingShown.text = msTiming + "ms";
 			currentTimingShown.size = 20;
 
+			if(font)
+				currentTimingShown.font = Paths.font("Retro Gaming.ttf");
+
 			if (msTiming >= 0.03 && offsetTesting) {
 				// Remove Outliers
 				hits.shift();
@@ -3646,41 +3598,6 @@ class PlayState extends MusicBeatState {
 	override function beatHit() 
 	{
 		super.beatHit();
-
-		if (curSong == 'Retribution'){
-			switch(curBeat){
-				case 24:
-					makoCaptions1.visible = true;
-				case 32:
-					makoCaptions1.visible = false;
-				case 156: 
-					makoCaptions2.visible = true;
-				case 160:
-					makoCaptions2.visible = false;
-				case 189: 
-					makoCaptions3.visible = true;
-				case 191: 
-					makoCaptions3.visible = false;
-				case 221: 
-					makoCaptions4.visible = true;
-				case 224: 
-					makoCaptions4.visible = false;
-				case 278:
-					makoCaptions5.visible = true;
-				case 288: 
-					makoCaptions5.visible = false;
-				case 316:
-					makoCaptions6.visible = true;
-				case 320: 
-					makoCaptions6.visible = false;
-				case 344:
-					makoCaptions7.visible = true;
-				case 352: 
-					makoCaptions7.visible = false;
-					makoCaptions8.visible = true;
-				
-			}
-		}
 
 		if (curSong == 'Soul' || curSong == 'Portrait')
 		{

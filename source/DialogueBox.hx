@@ -95,7 +95,7 @@ class DialogueBox extends FlxSpriteGroup
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'ur-girl' | 'mako' | 'milk-tea' | 'soul' |  'bad-nun' | 'metamorphosis' | 'void' | 'bazinga' | 'down-bad' | 'party-crasher' | 'chicken-sandwich' | 'funkin-god' | 'crucify' | 'last-meow' | 'star-baby' | 'farmed' | 'vim' | 'honey' | 'bunnii' | 'throw-it-back' | 'spice' | 'mild' | 'prayer' | 'hallow' | 'portrait':
+			default:
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('dialogue/textbox');
 				box.animation.addByPrefix('normalOpen', 'textbox idle', 24, false);
@@ -451,7 +451,8 @@ class DialogueBox extends FlxSpriteGroup
 		if (PlayState.SONG.song.toLowerCase() == 'chicken-sandwich')
 			portraitLeft.visible = false;
 
-		dropText.text = swagDialogue.text;
+		if (swagDialogue != null)
+			dropText.text = swagDialogue.text;
 
 		if (box.animation.curAnim != null)
 		{

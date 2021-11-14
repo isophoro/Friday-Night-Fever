@@ -268,8 +268,9 @@ class FreeplayState extends MusicBeatState
 
 				curDifficulty = 2;
 				diffText.color = FlxColor.ORANGE;
+				diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
 			default:
-				// penis
+				diffText.text = '< ' +CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';
 		}
 
 		if (curDifficulty < 0)
@@ -281,7 +282,6 @@ class FreeplayState extends MusicBeatState
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 		#end
 
-		diffText.text = '< ' +CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';
 		diffText.alignment = CENTER;
 		diffText.x = scoreBG.x + (scoreBG.width / 2) - (diffText.width / 2);
 	}
