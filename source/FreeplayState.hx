@@ -20,8 +20,7 @@ using StringTools;
 	var NORMAL = "normal";
 	var HALLOWEEN = "halloween";
 	
-	@:keep
-	public static function getArrayInOrder():Array<String>
+	@:keep public static function getArrayInOrder():Array<String>
 	{
 		return [NORMAL, HALLOWEEN];
 	}
@@ -29,11 +28,9 @@ using StringTools;
 
 class FreeplayState extends MusicBeatState
 {
-	@:allow(SelectingSongState)
-	static var currentStyle:FreeplayStyle = NORMAL;
+	@:allow(SelectingSongState) static var currentStyle:FreeplayStyle = NORMAL;
 
-	@:allow(SelectingSongState)
-	static var curSelected:Int = 0;
+	@:allow(SelectingSongState) static var curSelected:Int = 0;
 
 	var songs:Array<SongMetadata> = [];
 	private var grpSongs:FlxTypedGroup<Alphabet>;

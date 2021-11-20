@@ -1,35 +1,25 @@
 package;
 
+import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.FlxState;
-import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
 import flixel.graphics.FlxGraphic;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup;
-import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.system.FlxSound;
-import flixel.system.ui.FlxSoundTray;
-import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import io.newgrounds.NG;
 import lime.app.Application;
 import openfl.Assets;
+import shaders.ColorShader;
 
 #if windows
 import Discord.DiscordClient;
-#end
-
-#if cpp
-import sys.thread.Thread;
 #end
 
 using StringTools;
@@ -38,6 +28,7 @@ class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;
 
+	var hueShader:ColorShader;
 	var blackScreen:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
@@ -50,13 +41,19 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+		PlayerSettings.init();
+
+		super.create();
+
+		hueShader = new ColorShader();
+
 		logoBl = new FlxSprite(364, 7);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
+		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
-		
+		logoBl.shader = hueShader;
 		
 		#if polymod
 		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
@@ -67,34 +64,23 @@ class TitleState extends MusicBeatState
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end
 
-		@:privateAccess
-		{
-			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
-		}
-		
-		PlayerSettings.init();
-
 		#if windows
 		DiscordClient.initialize();
 
 		Application.current.onExit.add (function (exitCode) {
 			DiscordClient.shutdown();
-		 });
-		 
+		});
 		#end
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
-		// DEBUG BULLSHIT
-
-		super.create();
-
-		// NGio.noLogin(APIStuff.API);
-
-		#if ng
-		var ng:NGio = new NGio(APIStuff.API, APIStuff.EncKey);
-		trace('NEWGROUNDS LOL');
-		#end
+		if (FlxG.sound.music == null)
+		{
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			Conductor.changeBPM(90);
+			
+			FlxG.sound.music.fadeIn(4, 0, 0.7);
+		}
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
@@ -122,11 +108,9 @@ class TitleState extends MusicBeatState
 		#elseif CHARTING
 		FlxG.switchState(new ChartingState());
 		#else
-		new FlxTimer().start(1, function(tmr:FlxTimer)
-		{	
-				startIntro();
-			
-		});
+		startIntro();
+
+		new FlxTimer().start(105, gotoIntro);
 		#end
 	}
 
@@ -150,13 +134,8 @@ class TitleState extends MusicBeatState
 
 			transIn = FlxTransitionableState.defaultTransIn;
 			transOut = FlxTransitionableState.defaultTransOut;
-
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-
-			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
-
-		Conductor.changeBPM(102);
+		
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('menuBackground'));
@@ -168,10 +147,12 @@ class TitleState extends MusicBeatState
 		feverTown = new FlxSprite(355, 380);
 		feverTown.frames = Paths.getSparrowAtlas('vs FeverTown');
 		feverTown.antialiasing = true;
-		feverTown.animation.addByPrefix('bump', 'Vs FeverTown', 24);
+		feverTown.animation.addByPrefix('bump', 'Vs FeverTown', 24, false);
 		feverTown.animation.play('bump');
 		feverTown.updateHitbox();
 		add(feverTown);
+
+		feverTown.shader = hueShader;
 
 		gfDance = new FlxSprite(5, -34);
 		gfDance.frames = Paths.getSparrowAtlas('FeverAndTea');
@@ -187,8 +168,9 @@ class TitleState extends MusicBeatState
 		titleText.antialiasing = true;
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
-		// titleText.screenCenter(X);
 		add(titleText);
+
+		titleText.shader = hueShader;
 
 		credGroup = new FlxGroup();
 		add(credGroup);
@@ -209,8 +191,6 @@ class TitleState extends MusicBeatState
 
 		if (initialized)
 			skipIntro();
-		else
-			initialized = true;
 	}
 
 	function getIntroTextShit():Array<Array<String>>
@@ -232,42 +212,37 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		camera.zoom = FlxMath.lerp(1, camera.zoom, 0.95);
+
+		if(controls.BACK)
+		{
+			gotoIntro();
+		}
+
+		if (controls.LEFT)
+		{
+			hueShader.hue -= 0.35 * elapsed;
+		}
+		else if (controls.RIGHT)
+		{
+			hueShader.hue += 0.35 * elapsed;
+		}
+
+		hueShader.onUpdate();
+
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
-		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
 
 		if (FlxG.keys.justPressed.F)
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
 
-		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
-
-		#if mobile
-		for (touch in FlxG.touches.list)
+		if (controls.ACCEPT && !transitioning && skippedIntro)
 		{
-			if (touch.justPressed)
-			{
-				pressedEnter = true;
-			}
-		}
-		#end
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.START)
-				pressedEnter = true;
-
-			#if switch
-			if (gamepad.justPressed.B)
-				pressedEnter = true;
-			#end
-		}
-
-		if (pressedEnter && !transitioning && skippedIntro)
-		{
+			initialized = true;
+			transitioning = true;
+			
 			if (FlxG.save.data.flashing)
 				titleText.animation.play('press');
 
@@ -276,19 +251,15 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 1);
 			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
-			transitioning = true;
-			// FlxG.sound.music.stop();
-
 			MainMenuState.firstStart = true;
 
-			new FlxTimer().start(0.95, function(tmr:FlxTimer)
+			new FlxTimer().start(0.75, function(tmr:FlxTimer)
 			{
 				FlxG.switchState(new MainMenuState());
 			});
-			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
-		if (pressedEnter && !skippedIntro && initialized)
+		if (controls.ACCEPT && !skippedIntro)
 		{
 			skipIntro();
 		}
@@ -328,47 +299,46 @@ class TitleState extends MusicBeatState
 
 	override function beatHit()
 	{
-
 		super.beatHit();
 
 		logoBl.animation.play('bump');
+		feverTown.animation.play('bump');
 
-		if(curBeat > 7)
-			ngSpr.visible = false;
-
-		FlxG.log.add(curBeat);
-
-		switch (curBeat)
+		if(!initialized && !skippedIntro)
 		{
-			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
-			case 3:
-				addMoreText('present');
-			case 4:
-				deleteCoolText();
-			case 5:
-				createCoolText(['In Partnership', 'with']);
-			case 6:
-				addMoreText('Newgrounds');
-				ngSpr.visible = true;
-			case 7:
-				deleteCoolText();
-			case 8:
-				createCoolText([curWacky[0]]);
-			case 10:
-				addMoreText(curWacky[1]);
-			case 11:
-				deleteCoolText();
-			case 13:
-				addMoreText('Friday');
-			case 14:
-				addMoreText('Night');
-			case 15:
-				addMoreText('Fever');
-			case 16:
-				skipIntro();
+			FlxG.camera.zoom += 0.015;
+			switch (curBeat)
+			{
+				case 1:
+					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+				case 3:
+					addMoreText('present');
+				case 4:
+					deleteCoolText();
+				case 5:
+					createCoolText(['In Partnership', 'with']);
+				case 6:
+					addMoreText('Newgrounds');
+					ngSpr.visible = true;
+				case 7:
+					deleteCoolText();
+					ngSpr.visible = false;
+				case 8:
+					createCoolText([curWacky[0]]);
+				case 10:
+					addMoreText(curWacky[1]);
+				case 11:
+					deleteCoolText();
+				case 13:
+					addMoreText('Friday');
+				case 14:
+					addMoreText('Night');
+				case 15:
+					addMoreText('Fever');
+				case 16:
+					skipIntro();
+			}
 		}
-		
 	}
 
 	var skippedIntro:Bool = false;
@@ -379,9 +349,22 @@ class TitleState extends MusicBeatState
 		{
 			remove(ngSpr);
 
-			FlxG.camera.flash(FlxColor.WHITE, 4);
+			if(!initialized)
+				FlxG.camera.flash(FlxColor.WHITE, 4);
+
 			remove(credGroup);
 			skippedIntro = true;
+		}
+	}
+
+	function gotoIntro(?fuckoffflxtimer)
+	{
+		if (!transitioning #if sys && !Sys.args().contains("-disableIntro") #end)
+		{
+			initialized = false;
+			FlxG.sound.music.stop();
+			FlxG.sound.music = null;
+			FlxG.switchState(new Intro());
 		}
 	}
 }

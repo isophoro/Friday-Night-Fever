@@ -3,6 +3,7 @@ setHudZoom(2)
 showOnlyStrums = true
 strumLine1Visible = false
 strumLine2Visible = false
+			--[[
 				makeSprite('captionsmako1','captionsmako1', true)
 				makeSprite('captionsmako2','captionsmako2', true)
 				makeSprite('captionsmako3','captionsmako3', true)
@@ -43,9 +44,11 @@ strumLine2Visible = false
 				tweenFadeIn('captionsmako7',0,0.1)
 				setActorScale(0.7,'captionsmako8')
 				tweenFadeIn('captionsmako8',0,0.1)
+		]]--
 end
 
 	function update (elapsed)
+	--[[
 	if curStep >= 88 and curStep < 124 then
 	tweenFadeIn('captionsmako1',1,0.3)
 
@@ -126,6 +129,7 @@ end
 
 	end
 
+	]]--
 
 	if curStep == 1 then
 	setCamZoom(1)

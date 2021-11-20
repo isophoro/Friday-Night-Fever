@@ -28,7 +28,7 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
 			case 'bf-carnight' | 'bfdemoncesar' | 'bf-casualdemon':
 				loadGraphic(Paths.image('icons/icon-bfdemoncesar'), true, 150, 150);
-			case 'gf' | 'gf-painting' | 'tea-bat' | 'gf-christmas' | 'gf-pixel':
+			case 'gf' | 'gf-painting' | 'gf-christmas' | 'gf-pixel':
 				loadGraphic(Paths.image('icons/icon-gf'), true, 150, 150);
 			case 'dad': 
 				loadGraphic(Paths.image('icons/icon-peakek'), true, 150, 150);

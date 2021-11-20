@@ -74,6 +74,7 @@ class DialogueBox extends FlxSpriteGroup
 		bg.visible = false;
 		bg.scrollFactor.set();
 
+
 		new FlxTimer().start(0.83, function(tmr:FlxTimer)
 		{
 			bgFade.alpha += (1 / 5) * 0.7;

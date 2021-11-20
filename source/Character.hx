@@ -678,10 +678,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'tea bat left', 24);
 
 				addOffset('idle');
-				addOffset("singUP", -133, 74);
-				addOffset("singRIGHT", -208, 4);
-				addOffset("singLEFT", -8, 20);
-				addOffset("singDOWN", -179, -48);
+				addOffset("singUP", 18, 17);
+				addOffset("singRIGHT", -108, -6);
+				addOffset("singLEFT", 22, 0);
+				addOffset("singDOWN", -21, -8);
 
 				playAnim('idle');
 
@@ -1092,114 +1092,24 @@ class Character extends FlxSprite
 	{
 		if (!debugMode)
 		{
-			switch (curCharacter)
+			if(animOffsets.exists('danceLeft'))
 			{
-				case 'gfpainting':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-
-				case 'gf-notea':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-
-				case 'gf':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-				case 'gf-8bit':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-
-				case 'gf-christmas':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-
-
-				case 'cherry-pixel':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-
-				case 'gf-car':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-				case 'gf-carnight':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-				case 'gf-pixel':
-					if (!animation.curAnim.name.startsWith('hair'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-
-				case 'spooky':
+				if (!animation.curAnim.name.startsWith('hair'))
+				{
 					danced = !danced;
 
 					if (danced)
 						playAnim('danceRight');
 					else
 						playAnim('danceLeft');
-				default:
-					playAnim('idle');
+				}
+			}
+			else
+			{
+				switch(curCharacter)
+				{
+					default: playAnim('idle');
+				}
 			}
 		}
 	}

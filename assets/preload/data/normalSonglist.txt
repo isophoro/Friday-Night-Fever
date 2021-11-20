@@ -1,7 +1,7 @@
 Milk-Tea:gf:1
 Metamorphosis:dad:1
 Void:dad:1
-Down-Bad:dad:1
+Down-Bad:peasus:1
 Star-Baby:spooky:2
 Last-Meow:feralspooky:2
 Bazinga:monster:2
