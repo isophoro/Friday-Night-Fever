@@ -28,6 +28,7 @@ class Subtitles extends FlxText
 
         for(i in json)
         {
+            // assumes theres a start / end step per each subtitle
             array.push(START(i.startStep, i.text));
             array.push(END(i.endStep));
         }
@@ -37,13 +38,12 @@ class Subtitles extends FlxText
     {
         if (array[0] != null)
         {
-            // this is so messy i aint gonna even lie
+            if(array[0].getParameters()[0] != curStep)
+                return;
+
             switch(array[0])
             {
                 case START(step, string):
-                    if(curStep != step)
-                        return;
-    
                     trace('Subtitle Starting : $string (Step $step)');
                     text = string;
     
@@ -51,11 +51,7 @@ class Subtitles extends FlxText
                     FlxTween.tween(this, {alpha: 1}, 0.32, { type: ONESHOT });
                     
                     screenCenter(X);
-                    array.shift();
                 case END(step):
-                    if(curStep != step)
-                        return;
-    
                     trace('Subtitle Ending (Step $step)');
     
                     if(array[1] != null)
@@ -74,9 +70,9 @@ class Subtitles extends FlxText
                     {
                         FlxTween.tween(this, {alpha: 0}, 0.32, { type: ONESHOT });
                     }
-    
-                    array.shift();
             }
+            
+            array.shift();
         }
     }
 }
