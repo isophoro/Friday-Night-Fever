@@ -2207,10 +2207,9 @@ class PlayState extends MusicBeatState {
 						camFollow.x = dad.getMidpoint().x - -400;
 					case 'peasus':
 						camFollow.x = dad.getMidpoint().x - -400;
-					case 'spooky':
-						camFollow.x = dad.getMidpoint().x - -400;
-					case 'spookyBOO':
-						camFollow.x = dad.getMidpoint().x - -400;
+					case 'spooky' | 'feralspooky':
+						camFollow.x = dad.getMidpoint().x + 190;
+						camFollow.y = dad.getMidpoint().y + 30;
 					case 'taki':
 						camFollow.x = dad.getMidpoint().x + 120;
 						camFollow.y = dad.getMidpoint().y - 50;
@@ -3475,7 +3474,7 @@ class PlayState extends MusicBeatState {
 					font = true;
 				case 160:
 					filters.remove(ShadersHandler.chromaticAberration);
-
+					
 					camfilters.remove(ShadersHandler.scanline);
 					camfilters.remove(ShadersHandler.tiltshift);
 					camfilters.remove(ShadersHandler.hq2x);
