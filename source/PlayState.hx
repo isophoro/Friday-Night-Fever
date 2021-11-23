@@ -166,7 +166,6 @@ class PlayState extends MusicBeatState {
 	var fc:Bool = true;
 
 	var bgGirls:BackgroundGirls;
-	var wiggleShit:WiggleEffect = new WiggleEffect();
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
@@ -363,21 +362,23 @@ class PlayState extends MusicBeatState {
 			dialogue = CoolUtil.coolTextFile(Paths.txt(dialogueString));
 		}
 
-		var subtitleString:String = SONG.song.toLowerCase() + '/subtitles';
-
-		#if !sys // FOR HTML (HARDCODED)
-		if (Assets.exists(Paths.json(subtitleString)))
+		if(FlxG.save.data.subtitles)
 		{
-			// very cool
-			subtitles = new Subtitles(FlxG.height * 0.68, haxe.Json.parse(Assets.getText(Paths.json(subtitleString))));
+			var subtitleString:String = SONG.song.toLowerCase() + '/subtitles';
+			#if !sys // FOR HTML (HARDCODED)
+			if (Assets.exists(Paths.json(subtitleString)))
+			{
+				// very cool
+				subtitles = new Subtitles(FlxG.height * 0.68, haxe.Json.parse(Assets.getText(Paths.json(subtitleString))));
+			}
+			#else // FOR DESKTOP (UNHARDCODED)
+			if (sys.FileSystem.exists(Paths.json(subtitleString)))
+			{
+				// very cool
+				subtitles = new Subtitles(FlxG.height * 0.68, haxe.Json.parse(sys.io.File.getContent(Paths.json(subtitleString))));
+			}
+			#end
 		}
-		#else // FOR DESKTOP (UNHARDCODED)
-		if (sys.FileSystem.exists(Paths.json(subtitleString)))
-		{
-			// very cool
-			subtitles = new Subtitles(FlxG.height * 0.68, haxe.Json.parse(sys.io.File.getContent(Paths.json(subtitleString))));
-		}
-		#end
 
 		switch (SONG.stage) {
 			case 'halloween':
@@ -415,20 +416,27 @@ class PlayState extends MusicBeatState {
 					painting.visible = false;
 					if(SONG.song.toLowerCase() == 'soul')
 					{
-						wiggleEffect = new WiggleEffect();
-						wiggleEffect.effectType = WiggleEffectType.WAVY;
-						wiggleEffect.waveAmplitude = 0.05;
-						wiggleEffect.waveFrequency = 3;
-						wiggleEffect.waveSpeed = 1;
-						painting.shader = wiggleEffect.shader;
+						if (FlxG.save.data.shaders)
+						{
+							wiggleEffect = new WiggleEffect();
+							wiggleEffect.effectType = WiggleEffectType.WAVY;
+							wiggleEffect.waveAmplitude = 0.05;
+							wiggleEffect.waveFrequency = 3;
+							wiggleEffect.waveSpeed = 1;
+							painting.shader = wiggleEffect.shader;
+						}
+
 						painting.visible = true;
 
-						filters.push(ShadersHandler.chromaticAberration);
-						camfilters.push(ShadersHandler.chromaticAberration);
-						ShadersHandler.setChrome(FlxG.random.int(2, 2) / 1000);
-			
-						camHUD.filtersEnabled = true;
-						camGame.filtersEnabled = true;
+						if(FlxG.save.data.shaders)
+						{
+							filters.push(ShadersHandler.chromaticAberration);
+							camfilters.push(ShadersHandler.chromaticAberration);
+							ShadersHandler.setChrome(FlxG.random.int(2, 2) / 1000);
+
+							camHUD.filtersEnabled = true;
+							camGame.filtersEnabled = true;
+						}
 					}
 				}
 			case 'church':
@@ -2039,7 +2047,7 @@ class PlayState extends MusicBeatState {
 				}
 		}
 
-		if(curSong == 'Soul')
+		if(curSong == 'Soul' && FlxG.save.data.shaders)
 		{
 			wiggleEffect.update(elapsed);
 		}
@@ -3439,12 +3447,16 @@ class PlayState extends MusicBeatState {
 					if(curSong == 'Portrait')
 					{
 						painting.visible = true;
-						filters.push(ShadersHandler.chromaticAberration);
-						camfilters.push(ShadersHandler.chromaticAberration);
-						ShadersHandler.setChrome(FlxG.random.int(2, 2) / 1000);
-	
-						camHUD.filtersEnabled = true;
-						camGame.filtersEnabled = true;
+
+						if (FlxG.save.data.shaders)
+						{
+							filters.push(ShadersHandler.chromaticAberration);
+							camfilters.push(ShadersHandler.chromaticAberration);
+							ShadersHandler.setChrome(FlxG.random.int(2, 2) / 1000);
+
+							camHUD.filtersEnabled = true;
+							camGame.filtersEnabled = true;
+						}
 					}
 			}
 		}
@@ -3458,31 +3470,37 @@ class PlayState extends MusicBeatState {
 					camHUD.shake(0.09, Conductor.crochet / 1000);
 				case 96:
 
-					filters.push(ShadersHandler.chromaticAberration);
+					if (FlxG.save.data.shaders)
+					{
+						filters.push(ShadersHandler.chromaticAberration);
 		
-					camfilters.push(ShadersHandler.scanline);
-					camfilters.push(ShadersHandler.tiltshift);
-					camfilters.push(ShadersHandler.hq2x);
-					camfilters.push(ShadersHandler.chromaticAberration);
-					ShadersHandler.setChrome(FlxG.random.int(4, 4) / 1000);
-		
-					camGame.filtersEnabled = true;
-		
-					camHUD.filtersEnabled = true;
+						camfilters.push(ShadersHandler.scanline);
+						camfilters.push(ShadersHandler.tiltshift);
+						camfilters.push(ShadersHandler.hq2x);
+						camfilters.push(ShadersHandler.chromaticAberration);
+						ShadersHandler.setChrome(FlxG.random.int(4, 4) / 1000);
+			
+						camGame.filtersEnabled = true;
+						camHUD.filtersEnabled = true;
+					}
 		
 					scoreTxt.setFormat(Paths.font("Retro Gaming.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 					font = true;
 				case 160:
-					filters.remove(ShadersHandler.chromaticAberration);
+
+					if (FlxG.save.data.shaders)
+					{
+						filters.remove(ShadersHandler.chromaticAberration);
 					
-					camfilters.remove(ShadersHandler.scanline);
-					camfilters.remove(ShadersHandler.tiltshift);
-					camfilters.remove(ShadersHandler.hq2x);
-					camfilters.remove(ShadersHandler.chromaticAberration);
-					ShadersHandler.setChrome(0);
-		
-					camGame.filtersEnabled = false;
-					camHUD.filtersEnabled = false;
+						camfilters.remove(ShadersHandler.scanline);
+						camfilters.remove(ShadersHandler.tiltshift);
+						camfilters.remove(ShadersHandler.hq2x);
+						camfilters.remove(ShadersHandler.chromaticAberration);
+						ShadersHandler.setChrome(0);
+			
+						camGame.filtersEnabled = false;
+						camHUD.filtersEnabled = false;
+					}
 		
 					font = false;
 					scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -3532,8 +3550,6 @@ class PlayState extends MusicBeatState {
 			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.curCharacter != 'gf')
 				dad.dance();
 		}
-
-		wiggleShit.update(Conductor.crochet);
 
 		if (!startedCountdown)
 		{

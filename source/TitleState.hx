@@ -359,7 +359,7 @@ class TitleState extends MusicBeatState
 
 	function gotoIntro(?fuckoffflxtimer)
 	{
-		if (!transitioning #if sys && !Sys.args().contains("-disableIntro") #end)
+		if (!transitioning #if sys && !Sys.args().contains("-disableIntro") #end && FlxG.save.data.animeIntro)
 		{
 			initialized = false;
 			FlxG.sound.music.stop();

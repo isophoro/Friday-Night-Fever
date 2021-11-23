@@ -658,3 +658,63 @@ class BotPlay extends Option
 	private override function updateDisplay():String
 		return "BotPlay " + (FlxG.save.data.botplay ? "on" : "off");
 }
+
+class IntroOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.animeIntro = !FlxG.save.data.animeIntro;
+		trace('Anime Intro : ' + FlxG.save.data.animeIntro);
+		display = updateDisplay();
+		return true;
+	}
+	
+	private override function updateDisplay():String
+		return "Startup Intro " + (FlxG.save.data.animeIntro ? "on" : "off");
+}
+
+class ShadersOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.shaders = !FlxG.save.data.shaders;
+		trace('Shaders : ' + FlxG.save.data.shaders);
+		display = updateDisplay();
+		return true;
+	}
+	
+	private override function updateDisplay():String
+		return "Shaders " + (FlxG.save.data.shaders ? "on" : "off");
+}
+
+class SubtitlesOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.subtitles = !FlxG.save.data.subtitles;
+		trace('Subtitles : ' + FlxG.save.data.subtitles);
+		display = updateDisplay();
+		return true;
+	}
+	
+	private override function updateDisplay():String
+		return "Subtitles " + (FlxG.save.data.subtitles ? "on" : "off");
+}

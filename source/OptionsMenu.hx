@@ -24,6 +24,11 @@ class OptionsMenu extends MusicBeatState
 	var curSelected:Int = 0;
 
 	var options:Array<OptionCategory> = [
+		new OptionCategory("Mod Specific", [
+			new IntroOption("Disables the startup anime opening video"),
+			new SubtitlesOption("Disable subtitles (found in certain songs)"),
+			new ShadersOption("Disables shaders (improves performance in certain songs)")
+		]),
 		new OptionCategory("Gameplay", [
 			new DFJKOption(controls),
 			new DownscrollOption("Change the layout of the strumline."),

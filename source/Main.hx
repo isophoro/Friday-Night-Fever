@@ -75,11 +75,6 @@ class Main extends Sprite
 		initialState = Intro;
 		#end
 
-		#if sys
-		if (Sys.args().contains("-disableIntro"))
-			initialState = TitleState;
-		#end
-
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 
 		addChild(game);

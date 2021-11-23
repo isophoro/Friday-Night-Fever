@@ -1,5 +1,6 @@
 package;
 
+import flixel.effects.FlxFlicker;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -57,6 +58,8 @@ class GalleryState extends MusicBeatState
     var allowInputs:Bool = false;
     var topText:AlphabetQuick;
     var arrows:FlxTypedGroup<FlxSprite>;
+    var inSubState:Bool = false;
+
     override function create()
     {
         super.create();
@@ -75,9 +78,6 @@ class GalleryState extends MusicBeatState
 
         topText = new AlphabetQuick(0,0, images[0].name, {bold:true,size:0.55,spacing:5});
         add(topText);
-
-        var galleryText:AlphabetQuick = new AlphabetQuick(0,0, 'Gallery', {bold:true,size:0.75,spacing:5,screenCenterX:true});
-        add(galleryText);
 
         text = new FlxText(10, 156, Std.int(slash.width - 85), images[0].description, 12);
         text.setFormat(Paths.font("Funkin.otf"), 36, FlxColor.WHITE, LEFT);
@@ -124,6 +124,9 @@ class GalleryState extends MusicBeatState
             }
         }
 
+        var galleryText:AlphabetQuick = new AlphabetQuick(0,0, 'Gallery', {bold:true,size:0.75,spacing:5,screenCenterX:true});
+        add(galleryText);
+
         changeSelection();
     }
 
@@ -137,9 +140,35 @@ class GalleryState extends MusicBeatState
         {
             if(controls.RIGHT_P)
                 changeSelection(1);
+            else if(controls.LEFT_P)
+                changeSelection(-1);
 
-            if(controls.LEFT_P)
-                changeSelection(-1);            
+            if (controls.ACCEPT)
+            {
+                allowInputs = false;
+                FlxG.sound.play(Paths.sound('confirmMenu'));
+                FlxFlicker.flicker(image, 0.6, 0.06, false, false, (e) -> {
+                    inSubState = true;
+                    openSubState(new GallerySubState(image.pixels.clone(), image.scale));
+                });
+            }
+        }
+    }
+
+    override function closeSubState()
+    {
+        super.closeSubState();
+
+        if (inSubState)
+        {
+            FlxG.mouse.visible = false;
+            image.alpha = 0;
+            image.visible = true;
+            FlxTween.tween(image, {alpha:1}, 0.54, {onComplete: (twn) -> {
+                allowInputs = true;
+            }});
+
+            inSubState = false;
         }
     }
 
@@ -168,15 +197,15 @@ class GalleryState extends MusicBeatState
 
         allowInputs = false;
         image.loadGraphic(Paths.image(images[curSelected].path));
-        image.scale.x = 1;
-        image.scale.y = 1;
+        image.scale.set(1,1);
         
-        while(image.width > 485)
+        while(image.width > 500)
         {
             image.scale.x -= 0.05;
             image.scale.y -= 0.05;
             image.updateHitbox();
         }
+
         image.updateHitbox();
         image.screenCenter();
         image.x += 60;
@@ -190,8 +219,8 @@ class GalleryState extends MusicBeatState
         {
             rightImage.visible = true;
             rightImage.loadGraphic(Paths.image(images[curSelected + 1].path));
-            rightImage.scale.x = 1;
-            rightImage.scale.y = 1;
+            rightImage.scale.set(1,1);
+
             rightImage.updateHitbox();
             while(rightImage.width > 240)
             {
@@ -202,7 +231,9 @@ class GalleryState extends MusicBeatState
             rightImage.updateHitbox();
             rightImage.screenCenter();
             rightImage.x = image.x + image.width + 30;
-        }else{
+        }
+        else
+        {
             rightImage.visible = false;
         }
 
@@ -210,8 +241,8 @@ class GalleryState extends MusicBeatState
         {
             leftImage.visible = true;
             leftImage.loadGraphic(Paths.image(images[curSelected - 1].path));
-            leftImage.scale.x = 1;
-            leftImage.scale.y = 1;
+            leftImage.scale.set(1,1);
+
             leftImage.updateHitbox();
             while(leftImage.width > 240)
             {
@@ -222,9 +253,12 @@ class GalleryState extends MusicBeatState
             leftImage.updateHitbox();
             leftImage.screenCenter();
             leftImage.x = image.x - leftImage.width - 30;
-        }else{
+        }
+        else
+        {
             leftImage.visible = false;
         }
+
         text.text = images[curSelected].description;
         topText.text = images[curSelected].name;
     }

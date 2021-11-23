@@ -5,6 +5,15 @@ class KadeEngineData
 {
     public static function initSave()
     {
+		if (FlxG.save.data.animeIntro == null)
+			FlxG.save.data.animeIntro = true;
+
+		if (FlxG.save.data.shaders == null)
+			FlxG.save.data.shaders = true;
+	
+		if (FlxG.save.data.subtitles == null)
+			FlxG.save.data.subtitles = true;
+
         if (FlxG.save.data.newInput == null)
 			FlxG.save.data.newInput = true;
 

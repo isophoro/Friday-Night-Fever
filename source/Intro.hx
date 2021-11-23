@@ -73,6 +73,9 @@ class Intro extends MusicBeatState
 				StoryMenuState.weekUnlocked[0] = true;
 		}
 
+		if (#if sys Sys.args().contains("-disableIntro") ||#end !FlxG.save.data.animeIntro)
+			LoadingState.loadAndSwitchState(new TitleState());
+
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());
 		#elseif CHARTING
