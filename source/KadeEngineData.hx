@@ -14,6 +14,9 @@ class KadeEngineData
 		if (FlxG.save.data.subtitles == null)
 			FlxG.save.data.subtitles = true;
 
+		if (FlxG.save.data.notesplash == null)
+			FlxG.save.data.notesplash = true;
+
         if (FlxG.save.data.newInput == null)
 			FlxG.save.data.newInput = true;
 

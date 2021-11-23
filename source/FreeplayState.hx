@@ -256,6 +256,11 @@ class FreeplayState extends MusicBeatState
 	{
 		curDifficulty += change;
 
+		if (curDifficulty < 0)
+			curDifficulty = 3;
+		if (curDifficulty > 3)
+			curDifficulty = 0;
+
 		switch(currentStyle)
 		{
 			case HALLOWEEN:
@@ -269,11 +274,6 @@ class FreeplayState extends MusicBeatState
 			default:
 				diffText.text = '< ' +CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';
 		}
-
-		if (curDifficulty < 0)
-			curDifficulty = 3;
-		if (curDifficulty > 3)
-			curDifficulty = 0;
 
 		#if !switch
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);

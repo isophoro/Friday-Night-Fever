@@ -2807,9 +2807,12 @@ class PlayState extends MusicBeatState {
 					totalNotesHit += 1;
 				sicks++;
 
-				var splash:NoteSplash = new NoteSplash(playerStrums.members[daNote.noteData].x, playerStrums.members[daNote.noteData].y, daNote.noteData);
-				splash.cameras = [camHUD];
-				add(splash);
+				if (FlxG.save.data.notesplash)
+				{
+					var splash:NoteSplash = new NoteSplash(playerStrums.members[daNote.noteData].x, playerStrums.members[daNote.noteData].y, daNote.noteData);
+					splash.cameras = [camHUD];
+					add(splash);
+				}
 		}
 
 		if (daRating != 'shit' || daRating != 'bad') 

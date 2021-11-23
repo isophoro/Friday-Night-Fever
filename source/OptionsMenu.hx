@@ -27,7 +27,8 @@ class OptionsMenu extends MusicBeatState
 		new OptionCategory("Mod Specific", [
 			new IntroOption("Disables the startup anime opening video"),
 			new SubtitlesOption("Disable subtitles (found in certain songs)"),
-			new ShadersOption("Disables shaders (improves performance in certain songs)")
+			new ShadersOption("Disables shaders (improves performance in certain songs)"),
+			new NotesplashOption("Toggle the sparkle effect upon hitting a \"Sick!\" note")
 		]),
 		new OptionCategory("Gameplay", [
 			new DFJKOption(controls),

@@ -1,5 +1,9 @@
 package;
 
+#if cpp
+import cpp.vm.Gc;
+#end 
+
 import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -41,6 +45,10 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+		#if cpp
+		Gc.enable(false);
+		#end
+
 		PlayerSettings.init();
 
 		super.create();
