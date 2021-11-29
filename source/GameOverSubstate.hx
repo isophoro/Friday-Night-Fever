@@ -67,12 +67,12 @@ class GameOverSubstate extends MusicBeatSubstate
 		
 		super.update(elapsed);
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT #if mobile || FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed #end)
 		{
 			endBullshit();
 		}
 
-		if (controls.BACK)
+		if (controls.getBack())
 		{
 			FlxG.sound.music.stop();
 

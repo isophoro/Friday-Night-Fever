@@ -5,6 +5,12 @@ class KadeEngineData
 {
     public static function initSave()
     {
+		if (FlxG.save.data.antialiasing == null)
+			FlxG.save.data.antialiasing = true;
+		
+		if (FlxG.save.data.opponent == null)
+			FlxG.save.data.opponent = false;
+
 		if (FlxG.save.data.animeIntro == null)
 			FlxG.save.data.animeIntro = true;
 

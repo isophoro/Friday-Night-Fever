@@ -1,6 +1,6 @@
 package;
 
-import openfl.display.Shader;
+import shaders.*;
 import openfl.filters.ShaderFilter;
 
 class ShadersHandler

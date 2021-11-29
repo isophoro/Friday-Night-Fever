@@ -89,6 +89,7 @@ class FreeplayState extends MusicBeatState
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false, true);
 			songText.isMenuItem = true;
 			songText.targetY = i;
+			songText.ID = i;
 			grpSongs.add(songText);
 
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
@@ -113,6 +114,11 @@ class FreeplayState extends MusicBeatState
 		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
 		diffText.font = scoreText.font;
 		add(diffText);
+
+		#if mobile
+		diffText.bold = true;
+		diffText.size = 30;
+		#end
 
 		add(scoreText);
 
@@ -160,6 +166,37 @@ class FreeplayState extends MusicBeatState
 
 		scoreText.text = "PERSONAL BEST:" + lerpScore;
 
+		var accepted:Bool = controls.ACCEPT;
+		
+		#if mobile
+		if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) 
+		{
+			for (sprite in grpSongs)
+			{
+				if (FlxG.touches.getFirst().overlaps(sprite))
+				{
+					if (curSelected != sprite.ID)
+					{
+						FlxG.sound.play(Paths.sound('scrollMenu'));
+						curSelected = sprite.ID;
+						changeSelection();
+					}
+					else
+					{
+						accepted = true;
+					}
+
+					break;
+				}
+			}
+		}
+
+		for (i in FlxG.swipes)
+		{
+			trace(i);
+		}
+		#end
+
 
 		if (controls.UP_P)
 		{
@@ -170,16 +207,16 @@ class FreeplayState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if (controls.LEFT_P)
+		if (controls.getLeft())
 		{
 			changeDiff(-1);
 		}
-		else if (controls.RIGHT_P)
+		else if (controls.getRight())
 		{
 			changeDiff(1);
 		}
 
-		if (controls.BACK)
+		if (controls.getBack())
 		{
 			if (currentStyle != HALLOWEEN)
 			{
@@ -190,7 +227,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.switchState(new SelectingSongState());
 		}
 
-		if (controls.ACCEPT)
+		if (accepted)
 		{	
 			var poop:String = Highscore.formatSong(StringTools.replace(songs[curSelected].songName," ", "-").toLowerCase(), curDifficulty);
 
@@ -298,7 +335,7 @@ class FreeplayState extends MusicBeatState
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 		#end
 
-		#if PRELOAD_ALL
+		#if (PRELOAD_ALL && !mobile)
 		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
 		#end
 

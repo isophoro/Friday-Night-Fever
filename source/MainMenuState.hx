@@ -12,7 +12,6 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import io.newgrounds.NG;
 import lime.app.Application;
 
 #if windows
@@ -125,11 +124,14 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
+		
+		#if !mobile
 		if(FlxG.save.data.visitedCredits)
         {
             versionShit.text += '\nPress C to visit the credits menu';
             versionShit.y -= 18;
         }
+		#end
 
 		if (FlxG.save.data.dfjk)
 			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
@@ -145,9 +147,7 @@ class MainMenuState extends MusicBeatState
 	var elapsedTimer:Float = 0;
 
 	override function update(elapsed:Float)
-	{
-
-		
+	{	
 		elapsedTimer += elapsed;
 		if(elapsedTimer > 0.84)
 		{
@@ -161,10 +161,12 @@ class MainMenuState extends MusicBeatState
 			}
 		}
 
+		#if !mobile
 		if (FlxG.keys.justPressed.C && FlxG.save.data.visitedCredits)
 		{
 			FlxG.switchState(new CreditsState());
 		}
+		#end
 
 		if (FlxG.sound.music.volume < 0.8)
 		{
@@ -173,6 +175,32 @@ class MainMenuState extends MusicBeatState
 
 		if (!selectedSomethin)
 		{
+			var accepted:Bool = controls.ACCEPT;
+
+			#if mobile
+			if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) 
+			{
+				for (sprite in menuItems)
+				{
+					if (FlxG.touches.getFirst().overlaps(sprite))
+					{
+						if (curSelected != sprite.ID)
+						{
+							FlxG.sound.play(Paths.sound('scrollMenu'));
+							curSelected = sprite.ID;
+							changeItem(0, true);
+						}
+						else
+						{
+							accepted = true;
+						}
+
+						break;
+					}
+				}
+			}
+			#end
+
 			if (controls.UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
@@ -185,12 +213,12 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (controls.BACK)
+			if (controls.getBack())
 			{
 				FlxG.switchState(new TitleState());
 			}
 
-			if (controls.ACCEPT)
+			if (accepted)
 			{
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -253,14 +281,14 @@ class MainMenuState extends MusicBeatState
 		}
 	}
 
-	function changeItem(huh:Int = 0)
+	function changeItem(huh:Int = 0, ?mobileTap:Bool)
 	{
-			curSelected += huh;
+		curSelected += huh;
 
-			if (curSelected >= menuItems.length)
-				curSelected = 0;
-			if (curSelected < 0)
-				curSelected = menuItems.length - 1;
+		if (curSelected >= menuItems.length)
+			curSelected = 0;
+		if (curSelected < 0)
+			curSelected = menuItems.length - 1;
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
@@ -277,7 +305,7 @@ class MainMenuState extends MusicBeatState
 				spr.x = FlxG.width - spr.width + 5;
 		});
 		
-		if(huh != 0)
+		if(huh != 0 || mobileTap)
 		{
 			FlxTween.cancelTweensOf(menuImage);
 

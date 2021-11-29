@@ -738,3 +738,43 @@ class NotesplashOption extends Option
 	private override function updateDisplay():String
 		return "Note Sparkles " + (FlxG.save.data.subtitles ? "on" : "off");
 }
+
+class OpponentOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.opponent = !FlxG.save.data.opponent;
+		trace('Opponent Mode : ' + FlxG.save.data.opponent);
+		display = updateDisplay();
+		return true;
+	}
+	
+	private override function updateDisplay():String
+		return "Play as " + (FlxG.save.data.opponent ? "the opponent" : "fever");
+}
+
+class AntialiasingOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.antialiasing = !FlxG.save.data.antialiasing;
+		trace('Antialiasing : ' + FlxG.save.data.antialiasing);
+		display = updateDisplay();
+		return true;
+	}
+	
+	private override function updateDisplay():String
+		return "antialiasing " + (FlxG.save.data.antialiasing ? "on" : "off");
+}

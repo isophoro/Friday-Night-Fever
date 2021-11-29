@@ -1,7 +1,6 @@
 package;
 
 import flixel.tweens.FlxEase;
-import io.newgrounds.objects.events.Result.ScoreResult;
 import flixel.tweens.FlxTween;
 import flash.text.TextField;
 import flixel.FlxG;
@@ -88,51 +87,58 @@ class SelectingSongState extends MusicBeatState
 		});
 	}
 
+	var disableInput:Bool = false;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		
 
+		if (!disableInput)
+		{
+			#if mobile
+			// As there's only two items in the menu, just make it so it swaps between the two.
+			// Just implement the other system from the other menus if theres more than two catergories
+			for (spr in selectorIcon)
+			{
+				if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().overlaps(spr))
+				{
+					if (spr.ID == curSelected)
+					{
+						selectItem();
+					}
+					else
+					{
+						curSelected = spr.ID;
+						changeItem();
+					}
+
+					break;
+				}
+			}
+			#end
+	
 			if (controls.LEFT_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(-1);
 			}
-
+	
 			if (controls.RIGHT_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(1);
 			}
-
-			if (controls.BACK)
+	
+			if (controls.getBack())
 			{
 				FlxG.switchState(new MainMenuState());
 			}
-
+	
 			if (controls.ACCEPT)
 			{
-				FlxG.sound.play(Paths.sound('confirmMenu'));
-
-				selectorIcon.forEach(function(spr:FlxSprite)
-				{
-					FlxTween.tween(spr, {y: 2000}, 0.8, {ease: FlxEase.smoothStepInOut});
-						if (FlxG.save.data.flashing)
-						{
-							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
-							{
-								goToState();
-							});
-						}
-						else
-						{
-							new FlxTimer().start(1, function(tmr:FlxTimer)
-							{
-								goToState();
-							});
-						}
-				});
+				selectItem();
 			}
+		}
 	}
 
 	function goToState()
@@ -146,5 +152,30 @@ class SelectingSongState extends MusicBeatState
 		FlxTransitionableState.skipNextTransOut = true;
 
 		FlxG.switchState(new FreeplayState());
+	}
+
+	function selectItem()
+	{
+		disableInput = true;
+		FlxG.sound.play(Paths.sound('confirmMenu'));
+	
+		selectorIcon.forEach(function(spr:FlxSprite)
+		{
+			FlxTween.tween(spr, {y: 2000}, 0.8, {ease: FlxEase.smoothStepInOut});
+				if (FlxG.save.data.flashing)
+				{
+					FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
+					{
+						goToState();
+					});
+				}
+				else
+				{
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+					{
+						goToState();
+					});
+				}
+		});
 	}
 }

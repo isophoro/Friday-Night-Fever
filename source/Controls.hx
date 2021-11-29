@@ -1,5 +1,6 @@
 package;
 
+import flixel.input.android.FlxAndroidKey;
 import flixel.FlxG;
 import flixel.input.FlxInput;
 import flixel.input.actions.FlxAction;
@@ -757,5 +758,20 @@ class Controls extends FlxActionSet
 	inline static function isGamepad(input:FlxActionInput, deviceID:Int)
 	{
 		return input.device == GAMEPAD && (deviceID == FlxInputDeviceID.ALL || input.deviceID == deviceID);
+	}
+
+	public function getBack():Bool
+	{
+		return #if mobile FlxG.android.justPressed.BACK; #else BACK; #end
+	}
+
+	public function getRight():Bool
+	{
+		return #if mobile (FlxG.swipes[0] != null && FlxG.swipes[0].angle >= 55 && FlxG.swipes[0].angle <= 135); #else RIGHT_P; #end
+	}
+
+	public function getLeft():Bool
+	{
+		return #if mobile (FlxG.swipes[0] != null && FlxG.swipes[0].angle <= -55 && FlxG.swipes[0].angle >= -135); #else LEFT_P; #end
 	}
 }

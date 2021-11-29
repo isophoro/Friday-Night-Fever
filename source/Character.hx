@@ -1,5 +1,7 @@
 package;
 
+import flixel.util.FlxColor;
+import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
@@ -1054,7 +1056,7 @@ class Character extends FlxSprite
 
 	override function update(elapsed:Float)
 	{
-		if (!curCharacter.startsWith('bf'))
+		if (!isPlayer && !PlayState.opponent || isPlayer && PlayState.opponent)
 		{
 			if (animation.curAnim.name.startsWith('sing'))
 			{
@@ -1065,9 +1067,9 @@ class Character extends FlxSprite
 
 			if (curCharacter == 'dad')
 				dadVar = 6.1;
+
 			if (holdTimer >= Conductor.stepCrochet * dadVar * 0.001)
 			{
-				trace('dance');
 				dance();
 				holdTimer = 0;
 			}
@@ -1144,6 +1146,16 @@ class Character extends FlxSprite
 					danced = !danced;
 				}
 			}			
+		}
+		else
+		{
+			if (AnimName.endsWith('miss'))
+			{
+				FlxTween.cancelTweensOf(this);
+				color = FlxColor.fromString('#84009E');
+				playAnim(AnimName.replace('miss', ''), Force, Reversed, Frame);
+				FlxTween.color(this, 0.33, this.color, FlxColor.WHITE);
+			}
 		}
 	}
 

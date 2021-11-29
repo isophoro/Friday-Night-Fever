@@ -1,3 +1,4 @@
+#if (cpp && !mobile)
 package;
 
 import flixel.text.FlxText;
@@ -11,6 +12,8 @@ import vlc.VlcBitmap;
 
 // THIS IS FOR TESTING
 // DONT STEAL MY CODE >:(
+
+// iso stole this not me
 class MP4Handler
 {
 	public var finishCallback:Void->Void;
@@ -20,13 +23,10 @@ class MP4Handler
 	var skip:FlxText;
 
 	public var sprite:FlxSprite;
+	public var preloading:Bool = false;
 
-	public function new()
-	{
-		//FlxG.autoPause = false;
-	}
+	public function new() {}
 	
-
 	public function playMP4(path:String, ?repeat:Bool = false, ?outputTo:FlxSprite = null, ?isWindow:Bool = false, ?isFullscreen:Bool = false,
 			?midSong:Bool = false):Void
 	{
@@ -162,7 +162,7 @@ class MP4Handler
 	{
 		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.SPACE)
 		{
-			if (bitmap.isPlaying)
+			if (bitmap.isPlaying && !preloading)
 			{
 				onVLCComplete();
 			}
@@ -174,3 +174,4 @@ class MP4Handler
 			bitmap.volume = 0;
 	}
 }
+#end

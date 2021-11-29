@@ -21,6 +21,16 @@ class CoolUtil
 		return newWords.join(" ");
 	}
 
+	public static function fileExists(path:String):Bool
+	{
+		return #if !sys lime.utils.Assets.exists(path); #else sys.FileSystem.exists(path); #end
+	}
+
+	public static function getFile(path:String):String
+	{
+		return #if !sys lime.utils.Assets.getText(path); #else sys.io.File.getContent(path); #end
+	}
+
 	public static function difficultyString():String
 	{
 		return difficultyArray[PlayState.storyDifficulty];

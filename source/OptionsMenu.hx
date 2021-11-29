@@ -25,23 +25,27 @@ class OptionsMenu extends MusicBeatState
 
 	var options:Array<OptionCategory> = [
 		new OptionCategory("Mod Specific", [
+			new OpponentOption("Play as either the opponent or as Fever (Default as Fever)"),
 			new IntroOption("Disables the startup anime opening video"),
 			new SubtitlesOption("Disable subtitles (found in certain songs)"),
-			new ShadersOption("Disables shaders (improves performance in certain songs)"),
 			new NotesplashOption("Toggle the sparkle effect upon hitting a \"Sick!\" note")
+		]),
+		new OptionCategory("Performance", [
+			#if desktop
+			new FPSCapOption("Cap your FPS"),
+			new FPSOption("Toggle the FPS Counter"),
+			#end
+			new AntialiasingOption("Toggle antialiasing for in-game sprites"),
+			new ShadersOption("Disables shaders (improves performance in certain songs)")
 		]),
 		new OptionCategory("Gameplay", [
 			new DFJKOption(controls),
+			new ResetButtonOption("Toggle pressing R to gameover."),
 			new DownscrollOption("Change the layout of the strumline."),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
-			#if desktop
-			new FPSCapOption("Cap your FPS"),
-			#end
 			new ScrollSpeedOption("Change your scroll speed (1 = Chart dependent)"),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
-			new ResetButtonOption("Toggle pressing R to gameover."),
-			// new OffsetMenu("Get a note offset based off of your inputs!"),
 			new CustomizeGameplay("Drag'n'Drop Gameplay Modules around to your preference")
 		]),
 		new OptionCategory("Appearance", [
@@ -56,13 +60,10 @@ class OptionsMenu extends MusicBeatState
 			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay.")
 			#end
 		]),
-		
 		new OptionCategory("Misc", [
 			#if desktop
-			new FPSOption("Toggle the FPS Counter"),
 			new ReplayOption("View replays"),
 			#end
-			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			new BotPlay("Showcase your charts and mods with autoplay.")
 		])
 		
@@ -244,11 +245,7 @@ class OptionsMenu extends MusicBeatState
 	var isSettingControl:Bool = false;
 
 	function changeSelection(change:Int = 0)
-	{
-		#if !switch
-		// NGio.logEvent("Fresh");
-		#end
-		
+	{	
 		FlxG.sound.play(Paths.sound("scrollMenu"), 0.4);
 
 		curSelected += change;

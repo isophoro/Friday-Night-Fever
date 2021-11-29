@@ -383,7 +383,14 @@ class DialogueBox extends FlxSpriteGroup
 		swagDialogue.delay = 0.04;
 		add(swagDialogue);
 
-		controls = new FlxText(0, box.y + box.height - 10, 0, "Press ESC / S to Skip Dialogue | Press M to return to Main Menu");
+		controls = new FlxText(0, box.y + box.height - 10, 0, "");
+
+		#if !mobile
+		controls.text = "Press ESC / S to Skip Dialogue | Press M to return to Main Menu";
+		#else
+		controls.text = "Press BACK to Skip Dialogue";
+		#end
+
 		controls.setFormat(Paths.font('vcr.ttf'), 22, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		add(controls);
 		controls.screenCenter(X);
@@ -432,7 +439,7 @@ class DialogueBox extends FlxSpriteGroup
 			PlayState.instance.camHUD.shake();(0.09);
 		}
 
-		if(FlxG.keys.justPressed.S || FlxG.keys.justPressed.ESCAPE)
+		if(FlxG.keys.justPressed.S || @:privateAccess PlayState.instance.controls.getBack())
 		{
 			if(FlxG.sound.music != null)
 				FlxG.sound.music.stop();
@@ -470,9 +477,9 @@ class DialogueBox extends FlxSpriteGroup
 			controls.visible = true;
 		}
 
-		if (FlxG.keys.justPressed.ANY  && dialogueStarted == true)
+		if (#if !mobile FlxG.keys.justPressed.ANY #else FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed #end  
+			&& dialogueStarted == true)
 		{
-				
 			FlxG.sound.play(Paths.sound('clickText'), 0.8);
 
 			if (dialogueList[1] == null && dialogueList[0] != null)

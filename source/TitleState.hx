@@ -45,10 +45,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if cpp
-		Gc.enable(false);
-		#end
-
 		PlayerSettings.init();
 
 		super.create();
@@ -62,23 +58,6 @@ class TitleState extends MusicBeatState
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
 		logoBl.shader = hueShader;
-		
-		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
-		#end
-		
-		#if sys
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
-			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
-		#end
-
-		#if windows
-		DiscordClient.initialize();
-
-		Application.current.onExit.add (function (exitCode) {
-			DiscordClient.shutdown();
-		});
-		#end
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
@@ -88,27 +67,6 @@ class TitleState extends MusicBeatState
 			Conductor.changeBPM(90);
 			
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
-		}
-
-		FlxG.save.bind('funkin', 'ninjamuffin99');
-
-		KadeEngineData.initSave();
-
-		Highscore.load();
-		Options.checkSaveCompatibility();
-
-		if (FlxG.save.data.weekUnlocked != null)
-		{
-			// FIX LATER!!!
-			// WEEK UNLOCK PROGRESSION!!
-			// StoryMenuState.weekUnlocked = FlxG.save.data.weekUnlocked;
-
-			if (StoryMenuState.weekUnlocked.length < 4)
-				StoryMenuState.weekUnlocked.insert(0, true);
-
-			// QUICK PATCH OOPS!
-			if (!StoryMenuState.weekUnlocked[0])
-				StoryMenuState.weekUnlocked[0] = true;
 		}
 
 		#if FREEPLAY
@@ -246,30 +204,32 @@ class TitleState extends MusicBeatState
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
 
-		if (controls.ACCEPT && !transitioning && skippedIntro)
+		if (controls.ACCEPT #if mobile || (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) #end)
 		{
-			initialized = true;
-			transitioning = true;
-			
-			if (FlxG.save.data.flashing)
-				titleText.animation.play('press');
-
-			FlxTween.tween(titleText, {y: 1200}, 1.23, { ease: FlxEase.elasticInOut });
-
-			FlxG.camera.flash(FlxColor.WHITE, 1);
-			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-
-			MainMenuState.firstStart = true;
-
-			new FlxTimer().start(0.75, function(tmr:FlxTimer)
+			if (!transitioning && skippedIntro)
 			{
-				FlxG.switchState(new MainMenuState());
-			});
-		}
-
-		if (controls.ACCEPT && !skippedIntro)
-		{
-			skipIntro();
+				initialized = true;
+				transitioning = true;
+				
+				if (FlxG.save.data.flashing)
+					titleText.animation.play('press');
+	
+				FlxTween.tween(titleText, {y: 1200}, 1.23, { ease: FlxEase.elasticInOut });
+	
+				FlxG.camera.flash(FlxColor.WHITE, 1);
+				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+	
+				MainMenuState.firstStart = true;
+	
+				new FlxTimer().start(0.75, function(tmr:FlxTimer)
+				{
+					FlxG.switchState(new MainMenuState());
+				});
+			}
+			else if (!skippedIntro)
+			{
+				skipIntro();
+			}
 		}
 
 		super.update(elapsed);
@@ -367,6 +327,7 @@ class TitleState extends MusicBeatState
 
 	function gotoIntro(?fuckoffflxtimer)
 	{
+		#if (cpp && !mobile)
 		if (!transitioning #if sys && !Sys.args().contains("-disableIntro") #end && FlxG.save.data.animeIntro)
 		{
 			initialized = false;
@@ -374,5 +335,6 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music = null;
 			FlxG.switchState(new Intro());
 		}
+		#end
 	}
 }

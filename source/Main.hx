@@ -1,8 +1,6 @@
 package;
 
-import openfl.display.BlendMode;
-import openfl.text.TextFormat;
-import openfl.display.Application;
+import openfl.system.System;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -13,8 +11,18 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 
+enum PreloadStrength
+{
+	NONE;
+	LOW; // Preload songs
+	HIGH; // Preload songs and characters
+}
+
 class Main extends Sprite
 {
+	public static var preloadType:PreloadStrength = NONE;
+	public static var totalRam:Int = 0;
+
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = Intro; // The FlxState the game starts with.
@@ -75,29 +83,48 @@ class Main extends Sprite
 		initialState = Intro;
 		#end
 
+		#if windows
+		try {
+			var process:sys.io.Process = new sys.io.Process("wmic ComputerSystem get TotalPhysicalMemory", null);
+			totalRam = Math.round(Std.parseFloat(process.stdout.readAll().toString().split('\n')[1]) / Math.pow(1024, 3));
+			trace('Total Ram : $totalRam GB');
+		} 
+		catch (e)
+		{
+			trace('Failed getting ram : $e');
+		}
+		#elseif mobile
+		gameWidth = 1280;
+		gameHeight = 720;
+		zoom = 1;
+		#end
+
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 
 		addChild(game);
 
 		#if !mobile
-		fpsCounter = new FPS(10, 3, 0xFFFFFF);
+		fpsCounter = new FPS_MEM(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
 		toggleFPS(FlxG.save.data.fps);
-
 		#end
 	}
 
 	var game:FlxGame;
 
-	var fpsCounter:FPS;
+	var fpsCounter:FPS_MEM;
 
 	public function toggleFPS(fpsEnabled:Bool):Void {
+		#if !mobile
 		fpsCounter.visible = fpsEnabled;
+		#end
 	}
 
 	public function changeFPSColor(color:FlxColor)
 	{
+		#if !mobile
 		fpsCounter.textColor = color;
+		#end
 	}
 
 	public function setFPSCap(cap:Float)
@@ -112,6 +139,27 @@ class Main extends Sprite
 
 	public function getFPS():Float
 	{
+		#if !mobile
 		return fpsCounter.currentFPS;
+		#else
+		return openfl.Lib.current.stage.frameRate;
+		#end
+	}
+}
+
+class FPS_MEM extends FPS
+{
+	override public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
+	{
+		super(x,y,color);
+		autoSize = NONE;
+	}
+
+	override function __enterFrame(deltaTime:Float):Void
+	{
+		super.__enterFrame(deltaTime);
+		var mem:Float = Math.round(System.totalMemory / 1024 / 1024 * 100)/100;
+
+		text = "FPS: " + currentFPS + '\nMem: '+mem+'MB';
 	}
 }

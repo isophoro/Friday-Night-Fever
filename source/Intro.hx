@@ -1,28 +1,7 @@
 package;
 
 import flixel.FlxG;
-import flixel.FlxSprite;
-import flixel.FlxState;
-import flixel.addons.display.FlxGridOverlay;
-import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
-import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.transition.TransitionData;
-import flixel.graphics.FlxGraphic;
-import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.group.FlxGroup;
-import flixel.input.gamepad.FlxGamepad;
-import flixel.math.FlxPoint;
-import flixel.math.FlxRect;
-import flixel.system.FlxSound;
-import flixel.system.ui.FlxSoundTray;
-import flixel.text.FlxText;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
-import io.newgrounds.NG;
 import lime.app.Application;
-import openfl.Assets;
 
 #if windows
 import Discord.DiscordClient;
@@ -36,8 +15,18 @@ using StringTools;
 
 class Intro extends MusicBeatState
 {
+	#if (cpp && !mobile)
+	var video:MP4Handler = new MP4Handler();
+	#end
+
+	var preloading:Bool = false;
+	var curLoaded:Int = 0;
+	var maxToLoad:Int = 0;
+
 	override public function create():Void
 	{
+		FlxG.fixedTimestep = false;
+		FlxG.sound.cache(Paths.music('freakyMenu'));
 		PlayerSettings.init();
 
 		#if windows
@@ -46,16 +35,27 @@ class Intro extends MusicBeatState
 		Application.current.onExit.add (function (exitCode) {
 			DiscordClient.shutdown();
 		 });
-		 
 		#end
 
-		// DEBUG BULLSHIT
+		#if mobile
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+
+		#if polymod
+		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
+		#end
+		
+		#if (sys && !mobile)
+		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
+			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
+		#end
 
 		super.create();
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
 		KadeEngineData.initSave();
+		Options.checkSaveCompatibility();
 
 		Highscore.load();
 
@@ -74,26 +74,38 @@ class Intro extends MusicBeatState
 		}
 
 		if (#if sys Sys.args().contains("-disableIntro") ||#end !FlxG.save.data.animeIntro)
-			LoadingState.loadAndSwitchState(new TitleState());
+			FlxG.switchState(new TitleState());
 
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());
 		#elseif CHARTING
 		FlxG.switchState(new ChartingState());
+		#elseif (cpp && !mobile)
+		video.playMP4(Paths.video('animeintrofinal'));
+		video.finishCallback = finishCallback;
 		#else
-		new FlxTimer().start(1, function(tmr:FlxTimer)
-		{	
-
-			var isCutscene:Bool = false;
-			var video:MP4Handler = new MP4Handler();
-			
-            video.playMP4(Paths.video('animeintrofinal'));
-            video.finishCallback = function()
-            {
-                LoadingState.loadAndSwitchState(new TitleState());
-            }
-			
-		});
+		FlxG.switchState(new TitleState());
 		#end
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+		#if (cpp && !mobile)
+		video.preloading = preloading;
+		#end
+	}
+
+	function finishCallback()
+	{
+		if (!preloading)
+			FlxG.switchState(new TitleState());
+		else
+		{
+			#if (cpp && !mobile)
+			video.playMP4(Paths.video('animeintrofinal'));
+            video.finishCallback = finishCallback;
+			#end
+		}
 	}
 }
