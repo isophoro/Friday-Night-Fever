@@ -83,7 +83,7 @@ class Main extends Sprite
 		initialState = Intro;
 		#end
 
-		#if windows
+		/*#if windows
 		try {
 			var process:sys.io.Process = new sys.io.Process("wmic ComputerSystem get TotalPhysicalMemory", null);
 			totalRam = Math.round(Std.parseFloat(process.stdout.readAll().toString().split('\n')[1]) / Math.pow(1024, 3));
@@ -97,7 +97,7 @@ class Main extends Sprite
 		gameWidth = 1280;
 		gameHeight = 720;
 		zoom = 1;
-		#end
+		#end*/
 
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 
@@ -108,6 +108,13 @@ class Main extends Sprite
 		addChild(fpsCounter);
 		toggleFPS(FlxG.save.data.fps);
 		#end
+	}
+
+	public static function clearCache()
+	{
+		Assets.cache.clear("songs");
+		Assets.cache.clear("shared:images/characters");
+		Assets.cache.clear("week");
 	}
 
 	var game:FlxGame;

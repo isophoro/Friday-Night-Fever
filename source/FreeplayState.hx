@@ -1,5 +1,6 @@
 package;
 
+import openfl.Assets;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -196,7 +197,6 @@ class FreeplayState extends MusicBeatState
 			trace(i);
 		}
 		#end
-
 
 		if (controls.UP_P)
 		{
