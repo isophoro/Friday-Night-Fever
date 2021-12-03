@@ -37,7 +37,6 @@ class MusicBeatState extends FlxUIState
 		super.create();
 	}
 
-
 	var array:Array<FlxColor> = [
 		FlxColor.fromRGB(148, 0, 211),
 		FlxColor.fromRGB(75, 0, 130),

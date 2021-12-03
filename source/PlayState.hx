@@ -211,8 +211,11 @@ class PlayState extends MusicBeatState
 
 	override public function create() 
 	{
-		Main.clearCache();
-		
+		super.create();
+
+		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
+		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
+
 		instance = this;
 		opponent = FlxG.save.data.opponent;
 
@@ -222,15 +225,8 @@ class PlayState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		sicks = 0;
-		bads = 0;
-		shits = 0;
-		goods = 0;
-
-		misses = 0;
-
-		repPresses = 0;
-		repReleases = 0;
+		for (i in ['sicks', 'bads', 'goods', 'shits', 'misses', 'repPresses', 'repReleases'])
+			Reflect.setField(PlayState, i, 0);
 
 		#if windows
 		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
@@ -1150,8 +1146,6 @@ class PlayState extends MusicBeatState
 
 		if (!loadRep)
 			rep = new Replay("na");
-
-		super.create();
 	}
 
 	function dialogueCutscene() {
@@ -2750,7 +2744,7 @@ class PlayState extends MusicBeatState
 					totalNotesHit += 0.75;
 			case 'sick':
 				if (health < 2)
-					health += 0.1;
+					health += 0.1; // this shouldn't be giving this much health but i dont wanna go through every song to test a fix for it
 				if (FlxG.save.data.accuracyMod == 0)
 					totalNotesHit += 1;
 				sicks++;
