@@ -1,4 +1,7 @@
+local ogWindow = {}
+
 function start (song)
+ogWindow = {getScreenWidth(), getScreenHeight(), getWindowX(), getWindowY()}
 resizeWindow(getScreenWidth(), getScreenHeight())
 setWindowPos(0, 0)
 setHudZoom(2)
@@ -11,7 +14,6 @@ end
 function update (elapsed)
 if curStep == 0 then
 setHudZoom(1)
-
 end
 
 if curStep >= 1536 and curStep < 1792 then

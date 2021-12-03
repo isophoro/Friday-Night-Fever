@@ -74,18 +74,22 @@ class Intro extends MusicBeatState
 		}
 
 		if (#if sys Sys.args().contains("-disableIntro") ||#end !FlxG.save.data.animeIntro)
+		{
 			FlxG.switchState(new TitleState());
-
-		#if FREEPLAY
-		FlxG.switchState(new FreeplayState());
-		#elseif CHARTING
-		FlxG.switchState(new ChartingState());
-		#elseif (cpp && !mobile)
-		video.playMP4(Paths.video('animeintrofinal'));
-		video.finishCallback = finishCallback;
-		#else
-		FlxG.switchState(new TitleState());
-		#end
+		}
+		else
+		{
+			#if FREEPLAY
+			FlxG.switchState(new FreeplayState());
+			#elseif CHARTING
+			FlxG.switchState(new ChartingState());
+			#elseif (cpp && !mobile)
+			video.playMP4(Paths.video('animeintrofinal'));
+			video.finishCallback = finishCallback;
+			#else
+			FlxG.switchState(new TitleState());
+			#end
+		}
 	}
 
 	override function update(elapsed:Float)
