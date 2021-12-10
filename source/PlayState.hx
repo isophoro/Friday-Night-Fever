@@ -1,5 +1,7 @@
 package;
 
+import weeks.RoboStage;
+import lime.media.openal.AL;
 import Section.SwagSection;
 import Song.SwagSong;
 import shaders.WiggleEffect;
@@ -151,8 +153,6 @@ class PlayState extends MusicBeatState
 	var painting:FlxSprite;
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
-	var bottomBoppers2:FlxSprite;
-	var bottomBoppers3:FlxSprite;
 	var santa:FlxSprite;
 
 	var bgGirls:BackgroundGirls;
@@ -167,7 +167,8 @@ class PlayState extends MusicBeatState
 
 	public static var campaignScore:Int = 0;
 
-	var defaultCamZoom:Float = 1.05;
+	public var defaultCamZoom:Float = 1.05;
+	public var roboStage:RoboStage;
 
 	public static var daPixelZoom:Float = 6;
 
@@ -542,11 +543,8 @@ class PlayState extends MusicBeatState
 			case 'robocesbg':
 				{
 					curStage = 'robocesbg';
-					defaultCamZoom = 0.4;
-					var bg:FlxSprite = new FlxSprite(-1348, -844).loadGraphic(Paths.image('roboCesar'));
-					bg.antialiasing = true;
-					bg.scrollFactor.set(0.9, 0.9);
-					add(bg);
+					roboStage = new RoboStage(0,0);
+					add(roboStage);
 				}
 			case 'school':
 				{
@@ -930,8 +928,8 @@ class PlayState extends MusicBeatState
 		add(dad);
 		add(boyfriend);
 
-
-		switch (curStage) {
+		switch (curStage) 
+		{
 			case 'week5':
 				bottomBoppers = new FlxSprite(-1000, -400);
 				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/CROWD2', 'week5');
@@ -940,19 +938,19 @@ class PlayState extends MusicBeatState
 				bottomBoppers.scrollFactor.set(0.9, 0.9);
 				add(bottomBoppers);
 			case 'week5othercrowd':
-				bottomBoppers2 = new FlxSprite(-1000, -400);
-				bottomBoppers2.frames = Paths.getSparrowAtlas('boppers/crowd', 'week5');
-				bottomBoppers2.animation.addByPrefix('bounce', "CROWD3", 24);
-				bottomBoppers2.animation.play('bounce');
-				bottomBoppers2.scrollFactor.set(0.9, 0.9);
-				add(bottomBoppers2);
+				bottomBoppers = new FlxSprite(-1000, -400);
+				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/crowd', 'week5');
+				bottomBoppers.animation.addByPrefix('bounce', "CROWD3", 24);
+				bottomBoppers.animation.play('bounce');
+				bottomBoppers.scrollFactor.set(0.9, 0.9);
+				add(bottomBoppers);
 			case 'ripdiner':
-				bottomBoppers3 = new FlxSprite(-800, -180);
-				bottomBoppers3.frames = Paths.getSparrowAtlas('boppers/CROWD1', 'week5');
-				bottomBoppers3.animation.addByPrefix('bounce', "CROWD1", 24);
-				bottomBoppers3.animation.play('bounce');
-				bottomBoppers3.scrollFactor.set(0.9, 0.9);
-				add(bottomBoppers3);
+				bottomBoppers = new FlxSprite(-800, -180);
+				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/CROWD1', 'week5');
+				bottomBoppers.animation.addByPrefix('bounce', "CROWD1", 24);
+				bottomBoppers.animation.play('bounce');
+				bottomBoppers.scrollFactor.set(0.9, 0.9);
+				add(bottomBoppers);
 		}
 
 		if (loadRep) {
@@ -1889,6 +1887,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float) 
 	{
+
 		floatshit += 0.1;
 		float += 0.07;
 		speakerFloatRotate += 0.05;

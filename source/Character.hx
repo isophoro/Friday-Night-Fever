@@ -819,7 +819,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'robo-cesar': // MAKO
-				iconColor = '47CC40';
+				iconColor = '9236B4';
 				tex = Paths.getSparrowAtlas('characters/roboCesar');
 				frames = tex;
 				animation.addByPrefix('idle', "Pico Idle Dance", 24);
