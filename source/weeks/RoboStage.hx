@@ -1,5 +1,6 @@
 package weeks;
 
+import flixel.util.FlxColor;
 import flixel.math.FlxPoint;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.FlxSprite;
@@ -23,7 +24,12 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
 
         if (PlayState.SONG.song == 'Loaded')
         {
-            //
+            // whitty shit
+            var whittyBG:FlxSprite = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/alleyway'));
+            whittyBG.antialiasing = true;
+            whittyBG.scrollFactor.set(0.9, 0.9);
+            whittyBG.scale.set(1.25, 1.25);
+            stages['whitty'] = new CoolStage([whittyBG], [], 0.55);
         }
 
         switchStage('default');
@@ -48,6 +54,17 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         }
 
         PlayState.instance.defaultCamZoom = stages[stage].camZoom;
+    }
+
+    public function beatHit(curBeat:Int)
+    {
+        switch (curBeat)
+        {
+            case 128:
+                PlayState.instance.camGame.flash(FlxColor.WHITE, 0.45);
+                switchStage('whitty');
+                PlayState.instance.camZooming = true;
+        }
     }
 }
 

@@ -104,7 +104,7 @@ class PlayState extends MusicBeatState
 	public static var playerStrums:FlxTypedGroup<FlxSprite> = null;
 	public static var cpuStrums:FlxTypedGroup<FlxSprite> = null;
 
-	private var camZooming:Bool = false;
+	public var camZooming:Bool = false;
 	var speakerFloatRotate:Float = 0;
 	var floatstuffagainLMAO:Float = 0;
 
@@ -133,7 +133,7 @@ class PlayState extends MusicBeatState
 	public var iconP2:HealthIcon; // what could go wrong?
 	public var camHUD:FlxCamera;
 
-	private var camGame:FlxCamera;
+	public var camGame:FlxCamera;
 
 	public static var offsetTesting:Bool = false;
 
@@ -1536,7 +1536,7 @@ class PlayState extends MusicBeatState
 		curSong = songData.song;
 
 		if (SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song), false);
 		else
 			vocals = new FlxSound();
 
@@ -1855,6 +1855,9 @@ class PlayState extends MusicBeatState
 
 	function resyncVocals():Void 
 	{
+		if (!vocals.playing && !paused)
+			return;
+
 		vocals.pause();
 
 		FlxG.sound.music.play();
@@ -2095,7 +2098,7 @@ class PlayState extends MusicBeatState
 		#if debug
 		if (FlxG.keys.justPressed.EIGHT)
 		{
-			FlxG.switchState(new AnimationDebug(SONG.player2));
+			FlxG.switchState(new AnimationDebug(SONG.player1));
 			#if windows
 			if (luaModchart != null) {
 				luaModchart.die();
@@ -2190,7 +2193,7 @@ class PlayState extends MusicBeatState
 						camFollow.x = dad.getMidpoint().x - -500;
 						camFollow.y = dad.getMidpoint().y - -100;
 					case 'robo-cesar':
-						camFollow.y = dad.getMidpoint().y - 400;
+						camFollow.y = dad.getMidpoint().y - 340;
 						camFollow.x = dad.getMidpoint().x - -600;
 					case 'calamity':
 						camFollow.x = dad.getMidpoint().x - -500;
@@ -2691,6 +2694,7 @@ class PlayState extends MusicBeatState
 		else 
 		{
 			trace('WENT BACK TO FREEPLAY??');
+			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			FlxG.switchState(new FreeplayState());
 			changedDifficulty = false;
 		}
@@ -3360,6 +3364,9 @@ class PlayState extends MusicBeatState
 	override function beatHit() 
 	{
 		super.beatHit();
+
+		if (curSong == 'Loaded')
+			roboStage.beatHit(curBeat);
 
 		if (curSong == 'Soul' || curSong == 'Portrait')
 		{

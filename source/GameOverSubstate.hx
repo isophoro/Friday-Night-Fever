@@ -1,5 +1,7 @@
 package;
 
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSubState;
@@ -55,6 +57,8 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.camera.target = null;
 
 		bf.playAnim('firstDeath');
+
+		FlxG.camera.shake(0.0095, 0.3);
 	}
 
 	override function update(elapsed:Float)
@@ -87,6 +91,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
 		{
 			FlxG.camera.follow(camFollow, LOCKON, 0.01);
+			FlxTween.tween(FlxG.camera, {zoom: 1}, 2.1, {ease: FlxEase.quadInOut});
 		}
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
@@ -99,7 +104,6 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
 			}
-		
 		}
 
 		if (FlxG.sound.music.playing)
