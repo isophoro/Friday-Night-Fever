@@ -58,7 +58,12 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             spotlight.antialiasing = true;
             spotlight.scrollFactor.set(0.73, 0.73);
 
-            stages['matt'] = new CoolStage([mattbg, mattcrowd, mattfg], [spotlight], [], 0.7);
+            var dumboffset:Int = 150;
+            stages['matt'] = new CoolStage([mattbg, mattcrowd, mattfg], [spotlight], [
+                "boyfriend" => [940.2 - dumboffset, 482.3 - dumboffset], 
+                "gf" => [415 - dumboffset, 149 - 70], 
+                "dad" => [60.7 - dumboffset, 365.3 - dumboffset]
+            ], 0.7);
         }
 
         switchStage('default');
@@ -74,6 +79,8 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
 
         for (i in PlayState.instance.roboForeground.members)
         {
+            if (i == null) continue;
+
             i.kill();
             PlayState.instance.roboForeground.remove(i);
         }
@@ -108,6 +115,9 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             case 128:
                 switchStage('whitty');
             case 496:
+                PlayState.instance.camZooming = true;
+                PlayState.instance.disableCamera = true;
+                PlayState.instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 30, PlayState.gf.getGraphicMidpoint().y - 130);
                 switchStage('matt');
         }
 

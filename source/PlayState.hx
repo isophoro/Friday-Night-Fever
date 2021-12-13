@@ -97,7 +97,7 @@ class PlayState extends MusicBeatState
 
 	public var strumLine:FlxSprite;
 
-	private var camFollow:FlxObject;
+	public var camFollow:FlxObject;
 
 	private static var prevCamFollow:FlxObject;
 
@@ -171,6 +171,7 @@ class PlayState extends MusicBeatState
 	public var defaultCamZoom:Float = 1.05;
 	public var roboStage:RoboStage;
 	public var roboForeground:FlxTypedSpriteGroup<FlxSprite> = new FlxTypedSpriteGroup<FlxSprite>();
+	public var disableCamera:Bool = false;
 
 	public static var daPixelZoom:Float = 6;
 
@@ -2146,7 +2147,7 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		if(PlayState.SONG.notes[Std.int(curStep / 16)] != null)
+		if(PlayState.SONG.notes[Std.int(curStep / 16)] != null && !disableCamera)
 		{
 			if (camFollow.x != dad.getMidpoint().x + 150 && !PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection) 
 			{
