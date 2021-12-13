@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fnffever.png">
+	<!-- Created with Adobe Animate version 22.0.1.105 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="robo crowd hehe0000" x="5" y="5" width="1946" height="1056" frameX="0" frameY="-27" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0001" x="5" y="5" width="1946" height="1056" frameX="0" frameY="-27" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0002" x="5" y="5" width="1946" height="1056" frameX="0" frameY="-27" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0003" x="1951" y="5" width="1928" height="1070" frameX="-9" frameY="-10" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0004" x="5" y="1075" width="1922" height="1076" frameX="-12" frameY="-3" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0005" x="1927" y="1075" width="1920" height="1078" frameX="-13" frameY="-2" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0006" x="5" y="2153" width="1920" height="1080" frameX="-13" frameY="0" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0007" x="5" y="2153" width="1920" height="1080" frameX="-13" frameY="0" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0008" x="5" y="2153" width="1920" height="1080" frameX="-13" frameY="0" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0009" x="5" y="2153" width="1920" height="1080" frameX="-13" frameY="0" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0010" x="5" y="2153" width="1920" height="1080" frameX="-13" frameY="0" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0011" x="5" y="2153" width="1920" height="1080" frameX="-13" frameY="0" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0012" x="5" y="2153" width="1920" height="1080" frameX="-13" frameY="0" frameWidth="1946" frameHeight="1083"/>
+	<SubTexture name="robo crowd hehe0013" x="5" y="2153" width="1920" height="1080" frameX="-13" frameY="0" frameWidth="1946" frameHeight="1083"/>
+</TextureAtlas>

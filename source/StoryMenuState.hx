@@ -154,6 +154,7 @@ class StoryMenuState extends MusicBeatState
 		var yellowBG:FlxSprite = new FlxSprite(0, 56).loadGraphic(Paths.image("campaign thing"));
 
 		peakek = new FlxSprite(0, 0).loadGraphic(Paths.image('newStory/week1'));
+		peakek.antialiasing = true;
 		add(peakek);
 		peakek.visible = false;
 

@@ -1,5 +1,6 @@
 package;
 
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import weeks.RoboStage;
 import lime.media.openal.AL;
 import Section.SwagSection;
@@ -169,6 +170,7 @@ class PlayState extends MusicBeatState
 
 	public var defaultCamZoom:Float = 1.05;
 	public var roboStage:RoboStage;
+	public var roboForeground:FlxTypedSpriteGroup<FlxSprite> = new FlxTypedSpriteGroup<FlxSprite>();
 
 	public static var daPixelZoom:Float = 6;
 
@@ -928,26 +930,29 @@ class PlayState extends MusicBeatState
 		add(dad);
 		add(boyfriend);
 
+		if (roboStage != null)
+			add(roboForeground);
+
 		switch (curStage) 
 		{
 			case 'week5':
 				bottomBoppers = new FlxSprite(-1000, -400);
 				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/CROWD2', 'week5');
-				bottomBoppers.animation.addByPrefix('bounce', "CROWD2", 24);
+				bottomBoppers.animation.addByPrefix('bounce', "CROWD2", 24, false);
 				bottomBoppers.animation.play('bounce');
 				bottomBoppers.scrollFactor.set(0.9, 0.9);
 				add(bottomBoppers);
 			case 'week5othercrowd':
 				bottomBoppers = new FlxSprite(-1000, -400);
 				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/crowd', 'week5');
-				bottomBoppers.animation.addByPrefix('bounce', "CROWD3", 24);
+				bottomBoppers.animation.addByPrefix('bounce', "CROWD3", 24, false);
 				bottomBoppers.animation.play('bounce');
 				bottomBoppers.scrollFactor.set(0.9, 0.9);
 				add(bottomBoppers);
 			case 'ripdiner':
 				bottomBoppers = new FlxSprite(-800, -180);
 				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/CROWD1', 'week5');
-				bottomBoppers.animation.addByPrefix('bounce', "CROWD1", 24);
+				bottomBoppers.animation.addByPrefix('bounce', "CROWD1", 24, false);
 				bottomBoppers.animation.play('bounce');
 				bottomBoppers.scrollFactor.set(0.9, 0.9);
 				add(bottomBoppers);
@@ -3524,13 +3529,8 @@ class PlayState extends MusicBeatState
 					}
 	
 				}
-			case 'mall':
-				if (FlxG.save.data.distractions) {
-					upperBoppers.animation.play('bop', true);
-					bottomBoppers.animation.play('bop', true);
-					santa.animation.play('idle', true);
-				}
-
+			case 'week5' | 'week5othercrowd' | 'ripdiner':
+				bottomBoppers.animation.play('bounce');
 			case 'limo' | 'limonight':
 				if (FlxG.save.data.distractions) {
 					grpLimoDancers.forEach(function(dancer:BackgroundDancer) {
