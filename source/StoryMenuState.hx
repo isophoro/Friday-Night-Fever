@@ -107,17 +107,10 @@ class StoryMenuState extends MusicBeatState
 	var peakek:FlxSprite;
 	var rightArrow:FlxSprite;
 
-	@:isVar var secretCode(get, never):String;
-	var userInput:String;
-	var secretFound:Bool = false;
-
 	override function create()
 	{
 		FlxG.camera.setFilters(filters);
 		FlxG.camera.filtersEnabled = true;
-
-		// ADDING SO MANY FUCKING EASTER EGGS LMAO -iso
-		userInput = secretCode;
 
 		#if windows
 		// Updating Discord Rich Presence
@@ -130,7 +123,7 @@ class StoryMenuState extends MusicBeatState
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				Main.playFreakyMenu();
 		}
 
 		persistentUpdate = persistentDraw = true;
@@ -258,28 +251,7 @@ class StoryMenuState extends MusicBeatState
 	{
 		var accepted:Bool = controls.ACCEPT;
 
-		#if !mobile
-		if (FlxG.keys.justPressed.ANY && !secretFound)
-		{
-			var keyPressed = FlxG.keys.getIsDown()[0].ID.toString().toLowerCase();
-
-			if (userInput.charAt(0) == keyPressed)
-			{
-				userInput = userInput.substring(1, userInput.length);
-				trace(userInput);
-
-				if (userInput.length <= 0)
-				{
-					secretFound = true;
-					trace('swag');
-				}
-			}
-			else
-			{
-				userInput = secretCode;
-			}
-		}
-		#else
+		#if mobile
 		if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) 
 		{
 			for (sprite in grpWeekText)
@@ -366,9 +338,6 @@ class StoryMenuState extends MusicBeatState
 		wiggleEffect.update(elapsed);
 		super.update(elapsed);
 	}
-
-	function get_secretCode():String
-		return 'run';
 
 	var movedBack:Bool = false;
 	var selectedWeek:Bool = false;

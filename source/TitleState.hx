@@ -63,10 +63,7 @@ class TitleState extends MusicBeatState
 
 		if (FlxG.sound.music == null)
 		{
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-			Conductor.changeBPM(90);
-			
-			FlxG.sound.music.fadeIn(4, 0, 0.7);
+			Main.playFreakyMenu();
 		}
 
 		#if FREEPLAY

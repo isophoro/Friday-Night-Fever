@@ -65,6 +65,7 @@ class PlayState extends MusicBeatState
 	public static var bads:Int = 0;
 	public static var goods:Int = 0;
 	public static var sicks:Int = 0;
+	public static var skipDialogue:Bool = false;
 
 	public static var songPosBG:FlxSprite;
 	public static var songPosBar:FlxBar;
@@ -1098,53 +1099,29 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 		startingSong = true;
 
-		if (isStoryMode) {
-			switch (curSong.toLowerCase()) {
-				case "winter-horrorland":
-					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
-					add(blackScreen);
-					blackScreen.scrollFactor.set();
-					camHUD.visible = false;
-
-					new FlxTimer().start(0.1, function(tmr:FlxTimer) {
-						remove(blackScreen);
-						FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-						camFollow.y = -2050;
-						camFollow.x += 200;
-						FlxG.camera.focusOn(camFollow.getPosition());
-						FlxG.camera.zoom = 1.5;
-
-						new FlxTimer().start(0.8, function(tmr:FlxTimer) {
-							camHUD.visible = true;
-							remove(blackScreen);
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-								ease: FlxEase.quadInOut,
-								onComplete: function(twn:FlxTween) {
-									startCountdown();
-								}
-							});
-						});
-					});
-				case 'chicken-sandwich':
-					camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
-					FlxG.sound.play(Paths.sound('ANGRY'));
-					NOTSenpai(doof);
+		if (isStoryMode && !skipDialogue) 
+		{
+			switch (curSong.toLowerCase()) 
+			{
 				case 'bazinga':
 					camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 					jumpscare(doof);
 				default:
-					if (dialogue.length > 0) {
+					if (dialogue.length > 0) 
+					{
+						if (curSong.toLowerCase() == 'chicken-sandwich')
+							FlxG.sound.play(Paths.sound('ANGRY'));
+
 						camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 						NOTSenpai(doof);
 					} else {
 						startCountdown();
 					}
 			}
-		} else {
-			switch (curSong.toLowerCase()) {
-				default:
-					startCountdown();
-			}
+		}
+		else 
+		{
+			startCountdown();
 		}
 
 		if (!loadRep)
@@ -1309,7 +1286,9 @@ class PlayState extends MusicBeatState
 	public static var luaModchart:ModchartState = null;
 	#end
 
-	function startCountdown():Void {
+	function startCountdown():Void 
+	{
+		skipDialogue = true;
 		inCutscene = false;
 
 		generateStaticArrows(0);
@@ -1414,7 +1393,8 @@ class PlayState extends MusicBeatState
 		}, 5);
 	}
 
-	function endingDialogue() {
+	function endingDialogue() 
+	{
 		disableBeathit = true;
 		canPause = false;
 		inCutscene = true;
@@ -1422,20 +1402,8 @@ class PlayState extends MusicBeatState
 		vocals.stop();
 		vocals.volume = 0;
 		FlxG.sound.music.stop();
-		var endingDialogue:Array<String> = [];
-		endingDialogue = switch (SONG.song.toLowerCase()) {
-			case 'down-bad': CoolUtil.coolTextFile(Paths.txt('down-bad/endDia'));
-			case 'bunnii': CoolUtil.coolTextFile(Paths.txt('bunnii/endDia'));
-			case 'throw-it-back': CoolUtil.coolTextFile(Paths.txt('throw-it-back/endDia'));
-			case 'crucify': CoolUtil.coolTextFile(Paths.txt('crucify/endDia'));
-			case 'retribution': CoolUtil.coolTextFile(Paths.txt('retribution/endDia'));
-			case 'party-crasher': CoolUtil.coolTextFile(Paths.txt('party-crasher/partEnd'));
-			case 'spice': CoolUtil.coolTextFile(Paths.txt('spice/endDia'));
-			case 'soul': CoolUtil.coolTextFile(Paths.txt('soul/endDia'));
-			default: [];
-		}
 
-		var peSUS:DialogueBox = new DialogueBox(false, endingDialogue);
+		var peSUS:DialogueBox = new DialogueBox(false, CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase() + '/endDia')));
 		peSUS.scrollFactor.set();
 		peSUS.finishThing = endSong;
 		peSUS.cameras = [camHUD];
@@ -1443,41 +1411,34 @@ class PlayState extends MusicBeatState
 	}
 
 	var previousFrameTime:Int = 0;
-	var lastReportedPlayheadPosition:Int = 0;
 	var songTime:Float = 0;
 
-	var songStarted = false;
-
-	function startSong():Void {
+	function startSong():Void 
+	{
 		startingSong = false;
-		songStarted = true;
 		previousFrameTime = FlxG.game.ticks;
-		lastReportedPlayheadPosition = 0;
 
-		if (!paused) {
+		if (!paused) 
+		{
 			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
 		}
 
-		if (isStoryMode && [
-			'down-bad',
-			'party-crasher',
-			'soul',
-			'crucify',
-			'retribution',
-			'bunni',
-			'throw-it-back',
-			'spice'
-		].contains(SONG.song.toLowerCase())) {
+		if (Assets.exists(Paths.txt(SONG.song.toLowerCase() + '/endDia'))) 
+		{
 			FlxG.sound.music.onComplete = endingDialogue;
-		} else {
+		} 
+		else 
+		{
 			FlxG.sound.music.onComplete = endSong;
 		}
+	
 		vocals.play();
 
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
 
-		if (FlxG.save.data.songPosition) {
+		if (FlxG.save.data.songPosition) 
+		{
 			remove(songPosBG);
 			remove(songPosBar);
 			remove(songName);
@@ -1794,7 +1755,8 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(FlxG.camera, {zoom: 1.3}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut});
 	}
 
-	override function openSubState(SubState:FlxSubState) {
+	override function openSubState(SubState:FlxSubState) 
+	{
 		if (paused) {
 			if (FlxG.sound.music != null) {
 				FlxG.sound.music.pause();
@@ -1910,7 +1872,8 @@ class PlayState extends MusicBeatState
 			camHUD.visible = !camHUD.visible;
 
 		#if windows
-		if (executeModchart && luaModchart != null && songStarted) {
+		if (executeModchart && luaModchart != null && !startingSong) 
+		{
 			luaModchart.setVar('songPos', Conductor.songPosition);
 			luaModchart.setVar('hudZoom', camHUD.zoom);
 			luaModchart.setVar('cameraZoom', FlxG.camera.zoom);
@@ -2590,6 +2553,8 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void 
 	{
+		skipDialogue = false;
+
 		if (!loadRep)
 			rep.SaveReplay(saveNotes);
 		else {
@@ -2622,8 +2587,9 @@ class PlayState extends MusicBeatState
 
 			storyPlaylist.remove(storyPlaylist[0]);
 
-			if (storyPlaylist.length <= 0) {
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			if (storyPlaylist.length <= 0) 
+			{
+				Main.playFreakyMenu();
 
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
@@ -2646,14 +2612,18 @@ class PlayState extends MusicBeatState
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
 
-				if (storyWeek != StoryMenuState.weekData.length - 1) {
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				if (storyWeek != StoryMenuState.weekData.length - 1) 
+				{
+					Main.playFreakyMenu();
 					FlxG.switchState(new StoryMenuState());
-					
-				} else {
-					for (week in 1...StoryMenuState.weekData.length) {
+				} 
+				else 
+				{
+					for (week in 1...StoryMenuState.weekData.length) 
+					{
 						var break_MainLoop:Bool = false;
-						for (difficulty in 0...3) {
+						for (difficulty in 0...3) 
+						{
 							if (Highscore.getWeekScore(week, difficulty) > 0)
 								break;
 
@@ -2661,14 +2631,16 @@ class PlayState extends MusicBeatState
 								break_MainLoop = true;
 						}
 
-						if (break_MainLoop) {
-							FlxG.sound.playMusic(Paths.music('freakyMenu'));
+						if (break_MainLoop) 
+						{
+							Main.playFreakyMenu();
 							FlxG.switchState(new StoryMenuState());
 							break;
 						}
 
-						if (week == StoryMenuState.weekData.length - 1) {
-							FlxG.switchState(new CreditsState()); // or w/e the credits state is called
+						if (week == StoryMenuState.weekData.length - 1) 
+						{
+							FlxG.switchState(new CreditsState());
 						}
 					}
 				}
@@ -2699,7 +2671,7 @@ class PlayState extends MusicBeatState
 		else 
 		{
 			trace('WENT BACK TO FREEPLAY??');
-			FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			Main.playFreakyMenu();
 			FlxG.switchState(new FreeplayState());
 			changedDifficulty = false;
 		}

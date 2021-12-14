@@ -152,6 +152,15 @@ class Main extends Sprite
 		return openfl.Lib.current.stage.frameRate;
 		#end
 	}
+
+	public static function playFreakyMenu()
+	{
+		PlayState.skipDialogue = false;
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		Conductor.changeBPM(90);
+		
+		FlxG.sound.music.fadeIn(4, 0, 0.7);
+	}
 }
 
 class FPS_MEM extends FPS
