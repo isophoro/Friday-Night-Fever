@@ -66,8 +66,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		if(PlayState.SONG.song.toLowerCase() == 'run'){
 			System.exit(0);
 		}
-
-		PlayState.font = false;
 		
 		super.update(elapsed);
 

@@ -2,7 +2,6 @@ package;
 
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import weeks.RoboStage;
-import lime.media.openal.AL;
 import Section.SwagSection;
 import Song.SwagSong;
 import shaders.WiggleEffect;
@@ -88,7 +87,7 @@ class PlayState extends MusicBeatState
 	public static var dad:Character;
 	public static var gf:Character;
 	public static var boyfriend:Boyfriend;
-	public static var font:Bool = false;
+	public var font:Bool = false;
 
 	public var notes:FlxTypedGroup<Note>;
 	public static var changedDifficulty:Bool = false;

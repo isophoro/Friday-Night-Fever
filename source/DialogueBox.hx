@@ -443,7 +443,6 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			if(FlxG.sound.music != null)
 				FlxG.sound.music.stop();
-			PlayState.font = false;
 			finishThing();
 			kill();
 		}

@@ -97,9 +97,6 @@ class PauseSubState extends MusicBeatSubstate
 			songText = new Alphabet(0, (70 * i) + 30, menuItems[i], true, false);
 			songText.isMenuItem = true;
 			songText.targetY = i;
-			if(PlayState.font){
-				songText.screenCenter(X);
-			}
 			grpMenuShit.add(songText);
 		}
 
@@ -110,11 +107,9 @@ class PauseSubState extends MusicBeatSubstate
 		changeSelection();
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
-	}
 
-	override function update(elapsed:Float)
-	{
-		if(PlayState.font){
+		if(PlayState.instance.font)
+		{
 			levelDifficulty.setFormat(Paths.font('Retro Gaming.ttf'), 32);
 			levelInfo.setFormat(Paths.font("Retro Gaming.ttf"), 32);
 			perSongOffset.setFormat(Paths.font("Retro Gaming.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -124,6 +119,10 @@ class PauseSubState extends MusicBeatSubstate
 			
 			scanlines.visible = true;
 		}
+	}
+
+	override function update(elapsed:Float)
+	{
 		if (pauseMusic.volume < 0.5)
 			pauseMusic.volume += 0.01 * elapsed;
 
@@ -225,12 +224,10 @@ class PauseSubState extends MusicBeatSubstate
 					close();
 				case "Restart Song":
 					FlxG.resetState();
-					PlayState.font = false;
 				case 'Change Difficulty':
 					menuItems = difficultyChoices;
 					regenMenu();
 				case "Exit to menu":
-					PlayState.font = false;
 					PlayState.changedDifficulty = false;
 
 					if(PlayState.loadRep)
