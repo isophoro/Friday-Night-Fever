@@ -259,7 +259,8 @@ class PlayState extends MusicBeatState
 		iconRPC = SONG.player2;
 
 		// To avoid having duplicate images in Discord assets
-		switch (iconRPC) {
+		switch (iconRPC)
+		{
 			case 'senpai-angry':
 				iconRPC = 'senpai';
 			case 'monster-christmas':
@@ -1423,7 +1424,7 @@ class PlayState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
 		}
 
-		if (Assets.exists(Paths.txt(SONG.song.toLowerCase() + '/endDia'))) 
+		if (isStoryMode && Assets.exists(Paths.txt(SONG.song.toLowerCase() + '/endDia'))) 
 		{
 			FlxG.sound.music.onComplete = endingDialogue;
 		} 
@@ -1437,17 +1438,21 @@ class PlayState extends MusicBeatState
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
 
+		songPosBG = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
+		if (FlxG.save.data.downscroll)
+			songPosBG.y = FlxG.height * 0.9 + 45;
+		songPosBG.screenCenter(X);
+
+		songName = new FlxText(0, songPosBG.y, 0, '', 16);
+		songName.text = '"' + CoolUtil.capitalizeFirstLetters(StringTools.replace(SONG.song, '-', ' ')) + '" by ${Song.getArtist(curSong)}';
+		if (FlxG.save.data.downscroll)
+			songName.y -= 4;
+		
+		songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		songName.screenCenter(X);
+
 		if (FlxG.save.data.songPosition) 
 		{
-			remove(songPosBG);
-			remove(songPosBar);
-			remove(songName);
-
-			songPosBG = new FlxSprite(0, 10).loadGraphic(Paths.image('healthBar'));
-			if (FlxG.save.data.downscroll)
-				songPosBG.y = FlxG.height * 0.9 + 45;
-			songPosBG.screenCenter(X);
-			songPosBG.scrollFactor.set();
 			add(songPosBG);
 
 			songPosBar = new FlxBar(songPosBG.x
@@ -1456,21 +1461,27 @@ class PlayState extends MusicBeatState
 				'songPositionBar', 0, songLength
 				- 1000);
 			songPosBar.numDivisions = 1000;
-			songPosBar.scrollFactor.set();
 			songPosBar.createFilledBar(FlxColor.GRAY, FlxColor.LIME);
 			add(songPosBar);
 
-			var songName = new FlxText(0, songPosBG.y, 0, CoolUtil.capitalizeFirstLetters(StringTools.replace(SONG.song, '-', ' ')) + ' [${CoolUtil.difficultyArray[storyDifficulty]}]', 16);
-			if (FlxG.save.data.downscroll)
-				songName.y -= 3;
-			songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			songName.screenCenter(X);
-			songName.scrollFactor.set();
 			add(songName);
 
 			songPosBG.cameras = [camHUD];
 			songPosBar.cameras = [camHUD];
 			songName.cameras = [camHUD];
+		}
+		else
+		{
+			add(songName);
+			songName.cameras = [camHUD];
+
+			songName.size = 18;
+			songName.alpha = 0;
+			FlxTween.tween(songName, {alpha:1}, 0.7, {onComplete: (twn) -> {
+				new FlxTimer().start(3.5, (t) -> {
+					FlxTween.tween(songName, {alpha:0}, 0.7);
+				});
+			}});
 		}
 
 		#if windows
@@ -1857,7 +1868,6 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float) 
 	{
-
 		floatshit += 0.1;
 		float += 0.07;
 		speakerFloatRotate += 0.05;
@@ -2137,9 +2147,7 @@ class PlayState extends MusicBeatState
 					case 'senpai-angry':
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
-					case 'dad':
-						camFollow.x = dad.getMidpoint().x - -400;
-					case 'peasus':
+					case 'dad' | 'peasus':
 						camFollow.x = dad.getMidpoint().x - -400;
 					case 'spooky' | 'feralspooky':
 						camFollow.x = dad.getMidpoint().x + 190;
@@ -2155,6 +2163,9 @@ class PlayState extends MusicBeatState
 							camFollow.x = dad.getMidpoint().x - -400;
 							camFollow.y = dad.getMidpoint().y - -100;
 						}
+					case 'monster-christmas':
+						camFollow.y = dad.getMidpoint().y - 50;
+						camFollow.x = dad.getMidpoint().x + 250;
 					case 'spookyHALLOW':
 						camFollow.x = dad.getMidpoint().x - -400;
 					case 'hallow':
@@ -2227,13 +2238,11 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (camZooming) {
+		if (camZooming) 
+		{
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, 0.95);
 			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, 0.95);
 		}
-
-		FlxG.watch.addQuick("beatShit", curBeat);
-		FlxG.watch.addQuick("stepShit", curStep);
 
 		if (health <= 0 && !opponent) 
 		{
@@ -3455,17 +3464,17 @@ class PlayState extends MusicBeatState
 				FlxG.log.add('CHANGED BPM!');
 			}
 
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.curCharacter != 'gf')
+			if (!dad.animation.curAnim.name.startsWith('sing'))
 				dad.dance();
 		}
 
-		if (!startedCountdown)
-		{
-			if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0) {
+		/*
+			if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0) 
+			{
 				FlxG.camera.zoom += 0.015;
 				camHUD.zoom += 0.03;
 			}
-		}
+		*/
 
 		iconP1.scale.set(1.15, 1.15);
 		iconP2.scale.set(1.15, 1.15);

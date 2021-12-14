@@ -37,6 +37,25 @@ class Song
 	public var noteStyle:String = 'normal';
 	public var stage:String = 'stage';
 
+	public static var artists:Map<Array<String>, String> = [
+		["hallow", "portrait", "soul", "hardships"] => "FPLester",
+		["c354r", "loaded", "gears", "space-demons"] => "Biddle3",
+		["party-crasher"] => "BirdBonanza"
+	];
+
+	public static function getArtist(_song:String):String
+	{
+		for (s => a in artists)
+		{
+			if (s.contains(_song.toLowerCase()))
+			{
+				return a;
+			}
+		}
+
+		return 'Foodieti';
+	}
+
 	public function new(song, notes, bpm)
 	{
 		this.song = song;

@@ -103,6 +103,7 @@ class MusicBeatState extends FlxUIState
 
 	public function stepHit():Void
 	{
+		FlxG.watch.addQuick("Current Beat / Step", curBeat + ' ($curStep)');
 
 		if (curStep % 4 == 0 && !disableBeathit)
 			beatHit();

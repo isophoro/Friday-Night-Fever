@@ -53,6 +53,12 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		if (FlxG.sound.music != null)
+		{
+			if (!FlxG.sound.music.playing)
+				Main.playFreakyMenu();
+		}
+
 		var initSonglist:Array<String> = CoolUtil.coolTextFile(Paths.txt(currentStyle + 'Songlist'));
 
 		for (i in 0...initSonglist.length)
