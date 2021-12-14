@@ -4,11 +4,11 @@ setHudZoom(2)
 showOnlyStrums = true
 strumLine1Visible = false
 strumLine2Visible = false
-				makeSprite('captionstaki','captionstaki', true)
+				--[[makeSprite('captionstaki','captionstaki', true)
 				setActorX(-350,'captionstaki')
 				setActorY(-500,'captionstaki')
 				setActorScale(1.2,'captionstaki')
-				tweenFadeIn('captionstaki',0,0.1)
+				tweenFadeIn('captionstaki',0,0.1)]]--
 end
 
 function update (elapsed)
@@ -18,7 +18,7 @@ function update (elapsed)
 	end
 
 
-	if curStep >= 1470 and curStep < 1500 then
+	--[[if curStep >= 1470 and curStep < 1500 then
 	tweenFadeIn('captionstaki',1,0.3)
 
 	end
@@ -26,7 +26,7 @@ function update (elapsed)
 	if curStep == 1500 then
 	tweenFadeOut('captionstaki',0,0.3)
 
-	end
+	end]]--
 
 
 

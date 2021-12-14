@@ -27,7 +27,12 @@ class Intro extends MusicBeatState
 	{
 		FlxG.fixedTimestep = false;
 		FlxG.sound.cache(Paths.music('freakyMenu'));
+
+		FlxG.save.bind('funkin', 'ninjamuffin99');
 		PlayerSettings.init();
+		KadeEngineData.initSave();
+		Options.checkSaveCompatibility();
+		Highscore.load();
 
 		#if windows
 		DiscordClient.initialize();
@@ -51,13 +56,6 @@ class Intro extends MusicBeatState
 		#end
 
 		super.create();
-
-		FlxG.save.bind('funkin', 'ninjamuffin99');
-
-		KadeEngineData.initSave();
-		Options.checkSaveCompatibility();
-
-		Highscore.load();
 
 		if (FlxG.save.data.weekUnlocked != null)
 		{

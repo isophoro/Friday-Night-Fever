@@ -58,11 +58,11 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             spotlight.antialiasing = true;
             spotlight.scrollFactor.set(0.73, 0.73);
 
-            var dumboffset:Int = 150;
+            var dumboffset:Int = 95;
             stages['matt'] = new CoolStage([mattbg, mattcrowd, mattfg], [spotlight], [
-                "boyfriend" => [940.2 - dumboffset, 482.3 - dumboffset], 
+                "boyfriend" => [940.2 - dumboffset, 482.3 - 150], 
                 "gf" => [415 - dumboffset, 149 - 70], 
-                "dad" => [60.7 - dumboffset, 365.3 - dumboffset]
+                "dad" => [60.7 - dumboffset, 365.3 - 150]
             ], 0.7);
         }
 
@@ -110,9 +110,10 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         switch (curBeat)
         {
             case 32:
-                PlayState.instance.camZooming = true;
-                switchStage('mako');
+                //PlayState.instance.camZooming = true;
+                //switchStage('mako');
             case 128:
+                PlayState.instance.camZooming = true;
                 switchStage('whitty');
             case 496:
                 PlayState.instance.camZooming = true;
