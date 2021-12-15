@@ -25,6 +25,7 @@ class Subtitles extends FlxText
         super(0,Y, flixel.FlxG.width * 0.8);
         setFormat('Plunge', 28, FlxColor.WHITE, CENTER, OUTLINE_FAST, FlxColor.BLACK);
         borderSize = 1.4;
+        antialiasing = true;
 
         for(i in json)
         {

@@ -1,7 +1,8 @@
 package;
 
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
-import weeks.RoboStage;
+import sprites.RoboStage;
+import sprites.CharacterTrail;
 import Section.SwagSection;
 import Song.SwagSong;
 import shaders.WiggleEffect;
@@ -12,7 +13,6 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
-import flixel.addons.effects.FlxTrail;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -840,11 +840,11 @@ class PlayState extends MusicBeatState
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				gf.scrollFactor.set(0.9, 0.9);
 			case 'schoolEvil':
-				if (FlxG.save.data.distractions) {
-					var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+				if (FlxG.save.data.distractions) 
+				{
+					var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
 					add(evilTrail);
 				}
-
 				boyfriend.x += 200;
 				boyfriend.y += 220;
 				gf.x += 180;
@@ -871,12 +871,11 @@ class PlayState extends MusicBeatState
 				gf.x = 524;
 				gf.y = 245;
 				gf.scrollFactor.set(1.0, 1.0);
-				if (SONG.song.toLowerCase() != 'run') {
-					if (FlxG.save.data.distractions) {
-						var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-						evilTrail.framesEnabled = false;
-						add(evilTrail);
-					}
+				if (FlxG.save.data.distractions) 
+				{
+					var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
+					//evilTrail.framesEnabled = false;
+					add(evilTrail);
 				}
 			case 'spookyHALLOW':
 				boyfriend.x += 500;
@@ -884,14 +883,13 @@ class PlayState extends MusicBeatState
 				gf.x += 300;
 				gf.y += 80;
 				gf.scrollFactor.set(1.0, 1.0);
-				if (SONG.song.toLowerCase() != 'run') {
-					if (FlxG.save.data.distractions) {
-						var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-						evilTrail.framesEnabled = false;
-						add(evilTrail);
-					}
-				}
 
+				if (FlxG.save.data.distractions) 
+				{
+					var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
+					evilTrail.framesEnabled = false;
+					add(evilTrail);
+				}
 			case 'week5' | 'week5othercrowd' | 'ripdiner':
 				boyfriend.x += 100;
 				boyfriend.y += 165;
@@ -916,7 +914,7 @@ class PlayState extends MusicBeatState
 
 		if(SONG.song.toLowerCase() == 'bazinga' || SONG.song.toLowerCase() == 'crucify')
 		{
-			// fnf really needs a better fuckin way of handling this, lowkey aboutta make an engine with an actual proper way for character placement in protest
+			// Shitty way of doing their placement, fuck off with how fnf handles character positoning :)
 			gf.y -= 15;
 			gf.x += 180;
 			boyfriend.x += 160;
@@ -960,8 +958,9 @@ class PlayState extends MusicBeatState
 				add(bottomBoppers);
 		}
 
-		if (loadRep) {
-			FlxG.watch.addQuick('rep rpesses', repPresses);
+		if (loadRep) 
+		{
+			FlxG.watch.addQuick('rep presses', repPresses);
 			FlxG.watch.addQuick('rep releases', repReleases);
 
 			FlxG.save.data.botplay = true;
@@ -1033,13 +1032,16 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), #if !mobile 16 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.screenCenter(X);
+		scoreTxt.antialiasing = FlxG.stage.window.width > 1280 ? true : false;
 
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
 		replayTxt.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		replayTxt.scrollFactor.set();
-		if (loadRep) {
+		if (loadRep)
+		{
 			add(replayTxt);
 		}
+
 		// Literally copy-paste of the above, fu
 		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "BOTPLAY", 20);
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1450,6 +1452,7 @@ class PlayState extends MusicBeatState
 		
 		songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songName.screenCenter(X);
+		songName.antialiasing = true;
 
 		if (FlxG.save.data.songPosition) 
 		{
@@ -1961,6 +1964,9 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey');
 			gf.playAnim('cheer');
 		}
+
+		/*if (gf.animation.curAnim.name.startsWith('dance'))
+			gf.animation.curAnim.frameRate = 24 / (Conductor.crochet / 1000);*/
 
 		switch (curStage) 
 		{
@@ -3306,6 +3312,20 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (curSong == 'Milk-Tea')
+		{
+			switch (curStep)
+			{
+				case 189 | 318 | 444 | 702:
+					dad.playAnim('cheer', true);
+				case 557:
+					boyfriend.playAnim('hey');
+				case 835:
+					dad.playAnim('cheer', true);
+					boyfriend.playAnim('hey');
+			}
+		}
+
 		if (FlxG.sound.music.time > Conductor.songPosition + 20 || FlxG.sound.music.time < Conductor.songPosition - 20) 
 		{
 			resyncVocals();
@@ -3448,14 +3468,6 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (curSong == 'Milk-Tea') 
-		{
-			if (curBeat % 2 == 1 && dad.animOffsets.exists('danceLeft'))
-				dad.playAnim('danceLeft');
-			if (curBeat % 2 == 0 && dad.animOffsets.exists('danceRight'))
-				dad.playAnim('danceRight');
-		}
-
 		if (SONG.notes[Math.floor(curStep / 16)] != null) 
 		{
 			if (SONG.notes[Math.floor(curStep / 16)].changeBPM) 
@@ -3497,12 +3509,8 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (curBeat % 16 == 15 && SONG.song == 'Milk-Tea' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48) {
-			boyfriend.playAnim('hey', true);
-			dad.playAnim('cheer', true);
-		}
-
-		switch (curStage) {
+		switch (curStage) 
+		{
 			case 'school':
 				if(SONG.song.toLowerCase() != 'space-demons'){
 					if (FlxG.save.data.distractions) {

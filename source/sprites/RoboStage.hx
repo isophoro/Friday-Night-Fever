@@ -1,4 +1,4 @@
-package weeks;
+package sprites;
 
 import flixel.util.FlxColor;
 import flixel.math.FlxPoint;
