@@ -64,6 +64,22 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
                 "gf" => [415 - dumboffset, 149 - 70], 
                 "dad" => [60.7 - dumboffset, 365.3 - 150]
             ], 0.7);
+
+            //zardy shit
+            var zardybg:FlxSprite = new FlxSprite(164.4, 0).loadGraphic(Paths.image('roboStage/zardy_bg'));
+            zardybg.antialiasing = true;
+            zardybg.scrollFactor.set(0.9, 0.9);
+
+            var zardytown:FlxSprite = new FlxSprite(161.65, 1.1).loadGraphic(Paths.image('roboStage/zardy_fevertown'));
+            zardytown.antialiasing = true;
+            zardytown.scrollFactor.set(0.8, 0.8);
+
+            var zardyforeground:FlxSprite = new FlxSprite(161.65, 6.15).loadGraphic(Paths.image('roboStage/zardy_foreground'));
+            zardyforeground.antialiasing = true;
+            zardyforeground.scrollFactor.set(0.9, 0.9);
+
+            stages['zardy'] = new CoolStage([zardybg, zardytown, zardyforeground], null, ["boyfriend" => [1366.3, 525.8], "gf" => [810.9, 244.4], "dad" => [492.5, 430.8]], 0.7);
+
         }
 
         switchStage('default');
@@ -110,10 +126,13 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         switch (curBeat)
         {
             case 32:
-                //PlayState.instance.camZooming = true;
-                //switchStage('mako');
+                PlayState.instance.camZooming = true;
+                PlayState.instance.disableCamera = true;
+                PlayState.instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 580, PlayState.gf.getGraphicMidpoint().y + 30);
+                switchStage('zardy');
             case 128:
                 PlayState.instance.camZooming = true;
+                PlayState.instance.disableCamera = false;
                 switchStage('whitty');
             case 496:
                 PlayState.instance.camZooming = true;
