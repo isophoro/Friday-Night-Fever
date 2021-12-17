@@ -873,8 +873,7 @@ class PlayState extends MusicBeatState
 				gf.scrollFactor.set(1.0, 1.0);
 				if (FlxG.save.data.distractions) 
 				{
-					var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
-					//evilTrail.framesEnabled = false;
+					var evilTrail = new CharacterTrail(dad, null, 7, 8, 0.3, 0.069);
 					add(evilTrail);
 				}
 			case 'spookyHALLOW':
@@ -887,7 +886,6 @@ class PlayState extends MusicBeatState
 				if (FlxG.save.data.distractions) 
 				{
 					var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
-					evilTrail.framesEnabled = false;
 					add(evilTrail);
 				}
 			case 'week5' | 'week5othercrowd' | 'ripdiner':
@@ -1481,7 +1479,7 @@ class PlayState extends MusicBeatState
 			songName.size = 18;
 			songName.alpha = 0;
 			FlxTween.tween(songName, {alpha:1}, 0.7, {onComplete: (twn) -> {
-				new FlxTimer().start(3.5, (t) -> {
+				new FlxTimer().start(5.8, (t) -> {
 					FlxTween.tween(songName, {alpha:0}, 0.7);
 				});
 			}});
@@ -1965,8 +1963,10 @@ class PlayState extends MusicBeatState
 			gf.playAnim('cheer');
 		}
 
-		/*if (gf.animation.curAnim.name.startsWith('dance'))
-			gf.animation.curAnim.frameRate = 24 / (Conductor.crochet / 1000);*/
+		/*
+			if (gf.animation.curAnim.name.startsWith('dance'))
+				gf.animation.curAnim.frameRate = 24 / (Conductor.crochet / 1000);
+		*/
 
 		switch (curStage) 
 		{
