@@ -1014,12 +1014,14 @@ class PlayState extends MusicBeatState
 			healthBarBG.y = 50;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
+		healthBarBG.antialiasing = true;
 		add(healthBarBG);
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, opponent ? LEFT_TO_RIGHT : RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		healthBar.createFilledBar(FlxColor.fromString('#FF' + curOpponent.iconColor), FlxColor.fromString('#FF' + curPlayer.iconColor));
+		healthBar.antialiasing = true;
 		// healthBar
 		add(healthBar);
 
@@ -2178,8 +2180,23 @@ class PlayState extends MusicBeatState
 						camFollow.x = dad.getMidpoint().x - -500;
 						camFollow.y = dad.getMidpoint().y - -100;
 					case 'robo-cesar':
-						camFollow.y = dad.getMidpoint().y - 340;
-						camFollow.x = dad.getMidpoint().x - -600;
+						if (roboStage != null)
+						{
+							switch(roboStage.curStage)
+							{
+								case 'zardy':
+									camFollow.y = dad.getMidpoint().y - 190;
+									camFollow.x = dad.getMidpoint().x - -600;
+								default:
+									camFollow.y = dad.getMidpoint().y - 340;
+									camFollow.x = dad.getMidpoint().x - -600;
+							}
+						}
+						else
+						{
+							camFollow.y = dad.getMidpoint().y - 340;
+							camFollow.x = dad.getMidpoint().x - -600;
+						}
 					case 'calamity':
 						camFollow.x = dad.getMidpoint().x - -500;
 						camFollow.y = dad.getMidpoint().y - -100;
@@ -2238,8 +2255,15 @@ class PlayState extends MusicBeatState
 					case 'week3stage' | 'philly':
 						camFollow.x = boyfriend.getMidpoint().x - 380;
 					case 'robocesbg':
-						camFollow.y = boyfriend.getMidpoint().y - 400;
-						camFollow.x = boyfriend.getMidpoint().x - 600;
+						switch (roboStage.curStage)
+						{
+							default:
+								camFollow.y = boyfriend.getMidpoint().y - 430;
+								camFollow.x = boyfriend.getMidpoint().x - 600;
+							case 'zardy':
+								camFollow.x = boyfriend.getMidpoint().x - 390;
+								camFollow.y = boyfriend.getMidpoint().y - 240;
+						}
 				}
 			}
 		}

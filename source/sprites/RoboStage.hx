@@ -69,8 +69,8 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             ], 0.7);
 
             //zardy shit
-            dumboffset = 350;
-            var offsetY:Int = 150;
+            dumboffset = 365;
+            var offsetY:Int = 200;
             var zardybg:FlxSprite = new FlxSprite(164.4 - dumboffset, 0 - offsetY).loadGraphic(Paths.image('roboStage/zardy_bg'));
             zardybg.antialiasing = true;
             zardybg.scrollFactor.set(0.9, 0.9);
@@ -87,7 +87,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
                 [
                     "boyfriend" => [1366.3 - (dumboffset), 525.8 - offsetY], 
                     "gf" => [810.9 - (dumboffset * 1.275), 244.4 - offsetY], 
-                    "dad" => [492.5 - (dumboffset * 1.765), 430.8 - offsetY]
+                    "dad" => [492.5 - (dumboffset * 1.765), 410.8 - offsetY]
                 ], 0.715);
 
         }
@@ -143,7 +143,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         {
             case 32:
                 instance.camZooming = true;
-                instance.disableCamera = true;
+                //instance.disableCamera = true;
                 switchStage('zardy');
                 instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 30, PlayState.gf.getGraphicMidpoint().y - 45);
             case 128:
