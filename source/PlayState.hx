@@ -1450,7 +1450,7 @@ class PlayState extends MusicBeatState
 		
 		songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songName.screenCenter(X);
-		songName.antialiasing = true;
+		songName.antialiasing = FlxG.stage.window.width > 1280 ? true : false;
 
 		if (FlxG.save.data.songPosition) 
 		{
@@ -3068,7 +3068,8 @@ class PlayState extends MusicBeatState
 	}
 
 	function noteMiss(direction:Int = 1, daNote:Note):Void {
-		if (!boyfriend.stunned) {
+		if (!boyfriend.stunned) 
+		{
 			health -= 0.04;
 
 			//if (storyDifficulty == 3) {
@@ -3093,7 +3094,7 @@ class PlayState extends MusicBeatState
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
 
-			curPlayer.playAnim('sing' + dataSuffix[daNote.noteData] + 'miss', true);
+			curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
 
 			#if windows
 			if (luaModchart != null)

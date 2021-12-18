@@ -8,10 +8,13 @@ import flixel.FlxSprite;
 class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
 {
     public var stages:Map<String, CoolStage> = [];
+    public var curStage:String = 'default';
+    private var instance:PlayState;
 
     public function new(x:Float, y:Float)
     {
         super(x,y);
+        instance = PlayState.instance;
 
         var bg:FlxSprite = new FlxSprite(-1348, -844).loadGraphic(Paths.image('roboCesar'));
         bg.antialiasing = true;
@@ -66,19 +69,26 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             ], 0.7);
 
             //zardy shit
-            var zardybg:FlxSprite = new FlxSprite(164.4, 0).loadGraphic(Paths.image('roboStage/zardy_bg'));
+            dumboffset = 350;
+            var offsetY:Int = 150;
+            var zardybg:FlxSprite = new FlxSprite(164.4 - dumboffset, 0 - offsetY).loadGraphic(Paths.image('roboStage/zardy_bg'));
             zardybg.antialiasing = true;
             zardybg.scrollFactor.set(0.9, 0.9);
 
-            var zardytown:FlxSprite = new FlxSprite(161.65, 1.1).loadGraphic(Paths.image('roboStage/zardy_fevertown'));
+            var zardytown:FlxSprite = new FlxSprite(161.65 - dumboffset, 1.1 - offsetY).loadGraphic(Paths.image('roboStage/zardy_fevertown'));
             zardytown.antialiasing = true;
             zardytown.scrollFactor.set(0.8, 0.8);
 
-            var zardyforeground:FlxSprite = new FlxSprite(161.65, 6.15).loadGraphic(Paths.image('roboStage/zardy_foreground'));
+            var zardyforeground:FlxSprite = new FlxSprite(161.65 - dumboffset, 6.15 - offsetY).loadGraphic(Paths.image('roboStage/zardy_foreground'));
             zardyforeground.antialiasing = true;
             zardyforeground.scrollFactor.set(0.9, 0.9);
 
-            stages['zardy'] = new CoolStage([zardybg, zardytown, zardyforeground], null, ["boyfriend" => [1366.3, 525.8], "gf" => [810.9, 244.4], "dad" => [492.5, 430.8]], 0.7);
+            stages['zardy'] = new CoolStage([zardybg, zardytown, zardyforeground], null, 
+                [
+                    "boyfriend" => [1366.3 - (dumboffset), 525.8 - offsetY], 
+                    "gf" => [810.9 - (dumboffset * 1.275), 244.4 - offsetY], 
+                    "dad" => [492.5 - (dumboffset * 1.765), 430.8 - offsetY]
+                ], 0.715);
 
         }
 
@@ -91,14 +101,16 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         {
             if (i != null)
                 remove(i);
+            else
+                trace('null object????');
         }
 
-        for (i in PlayState.instance.roboForeground.members)
+        for (i in instance.roboForeground.members)
         {
             if (i == null) continue;
 
             i.kill();
-            PlayState.instance.roboForeground.remove(i);
+           instance.roboForeground.remove(i);
         }
 
         for (i in stages[stage].sprites)
@@ -108,7 +120,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
 
         for (i in stages[stage].fgSprites)
         {
-            PlayState.instance.roboForeground.add(i);
+            instance.roboForeground.add(i);
         }
 
         for (i in stages[stage].positoning.keys())
@@ -117,8 +129,12 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             Reflect.setField(Reflect.field(PlayState, i), "y", stages[stage].positoning[i][1]);
         }
 
-        PlayState.instance.defaultCamZoom = stages[stage].camZoom;
-        PlayState.instance.camGame.flash(FlxColor.WHITE, 0.45);
+        instance.defaultCamZoom = stages[stage].camZoom;
+
+        if (curStage == stage) return;
+
+        curStage = stage;
+        instance.camGame.flash(FlxColor.WHITE, 0.45);
     }
 
     public function beatHit(curBeat:Int)
@@ -126,18 +142,18 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         switch (curBeat)
         {
             case 32:
-                PlayState.instance.camZooming = true;
-                PlayState.instance.disableCamera = true;
-                PlayState.instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 580, PlayState.gf.getGraphicMidpoint().y + 30);
+                instance.camZooming = true;
+                instance.disableCamera = true;
                 switchStage('zardy');
+                instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 30, PlayState.gf.getGraphicMidpoint().y - 45);
             case 128:
-                PlayState.instance.camZooming = true;
-                PlayState.instance.disableCamera = false;
+                instance.camZooming = true;
+                instance.disableCamera = false;
                 switchStage('whitty');
             case 496:
-                PlayState.instance.camZooming = true;
-                PlayState.instance.disableCamera = true;
-                PlayState.instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 30, PlayState.gf.getGraphicMidpoint().y - 130);
+                instance.camZooming = true;
+                instance.disableCamera = true;
+                instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 30, PlayState.gf.getGraphicMidpoint().y - 130);
                 switchStage('matt');
         }
 
