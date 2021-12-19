@@ -90,6 +90,18 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
                     "dad" => [492.5 - (dumboffset * 1.765), 410.8 - offsetY]
                 ], 0.715);
 
+            // week 1
+            var w1bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
+            w1bg.antialiasing = true;
+
+            var w1Front:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stagefront'));
+            w1Front.antialiasing = true;
+            w1Front.scale.set(1.35, 1.35);
+
+            var w1Curtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains'));
+            w1Curtains.antialiasing = true;
+
+            stages['week1'] = new CoolStage([w1bg, w1Front, w1Curtains], null, [], 0.74, ["gf" => 1, "boyfriend" => 1, "dad" => 1]);
         }
 
         switchStage('default');
@@ -123,10 +135,18 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             instance.roboForeground.add(i);
         }
 
-        for (i in stages[stage].positoning.keys())
+        for (ch => pos in stages[stage].positoning)
         {
-            Reflect.setField(Reflect.field(PlayState, i), "x", stages[stage].positoning[i][0]);
-            Reflect.setField(Reflect.field(PlayState, i), "y", stages[stage].positoning[i][1]);
+            Reflect.setField(Reflect.field(PlayState, ch), "x", pos[0]);
+            Reflect.setField(Reflect.field(PlayState, ch), "y", pos[1]);
+        }
+
+        for (ch => sc in stages[stage].scrolling)
+        {
+            // REFLECT THESE NUTS IN YO MOUTH WTF DID I MAKE
+            // Do not trust me near a computer ever again
+            if (Reflect.field(PlayState, ch) != null)
+                Reflect.callMethod(Reflect.field(Reflect.field(PlayState, ch), "scrollFactor"), Reflect.field(Reflect.field(Reflect.field(PlayState, ch), "scrollFactor"), "set"), [sc,sc]);
         }
 
         instance.defaultCamZoom = stages[stage].camZoom;
@@ -135,6 +155,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
 
         curStage = stage;
         instance.camGame.flash(FlxColor.WHITE, 0.45);
+        instance.camZooming = true;
     }
 
     public function beatHit(curBeat:Int)
@@ -142,19 +163,17 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         switch (curBeat)
         {
             case 32:
-                instance.camZooming = true;
-                //instance.disableCamera = true;
                 switchStage('zardy');
-                instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 30, PlayState.gf.getGraphicMidpoint().y - 45);
             case 128:
-                instance.camZooming = true;
-                instance.disableCamera = false;
                 switchStage('whitty');
+            case 160 | 592:
+                switchStage('default');
+            case 224:
+                switchStage('week1');
             case 496:
-                instance.camZooming = true;
                 instance.disableCamera = true;
-                instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x + 30, PlayState.gf.getGraphicMidpoint().y - 130);
                 switchStage('matt');
+                instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x - 100, PlayState.gf.getGraphicMidpoint().y - 130);
         }
 
         for (i in members)
@@ -172,11 +191,16 @@ class CoolStage
 
     public var camZoom:Float = 0.4;
     public var positoning:Map<String, Array<Float>> = [];
+    public var gfScroll:Float = 0.9;
+    public var scrolling:Map<String, Float> = [];
 
-    public function new(sprs:Array<FlxSprite>, ?fgSprites:Array<FlxSprite>, ?positoning:Map<String, Array<Float>>, camZoom:Float)
+    public function new(sprs:Array<FlxSprite>, ?fgSprites:Array<FlxSprite>, ?positoning:Map<String, Array<Float>>, camZoom:Float, ?scrolls:Map<String, Float>)
     {
         sprites = sprs;
         this.positoning = positoning;
+
+        if (scrolls != null)
+            this.scrolling = scrolls;
 
         var coolmap:Map<String, Array<Float>> = [
             "boyfriend" => [1085.2, 482.3],
@@ -189,6 +213,14 @@ class CoolStage
             if (!this.positoning.exists(k))
             {
                 this.positoning.set(k, v);
+            }
+        }
+
+        for (k in coolmap.keys())
+        {
+            if (!scrolling.exists(k))
+            {
+                scrolling.set(k, 0.9);
             }
         }
 

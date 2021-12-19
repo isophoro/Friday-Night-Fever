@@ -2184,7 +2184,7 @@ class PlayState extends MusicBeatState
 						{
 							switch(roboStage.curStage)
 							{
-								case 'zardy':
+								case 'zardy' | 'week1':
 									camFollow.y = dad.getMidpoint().y - 190;
 									camFollow.x = dad.getMidpoint().x - -600;
 								default:
@@ -2260,7 +2260,7 @@ class PlayState extends MusicBeatState
 							default:
 								camFollow.y = boyfriend.getMidpoint().y - 430;
 								camFollow.x = boyfriend.getMidpoint().x - 600;
-							case 'zardy':
+							case 'zardy' | 'week1':
 								camFollow.x = boyfriend.getMidpoint().x - 390;
 								camFollow.y = boyfriend.getMidpoint().y - 240;
 						}
