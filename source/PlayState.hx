@@ -85,9 +85,9 @@ class PlayState extends MusicBeatState
 
 	private var vocals:FlxSound;
 
-	public static var dad:Character;
-	public static var gf:Character;
-	public static var boyfriend:Boyfriend;
+	public var dad:Character;
+	public var gf:Character;
+	public var boyfriend:Boyfriend;
 	public var font:Bool = false;
 
 	public var notes:FlxTypedGroup<Note>;
@@ -2184,10 +2184,10 @@ class PlayState extends MusicBeatState
 						{
 							switch(roboStage.curStage)
 							{
-								case 'zardy' | 'week1':
+								default:
 									camFollow.y = dad.getMidpoint().y - 190;
 									camFollow.x = dad.getMidpoint().x - -600;
-								default:
+								case 'default' | 'whitty':
 									camFollow.y = dad.getMidpoint().y - 340;
 									camFollow.x = dad.getMidpoint().x - -600;
 							}
@@ -2257,10 +2257,10 @@ class PlayState extends MusicBeatState
 					case 'robocesbg':
 						switch (roboStage.curStage)
 						{
-							default:
+							case 'default' | 'whitty':
 								camFollow.y = boyfriend.getMidpoint().y - 430;
 								camFollow.x = boyfriend.getMidpoint().x - 600;
-							case 'zardy' | 'week1':
+							default:
 								camFollow.x = boyfriend.getMidpoint().x - 390;
 								camFollow.y = boyfriend.getMidpoint().y - 240;
 						}

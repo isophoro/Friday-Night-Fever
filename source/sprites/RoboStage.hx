@@ -1,5 +1,6 @@
 package sprites;
 
+import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.math.FlxPoint;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
@@ -41,7 +42,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             stages['mako'] = new CoolStage([makobg, makobg2], null, ["boyfriend" => [940.2, 482.3], "gf" => [175, 149], "dad" => [-324.7, 365.3]], 0.67);
 
             // matt shit
-            var mattbg:FlxSprite = new FlxSprite(-348, -230).loadGraphic(Paths.image('roboStage/matt_bg'));
+            var mattbg:FlxSprite = new FlxSprite(-370, -230).loadGraphic(Paths.image('roboStage/matt_bg'));
             mattbg.antialiasing = true;
             mattbg.scrollFactor.set(0.9, 0.9);
             mattbg.scale.set(1.05, 1.05);
@@ -51,7 +52,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             mattfg.scrollFactor.set(0.9, 0.9);
             mattfg.scale.set(1.05, 1.05);
 
-            var mattcrowd:FlxSprite = new FlxSprite(mattbg.x, mattbg.y);
+            var mattcrowd:FlxSprite = new FlxSprite(mattbg.x - 50, mattbg.y);
             mattcrowd.frames = Paths.getSparrowAtlas('roboStage/matt_crowd');
             mattcrowd.animation.addByPrefix('bop', 'robo crowd hehe', 24, false);
             mattcrowd.antialiasing = true;
@@ -100,8 +101,29 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
 
             var w1Curtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains'));
             w1Curtains.antialiasing = true;
+            w1Curtains.scale.set(1.05, 1.05);
 
             stages['week1'] = new CoolStage([w1bg, w1Front, w1Curtains], null, [], 0.74, ["gf" => 1, "boyfriend" => 1, "dad" => 1]);
+
+            // church
+            var church:FlxSprite = new FlxSprite(-948, -779).loadGraphic(Paths.image('bg_taki'));
+            church.antialiasing = true;
+
+            stages['church'] = new CoolStage([church], null, [], 0.55, ["gf" => 1, "boyfriend" => 1, "dad" => 1]);
+
+            // week 5
+            var w5bg:FlxSprite = new FlxSprite(-706, -371).loadGraphic(Paths.image('christmas/first2songs', 'week5'));
+            w5bg.antialiasing = true;
+            w5bg.scrollFactor.set(0.9, 0.9);
+
+            var bottomBoppers = new FlxSprite(-825, -444);
+            bottomBoppers.frames = Paths.getSparrowAtlas('boppers/CROWD1', 'week5');
+            bottomBoppers.animation.addByPrefix('bop', "CROWD1", 24, false);
+            bottomBoppers.animation.play('bop');
+            bottomBoppers.scrollFactor.set(0.9, 0.9);
+            bottomBoppers.scale.set(1.1, 1.1);
+
+            stages['week5'] = new CoolStage([w5bg], [bottomBoppers], [], 0.55, ["gf" => 1, "boyfriend" => 1, "dad" => 1]);
         }
 
         switchStage('default');
@@ -121,7 +143,6 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         {
             if (i == null) continue;
 
-            i.kill();
            instance.roboForeground.remove(i);
         }
 
@@ -137,16 +158,16 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
 
         for (ch => pos in stages[stage].positoning)
         {
-            Reflect.setField(Reflect.field(PlayState, ch), "x", pos[0]);
-            Reflect.setField(Reflect.field(PlayState, ch), "y", pos[1]);
+            Reflect.setField(Reflect.field(instance, ch), "x", pos[0]);
+            Reflect.setField(Reflect.field(instance, ch), "y", pos[1]);
         }
 
         for (ch => sc in stages[stage].scrolling)
         {
             // REFLECT THESE NUTS IN YO MOUTH WTF DID I MAKE
             // Do not trust me near a computer ever again
-            if (Reflect.field(PlayState, ch) != null)
-                Reflect.callMethod(Reflect.field(Reflect.field(PlayState, ch), "scrollFactor"), Reflect.field(Reflect.field(Reflect.field(PlayState, ch), "scrollFactor"), "set"), [sc,sc]);
+            if (Reflect.field(instance, ch) != null)
+                Reflect.callMethod(Reflect.field(Reflect.field(instance, ch), "scrollFactor"), Reflect.field(Reflect.field(Reflect.field(instance, ch), "scrollFactor"), "set"), [sc,sc]);
         }
 
         instance.defaultCamZoom = stages[stage].camZoom;
@@ -156,6 +177,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         curStage = stage;
         instance.camGame.flash(FlxColor.WHITE, 0.45);
         instance.camZooming = true;
+        instance.disableCamera = false;
     }
 
     public function beatHit(curBeat:Int)
@@ -168,15 +190,26 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
                 switchStage('whitty');
             case 160 | 592:
                 switchStage('default');
-            case 224:
+            case 224 | 560:
                 switchStage('week1');
+            case 256 | 432:
+                switchStage('week5');
+            case 400:
+                switchStage('church');
             case 496:
-                instance.disableCamera = true;
                 switchStage('matt');
-                instance.camFollow.setPosition(PlayState.gf.getGraphicMidpoint().x - 100, PlayState.gf.getGraphicMidpoint().y - 130);
+                instance.disableCamera = true;
+                instance.camFollow.setPosition(instance.gf.getGraphicMidpoint().x - 100, instance.gf.getGraphicMidpoint().y - 130);
+                //instance.camGame.setPosition(instance.camFollow.x, instance.camFollow.y);
         }
 
         for (i in members)
+        {
+            if (i != null && i.animation.getByName('bop') != null)
+                i.animation.play('bop', true);
+        }
+
+        for (i in instance.roboForeground)
         {
             if (i != null && i.animation.getByName('bop') != null)
                 i.animation.play('bop', true);
