@@ -188,7 +188,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
                 switchStage('zardy');
             case 128:
                 switchStage('whitty');
-            case 160 | 592:
+            case 160 | 336 | 592:
                 switchStage('default');
             case 224 | 560:
                 switchStage('week1');

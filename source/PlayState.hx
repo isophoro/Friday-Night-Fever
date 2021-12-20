@@ -209,9 +209,10 @@ class PlayState extends MusicBeatState
 
 	public var mobileTiles:Array<FlxSprite> = [];
 	public var subtitles:Subtitles;
-	var wiggleEffect:WiggleEffect;
+	var wiggleEffect:WiggleEffect = new WiggleEffect();
 	
 	var currentTimingShown:FlxText;
+	var purpleOverlay:FlxSprite;
 
 	override public function create() 
 	{
@@ -378,7 +379,6 @@ class PlayState extends MusicBeatState
 					{
 						if (FlxG.save.data.shaders)
 						{
-							wiggleEffect = new WiggleEffect();
 							wiggleEffect.effectType = WiggleEffectType.WAVY;
 							wiggleEffect.waveAmplitude = 0.05;
 							wiggleEffect.waveFrequency = 3;
@@ -1059,6 +1059,32 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		add(scoreTxt);
 
+		if (curSong.toLowerCase() == 'tranquility')
+		{
+			purpleOverlay = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.PURPLE);
+			purpleOverlay.alpha = 0.4;
+			add(purpleOverlay);
+			purpleOverlay.cameras = [camHUD];
+			purpleOverlay.scale.set(1.5, 1.5);
+			purpleOverlay.scrollFactor.set();
+
+			new FlxTimer().start(1.35, (t) -> {
+				FlxTween.tween(purpleOverlay, {alpha: FlxG.random.float(0.235, 0.455)}, 1.15);
+			}, 0);
+			
+			if (FlxG.save.data.shaders)
+			{
+				wiggleEffect.effectType = WiggleEffectType.DREAMY;
+				wiggleEffect.waveAmplitude = 0.0055;
+				wiggleEffect.waveFrequency = 7;
+				wiggleEffect.waveSpeed = 1.15;
+				roboStage.members[0].shader = wiggleEffect.shader;
+
+				for (i in [iconP1, iconP2, scoreTxt, currentTimingShown])
+					i.shader = wiggleEffect.shader;
+			}
+		}
+
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
@@ -1070,30 +1096,19 @@ class PlayState extends MusicBeatState
 			add(subtitles);
 		}
 
-		if (SONG.song.toLowerCase() == 'party-crasher') 
+		switch(SONG.song.toLowerCase())
 		{
-			dark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/darkShit'));
-			dark.cameras = [camHUD];
-			add(dark);
-			dark.visible = false;
+			case 'party-crasher':
+				dark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/darkShit'));
+				dark.cameras = [camHUD];
+				add(dark);
+				dark.visible = false;		
+			case 'bazinga' | 'crucify' | 'hallow' | 'hardships' | 'portrait' | 'run':
+				moreDark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/evenMOREdarkShit'));
+				moreDark.cameras = [camHUD];
+				add(moreDark);
 		}
 
-		if (SONG.song.toLowerCase() == 'bazinga') 
-		{
-			moreDark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/evenMOREdarkShit'));
-			moreDark.cameras = [camHUD];
-			add(moreDark);
-		}
-
-		if (SONG.song.toLowerCase() == 'crucify'
-			|| SONG.song.toLowerCase() == 'hallow'
-			|| SONG.song.toLowerCase() == 'hardships'
-			|| SONG.song.toLowerCase() == 'portrait'
-			|| SONG.song.toLowerCase() == 'run') {
-			moreDark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/evenMOREdarkShit'));
-			moreDark.cameras = [camHUD];
-			add(moreDark);
-		}
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
@@ -1984,7 +1999,7 @@ class PlayState extends MusicBeatState
 				}
 		}
 
-		if(curSong == 'Soul' && FlxG.save.data.shaders)
+		if(FlxG.save.data.shaders)
 		{
 			wiggleEffect.update(elapsed);
 		}
@@ -2858,6 +2873,12 @@ class PlayState extends MusicBeatState
 			comboSpr.cameras = [camHUD];
 			rating.cameras = [camHUD];
 
+			if (curSong.toLowerCase() == 'tranquility')
+			{
+				comboSpr.shader = wiggleEffect.shader;
+				rating.shader = wiggleEffect.shader;	
+			}
+
 			var seperatedScore:Array<Int> = [];
 
 			var comboSplit:Array<String> = (combo + "").split('');
@@ -2893,7 +2914,12 @@ class PlayState extends MusicBeatState
 				numScore.velocity.x = FlxG.random.float(-5, 5);
 
 				if (combo >= 10 || combo == 0)
+				{
 					add(numScore);
+
+					if (curSong.toLowerCase() == 'tranquility')
+						numScore.shader = wiggleEffect.shader;
+				}
 
 				FlxTween.tween(numScore, {alpha: 0}, 0.2, {
 					onComplete: function(tween:FlxTween) {
