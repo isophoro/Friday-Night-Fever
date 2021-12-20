@@ -1062,14 +1062,14 @@ class PlayState extends MusicBeatState
 		if (curSong.toLowerCase() == 'tranquility')
 		{
 			purpleOverlay = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.PURPLE);
-			purpleOverlay.alpha = 0.4;
+			purpleOverlay.alpha = 0.33;
 			add(purpleOverlay);
 			purpleOverlay.cameras = [camHUD];
 			purpleOverlay.scale.set(1.5, 1.5);
 			purpleOverlay.scrollFactor.set();
 
 			new FlxTimer().start(1.35, (t) -> {
-				FlxTween.tween(purpleOverlay, {alpha: FlxG.random.float(0.235, 0.455)}, 1.15);
+				FlxTween.tween(purpleOverlay, {alpha: FlxG.random.float(0.235, 0.425)}, 1.15);
 			}, 0);
 			
 			if (FlxG.save.data.shaders)
