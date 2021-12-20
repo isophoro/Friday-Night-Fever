@@ -208,6 +208,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public var mobileTiles:Array<FlxSprite> = [];
+	var whittyBG:FlxSprite;
 	public var subtitles:Subtitles;
 	var wiggleEffect:WiggleEffect = new WiggleEffect();
 	
@@ -681,6 +682,15 @@ class PlayState extends MusicBeatState
 
 					add(stageCurtains);
 				}
+			case 'princess': 
+				defaultCamZoom = 0.7;
+				curStage = 'princess';
+
+				whittyBG = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/alleyway'));
+				whittyBG.antialiasing = true;
+				whittyBG.scrollFactor.set(0.9, 0.9);
+				whittyBG.scale.set(1.25, 1.25);
+				add(whittyBG);
 			default:
 				{
 					defaultCamZoom = 0.9;
@@ -908,6 +918,13 @@ class PlayState extends MusicBeatState
 				gf.y = 149;
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				gf.scrollFactor.set(0.9, 0.9);
+			case 'princess': 
+				boyfriend.x = 1085.2;
+				boyfriend.y = 482.3;
+				gf.x = 227;
+				gf.y = 149;
+				boyfriend.scrollFactor.set(0.9, 0.9);
+				gf.scrollFactor.set(0.9, 0.9);
 		}
 
 		if(SONG.song.toLowerCase() == 'bazinga' || SONG.song.toLowerCase() == 'crucify')
@@ -1078,7 +1095,7 @@ class PlayState extends MusicBeatState
 				wiggleEffect.waveAmplitude = 0.0055;
 				wiggleEffect.waveFrequency = 7;
 				wiggleEffect.waveSpeed = 1.15;
-				roboStage.members[0].shader = wiggleEffect.shader;
+				whittyBG.shader = wiggleEffect.shader;
 
 				for (i in [iconP1, iconP2, scoreTxt, currentTimingShown])
 					i.shader = wiggleEffect.shader;

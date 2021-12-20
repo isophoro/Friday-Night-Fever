@@ -2,6 +2,7 @@
 	"song": {
 		"player1": "bf",
 		"player2": "dad",
+		"stage": "princess",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -5207,7 +5208,7 @@
 		],
 		"player3": "gf",
 		"song": "Tranquility",
-		"stage": "robocesbg",
+		"stage": "princess",
 		"needsVoices": true,
 		"validScore": true,
 		"speed": 2.6,
