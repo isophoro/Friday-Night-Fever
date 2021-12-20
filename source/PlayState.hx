@@ -30,6 +30,8 @@ import flixel.util.FlxTimer;
 import lime.utils.Assets;
 import openfl.Lib;
 import openfl.filters.BitmapFilter;
+import Shaders;
+import ModChart;
 
 using StringTools;
 
@@ -74,6 +76,11 @@ class PlayState extends MusicBeatState
 	public static var loadRep:Bool = false;
 
 	var songLength:Float = 0;
+
+	var tvshit:VCRDistortionEffect;
+	var rain:RainEffect;
+
+	public var modchart:ModChart;
 
 	#if windows
 	// Discord RPC variables
@@ -210,6 +217,8 @@ class PlayState extends MusicBeatState
 	public var mobileTiles:Array<FlxSprite> = [];
 	var whittyBG:FlxSprite;
 	public var subtitles:Subtitles;
+
+	
 	var wiggleEffect:WiggleEffect = new WiggleEffect();
 	
 	var currentTimingShown:FlxText;
@@ -218,6 +227,19 @@ class PlayState extends MusicBeatState
 	override public function create() 
 	{
 		super.create();
+
+		//partycrasher shit//
+		modchart = new ModChart(this);
+
+		tvshit = new VCRDistortionEffect();
+		rain = new RainEffect();
+		
+		tvshit.setDistortion(false);
+		tvshit.setVignetteMoving(true);
+		tvshit.setVignette(true);
+		tvshit.setScanlines(false);
+		tvshit.setGlitchModifier(.2);
+		//partycrasher shit//
 
 		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
 		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
@@ -2020,6 +2042,13 @@ class PlayState extends MusicBeatState
 		{
 			wiggleEffect.update(elapsed);
 		}
+
+		if(tvshit!=null){
+			tvshit.update(elapsed);
+		}
+		if(rain!=null){
+			rain.update(elapsed);
+		}
 	
 		super.update(elapsed);
 		
@@ -3477,16 +3506,12 @@ class PlayState extends MusicBeatState
 
 					if (FlxG.save.data.shaders)
 					{
-						filters.push(ShadersHandler.chromaticAberration);
-		
 						camfilters.push(ShadersHandler.scanline);
-						camfilters.push(ShadersHandler.tiltshift);
-						camfilters.push(ShadersHandler.hq2x);
-						camfilters.push(ShadersHandler.chromaticAberration);
-						ShadersHandler.setChrome(FlxG.random.int(4, 4) / 1000);
-			
-						camGame.filtersEnabled = true;
 						camHUD.filtersEnabled = true;
+
+						//modchart.addRainCamEffect(rain);
+						modchart.addCamEffect(tvshit);
+					
 					}
 		
 					scoreTxt.setFormat(Paths.font("Retro Gaming.ttf"), #if !mobile 16 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -3495,16 +3520,10 @@ class PlayState extends MusicBeatState
 
 					if (FlxG.save.data.shaders)
 					{
-						filters.remove(ShadersHandler.chromaticAberration);
-					
+
 						camfilters.remove(ShadersHandler.scanline);
-						camfilters.remove(ShadersHandler.tiltshift);
-						camfilters.remove(ShadersHandler.hq2x);
-						camfilters.remove(ShadersHandler.chromaticAberration);
-						ShadersHandler.setChrome(0);
-			
-						camGame.filtersEnabled = false;
 						camHUD.filtersEnabled = false;
+						modchart.removeCamEffect(tvshit);
 					}
 		
 					font = false;
