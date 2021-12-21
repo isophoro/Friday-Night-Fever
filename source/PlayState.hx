@@ -1,5 +1,6 @@
 package;
 
+import openfl.display.BitmapData;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import sprites.RoboStage;
 import sprites.CharacterTrail;
@@ -162,6 +163,7 @@ class PlayState extends MusicBeatState
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
+	public var church:FlxSprite;
 
 	var bgGirls:BackgroundGirls;
 
@@ -179,6 +181,7 @@ class PlayState extends MusicBeatState
 	public var roboStage:RoboStage;
 	public var roboForeground:FlxTypedSpriteGroup<FlxSprite> = new FlxTypedSpriteGroup<FlxSprite>();
 	public var disableCamera:Bool = false;
+	public var disableModCamera:Bool = false;
 
 	public static var daPixelZoom:Float = 6;
 
@@ -427,9 +430,9 @@ class PlayState extends MusicBeatState
 					curStage = 'church';
 					defaultCamZoom = 0.5;
 
-					var bg:FlxSprite = new FlxSprite(-200, -100).loadGraphic(Paths.image('bg_taki'));
-					bg.antialiasing = true;
-					add(bg);
+					church = new FlxSprite(-200, -100).loadGraphic(Paths.image('bg_taki'));
+					church.antialiasing = true;
+					add(church);
 				}
 			case 'halloween2':
 				{
@@ -837,7 +840,7 @@ class PlayState extends MusicBeatState
 			camPos.set(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 
 		boyfriend = new Boyfriend(770, 450, curBoyfriend == null ? SONG.player1 : curBoyfriend);
-
+	
 		curPlayer = opponent ? dad : boyfriend;
 		curOpponent = opponent ? boyfriend : dad;
 
@@ -1958,8 +1961,11 @@ class PlayState extends MusicBeatState
 				member.angle = luaModchart.getVar("strum" + i + "Angle", "float");
 			}*/
 
-			FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
-			camHUD.angle = luaModchart.getVar('camHudAngle', 'float');
+			if (!disableModCamera)
+			{
+				FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
+				camHUD.angle = luaModchart.getVar('camHudAngle', 'float');
+			}
 
 			if (luaModchart.getVar("showOnlyStrums", 'bool')) 
 			{
@@ -2051,7 +2057,7 @@ class PlayState extends MusicBeatState
 		}
 	
 		super.update(elapsed);
-		
+
 		if (!FlxG.save.data.accuracyDisplay)
 			scoreTxt.text = "Score: " + songScore;
 		else
@@ -2510,7 +2516,7 @@ class PlayState extends MusicBeatState
 				}
 
 				if (!daNote.mustPress && daNote.wasGoodHit) {
-					if (SONG.song != 'Milk-Tea')
+					if (SONG.song != 'Milk-Tea' && !disableCamera && !disableModCamera)
 						camZooming = true;
 
 					var altAnim:String = "";
@@ -3493,6 +3499,11 @@ class PlayState extends MusicBeatState
 						}
 					}
 			}
+		}
+
+		if (curSong == 'Bad-Nun')
+		{
+			shaders.BadNun.beatHit(curBeat);
 		}
 
 		if(curSong == 'Party-Crasher')
