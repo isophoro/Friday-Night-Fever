@@ -144,12 +144,10 @@ class SolidColorShader extends FlxShader
 
             if (active)
             {
-                gl_FragColor = vec4(color.x * _color.a, color.y * _color.a, color.z * _color.a, _color.a); 
+                _color = vec4(color.x * _color.a, color.y * _color.a, color.z * _color.a, _color.a); 
             }
-            else
-            {
-                gl_FragColor = _color;
-            }
+            
+            gl_FragColor = _color;
         }
     ')
 
