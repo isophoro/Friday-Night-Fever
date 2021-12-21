@@ -34,7 +34,7 @@ class Character extends FlxSprite
 		switch (curCharacter)
 		{
 			// FEVER + FEVER VARIANTS \\
-			case 'bf':
+			/*case 'bf':
 				iconColor = 'C353E3';
 				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
 				frames = tex;
@@ -76,7 +76,51 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-				flipX = true;
+				flipX = true;*/
+
+				case 'bf':
+					iconColor = 'C353E3';
+					var tex = Paths.getSparrowAtlas('characters/fever_assets', 'shared');
+					frames = tex;
+	
+					//trace(tex.frames.length);
+	
+					animation.addByPrefix('idle', 'fever idle0', 24, false);
+					animation.addByPrefix('singUP', 'fever up0', 24, false);
+					animation.addByPrefix('singLEFT', 'fever left0', 24, false);
+					animation.addByPrefix('singRIGHT', 'fever right0', 24, false);
+					animation.addByPrefix('singDOWN', 'fever down0', 24, false);
+					animation.addByPrefix('singUPmiss', 'fever up miss', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'fever left miss', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'fever right miss', 24, false);
+					animation.addByPrefix('singDOWNmiss', 'fever down miss', 24, false);
+					animation.addByPrefix('scared', 'fever fear', 24);
+					animation.addByPrefix('hey', 'fever hey', 24, false);
+					//animation.addByPrefix('transition', 'BF Transition', 24, false);
+	
+					animation.addByPrefix('firstDeath', "fever dies", 24, false);
+					animation.addByPrefix('deathLoop', "fever dead loop", 24, true);
+					animation.addByPrefix('deathConfirm', "fever dead confirm", 24, false);
+	
+					addOffset('idle', 6, 93);
+					addOffset("singUP", -25, 106);
+					addOffset("singRIGHT", -19, 92);
+					addOffset("singLEFT", 43, 95);
+					addOffset("singDOWN", 12, 10);
+					addOffset("singUPmiss", -14, 103);
+					addOffset("singRIGHTmiss", -20, 91);
+					addOffset("singLEFTmiss", 40, 93);
+					addOffset("singDOWNmiss", 11, 14);
+					addOffset("hey", -3, 93);
+				//	addOffset("transition", -10, 3);
+					addOffset('firstDeath', 42, 108);
+					addOffset('deathLoop', 20, 109);
+					addOffset('deathConfirm', 87, 131);
+					addOffset('scared', -1, 92);
+	
+					playAnim('idle');
+	
+					flipX = true;
 	
 			case 'bfiso':
 				iconColor = 'C353E3';
