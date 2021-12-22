@@ -20,7 +20,7 @@ class Crowd extends FlxSprite
                 loadGraphic(Paths.image('boppers/secondcrowd', 'week5'));
                 updateHitbox();
                 setPosition(-635, 850);
-            case 'party-crasher': 
+            case 'party-crasher' | 'loaded': 
                 loadGraphic(Paths.image('boppers/finalcrowd', 'week5'));
                 updateHitbox();
                 setPosition(-635, 830);

@@ -226,7 +226,7 @@ class PlayState extends MusicBeatState
 	var wiggleEffect:WiggleEffect = new WiggleEffect();
 	
 	var currentTimingShown:FlxText;
-	var purpleOverlay:FlxSprite;
+	public var purpleOverlay:FlxSprite;
 
 	override public function create() 
 	{
@@ -1078,7 +1078,7 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		add(scoreTxt);
 
-		if (curSong.toLowerCase() == 'tranquility')
+		if (curSong.toLowerCase() == 'tranquility' || curStage == 'church')
 		{
 			purpleOverlay = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.PURPLE);
 			purpleOverlay.alpha = 0.33;
@@ -1087,21 +1087,26 @@ class PlayState extends MusicBeatState
 			purpleOverlay.scale.set(1.5, 1.5);
 			purpleOverlay.scrollFactor.set();
 
-			new FlxTimer().start(1.35, (t) -> {
-				FlxTween.tween(purpleOverlay, {alpha: FlxG.random.float(0.235, 0.425)}, 1.15);
-			}, 0);
-			
-			if (FlxG.save.data.shaders)
+			if (curSong.toLowerCase() == 'tranquility')
 			{
-				wiggleEffect.effectType = WiggleEffectType.DREAMY;
-				wiggleEffect.waveAmplitude = 0.0055;
-				wiggleEffect.waveFrequency = 7;
-				wiggleEffect.waveSpeed = 1.15;
-				whittyBG.shader = wiggleEffect.shader;
+				new FlxTimer().start(1.35, (t) -> {
+					FlxTween.tween(purpleOverlay, {alpha: FlxG.random.float(0.235, 0.425)}, 1.15);
+				}, 0);
 
-				for (i in [iconP1, iconP2, scoreTxt, currentTimingShown])
-					i.shader = wiggleEffect.shader;
+				if (FlxG.save.data.shaders)
+				{
+					wiggleEffect.effectType = WiggleEffectType.DREAMY;
+					wiggleEffect.waveAmplitude = 0.0055;
+					wiggleEffect.waveFrequency = 7;
+					wiggleEffect.waveSpeed = 1.15;
+					whittyBG.shader = wiggleEffect.shader;
+	
+					for (i in [iconP1, iconP2, scoreTxt, currentTimingShown])
+						i.shader = wiggleEffect.shader;
+				}
 			}
+			else
+				purpleOverlay.alpha = 0.21;
 		}
 
 		strumLineNotes.cameras = [camHUD];

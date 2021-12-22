@@ -116,14 +116,10 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             w5bg.antialiasing = true;
             w5bg.scrollFactor.set(0.9, 0.9);
 
-            var bottomBoppers = new FlxSprite(-825, -444);
-            bottomBoppers.frames = Paths.getSparrowAtlas('boppers/CROWD1', 'week5');
-            bottomBoppers.animation.addByPrefix('bop', "CROWD1", 24, false);
-            bottomBoppers.animation.play('bop');
-            bottomBoppers.scrollFactor.set(0.9, 0.9);
-            bottomBoppers.scale.set(1.1, 1.1);
+            var crowd = new Crowd();
+            crowd.setPosition(-519, 819);
 
-            stages['week5'] = new CoolStage([w5bg], [bottomBoppers], [], 0.55, ["gf" => 1, "boyfriend" => 1, "dad" => 1]);
+            stages['week5'] = new CoolStage([w5bg], [crowd], [], 0.55, ["gf" => 1, "boyfriend" => 1, "dad" => 1]);
         }
 
         switchStage('default');
@@ -214,6 +210,9 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
         {
             if (i != null && i.animation.getByName('bop') != null)
                 i.animation.play('bop', true);
+
+            if (Reflect.field(i, 'beatHit') != null)
+                Reflect.callMethod(i, Reflect.field(i, 'beatHit'), []);
         }
     }
 }

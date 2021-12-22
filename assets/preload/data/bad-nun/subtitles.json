@@ -1,6 +1,6 @@
 [
     {
-      "text": "This song contains flashing lights!\nFlashing lights may be disabled in the settings menu.",
+      "text": "WARNING!\nThis song has special effects which includes\na small brief pattern of flashing lights.\nThese effects can be disabled in the settings.",
       "startStep": 10,
       "endStep": 100
     }

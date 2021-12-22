@@ -29,10 +29,10 @@ class BadNun
         {
             case 96:
                 PlayState.luaModchart.setVar("showOnlyStrums", true);
-                colorShader.active.value[0] = true;
-                bgColorShader.active.value[0] = true;
+                enableShader(true);
                 bgColorShader.color.value = [0,0,0];
 
+                instance.purpleOverlay.visible = false;
                 instance.disableModCamera = true;
                 instance.camZooming = false;
                 FlxTween.tween(instance.camGame, {zoom: instance.camGame.zoom + 0.2}, 7, {onComplete: (twn) -> {
@@ -77,7 +77,10 @@ class BadNun
                 instance.gf.visible = false;
                 instance.camFollow.setPosition(instance.dad.getMidpoint().x + 120, instance.dad.getMidpoint().y - 50);
                 FlxTween.tween(instance.camGame, {zoom: instance.camGame.zoom + 0.2}, 6);
+                FlxTween.tween(instance.dad, {angle: 10}, 7);
             case 175:
+                FlxTween.cancelTweensOf(instance.dad);
+                instance.dad.angle = 0;
                 bgColorShader.color.value = [1,1,1];
                 colorShader.color.value = [0,0,0];
                 instance.boyfriend.visible = true;
@@ -119,14 +122,29 @@ class BadNun
                 instance.dad.x -= 850;
                 instance.boyfriend.x += 1060;
 
+                instance.purpleOverlay.visible = true;
                 instance.defaultCamZoom = 0.5;
                 instance.camGame.focusOn(new FlxPoint(instance.gf.getGraphicMidpoint().x - 55, instance.gf.getGraphicMidpoint().y - 130));
-                colorShader.active.value[0] = false;
-                bgColorShader.active.value[0] = false;
+                enableShader(false);
                 instance.gf.visible = true;
                 instance.dad.visible = true;
                 instance.camZooming = true;
+            case 289:
+                FlxTween.tween(instance.camGame, {alpha: 0}, 9);
+                FlxTween.tween(instance.purpleOverlay, {alpha: 0}, 9);
+            case 320:
+                FlxTween.tween(instance.camGame, {alpha: 1}, 0.09);
+
+                enableShader(true);
+                bgColorShader.color.value = [0,0,0];
+                colorShader.color.value = [1,1,1];
         }
+    }
+
+    public static function enableShader(bool:Bool)
+    {
+        bgColorShader.active.value[0] = bool;
+        colorShader.active.value[0] = bool;
     }
 }
 
