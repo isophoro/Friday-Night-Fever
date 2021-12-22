@@ -200,6 +200,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
                 switchStage('matt');
                 instance.disableCamera = true;
                 instance.camFollow.setPosition(instance.gf.getGraphicMidpoint().x - 100, instance.gf.getGraphicMidpoint().y - 130);
+                instance.camGame.focusOn(new FlxPoint(instance.camFollow.x, instance.camFollow.y));
                 //instance.camGame.setPosition(instance.camFollow.x, instance.camFollow.y);
         }
 

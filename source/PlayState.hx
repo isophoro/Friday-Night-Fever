@@ -1,5 +1,6 @@
 package;
 
+import sprites.Crowd;
 import openfl.display.BitmapData;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import sprites.RoboStage;
@@ -161,7 +162,7 @@ class PlayState extends MusicBeatState
 	var songName:FlxText;
 	var painting:FlxSprite;
 	var upperBoppers:FlxSprite;
-	var bottomBoppers:FlxSprite;
+	var bottomBoppers:Crowd;
 	var santa:FlxSprite;
 	public var church:FlxSprite;
 
@@ -563,12 +564,6 @@ class PlayState extends MusicBeatState
 					bg.scrollFactor.set(0.9, 0.9);
 					bg.active = false;
 					add(bg);
-
-					var topboppers:FlxSprite = new FlxSprite(-560, 20).loadGraphic(Paths.image('boppers/Song1Tops', 'week5'));
-					topboppers.antialiasing = true;
-					topboppers.scrollFactor.set(0.9, 0.9);
-					topboppers.active = false;
-					add(topboppers);
 				}
 			case 'robocesbg':
 				{
@@ -837,7 +832,7 @@ class PlayState extends MusicBeatState
 		}
 
 		if (!isStoryMode)
-			camPos.set(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
+			camPos.set(instance.gf.getGraphicMidpoint().x - 100, instance.gf.getGraphicMidpoint().y - 130);
 
 		boyfriend = new Boyfriend(770, 450, curBoyfriend == null ? SONG.player1 : curBoyfriend);
 	
@@ -973,29 +968,10 @@ class PlayState extends MusicBeatState
 		if (roboStage != null)
 			add(roboForeground);
 
-		switch (curStage) 
+		if (curStage.startsWith('week5') || curStage == 'ripdiner')
 		{
-			case 'week5':
-				bottomBoppers = new FlxSprite(-1000, -400);
-				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/CROWD2', 'week5');
-				bottomBoppers.animation.addByPrefix('bounce', "CROWD2", 24, false);
-				bottomBoppers.animation.play('bounce');
-				bottomBoppers.scrollFactor.set(0.9, 0.9);
-				add(bottomBoppers);
-			case 'week5othercrowd':
-				bottomBoppers = new FlxSprite(-1000, -400);
-				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/crowd', 'week5');
-				bottomBoppers.animation.addByPrefix('bounce', "CROWD3", 24, false);
-				bottomBoppers.animation.play('bounce');
-				bottomBoppers.scrollFactor.set(0.9, 0.9);
-				add(bottomBoppers);
-			case 'ripdiner':
-				bottomBoppers = new FlxSprite(-800, -180);
-				bottomBoppers.frames = Paths.getSparrowAtlas('boppers/CROWD1', 'week5');
-				bottomBoppers.animation.addByPrefix('bounce', "CROWD1", 24, false);
-				bottomBoppers.animation.play('bounce');
-				bottomBoppers.scrollFactor.set(0.9, 0.9);
-				add(bottomBoppers);
+			bottomBoppers = new Crowd();
+			add(bottomBoppers);
 		}
 
 		if (loadRep) 
@@ -1045,6 +1021,7 @@ class PlayState extends MusicBeatState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
+		
 		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
@@ -3617,7 +3594,7 @@ class PlayState extends MusicBeatState
 	
 				}
 			case 'week5' | 'week5othercrowd' | 'ripdiner':
-				bottomBoppers.animation.play('bounce');
+				bottomBoppers.beatHit();
 			case 'limo' | 'limonight':
 				if (FlxG.save.data.distractions) {
 					grpLimoDancers.forEach(function(dancer:BackgroundDancer) {
