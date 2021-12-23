@@ -1,5 +1,10 @@
 package shaders;
 
+import flixel.util.FlxColor;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import sprites.CharacterTrail;
 import flixel.math.FlxPoint;
 import flixel.system.FlxAssets.FlxShader;
 import flixel.tweens.FlxEase;
@@ -10,6 +15,9 @@ class BadNun
 	public static var colorShader:SolidColorShader = new SolidColorShader();
 	public static var bgColorShader:SolidColorShader = new SolidColorShader();
     public static var instance:PlayState;
+    public static var trail:CharacterTrail;
+    public static var movieBars:FlxTypedGroup<FlxSprite>;
+    public static var darken:FlxSprite;
 
     public static function beatHit(curBeat:Int)
     {
@@ -23,6 +31,12 @@ class BadNun
             instance.gf.shader = colorShader;
             instance.boyfriend.shader = colorShader;
             instance.church.shader = bgColorShader;
+            trail = new CharacterTrail(instance.dad, null, 4, 24, 0.3, 0.069);
+            movieBars = new FlxTypedGroup<FlxSprite>();
+            movieBars.cameras = [instance.camGame];
+            darken = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+            darken.scrollFactor.set();
+            darken.alpha = 0;
         }
 
         switch (curBeat)
@@ -116,11 +130,26 @@ class BadNun
                 FlxTween.tween(instance.camGame, {zoom:0.55}, 7);
             case 222:
                 FlxTween.tween(instance.church, {alpha:0}, Conductor.crochet / 1000);
-            case 224:
+            case 224 | 448:
                 FlxTween.tween(instance.church, {alpha:1}, Conductor.crochet / 1000);
                 instance.disableCamera = false;
-                instance.dad.x -= 850;
-                instance.boyfriend.x += 1060;
+                instance.disableModCamera = false;
+                if (curBeat == 224)
+                {
+                    instance.dad.x -= 850;
+                    instance.boyfriend.x += 1060;
+                    instance.add(darken);
+                    darken.scale.set(6,6); // just to be safe?
+                }
+                else
+                {
+                    instance.dad.alpha = 1;
+                    instance.boyfriend.alpha = 1;
+                    instance.boyfriend.x = 1828;
+                    instance.boyfriend.y = 1148;
+                    instance.dad.y = 620;
+					instance.dad.x = 388;
+                }
 
                 instance.purpleOverlay.visible = true;
                 instance.defaultCamZoom = 0.5;
@@ -130,15 +159,98 @@ class BadNun
                 instance.dad.visible = true;
                 instance.camZooming = true;
             case 289:
-                FlxTween.tween(instance.camGame, {alpha: 0}, 9);
-                FlxTween.tween(instance.purpleOverlay, {alpha: 0}, 9);
+                FlxTween.tween(darken, {alpha: 1}, 9, {onComplete: (t) -> {
+                    instance.camGame.alpha = 0;
+                    focusCamera(instance.dad.getMidpoint().x + 40, instance.dad.getMidpoint().y - 50);
+                }});
+                FlxTween.tween(instance.purpleOverlay, {alpha:0}, 8);
             case 320:
+                instance.remove(darken);
                 FlxTween.tween(instance.camGame, {alpha: 1}, 0.09);
+                instance.camGame.shake(0.0115, 0.9);
+                instance.camGame.zoom = 0.7;
 
                 enableShader(true);
                 bgColorShader.color.value = [0,0,0];
                 colorShader.color.value = [1,1,1];
+            case 348:
+                bgColorShader.color.value = [1,1,1];
+                colorShader.color.value = [0,0,0];
+                instance.dad.visible = false;
+                instance.gf.visible = false;
+                instance.boyfriend.visible = false;
+                instance.disableModCamera = true;
+            case 352:
+                instance.dad.visible = true;
+                instance.remove(instance.dad);
+                instance.add(trail);
+                instance.add(instance.dad);
+                instance.camZooming = false;
+                instance.disableCamera = true;
+                instance.disableModCamera = true;
+
+                instance.dad.x += 500;
+                instance.camFollow.setPosition(instance.dad.x + 120, instance.dad.y + 90);
+                instance.camGame.focusOn(new FlxPoint(instance.camFollow.x, instance.camFollow.y));
+                instance.camGame.zoom = 1;
+                FlxTween.tween(instance.camFollow, {x: instance.dad.x + 120 + instance.dad.width, y: instance.dad.y + 90 + (instance.dad.height / 4)}, 9.5);
+            case 368:
+                FlxTween.cancelTweensOf(instance.camFollow);
+                instance.remove(trail);
+                instance.dad.x -= 500;
+                instance.dad.visible = false;
+                instance.boyfriend.visible = true;
+                instance.boyfriend.x += 500;
+                instance.camFollow.setPosition(instance.boyfriend.x + 120, instance.boyfriend.y + 150);
+                instance.camGame.focusOn(new FlxPoint(instance.camFollow.x, instance.camFollow.y));
+                FlxTween.tween(instance.camFollow, {x: instance.boyfriend.x + 60 + instance.boyfriend.width, y: instance.boyfriend.y + 90 + (instance.boyfriend.height / 4)}, 9.5);
+            case 384:
+                FlxTween.cancelTweensOf(instance.camFollow);
+                instance.camGame.zoom = 1.1;
+                focusCamera(instance.dad.x + 350, instance.dad.y + 120);
+                instance.add(movieBars);
+                instance.dad.visible = true;
+                instance.boyfriend.visible = false;
+                instance.boyfriend.x -= 500;
+
+                var m1:FlxSprite = new FlxSprite(0,0).makeGraphic(FlxG.width, 145, FlxColor.BLACK);
+                m1.scrollFactor.set();
+                movieBars.add(m1);
+
+                var m2:FlxSprite = m1.clone();
+                m2.setPosition(0, FlxG.height - m2.pixels.height);
+                m2.scrollFactor.set();
+                movieBars.add(m2);
+                m1.y -= 145;
+                m2.y += 145;
+                FlxTween.tween(m1, {y: m1.y + 145}, 0.35);
+                FlxTween.tween(m2, {y: m2.y - 145}, 0.35);
+                FlxTween.tween(instance.dad, {x: instance.dad.x + 140}, 7);
+            case 400:
+                FlxTween.cancelTweensOf(instance.dad);
+                instance.dad.visible = false;
+                instance.dad.x -= 140;
+                instance.boyfriend.visible = true;
+
+                focusCamera(instance.boyfriend.x + 350, instance.boyfriend.y + 120);
+                FlxTween.tween(instance.boyfriend, {x: instance.boyfriend.x - 240}, 7.5);
+            case 416:
+                instance.dad.alpha = 0.45;
+                instance.dad.visible = true;
+                instance.dad.setPosition(instance.boyfriend.x + 600, instance.boyfriend.x - 450);
+            case 432:
+                instance.dad.visible = false;
+            case 446:
+                FlxTween.tween(instance.church, {alpha:0}, 0.4);
+                FlxTween.tween(instance.boyfriend, {alpha:0}, 0.4);
+                instance.remove(movieBars);
         }
+    }
+
+    public static function focusCamera(x:Float, y:Float)
+    {
+        instance.camFollow.setPosition(x, y);
+        instance.camGame.focusOn(new FlxPoint(instance.camFollow.x, instance.camFollow.y));
     }
 
     public static function enableShader(bool:Bool)

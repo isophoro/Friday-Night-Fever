@@ -74,6 +74,7 @@ class CharacterTrail extends FlxTrail
                 trailSprite = members[i];
                 trailSprite.x = _recentPositions[i].x;
                 trailSprite.y = _recentPositions[i].y;
+                trailSprite.shader = target.shader;
 
                 // And the angle...
                 if (rotationsEnabled)
