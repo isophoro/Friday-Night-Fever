@@ -1822,6 +1822,12 @@ class PlayState extends MusicBeatState
 				resyncVocals();
 			}
 
+			@:privateAccess
+			for (i in FlxTween.globalManager._tweens)
+			{
+				i.active = true;
+			}
+
 			if (!startTimer.finished)
 				startTimer.active = true;
 			paused = false;
@@ -2031,6 +2037,12 @@ class PlayState extends MusicBeatState
 			persistentUpdate = false;
 			persistentDraw = true;
 			paused = true;
+
+			@:privateAccess
+			for (i in FlxTween.globalManager._tweens)
+			{
+				i.active = false;
+			}
 
 			// 1 / 1000 chance for Gitaroo Man easter egg
 			if (FlxG.random.bool(0.1)) 

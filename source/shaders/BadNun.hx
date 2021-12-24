@@ -119,8 +119,7 @@ class BadNun
                 instance.dad.x += 850;
                 instance.boyfriend.x -= 1060;
 
-                instance.camFollow.setPosition(instance.dad.getMidpoint().x + 40, instance.dad.getMidpoint().y - 50);
-                instance.camGame.focusOn(new FlxPoint(instance.camFollow.x, instance.camFollow.y));
+                focusCamera(instance.dad.getMidpoint().x + 40, instance.dad.getMidpoint().y - 50);
                 FlxTween.tween(instance.camGame, {zoom:0.8}, 1.15);
             case 207:
                 instance.gf.x = 948;
@@ -190,8 +189,7 @@ class BadNun
                 instance.disableModCamera = true;
 
                 instance.dad.x += 500;
-                instance.camFollow.setPosition(instance.dad.x + 120, instance.dad.y + 90);
-                instance.camGame.focusOn(new FlxPoint(instance.camFollow.x, instance.camFollow.y));
+                focusCamera(instance.dad.x + 120, instance.dad.y + 90);
                 instance.camGame.zoom = 1;
                 FlxTween.tween(instance.camFollow, {x: instance.dad.x + 120 + instance.dad.width, y: instance.dad.y + 90 + (instance.dad.height / 4)}, 9.5);
             case 368:
@@ -201,8 +199,7 @@ class BadNun
                 instance.dad.visible = false;
                 instance.boyfriend.visible = true;
                 instance.boyfriend.x += 500;
-                instance.camFollow.setPosition(instance.boyfriend.x + 120, instance.boyfriend.y + 150);
-                instance.camGame.focusOn(new FlxPoint(instance.camFollow.x, instance.camFollow.y));
+                focusCamera(instance.boyfriend.x + 120, instance.boyfriend.y + 150);
                 FlxTween.tween(instance.camFollow, {x: instance.boyfriend.x + 60 + instance.boyfriend.width, y: instance.boyfriend.y + 90 + (instance.boyfriend.height / 4)}, 9.5);
             case 384:
                 FlxTween.cancelTweensOf(instance.camFollow);
