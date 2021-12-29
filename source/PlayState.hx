@@ -391,7 +391,7 @@ class PlayState extends MusicBeatState
 				}
 			case 'hallowhalloween':
 				{
-					summonPainting(true);
+					summonPainting(); // Preload painting
 					curStage = 'spookyHALLOW';
 					defaultCamZoom = 0.6;
 
@@ -2389,23 +2389,27 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (generatedMusic) {
+		if (generatedMusic) 
+		{
 			notes.forEachAlive(function(daNote:Note) 
 			{
 				// instead of doing stupid y > FlxG.height
 				// we be men and actually calculate the time :)
 
-				if (daNote.type == 1 && !daNote.animPlayed && daNote.strumTime - 750 < Conductor.songPosition && 
+				if (daNote.type == 1 && !daNote.animPlayed && Conductor.songPosition >= daNote.strumTime - 750 && 
 					(opponent ? !daNote.mustPress : daNote.mustPress))
 				{
-					daNote.animPlayed = true;
 					summonPainting();
+					daNote.animPlayed = true;
 				}
 
-				if (daNote.tooLate) {
+				if (daNote.tooLate) 
+				{
 					daNote.active = false;
 					daNote.visible = false;
-				} else {
+				} 
+				else 
+				{
 					daNote.visible = true;
 					daNote.active = true;
 				}
@@ -3618,15 +3622,12 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function summonPainting(?preload:Bool)
+	function summonPainting()
 	{
 		var mechanic = new FlxSprite(1240, 300);
 		mechanic.frames = Paths.getSparrowAtlas('mechanicShit/paintingShit');
-		mechanic.animation.addByPrefix('idle', 'paintingShit', false);
+		mechanic.animation.addByPrefix('idle', 'paintingShit', 30, false);
 		mechanic.antialiasing = true;
-
-		if(preload)
-			mechanic.visible = false;
 
 		mechanic.animation.play('idle');
 		add(mechanic);

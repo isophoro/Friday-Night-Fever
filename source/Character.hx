@@ -106,22 +106,46 @@ class Character extends FlxSprite
 					animation.addByPrefix('firstDeath', "fever dies", 24, false);
 					animation.addByPrefix('deathLoop', "fever dead loop", 24, true);
 					animation.addByPrefix('deathConfirm', "fever dead confirm", 24, false);
+					animation.addByPrefix('dodge', 'fever dodge', 24, false);
 	
-					addOffset('idle', 6, 93);
-					addOffset("singUP", -25, 106);
-					addOffset("singRIGHT", -19, 92);
-					addOffset("singLEFT", 43, 95);
-					addOffset("singDOWN", 12, 10);
-					addOffset("singUPmiss", -14, 103);
-					addOffset("singRIGHTmiss", -20, 91);
-					addOffset("singLEFTmiss", 40, 93);
-					addOffset("singDOWNmiss", 11, 14);
-					addOffset("hey", -3, 93);
-				//	addOffset("transition", -10, 3);
-					addOffset('firstDeath', 42, 108);
-					addOffset('deathLoop', 20, 109);
-					addOffset('deathConfirm', 87, 131);
-					addOffset('scared', -1, 92);
+					if (curCharacter != 'bfdemoncesar')
+					{
+						addOffset('idle', 6, 93);
+						addOffset("singUP", -25, 106);
+						addOffset("singRIGHT", -19, 92);
+						addOffset("singLEFT", 43, 95);
+						addOffset("singDOWN", 12, 10);
+						addOffset("singUPmiss", -14, 103);
+						addOffset("singRIGHTmiss", -20, 91);
+						addOffset("singLEFTmiss", 40, 93);
+						addOffset("singDOWNmiss", 11, 14);
+						addOffset("hey", -3, 93);
+					//	addOffset("transition", -10, 3);
+						addOffset('firstDeath', 42, 108);
+						addOffset('deathLoop', 20, 109);
+						addOffset('deathConfirm', 87, 131);
+						addOffset('scared', -1, 92);
+						addOffset('dodge', 21, 92);
+					}
+					else
+					{
+						addOffset('idle', 6, 93);
+						addOffset("singUP", -35, 96);
+						addOffset("singRIGHT", -6, 87);
+						addOffset("singLEFT", 43, 95);
+						addOffset("singDOWN", 40, 15);
+						addOffset("singUPmiss", -14, 103);
+						addOffset("singRIGHTmiss", -20, 91);
+						addOffset("singLEFTmiss", 40, 93);
+						addOffset("singDOWNmiss", 45, 14);
+						addOffset("hey", 0, 89);
+					//	addOffset("transition", -10, 3);
+						addOffset('firstDeath', 52, 98);
+						addOffset('deathLoop', 31, 95);
+						addOffset('deathConfirm', 97, 121);
+						addOffset('scared', 2, 92);
+						addOffset('dodge', 21, 92);
+					}
 	
 					playAnim('idle');
 	
