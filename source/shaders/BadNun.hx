@@ -167,6 +167,8 @@ class BadNun
                 instance.remove(darken);
                 FlxTween.tween(instance.camGame, {alpha: 1}, 0.09);
                 instance.camGame.shake(0.0115, 0.9);
+                if (instance.health > 1.1)
+                    FlxTween.tween(instance, {health: 1}, 0.9);
                 instance.camGame.zoom = 0.7;
 
                 enableShader(true);
@@ -179,8 +181,13 @@ class BadNun
                 instance.gf.visible = false;
                 instance.boyfriend.visible = false;
                 instance.disableModCamera = true;
+
+                if (instance.health > 1)
+                    instance.health = 1;
+                
             case 352:
                 instance.dad.visible = true;
+
                 instance.remove(instance.dad);
                 instance.add(trail);
                 instance.add(instance.dad);
@@ -200,7 +207,7 @@ class BadNun
                 instance.boyfriend.visible = true;
                 instance.boyfriend.x += 500;
                 focusCamera(instance.boyfriend.x + 120, instance.boyfriend.y + 150);
-                FlxTween.tween(instance.camFollow, {x: instance.boyfriend.x + 60 + instance.boyfriend.width, y: instance.boyfriend.y + 90 + (instance.boyfriend.height / 4)}, 9.5);
+                FlxTween.tween(instance.camFollow, {x: instance.boyfriend.x + instance.boyfriend.width - 50, y: instance.boyfriend.y + 90 + (instance.boyfriend.height / 4)}, 9.5);
             case 384:
                 FlxTween.cancelTweensOf(instance.camFollow);
                 instance.camGame.zoom = 1.1;
@@ -230,7 +237,7 @@ class BadNun
                 instance.boyfriend.visible = true;
 
                 focusCamera(instance.boyfriend.x + 350, instance.boyfriend.y + 120);
-                FlxTween.tween(instance.boyfriend, {x: instance.boyfriend.x - 240}, 7.5);
+                FlxTween.tween(instance.boyfriend, {x: instance.boyfriend.x - 135}, 7.5);
             case 416:
                 instance.dad.alpha = 0.45;
                 instance.dad.visible = true;

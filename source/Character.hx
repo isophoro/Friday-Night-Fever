@@ -78,10 +78,15 @@ class Character extends FlxSprite
 
 				flipX = true;*/
 
-				case 'bf':
+				case 'bf' | 'bfdemoncesar':
 					iconColor = 'C353E3';
-					var tex = Paths.getSparrowAtlas('characters/fever_assets', 'shared');
-					frames = tex;
+					switch (curCharacter)
+					{
+						case 'bfdemoncesar':
+							frames = Paths.getSparrowAtlas('characters/demon_fever_assets', 'shared');
+						default:
+							frames = Paths.getSparrowAtlas('characters/fever_assets', 'shared');
+					}
 	
 					//trace(tex.frames.length);
 	
@@ -250,54 +255,6 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				flipX = true;
-			
-			case 'bfdemoncesar':
-				iconColor = 'E353C8';
-				var tex = Paths.getSparrowAtlas('characters/demonCesar', 'shared');
-				frames = tex;
-
-				trace(tex.frames.length);
-
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
-				animation.addByPrefix('dodge', 'boyfriend dodge', 24, false);
-				animation.addByPrefix('transition', 'BF Transition', 24, false);
-
-				animation.addByPrefix('firstDeath', "BF dies", 24, false);
-				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
-				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-
-				animation.addByPrefix('scared', 'BF idle shaking', 24);
-
-				addOffset('idle', -5);
-				addOffset('dodge', -5);
-				addOffset("singUP", -61, 13);
-				addOffset("singRIGHT", -75, -10);
-				addOffset("singLEFT", -15, -3);
-				addOffset("singDOWN", -39, -84);
-				addOffset("singUPmiss", -64, 6);
-				addOffset("singRIGHTmiss", -74, -19);
-				addOffset("singLEFTmiss", -16, -4);
-				addOffset("singDOWNmiss", -36, -84);
-				addOffset("hey", -54, 1);
-				addOffset("transition", -54, 1);
-				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 69);
-				addOffset('scared', -54, -12);
-
-				playAnim('idle');
-
-				flipX = true;
-
 			case 'bf-car':
 				iconColor = 'C353E3';
 				var tex = Paths.getSparrowAtlas('characters/bfCar');
