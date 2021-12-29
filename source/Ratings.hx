@@ -1,3 +1,4 @@
+import shaders.BadNun;
 import flixel.FlxG;
 
 class Ratings
@@ -121,11 +122,25 @@ class Ratings
 
     public static function CalculateRanking(score:Int,scoreDef:Int,nps:Int,maxNPS:Int,accuracy:Float):String
     {
-        return 
-        (FlxG.save.data.npsDisplay ? "NPS: " + nps + " (Max " + maxNPS + ")" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
-        "Score:" + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
-        " | Combo Breaks:" + PlayState.misses + 																				// Misses/Combo Breaks
-        " | Accuracy:" + (FlxG.save.data.botplay ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + " %") +  				// Accuracy
-        " | " + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
+        if (PlayState.SONG.song == 'Bad-Nun' && BadNun.translate)
+        {
+            return
+            new UnicodeString((FlxG.save.data.npsDisplay ? "NPS: " + nps + " (Max " + maxNPS + ")" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
+            "スコア: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
+            " | 逃した: " + PlayState.misses + 																				// Misses/Combo Breaks
+            " | 正確さ: " + (FlxG.save.data.botplay ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + " %") +  				// Accuracy
+            " | " + GenerateLetterRank(accuracy) : "")); 	
+        }
+        else
+        {
+            BadNun.translate = false;
+
+            return
+            (FlxG.save.data.npsDisplay ? "NPS: " + nps + " (Max " + maxNPS + ")" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
+            "Score:" + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
+            " | Combo Breaks:" + PlayState.misses + 																				// Misses/Combo Breaks
+            " | Accuracy:" + (FlxG.save.data.botplay ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + " %") +  				// Accuracy
+            " | " + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
+        }
     }
 }

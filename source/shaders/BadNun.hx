@@ -18,6 +18,7 @@ class BadNun
     public static var trail:CharacterTrail;
     public static var movieBars:FlxTypedGroup<FlxSprite>;
     public static var darken:FlxSprite;
+    public static var translate:Bool = false;
 
     public static function beatHit(curBeat:Int)
     {
@@ -209,6 +210,10 @@ class BadNun
                 focusCamera(instance.boyfriend.x + 120, instance.boyfriend.y + 150);
                 FlxTween.tween(instance.camFollow, {x: instance.boyfriend.x + instance.boyfriend.width - 50, y: instance.boyfriend.y + 90 + (instance.boyfriend.height / 4)}, 9.5);
             case 384:
+                translate = true;
+                PlayState.instance.scoreTxt.font = Paths.font("unifont.otf");
+                PlayState.instance.scoreTxt.size = 18;
+
                 FlxTween.cancelTweensOf(instance.camFollow);
                 instance.camGame.zoom = 1.1;
                 focusCamera(instance.dad.x + 350, instance.dad.y + 120);
@@ -246,7 +251,11 @@ class BadNun
                 instance.dad.visible = false;
             case 446:
                 FlxTween.tween(instance.church, {alpha:0}, 0.4);
-                FlxTween.tween(instance.boyfriend, {alpha:0}, 0.4);
+                FlxTween.tween(instance.boyfriend, {alpha:0}, 0.4, {onComplete: (t) -> {
+                    PlayState.instance.scoreTxt.font = Paths.font("vcr.ttf");
+                    PlayState.instance.scoreTxt.size = 16;
+                    translate = false;
+                }});
                 instance.remove(movieBars);
         }
     }

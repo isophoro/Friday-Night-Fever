@@ -171,7 +171,7 @@ class PlayState extends MusicBeatState
 
 	var songScore:Int = 0;
 	var songScoreDef:Int = 0;
-	var scoreTxt:FlxText;
+	public var scoreTxt:FlxText;
 	var replayTxt:FlxText;
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
@@ -1028,6 +1028,7 @@ class PlayState extends MusicBeatState
 
 		scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), #if !mobile 16 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+
 		scoreTxt.scrollFactor.set();
 		scoreTxt.screenCenter(X);
 		scoreTxt.antialiasing = FlxG.stage.window.width > 1280 ? true : false;
