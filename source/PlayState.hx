@@ -2542,17 +2542,15 @@ class PlayState extends MusicBeatState
 						health -= 0.04;
 					}
 
-					if (FlxG.save.data.cpuStrums) {
+					if (FlxG.save.data.cpuStrums) 
+					{
 						cpuStrums.forEach(function(spr:FlxSprite) {
 							if (Math.abs(daNote.noteData) == spr.ID) {
 								spr.animation.play('confirm', true);
 							}
-							if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school')) {
-								spr.centerOffsets();
-								spr.offset.x -= 13;
-								spr.offset.y -= 13;
-							} else
-								spr.centerOffsets();
+							
+							spr.centerOffsets();
+							spr.centerOrigin();
 						});
 					}
 
@@ -2634,7 +2632,7 @@ class PlayState extends MusicBeatState
 			endSong();
 		#end
 	}
-
+ 
 	function endSong():Void 
 	{
 		skipDialogue = false;
@@ -3025,7 +3023,7 @@ class PlayState extends MusicBeatState
 		}
 
 		// PRESSES, check for note hits
-		if (pressArray.contains(true) && /*!boyfriend.stunned && */ generatedMusic) 
+		if (pressArray.contains(true) && generatedMusic) 
 		{
 			curPlayer.holdTimer = 0;
 
@@ -3129,21 +3127,19 @@ class PlayState extends MusicBeatState
 				curPlayer.playAnim('idle');
 		}
 
-		playerStrums.forEach(function(spr:FlxSprite) {
+		playerStrums.forEach(function(spr:FlxSprite) 
+		{
 			if (opponent)
 				spr.visible = true;
 
 			if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm')
 				spr.animation.play('pressed');
+
 			if (!holdArray[spr.ID])
 				spr.animation.play('static');
 
-			if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school')) {
-				spr.centerOffsets();
-				spr.offset.x -= 13;
-				spr.offset.y -= 13;
-			} else
-				spr.centerOffsets();
+			spr.centerOffsets();
+			spr.centerOrigin();
 		});
 	}
 
@@ -3552,7 +3548,7 @@ class PlayState extends MusicBeatState
 				FlxG.log.add('CHANGED BPM!');
 			}
 
-			if (!dad.animation.curAnim.name.startsWith('sing'))
+			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
 				dad.dance();
 		}
 
@@ -3581,7 +3577,7 @@ class PlayState extends MusicBeatState
 			var specialAnims:Array<String> = ['dodge', 'hey'];
 			if (!specialAnims.contains(boyfriend.animation.curAnim.name) || boyfriend.animation.finished) 
 			{
-				boyfriend.playAnim('idle');
+				boyfriend.dance();
 			}
 		}
 
