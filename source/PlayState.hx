@@ -2544,14 +2544,7 @@ class PlayState extends MusicBeatState
 
 					if (FlxG.save.data.cpuStrums) 
 					{
-						cpuStrums.forEach(function(spr:FlxSprite) {
-							if (Math.abs(daNote.noteData) == spr.ID) {
-								spr.animation.play('confirm', true);
-							}
-							
-							spr.centerOffsets();
-							spr.centerOrigin();
-						});
+						cpuStrums.members[daNote.noteData].animation.play('confirm', true);
 					}
 
 					#if windows
@@ -3137,7 +3130,9 @@ class PlayState extends MusicBeatState
 
 			if (!holdArray[spr.ID])
 				spr.animation.play('static');
+		});
 
+		strumLineNotes.forEach((spr) -> {
 			spr.centerOffsets();
 			spr.centerOrigin();
 		});
@@ -3548,8 +3543,8 @@ class PlayState extends MusicBeatState
 				FlxG.log.add('CHANGED BPM!');
 			}
 
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
-				dad.dance();
+			if (!curOpponent.animation.curAnim.name.startsWith('sing'))
+				curOpponent.dance();
 		}
 
 		/*

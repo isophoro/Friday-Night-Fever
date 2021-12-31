@@ -1081,7 +1081,21 @@ class Character extends FlxSprite
 
 	override function update(elapsed:Float)
 	{
-		if (!isPlayer && !PlayState.opponent || isPlayer && PlayState.opponent)
+		if (!isPlayer && PlayState.opponent || isPlayer && !PlayState.opponent)
+		{
+			if (animation.curAnim.name.startsWith('sing'))
+			{
+				holdTimer += elapsed;
+			}
+			else
+				holdTimer = 0;	
+
+			if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
+			{
+				playAnim('idle', true, false, 10);
+			}
+		}
+		else
 		{
 			if (animation.curAnim.name.startsWith('sing'))
 			{
