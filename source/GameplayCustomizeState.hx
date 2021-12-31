@@ -2,7 +2,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
-import flixel.math.FlxMath;
+
 import flixel.FlxCamera;
 import flixel.math.FlxPoint;
 import flixel.FlxObject;

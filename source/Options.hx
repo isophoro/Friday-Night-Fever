@@ -1,5 +1,6 @@
 package;
 
+
 import lime.app.Application;
 import lime.system.DisplayMode;
 import flixel.util.FlxColor;
@@ -362,11 +363,11 @@ class Judgement extends Option
 
 	override function getValue():String {
 		return "Safe Frames: " + Conductor.safeFrames +
-		" - SIK: " + HelperFunctions.truncateFloat(45 * Conductor.timeScale, 0) +
-		"ms GD: " + HelperFunctions.truncateFloat(90 * Conductor.timeScale, 0) +
-		"ms BD: " + HelperFunctions.truncateFloat(135 * Conductor.timeScale, 0) + 
-		"ms SHT: " + HelperFunctions.truncateFloat(155 * Conductor.timeScale, 0) +
-		"ms TOTAL: " + HelperFunctions.truncateFloat(Conductor.safeZoneOffset,0) + "ms";
+		" - SIK: " + FlxMath.roundDecimal(45 * Conductor.timeScale, 0) +
+		"ms GD: " + FlxMath.roundDecimal(90 * Conductor.timeScale, 0) +
+		"ms BD: " + FlxMath.roundDecimal(135 * Conductor.timeScale, 0) + 
+		"ms SHT: " + FlxMath.roundDecimal(155 * Conductor.timeScale, 0) +
+		"ms TOTAL: " + FlxMath.roundDecimal(Conductor.safeZoneOffset,0) + "ms";
 	}
 
 	override function right():Bool {
@@ -488,7 +489,7 @@ class ScrollSpeedOption extends Option
 	}
 
 	override function getValue():String {
-		return "Current Scroll Speed: " + HelperFunctions.truncateFloat(FlxG.save.data.scrollSpeed,1);
+		return "Current Scroll Speed: " + FlxMath.roundDecimal(FlxG.save.data.scrollSpeed,1);
 	}
 
 	override function left():Bool {

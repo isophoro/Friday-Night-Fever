@@ -1,8 +1,9 @@
-package;
+package shaders;
 import flixel.system.FlxAssets.FlxShader;
 import openfl.filters.ShaderFilter;
 import openfl.filters.BitmapFilter;
-import Shaders;
+import shaders.Shaders;
+
 class ModChart {
   private var playState:PlayState;
   private var camShaders=[];

@@ -1,6 +1,6 @@
 package shaders;
 
-import flixel.math.FlxMath;
+
 import flixel.system.FlxAssets.FlxShader;
 
 /*

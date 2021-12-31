@@ -4,7 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.group.FlxSpriteGroup;
-import flixel.math.FlxMath;
+
 using StringTools;
 
 enum Alignment

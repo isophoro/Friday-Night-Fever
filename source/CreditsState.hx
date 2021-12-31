@@ -4,7 +4,7 @@ import flixel.tweens.FlxEase;
 import flixel.FlxObject;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.math.FlxMath;
+
 import flixel.tweens.FlxTween;
 import openfl.Lib;
 import flixel.text.FlxText;

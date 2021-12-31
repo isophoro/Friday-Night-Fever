@@ -4,7 +4,7 @@ package;
 import cpp.vm.Gc;
 #end 
 
-import flixel.math.FlxMath;
+
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;

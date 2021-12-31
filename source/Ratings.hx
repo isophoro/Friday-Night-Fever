@@ -128,7 +128,7 @@ class Ratings
             new UnicodeString((FlxG.save.data.npsDisplay ? "NPS: " + nps + " (Max " + maxNPS + ")" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
             "スコア: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
             " | 逃した: " + PlayState.misses + 																				// Misses/Combo Breaks
-            " | 正確さ: " + (FlxG.save.data.botplay ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + " %") +  				// Accuracy
+            " | 正確さ: " + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + " %") +  				// Accuracy
             " | " + GenerateLetterRank(accuracy) : "")); 	
         }
         else
@@ -139,7 +139,7 @@ class Ratings
             (FlxG.save.data.npsDisplay ? "NPS: " + nps + " (Max " + maxNPS + ")" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
             "Score:" + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
             " | Combo Breaks:" + PlayState.misses + 																				// Misses/Combo Breaks
-            " | Accuracy:" + (FlxG.save.data.botplay ? "N/A" : HelperFunctions.truncateFloat(accuracy, 2) + " %") +  				// Accuracy
+            " | Accuracy:" + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + " %") +  				// Accuracy
             " | " + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
         }
     }

@@ -18,7 +18,7 @@ import flixel.FlxSubState;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.math.FlxMath;
+
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxSound;
@@ -32,8 +32,8 @@ import flixel.util.FlxTimer;
 import lime.utils.Assets;
 import openfl.Lib;
 import openfl.filters.BitmapFilter;
-import Shaders;
-import ModChart;
+import shaders.Shaders;
+import shaders.ModChart;
 
 using StringTools;
 
@@ -317,7 +317,7 @@ class PlayState extends MusicBeatState
 			+ ") "
 			+ Ratings.GenerateLetterRank(accuracy),
 			"\nAcc: "
-			+ HelperFunctions.truncateFloat(accuracy, 2)
+			+ FlxMath.roundDecimal(accuracy, 2)
 			+ "% | Score: "
 			+ songScore
 			+ " | Misses: "
@@ -1516,7 +1516,7 @@ class PlayState extends MusicBeatState
 			+ ") "
 			+ Ratings.GenerateLetterRank(accuracy),
 			"\nAcc: "
-			+ HelperFunctions.truncateFloat(accuracy, 2)
+			+ FlxMath.roundDecimal(accuracy, 2)
 			+ "% | Score: "
 			+ songScore
 			+ " | Misses: "
@@ -1804,7 +1804,7 @@ class PlayState extends MusicBeatState
 				+ ") "
 				+ Ratings.GenerateLetterRank(accuracy),
 				"Acc: "
-				+ HelperFunctions.truncateFloat(accuracy, 2)
+				+ FlxMath.roundDecimal(accuracy, 2)
 				+ "% | Score: "
 				+ songScore
 				+ " | Misses: "
@@ -1843,7 +1843,7 @@ class PlayState extends MusicBeatState
 					+ ") "
 					+ Ratings.GenerateLetterRank(accuracy),
 					"\nAcc: "
-					+ HelperFunctions.truncateFloat(accuracy, 2)
+					+ FlxMath.roundDecimal(accuracy, 2)
 					+ "% | Score: "
 					+ songScore
 					+ " | Misses: "
@@ -1880,7 +1880,7 @@ class PlayState extends MusicBeatState
 			+ ") "
 			+ Ratings.GenerateLetterRank(accuracy),
 			"\nAcc: "
-			+ HelperFunctions.truncateFloat(accuracy, 2)
+			+ FlxMath.roundDecimal(accuracy, 2)
 			+ "% | Score: "
 			+ songScore
 			+ " | Misses: "
@@ -2337,7 +2337,7 @@ class PlayState extends MusicBeatState
 				+ ") "
 				+ Ratings.GenerateLetterRank(accuracy),
 				"\nAcc: "
-				+ HelperFunctions.truncateFloat(accuracy, 2)
+				+ FlxMath.roundDecimal(accuracy, 2)
 				+ "% | Score: "
 				+ songScore
 				+ " | Misses: "
@@ -2368,7 +2368,7 @@ class PlayState extends MusicBeatState
 					+ ") "
 					+ Ratings.GenerateLetterRank(accuracy),
 					"\nAcc: "
-					+ HelperFunctions.truncateFloat(accuracy, 2)
+					+ FlxMath.roundDecimal(accuracy, 2)
 					+ "% | Score: "
 					+ songScore
 					+ " | Misses: "
@@ -2846,7 +2846,7 @@ class PlayState extends MusicBeatState
 			rating.velocity.y -= FlxG.random.int(140, 175);
 			rating.velocity.x -= FlxG.random.int(0, 10);
 
-			var msTiming = HelperFunctions.truncateFloat(noteDiff, 3);
+			var msTiming = FlxMath.roundDecimal(noteDiff, 3);
 			if (FlxG.save.data.botplay)
 				msTiming = 0;
 
@@ -3109,7 +3109,7 @@ class PlayState extends MusicBeatState
 				if (FlxG.save.data.botplay && daNote.canBeHit && daNote.mustPress || FlxG.save.data.botplay && daNote.tooLate && daNote.mustPress) {
 					if (loadRep) {
 						// trace('ReplayNote ' + tmpRepNote.strumtime + ' | ' + tmpRepNote.direction);
-						if (rep.replay.songNotes.contains(HelperFunctions.truncateFloat(daNote.strumTime, 2))) {
+						if (rep.replay.songNotes.contains(FlxMath.roundDecimal(daNote.strumTime, 2))) {
 							goodNoteHit(daNote);
 							curPlayer.holdTimer = daNote.sustainLength;
 						}
@@ -3253,7 +3253,7 @@ class PlayState extends MusicBeatState
 			#end
 
 			if (!loadRep && note.mustPress)
-				saveNotes.push(HelperFunctions.truncateFloat(note.strumTime, 2));
+				saveNotes.push(FlxMath.roundDecimal(note.strumTime, 2));
 
 			playerStrums.forEach(function(spr:FlxSprite) {
 				if (Math.abs(note.noteData) == spr.ID) {
@@ -3431,7 +3431,7 @@ class PlayState extends MusicBeatState
 			+ ") "
 			+ Ratings.GenerateLetterRank(accuracy),
 			"Acc: "
-			+ HelperFunctions.truncateFloat(accuracy, 2)
+			+ FlxMath.roundDecimal(accuracy, 2)
 			+ "% | Score: "
 			+ songScore
 			+ " | Misses: "

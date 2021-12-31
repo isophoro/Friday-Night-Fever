@@ -1,4 +1,4 @@
-package;
+package shaders;
 
 #if (openfl >= "8.0.0")
 import openfl8.MosaicShader;
