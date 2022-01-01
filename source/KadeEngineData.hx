@@ -5,6 +5,9 @@ class KadeEngineData
 {
     public static function initSave()
     {
+		if (FlxG.save.data.popups == null)
+            FlxG.save.data.popups = new Array<String>();
+		
 		if (FlxG.save.data.antialiasing == null)
 			FlxG.save.data.antialiasing = true;
 		

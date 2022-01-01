@@ -88,28 +88,16 @@ class DialogueBox extends FlxSpriteGroup
 				bgFade.alpha = 0.7;
 		}, 5);
 
-			box = new FlxSprite(-20, 458);
-		
-		var hasDialog = false;
-		switch (PlayState.SONG.song.toLowerCase())
-		{
-			default:
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('dialogue/textbox');
-				box.animation.addByPrefix('normalOpen', 'textbox idle', 24, false);
-				box.animation.addByIndices('normal', 'textbox idle', [4], "", 24);
+		box = new FlxSprite(-20, 472);
+		box.loadGraphic(Paths.image('dialogue/textbox'));
 
-				switch(PlayState.SONG.song.toLowerCase())
-				{
-					case 'chicken-sandwich':
-						FlxG.sound.play(Paths.sound('ANGRY_TEXT_BOX'));
-				}
+		switch(PlayState.SONG.song.toLowerCase())
+		{
+			case 'chicken-sandwich':
+				FlxG.sound.play(Paths.sound('ANGRY_TEXT_BOX'));
 		}
 
 		this.dialogueList = dialogueList;
-		
-		if (!hasDialog)
-			return;
 
 		fever = new FlxSprite(830, -11);
 		fever.frames = Paths.getSparrowAtlas('dialogue/feversprites');
@@ -340,7 +328,6 @@ class DialogueBox extends FlxSpriteGroup
 		add(wolfie);
 		wolfie.visible = false;
 		
-		box.animation.play('normalOpen');
 		add(box);
 
 		FlxG.mouse.visible = true;
@@ -360,6 +347,7 @@ class DialogueBox extends FlxSpriteGroup
 		swagDialogue.color = 0xffffff;
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		swagDialogue.delay = 0.04;
+		swagDialogue.setTypingVariation(0.5, true);
 		add(swagDialogue);
 
 		controls = new FlxText(0, box.y + box.height - 10, 0, "");
@@ -373,7 +361,6 @@ class DialogueBox extends FlxSpriteGroup
 		controls.setFormat(Paths.font('vcr.ttf'), 22, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		add(controls);
 		controls.screenCenter(X);
-		controls.visible = false;
 
 		portraitMap = [
 			'fever' => fever,
@@ -400,6 +387,9 @@ class DialogueBox extends FlxSpriteGroup
 			'hallow' => hallow,
 			'paintingtea' => paintingtea
 		];
+
+		startDialogue();
+		dialogueStarted = true;
 	}
 
 	var dialogueOpened:Bool = false;
@@ -410,6 +400,8 @@ class DialogueBox extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
+		PlayState.instance.camHUD.zoom = 1;
+
 		if (shake)
 		{
 			FlxG.camera.shake(0.09);
@@ -432,22 +424,6 @@ class DialogueBox extends FlxSpriteGroup
 
 		if (swagDialogue != null)
 			dropText.text = swagDialogue.text;
-
-		if (box.animation.curAnim != null)
-		{
-			if (box.animation.curAnim.name == 'normalOpen' && box.animation.curAnim.finished)
-			{
-				box.animation.play('normal');
-				dialogueOpened = true;
-			}
-		}
-
-		if (dialogueOpened && !dialogueStarted)
-		{
-			startDialogue();
-			dialogueStarted = true;
-			controls.visible = true;
-		}
 
 		if ((dialogueStarted && !isEnding) && FlxG.keys.anyJustPressed([ENTER, SPACE]))
 		{
@@ -717,6 +693,11 @@ class DialogueBox extends FlxSpriteGroup
 						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('hallow_beep'), 0.6)];
 						hidePortraits('hallow');
 						hallow.animation.play(curCharacter);
+					}
+
+					@:privateAccess
+					{
+						swagDialogue.sounds[0].volume = 0.35;
 					}
 			}
 		}

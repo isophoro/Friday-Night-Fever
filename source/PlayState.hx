@@ -2265,7 +2265,7 @@ class PlayState extends MusicBeatState
 					offsetY = luaModchart.getVar("followYOffset", "float");
 				}
 				#end
-				camFollow.setPosition(boyfriend.getMidpoint().x - 230 + offsetX, boyfriend.getMidpoint().y - 260 + offsetY);
+				camFollow.setPosition(boyfriend.getMidpoint().x - 100 + offsetX, boyfriend.getMidpoint().y - 100 + offsetY);
 	
 				#if windows
 				if (luaModchart != null)
