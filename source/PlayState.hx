@@ -2157,7 +2157,7 @@ class PlayState extends MusicBeatState
 			}
 
 			#if windows
-			if (luaModchart != null)
+			if (luaModchart != null && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 				luaModchart.setVar("mustHit", PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
 			#end
 		}
