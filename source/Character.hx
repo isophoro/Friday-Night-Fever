@@ -17,7 +17,7 @@ class Character extends FlxSprite
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = 'bf';
 	public var iconColor:String = "50a5eb";
-
+	public var isDeathAnim:Bool = false;
 	public var holdTimer:Float = 0;
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
@@ -34,123 +34,84 @@ class Character extends FlxSprite
 		switch (curCharacter)
 		{
 			// FEVER + FEVER VARIANTS \\
-			/*case 'bf':
-				iconColor = 'C353E3';
-				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
-				frames = tex;
+			case 'humanDeath' | 'demonDeath':
+				frames = Paths.getSparrowAtlas('characters/$curCharacter', 'shared');
+				animation.addByPrefix('firstDeath', "fever dies", 24, false);
+				animation.addByPrefix('deathLoop', "fever dead loop", 24, true);
+				animation.addByPrefix('deathConfirm', "fever dead confirm", 24, false);
 
-				trace(tex.frames.length);
-
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('scared', 'BF idle shaking', 24);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
-				animation.addByPrefix('transition', 'BF Transition', 24, false);
-
-				animation.addByPrefix('firstDeath', "BF dies", 24, false);
-				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
-				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-
-				addOffset('idle', -5);
-				addOffset("singUP", -28, 13);
-				addOffset("singRIGHT", -55, -9);
-				addOffset("singLEFT", 14, -2);
-				addOffset("singDOWN", -29, -75);
-				addOffset("singUPmiss", -56, 10);
-				addOffset("singRIGHTmiss", -48, -15);
-				addOffset("singLEFTmiss", 21, -3);
-				addOffset("singDOWNmiss", -33, -75);
-				addOffset("hey", -10, 3);
-				addOffset("transition", -10, 3);
-				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 20);
-				addOffset('scared', -26, -9);
-
-				playAnim('idle');
-
-				flipX = true;*/
-
-				case 'bf' | 'bfdemoncesar':
-					iconColor = 'C353E3';
-					switch (curCharacter)
-					{
-						case 'bfdemoncesar':
-							frames = Paths.getSparrowAtlas('characters/demon_fever_assets', 'shared');
-						default:
-							frames = Paths.getSparrowAtlas('characters/fever_assets', 'shared');
-					}
-	
-					//trace(tex.frames.length);
-	
-					animation.addByPrefix('idle', 'fever idle0', 24, false);
-					animation.addByPrefix('singUP', 'fever up0', 24, false);
-					animation.addByPrefix('singLEFT', 'fever left0', 24, false);
-					animation.addByPrefix('singRIGHT', 'fever right0', 24, false);
-					animation.addByPrefix('singDOWN', 'fever down0', 24, false);
-					animation.addByPrefix('singUPmiss', 'fever up miss', 24, false);
-					animation.addByPrefix('singLEFTmiss', 'fever left miss', 24, false);
-					animation.addByPrefix('singRIGHTmiss', 'fever right miss', 24, false);
-					animation.addByPrefix('singDOWNmiss', 'fever down miss', 24, false);
-					animation.addByPrefix('scared', 'fever fear', 24);
-					animation.addByPrefix('hey', 'fever hey', 24, false);
-					//animation.addByPrefix('transition', 'BF Transition', 24, false);
-	
-					animation.addByPrefix('firstDeath', "fever dies", 24, false);
-					animation.addByPrefix('deathLoop', "fever dead loop", 24, true);
-					animation.addByPrefix('deathConfirm', "fever dead confirm", 24, false);
-					animation.addByPrefix('dodge', 'fever dodge', 24, false);
-	
-					if (curCharacter != 'bfdemoncesar')
-					{
-						addOffset('idle', 6, 93);
-						addOffset("singUP", -25, 106);
-						addOffset("singRIGHT", -19, 92);
-						addOffset("singLEFT", 43, 95);
-						addOffset("singDOWN", 12, 10);
-						addOffset("singUPmiss", -14, 103);
-						addOffset("singRIGHTmiss", -20, 91);
-						addOffset("singLEFTmiss", 40, 93);
-						addOffset("singDOWNmiss", 11, 14);
-						addOffset("hey", -3, 93);
-					//	addOffset("transition", -10, 3);
+				switch(curCharacter)
+				{
+					case 'humanDeath':
 						addOffset('firstDeath', 42, 108);
 						addOffset('deathLoop', 20, 109);
 						addOffset('deathConfirm', 87, 131);
-						addOffset('scared', -1, 92);
-						addOffset('dodge', 21, 92);
-					}
-					else
-					{
-						addOffset('idle', 6, 93);
-						addOffset("singUP", -35, 96);
-						addOffset("singRIGHT", -6, 87);
-						addOffset("singLEFT", 43, 95);
-						addOffset("singDOWN", 40, 15);
-						addOffset("singUPmiss", -14, 103);
-						addOffset("singRIGHTmiss", -20, 91);
-						addOffset("singLEFTmiss", 40, 93);
-						addOffset("singDOWNmiss", 45, 14);
-						addOffset("hey", 0, 89);
-					//	addOffset("transition", -10, 3);
+					case 'demonDeath':
 						addOffset('firstDeath', 52, 98);
 						addOffset('deathLoop', 31, 95);
 						addOffset('deathConfirm', 97, 121);
-						addOffset('scared', 2, 92);
-						addOffset('dodge', 21, 92);
-					}
-	
-					playAnim('idle');
-	
-					flipX = true;
-	
+				}
+
+				playAnim('firstDeath');
+				flipX = true;
+				isDeathAnim = true;
+			case 'bf' | 'bfdemoncesar':
+				iconColor = 'C353E3';
+				switch (curCharacter)
+				{
+					case 'bfdemoncesar':
+						frames = Paths.getSparrowAtlas('characters/demon_fever_assets', 'shared');
+					default:
+						frames = Paths.getSparrowAtlas('characters/fever_assets', 'shared');
+				}
+
+				animation.addByPrefix('idle', 'fever idle0', 24, false);
+				animation.addByPrefix('singUP', 'fever up0', 24, false);
+				animation.addByPrefix('singLEFT', 'fever left0', 24, false);
+				animation.addByPrefix('singRIGHT', 'fever right0', 24, false);
+				animation.addByPrefix('singDOWN', 'fever down0', 24, false);
+				animation.addByPrefix('singUPmiss', 'fever up miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'fever left miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'fever right miss', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'fever down miss', 24, false);
+				animation.addByPrefix('scared', 'fever fear', 24);
+				animation.addByPrefix('hey', 'fever hey', 24, false);
+				animation.addByPrefix('dodge', 'fever dodge', 24, false);
+
+				if (curCharacter != 'bfdemoncesar')
+				{
+					addOffset('idle', 6, 93);
+					addOffset("singUP", -25, 106);
+					addOffset("singRIGHT", -19, 92);
+					addOffset("singLEFT", 43, 95);
+					addOffset("singDOWN", 12, 10);
+					addOffset("singUPmiss", -14, 103);
+					addOffset("singRIGHTmiss", -20, 91);
+					addOffset("singLEFTmiss", 40, 93);
+					addOffset("singDOWNmiss", 11, 14);
+					addOffset("hey", -3, 93);
+					addOffset('scared', -1, 92);
+					addOffset('dodge', 21, 92);
+				}
+				else
+				{
+					addOffset('idle', 6, 93);
+					addOffset("singUP", -35, 96);
+					addOffset("singRIGHT", -6, 87);
+					addOffset("singLEFT", 43, 95);
+					addOffset("singDOWN", 40, 15);
+					addOffset("singUPmiss", -14, 103);
+					addOffset("singRIGHTmiss", -20, 91);
+					addOffset("singLEFTmiss", 40, 93);
+					addOffset("singDOWNmiss", 45, 14);
+					addOffset("hey", 0, 89);
+					addOffset('scared', 2, 92);
+					addOffset('dodge', 21, 92);
+				}
+
+				playAnim('idle');
+
+				flipX = true;
 			case 'bfiso':
 				iconColor = 'C353E3';
 				var tex = Paths.getSparrowAtlas('characters/iso', 'shared');
@@ -492,6 +453,7 @@ class Character extends FlxSprite
 				updateHitbox();
 				antialiasing = false;
 				flipX = true;
+				isDeathAnim = true;
 			case 'bf-hallow-dead':
 				frames = Paths.getSparrowAtlas('characters/Hallow_Death');
 				animation.addByPrefix('singUP', "BF dies", 24, false);
@@ -506,9 +468,8 @@ class Character extends FlxSprite
 				playAnim('firstDeath');
 
 				flipX = true;
-
+				isDeathAnim = true;
 			// TEA + TEA VARIANTS \\
-
 			case 'gf-notea':
 				iconColor = '99DBF6';
 				tex = Paths.getSparrowAtlas('characters/wheredaTea');
@@ -1056,9 +1017,13 @@ class Character extends FlxSprite
 
 		dance();
 
+		// checks for 'dea' incase the character is something like bf-hallow-dead or demonDeath
 		if (isPlayer)
 		{
 			flipX = !flipX;
+
+			if (isDeathAnim)
+				return;
 
 			// Doesn't flip for BF, since his are already in the right place???
 			if (!curCharacter.startsWith('bf') && !curCharacter.toLowerCase().startsWith('demon'))

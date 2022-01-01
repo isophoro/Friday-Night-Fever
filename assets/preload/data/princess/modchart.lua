@@ -1,3 +1,5 @@
+local stageZoom = 0.7
+
 function start (song) -- do nothing
 
 end
@@ -182,24 +184,24 @@ for i=0,7 do
 end
 end
 
-
+	-- Robo stage zoom is 0.4
 	if curStep == 512 or curStep == 518 or curStep == 528 or curStep == 538 or curStep == 544 or curStep == 550 or curStep == 560 or curStep == 566 or curStep == 570 then
-	setCamZoom(0.4025)
+	setCamZoom(stageZoom + 0.0025)
 	setHudZoom(1.01)
 		end
 
 	if curStep == 576 or curStep == 582 or curStep == 592 or curStep == 602 or curStep == 608 or curStep == 614 or curStep == 624 or curStep == 630 or curStep == 634 then
-	setCamZoom(0.4025)
+	setCamZoom(stageZoom + 0.0025)
 	setHudZoom(1.01)
 		end
 
 
 	if curStep >= 1524 and curStep < 1532 or curStep >= 1212 and curStep < 1214 or curStep >= 1468 and curStep < 1470 then
-	setCamZoom(0.6)
+	setCamZoom(stageZoom + 0.2)
 		end
 
 	if curStep >= 1532 and curStep < 1536 or curStep >= 1214 and curStep < 1216 or curStep >= 1470 and curStep < 1472 then
-	setCamZoom(0.65)
+	setCamZoom(stageZoom + 0.05)
 		end
 
 
@@ -216,12 +218,12 @@ end
 
 function beatHit(beat)
 	if curStep >= 0 and curStep < 136 or curStep >= 254 and curStep < 318 or curStep >= 382 and curStep < 414 or curStep >= 446 and curStep < 478 or curStep >= 766 and curStep < 830 or curStep >= 894 and curStep < 1022 or curStep >= 1278 and curStep < 1310 or curStep >= 1342 and curStep < 1374 or curStep >= 1406 and curStep < 1464 or curStep >= 1470 and curStep < 1518 then
-	setCamZoom(0.4025)
+	setCamZoom(stageZoom + 0.0025)
 	setHudZoom(1.01)
 		end
 
 	if curStep >= 126 and curStep < 254 or curStep >= 318 and curStep < 382 or curStep >= 414 and curStep < 446 or curStep >= 478 and curStep < 510 or curStep >= 638 and curStep < 766 or curStep >= 830 and curStep < 894 or curStep >= 1022 and curStep < 1214 or curStep >= 1218 and curStep < 1278 or curStep >= 1310 and curStep < 1342 or curStep >= 1374 and curStep < 1400 then
-	setCamZoom(0.41)
+	setCamZoom(stageZoom + 0.01)
 	setHudZoom(1.01)
 		end
 		end

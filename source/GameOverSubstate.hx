@@ -9,6 +9,7 @@ import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import flash.system.System;
 import flixel.util.FlxTimer;
+using StringTools;
 
 class GameOverSubstate extends MusicBeatSubstate
 {
@@ -19,28 +20,33 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	public function new(x:Float, y:Float)
 	{
-		var daStage = PlayState.curStage;
-		var daBf:String = '';
-		switch (PlayState.SONG.player1)
-		{
-			case 'bf-pixel' | 'bf-pixeldemon':
-				stageSuffix = '-pixel';
-				daBf = 'bf-pixel-dead';
-			case 'bfdemoncesar':
-				if(PlayState.SONG.song.toLowerCase() == 'hallow' ||PlayState.SONG.song.toLowerCase() == 'portrait' ||PlayState.SONG.song.toLowerCase() == 'soul'){
-					daBf = 'bf-hallow-dead';
-				}
-				else
-				{
-					daBf = 'bf';		
-				}
-			default:
-				daBf = 'bf';
-		}
-
 		super();
 
-		Conductor.songPosition = 0;
+		var daBf:String = PlayState.SONG.player1;
+
+		if (!daBf.contains('pixel'))
+		{
+			if (daBf.contains('demon') || daBf == 'bf-carnight')
+			{
+				// For demon fever
+				switch(PlayState.SONG.song.toLowerCase())
+				{
+					case 'hallow' | 'portrait' | 'soul':
+						daBf = 'bf-hallow-dead';
+					default:
+						daBf = 'demonDeath';
+				}
+			}
+			else
+			{
+				daBf = 'humanDeath';
+			}
+		}
+		else
+		{
+			stageSuffix = '-pixel';
+			daBf = 'bf-pixel-dead';
+		}
 
 		bf = new Boyfriend(x, y, daBf);
 		add(bf);
@@ -51,8 +57,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
 		Conductor.changeBPM(100);
 
-		// FlxG.camera.followLerp = 1;
-		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
 
@@ -63,10 +67,6 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	override function update(elapsed:Float)
 	{
-		if(PlayState.SONG.song.toLowerCase() == 'run'){
-			System.exit(0);
-		}
-		
 		super.update(elapsed);
 
 		if (controls.ACCEPT #if mobile || FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed #end)
@@ -94,13 +94,12 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		{
-			
-			if(PlayState.SONG.song.toLowerCase() == 'hallow' ||PlayState.SONG.song.toLowerCase() == 'portrait' ||PlayState.SONG.song.toLowerCase() == 'soul'){
-				FlxG.sound.playMusic(Paths.music('gameOverHallow'));
-			}
-			else
+			switch (PlayState.SONG.song.toLowerCase())
 			{
-				FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+				case 'hallow' | 'portrait' | 'soul':
+					FlxG.sound.playMusic(Paths.music('gameOverHallow'));
+				default:
+					FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
 			}
 		}
 
@@ -113,8 +112,6 @@ class GameOverSubstate extends MusicBeatSubstate
 	override function beatHit()
 	{
 		super.beatHit();
-
-		FlxG.log.add('beat');
 	}
 
 	var isEnding:Bool = false;
@@ -126,13 +123,15 @@ class GameOverSubstate extends MusicBeatSubstate
 			isEnding = true;
 			bf.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
+
+			switch (PlayState.SONG.song.toLowerCase())
+			{
+				case 'hallow' | 'portrait' | 'soul':
+					FlxG.sound.play(Paths.music('gameOver-EndHallow'));
+				default:
+					FlxG.sound.play(Paths.music('gameOverEnd'));
+			}
 		
-			if(PlayState.SONG.song.toLowerCase() == 'hallow' ||PlayState.SONG.song.toLowerCase() == 'portrait' ||PlayState.SONG.song.toLowerCase() == 'soul'){
-				FlxG.sound.play(Paths.music('gameOver-EndHallow'));
-			}
-			else{
-				FlxG.sound.play(Paths.music('gameOverEnd'));
-			}
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()

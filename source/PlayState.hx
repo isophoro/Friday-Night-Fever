@@ -18,7 +18,6 @@ import flixel.FlxSubState;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
-
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxSound;
@@ -220,10 +219,8 @@ class PlayState extends MusicBeatState
 	}
 
 	public var mobileTiles:Array<FlxSprite> = [];
-	var whittyBG:FlxSprite;
 	public var subtitles:Subtitles;
 
-	
 	var wiggleEffect:WiggleEffect = new WiggleEffect();
 	
 	var currentTimingShown:FlxText;
@@ -673,11 +670,12 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.7;
 				curStage = 'princess';
 
-				whittyBG = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/alleywaybroken'));
+				var whittyBG = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/alleywaybroken'));
 				whittyBG.antialiasing = true;
 				whittyBG.scrollFactor.set(0.9, 0.9);
 				whittyBG.scale.set(1.25, 1.25);
 				add(whittyBG);
+				whittyBG.shader = wiggleEffect.shader;
 			default:
 			{
 				defaultCamZoom = 0.9;
@@ -1079,8 +1077,7 @@ class PlayState extends MusicBeatState
 					wiggleEffect.waveAmplitude = 0.0055;
 					wiggleEffect.waveFrequency = 7;
 					wiggleEffect.waveSpeed = 1.15;
-					whittyBG.shader = wiggleEffect.shader;
-	
+
 					for (i in [iconP1, iconP2, scoreTxt, currentTimingShown])
 						i.shader = wiggleEffect.shader;
 				}
@@ -1624,9 +1621,6 @@ class PlayState extends MusicBeatState
 				} else {}
 			}
 		}
-
-		// trace(unspawnNotes.length);
-		// playerCounter += 1;
 
 		unspawnNotes.sort(sortByShit);
 
@@ -2291,10 +2285,13 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 250;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 					case 'week5' | 'ripdiner' | 'week5othercrowd':
-						camFollow.x = boyfriend.getMidpoint().x - 380;
-						camFollow.y = boyfriend.getMidpoint().y - 310;
+						camFollow.x = boyfriend.getMidpoint().x - 350;
+						camFollow.y = boyfriend.getMidpoint().y - 370;
 					case 'week3stage' | 'philly':
 						camFollow.x = boyfriend.getMidpoint().x - 380;
+					case 'princess':
+						camFollow.y = boyfriend.getMidpoint().y - 330;
+						camFollow.x = boyfriend.getMidpoint().x - 450;
 					case 'robocesbg':
 						switch (roboStage.curStage)
 						{
