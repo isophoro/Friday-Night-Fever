@@ -116,7 +116,7 @@ class Option
 	private var acceptValues:Bool = false;
 	public final function getDisplay():String
 	{
-		return display;
+		return updateDisplay();
 	}
 
 	public final function getAccept():Bool
@@ -505,29 +505,6 @@ class ScrollSpeedOption extends Option
 	}
 }
 
-
-class RainbowFPSOption extends Option
-{
-	public function new(desc:String)
-	{
-		super();
-		description = desc;
-	}
-
-	public override function press():Bool
-	{
-		FlxG.save.data.fpsRain = !FlxG.save.data.fpsRain;
-		(cast (Lib.current.getChildAt(0), Main)).changeFPSColor(FlxColor.WHITE);
-		display = updateDisplay();
-		return true;
-	}
-
-	private override function updateDisplay():String
-	{
-		return "FPS Rainbow " + (!FlxG.save.data.fpsRain ? "off" : "on");
-	}
-}
-
 class NPSDisplayOption extends Option
 {
 	public function new(desc:String)
@@ -778,4 +755,30 @@ class AntialiasingOption extends Option
 	
 	private override function updateDisplay():String
 		return "antialiasing " + (FlxG.save.data.antialiasing ? "on" : "off");
+}
+
+class BasicOption extends Option
+{
+	public var _display:String = '';
+	private var field:String = '';
+	public function new (desc:String, field:String, _display:String)
+	{
+		super();
+		description = desc;
+		this.field = field;
+		this._display = _display;
+	}
+
+	public override function press():Bool
+	{
+		Reflect.setProperty(FlxG.save.data, field, !Reflect.getProperty(FlxG.save.data, field));
+		trace('${CoolUtil.capitalizeFirstLetters(field)} : ' + Reflect.field(FlxG.save.data, field));
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return _display + (Reflect.field(FlxG.save.data, field) ? ' on' : ' off');
+	}
 }

@@ -19,7 +19,8 @@ class ColorShader extends FlxShader
 		uniform float _hue;
 		uniform float _saturation;
 		void main(void) {
-			gl_FragColor = texture2D( bitmap, openfl_TextureCoordv );
+			gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
+			float alpha = gl_FragColor.a;
 			
 			// hue
 			float s = sin(_hue * PI), c = cos(_hue * PI);
@@ -40,7 +41,7 @@ class ColorShader extends FlxShader
 				gl_FragColor.rgb += (average - gl_FragColor.rgb) * (-_saturation);
 			}
 
-			gl_FragColor *= openfl_Alphav;
+			gl_FragColor *= alpha;
 		}
 	")
 	public function new()

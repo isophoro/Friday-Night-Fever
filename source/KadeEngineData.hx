@@ -54,8 +54,8 @@ class KadeEngineData
 			FlxG.save.data.changedHit = false;
 		}
 
-		if (FlxG.save.data.fpsRain == null)
-			FlxG.save.data.fpsRain = false;
+		if (FlxG.save.data.brighterNotes == null)
+			FlxG.save.data.brighterNotes = false;
 
 		if (FlxG.save.data.fpsCap == null)
 			FlxG.save.data.fpsCap = 120;

@@ -10,6 +10,7 @@ import flixel.util.FlxColor;
 import polymod.format.ParseRules.TargetSignatureElement;
 #end
 import PlayState;
+import shaders.ColorShader;
 
 using StringTools;
 
@@ -134,6 +135,13 @@ class Note extends FlxSprite
 					{
 						case 1: // hallow
 							frames = Paths.getSparrowAtlas('NOTE_HALLOW');
+							if (FlxG.save.data.brighterNotes)
+							{
+								var cshader = new ColorShader();
+								cshader.saturation = 0.65;
+								cshader.onUpdate();
+								shader = cshader;
+							}
 						default:
 							frames = Paths.getSparrowAtlas('NOTE_assets');
 					}	
