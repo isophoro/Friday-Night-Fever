@@ -57,6 +57,9 @@ class KadeEngineData
 		if (FlxG.save.data.brighterNotes == null)
 			FlxG.save.data.brighterNotes = false;
 
+		if (FlxG.save.data.disableModCamera == null)
+			FlxG.save.data.disableModCamera = false; 
+
 		if (FlxG.save.data.fpsCap == null)
 			FlxG.save.data.fpsCap = 120;
 

@@ -152,9 +152,6 @@ class PlayState extends MusicBeatState
 
 	var halloweenBG:FlxSprite;
 
-	var phillyTrain:FlxSprite;
-	var trainSound:FlxSound;
-
 	var limo:FlxSprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:FlxSprite;
@@ -183,6 +180,14 @@ class PlayState extends MusicBeatState
 	public var roboForeground:FlxTypedSpriteGroup<FlxSprite> = new FlxTypedSpriteGroup<FlxSprite>();
 	public var disableCamera:Bool = false;
 	public var disableModCamera:Bool = false;
+
+	public static function setModCamera(bool:Bool)
+	{
+		if (FlxG.save.data.disableModCamera)
+			instance.disableModCamera = true;
+		else
+			instance.disableModCamera = bool; 
+	}
 
 	public static var daPixelZoom:Float = 6;
 
@@ -230,11 +235,13 @@ class PlayState extends MusicBeatState
 	{
 		super.create();
 
+		instance = this;
+		setModCamera(false);
+
 		//partycrasher shit//
 		modchart = new ModChart(this);
 
 		tvshit = new VCRDistortionEffect();
-		rain = new RainEffect();
 		
 		tvshit.setDistortion(false);
 		tvshit.setVignetteMoving(true);
@@ -246,7 +253,6 @@ class PlayState extends MusicBeatState
 		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
 		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
 
-		instance = this;
 		opponent = FlxG.save.data.opponent;
 
 		if (FlxG.save.data.fpsCap > 290)
@@ -456,11 +462,6 @@ class PlayState extends MusicBeatState
 
 					var streetBehind:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('philly/bg', 'week3'));
 					add(streetBehind);
-
-					// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
-
-					var street:FlxSprite = new FlxSprite(-70, streetBehind.y).loadGraphic(Paths.image('philly/street', 'week3'));
-					//add(street);
 				}
 			case 'week3stage':
 				{
@@ -475,9 +476,6 @@ class PlayState extends MusicBeatState
 					add(city);
 
 					// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
-
-					var street:FlxSprite = new FlxSprite(-70).loadGraphic(Paths.image('street'));
-					//add(street);
 				}
 			case 'limo':
 				{
@@ -1992,20 +1990,6 @@ class PlayState extends MusicBeatState
 				gf.animation.curAnim.frameRate = 24 / (Conductor.crochet / 1000);
 		*/
 
-		switch (curStage) 
-		{
-			case 'philly':
-				if (trainMoving) 
-				{
-					trainFrameTiming += elapsed;
-
-					if (trainFrameTiming >= 1 / 24) {
-						updateTrainPos();
-						trainFrameTiming = 0;
-					}
-				}
-		}
-
 		if(FlxG.save.data.shaders)
 		{
 			wiggleEffect.update(elapsed);
@@ -2013,9 +1997,6 @@ class PlayState extends MusicBeatState
 
 		if(tvshit!=null){
 			tvshit.update(elapsed);
-		}
-		if(rain!=null){
-			rain.update(elapsed);
 		}
 	
 		super.update(elapsed);
@@ -3295,60 +3276,6 @@ class PlayState extends MusicBeatState
 			new FlxTimer().start(2, function(tmr:FlxTimer) {
 				resetFastCar();
 			});
-		}
-	}
-
-	var trainMoving:Bool = false;
-	var trainFrameTiming:Float = 0;
-
-	var trainCars:Int = 8;
-	var trainFinishing:Bool = false;
-	var trainCooldown:Int = 0;
-
-	function trainStart():Void {
-		if (FlxG.save.data.distractions) {
-			trainMoving = true;
-			if (!trainSound.playing)
-				trainSound.play(true);
-		}
-	}
-
-	var startedMoving:Bool = false;
-
-	function updateTrainPos():Void {
-		if (FlxG.save.data.distractions) {
-			if (trainSound.time >= 4700) {
-				startedMoving = true;
-				gf.playAnim('hairBlow');
-			}
-
-			if (startedMoving) {
-				phillyTrain.x -= 400;
-
-				if (phillyTrain.x < -2000 && !trainFinishing) {
-					phillyTrain.x = -1150;
-					trainCars -= 1;
-
-					if (trainCars <= 0)
-						trainFinishing = true;
-				}
-
-				if (phillyTrain.x < -4000 && trainFinishing)
-					trainReset();
-			}
-		}
-	}
-
-	function trainReset():Void {
-		if (FlxG.save.data.distractions) {
-			gf.playAnim('hairFall');
-			phillyTrain.x = FlxG.width + 200;
-			trainMoving = false;
-			// trainSound.stop();
-			// trainSound.time = 0;
-			trainCars = 8;
-			trainFinishing = false;
-			startedMoving = false;
 		}
 	}
 

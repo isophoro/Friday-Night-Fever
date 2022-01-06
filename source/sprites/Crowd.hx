@@ -33,7 +33,7 @@ class Crowd extends FlxSprite
         beatHit();
     }
 
-    public var scales:Array<Float> = [1, 1.08, 1.03];
+    public var scales:Array<Float> = [1, 1.08, 1];
 
     public function beatHit()
     {

@@ -58,7 +58,8 @@ class OptionsMenu extends MusicBeatState
 			#end
 		]),
 		new OptionCategory("Accessibility", [
-			new BasicOption("Makes the gimmick notes in Week ??? more saturated", "brighterNotes", "Saturated Notes")
+			new BasicOption("Disables camera zooming effects from the song's modchart", "disableModCamera", "Disable Modchart Zoom"),
+			new BasicOption("Makes the gimmick notes in Week ??? more saturated", "brighterNotes", "Brighter Gimmick Notes")
 		]),
 		new OptionCategory("Advanced", [
 			#if desktop
