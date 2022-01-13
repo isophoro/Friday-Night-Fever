@@ -235,8 +235,18 @@ class PlayState extends MusicBeatState
 	{
 		super.create();
 
+		for (i in ['sicks', 'bads', 'goods', 'shits', 'misses', 'repPresses', 'repReleases'])
+			Reflect.setField(PlayState, i, 0);
+		
 		instance = this;
+		opponent = FlxG.save.data.opponent;
 		setModCamera(false);
+
+		if (FlxG.sound.music != null)
+			FlxG.sound.music.stop();
+
+		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
+		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
 
 		//partycrasher shit//
 		modchart = new ModChart(this);
@@ -250,66 +260,27 @@ class PlayState extends MusicBeatState
 		tvshit.setGlitchModifier(.2);
 		//partycrasher shit//
 
-		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
-		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
-
-		opponent = FlxG.save.data.opponent;
-
 		if (FlxG.save.data.fpsCap > 290)
 			(cast(Lib.current.getChildAt(0), Main)).setFPSCap(800);
 
-		if (FlxG.sound.music != null)
-			FlxG.sound.music.stop();
-
-		for (i in ['sicks', 'bads', 'goods', 'shits', 'misses', 'repPresses', 'repReleases'])
-			Reflect.setField(PlayState, i, 0);
-
 		#if windows
 		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
-		//if (storyDifficulty == 3) {
-			//executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase() + "/HARDPLUS"));
-		//}
 		#end
 		#if !cpp
 		executeModchart = false; // FORCE disable for non cpp targets
 		#end
 
-		//if (storyDifficulty == 3) {
-		//	executeModchart = false;
-		//}
 		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
-
-		//if (storyDifficulty == 3) {
-			//executeModchart = true;
-			//trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/HARDPLUS"));
-	//	}
 
 		#if windows
 		// Making difficulty text for Discord Rich Presence.
 		storyDifficultyText = CoolUtil.capitalizeFirstLetters(CoolUtil.difficultyArray[storyDifficulty]);
 
-		iconRPC = SONG.player2;
-
-		// To avoid having duplicate images in Discord assets
-		switch (iconRPC)
-		{
-			case 'senpai-angry':
-				iconRPC = 'senpai';
-			case 'monster-christmas':
-				iconRPC = 'monster';
-			case 'mom-car':
-				iconRPC = 'mom';
-		}
+		iconRPC = SONG.player2.split('-')[0]; // To avoid having duplicate images in Discord assets
+		detailsPausedText = "Paused - " + detailsText;	// String for when the game is paused
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
-		if (isStoryMode) {
-			detailsText = "Story Mode: Week " + storyWeek;
-		} else {
-			detailsText = "Freeplay";
-		}
-
-		// String for when the game is paused
-		detailsPausedText = "Paused - " + detailsText;
+		detailsText = isStoryMode ? ("Story Mode: Week " + storyWeek) : "Freeplay";
 
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText
@@ -333,13 +304,12 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
+		FlxCamera.defaultCameras = [camGame];
 
 		currentTimingShown = new FlxText(0, 0, 0, "0ms");
 		currentTimingShown.setFormat(null, 20, FlxColor.CYAN, LEFT, OUTLINE, FlxColor.BLACK);
 
 		currentTimingShown.cameras = [camHUD];
-
-		FlxCamera.defaultCameras = [camGame];
 
 		if (FlxG.save.data.shaders) 
 		{
@@ -911,6 +881,8 @@ class PlayState extends MusicBeatState
 				boyfriend.y = 482.3;
 				gf.x = 227;
 				gf.y = 149;
+				dad.x += 100;
+				dad.y -= 50;
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				gf.scrollFactor.set(0.9, 0.9);
 			case 'princess': 
@@ -2100,7 +2072,7 @@ class PlayState extends MusicBeatState
 		#if debug
 		if (FlxG.keys.justPressed.EIGHT)
 		{
-			FlxG.switchState(new AnimationDebug(SONG.player1));
+			FlxG.switchState(new AnimationDebug(SONG.player2));
 			#if windows
 			if (luaModchart != null) {
 				luaModchart.die();

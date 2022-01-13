@@ -31,6 +31,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             whittyBG.scale.set(1.25, 1.25);
             stages['whitty'] = new CoolStage([whittyBG], null, [], 0.55);
 
+            /*
             // mako shit
             var makobg:FlxSprite = new FlxSprite(-215, -90).loadGraphic(Paths.image('philly/sky', 'week3'));
             makobg.scrollFactor.set(0.1, 0.1);
@@ -40,6 +41,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             makobg2.scale = makobg.scale;
 
             stages['mako'] = new CoolStage([makobg, makobg2], null, ["boyfriend" => [940.2, 482.3], "gf" => [175, 149], "dad" => [-324.7, 365.3]], 0.67);
+            */
 
             // matt shit
             var mattbg:FlxSprite = new FlxSprite(-370, -230).loadGraphic(Paths.image('roboStage/matt_bg'));
@@ -66,7 +68,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
             stages['matt'] = new CoolStage([mattbg, mattcrowd, mattfg], [spotlight], [
                 "boyfriend" => [940.2 - dumboffset, 482.3 - 150], 
                 "gf" => [415 - dumboffset, 149 - 70], 
-                "dad" => [60.7 - dumboffset, 365.3 - 150]
+                "dad" => [60.7 - dumboffset + (100), 365.3 - 150 - (50)] // 100 and 50 are for the new sprites
             ], 0.7);
 
             //zardy shit
@@ -88,7 +90,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
                 [
                     "boyfriend" => [1366.3 - (dumboffset), 525.8 - offsetY], 
                     "gf" => [810.9 - (dumboffset * 1.275), 244.4 - offsetY], 
-                    "dad" => [492.5 - (dumboffset * 1.765), 410.8 - offsetY]
+                    "dad" => [492.5 - (dumboffset * 1.765) + (100), 410.8 - offsetY - (50)]
                 ], 0.715);
 
             // week 1
@@ -160,8 +162,7 @@ class RoboStage extends FlxTypedSpriteGroup<FlxSprite>
 
         for (ch => sc in stages[stage].scrolling)
         {
-            // REFLECT THESE NUTS IN YO MOUTH WTF DID I MAKE
-            // Do not trust me near a computer ever again
+            // do not trust me near a computer ever again
             if (Reflect.field(instance, ch) != null)
                 Reflect.callMethod(Reflect.field(Reflect.field(instance, ch), "scrollFactor"), Reflect.field(Reflect.field(Reflect.field(instance, ch), "scrollFactor"), "set"), [sc,sc]);
         }
@@ -238,7 +239,7 @@ class CoolStage
         var coolmap:Map<String, Array<Float>> = [
             "boyfriend" => [1085.2, 482.3],
             "gf" => [245, 149],
-            "dad" => [-354.7, 365.3]
+            "dad" => [-354.7 + 100, 365.3 - 50]
         ];
 
         for (k => v in coolmap)

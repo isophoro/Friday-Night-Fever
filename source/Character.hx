@@ -806,25 +806,22 @@ class Character extends FlxSprite
 
 			case 'robo-cesar': // MAKO
 				iconColor = '9236B4';
-				tex = Paths.getSparrowAtlas('characters/roboCesar');
-				frames = tex;
-				animation.addByPrefix('idle', "Pico Idle Dance", 24);
-				animation.addByPrefix('singUP', 'pico Up note0', 24, false);
-				animation.addByPrefix('singDOWN', 'Pico Down Note0', 24, false);
-				animation.addByPrefix('singLEFT', 'Pico Note Right0', 24, false);
-				animation.addByPrefix('singRIGHT', 'Pico NOTE LEFT0', 24, false);
+				frames = Paths.getSparrowAtlas('characters/robo_fever_assets');
+				animation.addByPrefix('idle', "robo idle", 24);
+				animation.addByPrefix('singUP', 'robo up', 24, false);
+				animation.addByPrefix('singDOWN', 'robo down', 24, false);
+				animation.addByPrefix('singLEFT', 'robo left', 24, false);
+				animation.addByPrefix('singRIGHT', 'robo right', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", -8, 5);
-				addOffset("singRIGHT", -1, 2);
-				addOffset("singLEFT", 5, -7);
-				addOffset("singDOWN", 13, -9);
+				addOffset("singUP", 52, 35);
+				addOffset("singRIGHT", 51, -11);
+				addOffset("singLEFT", 113, -10);
+				addOffset("singDOWN", 103, -79);
 
-				flipX = true;
+				//flipX = true;
 
 				playAnim('idle');
-
-			
 			case 'pico': // MAKO
 				iconColor = '47CC40';
 				tex = Paths.getSparrowAtlas('characters/Pico_FNF_assetss');
