@@ -1,5 +1,6 @@
 package sprites;
 
+import openfl.display.BitmapData;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.math.FlxPoint;

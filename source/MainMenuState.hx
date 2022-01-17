@@ -120,7 +120,7 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Using a modified version of Kade Engine $kadeEngineVer', 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Friday Night Fever ${Application.current.meta.get("version")} (Running on KE 1.5.1)', 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

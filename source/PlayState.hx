@@ -1,9 +1,9 @@
 package;
 
+import sprites.RoboBackground;
 import sprites.Crowd;
 import openfl.display.BitmapData;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
-import sprites.RoboStage;
 import sprites.CharacterTrail;
 import Section.SwagSection;
 import Song.SwagSong;
@@ -176,8 +176,11 @@ class PlayState extends MusicBeatState
 	public static var campaignScore:Int = 0;
 
 	public var defaultCamZoom:Float = 1.05;
-	public var roboStage:RoboStage;
-	public var roboForeground:FlxTypedSpriteGroup<FlxSprite> = new FlxTypedSpriteGroup<FlxSprite>();
+
+	public var roboStage:RoboBackground;
+	public var roboBackground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	public var roboForeground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+
 	public var disableCamera:Bool = false;
 	public var disableModCamera:Bool = false;
 
@@ -230,6 +233,7 @@ class PlayState extends MusicBeatState
 	
 	var currentTimingShown:FlxText;
 	public var purpleOverlay:FlxSprite;
+	public var beatClass:Class<Dynamic> = null;
 
 	override public function create() 
 	{
@@ -534,8 +538,8 @@ class PlayState extends MusicBeatState
 			case 'robocesbg':
 				{
 					curStage = 'robocesbg';
-					roboStage = new RoboStage(0,0);
-					add(roboStage);
+					add(roboBackground);
+					roboStage = new RoboBackground();
 				}
 			case 'school':
 				{
@@ -1078,6 +1082,8 @@ class PlayState extends MusicBeatState
 				moreDark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/evenMOREdarkShit'));
 				moreDark.cameras = [camHUD];
 				add(moreDark);
+			case 'bad-nun':
+				beatClass = shaders.BadNun;
 		}
 
 		iconP1.cameras = [camHUD];
@@ -1967,10 +1973,11 @@ class PlayState extends MusicBeatState
 			wiggleEffect.update(elapsed);
 		}
 
-		if(tvshit!=null){
+		if(tvshit!=null)
+		{
 			tvshit.update(elapsed);
 		}
-	
+
 		super.update(elapsed);
 
 		if (!FlxG.save.data.accuracyDisplay)
@@ -2174,10 +2181,10 @@ class PlayState extends MusicBeatState
 							{
 								default:
 									camFollow.y = dad.getMidpoint().y - 190;
-									camFollow.x = dad.getMidpoint().x - -600;
+									camFollow.x = dad.getMidpoint().x + 500;
 								case 'default' | 'whitty':
 									camFollow.y = dad.getMidpoint().y - 340;
-									camFollow.x = dad.getMidpoint().x - -600;
+									camFollow.x = dad.getMidpoint().x - -490;
 							}
 						}
 						else
@@ -2251,9 +2258,12 @@ class PlayState extends MusicBeatState
 							case 'default' | 'whitty':
 								camFollow.y = boyfriend.getMidpoint().y - 430;
 								camFollow.x = boyfriend.getMidpoint().x - 600;
+							case 'matt':
+								camFollow.x = boyfriend.getMidpoint().x - 650;
+								camFollow.y = boyfriend.getMidpoint().y - 330;								
 							default:
-								camFollow.x = boyfriend.getMidpoint().x - 390;
-								camFollow.y = boyfriend.getMidpoint().y - 240;
+								camFollow.x = boyfriend.getMidpoint().x - 490;
+								camFollow.y = boyfriend.getMidpoint().y - 320;
 						}
 				}
 			}
@@ -2789,7 +2799,7 @@ class PlayState extends MusicBeatState
 			rating.velocity.y -= FlxG.random.int(140, 175);
 			rating.velocity.x -= FlxG.random.int(0, 10);
 
-			var msTiming = FlxMath.roundDecimal(noteDiff, 3);
+			var msTiming = FlxMath.roundDecimal(noteDiff, 2);
 			if (FlxG.save.data.botplay)
 				msTiming = 0;
 
@@ -3366,9 +3376,9 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (curSong == 'Bad-Nun')
+		if (beatClass != null)
 		{
-			shaders.BadNun.beatHit(curBeat);
+			Reflect.callMethod(beatClass, Reflect.field(beatClass, "beatHit"), [curBeat]);
 		}
 
 		if(curSong == 'Party-Crasher')
@@ -3387,7 +3397,6 @@ class PlayState extends MusicBeatState
 
 						//modchart.addRainCamEffect(rain);
 						modchart.addCamEffect(tvshit);
-					
 					}
 		
 					scoreTxt.setFormat(Paths.font("Retro Gaming.ttf"), #if !mobile 16 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
