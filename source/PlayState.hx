@@ -647,7 +647,9 @@ class PlayState extends MusicBeatState
 				whittyBG.scrollFactor.set(0.9, 0.9);
 				whittyBG.scale.set(1.25, 1.25);
 				add(whittyBG);
-				whittyBG.shader = wiggleEffect.shader;
+
+				if (SONG.song.toLowerCase() == 'tranquility')
+					whittyBG.shader = wiggleEffect.shader;
 			default:
 			{
 				defaultCamZoom = 0.9;
@@ -1027,6 +1029,9 @@ class PlayState extends MusicBeatState
 
 		iconP2 = new HealthIcon(SONG.player2, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
+		//var evilTrail = new CharacterTrail(iconP2, null, 4, 24, 0.3, 0.069);
+		//evilTrail.cameras = [camHUD];
+		//add(evilTrail);
 		add(iconP2);
 		add(scoreTxt);
 
@@ -3469,7 +3474,8 @@ class PlayState extends MusicBeatState
 
 		if (boyfriend.animation.curAnim.name != 'hey') 
 		{
-			gf.dance();
+			if (gf.animation.curAnim.name != 'scared' || gf.animation.curAnim.name == 'scared' && dad.holdTimer < -0.35)
+				gf.dance();
 		}
 
 		if (!boyfriend.animation.curAnim.name.startsWith("sing")) 

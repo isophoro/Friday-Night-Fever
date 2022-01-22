@@ -1,5 +1,7 @@
 package sprites;
 
+import flixel.tweens.FlxTween;
+import shaders.CRTShader;
 import openfl.display.BitmapData;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxSprite;
@@ -10,6 +12,15 @@ class RoboBackground
     public var stages:Map<String, RoboStage> = [];
     public var curStage:String = 'default';
     public var instance:PlayState;
+
+    public var overrideBF:Character = null;
+    public var overrideGF:Character = null;
+    public var overrideDad:Character = null;
+
+    private var tea:Character;
+    private var taki:Character;
+
+    var shader:CRTShader = new CRTShader();
 
     public function new() 
     {
@@ -22,8 +33,11 @@ class RoboBackground
         stages['default'] = new RoboStage([bg], [], [], [], 0.4);
         switchStage('default');
 
+        instance.modchart.addRainCamEffect(shader);
+
         if (PlayState.SONG.song == 'Loaded')
         {
+            taki = new Character(0, 0, "taki-gf");
             // ZARDY STAGE
             var dumboffset:Int = 95;
 
@@ -115,10 +129,10 @@ class RoboBackground
             stageCurtains.active = false;
 
             stages['week1'] = new RoboStage([bg, w1city, stageFront, stageCurtains], [], [
-                "boyfriend" => [1070, 220],
-                "gf" => [400, 130],
+                "boyfriend" => [1070, 360],
+                "gf" => [400, 85],
                 "dad" => [-50, 200]
-            ], [], 0.84);
+            ], [], 0.757);
 
             // WEEK 5
             var w5bg:FlxSprite = new FlxSprite(-820, -400).loadGraphic(Paths.image('christmas/lastsongyukichi', 'week5'));
@@ -127,6 +141,12 @@ class RoboBackground
             var bottomBoppers = new Crowd();
 
             stages['week5'] = new RoboStage([w5bg], [bottomBoppers], [], [], 0.55);
+
+            // WEEK 2.5
+            var church = new FlxSprite(-948, -779).loadGraphic(Paths.image('bg_taki'));
+            church.antialiasing = true;
+            
+            stages['church'] = new RoboStage([church], [], [], ["gf" => 1, "dad" => 1, "boyfriend" => 1], 0.55);
         }
     }
 
@@ -162,6 +182,9 @@ class RoboBackground
 
         instance.camZooming = true;
         instance.disableCamera = false;
+
+        instance.remove(instance.roboForeground);
+        instance.add(instance.roboForeground);
     }
 
     public function addSprites(sprites:Array<FlxSprite>, typedGroup:FlxTypedGroup<FlxSprite>)
@@ -200,10 +223,14 @@ class RoboBackground
                     switchStage('week1');
                 case 256 | 432:
                     switchStage('week5');
+                case 400:
+                    switchStage('church');
                 case 496:
                     switchStage('matt');
             }
         }
+
+        taki.dance();
 
         for (i in instance.roboBackground.members)
         {
@@ -225,6 +252,28 @@ class RoboBackground
         for (i in instance.roboForeground.members)
         {
             animCheck(i);
+        }
+    }
+
+    public function replaceGf(gf:String)
+    {
+        switch (gf)
+        {
+            case 'taki':
+                instance.gf.visible = false;
+                instance.remove(instance.boyfriend);
+                instance.remove(instance.dad);
+                instance.add(taki);
+                instance.add(instance.dad);
+                instance.add(instance.boyfriend);
+                taki.setPosition(instance.gf.x, instance.gf.y - 190);
+            default:
+                instance.gf.visible = true;
+
+                if (instance.members.contains(taki))
+                {
+                    instance.remove(taki);
+                }
         }
     }
 

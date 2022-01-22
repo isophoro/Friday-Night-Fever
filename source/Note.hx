@@ -6,9 +6,6 @@ import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 
 import flixel.util.FlxColor;
-#if polymod
-import polymod.format.ParseRules.TargetSignatureElement;
-#end
 import PlayState;
 import shaders.ColorShader;
 

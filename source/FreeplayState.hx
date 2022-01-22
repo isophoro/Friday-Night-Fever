@@ -235,6 +235,7 @@ class FreeplayState extends MusicBeatState
 
 		if (accepted)
 		{	
+			FlxTransitionableState.skipNextTransOut = false;
 			var poop:String = Highscore.formatSong(StringTools.replace(songs[curSelected].songName," ", "-").toLowerCase(), curDifficulty);
 
 			trace(poop);

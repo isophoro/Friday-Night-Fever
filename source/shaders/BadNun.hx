@@ -175,22 +175,28 @@ class BadNun
                 enableShader(true);
                 bgColorShader.color.value = [0,0,0];
                 colorShader.color.value = [1,1,1];
+            case 344:
+                instance.camZooming = false;
+                PlayState.setModCamera(true);
+                
+                FlxTween.tween(instance.camGame, {zoom: instance.camGame.zoom + 0.1}, 2);
             case 348:
+                translate = true;
+                PlayState.instance.scoreTxt.font = Paths.font("unifont.otf");
+                PlayState.instance.scoreTxt.size = 18;
+                
+                instance.camZooming = true;
+
                 bgColorShader.color.value = [1,1,1];
                 colorShader.color.value = [0,0,0];
                 instance.dad.visible = false;
                 instance.gf.visible = false;
                 instance.boyfriend.visible = false;
-                PlayState.setModCamera(true);
 
                 if (instance.health > 1)
                     instance.health = 1;
                 
             case 352:
-                translate = true;
-                PlayState.instance.scoreTxt.font = Paths.font("unifont.otf");
-                PlayState.instance.scoreTxt.size = 18;
-                
                 instance.dad.visible = true;
 
                 instance.remove(instance.dad);
@@ -198,7 +204,6 @@ class BadNun
                 instance.add(instance.dad);
                 instance.camZooming = false;
                 instance.disableCamera = true;
-                PlayState.setModCamera(true);
 
                 instance.dad.x += 500;
                 focusCamera(instance.dad.x + 120, instance.dad.y + 90);

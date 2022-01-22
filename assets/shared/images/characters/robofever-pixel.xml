@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="roboCesarPixel.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="C354R DOWN-0000" x="0" y="0" width="150" height="100" pivotX="75" pivotY="50"/>
+	<SubTexture name="C354R DOWN-0001" x="0" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0002" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0003" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0004" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0005" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0006" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0007" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0008" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0009" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0010" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0011" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0012" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R DOWN-0013" x="150" y="0" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0000" x="300" y="0" width="150" height="100" pivotX="75" pivotY="351"/>
+	<SubTexture name="C354R IDLE0001" x="300" y="0" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0002" x="0" y="100" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0003" x="0" y="100" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0004" x="150" y="100" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0005" x="150" y="100" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0006" x="300" y="100" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0007" x="300" y="100" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0008" x="0" y="200" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0009" x="0" y="200" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0010" x="0" y="200" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0011" x="0" y="200" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0012" x="0" y="200" width="150" height="100"/>
+	<SubTexture name="C354R IDLE0013" x="0" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0000" x="150" y="200" width="150" height="100" pivotX="75" pivotY="50"/>
+	<SubTexture name="C354R LEFT-0001" x="150" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0002" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0003" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0004" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0005" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0006" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0007" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0008" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0009" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0010" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0011" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0012" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R LEFT-0013" x="300" y="200" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0000" x="0" y="300" width="150" height="100" pivotX="75" pivotY="50"/>
+	<SubTexture name="C354R RIGHT 0001" x="0" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0002" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0003" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0004" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0005" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0006" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0007" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0008" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0009" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0010" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0011" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0012" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R RIGHT 0013" x="150" y="300" width="150" height="100"/>
+	<SubTexture name="C354R UP0000" x="300" y="300" width="150" height="100" pivotX="75" pivotY="-56"/>
+	<SubTexture name="C354R UP0001" x="300" y="300" width="150" height="100"/>
+	<SubTexture name="C354R UP0002" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0003" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0004" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0005" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0006" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0007" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0008" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0009" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0010" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0011" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0012" x="0" y="400" width="150" height="100"/>
+	<SubTexture name="C354R UP0013" x="0" y="400" width="150" height="100"/>
+</TextureAtlas>

@@ -121,7 +121,6 @@
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 	<haxelib name="faxe" if='switch'/>
-	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="linc_luajit" unless="html"/>
 

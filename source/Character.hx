@@ -66,6 +66,7 @@ class Character extends FlxSprite
 				}
 
 				animation.addByPrefix('idle', 'fever idle0', 24, false);
+				animation.addByPrefix('idle-frown', 'fever idle frown', 24, false);
 				animation.addByPrefix('singUP', 'fever up0', 24, false);
 				animation.addByPrefix('singLEFT', 'fever left0', 24, false);
 				animation.addByPrefix('singRIGHT', 'fever right0', 24, false);
@@ -81,6 +82,7 @@ class Character extends FlxSprite
 				if (curCharacter != 'bfdemoncesar')
 				{
 					addOffset('idle', 6, 93);
+					addOffset('idle-frown', 6, 93);
 					addOffset("singUP", -25, 106);
 					addOffset("singRIGHT", -19, 92);
 					addOffset("singLEFT", 43, 95);
@@ -96,6 +98,7 @@ class Character extends FlxSprite
 				else
 				{
 					addOffset('idle', 6, 93);
+					addOffset('idle-frown', 6, 93);
 					addOffset("singUP", -35, 96);
 					addOffset("singRIGHT", -6, 87);
 					addOffset("singLEFT", 43, 95);
@@ -511,7 +514,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('scared', 'GF FEAR', 24);
 
 				addOffset('cheer');
-				addOffset('sad', -2, -21);
+				addOffset('sad', -2, -20);
 				addOffset('danceLeft', 0, -9);
 				addOffset('danceRight', 0, -9);
 
@@ -778,10 +781,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'takiright', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", -39, 17);
-				addOffset("singRIGHT", -21, -5);
-				addOffset("singLEFT", 38, -18);
-				addOffset("singDOWN", 21, -180);
+				addOffset("singUP", -6, 8);
+				addOffset("singRIGHT", -17, -5);
+				addOffset("singLEFT", 13, -18);
+				addOffset("singDOWN", 21, -164);
 
 				playAnim('idle');
 			case 'monster': // TAKI
@@ -814,9 +817,9 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'robo right', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", 52, 35);
-				addOffset("singRIGHT", 51, -11);
-				addOffset("singLEFT", 113, -10);
+				addOffset("singUP", 32, 35);
+				addOffset("singRIGHT", 31, -11);
+				addOffset("singLEFT", 96, 0);
 				addOffset("singDOWN", 103, -79);
 
 				//flipX = true;
@@ -1010,11 +1013,20 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				antialiasing = false;
+			case 'taki-gf':
+				frames = Paths.getSparrowAtlas('characters/taki_gf');
+				animation.addByIndices('danceLeft', 'taki bumpin ', [32, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'taki bumpin ', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31], "", 24, false);
+
+				addOffset('danceLeft', 0, -9);
+				addOffset('danceRight', 0, -9);
+
+				playAnim('danceRight');
+
 		}
 
 		dance();
 
-		// checks for 'dea' incase the character is something like bf-hallow-dead or demonDeath
 		if (isPlayer)
 		{
 			flipX = !flipX;
@@ -1050,7 +1062,9 @@ class Character extends FlxSprite
 				holdTimer += elapsed;
 			}
 			else
-				holdTimer = 0;	
+			{
+				holdTimer = 0;
+			}
 
 			if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
 			{
@@ -1062,6 +1076,14 @@ class Character extends FlxSprite
 			if (animation.curAnim.name.startsWith('sing'))
 			{
 				holdTimer += elapsed;
+			}
+			else
+			{
+				if (holdTimer > 0)
+					holdTimer = 0;
+
+				// Used to sync tea's scared anim to taki's singing anims
+				holdTimer -= elapsed;
 			}
 
 			var dadVar:Float = 4;
@@ -1111,7 +1133,10 @@ class Character extends FlxSprite
 			{
 				switch(curCharacter)
 				{
-					default: playAnim('idle');
+					case 'bf' | 'bfdemoncesar':
+						playAnim('idle' + (PlayState.SONG.player2 == 'robo-cesar' ? '-frown' : ''));
+					default: 
+						playAnim('idle');
 				}
 			}
 		}
