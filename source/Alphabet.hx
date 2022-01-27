@@ -73,17 +73,13 @@ class Alphabet extends FlxSpriteGroup
 		var xPos:Float = 0;
 		for (character in splitWords)
 		{
-			// if (character.fastCodeAt() == " ")
-			// {
-			// }
-
 			if (character == " " || character == "-")
 			{
 				lastWasSpace = true;
 			}
 
-			if (AlphaCharacter.alphabet.indexOf(character.toLowerCase()) != -1)
-				// if (AlphaCharacter.alphabet.contains(character.toLowerCase()))
+			if (AlphaCharacter.alphabet.indexOf(character.toLowerCase()) != -1 || 
+				AlphaCharacter.numbers.contains(character))
 			{
 				if (lastSprite != null)
 				{
@@ -96,12 +92,16 @@ class Alphabet extends FlxSpriteGroup
 					lastWasSpace = false;
 				}
 
-				// var letter:AlphaCharacter = new AlphaCharacter(30 * loopNum, 0);
 				var letter:AlphaCharacter = new AlphaCharacter(xPos, 0);
 				listOAlphabets.add(letter);
 
 				if (isBold)
-					letter.createBold(character);
+				{
+					if (AlphaCharacter.numbers.contains(character))
+						letter.createNumber(character);
+					else
+						letter.createBold(character);
+				}
 				else
 				{
 					letter.createLetter(character);
@@ -182,7 +182,6 @@ class Alphabet extends FlxSpriteGroup
 				}
 				// trace(_finalText.fastCodeAt(loopNum) + " " + _finalText.charAt(loopNum));
 
-				// var letter:AlphaCharacter = new AlphaCharacter(30 * loopNum, 0);
 				var letter:AlphaCharacter = new AlphaCharacter(xPos, 55 * yMulti);
 				listOAlphabets.add(letter);
 				letter.row = curRow;
@@ -231,8 +230,8 @@ class Alphabet extends FlxSpriteGroup
 		{
 			var scaledY = FlxMath.remapToRange(targetY, 0, 1, 0, 1.3);
 
-			y = FlxMath.lerp(y, (scaledY * 120) + (FlxG.height * 0.48), 0.30);
-			x = FlxMath.lerp(x, (targetY * 20) + 90, 0.30);
+			y = FlxMath.lerp(y, (scaledY * 120) + (FlxG.height * 0.48), 0.16 * (60 / FlxG.stage.application.window.frameRate));
+			x = FlxMath.lerp(x, (targetY * 20) + 90, 0.16 * (60 / FlxG.stage.application.window.frameRate));
 		}
 
 		super.update(elapsed);

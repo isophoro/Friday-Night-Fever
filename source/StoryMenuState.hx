@@ -51,7 +51,9 @@ class StoryMenuState extends MusicBeatState
 			['Mako', 'VIM', "Retribution"],
 			['Honey', "Bunnii", "Throw-it-back"],
 			['Mild', 'Spice', 'Party-Crasher'],
-			['Ur-girl', 'Chicken-sandwich', 'Funkin-god']
+			['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
+			['C354R', 'Loaded'],
+			['Tranquility', 'Princess', 'Banish']
 			//['bowling time']
 		];	
 	}
@@ -60,7 +62,7 @@ class StoryMenuState extends MusicBeatState
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var wiggleEffect:WiggleEffect;
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true, true];
+	public static var weekUnlocked:Array<Bool> = [for (i in get_weekData()) true];
 
 	var weekCharacters:Array<Dynamic> = [
 		['', 'bf', 'gf'],
@@ -84,7 +86,9 @@ class StoryMenuState extends MusicBeatState
 		"MELONCHOLY!",
 		"BUNNI MURDER!",
 		"DINNER TIME!",
-		"GOD DAMN!"
+		"GOD DAMN!",
+		"*THWOMP NOISE*",
+		"shittin poopin"
 		//"BOWLING TILL YOU'RE DEAD"
 	];
 
@@ -96,7 +100,7 @@ class StoryMenuState extends MusicBeatState
 
 	var grpWeekText:FlxTypedGroup<MenuItem>;
 	var filters:Array<BitmapFilter> = [];
-	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
+	//var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
 
 	var grpLocks:FlxTypedGroup<FlxSprite>;
 	var luaWiggles:Array<WiggleEffect> = [];
@@ -165,7 +169,7 @@ class StoryMenuState extends MusicBeatState
 		grpWeekText = new FlxTypedGroup<MenuItem>();
 		add(grpWeekText);
 
-		grpWeekCharacters = new FlxTypedGroup<MenuCharacter>();
+		//grpWeekCharacters = new FlxTypedGroup<MenuCharacter>();
 
 		grpLocks = new FlxTypedGroup<FlxSprite>();
 		add(grpLocks);
@@ -197,9 +201,9 @@ class StoryMenuState extends MusicBeatState
 			}
 		}
 
-		grpWeekCharacters.add(new MenuCharacter(0, 100, 0.5, false));
+		/*grpWeekCharacters.add(new MenuCharacter(0, 100, 0.5, false));
 		grpWeekCharacters.add(new MenuCharacter(450, 25, 0.9, true));
-		grpWeekCharacters.add(new MenuCharacter(850, 100, 0.5, true));
+		grpWeekCharacters.add(new MenuCharacter(850, 100, 0.5, true));*/
 
 		//add(yellowBG);
 		//add(grpWeekCharacters);
@@ -313,7 +317,6 @@ class StoryMenuState extends MusicBeatState
 					leftArrow.animation.play('press');
 				else
 					leftArrow.animation.play('idle');
-
 				
 				if (controls.RIGHT_P)
 					changeDifficulty(1);
@@ -350,7 +353,7 @@ class StoryMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 
 			grpWeekText.members[curWeek].startFlashing();
-			grpWeekCharacters.members[1].animation.play('bfConfirm');
+			//grpWeekCharacters.members[1].animation.play('bfConfirm');
 			stopspamming = true;
 
 			PlayState.storyPlaylist = weekData[curWeek];
@@ -445,9 +448,11 @@ class StoryMenuState extends MusicBeatState
 
 	function updateText()
 	{
+		/*
 		grpWeekCharacters.members[0].setCharacter(weekCharacters[curWeek][0]);
 		grpWeekCharacters.members[1].setCharacter(weekCharacters[curWeek][1]);
 		grpWeekCharacters.members[2].setCharacter(weekCharacters[curWeek][2]);
+		*/
 
 		if(lime.utils.Assets.exists(Paths.image('newStory/week'+curWeek)))
 		{

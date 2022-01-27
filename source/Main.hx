@@ -117,6 +117,20 @@ class Main extends Sprite
 		Assets.cache.clear("week");
 	}
 
+	public static function clearMemory()
+	{
+		@:privateAccess
+		for (key in FlxG.bitmap._cache.keys())
+		{
+			var obj = FlxG.bitmap._cache.get(key);
+			if (obj != null) {
+				openfl.Assets.cache.removeBitmapData(key);
+				FlxG.bitmap._cache.remove(key);
+				obj.destroy();
+			}
+		}
+	}
+
 	var game:FlxGame;
 
 	var fpsCounter:FPS_MEM;

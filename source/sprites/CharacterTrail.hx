@@ -7,6 +7,7 @@ import flixel.addons.effects.FlxTrail;
 
 class CharacterTrail extends FlxTrail
 {
+    public var disabledAnimations:Array<String> = ['idle'];
     var elapsedTimer:Float = 0;
     
     override function update(elapsed:Float)
@@ -103,6 +104,8 @@ class CharacterTrail extends FlxTrail
 
                 // Is the trailsprite even visible?
                 trailSprite.exists = true;
+
+                trailSprite.visible = !disabledAnimations.contains(target.animation.curAnim.name);
             }
         }
 

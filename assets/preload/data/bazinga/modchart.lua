@@ -1,6 +1,5 @@
 function start (song)
 setCamZoom(1)
-setHudZoom(2)
 showOnlyStrums = true
 strumLine1Visible = false
 strumLine2Visible = false

@@ -213,7 +213,6 @@ class PauseSubState extends MusicBeatSubstate
 					//CustomFadeTransition.nextCamera = transCamera;
 					FlxG.resetState();
 					FlxG.sound.music.volume = 0;
-					PlayState.changedDifficulty = true;
 					return;
 				}
 			} 
@@ -228,8 +227,6 @@ class PauseSubState extends MusicBeatSubstate
 					menuItems = difficultyChoices;
 					regenMenu();
 				case "Exit to menu":
-					PlayState.changedDifficulty = false;
-
 					if(PlayState.loadRep)
 					{
 						FlxG.save.data.botplay = false;

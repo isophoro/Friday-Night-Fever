@@ -182,23 +182,26 @@ class TitleState extends MusicBeatState
 			gotoIntro();
 		}
 
-		if (controls.LEFT)
-		{
-			hueShader.hue -= 0.35 * elapsed;
-		}
-		else if (controls.RIGHT)
-		{
-			hueShader.hue += 0.35 * elapsed;
-		}
-
-		hueShader.onUpdate();
-
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
 		if (FlxG.keys.justPressed.F)
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
+		}
+
+		if (!transitioning && skippedIntro)
+		{
+			if (controls.LEFT)
+			{
+				hueShader.hue -= 0.35 * elapsed;
+			}
+			else if (controls.RIGHT)
+			{
+				hueShader.hue += 0.35 * elapsed;
+			}
+
+			hueShader.onUpdate();
 		}
 
 		if (controls.ACCEPT #if mobile || (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) #end)

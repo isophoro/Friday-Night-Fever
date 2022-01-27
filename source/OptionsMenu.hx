@@ -48,8 +48,9 @@ class OptionsMenu extends MusicBeatState
 		]),
 		new OptionCategory("Appearance", [
 			#if desktop
-			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
+			//new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
 			new AccuracyOption("Display accuracy information."),
+			new LaneOption("How transparent your lane is, higher = more visible."),
 			new NPSDisplayOption("Shows your current Notes Per Second."),
 			new SongPositionOption("Show the songs current position (as a bar)"),
 			new CpuStrums("CPU's strumline lights up when a note hits it."),
@@ -58,6 +59,7 @@ class OptionsMenu extends MusicBeatState
 			#end
 		]),
 		new OptionCategory("Accessibility", [
+			new BasicOption("Disables modcharts", "disableModCharts", "Disable Modcharts"),
 			new BasicOption("Disables camera zooming effects from the song's modchart", "disableModCamera", "Disable Modchart Zoom"),
 			new BasicOption("Makes the gimmick notes in Week ??? more saturated", "brighterNotes", "Brighter Gimmick Notes")
 		]),

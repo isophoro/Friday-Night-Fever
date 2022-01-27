@@ -65,6 +65,12 @@ class KadeEngineData
 
 		if (FlxG.save.data.fpsCap > 285 || FlxG.save.data.fpsCap < 60)
 			FlxG.save.data.fpsCap = 120; // baby proof so you can't hard lock ur copy of kade engine
+
+		if (FlxG.save.data.disableModCharts == null)
+			FlxG.save.data.disableModCharts = false;
+
+		if (FlxG.save.data.laneTransparency == null)
+			FlxG.save.data.laneTransparency = 0;
 		
 		if (FlxG.save.data.scrollSpeed == null)
 			FlxG.save.data.scrollSpeed = 1;
@@ -72,7 +78,7 @@ class KadeEngineData
 		if (FlxG.save.data.npsDisplay == null)
 			FlxG.save.data.npsDisplay = false;
 
-		if (FlxG.save.data.frames == null)
+		if (FlxG.save.data.frames == null || FlxG.save.data.frames < 10)
 			FlxG.save.data.frames = 10;
 
 		if (FlxG.save.data.accuracyMod == null)

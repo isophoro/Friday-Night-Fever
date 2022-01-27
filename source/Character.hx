@@ -79,6 +79,27 @@ class Character extends FlxSprite
 				animation.addByPrefix('hey', 'fever hey', 24, false);
 				animation.addByPrefix('dodge', 'fever dodge', 24, false);
 
+				/*@:privateAccess
+				{
+					var animArray:Array<String> = [];
+					for (i in animation._sprite.frames.frames)
+					{
+						trace(i.name);
+						var str = '';
+						for (char in 0...i.name.length)
+						{
+							if (Std.parseInt(i.name.charAt(char)) == null)
+								str += i.name.charAt(char);
+						}
+
+						if (animArray.indexOf(str) == -1)
+						{
+							animArray.push(str);
+						}
+					}
+					trace(animArray);
+				}*/
+
 				if (curCharacter != 'bfdemoncesar')
 				{
 					addOffset('idle', 6, 93);
@@ -112,7 +133,7 @@ class Character extends FlxSprite
 					addOffset('dodge', 21, 92);
 				}
 
-				playAnim('idle');
+				dance();
 
 				flipX = true;
 			case 'bfiso':
@@ -1055,43 +1076,27 @@ class Character extends FlxSprite
 
 	override function update(elapsed:Float)
 	{
-		if (!isPlayer && PlayState.opponent || isPlayer && !PlayState.opponent)
+		if (animation.curAnim.name.startsWith('sing'))
 		{
-			if (animation.curAnim.name.startsWith('sing'))
-			{
-				holdTimer += elapsed;
-			}
-			else
-			{
-				holdTimer = 0;
-			}
-
-			if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
-			{
-				playAnim('idle', true, false, 10);
-			}
+			holdTimer += elapsed;
 		}
 		else
 		{
-			if (animation.curAnim.name.startsWith('sing'))
-			{
-				holdTimer += elapsed;
-			}
-			else
-			{
-				if (holdTimer > 0)
-					holdTimer = 0;
+			if (holdTimer > 0)
+				holdTimer = 0;
 
-				// Used to sync tea's scared anim to taki's singing anims
-				holdTimer -= elapsed;
-			}
+			// Used to sync tea's scared anim to taki's singing anims
+			holdTimer -= elapsed;
+		}
 
-			var dadVar:Float = 4;
+		if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
+		{
+			playAnim('idle', true, false, 10);
+		}
 
-			if (curCharacter == 'dad')
-				dadVar = 6.1;
-
-			if (holdTimer >= Conductor.stepCrochet * dadVar * 0.001)
+		if (!isPlayer && !PlayState.opponent || isPlayer && PlayState.opponent)
+		{
+			if (holdTimer >= Conductor.stepCrochet * (curCharacter == 'dad' ? 6.1 : 4) * 0.001)
 			{
 				dance();
 				holdTimer = 0;

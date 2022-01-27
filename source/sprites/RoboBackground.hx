@@ -1,7 +1,6 @@
 package sprites;
 
 import flixel.tweens.FlxTween;
-import shaders.CRTShader;
 import openfl.display.BitmapData;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxSprite;
@@ -20,8 +19,6 @@ class RoboBackground
     private var tea:Character;
     private var taki:Character;
 
-    var shader:CRTShader = new CRTShader();
-
     public function new() 
     {
         instance = PlayState.instance;
@@ -32,8 +29,6 @@ class RoboBackground
 
         stages['default'] = new RoboStage([bg], [], [], [], 0.4);
         switchStage('default');
-
-        instance.modchart.addRainCamEffect(shader);
 
         if (PlayState.SONG.song == 'Loaded')
         {

@@ -1,7 +1,4 @@
-local ogWindow = {}
-
 function start (song)
-ogWindow = {getScreenWidth(), getScreenHeight(), getWindowX(), getWindowY()}
 resizeWindow(getScreenWidth() - 300, getScreenHeight() - 170)
 setWindowPos(150, 80)
 setHudZoom(2)

@@ -1,5 +1,6 @@
 package shaders;
 
+import lime.app.Application;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -12,6 +13,7 @@ import flixel.tweens.FlxTween;
 
 class BadNun
 {
+    public static var failed:Bool = false;
 	public static var colorShader:SolidColorShader = new SolidColorShader();
 	public static var bgColorShader:SolidColorShader = new SolidColorShader();
     public static var instance:PlayState;
@@ -25,8 +27,17 @@ class BadNun
         if (curBeat == 1)
         {
             // Reset?
-            colorShader = new SolidColorShader();
-            bgColorShader = new SolidColorShader();  
+            try {
+                colorShader = new SolidColorShader();
+                bgColorShader = new SolidColorShader();  
+            } catch (e) {
+                Application.current.window.alert("Failed compiling shaders", "Friday Night Fever");
+                failed = true;
+            }
+
+            if (failed)
+                return;
+
             instance = PlayState.instance;
             instance.dad.shader = colorShader;
             instance.gf.shader = colorShader;
@@ -39,6 +50,9 @@ class BadNun
             darken.scrollFactor.set();
             darken.alpha = 0;
         }
+
+        if (failed)
+            return;
 
         switch (curBeat)
         {
@@ -258,7 +272,7 @@ class BadNun
                 FlxTween.tween(instance.church, {alpha:0}, 0.4);
                 FlxTween.tween(instance.boyfriend, {alpha:0}, 0.4, {onComplete: (t) -> {
                     PlayState.instance.scoreTxt.font = Paths.font("vcr.ttf");
-                    PlayState.instance.scoreTxt.size = 16;
+                    PlayState.instance.scoreTxt.size = 18;
                     translate = false;
                 }});
                 instance.remove(movieBars);
@@ -273,8 +287,8 @@ class BadNun
 
     public static function enableShader(bool:Bool)
     {
-        bgColorShader.active.value[0] = bool;
-        colorShader.active.value[0] = bool;
+        bgColorShader.shaderActive.value[0] = bool;
+        colorShader.shaderActive.value[0] = bool;
     }
 }
 
@@ -284,13 +298,13 @@ class SolidColorShader extends FlxShader
         #pragma header
         
         uniform vec3 color;
-        uniform bool active;
+        uniform bool shaderActive;
 
         void main()
         {
             vec4 _color = flixel_texture2D(bitmap, openfl_TextureCoordv);
 
-            if (active)
+            if (shaderActive)
             {
                 _color = vec4(color.x * _color.a, color.y * _color.a, color.z * _color.a, _color.a); 
             }
@@ -303,6 +317,6 @@ class SolidColorShader extends FlxShader
     {
         super();
         color.value = [1,1,1];
-        active.value = [false];
+        shaderActive.value = [false];
     }
 }

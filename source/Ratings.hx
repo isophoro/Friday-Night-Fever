@@ -6,8 +6,8 @@ class Ratings
     public static function GenerateLetterRank(accuracy:Float) // generate a letter ranking
     {
         var ranking:String = "N/A";
-		if(FlxG.save.data.botplay)
-			ranking = "BotPlay";
+        if(FlxG.save.data.botplay)
+            ranking = "BotPlay";
 
         if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods == 0) // Marvelous (SICK) Full Combo
             ranking = "(MFC)";
@@ -87,37 +87,39 @@ class Ratings
 
         if (accuracy == 0)
             ranking = "N/A";
-		else if(FlxG.save.data.botplay)
-			ranking = "BotPlay";
+        else if(FlxG.save.data.botplay)
+            ranking = "BotPlay";
 
         return ranking;
     }
-
-    public static var timingWindows = [160, 135, 90, 45];
     
     public static function CalculateRating(noteDiff:Float, ?customSafeZone:Float):String // Generate a judgement through some timing shit
     {
-		var diff = Math.abs(noteDiff);
-		for (index in 0...timingWindows.length) // based on 4 timing windows, will break with anything else
-		{
-			var time = timingWindows[index];
-			var nextTime = index + 1 > timingWindows.length - 1 ? 0 : timingWindows[index + 1];
-			if (diff < time && diff >= nextTime)
-			{
-				switch (index)
-				{
-					case 0: // shit
-						return "shit";
-					case 1: // bad
-						return "bad";
-					case 2: // good
-						return "good";
-					case 3: // sick
-						return "sick";
-				}
-			}
-		}
-		return "good";
+        var customTimeScale = Conductor.timeScale;
+
+        if (customSafeZone != null)
+            customTimeScale = customSafeZone / 166;
+
+        if (FlxG.save.data.botplay)
+            return "good"; // FUNNY
+        
+        if (noteDiff > 166 * customTimeScale) // so god damn early its a miss
+            return "miss";
+        if (noteDiff > 135 * customTimeScale) // way early
+            return "shit";
+        else if (noteDiff > 90 * customTimeScale) // early
+            return "bad";
+        else if (noteDiff > 45 * customTimeScale) // your kinda there
+            return "good";
+        else if (noteDiff < -45 * customTimeScale) // little late
+            return "good";
+        else if (noteDiff < -90 * customTimeScale) // late
+            return "bad";
+        else if (noteDiff < -135 * customTimeScale) // late as fuck
+            return "shit";
+        else if (noteDiff < -166 * customTimeScale) // so god damn late its a miss
+            return "miss";
+        return "sick";
     }
 
     public static function CalculateRanking(score:Int,scoreDef:Int,nps:Int,maxNPS:Int,accuracy:Float):String
@@ -128,7 +130,7 @@ class Ratings
             new UnicodeString((FlxG.save.data.npsDisplay ? "NPS: " + nps + " (Max " + maxNPS + ")" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
             "スコア: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
             " | 逃した: " + PlayState.misses + 																				// Misses/Combo Breaks
-            " | 正確さ: " + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + " %") +  				// Accuracy
+            " | 正確さ: " + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + "%") +  				// Accuracy
             " | " + GenerateLetterRank(accuracy) : "")); 	
         }
         else
@@ -137,10 +139,10 @@ class Ratings
 
             return
             (FlxG.save.data.npsDisplay ? "NPS: " + nps + " (Max " + maxNPS + ")" + (!FlxG.save.data.botplay ? " | " : "") : "") + (!FlxG.save.data.botplay ?	// NPS Toggle
-            "Score:" + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
-            " | Combo Breaks:" + PlayState.misses + 																				// Misses/Combo Breaks
-            " | Accuracy:" + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + " %") +  				// Accuracy
-            " | " + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
+            "Score: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
+            " | Misses: " + PlayState.misses + 																				// Misses/Combo Breaks
+            " | Accuracy: " + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + "%") +  				// Accuracy
+            " - " + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
         }
     }
 }

@@ -351,7 +351,7 @@ class Judgement extends Option
 
 	override function left():Bool {
 
-		if (Conductor.safeFrames == 1)
+		if (Conductor.safeFrames == 10)
 			return false;
 
 		Conductor.safeFrames -= 1;
@@ -780,5 +780,52 @@ class BasicOption extends Option
 	private override function updateDisplay():String
 	{
 		return _display + (Reflect.field(FlxG.save.data, field) ? ' on' : ' off');
+	}
+}
+
+class LaneOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+		acceptValues = true;
+	}
+
+	public override function press():Bool
+	{
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Lane Transparency";
+	}
+
+	override function right():Bool {
+		FlxG.save.data.laneTransparency += 10;
+
+		if (FlxG.save.data.laneTransparency < 0)
+			FlxG.save.data.laneTransparency = 0;
+
+		if (FlxG.save.data.laneTransparency > 100)
+			FlxG.save.data.laneTransparency = 100;
+		return true;
+	}
+
+	override function getValue():String {
+		return "Current Lane Transparency: " + FlxG.save.data.laneTransparency + '%';
+	}
+
+	override function left():Bool {
+		FlxG.save.data.laneTransparency -= 10;
+
+		if (FlxG.save.data.laneTransparency < 0)
+			FlxG.save.data.laneTransparency = 0;
+
+		if (FlxG.save.data.laneTransparency > 100)
+			FlxG.save.data.laneTransparency = 100;
+
+		return true;
 	}
 }

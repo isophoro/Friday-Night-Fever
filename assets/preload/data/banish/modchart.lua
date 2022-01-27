@@ -44,12 +44,12 @@ end
 
 
 if curStep == 1152 or curStep == 1158 or curStep == 1164 or curStep == 1168 or curStep == 1174 or curStep == 1180 or curStep == 1184 or curStep == 1190 or curStep == 1196 or curStep == 1200 or curStep == 1206 or curStep == 1212 then
-	setCamZoom(0.4050)
+	setCamZoom(0.7050)
 	setHudZoom(1.01)
 end
 
 if curStep == 1216 or curStep == 1222 or curStep == 1228 or curStep == 1232 or curStep == 1238 or curStep == 1244 or curStep == 1248 or curStep == 1254 or curStep == 1260 or curStep == 1264 or curStep == 1270 or curStep == 1276 then
-	setCamZoom(0.4050)
+	setCamZoom(0.7050)
 	setHudZoom(1.01)
 end
 end
@@ -57,12 +57,12 @@ end
 
 function beatHit (beat)
 if curStep >= 126 and curStep < 378 or curStep >= 638 and curStep < 888 then
-	setCamZoom(0.4025)
+	setCamZoom(0.7025)
 	setHudZoom(1.01)
 end
 
 if curStep >= 382 and curStep < 638 or curStep >= 894 and curStep < 1150 or curStep >= 1294 and curStep < 1552 then
-	setCamZoom(0.41)
+	setCamZoom(0.71)
 	setHudZoom(1.01)
 end
 end
