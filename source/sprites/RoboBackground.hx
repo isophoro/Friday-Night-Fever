@@ -16,8 +16,10 @@ class RoboBackground
     public var overrideGF:Character = null;
     public var overrideDad:Character = null;
 
-    private var tea:Character;
     private var taki:Character;
+    private var robofever:Character;
+    var tea_pixel:Character;
+    var fever_pixel:Character;
 
     public function new() 
     {
@@ -33,6 +35,9 @@ class RoboBackground
         if (PlayState.SONG.song == 'Loaded')
         {
             taki = new Character(0, 0, "taki-gf");
+            robofever = new Character(0,0, "robo-cesar-pixel");
+            tea_pixel = new Character(0,0, "gf-pixel");
+            fever_pixel = new Character(0,0, "bf-pixel", true);
             // ZARDY STAGE
             var dumboffset:Int = 95;
 
@@ -142,6 +147,42 @@ class RoboBackground
             church.antialiasing = true;
             
             stages['church'] = new RoboStage([church], [], [], ["gf" => 1, "dad" => 1, "boyfriend" => 1], 0.55);
+
+            // SCHOOL
+            var bgSky = new FlxSprite(0, -200).loadGraphic(Paths.image('weeb/weebSky', 'week6'));
+            bgSky.scrollFactor.set(0.9, 0.9);
+
+            var repositionShit = -200;
+
+            var bgSchool:FlxSprite = new FlxSprite(repositionShit, 0).loadGraphic(Paths.image('weeb/weebSchool', 'week6'));
+            bgSchool.scrollFactor.set(0.9, 0.9);
+
+            var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('weeb/weebStreet', 'week6'));
+            bgStreet.scrollFactor.set(0.9, 0.9);
+
+            var widShit = Std.int(bgSky.width * 6);
+
+            bgSky.setGraphicSize(widShit);
+            bgSchool.setGraphicSize(widShit);
+            bgStreet.setGraphicSize(widShit);
+
+            bgSky.updateHitbox();
+            bgSchool.updateHitbox();
+            bgStreet.updateHitbox();
+
+            var bgFront:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('weeb/weebfront', 'week6'));
+            bgFront.scrollFactor.set(0.9, 0.9);
+
+            var bgOverlay:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('weeb/weeboverlay', 'week6'));
+            bgOverlay.scrollFactor.set(0.9, 0.9);
+
+            bgFront.setGraphicSize(widShit);
+            bgOverlay.setGraphicSize(widShit);
+
+            bgFront.updateHitbox();
+            bgOverlay.updateHitbox();
+
+            stages['school'] = new RoboStage([bgSky, bgSchool, bgStreet, bgFront, bgOverlay], [], [], ["gf" => 1], 0.98);
         }
     }
 
@@ -171,6 +212,12 @@ class RoboBackground
 
         if (curStage == stage)
             return;
+
+        switch (stage)
+        {
+            case 'church': replaceGf('taki');
+            default: replaceGf('gf');
+        }
 
         curStage = stage;
         instance.camGame.flash(FlxColor.WHITE, 0.45);
@@ -212,12 +259,41 @@ class RoboBackground
                     switchStage('zardy');
                 case 128:
                     switchStage('whitty');
-                case 160 | 336 | 592:
+                case 160 | 592:
                     switchStage('default');
                 case 224 | 560:
                     switchStage('week1');
                 case 256 | 432:
                     switchStage('week5');
+                case 320: // ur girl
+                    switchStage('school');
+                    changeStrums(true);
+                    instance.iconP1.swapCharacter('bf-pixel');
+                    instance.iconP2.swapCharacter('robofever-pixel');
+                    tea_pixel.setPosition(instance.gf.x + 460, instance.gf.y + 265);
+                    fever_pixel.setPosition(instance.boyfriend.x + 190, instance.boyfriend.y + 50);
+                    robofever.setPosition(instance.dad.x + 455, instance.dad.y + 180);
+
+                    instance.add(tea_pixel);
+                    instance.add(robofever);
+                    instance.add(fever_pixel);
+                    instance.gf.visible = false;
+                    instance.dad.visible = false;
+                    instance.boyfriend.visible = false;
+                    instance.curOpponent = PlayState.opponent ? fever_pixel : robofever;
+                    instance.curPlayer = PlayState.opponent ? robofever : fever_pixel;
+                case 336:
+                    switchStage('default');
+                    changeStrums();
+                    instance.iconP1.swapCharacter(PlayState.SONG.player1);
+                    instance.iconP2.swapCharacter(PlayState.SONG.player2);
+                    instance.remove(tea_pixel);
+                    instance.remove(fever_pixel);
+                    instance.remove(robofever);
+                    instance.dad.visible = true;
+                    instance.boyfriend.visible = true;
+                    instance.curOpponent = PlayState.opponent ? instance.boyfriend : instance.dad;
+                    instance.curPlayer = PlayState.opponent ? instance.dad : instance.boyfriend;
                 case 400:
                     switchStage('church');
                 case 496:
@@ -226,6 +302,7 @@ class RoboBackground
         }
 
         taki.dance();
+        tea_pixel.dance();
 
         for (i in instance.roboBackground.members)
         {
@@ -282,6 +359,65 @@ class RoboBackground
 
         if (Reflect.field(i, 'beatHit') != null)
             Reflect.callMethod(i, Reflect.field(i, 'beatHit'), []);        
+    }
+
+    public function changeStrums(?pixel:Bool)
+    {
+        if (pixel)
+        {
+            PlayState.strumLineNotes.forEach(function(babyArrow:FlxSprite){
+				babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
+				babyArrow.animation.add('green', [6]);
+				babyArrow.animation.add('red', [7]);
+				babyArrow.animation.add('blue', [5]);
+				babyArrow.animation.add('purplel', [4]);
+
+				babyArrow.setGraphicSize(Std.int(babyArrow.width * 6));
+				babyArrow.updateHitbox();
+				babyArrow.antialiasing = false;
+				switch(babyArrow.ID)
+				{
+					case 2:
+						babyArrow.animation.add('static', [2]);
+						babyArrow.animation.add('pressed', [6, 10], 12, false);
+						babyArrow.animation.add('confirm', [14, 18], 12, false);
+					case 3:
+						babyArrow.animation.add('static', [3]);
+						babyArrow.animation.add('pressed', [7, 11], 12, false);
+						babyArrow.animation.add('confirm', [15, 19], 24, false);
+					case 1:
+						babyArrow.animation.add('static', [1]);
+						babyArrow.animation.add('pressed', [5, 9], 12, false);
+						babyArrow.animation.add('confirm', [13, 17], 24, false);
+					case 0:
+						babyArrow.animation.add('static', [0]);
+						babyArrow.animation.add('pressed', [4, 8], 12, false);
+						babyArrow.animation.add('confirm', [12, 16], 24, false);					
+				}
+				babyArrow.animation.play('static');
+			});
+        }
+        else
+        {
+            PlayState.strumLineNotes.forEach(function(babyArrow:FlxSprite){
+                var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
+	            var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
+
+				babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+				babyArrow.animation.addByPrefix(dataColor[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);	
+
+				var lowerDir:String = dataSuffix[babyArrow.ID].toLowerCase();
+
+				babyArrow.animation.addByPrefix('static', 'arrow' + dataSuffix[babyArrow.ID]);
+				babyArrow.animation.addByPrefix('pressed', lowerDir + ' press', 24, false);
+				babyArrow.animation.addByPrefix('confirm', lowerDir + ' confirm', 24, false);
+
+				babyArrow.antialiasing = true;
+				babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
+				babyArrow.updateHitbox();
+				babyArrow.animation.play('static');
+			});
+        }
     }
 }
 

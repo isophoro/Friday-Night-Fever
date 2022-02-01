@@ -1,3 +1,8 @@
 export/
 .vscode/
 assets/preload/data/milf/modchart.lua
+assets/preload/data/dialogue.txt
+assets/shared/data/demonfever.json
+assets/shared/data/taki.json
+assets/shared/data/tea.json
+source/DialogueTest.hx

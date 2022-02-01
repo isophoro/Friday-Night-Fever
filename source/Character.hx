@@ -846,6 +846,23 @@ class Character extends FlxSprite
 				//flipX = true;
 
 				playAnim('idle');
+			case 'robo-cesar-pixel':
+				frames = Paths.getSparrowAtlas('characters/robofever-pixel');
+				animation.addByPrefix('idle', "C354R IDLE", 24);
+				animation.addByPrefix('singUP', 'C354R UP', 24, false);
+				animation.addByPrefix('singDOWN', 'C354R DOWN-', 24, false);
+				animation.addByPrefix('singLEFT', 'C354R LEFT-', 24, false);
+				animation.addByPrefix('singRIGHT', 'C354R RIGHT ', 24, false);
+
+				antialiasing = false;
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+				scale.set(6,6);
+
+				flipX = true;
 			case 'pico': // MAKO
 				iconColor = '47CC40';
 				tex = Paths.getSparrowAtlas('characters/Pico_FNF_assetss');

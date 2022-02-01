@@ -2,7 +2,7 @@
 <TextureAtlas imagePath="NOTE_assets.png">
 	<!-- Created with Adobe Animate version 20.5.0.29329 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="arrowDOWN0000" x="1022" y="0" width="157" height="154"/>
+	<SubTexture name="arrowDOWN0000" x="1023" y="0" width="156" height="154"/>
 	<SubTexture name="arrowLEFT0000" x="1179" y="0" width="154" height="157"/>
 	<SubTexture name="arrowRIGHT0000" x="1333" y="0" width="154" height="157"/>
 	<SubTexture name="arrowUP0000" x="1487" y="0" width="157" height="154"/>

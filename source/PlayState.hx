@@ -2818,7 +2818,7 @@ class PlayState extends MusicBeatState
 			var pixelShitPart1:String = "";
 			var pixelShitPart2:String = '';
 
-			if (curStage.startsWith('school')) {
+			if (curStage.startsWith('school') || roboStage != null && roboStage.curStage == 'school') {
 				pixelShitPart1 = 'weeb/pixelUI/';
 				pixelShitPart2 = '-pixel';
 			}
@@ -2875,14 +2875,17 @@ class PlayState extends MusicBeatState
 			if (!FlxG.save.data.botplay)
 				add(rating);
 
-			if (!curStage.startsWith('school')) {
+			if (curStage.startsWith('school') || roboStage != null && roboStage.curStage == 'school')
+			{
+				rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.7));
+				comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.7));
+			}
+			else
+			{
 				rating.setGraphicSize(Std.int(rating.width * 0.7));
 				rating.antialiasing = true;
 				comboSpr.setGraphicSize(Std.int(comboSpr.width * 0.7));
 				comboSpr.antialiasing = true;
-			} else {
-				rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.7));
-				comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.7));
 			}
 
 			currentTimingShown.updateHitbox();
@@ -2918,14 +2921,14 @@ class PlayState extends MusicBeatState
 				numScore.y = rating.y + 100;
 				numScore.cameras = [camHUD];
 
-				if (!curStage.startsWith('school')) 
+				if (curStage.startsWith('school') || roboStage != null && roboStage.curStage == 'school')
+				{
+					numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+				} 
+				else
 				{
 					numScore.antialiasing = true;
 					numScore.setGraphicSize(Std.int(numScore.width * 0.5));
-				} 
-				else 
-				{
-					numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
 				}
 
 				numScore.acceleration.y = FlxG.random.int(200, 300);
@@ -3446,7 +3449,9 @@ class PlayState extends MusicBeatState
 							}
 							FlxTween.tween(whittyBG, {alpha: 1}, (Conductor.crochet / 1000) * 2);
 						case 304:
-							@:privateAccess FlxTimer.globalManager._timers[0].cancel();
+							try {
+								@:privateAccess FlxTimer.globalManager._timers[0].cancel();
+							} catch (e) {}
 							FlxTween.tween(purpleOverlay, {alpha: 0}, 2.6);
 							FlxTween.tween(wiggleEffect, {waveAmplitude: 0}, 2.6);
 					}
@@ -3528,12 +3533,12 @@ class PlayState extends MusicBeatState
 				gf.dance();
 		}
 
-		if (!boyfriend.animation.curAnim.name.startsWith("sing")) 
+		if (!curPlayer.animation.curAnim.name.startsWith("sing") && !opponent) 
 		{
 			var specialAnims:Array<String> = ['dodge', 'hey'];
-			if (!specialAnims.contains(boyfriend.animation.curAnim.name) || boyfriend.animation.finished) 
+			if (!specialAnims.contains(curPlayer.animation.curAnim.name) || curPlayer.animation.finished) 
 			{
-				boyfriend.dance();
+				curPlayer.dance();
 			}
 		}
 
