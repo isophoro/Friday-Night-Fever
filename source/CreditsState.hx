@@ -28,9 +28,8 @@ class CreditsState extends MusicBeatState
     var curSelected:Int = 0;
     var blacktransitionLOL:FlxSprite;
     var playasISO:FlxSprite;
-    var notfound:FlxSprite;
 	var userInput:String = '';
-    var run:FlxText;
+
     var smile:FlxSprite;
     var cards:Array<FlxSprite> = [];
     var credits:Array<CreditCard> = [
@@ -146,24 +145,6 @@ class CreditsState extends MusicBeatState
         playasISO.alpha = 0;
         playasISO.antialiasing = true;
         add(playasISO);
-
-        notfound = new FlxSprite(0,0).loadGraphic(Paths.image('notFound/notFound'));
-        notfound.scrollFactor.set();
-        notfound.visible = false;
-        notfound.antialiasing = true;
-        //add(notfound);
-
-        smile = new FlxSprite(427.9, 330.9);
-        smile.frames = Paths.getSparrowAtlas('notFound/smile');
-        smile.animation.addByPrefix('idle', 'iso idle');
-        smile.animation.play('idle', true);
-        //add(smile);
-        //smile.visible = false;
-
-        run = new FlxText(200, 200, 0, "FEVER VS ISO, FEVER WONT LET ISO HAVE FUN", 24);
-        run.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.BLACK, CENTER, OUTLINE, FlxColor.BLACK);
-        run.scrollFactor.set();
-        //add(run);
 
         changeSelection();
     }

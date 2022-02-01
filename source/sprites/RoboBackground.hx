@@ -366,7 +366,7 @@ class RoboBackground
         if (pixel)
         {
             PlayState.strumLineNotes.forEach(function(babyArrow:FlxSprite){
-				babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
+				babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
 				babyArrow.animation.add('green', [6]);
 				babyArrow.animation.add('red', [7]);
 				babyArrow.animation.add('blue', [5]);
