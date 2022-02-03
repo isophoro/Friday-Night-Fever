@@ -64,8 +64,7 @@ class Note extends FlxSprite
 		
 		if (PlayState.SONG.song == 'Loaded')
 		{
-			var crotchet:Float = ((60 / PlayState.SONG.bpm) * 1000);
-			if (strumTime >= crotchet * 320 && strumTime < crotchet * 336)
+			if (strumTime >= Conductor.crochet * 320 && strumTime < Conductor.crochet * 336)
 				noteStyle = 'pixel';
 		}
 

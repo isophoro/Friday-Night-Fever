@@ -1,5 +1,6 @@
 package;
 
+import openfl.system.System;
 #if cpp import cpp.vm.Gc; #end
 import sprites.RoboBackground;
 import sprites.Crowd;
@@ -53,7 +54,7 @@ class PlayState extends MusicBeatState
 	public var curOpponent:Character;
 	public var curPlayer:Character;
 
-	var filters:Array<BitmapFilter> = []; 
+	public var filters:Array<BitmapFilter> = []; 
 	var camfilters:Array<BitmapFilter> = [];
 
 	public static var instance:PlayState = null;
@@ -237,15 +238,15 @@ class PlayState extends MusicBeatState
 	public var purpleOverlay:FlxSprite;
 	public var beatClass:Class<Dynamic> = null;
 
+	public var usePixelAssets:Bool = false;
+
 	override public function create() 
 	{
 		if (!isStoryMode || StoryMenuState.get_weekData()[storyWeek][0].toLowerCase() == SONG.song.toLowerCase())
 		{
 			Main.clearMemory();
 		}
-		#if cpp 
-		Gc.run(true);
-		#end
+		System.gc();
 
 		super.create();
 
@@ -564,6 +565,7 @@ class PlayState extends MusicBeatState
 			case 'school':
 				{
 					curStage = 'school';
+					usePixelAssets = true;
 
 					var bgSky = new FlxSprite(0, -200).loadGraphic(Paths.image('weeb/weebSky', 'week6'));
 					bgSky.scrollFactor.set(0.9, 0.9);
@@ -623,6 +625,7 @@ class PlayState extends MusicBeatState
 			case 'schoolEvil':
 				{
 					curStage = 'schoolEvil';
+					usePixelAssets = true;
 
 					var waveEffectBG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 3, 2);
 					var waveEffectFG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 5, 2);
@@ -2761,19 +2764,19 @@ class PlayState extends MusicBeatState
 	{
 		var noteDiff:Float = Math.abs(Conductor.songPosition - daNote.strumTime);
 		var wife:Float = EtternaFunctions.wife3(noteDiff, Conductor.timeScale);
-		var assetLib:String = (curStage.startsWith('school') || roboStage != null && roboStage.curStage == 'school') ? 'week6' : 'shared';
-
-		vocals.volume = 1;
+		var assetLib:String = usePixelAssets ? 'week6' : 'shared';
 
 		var rating:FlxSprite = new FlxSprite();
 		var score:Float = 350;
+		var daRating = daNote.rating;
+
+		vocals.volume = 1;
 
 		if (FlxG.save.data.accuracyMod == 1)
 			totalNotesHit += wife;
 
-		var daRating = daNote.rating;
-
-		switch (daRating) {
+		switch (daRating) 
+		{
 			case 'shit':
 				score = -300;
 				combo = 0;
@@ -2818,13 +2821,8 @@ class PlayState extends MusicBeatState
 			songScore += Math.round(score);
 			songScoreDef += Math.round(ConvertScore.convertScore(noteDiff));
 
-			var pixelShitPart1:String = "";
-			var pixelShitPart2:String = '';
-
-			if (assetLib == 'week6') {
-				pixelShitPart1 = 'weeb/pixelUI/';
-				pixelShitPart2 = '-pixel';
-			}
+			var pixelShitPart1:String = usePixelAssets ? 'weeb/pixelUI/' : '';
+			var pixelShitPart2:String = usePixelAssets ? '-pixel' : '';
 
 			rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2, assetLib));
 			rating.screenCenter();
@@ -2848,12 +2846,9 @@ class PlayState extends MusicBeatState
 
 			switch (daRating) 
 			{
-				case 'shit' | 'bad':
-					currentTimingShown.color = FlxColor.RED;
-				case 'good':
-					currentTimingShown.color = FlxColor.GREEN;
-				case 'sick':
-					currentTimingShown.color = FlxColor.CYAN;
+				case 'shit' | 'bad': currentTimingShown.color = FlxColor.RED;
+				case 'good': currentTimingShown.color = FlxColor.GREEN;
+				case 'sick': currentTimingShown.color = FlxColor.CYAN;
 			}
 
 			if (currentTimingShown.alpha != 1)
@@ -2878,7 +2873,7 @@ class PlayState extends MusicBeatState
 			if (!FlxG.save.data.botplay)
 				add(rating);
 
-			if (curStage.startsWith('school') || roboStage != null && roboStage.curStage == 'school')
+			if (usePixelAssets)
 			{
 				rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.7));
 				comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.7));
@@ -2898,23 +2893,11 @@ class PlayState extends MusicBeatState
 			comboSpr.cameras = [camHUD];
 			rating.cameras = [camHUD];
 
-			if (curSong.toLowerCase() == 'tranquility')
-			{
-				comboSpr.shader = wiggleEffect.shader;
-				rating.shader = wiggleEffect.shader;	
-			}
-
-			var seperatedScore:Array<Int> = [];
-
 			var comboSplit:Array<String> = (combo + "").split('');
+			var seperatedScore:Array<Int> = [for (i in comboSplit) Std.parseInt(i)];
 
 			if (comboSplit.length == 2)
-				seperatedScore.push(0); // make sure theres a 0 in front or it looks weird lol!
-
-			for (i in 0...comboSplit.length) {
-				var str:String = comboSplit[i];
-				seperatedScore.push(Std.parseInt(str));
-			}
+				seperatedScore.insert(0, 0);
 
 			var daLoop:Int = 0;
 			for (i in seperatedScore)
@@ -2924,7 +2907,7 @@ class PlayState extends MusicBeatState
 				numScore.y = rating.y + 100;
 				numScore.cameras = [camHUD];
 
-				if (curStage.startsWith('school') || roboStage != null && roboStage.curStage == 'school')
+				if (usePixelAssets)
 				{
 					numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
 				} 
@@ -3399,6 +3382,9 @@ class PlayState extends MusicBeatState
 	override function beatHit() 
 	{
 		super.beatHit();
+
+		if (curBeat % 16 == 0)
+			System.gc();
 
 		if (beatClass != null)
 		{

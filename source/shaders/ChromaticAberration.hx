@@ -4,6 +4,23 @@ import flixel.system.FlxAssets.FlxShader;
 
 class ChromaticAberration extends FlxShader
 {
+	public var redOffset(default, set):Float = 0;
+	public var blueOffset(default, set):Float = 0;
+	
+	function set_redOffset(v:Float):Float
+	{
+		redOffset = v;
+		data.rOffset.value = [v];
+		return v;
+	}
+
+	function set_blueOffset(v:Float):Float
+	{
+		blueOffset = v;
+		data.bOffset.value = [v];
+		return v;
+	}
+
 	@:glFragmentSource('
 		#pragma header
 

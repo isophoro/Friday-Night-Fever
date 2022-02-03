@@ -1,5 +1,7 @@
 package sprites;
 
+import flixel.math.FlxPoint;
+import flixel.FlxG;
 import flixel.tweens.FlxTween;
 import openfl.display.BitmapData;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -38,6 +40,9 @@ class RoboBackground
             robofever = new Character(0,0, "robo-cesar-pixel");
             tea_pixel = new Character(0,0, "gf-pixel");
             fever_pixel = new Character(0,0, "bf-pixel", true);
+            tea_pixel.scrollFactor.set(0.9, 0.9);
+            fever_pixel.scrollFactor.set(0.9, 0.9);
+            robofever.scrollFactor.set(0.9, 0.9);
             // ZARDY STAGE
             var dumboffset:Int = 95;
 
@@ -268,6 +273,7 @@ class RoboBackground
                 case 320: // ur girl
                     switchStage('school');
                     changeStrums(true);
+                    instance.usePixelAssets = true;
                     instance.iconP1.swapCharacter('bf-pixel');
                     instance.iconP2.swapCharacter('robofever-pixel');
                     tea_pixel.setPosition(instance.gf.x + 460, instance.gf.y + 265);
@@ -285,6 +291,7 @@ class RoboBackground
                 case 336:
                     switchStage('default');
                     changeStrums();
+                    instance.usePixelAssets = false;
                     instance.iconP1.swapCharacter(PlayState.SONG.player1);
                     instance.iconP2.swapCharacter(PlayState.SONG.player2);
                     instance.remove(tea_pixel);
@@ -298,6 +305,25 @@ class RoboBackground
                     switchStage('church');
                 case 496:
                     switchStage('matt');
+                case 355 | 359 | 387 | 391:
+                    if (curBeat == 355)
+                        instance.filters.push(ShadersHandler.chromaticAberration);
+
+                    if (curBeat == 355 || curBeat == 359)
+                    {
+                        FlxTween.tween(ShadersHandler.chromaticAberration.shader, {redOffset: 0.0065}, Conductor.crochet / 1300);
+                        FlxTween.tween(ShadersHandler.chromaticAberration.shader, {blueOffset: -0.0065}, Conductor.crochet / 1300);
+                        instance.camGame.focusOn(new FlxPoint(instance.dad.getMidpoint().x + 500, instance.dad.getMidpoint().y - 190));
+                    }
+                    else
+                        instance.camGame.focusOn(new FlxPoint(instance.boyfriend.getMidpoint().x - 490, instance.boyfriend.getMidpoint().y - 320));
+                    instance.defaultCamZoom += 0.245;
+                    instance.camGame.zoom = instance.defaultCamZoom;
+                case 356 | 360 | 388 | 392:
+                    FlxTween.tween(ShadersHandler.chromaticAberration.shader, {redOffset: 0}, 0.25);
+                    FlxTween.tween(ShadersHandler.chromaticAberration.shader, {blueOffset: 0}, 0.25);
+                    instance.defaultCamZoom -= 0.245;
+                    instance.camGame.zoom = instance.defaultCamZoom;
             }
         }
 

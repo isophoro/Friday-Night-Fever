@@ -1,4 +1,4 @@
-:bg:plainblacklol
+:fillBG:BLACK
 :teathink: So, what crazy shit are we dealing with today?
 :teathink: Psychotic nun? Talking fruit? Horny shapeshifter? Dealing with the raccoons?
 :feverconfuse: This one's new. Someone in town gave me a letter, and told them to go to this spot at this time.

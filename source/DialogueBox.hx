@@ -481,7 +481,7 @@ class DialogueBox extends FlxSpriteGroup
 	{
 		cleanDialog();
 		
-		var blockedCharacters:Array<String> = ['bg', 'hidebg', 'song', 'fuckoff', 'sfx', 'stfusfx', 'slow', 'normal', 'shake', 'stopitbro', 'inst'];
+		var blockedCharacters:Array<String> = ['fillbg', 'bg', 'hidebg', 'song', 'fuckoff', 'sfx', 'stfusfx', 'slow', 'normal', 'shake', 'stopitbro', 'inst'];
 		if(!blockedCharacters.contains(curCharacter))
 		{
 			swagDialogue.resetText(dialogueList[0]);
@@ -710,9 +710,12 @@ class DialogueBox extends FlxSpriteGroup
 			{
 				case 'inst':
 					FlxG.sound.playMusic(Paths.inst(dialogueList[0]));
+				case 'fillbg':
+					bg.visible = true;
+					bg.makeGraphic(1280, 720, FlxColor.fromString(dialogueList[0]));
 				case 'bg':
 					bg.visible = true;
-					bg.loadGraphic(Paths.image(dialogueList[0]));
+					bg.loadGraphic(Paths.image('dialogue_backgrounds/' + dialogueList[0]));
 					bg.antialiasing = true;
 					bg.updateHitbox();
 				case 'hidebg':
