@@ -1,4 +1,3 @@
-:inst:ur-girl
 :teasmile: Where the funk is this place at?
 :feverconfuse: There's like, no signal here.
 :teaannoy: I'm starving.
@@ -18,6 +17,7 @@
 :megasmile: My name is Mega, and I want *ya girl~.*
 :teaannoy: Wha-??
 :bg:megagay
+:song:lunchbox
 :megahug: Do you mind if we take a picture together? I'd like to show Santa that you're all I want for Christmas~.
 :feversmile:
 :feverpointtwo: YOU CAN'T FOOL ME!

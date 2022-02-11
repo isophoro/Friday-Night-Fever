@@ -52,9 +52,8 @@ class StoryMenuState extends MusicBeatState
 			['Honey', "Bunnii", "Throw-it-back"],
 			['Mild', 'Spice', 'Party-Crasher'],
 			['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
-			['C354R', 'Loaded'],
-			['Tranquility', 'Princess', 'Banish']
-			//['bowling time']
+			['C354R', 'Loaded']
+			//['Tranquility', 'Princess', 'Banish']
 		];	
 	}
 
@@ -74,7 +73,6 @@ class StoryMenuState extends MusicBeatState
 		['parents-christmas', 'bf', 'gf'],
 		['parents-christmas', 'bf', 'gf'],
 		['senpai', 'bf', 'gf']
-		//['iso', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
@@ -87,9 +85,8 @@ class StoryMenuState extends MusicBeatState
 		"BUNNI MURDER!",
 		"DINNER TIME!",
 		"GOD DAMN!",
-		"*THWOMP NOISE*",
-		"shittin poopin"
-		//"BOWLING TILL YOU'RE DEAD"
+		"ROBERT FEVER WEEK"
+		//"PRINCESS WEEK"
 	];
 
 	var txtWeekTitle:FlxText;

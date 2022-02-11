@@ -5,13 +5,6 @@ import flixel.FlxSprite;
 
 class NoteSplash extends FlxSprite
 {
-    public static var cachedFrames(get, null):FlxAtlasFrames;
-
-    inline static function get_cachedFrames():FlxAtlasFrames
-    {
-        return Paths.getSparrowAtlas('notesplash', 'shared');
-    }
-
     public function new(X:Float, Y:Float, direction:Int)
     {
         super(X,Y);
@@ -19,7 +12,7 @@ class NoteSplash extends FlxSprite
         antialiasing = true;
         alpha = 0.69;
 
-        frames = cachedFrames;
+        frames = Paths.getSparrowAtlas('notesplash');
         animation.addByPrefix('idle', 'notesplash', 36, false);
 
         updateHitbox();

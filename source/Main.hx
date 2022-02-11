@@ -1,5 +1,6 @@
 package;
 
+import flixel.effects.postprocess.PostProcess;
 import openfl.system.System;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -100,8 +101,10 @@ class Main extends Sprite
 		#end*/
 
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
-
 		addChild(game);
+
+		FlxG.console.registerClass(PlayState);
+		FlxG.console.registerClass(MusicBeatState);
 
 		#if !mobile
 		fpsCounter = new FPS_MEM(10, 3, 0xFFFFFF);
@@ -120,10 +123,12 @@ class Main extends Sprite
 	public static function clearMemory()
 	{
 		@:privateAccess
-		for (key in FlxG.bitmap._cache.keys())
 		{
-			var obj = FlxG.bitmap._cache.get(key);
-			if (obj != null) {
+			for (key in FlxG.bitmap._cache.keys())
+			{
+				var obj = FlxG.bitmap._cache.get(key);
+				if (obj == null) continue;
+	
 				openfl.Assets.cache.removeBitmapData(key);
 				FlxG.bitmap._cache.remove(key);
 				obj.destroy();

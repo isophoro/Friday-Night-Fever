@@ -14,10 +14,6 @@ class RoboBackground
     public var curStage:String = 'default';
     public var instance:PlayState;
 
-    public var overrideBF:Character = null;
-    public var overrideGF:Character = null;
-    public var overrideDad:Character = null;
-
     private var taki:Character;
     private var robofever:Character;
     var tea_pixel:Character;
@@ -84,7 +80,7 @@ class RoboBackground
             mattfg.scrollFactor.set(0.9, 0.9);
             mattfg.scale.set(1.05, 1.05);
 
-            var mattcrowd:FlxSprite = new FlxSprite(mattbg.x - 80, mattbg.y);
+            var mattcrowd:FlxSprite = new FlxSprite(mattbg.x - 55, mattbg.y - 15);
             mattcrowd.frames = Paths.getSparrowAtlas('roboStage/matt_crowd');
             mattcrowd.animation.addByPrefix('bop', 'robo crowd hehe', 24, false);
             mattcrowd.antialiasing = true;
@@ -111,7 +107,7 @@ class RoboBackground
             bg.antialiasing = true;
             bg.scrollFactor.set(0.9, 0.9);
 
-            var w1city = new BeatSprite(bg.x, bg.y).loadGraphic(bmp, true, 2560, 1400);
+            var w1city = new FlxSprite(bg.x, bg.y).loadGraphic(bmp, true, 2560, 1400);
             w1city.animation.add('idle', [0,1,2], 0);
             w1city.animation.play('idle');
             w1city.scale.set(bg.scale.x, bg.scale.y);
@@ -188,6 +184,35 @@ class RoboBackground
             bgOverlay.updateHitbox();
 
             stages['school'] = new RoboStage([bgSky, bgSchool, bgStreet, bgFront, bgOverlay], [], [], ["gf" => 1], 0.98);
+
+            // Limo
+            var skyBG:FlxSprite = new FlxSprite(-120, -70).loadGraphic(Paths.image('limoNight/limoSunset', 'week4'));
+            skyBG.scrollFactor.set(0.1, 0.1);
+
+            var bgLimo = new FlxSprite(-200, 480);
+            bgLimo.frames = Paths.getSparrowAtlas('limoNight/bgLimo', 'week4');
+            bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
+            bgLimo.animation.play('drive');
+            bgLimo.scrollFactor.set(0.4, 0.4);
+
+            var bunnies:Array<FlxSprite> = [];
+            for (i in 0...5)
+            {
+                var dancer:BackgroundDancer = new BackgroundDancer((400 * i) + 90, bgLimo.y - 625);
+                dancer.scrollFactor.set(0.4, 0.4);
+                bunnies.push(dancer);
+            }
+
+            var limo = new FlxSprite(-120, 550);
+            limo.frames = Paths.getSparrowAtlas('limoNight/limoDrive', 'week4');
+            limo.animation.addByPrefix('drive', "Limo stage", 24);
+            limo.animation.play('drive');
+            limo.antialiasing = true;
+
+            stages['limo'] = new RoboStage([skyBG, bgLimo].concat(bunnies).concat([limo]), [], [
+                "boyfriend" => [1030, 150],
+                "dad" => [100, 235]
+            ], ["boyfriend" => 1, "dad" => 1], 0.9);
         }
     }
 
@@ -221,6 +246,7 @@ class RoboBackground
         switch (stage)
         {
             case 'church': replaceGf('taki');
+            case 'limo': replaceGf('die');
             default: replaceGf('gf');
         }
 
@@ -264,6 +290,8 @@ class RoboBackground
                     switchStage('zardy');
                 case 128:
                     switchStage('whitty');
+                case 144 | 288:
+                    switchStage('limo');
                 case 160 | 592:
                     switchStage('default');
                 case 224 | 560:
@@ -365,6 +393,7 @@ class RoboBackground
                 instance.add(instance.dad);
                 instance.add(instance.boyfriend);
                 taki.setPosition(instance.gf.x, instance.gf.y - 190);
+            case 'die': instance.gf.visible = false;
             default:
                 instance.gf.visible = true;
 
@@ -484,9 +513,4 @@ class RoboStage
         this.backgroundSprites = backgroundSprites;
         this.foregroundSprites = foregroundSprites == null ? [] : foregroundSprites;
     }
-}
-
-class BeatSprite extends FlxSprite
-{
-    public var beatHit:Int->Void = function(curBeat:Int){};
 }

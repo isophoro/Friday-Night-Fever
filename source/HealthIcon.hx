@@ -9,11 +9,11 @@ class HealthIcon extends FlxSprite
 	 */
 	public var sprTracker:FlxSprite;
 	public var isPlayer:Bool = false;
+	public var curCharacter:String = '';
 
 	public function new(char:String = 'bf', isPlayer:Bool = false)
 	{
 		super();
-		scrollFactor.set();
 
 		this.isPlayer = isPlayer;
 		swapCharacter(char);
@@ -21,6 +21,7 @@ class HealthIcon extends FlxSprite
 
 	public function swapCharacter(char:String)
 	{
+		curCharacter = char;
 		// i hate this code and i hate how the characters are named since this makes it twenty times harder than it should
 		switch(char)
 		{

@@ -1,5 +1,6 @@
 package;
 
+import openfl.system.System;
 #if windows
 import Discord.DiscordClient;
 #end
@@ -90,8 +91,6 @@ class MusicBeatState extends FlxUIState
 
 	public function stepHit():Void
 	{
-		FlxG.watch.addQuick("Current Beat / Step", curBeat + ' ($curStep)');
-
 		if (curStep % 4 == 0 && !disableBeathit)
 			beatHit();
 	}
@@ -108,5 +107,17 @@ class MusicBeatState extends FlxUIState
 		#else
 		FlxG.openURL(schmancy);
 		#end
+	}
+
+	override function onFocus()
+	{
+		System.gc();
+		super.onFocus();
+	}
+
+	override function onFocusLost()
+	{
+		System.gc();
+		super.onFocusLost();
 	}
 }

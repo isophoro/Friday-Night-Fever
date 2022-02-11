@@ -51,7 +51,7 @@ class OptionsMenu extends MusicBeatState
 			//new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
 			new AccuracyOption("Display accuracy information."),
 			new LaneOption("How transparent your lane is, higher = more visible."),
-			new NPSDisplayOption("Shows your current Notes Per Second."),
+			//new NPSDisplayOption("Shows your current Notes Per Second."),
 			new SongPositionOption("Show the songs current position (as a bar)"),
 			new CpuStrums("CPU's strumline lights up when a note hits it."),
 			#else

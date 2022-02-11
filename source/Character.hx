@@ -831,16 +831,16 @@ class Character extends FlxSprite
 			case 'robo-cesar': // MAKO
 				iconColor = '9236B4';
 				frames = Paths.getSparrowAtlas('characters/robo_fever_assets');
-				animation.addByPrefix('idle', "robo idle", 24);
+				animation.addByPrefix('idle', "robo idle", 24, false);
 				animation.addByPrefix('singUP', 'robo up', 24, false);
 				animation.addByPrefix('singDOWN', 'robo down', 24, false);
 				animation.addByPrefix('singLEFT', 'robo left', 24, false);
 				animation.addByPrefix('singRIGHT', 'robo right', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", 32, 35);
-				addOffset("singRIGHT", 31, -11);
-				addOffset("singLEFT", 96, 0);
+				addOffset("singUP", 32, 45);
+				addOffset("singRIGHT", 11, -11);
+				addOffset("singLEFT", 94, -1);
 				addOffset("singDOWN", 103, -79);
 
 				//flipX = true;
@@ -1060,7 +1060,22 @@ class Character extends FlxSprite
 				addOffset('danceRight', 0, -9);
 
 				playAnim('danceRight');
+			case 'scarlet':
+				frames = Paths.getSparrowAtlas('characters/Scarlet');
 
+				animation.addByPrefix('idle', 'Scar Idle', 24, false);
+				addOffset('idle');
+				for (i in ['DOWN', 'UP', 'LEFT', 'RIGHT'])
+				{
+					animation.addByPrefix('sing$i', 'Scar ${i.toLowerCase()}', 24, false);
+				}
+
+				addOffset('singDOWN', 0, -170);
+				addOffset('singUP', 11, 29);
+				addOffset('singRIGHT', 2, -41);
+				addOffset('singLEFT', 110, -20);
+
+				playAnim('idle');
 		}
 
 		dance();
