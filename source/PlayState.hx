@@ -1,5 +1,7 @@
 package;
 
+import flixel.input.keyboard.FlxKey;
+import openfl.events.KeyboardEvent;
 import openfl.system.System;
 #if cpp import cpp.vm.Gc; #end
 import sprites.RoboBackground;
@@ -227,7 +229,6 @@ class PlayState extends MusicBeatState
 		remove(object);
 	}
 
-	public var mobileTiles:Array<FlxSprite> = [];
 	public var subtitles:Subtitles;
 
 	var wiggleEffect:WiggleEffect;
@@ -244,7 +245,9 @@ class PlayState extends MusicBeatState
 		{
 			Main.clearMemory();
 		}
-		System.gc();
+		#if cpp 
+		Gc.run(true); 
+		#end
 
 		super.create();
 		add(new NoteSplash(0,0,0));
@@ -903,9 +906,13 @@ class PlayState extends MusicBeatState
 				gf.scrollFactor.set(0.9, 0.9);
 			case 'princess': 
 				boyfriend.x = 1085.2;
-				boyfriend.y = 482.3;
-				gf.x = 227;
-				gf.y = 149;
+				boyfriend.y = 375;
+				gf.x = 327;
+				gf.y = 40;
+				dad.y += 45;
+				dad.x -= 150;
+				//if (dad.curCharacter == 'scarlet')
+					//FlxTween.tween(dad, {y: dad.y - 25}, 0.76, {type: PINGPONG});
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				gf.scrollFactor.set(0.9, 0.9);
 		}
@@ -1137,6 +1144,10 @@ class PlayState extends MusicBeatState
 
 		if (!loadRep)
 			rep = new Replay("na");
+
+		FlxG.keys.preventDefaultKeys = [];
+		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 	}
 
 	function dialogueCutscene() {
@@ -1302,10 +1313,6 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
-		#if mobile
-		generateMobileTiles();
-		#end
-
 		#if windows
 		if (executeModchart) {
 			luaModchart = ModchartState.createModchartState();
@@ -1398,6 +1405,10 @@ class PlayState extends MusicBeatState
 						}
 					});
 					FlxG.sound.play(Paths.sound('introGo' + altSuffix), 0.6);
+
+					#if cpp 
+					Gc.run(true); 
+					#end
 				case 4:
 			}
 
@@ -1761,6 +1772,15 @@ class PlayState extends MusicBeatState
 						playerStrums.add(babyArrow);
 			}
 
+			babyArrow.animation.finishCallback = (anim) ->
+			{
+				if (anim == 'confirm')
+				{
+					babyArrow.animation.play('static');
+					babyArrow.centerOffsets();
+				}
+			}
+
 			babyArrow.animation.play('static');
 			babyArrow.x += 110;
 			babyArrow.x += ((FlxG.width / 2) * player);
@@ -1897,6 +1917,11 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float) 
 	{
+		if (mashPity > 0)
+		{
+			mashPity -= elapsed;
+		}
+
 		floatshit += 0.1;
 		float += 0.07;
 		speakerFloatRotate += 0.05;
@@ -2905,14 +2930,6 @@ class PlayState extends MusicBeatState
 		var holdArray:Array<Bool> = [controls.LEFT, controls.DOWN, controls.UP, controls.RIGHT];
 		var pressArray:Array<Bool> = [controls.LEFT_P, controls.DOWN_P, controls.UP_P, controls.RIGHT_P];
 
-		#if mobile
-		for (touch in FlxG.touches.list)
-		{	
-			if (touch.justPressed) pressArray[Std.int(touch.getPositionInCameraView(camHUD).x / 320)] = true;
-			if (touch.pressed) holdArray[Std.int(touch.getPositionInCameraView(camHUD).x / 320)] = true;
-		}
-		#end
-
 		#if windows
 		if (luaModchart != null) 
 		{
@@ -2937,91 +2954,25 @@ class PlayState extends MusicBeatState
 			holdArray = [false, false, false, false];
 			pressArray = [false, false, false, false];
 		}
+
 		// HOLDS, check for sustain notes
-		if (holdArray.contains(true) && generatedMusic) {
+		if (holdArray.contains(true) && generatedMusic) 
+		{
+			for (i in 0...holdArray.length)
+			{
+				if (holdArray[i])
+				{
+					if (playerStrums.members[i].animation.curAnim.name != 'confirm')
+					{
+						playerStrums.members[i].animation.play('pressed', true);
+					}
+				}
+			}
+
 			notes.forEachAlive(function(daNote:Note) {
 				if (daNote.isSustainNote && daNote.canBeHit && daNote.mustPress && holdArray[daNote.noteData])
 					goodNoteHit(daNote);
 			});
-		}
-
-		// PRESSES, check for note hits
-		if (pressArray.contains(true) && generatedMusic) 
-		{
-			curPlayer.holdTimer = 0;
-
-			var possibleNotes:Array<Note> = []; // notes that can be hit
-			var directionList:Array<Int> = []; // directions that can be hit
-			var dumbNotes:Array<Note> = []; // notes to kill later
-
-			notes.forEachAlive(function(daNote:Note) {
-				if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit) {
-					if (directionList.contains(daNote.noteData)) {
-						for (coolNote in possibleNotes) {
-							if (coolNote.noteData == daNote.noteData
-								&& Math.abs(daNote.strumTime - coolNote.strumTime) < 10) { // if it's the same note twice at < 10ms distance, just delete it
-								// EXCEPT u cant delete it in this loop cuz it fucks with the collection lol
-								dumbNotes.push(daNote);
-								break;
-							} else if (coolNote.noteData == daNote.noteData
-								&& daNote.strumTime < coolNote.strumTime) { // if daNote is earlier than existing note (coolNote), replace
-								possibleNotes.remove(coolNote);
-								possibleNotes.push(daNote);
-								break;
-							}
-						}
-					} else {
-						possibleNotes.push(daNote);
-						directionList.push(daNote.noteData);
-					}
-				}
-			});
-
-			for (note in dumbNotes) {
-				FlxG.log.add("killing dumb ass note at " + note.strumTime);
-				note.kill();
-				notes.remove(note, true);
-				note.destroy();
-			}
-
-			possibleNotes.sort((a, b) -> Std.int(a.strumTime - b.strumTime));
-
-			var dontCheck = false;
-
-			for (i in 0...pressArray.length) {
-				if (pressArray[i] && !directionList.contains(i))
-					dontCheck = true;
-			}
-
-			if (possibleNotes.length > 0 && !dontCheck) {
-				if (!FlxG.save.data.ghost) {
-					for (shit in 0...pressArray.length) { // if a direction is hit that shouldn't be
-						if (pressArray[shit] && !directionList.contains(shit))
-							noteMiss(shit, null);
-					}
-				}
-				for (coolNote in possibleNotes) {
-					if (pressArray[coolNote.noteData]) {
-						if (mashViolations != 0)
-							mashViolations--;
-						scoreTxt.color = FlxColor.WHITE;
-						goodNoteHit(coolNote);
-					}
-				}
-			} else if (!FlxG.save.data.ghost) {
-				for (shit in 0...pressArray.length)
-					if (pressArray[shit])
-						noteMiss(shit, null);
-			}
-
-			if (dontCheck && possibleNotes.length > 0 && FlxG.save.data.ghost && !FlxG.save.data.botplay) {
-				if (mashViolations > 8) {
-					trace('mash violations ' + mashViolations);
-					scoreTxt.color = FlxColor.RED;
-					noteMiss(0, null);
-				} else
-					mashViolations++;
-			}
 		}
 
 		notes.forEachAlive(function(daNote:Note) {
@@ -3048,61 +2999,34 @@ class PlayState extends MusicBeatState
 				curPlayer.dance();
 		}
 
-		playerStrums.forEach(function(spr:FlxSprite) 
-		{
-			if (opponent)
-				spr.visible = true;
-
-			if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm')
-				spr.animation.play('pressed');
-
-			if (!holdArray[spr.ID])
-				spr.animation.play('static');
-		});
-
 		strumLineNotes.forEach((spr) -> {
 			spr.centerOffsets();
 			spr.centerOrigin();
 		});
 	}
 
-	function noteMiss(direction:Int = 1, daNote:Note):Void 
+	function noteMiss(direction:Int = 1, ?daNote:Note):Void 
 	{
-		if (!boyfriend.stunned) 
-		{
-			health -= 0.04;
+		health -= 0.04;
+		songScore -= 10;
+		combo = 0;
+		misses++;
 
-			//if (storyDifficulty == 3) {
-			//	health -= 0.08;
-			//}
+		if (FlxG.save.data.accuracyMod == 1)
+			totalNotesHit -= 1;
 
-			if (combo > 5 && gf.animOffsets.exists('sad')) {
-				gf.playAnim('sad');
-			}
-			combo = 0;
-			misses++;
+		gf.playAnim('sad');
 
-			// var noteDiff:Float = Math.abs(daNote.strumTime - Conductor.songPosition);
-			// var wife:Float = EtternaFunctions.wife3(noteDiff, FlxG.save.data.etternaMode ? 1 : 1.7);
+		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 
-			if (FlxG.save.data.accuracyMod == 1)
-				totalNotesHit -= 1;
+		curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
 
-			songScore -= 10;
+		#if windows
+		if (luaModchart != null)
+			luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
+		#end
 
-			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-			// FlxG.log.add('played imss note');
-
-			curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
-
-			#if windows
-			if (luaModchart != null)
-				luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
-			#end
-
-			updateAccuracy();
-		}
+		updateAccuracy();
 	}
 
 	function updateAccuracy() {
@@ -3111,50 +3035,13 @@ class PlayState extends MusicBeatState
 		accuracyDefault = Math.max(0, totalNotesHitDefault / totalPlayed * 100);
 	}
 
-	function getKeyPresses(note:Note):Int {
-		var possibleNotes:Array<Note> = []; // copypasted but you already know that
-
-		notes.forEachAlive(function(daNote:Note) {
-			if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate) {
-				possibleNotes.push(daNote);
-				possibleNotes.sort((a, b) -> Std.int(a.strumTime - b.strumTime));
-			}
-		});
-		if (possibleNotes.length == 1)
-			return possibleNotes.length + 1;
-		return possibleNotes.length;
-	}
-
-	var mashing:Int = 0;
-	var mashViolations:Int = 0;
-
 	var etternaModeScore:Int = 0;
 
-	function noteCheck(controlArray:Array<Bool>, note:Note):Void // sorry lol
+	function goodNoteHit(note:Note):Void 
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition);
 
 		note.rating = Ratings.CalculateRating(noteDiff);
-
-		if (controlArray[note.noteData]) {
-			goodNoteHit(note, (mashing > getKeyPresses(note)));
-		}
-	}
-
-	function goodNoteHit(note:Note, resetMashViolation = true):Void 
-	{
-		if (mashing != 0)
-			mashing = 0;
-
-		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition);
-
-		note.rating = Ratings.CalculateRating(noteDiff);
-
-		if (!resetMashViolation && mashViolations >= 1)
-			mashViolations--;
-
-		if (mashViolations < 0)
-			mashViolations = 0;
 
 		if (!note.wasGoodHit) {
 			if (!note.isSustainNote) 
@@ -3231,18 +3118,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function lightningStrikeShit():Void 
-	{
-		FlxG.sound.play(Paths.soundRandom('thunder_', 1, 2));
-		halloweenBG.animation.play('lightning');
-
-		lightningStrikeBeat = curBeat;
-		lightningOffset = FlxG.random.int(8, 24);
-
-		boyfriend.playAnim('scared', true);
-		gf.playAnim('scared', true);
-	}
-
 	override function stepHit() 
 	{
 		super.stepHit();
@@ -3313,9 +3188,6 @@ class PlayState extends MusicBeatState
 			- Conductor.songPosition);
 		#end
 	}
-
-	var lightningStrikeBeat:Int = 0;
-	var lightningOffset:Int = 8;
 
 	override function beatHit() 
 	{
@@ -3435,14 +3307,6 @@ class PlayState extends MusicBeatState
 		if (!curOpponent.animation.curAnim.name.startsWith('sing'))
 			curOpponent.dance();
 
-		/*
-			if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0) 
-			{
-				FlxG.camera.zoom += 0.015;
-				camHUD.zoom += 0.03;
-			}
-		*/
-
 		var iconBop:Float = curBeat % 4 == 0 ? 1.2 : 1.135;
 
 		if (!usePixelAssets)
@@ -3487,11 +3351,9 @@ class PlayState extends MusicBeatState
 		switch (curStage) 
 		{
 			case 'school':
-				if(SONG.song.toLowerCase() != 'space-demons'){
-					if (FlxG.save.data.distractions) {
-						bgGirls.dance();
-					}
-	
+				if(SONG.song.toLowerCase() != 'space-demons')
+				{
+					bgGirls.dance();
 				}
 			case 'week5' | 'week5othercrowd' | 'ripdiner':
 				bottomBoppers.beatHit();
@@ -3513,12 +3375,6 @@ class PlayState extends MusicBeatState
 						w1city.animation.curAnim.curFrame++;
 				}
 		}
-
-		/*if (curStage == 'spooky' && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset) {
-			if (FlxG.save.data.distractions) {
-				lightningStrikeShit();
-			}
-		}*/
 	}
 
 	function summonPainting()
@@ -3545,28 +3401,126 @@ class PlayState extends MusicBeatState
 		return super.add(object);
 	}
 
-	var curLight:Int = 0;
+	// RF INPUT SHIT
+	var keybinds(get, never):Array<String>;
+	var keysHeld:Array<Bool> = [false, false, false, false]; 
+	var mashPity:Float = 0;
 
-	public function generateMobileTiles()
+	function get_keybinds():Array<String>
 	{
-		var tileColors:Array<FlxColor> = [
-			FlxColor.fromString('#5D24CE'), 
-			FlxColor.fromString('#4754FF'), 
-			FlxColor.fromString('#32A9E3'),
-			FlxColor.fromString('#A947E0')
-		];
+		return [FlxG.save.data.leftBind, FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
+	}
 
-		for (i in 0...4)
+	private function onKeyPress(input:KeyboardEvent)
+	{
+		// Stolen from my engine, changed shit to support kade engine
+		var key:Int = -1;
+
+		var event:KeyboardEvent = input;
+
+		@:privateAccess
+		key = keybinds.indexOf(FlxKey.toStringMap[event.keyCode]);
+
+		if (key == -1)
 		{
-			var tile:FlxSprite = new FlxSprite(320 * i, 0).loadGraphic(Paths.image('mobileSquare', 'shared'));
-			tile.color = tileColors[i];
-			tile.ID = i;
-
-			tile.alpha = 0.69;
-			tile.cameras = [camHUD];
-
-			mobileTiles.push(tile);
-			add(tile);
+			switch (event.keyCode) // arrow keys
+			{
+				case 37: key = 0;
+				case 40: key = 1;
+				case 38: key = 2;
+				case 39: key = 3;
+			}
 		}
+
+		if (FlxG.save.data.botplay || key == -1 || keysHeld[key])
+		{
+			return;
+		}
+
+		curPlayer.holdTimer = 0;
+		keysHeld[key] = true;
+
+		var closestNote:Note = null;
+		var noteNearby:Bool = false;
+
+		notes.forEachAlive((note:Note) ->
+		{
+			if (note.mustPress)
+			{
+				if (note.noteData == key)
+				{
+					if (closestNote != null)
+					{
+						if (closestNote.strumTime > note.strumTime)
+						{
+							closestNote = note;
+						}
+					}
+					else if (Math.abs(note.strumTime - Conductor.songPosition) <= 166)
+					{
+						closestNote = note;
+					}
+				}
+				else if (!noteNearby)
+				{
+					if (Math.abs(note.strumTime - Conductor.songPosition) < 150)
+					{
+						noteNearby = true;
+					}
+				}
+			}
+		});
+
+		if (closestNote != null)
+		{
+			playerStrums.members[closestNote.noteData].animation.play('confirm');
+
+			goodNoteHit(closestNote);
+		}
+		else
+		{
+			if (noteNearby)
+			{
+				mashPity += 2;
+
+				if (mashPity >= 4)
+					noteMiss();
+			}
+		}
+	}
+
+	private function onKeyRelease(event:KeyboardEvent)
+	{
+		@:privateAccess
+		var key:Int = keybinds.indexOf(FlxKey.toStringMap.get(event.keyCode));
+
+		if (key == -1)
+		{
+			switch (event.keyCode) // arrow keys
+			{
+				case 37: key = 0;
+				case 40: key = 1;
+				case 38: key = 2;
+				case 39: key = 3;
+			}
+		}
+
+		if (key == -1)
+			return;
+
+		keysHeld[key] = false;
+
+		if (playerStrums.members[key].animation.curAnim.name != 'static')
+		{
+			playerStrums.members[key].animation.play('static');
+		}
+	}
+
+	override function switchTo(_):Bool
+	{
+		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+
+		return true;
 	}
 }

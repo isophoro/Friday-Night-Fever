@@ -1,7 +1,7 @@
 function start (song)
 resizeWindow(getScreenWidth() - 300, getScreenHeight() - 170)
 setWindowPos(150, 80)
-setHudZoom(2)
+--setHudZoom(2)
 showOnlyStrums = true
 strumLine1Visible = false
 strumLine2Visible = false
