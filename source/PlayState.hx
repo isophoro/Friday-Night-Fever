@@ -19,7 +19,6 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
-import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxPoint;
@@ -151,8 +150,6 @@ class PlayState extends MusicBeatState
 	public static var offsetTesting:Bool = false;
 
 	public var dialogue:Array<String> = [':desmile: Real'];
-
-	var halloweenBG:FlxSprite;
 
 	var limo:FlxSprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
@@ -368,16 +365,6 @@ class PlayState extends MusicBeatState
 				{
 					curStage = 'spooky';
 					defaultCamZoom = 0.6;
-
-					var hallowTex = Paths.getSparrowAtlas('halloween_bg', 'week2');
-
-					halloweenBG = new FlxSprite(-200, -100);
-					halloweenBG.frames = hallowTex;
-					halloweenBG.animation.addByPrefix('idle', 'halloweem bg0');
-					halloweenBG.animation.addByPrefix('lightning', 'halloweem bg lightning strike', 24, false);
-					halloweenBG.animation.play('idle');
-					halloweenBG.antialiasing = true;
-					//add(halloweenBG);
 
 					var bg:FlxSprite = new FlxSprite(-200, -100).loadGraphic(Paths.image('spooky', 'week2'));
 					bg.antialiasing = true;
@@ -629,9 +616,6 @@ class PlayState extends MusicBeatState
 				{
 					curStage = 'schoolEvil';
 					usePixelAssets = true;
-
-					var waveEffectBG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 3, 2);
-					var waveEffectFG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 5, 2);
 
 					var posX = 400;
 					var posY = 200;
@@ -919,7 +903,6 @@ class PlayState extends MusicBeatState
 
 		if(SONG.song.toLowerCase() == 'bazinga' || SONG.song.toLowerCase() == 'crucify')
 		{
-			// Shitty way of doing their placement, fuck off with how fnf handles character positoning :)
 			gf.y -= 15;
 			gf.x += 180;
 			boyfriend.x += 160;
@@ -952,7 +935,6 @@ class PlayState extends MusicBeatState
 			FlxG.save.data.botplay = true;
 			FlxG.save.data.scrollSpeed = rep.replay.noteSpeed;
 			FlxG.save.data.downscroll = rep.replay.isDownscroll;
-			// FlxG.watch.addQuick('Queued',inputsQueued);
 		}
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
@@ -995,7 +977,6 @@ class PlayState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
 		
-		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
 
@@ -1412,8 +1393,7 @@ class PlayState extends MusicBeatState
 				case 4:
 			}
 
-			swagCounter += 1;
-			// generateSong('fresh');
+			swagCounter++;
 		}, 5);
 	}
 
