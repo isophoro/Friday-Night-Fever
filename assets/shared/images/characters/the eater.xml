@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:74be9642ad170de7b0acfbdad75d474b:2e1765854b75140f1f192c0cfcb6d8db:0c2618d8eddd7f947707a8dd36a110c5$ -->
+<TextureAtlas imagePath="the eater.png" width="3696" height="5120">
+    <SubTexture name="down (1)" x="0" y="0" width="528" height="640"/>
+    <SubTexture name="down (2)" x="528" y="0" width="528" height="640"/>
+    <SubTexture name="down (3)" x="1056" y="0" width="528" height="640"/>
+    <SubTexture name="down (4)" x="1584" y="0" width="528" height="640"/>
+    <SubTexture name="down (5)" x="2112" y="0" width="528" height="640"/>
+    <SubTexture name="down (6)" x="2640" y="0" width="528" height="640"/>
+    <SubTexture name="down (7)" x="3168" y="0" width="528" height="640"/>
+    <SubTexture name="down (8)" x="0" y="640" width="528" height="640"/>
+    <SubTexture name="down (9)" x="528" y="640" width="528" height="640"/>
+    <SubTexture name="down (10)" x="1056" y="640" width="528" height="640"/>
+    <SubTexture name="down (11)" x="1584" y="640" width="528" height="640"/>
+    <SubTexture name="down (12)" x="2112" y="640" width="528" height="640"/>
+    <SubTexture name="idle (1)" x="2640" y="640" width="528" height="640"/>
+    <SubTexture name="idle (2)" x="3168" y="640" width="528" height="640"/>
+    <SubTexture name="idle (3)" x="0" y="1280" width="528" height="640"/>
+    <SubTexture name="idle (4)" x="528" y="1280" width="528" height="640"/>
+    <SubTexture name="idle (5)" x="1056" y="1280" width="528" height="640"/>
+    <SubTexture name="idle (6)" x="1584" y="1280" width="528" height="640"/>
+    <SubTexture name="idle (7)" x="2112" y="1280" width="528" height="640"/>
+    <SubTexture name="idle (8)" x="2640" y="1280" width="528" height="640"/>
+    <SubTexture name="idle (9)" x="3168" y="1280" width="528" height="640"/>
+    <SubTexture name="idle (10)" x="0" y="1920" width="528" height="640"/>
+    <SubTexture name="idle (11)" x="528" y="1920" width="528" height="640"/>
+    <SubTexture name="idle (12)" x="1056" y="1920" width="528" height="640"/>
+    <SubTexture name="idle (13)" x="1584" y="1920" width="528" height="640"/>
+    <SubTexture name="idle (14)" x="2112" y="1920" width="528" height="640"/>
+    <SubTexture name="idle (15)" x="2640" y="1920" width="528" height="640"/>
+    <SubTexture name="idle (16)" x="3168" y="1920" width="528" height="640"/>
+    <SubTexture name="idle (17)" x="0" y="2560" width="528" height="640"/>
+    <SubTexture name="idle (18)" x="528" y="2560" width="528" height="640"/>
+    <SubTexture name="idle (19)" x="1056" y="2560" width="528" height="640"/>
+    <SubTexture name="idle (20)" x="1584" y="2560" width="528" height="640"/>
+    <SubTexture name="idle (21)" x="2112" y="2560" width="528" height="640"/>
+    <SubTexture name="idle (22)" x="2640" y="2560" width="528" height="640"/>
+    <SubTexture name="idle (23)" x="3168" y="2560" width="528" height="640"/>
+    <SubTexture name="left (1)" x="0" y="3200" width="528" height="640"/>
+    <SubTexture name="left (2)" x="528" y="3200" width="528" height="640"/>
+    <SubTexture name="left (3)" x="1056" y="3200" width="528" height="640"/>
+    <SubTexture name="left (4)" x="1584" y="3200" width="528" height="640"/>
+    <SubTexture name="left (5)" x="2112" y="3200" width="528" height="640"/>
+    <SubTexture name="left (6)" x="2640" y="3200" width="528" height="640"/>
+    <SubTexture name="left (7)" x="3168" y="3200" width="528" height="640"/>
+    <SubTexture name="left (8)" x="0" y="3840" width="528" height="640"/>
+    <SubTexture name="left (9)" x="528" y="3840" width="528" height="640"/>
+    <SubTexture name="left (10)" x="1056" y="3840" width="528" height="640"/>
+    <SubTexture name="left (11)" x="1584" y="3840" width="528" height="640"/>
+    <SubTexture name="left (12)" x="2112" y="3840" width="528" height="640"/>
+    <SubTexture name="left (13)" x="2640" y="3840" width="528" height="640"/>
+    <SubTexture name="left (14)" x="3168" y="3840" width="528" height="640"/>
+    <SubTexture name="left (15)" x="0" y="4480" width="528" height="640"/>
+    <SubTexture name="left (16)" x="528" y="4480" width="528" height="640"/>
+    <SubTexture name="left (17)" x="1056" y="4480" width="528" height="640"/>
+</TextureAtlas>

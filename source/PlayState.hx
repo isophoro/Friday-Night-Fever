@@ -235,6 +235,7 @@ class PlayState extends MusicBeatState
 	public var beatClass:Class<Dynamic> = null;
 
 	public var usePixelAssets:Bool = false;
+	var theEater:Character;
 
 	override public function create() 
 	{
@@ -246,6 +247,7 @@ class PlayState extends MusicBeatState
 		Gc.run(true); 
 		#end
 
+		theEater = new Character(0,0,"the eater", false);
 		super.create();
 		add(new NoteSplash(0,0,0));
 
@@ -436,31 +438,30 @@ class PlayState extends MusicBeatState
 					bg.antialiasing = true;
 					add(bg);
 				}
-			case 'philly':
-				{
-					curStage = 'philly';
-					defaultCamZoom = 0.9;
-
-					var bg:FlxSprite = new FlxSprite(-90, -20).loadGraphic(Paths.image('philly/sky', 'week3'));
-					bg.scrollFactor.set(0.1, 0.1);
-					add(bg);
-
-					var streetBehind:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('philly/bg', 'week3'));
-					add(streetBehind);
-				}
 			case 'week3stage':
 				{
 					curStage = 'week3stage';
 					defaultCamZoom = 0.9;
 
-					var bg:FlxSprite = new FlxSprite(-90, -20).loadGraphic(Paths.image('sky'));
-					bg.scrollFactor.set(0.1, 0.235);
+
+					var bg:FlxSprite = new FlxSprite(-90, -20).loadGraphic(Paths.image(SONG.song == "Retribution" ? 'skyMoon' : 'sky', 'week3'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.7, 0.7);
 					add(bg);
 
-					var city:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('bg'));
-					add(city);
+					var outerBuilding:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('mako_buildings_2', 'week3'));
+					outerBuilding.antialiasing = true;
+					outerBuilding.scrollFactor.set(0.46, 0.7);
+					add(outerBuilding);
 
-					// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
+					var innerBuilding:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('mako_buildings', 'week3'));
+					innerBuilding.scrollFactor.set(0.7, 0.8);
+					innerBuilding.antialiasing = true;
+					add(innerBuilding);
+
+					var ground:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('mako_ground', 'week3'));
+					ground.antialiasing = true;
+					add(ground);
 				}
 			case 'limo':
 				{
@@ -873,12 +874,11 @@ class PlayState extends MusicBeatState
 				gf.x -= 70;
 				gf.y += 200;
 				gf.scrollFactor.set(0.9, 0.9);
-			case 'philly':
-				boyfriend.x += 200;
-				boyfriend.y -= 50;
 			case 'week3stage':
 				boyfriend.x += 180;
-				boyfriend.y -= 50;
+				boyfriend.y -= 45;
+				gf.x -= 35;
+				dad.x += 15;
 			case 'robocesbg':
 				boyfriend.x = 1085.2;
 				boyfriend.y = 482.3;
@@ -1005,7 +1005,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), #if !mobile 18 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 
 		scoreTxt.borderSize = 1.25;
-		scoreTxt.antialiasing = FlxG.stage.window.width > 1280 ? true : false;
+		FlxG.signals.gameResized.add(onGameResize);
 
 		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
 		replayTxt.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -2252,7 +2252,7 @@ class PlayState extends MusicBeatState
 					case 'week5' | 'ripdiner' | 'week5othercrowd':
 						camFollow.x = boyfriend.getMidpoint().x - 350;
 						camFollow.y = boyfriend.getMidpoint().y - 340;
-					case 'week3stage' | 'philly':
+					case 'week3stage':
 						camFollow.x = boyfriend.getMidpoint().x - 380;
 					case 'princess':
 						camFollow.y = boyfriend.getMidpoint().y - 330;
@@ -2467,7 +2467,14 @@ class PlayState extends MusicBeatState
 
 					var delay:Int = 0;
 					// Accessing the animation name directly to play it
-					curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
+					if (curSong == 'Princess' && (curBeat == 303 || curBeat == 367) && daNote.noteData == 2)
+					{
+						curOpponent.playAnim('singLaugh', true);
+					}
+					else
+					{
+						curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
+					}
 
 					if (storyDifficulty != 4 && !opponent) 
 					{
@@ -3116,6 +3123,17 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (curSong == 'Retribution')
+		{
+			if (curStep == 1192)
+			{
+				boyfriend.visible = false;
+				curPlayer = theEater;
+				theEater.setPosition(boyfriend.x - 60, boyfriend.y - 80);
+				add(theEater);	
+			}
+		}
+
 		if (curSong == 'Milk-Tea')
 		{
 			switch (curStep)
@@ -3496,10 +3514,16 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	function onGameResize(width, height)
+	{
+		scoreTxt.antialiasing = width > 1280 ? true : false;
+	}
+
 	override function switchTo(_):Bool
 	{
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		FlxG.signals.gameResized.remove(onGameResize);
 
 		return true;
 	}

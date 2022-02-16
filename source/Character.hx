@@ -1062,8 +1062,10 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 			case 'scarlet':
 				frames = Paths.getSparrowAtlas('characters/Scarlet');
+				iconColor = 'E059B1';
 
 				animation.addByPrefix('idle', 'Scar Idle', 24, false);
+				animation.addByPrefix('singLaugh', 'Scar Laugh', 24, false); // cheesing the system
 				addOffset('idle');
 				for (i in ['DOWN', 'UP', 'LEFT', 'RIGHT'])
 				{
@@ -1074,6 +1076,21 @@ class Character extends FlxSprite
 				addOffset('singUP', 11, 29);
 				addOffset('singRIGHT', 2, -41);
 				addOffset('singLEFT', 110, -20);
+				addOffset('singLaugh', 30);
+
+				playAnim('idle');
+			case 'the eater':
+				frames = Paths.getSparrowAtlas('characters/the eater');
+
+				animation.addByPrefix('idle', 'idle ', 9, false);
+				animation.addByPrefix('singDOWN', 'down ', 9, false);
+				animation.addByPrefix('singUP', 'left ', 9, false);
+				animation.addByPrefix('singLEFT', 'left ', 9, false);
+				animation.addByPrefix('singRIGHT', 'down ', 9, false);
+
+				@:privateAccess
+				for (i in animation._animations.keys())
+					addOffset(i);
 
 				playAnim('idle');
 		}

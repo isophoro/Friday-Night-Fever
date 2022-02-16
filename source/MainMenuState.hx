@@ -125,13 +125,8 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 		
-		#if !mobile
-		if(FlxG.save.data.visitedCredits)
-        {
-            versionShit.text += '\nPress C to visit the credits menu';
-            versionShit.y -= 18;
-        }
-		#end
+		versionShit.text += '\nPress C to visit the credits menu';
+		versionShit.y -= 18;
 
 		if (FlxG.save.data.dfjk)
 			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
@@ -162,7 +157,7 @@ class MainMenuState extends MusicBeatState
 		}
 
 		#if !mobile
-		if (FlxG.keys.justPressed.C && FlxG.save.data.visitedCredits)
+		if (FlxG.keys.justPressed.C)
 		{
 			FlxG.switchState(new CreditsState());
 		}
