@@ -18,6 +18,7 @@ class RoboBackground
     private var robofever:Character;
     var tea_pixel:Character;
     var fever_pixel:Character;
+    var cherry:Character;
 
     public function new() 
     {
@@ -36,9 +37,11 @@ class RoboBackground
             robofever = new Character(0,0, "robo-cesar-pixel");
             tea_pixel = new Character(0,0, "gf-pixel");
             fever_pixel = new Character(0,0, "bf-pixel", true);
+            cherry = new Character(400, 130, "gf-car", false);
             tea_pixel.scrollFactor.set(0.9, 0.9);
             fever_pixel.scrollFactor.set(0.9, 0.9);
             robofever.scrollFactor.set(0.9, 0.9);
+            cherry.scrollFactor.set(0.95, 0.95);
             // ZARDY STAGE
             var dumboffset:Int = 95;
 
@@ -68,6 +71,23 @@ class RoboBackground
             whittyBG.scrollFactor.set(0.9, 0.9);
             whittyBG.scale.set(1.25, 1.25);
             stages['whitty'] = new RoboStage([whittyBG], [], [], [], 0.55);
+
+            // TRICKY
+            var trickyBG:FlxSprite = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/rockymountains'));
+            trickyBG.antialiasing = true;
+            trickyBG.scrollFactor.set(0.9, 0.9);
+            trickyBG.scale.set(1.25, 1.25);
+
+            var trickySky:FlxSprite = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/rockysky'));
+            trickySky.antialiasing = true;
+            trickySky.scrollFactor.set(0.7, 0.7);
+            trickySky.scale.set(1.25, 1.25);
+
+            stages['tricky'] = new RoboStage([trickySky, trickyBG], [], [
+                "boyfriend" => [775, 482.3],
+                "gf" => [115, 149],
+                "dad" => [-160, 315.3]
+            ], [], 0.55);
 
             // matt shit
             var mattbg:FlxSprite = new FlxSprite(-200, -230).loadGraphic(Paths.image('roboStage/matt_bg'));
@@ -209,7 +229,7 @@ class RoboBackground
             limo.animation.play('drive');
             limo.antialiasing = true;
 
-            stages['limo'] = new RoboStage([skyBG, bgLimo].concat(bunnies).concat([limo]), [], [
+            stages['limo'] = new RoboStage([skyBG, bgLimo].concat(bunnies).concat([cherry, limo]), [], [
                 "boyfriend" => [1030, 150],
                 "dad" => [100, 235]
             ], ["boyfriend" => 1, "dad" => 1], 0.9);
@@ -245,9 +265,13 @@ class RoboBackground
 
         switch (stage)
         {
+            case 'tricky': 
+                instance.gf.color = instance.boyfriend.color = instance.dad.color = FlxColor.fromString("#FFE6D8");
             case 'church': replaceGf('taki');
             case 'limo': replaceGf('die');
-            default: replaceGf('gf');
+            default: 
+                instance.gf.color = instance.boyfriend.color = instance.dad.color = FlxColor.WHITE;
+                replaceGf('gf');
         }
 
         curStage = stage;
@@ -288,6 +312,8 @@ class RoboBackground
             {
                 case 32:
                     switchStage('zardy');
+                case 96 | 464:
+                    switchStage('tricky');
                 case 128:
                     switchStage('whitty');
                 case 144 | 288:
@@ -355,6 +381,7 @@ class RoboBackground
             }
         }
 
+        cherry.dance();
         taki.dance();
         tea_pixel.dance();
 

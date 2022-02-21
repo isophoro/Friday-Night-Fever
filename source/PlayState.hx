@@ -266,14 +266,6 @@ class PlayState extends MusicBeatState
 
 		//partycrasher shit//
 		modchart = new ModChart(this);
-
-		tvshit = new VCRDistortionEffect();
-		
-		tvshit.setDistortion(false);
-		tvshit.setVignetteMoving(true);
-		tvshit.setVignette(true);
-		tvshit.setScanlines(false);
-		tvshit.setGlitchModifier(.2);
 		//partycrasher shit//
 
 		if (FlxG.save.data.fpsCap > 290)
@@ -1081,7 +1073,15 @@ class PlayState extends MusicBeatState
 				dark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/darkShit'));
 				dark.cameras = [camHUD];
 				add(dark);
-				dark.visible = false;		
+				dark.visible = false;	
+				
+				tvshit = new VCRDistortionEffect();
+		
+				tvshit.setDistortion(false);
+				tvshit.setVignetteMoving(true);
+				tvshit.setVignette(true);
+				tvshit.setScanlines(false);
+				tvshit.setGlitchModifier(.2);
 			case 'bazinga' | 'crucify' | 'hallow' | 'hardships' | 'portrait' | 'run':
 				moreDark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/evenMOREdarkShit'));
 				moreDark.cameras = [camHUD];
@@ -2179,13 +2179,16 @@ class PlayState extends MusicBeatState
 							switch(roboStage.curStage)
 							{
 								default:
-									camFollow.y = dad.getMidpoint().y - 190;
-									camFollow.x = dad.getMidpoint().x + 500;
+									camFollow.y = dad.getMidpoint().y - 130;
+									camFollow.x = dad.getMidpoint().x + 475;
+								case 'tricky':
+									camFollow.y = dad.getMidpoint().y - 100;
+									camFollow.x = dad.getMidpoint().x + 230;
 								case 'limo':
 									camFollow.x = dad.getMidpoint().x + 300;
 									camFollow.y = dad.getMidpoint().y;
 								case 'default' | 'whitty':
-									camFollow.y = dad.getMidpoint().y - 340;
+									camFollow.y = dad.getMidpoint().y - 290;
 									camFollow.x = dad.getMidpoint().x - -490;
 							}
 						}
@@ -2268,10 +2271,13 @@ class PlayState extends MusicBeatState
 								camFollow.y = boyfriend.getMidpoint().y - 230;
 							case 'matt':
 								camFollow.x = boyfriend.getMidpoint().x - 650;
-								camFollow.y = boyfriend.getMidpoint().y - 330;								
+								camFollow.y = boyfriend.getMidpoint().y - 330;
+							case 'tricky':
+								camFollow.x = boyfriend.getMidpoint().x - 320;
+								camFollow.y = boyfriend.getMidpoint().y - 300;															
 							default:
 								camFollow.x = boyfriend.getMidpoint().x - 490;
-								camFollow.y = boyfriend.getMidpoint().y - 320;
+								camFollow.y = boyfriend.getMidpoint().y - 280;
 						}
 				}
 			}
@@ -3125,7 +3131,7 @@ class PlayState extends MusicBeatState
 
 		if (curSong == 'Retribution')
 		{
-			if (curStep == 1192)
+			if (curStep == 192)
 			{
 				boyfriend.visible = false;
 				curPlayer = theEater;
