@@ -2094,11 +2094,14 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (startingSong && startedCountdown) 
+		if (startingSong) 
 		{
-			Conductor.songPosition += FlxG.elapsed * 1000;
-			if (Conductor.songPosition >= 0)
-				startSong();
+			if (startedCountdown)
+			{
+				Conductor.songPosition += FlxG.elapsed * 1000;
+				if (Conductor.songPosition >= 0)
+					startSong();
+			}
 		} 
 		else 
 		{
