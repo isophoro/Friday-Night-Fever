@@ -220,6 +220,9 @@ class PlayState extends MusicBeatState
 	var princessBG:FlxSprite;
 	var princessFloor:FlxSprite;
 
+	var fevercamX:Int = 0;
+	var fevercamY:Int = 0;
+
 	// API stuff
 	public function addObject(object:FlxBasic) {
 		add(object);
@@ -2307,6 +2310,9 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		camFollow.x += fevercamX;
+		camFollow.y += fevercamY;
+
 		if (camZooming) 
 		{
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, 0.95);
@@ -3014,6 +3020,8 @@ class PlayState extends MusicBeatState
 		{
 			if (curPlayer.animation.curAnim.name.startsWith('sing') && !curPlayer.animation.curAnim.name.endsWith('miss'))
 				curPlayer.dance();
+				fevercamX = 0;
+				fevercamY = 0;
 		}
 
 		strumLineNotes.forEach((spr) -> {
@@ -3070,6 +3078,22 @@ class PlayState extends MusicBeatState
 				totalNotesHit += 1;
 
 			curPlayer.playAnim('sing' + dataSuffix[note.noteData], true);
+
+			switch (note.noteData)
+			{
+				case 3:
+					fevercamX = 25;
+					fevercamY = 0;
+				case 2: 
+					fevercamY = -25;
+					fevercamX = 0;
+				case 1:
+					fevercamY = 25;
+					fevercamX = 0;
+				case 0:
+					fevercamX = -25;
+					fevercamY = 0;
+			}
 
 			if (opponent && (dad.curCharacter == 'taki' || dad.curCharacter == 'monster'))
 			{
