@@ -217,6 +217,9 @@ class PlayState extends MusicBeatState
 
 	private var executeModchart = false;
 
+	var princessBG:FlxSprite;
+	var princessFloor:FlxSprite;
+
 	// API stuff
 	public function addObject(object:FlxBasic) {
 		add(object);
@@ -650,6 +653,24 @@ class PlayState extends MusicBeatState
 				whittyBG.scrollFactor.set(0.9, 0.9);
 				whittyBG.scale.set(1.25, 1.25);
 				add(whittyBG);
+
+				if(SONG.song.toLowerCase() == 'princess')
+				{
+					princessBG = new FlxSprite(-446, -611).loadGraphic(Paths.image('roboStage/princessBG'));
+					princessBG.antialiasing = true;
+					princessBG.scrollFactor.set(0.9, 0.9);
+					princessBG.scale.set(1.25, 1.25);
+					add(princessBG);
+					princessBG.visible = false;
+
+					princessFloor = new FlxSprite(-446, -611).loadGraphic(Paths.image('roboStage/princessFloor'));
+					princessFloor.antialiasing = true;
+					princessFloor.scrollFactor.set(0.9, 0.9);
+					princessFloor.scale.set(1.25, 1.25);
+					add(princessFloor);
+					princessFloor.visible = false;
+				}
+				
 			default:
 			{
 				defaultCamZoom = 0.9;
@@ -3129,6 +3150,19 @@ class PlayState extends MusicBeatState
 			{
 				case 121: health += 0.32;
 				case 1524: health += 0.40;
+			}
+		}
+
+		if(SONG.song.toLowerCase() == 'princess')
+		{
+			switch(curStep)
+			{
+				case 128: 
+					camHUD.flash(FlxColor.WHITE, 0.5);
+					princessBG.visible = true;
+					princessFloor.visible = true;
+					defaultCamZoom = 0.65;
+					gf.y += 60;
 			}
 		}
 
