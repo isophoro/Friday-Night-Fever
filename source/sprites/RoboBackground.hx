@@ -416,9 +416,11 @@ class RoboBackground
                 instance.gf.visible = false;
                 instance.remove(instance.boyfriend);
                 instance.remove(instance.dad);
+                instance.remove(instance.roboForeground);
                 instance.add(taki);
                 instance.add(instance.dad);
                 instance.add(instance.boyfriend);
+                instance.add(instance.roboForeground);
                 taki.setPosition(instance.gf.x, instance.gf.y - 190);
             case 'die': instance.gf.visible = false;
             default:

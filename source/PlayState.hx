@@ -151,6 +151,7 @@ class PlayState extends MusicBeatState
 
 	public var dialogue:Array<String> = [':desmile: Real'];
 
+	var spookyBG:FlxSprite;
 	var limo:FlxSprite;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:FlxSprite;
@@ -366,15 +367,15 @@ class PlayState extends MusicBeatState
 					curStage = 'spooky';
 					defaultCamZoom = 0.6;
 
-					var bg:FlxSprite = new FlxSprite(-200, -100).loadGraphic(Paths.image('spooky', 'week2'));
-					bg.antialiasing = true;
+					spookyBG = new FlxSprite(-200, -100).loadGraphic(Paths.image('spooky', 'week2'));
+					spookyBG.antialiasing = true;
 
 					var city:FlxSprite = new FlxSprite(-290, -180).loadGraphic(Paths.image('city', 'week2'));
 					city.antialiasing = true;
 					city.scrollFactor.set(0.8, 0.8);
 
 					add(city);
-					add(bg);
+					add(spookyBG);
 				}
 			case 'hallowhalloween':
 				{
@@ -464,10 +465,10 @@ class PlayState extends MusicBeatState
 			case 'limo':
 				{
 					curStage = 'limo';
-					defaultCamZoom = 0.9;
+					defaultCamZoom = 0.855;
 
-					var skyBG:FlxSprite = new FlxSprite(-120, -70).loadGraphic(Paths.image('limo/limoSunset', 'week4'));
-					skyBG.scrollFactor.set(0.1, 0.1);
+					var skyBG:FlxSprite = new FlxSprite(-150, -145).loadGraphic(Paths.image('limo/limoSunset', 'week4'));
+					skyBG.scrollFactor.set(0.25, 0);
 					add(skyBG);
 
 					var bgLimo:FlxSprite = new FlxSprite(-200, 480);
@@ -501,7 +502,7 @@ class PlayState extends MusicBeatState
 			case 'limonight':
 				{
 					curStage = 'limonight';
-					defaultCamZoom = 0.9;
+					defaultCamZoom = 0.855;
 
 					var skyBG:FlxSprite = new FlxSprite(-120, -70).loadGraphic(Paths.image('limoNight/limoSunset', 'week4'));
 					skyBG.scrollFactor.set(0.1, 0.1);
@@ -789,12 +790,9 @@ class PlayState extends MusicBeatState
 			case 'makocorrupt':
 				dad.y -= 100;
 				dad.x -= 290;
-			case 'mom-car':
-				dad.x -= 100;
-				dad.y -= 100;
-			case 'mom-carnight':
-				dad.x -= 100;
-				dad.y -= 100;
+			case 'mom-car' | 'mom-carnight':
+				dad.x -= 30;
+				dad.y -= 185;
 			case 'yukichi':
 				dad.y += 350;
 				dad.x -= 130;
@@ -816,6 +814,8 @@ class PlayState extends MusicBeatState
 			case 'limo' | 'limonight':
 				boyfriend.y -= 300;
 				boyfriend.x += 260;
+				gf.y += 20;
+				gf.x -= 30;
 				if (FlxG.save.data.distractions) {
 					resetFastCar();
 					add(fastCar);
@@ -1122,7 +1122,7 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 		startingSong = true;
 
-		if (isStoryMode && !skipDialogue) 
+		if (isStoryMode && dialogue.length > 0 && !skipDialogue) 
 		{
 			switch (curSong.toLowerCase()) 
 			{
@@ -1130,16 +1130,11 @@ class PlayState extends MusicBeatState
 					camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 					jumpscare(doof);
 				default:
-					if (dialogue.length > 0) 
-					{
-						if (curSong.toLowerCase() == 'chicken-sandwich')
-							FlxG.sound.play(Paths.sound('ANGRY'));
+					if (curSong.toLowerCase() == 'chicken-sandwich')
+						FlxG.sound.play(Paths.sound('ANGRY'));
 
-						camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
-						NOTSenpai(doof);
-					} else {
-						startCountdown();
-					}
+					camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
+					NOTSenpai(doof);
 			}
 		}
 		else 
@@ -1153,39 +1148,6 @@ class PlayState extends MusicBeatState
 		FlxG.keys.preventDefaultKeys = [];
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
-	}
-
-	function dialogueCutscene() {
-		var red:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFff1b31);
-		red.scrollFactor.set();
-
-		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy', 'week6');
-		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
-		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
-		senpaiEvil.scrollFactor.set();
-		senpaiEvil.updateHitbox();
-		senpaiEvil.screenCenter();
-
-		camHUD.visible = false;
-		add(red);
-		senpaiEvil.animation.play('idle');
-		camFollow.x += 0;
-		camFollow.y += 0;
-		FlxG.camera.focusOn(camFollow.getPosition());
-		new FlxTimer().start(1.4, function(tmr:FlxTimer) {
-			remove(senpaiEvil);
-			remove(red);
-			camHUD.visible = true;
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 0.9);
-			var newDialogue:Array<String> = CoolUtil.coolTextFile(Paths.txt('otherDia'));
-			var doof:DialogueBox = new DialogueBox(false, newDialogue);
-
-			doof.scrollFactor.set();
-			doof.finishThing = startCountdown;
-			doof.cameras = [camHUD];
-			add(doof);
-		});
 	}
 
 	function jumpscare(?dialogueBox:DialogueBox):Void 
@@ -2172,7 +2134,7 @@ class PlayState extends MusicBeatState
 
 				switch (dad.curCharacter) {
 					case 'mom' | 'mom-carnight' | 'mom-car':
-						camFollow.y = dad.getMidpoint().y;
+						camFollow.y = dad.getMidpoint().y + 90;
 					case 'senpai' | 'senpai-angry':
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
@@ -2271,8 +2233,8 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 					case 'spooky' | 'spookyBOO':
-						camFollow.x = boyfriend.getMidpoint().x - 250;
-						camFollow.y = boyfriend.getMidpoint().y - 200;
+						camFollow.x = boyfriend.getMidpoint().x - 320;
+						camFollow.y = boyfriend.getMidpoint().y - 250;
 					case 'church':
 						camFollow.x = boyfriend.getMidpoint().x - 465;
 						camFollow.y = boyfriend.getMidpoint().y - 365;
@@ -2311,7 +2273,7 @@ class PlayState extends MusicBeatState
 		}
 
 		camFollow.x += fevercamX;
-		camFollow.y += fevercamY;
+		//camFollow.y += fevercamY;
 
 		if (camZooming) 
 		{
@@ -3019,9 +2981,11 @@ class PlayState extends MusicBeatState
 		if (curPlayer.holdTimer > Conductor.stepCrochet * 4 * 0.001 && (!holdArray.contains(true) || FlxG.save.data.botplay)) 
 		{
 			if (curPlayer.animation.curAnim.name.startsWith('sing') && !curPlayer.animation.curAnim.name.endsWith('miss'))
+			{
 				curPlayer.dance();
 				fevercamX = 0;
 				fevercamY = 0;
+			}
 		}
 
 		strumLineNotes.forEach((spr) -> {
@@ -3348,6 +3312,24 @@ class PlayState extends MusicBeatState
 							font = false;
 							scoreTxt.setFormat(Paths.font("vcr.ttf"), #if !mobile 18 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 					}
+				case 'star-baby':
+					switch(curBeat)
+					{
+						case 128:
+							defaultCamZoom += 0.17;
+							FlxTween.color(spookyBG, 0.45, FlxColor.WHITE, FlxColor.fromString("#828282"));
+							FlxTween.color(gf, 0.45, FlxColor.WHITE, FlxColor.fromString("#828282"));
+						case 192:
+							defaultCamZoom -= 0.17;
+							FlxTween.color(spookyBG, 0.45, FlxColor.fromString("#828282"), FlxColor.WHITE);
+							FlxTween.color(gf, 0.45, FlxColor.fromString("#828282"), FlxColor.WHITE);
+						default:
+							if (curBeat % 2 == 0 && curBeat > 128 && curBeat < 192)
+							{
+								FlxG.camera.zoom += 0.015;
+								camHUD.zoom += 0.03;
+							}
+					}
 			}
 		}
 
@@ -3481,14 +3463,12 @@ class PlayState extends MusicBeatState
 		// Stolen from my engine, changed shit to support kade engine
 		var key:Int = -1;
 
-		var event:KeyboardEvent = input;
-
 		@:privateAccess
-		key = keybinds.indexOf(FlxKey.toStringMap[event.keyCode]);
+		key = keybinds.indexOf(FlxKey.toStringMap[input.keyCode]);
 
 		if (key == -1)
 		{
-			switch (event.keyCode) // arrow keys
+			switch (input.keyCode) // arrow keys
 			{
 				case 37: key = 0;
 				case 40: key = 1;
@@ -3510,7 +3490,7 @@ class PlayState extends MusicBeatState
 
 		notes.forEachAlive((note:Note) ->
 		{
-			if (note.mustPress)
+			if (note.mustPress && !note.isSustainNote)
 			{
 				if (note.noteData == key)
 				{
