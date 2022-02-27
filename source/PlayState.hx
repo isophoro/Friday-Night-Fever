@@ -469,6 +469,7 @@ class PlayState extends MusicBeatState
 
 					var skyBG:FlxSprite = new FlxSprite(-150, -145).loadGraphic(Paths.image('limo/limoSunset', 'week4'));
 					skyBG.scrollFactor.set(0.25, 0);
+					skyBG.antialiasing = true;
 					add(skyBG);
 
 					var bgLimo:FlxSprite = new FlxSprite(-200, 480);
@@ -476,6 +477,7 @@ class PlayState extends MusicBeatState
 					bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
 					bgLimo.animation.play('drive');
 					bgLimo.scrollFactor.set(0.4, 0.4);
+					bgLimo.antialiasing = true;
 					add(bgLimo);
 					if (FlxG.save.data.distractions) {
 						grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
@@ -497,6 +499,7 @@ class PlayState extends MusicBeatState
 					limo.antialiasing = true;
 
 					fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limoNight/fastCarLol', 'week4'));
+					fastCar.antialiasing = true;
 					// add(limo);
 				}
 			case 'limonight':
@@ -506,6 +509,7 @@ class PlayState extends MusicBeatState
 
 					var skyBG:FlxSprite = new FlxSprite(-120, -70).loadGraphic(Paths.image('limoNight/limoSunset', 'week4'));
 					skyBG.scrollFactor.set(0.1, 0.1);
+					skyBG.antialiasing = true;
 					add(skyBG);
 
 					var bgLimo:FlxSprite = new FlxSprite(-200, 480);
@@ -513,6 +517,7 @@ class PlayState extends MusicBeatState
 					bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
 					bgLimo.animation.play('drive');
 					bgLimo.scrollFactor.set(0.4, 0.4);
+					bgLimo.antialiasing = true;
 					add(bgLimo);
 					if (FlxG.save.data.distractions) {
 						grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
@@ -534,6 +539,7 @@ class PlayState extends MusicBeatState
 					limo.antialiasing = true;
 
 					fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limoNight/fastCarLol', 'week4'));
+					fastCar.antialiasing = true;
 					// add(limo);
 				}
 			case 'ripdiner':
@@ -792,7 +798,7 @@ class PlayState extends MusicBeatState
 				dad.x -= 290;
 			case 'mom-car' | 'mom-carnight':
 				dad.x -= 30;
-				dad.y -= 185;
+				dad.y -= 165;
 			case 'yukichi':
 				dad.y += 350;
 				dad.x -= 130;
@@ -3090,7 +3096,7 @@ class PlayState extends MusicBeatState
 
 			note.kill();
 			notes.remove(note, true);
-			note.destroy();
+			//note.destroy();
 
 			updateAccuracy();
 		}

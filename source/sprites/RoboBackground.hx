@@ -29,7 +29,6 @@ class RoboBackground
         bg.scrollFactor.set(0.9, 0.9);
 
         stages['default'] = new RoboStage([bg], [], [], [], 0.4);
-        switchStage('default');
 
         if (PlayState.SONG.song == 'Loaded')
         {
@@ -233,7 +232,12 @@ class RoboBackground
                 "boyfriend" => [1030, 150],
                 "dad" => [100, 235]
             ], ["boyfriend" => 1, "dad" => 1], 0.9);
+
+            // fixes initial lag spike when switching to the week 4 stage
+            addSprites(stages['limo'].backgroundSprites, instance.roboBackground);
         }
+
+        switchStage('default');
     }
 
     public function switchStage(stage:String)

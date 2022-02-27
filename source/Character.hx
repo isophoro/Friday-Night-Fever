@@ -908,6 +908,7 @@ class Character extends FlxSprite
 				frames = tex;
 
 				animation.addByPrefix('idle', "Mom Idle", 24, false);
+				animation.addByIndices('idle-loop', 'Mom Idle', [11, 12, 13], "", 24, true);
 				animation.addByPrefix('singUP', "Mom Up Pose", 24, false);
 				animation.addByPrefix('singDOWN', "MOM DOWN POSE", 24, false);
 				animation.addByPrefix('singLEFT', 'Mom Left Pose', 24, false);
@@ -921,6 +922,7 @@ class Character extends FlxSprite
 				addOffset("singLEFT", 92, 8);
 				addOffset("singRIGHT", 5, -24);
 				addOffset("singDOWN", -20, -193);
+				addOffset('idle-loop', 0, 4);
 
 				setGraphicSize(Std.int(width * 0.8));
 
@@ -932,6 +934,7 @@ class Character extends FlxSprite
 				frames = tex;
 				
 				animation.addByPrefix('idle', "Mom Idle", 24, false);
+				animation.addByIndices('idle-loop', 'Mom Idle', [11, 12, 13], "", 24, true);
 				animation.addByPrefix('singUP', "Mom Up Pose", 24, false);
 				animation.addByPrefix('singDOWN', "MOM DOWN POSE", 24, false);
 				animation.addByPrefix('singLEFT', 'Mom Left Pose', 24, false);
@@ -945,6 +948,7 @@ class Character extends FlxSprite
 				addOffset("singLEFT", 92, 8);
 				addOffset("singRIGHT", 5, -24);
 				addOffset("singDOWN", -20, -193);
+				addOffset('idle-loop', 0, 4);
 
 				setGraphicSize(Std.int(width * 0.8));
 
@@ -1157,6 +1161,11 @@ class Character extends FlxSprite
 			case 'gf':
 				if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
 					playAnim('danceRight');
+			case 'mom-car' | 'mom-carnight':
+				if(animation.curAnim.finished && animation.curAnim.name == 'idle')
+				{
+					playAnim('idle-loop');
+				}
 		}
 
 		super.update(elapsed);
