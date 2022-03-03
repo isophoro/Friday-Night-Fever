@@ -116,6 +116,7 @@ class FreeplayState extends MusicBeatState
 
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.31), 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
+		scoreBG.origin.set(scoreBG.width, scoreBG.height / 2);
 		add(scoreBG);
 
 		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
@@ -172,6 +173,11 @@ class FreeplayState extends MusicBeatState
 			lerpScore = intendedScore;
 
 		scoreText.text = "PERSONAL BEST:" + lerpScore;
+
+		// score positoning shit
+		scoreText.x = FlxG.width - scoreText.width - 6;
+		scoreBG.scale.x = (scoreText.width / scoreBG.width) * 1.055;
+		diffText.x = scoreBG.x + ((scoreBG.width / 2) / scoreBG.scale.x) - (diffText.width / 2);
 
 		var accepted:Bool = controls.ACCEPT;
 		
@@ -324,7 +330,6 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		diffText.alignment = CENTER;
-		diffText.x = scoreBG.x + (scoreBG.width / 2) - (diffText.width / 2);
 	}
 
 	function changeSelection(change:Int = 0)

@@ -311,7 +311,7 @@ class SolidColorShader extends FlxShader
         #pragma header
         
         uniform vec3 color;
-        uniform bool shaderActive;
+        uniform bool shaderActive; // REMINDER TO NOT BE DUMB AND NAME THE VARIABLE ACTIVE, THATS ALREADY RESERVED!!!
 
         void main()
         {
@@ -325,6 +325,7 @@ class SolidColorShader extends FlxShader
             gl_FragColor = _color;
         }
     ')
+	
 	public function new()
 	{
 		super();

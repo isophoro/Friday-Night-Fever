@@ -282,7 +282,7 @@ class PlayState extends MusicBeatState
 		FlxCamera.defaultCameras = [camGame];
 
 		currentTimingShown = new FlxText(0, 0, 0, "0ms");
-		currentTimingShown.setFormat(null, 20, FlxColor.CYAN, LEFT, OUTLINE, FlxColor.BLACK);
+		currentTimingShown.setFormat(null, 14, FlxColor.CYAN, LEFT, OUTLINE, FlxColor.BLACK);
 
 		currentTimingShown.cameras = [camHUD];
 
@@ -795,7 +795,7 @@ class PlayState extends MusicBeatState
 				gf.scrollFactor.set(1.0, 1.0);
 				if (FlxG.save.data.distractions) 
 				{
-					var evilTrail = new CharacterTrail(dad, null, 7, 12, 0.3, 0.069);
+					var evilTrail = new CharacterTrail(dad, null, 15, 8, 0.3, 0.069);
 					add(evilTrail);
 				}
 			case 'spookyHALLOW':
@@ -2197,10 +2197,10 @@ class PlayState extends MusicBeatState
 						}
 				}
 			}
-		}
 
-		camFollow.x += fevercamX;
-		//camFollow.y += fevercamY;
+			camFollow.x += fevercamX;
+			//camFollow.y += fevercamY;
+		}
 
 		if (camZooming) 
 		{
@@ -2416,7 +2416,16 @@ class PlayState extends MusicBeatState
 										health -= 0.01;
 								}
 							case 'monster' | 'taki':
-								health -= 0.02;
+								switch (curSong)
+								{
+									case 'Prayer':
+										if (curStep >= 1359 && curStep < 1422)
+											health -= 0.035;
+										else if (curStep < 1681)
+											health -= health > 0.2 ? 0.02 : 0.0065;
+									default:
+										health -= 0.02;
+								}
 								gf.playAnim('scared');
 							case 'hallow':
 								if (healthBar.percent > 5) {
@@ -2682,7 +2691,7 @@ class PlayState extends MusicBeatState
 					totalNotesHit += 0.75;
 			case 'sick':
 				if (health < 2)
-					health += 0.04; // this shouldn't be giving this much health but i dont wanna go through every song to test a fix for it
+					health += 0.04;
 				if (FlxG.save.data.accuracyMod == 0)
 					totalNotesHit += 1;
 				sicks++;
@@ -3147,6 +3156,8 @@ class PlayState extends MusicBeatState
 	override function beatHit() 
 	{
 		super.beatHit();
+		// reset cam lerp
+		FlxG.camera.followLerp = 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS());
 
 		if (beatClass != null)
 		{
