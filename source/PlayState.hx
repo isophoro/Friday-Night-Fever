@@ -46,45 +46,89 @@ import sys.FileSystem;
 
 class PlayState extends MusicBeatState 
 {
-	private var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT']; // we do a little backporting
-
-	public static var opponent:Bool = true; // decides if the player should play as fever or the opponent
-	public static var curBoyfriend:Null<String>; // not to be confused with curPlayer, decides which character BF should be
-	
-	// these two variables are for the "swapping sides" portion, just use the dad / boyfriend variables so stuff doesnt break
-	public var curOpponent:Character;
-	public var curPlayer:Character;
-
-	public var filters:Array<BitmapFilter> = []; 
-	var camfilters:Array<BitmapFilter> = [];
-
 	public static var instance:PlayState = null;
 
-	public static var curStage:String = '';
 	public static var SONG:SwagSong;
+	public static var curStage:String = '';
 	private var curSong:String = "";
+	public static var songOffset:Float = 0;	// Per song additive offset
+	private var vocals:FlxSound;
+	private var generatedMusic:Bool = false;
+	private var startingSong:Bool = false;
+	var inCutscene:Bool = false;
+
+	private var executeModchart = false;
+	public var beatClass:Class<Dynamic> = null;
+
 	public static var isStoryMode:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
+	public static var campaignScore:Int = 0;
+	public static var skipDialogue:Bool = false;
+
+	// Replay shit
+	public static var rep:Replay;
+	public static var loadRep:Bool = false;
+	private var saveNotes:Array<Float> = [];
+	public static var repPresses:Int = 0;
+	public static var repReleases:Int = 0;
+
+	public static var opponent:Bool = true; // decides if the player should play as fever or the opponent
+	public static var curBoyfriend:Null<String>; // not to be confused with curPlayer, this overrides what character BF is
+	public var curOpponent:Character; // these two variables are for the "swapping sides" portion
+	public var curPlayer:Character; // just use the dad / boyfriend variables so stuff doesnt break
+
+	public var dad:Character;
+	public var gf:Character;
+	public var boyfriend:Boyfriend;
+
+	public var camHUD:FlxCamera;
+	public var camGame:FlxCamera;
+	public var defaultCamZoom:Float = 1.05;
+	public var camZooming:Bool = false;
+	public var disableCamera:Bool = false;
+	public var disableModCamera:Bool = false; // disables the modchart from messing around with the camera
+	public var camFollow:FlxObject;
+	private static var prevCamFollow:FlxObject;
+	public var filters:Array<BitmapFilter> = []; 
+	var camfilters:Array<BitmapFilter> = [];
+
+	private var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT']; // we do a little backporting
+	public var notes:FlxTypedGroup<Note>;
+	private var unspawnNotes:Array<Note> = [];
+
+	public var strumLine:FlxSprite;
+	public var lanes:FlxTypedGroup<FlxSprite>;
+	public static var strumLineNotes:FlxTypedGroup<FlxSprite> = null;
+	public static var playerStrums:FlxTypedGroup<FlxSprite> = null;
+	public static var cpuStrums:FlxTypedGroup<FlxSprite> = null;
+
+	var songScore:Int = 0;
+	var songScoreDef:Int = 0;
+	public var health:Float = 1; // making public because sethealth doesnt work without it
+	private var combo:Int = 0;
+
+	public static var misses:Int = 0;
+	private var accuracy:Float = 0.00;
+	private var accuracyDefault:Float = 0.00;
+	private var totalNotesHit:Float = 0;
+	private var totalNotesHitDefault:Float = 0;
+	private var totalPlayed:Int = 0;
+
 	public static var shits:Int = 0;
 	public static var bads:Int = 0;
 	public static var goods:Int = 0;
 	public static var sicks:Int = 0;
-	public static var skipDialogue:Bool = false;
 
 	public static var songPosBG:FlxSprite;
 	public static var songPosBar:FlxBar;
-
-	public static var rep:Replay;
-	public static var loadRep:Bool = false;
-
 	var songLength:Float = 0;
 
-	var tvshit:VCRDistortionEffect;
-	var rain:RainEffect;
-
+	// party crasher shit
 	public var modchart:ModChart;
+	var tvshit:VCRDistortionEffect;
+	public var font:Bool = false;
 
 	#if windows
 	// Discord RPC variables
@@ -94,96 +138,45 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
-	private var vocals:FlxSound;
-
-	public var dad:Character;
-	public var gf:Character;
-	public var boyfriend:Boyfriend;
-	public var font:Bool = false;
-
-	public var notes:FlxTypedGroup<Note>;
-
-	private var unspawnNotes:Array<Note> = [];
-
-	public var strumLine:FlxSprite;
-
-	public var camFollow:FlxObject;
-
-	private static var prevCamFollow:FlxObject;
-
-	public var lanes:FlxTypedGroup<FlxSprite>;
-	public static var strumLineNotes:FlxTypedGroup<FlxSprite> = null;
-	public static var playerStrums:FlxTypedGroup<FlxSprite> = null;
-	public static var cpuStrums:FlxTypedGroup<FlxSprite> = null;
-
-	public var camZooming:Bool = false;
 	var speakerFloatRotate:Float = 0;
 	var floatstuffagainLMAO:Float = 0;
-
-	public var health:Float = 1; // making public because sethealth doesnt work without it
-
-	private var combo:Int = 0;
-
-	public static var misses:Int = 0;
-
-	private var accuracy:Float = 0.00;
-	private var accuracyDefault:Float = 0.00;
-	private var totalNotesHit:Float = 0;
 	private var floatshit:Float = 0; // thanks panzu :thumbs:
-	private var totalNotesHitDefault:Float = 0;
-	private var totalPlayed:Int = 0;
-	private var ss:Bool = false;
-
-	private var healthBarBG:FlxSprite;
-	private var healthBar:FlxBar;
-	private var songPositionBar:Float = 0;
-
-	private var generatedMusic:Bool = false;
-	private var startingSong:Bool = false;
-
-	public var iconP1:HealthIcon; // making these public again because i may be stupid
-	public var iconP2:HealthIcon; // what could go wrong?
-	public var camHUD:FlxCamera;
-
-	public var camGame:FlxCamera;
-
-	public static var offsetTesting:Bool = false;
-
-	public var dialogue:Array<String> = [':desmile: Real'];
-
-	var spookyBG:FlxSprite;
-	var limo:FlxSprite;
-	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
-	var fastCar:FlxSprite;
-	var songName:FlxText;
-	var painting:FlxSprite;
-	var upperBoppers:FlxSprite;
-	var bottomBoppers:Crowd;
-	var santa:FlxSprite;
-	public var church:FlxSprite;
-	var whittyBG:FlxSprite;
-	var w1city:FlxSprite;
-
-	var bgGirls:BackgroundGirls;
-
-	var songScore:Int = 0;
-	var songScoreDef:Int = 0;
-	public var scoreTxt:FlxText;
-	var replayTxt:FlxText;
-	var dark:FlxSprite;
-	var moreDark:FlxSprite;
 	var float:Float = 0;
 
-	public static var campaignScore:Int = 0;
+	public var dialogue:Array<String> = [];
 
-	public var defaultCamZoom:Float = 1.05;
-
+	// stage sprites
+	var w1city:FlxSprite; // week 1
+	var spookyBG:FlxSprite; // week 2
+	public var church:FlxSprite; // week 2.5 / bad nun
+	var painting:FlxSprite; // portrait / soul
+	var limo:FlxSprite; // week 4
+	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
+	var fastCar:FlxSprite;
+	var bottomBoppers:Crowd; // week 5
+	var bgGirls:BackgroundGirls; // week 6
 	public var roboStage:RoboBackground;
 	public var roboBackground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var roboForeground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	var whittyBG:FlxSprite; // princess week
+	var princessBG:FlxSprite;
+	var princessFloor:FlxSprite;
 
-	public var disableCamera:Bool = false;
-	public var disableModCamera:Bool = false;
+	public var scoreTxt:FlxText;
+	public var subtitles:Subtitles;
+	private var botPlayState:FlxText; // BotPlay text
+	var currentTimingShown:FlxText;
+	var songName:FlxText;
+	public var iconP1:HealthIcon; // making these public again because i may be stupid
+	public var iconP2:HealthIcon; // what could go wrong?
+	var healthBarBG:FlxSprite;
+	var healthBar:FlxBar;
+	var songPositionBar:Float = 0;
+	var replayTxt:FlxText;
+	public var purpleOverlay:FlxSprite;
+
+	var dark:FlxSprite;
+	var moreDark:FlxSprite;
 
 	public static function setModCamera(bool:Bool)
 	{
@@ -194,55 +187,23 @@ class PlayState extends MusicBeatState
 	}
 
 	public static var daPixelZoom:Float = 6;
-
-	public static var theFunne:Bool = true;
-
-	var inCutscene:Bool = false;
-
-	public static var repPresses:Int = 0;
-	public static var repReleases:Int = 0;
-
-	public static var timeCurrently:Float = 0;
-	public static var timeCurrentlyR:Float = 0;
-
-	// Will fire once to prevent debug spam messages and broken animations
-	private var triggeredAlready:Bool = false;
-
-	// Per song additive offset
-	public static var songOffset:Float = 0;
-
-	// BotPlay text
-	private var botPlayState:FlxText;
-	// Replay shit
-	private var saveNotes:Array<Float> = [];
-
-	private var executeModchart = false;
-
-	var princessBG:FlxSprite;
-	var princessFloor:FlxSprite;
+	public var usePixelAssets:Bool = false;
 
 	var fevercamX:Int = 0;
 	var fevercamY:Int = 0;
 
 	// API stuff
-	public function addObject(object:FlxBasic) {
+	public function addObject(object:FlxBasic) 
+	{
 		add(object);
 	}
 
-	public function removeObject(object:FlxBasic) {
+	public function removeObject(object:FlxBasic) 
+	{
 		remove(object);
 	}
 
-	public var subtitles:Subtitles;
-
 	var wiggleEffect:WiggleEffect;
-	
-	var currentTimingShown:FlxText;
-	public var purpleOverlay:FlxSprite;
-	public var beatClass:Class<Dynamic> = null;
-
-	public var usePixelAssets:Bool = false;
-	var theEater:Character;
 
 	override public function create() 
 	{
@@ -251,10 +212,9 @@ class PlayState extends MusicBeatState
 			Main.clearMemory();
 		}
 		#if cpp 
-		Gc.run(true); 
+		Gc.run(true);
 		#end
 
-		theEater = new Character(0,0,"the eater", false);
 		super.create();
 		add(new NoteSplash(0,0,0));
 
@@ -462,85 +422,46 @@ class PlayState extends MusicBeatState
 					ground.antialiasing = true;
 					add(ground);
 				}
-			case 'limo':
+			case 'limo' | 'limonight':
 				{
-					curStage = 'limo';
+					curStage = SONG.stage;
+					var prefix:String = curStage == 'limonight' ? 'limoNight' : 'limo';
 					defaultCamZoom = 0.855;
 
-					var skyBG:FlxSprite = new FlxSprite(-150, -145).loadGraphic(Paths.image('limo/limoSunset', 'week4'));
+					var skyBG:FlxSprite = new FlxSprite(-200, -145).loadGraphic(Paths.image('$prefix/limoSunset', 'week4'));
 					skyBG.scrollFactor.set(0.25, 0);
 					skyBG.antialiasing = true;
 					add(skyBG);
 
 					var bgLimo:FlxSprite = new FlxSprite(-200, 480);
-					bgLimo.frames = Paths.getSparrowAtlas('limo/bgLimo', 'week4');
+					bgLimo.frames = Paths.getSparrowAtlas('$prefix/bgLimo', 'week4');
 					bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
 					bgLimo.animation.play('drive');
 					bgLimo.scrollFactor.set(0.4, 0.4);
 					bgLimo.antialiasing = true;
 					add(bgLimo);
-					if (FlxG.save.data.distractions) {
+
+					if (FlxG.save.data.distractions) 
+					{
 						grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
 						add(grpLimoDancers);
 
-						for (i in 0...5) {
-							var dancer:BackgroundDancer = new BackgroundDancer((370 * i) + 130, bgLimo.y - 620);
+						for (i in 0...5) 
+						{
+							var dancer:BackgroundDancer = new BackgroundDancer((370 * i) + 130, bgLimo.y - (prefix.contains('Night') ? 440 : 620));
 							dancer.scrollFactor.set(0.4, 0.4);
 							grpLimoDancers.add(dancer);
 						}
 					}
 
-					var limoTex = Paths.getSparrowAtlas('limo/limoDrive', 'week4');
-
 					limo = new FlxSprite(-120, 550);
-					limo.frames = limoTex;
+					limo.frames = Paths.getSparrowAtlas('$prefix/limoDrive', 'week4');
 					limo.animation.addByPrefix('drive', "Limo stage", 24);
 					limo.animation.play('drive');
 					limo.antialiasing = true;
 
-					fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limoNight/fastCarLol', 'week4'));
+					fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('$prefix/fastCarLol', 'week4'));
 					fastCar.antialiasing = true;
-					// add(limo);
-				}
-			case 'limonight':
-				{
-					curStage = 'limonight';
-					defaultCamZoom = 0.855;
-
-					var skyBG:FlxSprite = new FlxSprite(-120, -70).loadGraphic(Paths.image('limoNight/limoSunset', 'week4'));
-					skyBG.scrollFactor.set(0.1, 0.1);
-					skyBG.antialiasing = true;
-					add(skyBG);
-
-					var bgLimo:FlxSprite = new FlxSprite(-200, 480);
-					bgLimo.frames = Paths.getSparrowAtlas('limoNight/bgLimo', 'week4');
-					bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
-					bgLimo.animation.play('drive');
-					bgLimo.scrollFactor.set(0.4, 0.4);
-					bgLimo.antialiasing = true;
-					add(bgLimo);
-					if (FlxG.save.data.distractions) {
-						grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
-						add(grpLimoDancers);
-
-						for (i in 0...5) {
-							var dancer:BackgroundDancer = new BackgroundDancer((400 * i) + 150, bgLimo.y - 440);
-							dancer.scrollFactor.set(0.4, 0.4);
-							grpLimoDancers.add(dancer);
-						}
-					}
-
-					var limoTex = Paths.getSparrowAtlas('limoNight/limoDrive', 'week4');
-
-					limo = new FlxSprite(-120, 550);
-					limo.frames = limoTex;
-					limo.animation.addByPrefix('drive', "Limo stage", 24);
-					limo.animation.play('drive');
-					limo.antialiasing = true;
-
-					fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limoNight/fastCarLol', 'week4'));
-					fastCar.antialiasing = true;
-					// add(limo);
 				}
 			case 'ripdiner':
 				{
@@ -2560,12 +2481,14 @@ class PlayState extends MusicBeatState
 						daNote.kill();
 						notes.remove(daNote, true);
 					}
-					if (daNote.type == 0) {
+					if (daNote.type == 0) 
+					{
 						health -= 0.075;
 						vocals.volume = 0;
-						if (theFunne)
 							noteMiss(daNote.noteData, daNote);
-					} else if (daNote.type == 1 && !opponent) {
+					} 
+					else if (daNote.type == 1 && !opponent) 
+					{
 						health = -1;
 						vocals.volume = 0;
 					}
@@ -2741,20 +2664,17 @@ class PlayState extends MusicBeatState
 				combo = 0;
 				misses++;
 				health -= 0.2;
-				ss = false;
 				shits++;
 				if (FlxG.save.data.accuracyMod == 0)
 					totalNotesHit += 0.25;
 			case 'bad':
 				score = 0;
 				health -= 0.06;
-				ss = false;
 				bads++;
 				if (FlxG.save.data.accuracyMod == 0)
 					totalNotesHit += 0.50;
 			case 'good':
 				score = 200;
-				ss = false;
 				goods++;
 				if (health < 2)
 					health += 0.04;
@@ -2762,7 +2682,7 @@ class PlayState extends MusicBeatState
 					totalNotesHit += 0.75;
 			case 'sick':
 				if (health < 2)
-					health += 0.1; // this shouldn't be giving this much health but i dont wanna go through every song to test a fix for it
+					health += 0.04; // this shouldn't be giving this much health but i dont wanna go through every song to test a fix for it
 				if (FlxG.save.data.accuracyMod == 0)
 					totalNotesHit += 1;
 				sicks++;
@@ -3160,7 +3080,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (curSong == 'Retribution')
+		/*if (curSong == 'Retribution')
 		{
 			if (curStep == 192)
 			{
@@ -3169,7 +3089,7 @@ class PlayState extends MusicBeatState
 				theEater.setPosition(boyfriend.x - 60, boyfriend.y - 80);
 				add(theEater);	
 			}
-		}
+		}*/
 
 		if (curSong == 'Milk-Tea')
 		{
@@ -3299,7 +3219,6 @@ class PlayState extends MusicBeatState
 								camfilters.push(ShadersHandler.scanline);
 								camHUD.filtersEnabled = true;
 		
-								//modchart.addRainCamEffect(rain);
 								modchart.addCamEffect(tvshit);
 							}
 				

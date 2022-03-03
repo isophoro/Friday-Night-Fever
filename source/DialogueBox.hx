@@ -398,7 +398,7 @@ class DialogueBox extends FlxSpriteGroup
 			PlayState.instance.camHUD.shake();(0.09);
 		}
 
-		if(FlxG.keys.justPressed.S || @:privateAccess PlayState.instance.controls.getBack())
+		if(FlxG.keys.justPressed.S)
 		{
 			if(FlxG.sound.music != null)
 				FlxG.sound.music.stop();
