@@ -178,6 +178,10 @@ class PlayState extends MusicBeatState
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
 
+
+	public static var deaths:Int = 0;
+	public static var easierMode:Bool = false;
+
 	public static function setModCamera(bool:Bool)
 	{
 		if (FlxG.save.data.disableModCamera)
@@ -1815,6 +1819,10 @@ class PlayState extends MusicBeatState
 			mashPity -= elapsed;
 		}
 
+		if(easierMode == true)
+		{
+			health += 0.0001;
+		}
 		floatshit += 0.1;
 		float += 0.07;
 		speakerFloatRotate += 0.05;

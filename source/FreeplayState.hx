@@ -53,6 +53,9 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		PlayState.easierMode = false;
+		PlayState.deaths = 0;
+		
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)

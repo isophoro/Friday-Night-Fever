@@ -110,6 +110,10 @@ class StoryMenuState extends MusicBeatState
 
 	override function create()
 	{
+
+		PlayState.easierMode = false;
+		PlayState.deaths = 0;
+		
 		FlxG.camera.setFilters(filters);
 		FlxG.camera.filtersEnabled = true;
 
