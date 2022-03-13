@@ -60,6 +60,10 @@ class DialogueBox extends FlxSpriteGroup
 	var bg:FlxSprite;
 	var controls:FlxText;
 
+	var theShit:Bool = false;
+	var deletethisLATER:FlxSprite;
+	var pleasCutOff:Bool = false;
+
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
 		super();
@@ -70,13 +74,16 @@ class DialogueBox extends FlxSpriteGroup
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
-		add(bgFade);
+		if(!Recap.inRecap)
+		{
+			add(bgFade);
+		}
 
 		bg = new FlxSprite(0,0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 		bg.visible = false;
 		bg.scrollFactor.set();
-
+	
 		new FlxTimer().start(0.83, function(tmr:FlxTimer)
 		{
 			bgFade.alpha += (1 / 5) * 0.7;
@@ -86,6 +93,14 @@ class DialogueBox extends FlxSpriteGroup
 
 		box = new FlxSprite(-20, 472);
 		box.loadGraphic(Paths.image('dialogue/textbox'));
+		if(Recap.inRecap)
+		{
+			box.visible = false;
+		}
+		else
+		{
+			box.visible = true;
+		}
 
 		this.dialogueList = dialogueList;
 
@@ -337,6 +352,22 @@ class DialogueBox extends FlxSpriteGroup
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		swagDialogue.delay = 0.04;
 		swagDialogue.setTypingVariation(0.5, true);
+
+		if(Recap.inRecap)
+			{
+				swagDialogue.setFormat(Paths.font("Tommy.otf"), 46, FlxColor.WHITE, CENTER);
+				swagDialogue.screenCenter(X);
+				swagDialogue.y += 125;
+				dropText.visible = false;
+
+				var blackBox = new FlxSprite(0, 598).makeGraphic(1280, 122, FlxColor.BLACK);
+				add(blackBox);
+
+				deletethisLATER = new FlxSprite(0, 0).loadGraphic(Paths.image('dialogue_backgrounds/chatLMAO'));
+				deletethisLATER.alpha = 0;
+				add(deletethisLATER);
+			}
+
 		add(swagDialogue);
 
 		controls = new FlxText(0, box.y + box.height - 10, 0, "");
@@ -350,6 +381,16 @@ class DialogueBox extends FlxSpriteGroup
 		controls.setFormat(Paths.font('vcr.ttf'), 22, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		add(controls);
 		controls.screenCenter(X);
+		if(Recap.inRecap)
+		{
+			controls.visible = false;
+
+			bg.alpha = 0;
+		}
+		else
+		{
+			controls.visible = true;
+		}
 
 		portraitMap = [
 			'fever' => fever,
@@ -417,11 +458,14 @@ class DialogueBox extends FlxSpriteGroup
 		if (swagDialogue != null)
 			dropText.text = swagDialogue.text;
 
-		if ((dialogueStarted && !isEnding) && FlxG.keys.anyJustPressed([ENTER, SPACE]))
+		if ((dialogueStarted && !isEnding) && FlxG.keys.anyJustPressed([ENTER, SPACE]) && !Recap.inRecap)
 		{
 			if (@:privateAccess (!swagDialogue._typing || dialogueList[0].length < 1))
-			{
-				FlxG.sound.play(Paths.sound('clickText'), 0.8);
+			{	
+				if(!Recap.inRecap)
+				{
+					FlxG.sound.play(Paths.sound('clickText'), 0.8);
+				}
 
 				if (dialogueList[1] == null)
 				{
@@ -471,11 +515,28 @@ class DialogueBox extends FlxSpriteGroup
 	{
 		cleanDialog();
 		
-		var blockedCharacters:Array<String> = ['fillbg', 'bg', 'hidebg', 'song', 'fuckoff', 'sfx', 'stfusfx', 'slow', 'normal', 'shake', 'stopitbro', 'inst'];
+		var blockedCharacters:Array<String> = ['cutoff', 'fadechatin', 'fadechatout', 'fillbg', 'bg', 'hidebg', 'song', 'fuckoff', 'sfx', 'stfusfx', 'slow', 'normal', 'shake', 'stopitbro', 'inst', 'storyslow', 'fadeout', 'fadein', 'timer', 'startslow', 'normalauto'];
 		if(!blockedCharacters.contains(curCharacter.toLowerCase()))
 		{
 			swagDialogue.resetText(dialogueList[0]);
 			swagDialogue.start(swagDialogue.delay, true);
+			if(theShit)
+			{
+				swagDialogue.completeCallback = function() {			
+					new FlxTimer().start(2, function(tmr:FlxTimer) {
+						dialogueList.remove(dialogueList[0]);
+						startDialogue();
+					});
+				}
+			}
+			if(pleasCutOff)
+			{
+				swagDialogue.completeCallback = function() {			
+					finishThing();
+					kill();
+				}
+			}
+
 
 			switch (curCharacter)
 			{
@@ -724,6 +785,42 @@ class DialogueBox extends FlxSpriteGroup
 					shake = true;
 				case 'stopitbro':
 					shake = false;
+
+				//storyshit
+
+				case 'cutoff':
+					theShit = false;
+					pleasCutOff = true;
+
+				case 'startslow': 
+					new FlxTimer().start(10, function(tmr:FlxTimer) {
+						dialogueList.remove(dialogueList[0]);
+						startDialogue();
+					});
+				case 'storyslow': 
+					swagDialogue.delay = 0.10;
+					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
+				case 'fadeout': 
+					FlxTween.tween(bg, {alpha: 0}, 1);
+				case 'fadein': 
+					FlxTween.tween(bg, {alpha: 1}, 1);
+					
+				case 'fadeintext': 
+					FlxTween.tween(swagDialogue, {alpha: 1}, 1);
+				case 'fadeouttext': 
+					new FlxTimer().start(2, function(tmr:FlxTimer) {
+						dialogueList.remove(dialogueList[0]);
+						startDialogue();
+					});
+
+				case 'normalauto':
+					theShit = true;
+
+				case 'fadechatin': 
+					FlxTween.tween(deletethisLATER, {alpha: 0.2}, 1);
+				case 'fadechatout': 
+					FlxTween.tween(deletethisLATER, {alpha: 0}, 1);
+
 			}
 			dialogueList.remove(dialogueList[0]);
 			startDialogue();				

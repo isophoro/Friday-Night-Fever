@@ -1,1 +1,83 @@
-:narrator: fuck
+:song:legendaryhero
+:startslow:
+:narrator: 
+:bg:recapOne
+:fadein:
+:normalauto:
+:storyslow:
+:narrator: Fevertown.
+:narrator: Truly an interesting place.
+:narrator: Last time we saw Fever,
+:narrator: he was fighting Yukichi.
+:fadeout:
+:narrator: ...
+:bg:recapTwo
+:fadein:
+:narrator: He got arreste-
+:normal:
+:narrator: wait wtf i thought he was let go
+:fadechatin:
+:narrator: also is that fucking chat from birthday build?????
+:fadechatout:
+:narrator: man i really dont know the fucking lore
+:narrator: whatever back to the fucking whole story vibe >:(
+:storyslow:
+:narrator: He got arrested.
+:narrator: Shortly after though...
+:fadeout:
+:narrator: ...
+:bg:recapThree
+:fadein:
+:narrator: He escaped from Space Jai-
+:normal:
+:narrator: BRO WTF HOW DID HE ESCAPE???
+:narrator: this makes literally no sense :sob:
+:narrator: where did the spaceship come from????
+:narrator: whatever smfh
+:storyslow:
+:narrator: He escaped from Space Jail, returning back to earth.
+:fadeout:
+:narrator: ...
+:bg:recapFour
+:fadein:
+:narrator: There were zombi-
+:normal: 
+:narrator: BRO
+:narrator: WHAT IS GOING ON ANYMORE???
+:narrator: cesar gonna have to explain himself :sob:
+:fadeout:
+:narrator: literally sobbing
+:bg:recapFive
+:fadein:
+:narrator: FINALLY
+:narrator: something normal
+:storyslow: 
+:narrator: He fought taki, but then...
+:bg:recapSix
+:normal:
+:narrator: who the fuck are these people
+:narrator: why are they in the recap????
+:fadeout:
+:narrator: literally so confused
+:bg:recapSeven
+:fadein:
+:storyslow:
+:narrator: Fever and Tea got confronted by someone...
+:narrator: Someone who...
+:narrator: Had a heart made of metal...
+:fadeout:
+:narrator: ...
+:bg:recapEight
+:fadein:
+:narrator: Fever and Te-
+:normal:
+:narrator: ...
+:cutoff:
+:narrator: THEY FUCKING DIE-
+
+
+
+
+
+
+

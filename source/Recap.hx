@@ -19,16 +19,19 @@ using StringTools;
 class Recap extends MusicBeatState
 {
     public var dialogue:Array<String> = [];
+    public static var inRecap:Bool = false;
 
     override function create()
     {
         super.create();
 
+        inRecap = true;
         var dialogueString:String = 'recap';
         dialogue = CoolUtil.coolTextFile(Paths.txt(dialogueString));
 
         var doof:DialogueBox = new DialogueBox(false, dialogue);
         doof.finishThing = () -> {
+            inRecap = false;
             LoadingState.loadAndSwitchState(new PlayState());
         }
 
