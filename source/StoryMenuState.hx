@@ -61,6 +61,8 @@ class StoryMenuState extends MusicBeatState
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var wiggleEffect:WiggleEffect;
 
+	var alert:FlxSprite;
+
 	public static var weekUnlocked:Array<Bool> = [for (i in get_weekData()) true];
 
 	var weekCharacters:Array<Dynamic> = [
@@ -107,6 +109,8 @@ class StoryMenuState extends MusicBeatState
 	var leftArrow:FlxSprite;
 	var peakek:FlxSprite;
 	var rightArrow:FlxSprite;
+
+	var saidYES:Bool = false;
 
 	override function create()
 	{
@@ -246,6 +250,12 @@ class StoryMenuState extends MusicBeatState
 		add(scoreText);
 		add(txtWeekTitle);
 
+		alert = new FlxSprite(373, 147).loadGraphic(Paths.image('newStory/alert'));
+		alert.antialiasing = true;
+		add(alert);
+		alert.visible = false;
+
+
 		updateText();
 		changeDifficulty();
 
@@ -295,6 +305,21 @@ class StoryMenuState extends MusicBeatState
 			lock.y = grpWeekText.members[lock.ID].y;
 		});
 
+		if(selectedWeek)
+		{
+			if(FlxG.keys.justPressed.Y)
+				{
+					saidYES = true;
+					selectWeek();
+				}
+
+				if(FlxG.keys.justPressed.N)
+				{
+					saidYES = false;
+					selectWeek();
+				}
+		}
+		
 		if (!movedBack)
 		{
 			if (!selectedWeek)
@@ -328,7 +353,17 @@ class StoryMenuState extends MusicBeatState
 
 			if (accepted && !stopspamming)
 			{
-				selectWeek();
+				if(curWeek == 9)
+				{
+					alert.visible = true;
+					selectedWeek = true;	
+
+				}
+				else 
+				{
+					selectWeek();
+				}
+
 			}
 		}
 
@@ -379,7 +414,14 @@ class StoryMenuState extends MusicBeatState
 			PlayState.campaignScore = 0;
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				LoadingState.loadAndSwitchState(new PlayState(), true);
+				if(saidYES == true)
+				{
+					FlxG.switchState(new Recap());
+				}
+				else
+				{
+					LoadingState.loadAndSwitchState(new PlayState(), true);
+				}
 			});
 		}
 	}
@@ -459,6 +501,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			peakek.loadGraphic(Paths.image('newStory/week'+curWeek));
 			peakek.visible = true;
+			
 		}
 		else
 			peakek.visible = false;
