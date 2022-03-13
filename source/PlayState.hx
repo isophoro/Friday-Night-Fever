@@ -207,6 +207,7 @@ class PlayState extends MusicBeatState
 	}
 
 	var wiggleEffect:WiggleEffect;
+	var vignette:FlxSprite;
 
 	override public function create() 
 	{
@@ -1040,6 +1041,11 @@ class PlayState extends MusicBeatState
 				moreDark = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/evenMOREdarkShit'));
 				moreDark.cameras = [camHUD];
 				add(moreDark);
+			case 'prayer':
+				vignette = new FlxSprite().loadGraphic(Paths.image("vignette"));
+				vignette.cameras = [camHUD];
+				add(vignette);
+				vignette.alpha = 0;
 			case 'bad-nun':
 				beatClass = shaders.BadNun;
 		}
@@ -1064,7 +1070,7 @@ class PlayState extends MusicBeatState
 						FlxG.sound.play(Paths.sound('ANGRY'));
 
 					camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
-					NOTSenpai(doof);
+					openDialogue(doof);
 			}
 		}
 		else 
@@ -1102,76 +1108,10 @@ class PlayState extends MusicBeatState
 		});
 	}
 
-	function NOTSenpai(?dialogueBox:DialogueBox):Void {
+	function openDialogue(?dialogueBox:DialogueBox):Void 
+	{
 		camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 		add(dialogueBox);
-	}
-
-	function schoolIntro(?dialogueBox:DialogueBox):Void {
-		var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
-		black.scrollFactor.set();
-		add(black);
-
-		var red:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFff1b31);
-		red.scrollFactor.set();
-
-		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy', 'week6');
-		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
-		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
-		senpaiEvil.scrollFactor.set();
-		senpaiEvil.updateHitbox();
-		senpaiEvil.screenCenter();
-
-		camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
-
-		if (SONG.song.toLowerCase() == 'roses' || SONG.song.toLowerCase() == 'thorns') {
-			remove(black);
-
-			if (SONG.song.toLowerCase() == 'thorns') {
-				add(red);
-			}
-		}
-
-		new FlxTimer().start(0.3, function(tmr:FlxTimer) {
-			black.alpha -= 0.15;
-
-			if (black.alpha > 0) {
-				tmr.reset(0.3);
-			} else {
-				if (dialogueBox != null) {
-					inCutscene = true;
-
-					if (SONG.song.toLowerCase() == 'thorns') {
-						add(senpaiEvil);
-						senpaiEvil.alpha = 0;
-						new FlxTimer().start(0.3, function(swagTimer:FlxTimer) {
-							senpaiEvil.alpha += 0.15;
-							if (senpaiEvil.alpha < 1) {
-								swagTimer.reset();
-							} else {
-								senpaiEvil.animation.play('idle');
-								FlxG.sound.play(Paths.sound('Senpai_Dies'), 1, false, null, true, function() {
-									remove(senpaiEvil);
-									remove(red);
-									FlxG.camera.fade(FlxColor.WHITE, 0.01, true, function() {
-										add(dialogueBox);
-									}, true);
-								});
-								new FlxTimer().start(3.2, function(deadTime:FlxTimer) {
-									FlxG.camera.fade(FlxColor.WHITE, 1.6, false);
-								});
-							}
-						});
-					} else {
-						add(dialogueBox);
-					}
-				} else
-					startCountdown();
-
-				remove(black);
-			}
-		});
 	}
 
 	var startTimer:FlxTimer;
@@ -1788,9 +1728,60 @@ class PlayState extends MusicBeatState
 	private var paused:Bool = false;
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
+	var hurtTimer:Float = 0;
 
 	override public function update(elapsed:Float) 
 	{
+		#if debug
+		if (FlxG.keys.justPressed.TWO)
+		{
+			var strumTime:Float = Conductor.songPosition + 10000;
+
+			if (strumTime > FlxG.sound.music.length)
+			{
+				endSong();
+			}
+
+			var toKill:Array<Note> = [];
+			for (i in notes)
+			{
+				if (strumTime > i.strumTime)
+				{
+					toKill.push(i);
+				}
+			}
+
+			for (i in unspawnNotes)
+			{
+				if (strumTime > i.strumTime)
+				{
+					toKill.push(i);
+				}				
+			}
+
+			for (i in toKill)
+			{
+				i.kill();
+				if (notes.members.contains(i))
+					notes.remove(i, true);
+				else
+					unspawnNotes.remove(i);
+			}
+
+			var stepDiff:Int = Math.floor((strumTime - Conductor.songPosition) / Conductor.stepCrochet);
+			for (i in curStep...stepDiff + 1)
+			{
+				curStep = i;
+				stepHit();
+			}
+
+			strumTime -= 500; // so we dont skip immediately to a note
+			FlxG.sound.music.time = strumTime;
+			vocals.time = strumTime;
+			Conductor.songPosition = strumTime;
+		}
+		#end
+
 		if (mashPity > 0)
 		{
 			mashPity -= elapsed;
@@ -1800,6 +1791,8 @@ class PlayState extends MusicBeatState
 		{
 			health += 0.0001;
 		}
+
+		hurtTimer -= elapsed;
 		floatshit += 0.1;
 		float += 0.07;
 		speakerFloatRotate += 0.05;
@@ -1962,12 +1955,12 @@ class PlayState extends MusicBeatState
 		if (health < 0 && opponent)
 			health = 0;
 
-		if(health >= 1.75)
+		if(health >= 1.75 && hurtTimer <= 0)
 		{
 			iconP2.animation.play(opponent ? 'winning' : 'hurt');
 			iconP1.animation.play(opponent ? 'hurt' : 'winning');
 		}
-		else if (health <= 0.65)
+		else if (health <= 0.65 || hurtTimer > 0)
 		{
 			iconP2.animation.play(opponent ? 'hurt' : 'winning');
 			iconP1.animation.play(opponent ? 'winning' : 'hurt');
@@ -2401,6 +2394,7 @@ class PlayState extends MusicBeatState
 										health -= 0.01;
 								}
 							case 'monster' | 'taki':
+								hurtTimer = 0.45;
 								switch (curSong)
 								{
 									case 'Prayer':
@@ -2413,6 +2407,7 @@ class PlayState extends MusicBeatState
 								}
 								gf.playAnim('scared');
 							case 'hallow':
+								hurtTimer = 0.45;
 								if (healthBar.percent > 5) {
 									health -= 0.05;
 								}
@@ -3058,6 +3053,21 @@ class PlayState extends MusicBeatState
 			{
 				case 121: health += 0.32;
 				case 1524: health += 0.40;
+			}
+		}
+
+		if (curSong == 'Prayer')
+		{
+			if (curStep >= 1359 && curStep <= 1424)
+			{
+				vignette.scale.set(1.1, 1.1);
+				if (curStep == 1359)
+					FlxTween.tween(vignette, {alpha: 1}, 6.45);
+				else if (curStep == 1424)
+				{
+					FlxTween.cancelTweensOf(vignette);
+					FlxTween.tween(vignette, {alpha: 0}, 0.35);
+				}
 			}
 		}
 
