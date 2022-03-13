@@ -178,7 +178,6 @@ class PlayState extends MusicBeatState
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
 
-
 	public static var deaths:Int = 0;
 	public static var easierMode:Bool = false;
 
@@ -1083,44 +1082,22 @@ class PlayState extends MusicBeatState
 
 	function jumpscare(?dialogueBox:DialogueBox):Void 
 	{
+		inCutscene = true;
+		var culo:Bool = FlxG.random.bool(1);
+
 		var jumpscare:FlxSprite = new FlxSprite(0, 0);
-		jumpscare.frames = Paths.getSparrowAtlas('dialogue/jumpscare');
+		jumpscare.frames = Paths.getSparrowAtlas('dialogue/jumpscare' + (culo ? "RARE" : ""));
 		jumpscare.animation.addByPrefix('idle', 'jumpscare', 24, false);
 		jumpscare.cameras = [camHUD];
 		jumpscare.updateHitbox();
 		add(jumpscare);
 
-		var jumpscarerare:FlxSprite = new FlxSprite(0, -20);
-		jumpscarerare.frames = Paths.getSparrowAtlas('dialogue/jumpscareRARE');
-		jumpscarerare.animation.addByPrefix('idle', 'jumpscare', 24, false);
-		jumpscarerare.cameras = [camHUD];
-		jumpscarerare.updateHitbox();
-		add(jumpscarerare);
-
-		inCutscene = true;
-
-		if (FlxG.random.bool(1)) // 15% chance of happening
-		{
-			jumpscarerare.animation.play('idle');
-			FlxG.sound.play(Paths.sound('BOOM', 'shared'));
-			jumpscare.visible = false;
-		} else {
-			jumpscare.animation.play('idle');
-			FlxG.sound.play(Paths.sound('jumpscare', 'shared'));
-			jumpscarerare.visible = false;
-		}
+		jumpscare.animation.play('idle');
+		FlxG.sound.play(Paths.sound(culo ? 'BOOM' : 'jumpscare', 'shared'));
 
 		camHUD.visible = true;
-		dad.visible = false;
-		camFollow.x += 0;
-		camFollow.y += 0;
-		FlxG.camera.focusOn(camFollow.getPosition());
 		new FlxTimer().start(1.4, function(tmr:FlxTimer) {
-			remove(jumpscare);
-			remove(jumpscarerare);
-			dad.visible = true;
-			camHUD.visible = true;
-			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 0.9);
+			jumpscare.destroy();
 			add(dialogueBox);
 		});
 	}
