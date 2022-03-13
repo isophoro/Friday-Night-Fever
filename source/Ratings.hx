@@ -129,9 +129,9 @@ class Ratings
             return
             new UnicodeString((!FlxG.save.data.botplay ?
             "スコア: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
-            " | 逃した: " + PlayState.misses + 																				// Misses/Combo Breaks
+            " | 見逃した: " + PlayState.misses + 																				// Misses/Combo Breaks
             " | 正確さ: " + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + "%") +  				// Accuracy
-            " | " + GenerateLetterRank(accuracy) : "")); 	
+            " - " + GenerateLetterRank(accuracy) : "")); 	
         }
         else
         {

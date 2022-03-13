@@ -19,6 +19,7 @@ class Character extends FlxSprite
 	public var iconColor:String = "50a5eb";
 	public var isDeathAnim:Bool = false;
 	public var holdTimer:Float = 0;
+	public var useAlternateIdle:Bool = false;
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
@@ -1197,7 +1198,7 @@ class Character extends FlxSprite
 				switch(curCharacter)
 				{
 					case 'bf' | 'bfdemoncesar':
-						playAnim('idle' + (PlayState.SONG.player2 == 'robo-cesar' ? '-frown' : ''));
+						playAnim('idle' + ((PlayState.SONG.player2 == 'robo-cesar' || useAlternateIdle) ? '-frown' : ''));
 					default: 
 						playAnim('idle');
 				}

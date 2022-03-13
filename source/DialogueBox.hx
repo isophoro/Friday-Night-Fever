@@ -204,7 +204,6 @@ class DialogueBox extends FlxSpriteGroup
 		add(hunni);
 		hunni.visible = false;
 		
-
 		pepperdemon = new FlxSprite(0, -21);
 		pepperdemon.frames = Paths.getSparrowAtlas('dialogue/YukichiAndPepperDemonSprites');
 		pepperdemon.animation.addByPrefix('pepperdemonsmile', 'PepperDemonSmile', 24, false);
@@ -390,7 +389,8 @@ class DialogueBox extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
-		PlayState.instance.camHUD.zoom = 1;
+		if (PlayState.instance != null)
+			PlayState.instance.camHUD.zoom = 1;
 
 		if (shake)
 		{
@@ -398,7 +398,7 @@ class DialogueBox extends FlxSpriteGroup
 			PlayState.instance.camHUD.shake();(0.09);
 		}
 
-		if(FlxG.keys.justPressed.S)
+		if(FlxG.keys.justPressed.S || FlxG.keys.justPressed.ESCAPE)
 		{
 			if(FlxG.sound.music != null)
 				FlxG.sound.music.stop();
@@ -408,7 +408,9 @@ class DialogueBox extends FlxSpriteGroup
 
 		if(FlxG.keys.justPressed.M)
 		{
-			FlxG.sound.music.stop();
+			if (FlxG.sound.music != null)
+				FlxG.sound.music.stop();
+			
 			FlxG.switchState(new MainMenuState());			
 		}
 
@@ -430,7 +432,8 @@ class DialogueBox extends FlxSpriteGroup
 
 					new FlxTimer().start(0.2, function(tmr:FlxTimer)
 					{
-						FlxG.sound.music.stop();
+						if (FlxG.sound.music != null)
+							FlxG.sound.music.stop();
 
 						for(key in portraitMap.keys())
 							portraitMap[key].alpha -= 1 / 5;
@@ -469,7 +472,7 @@ class DialogueBox extends FlxSpriteGroup
 		cleanDialog();
 		
 		var blockedCharacters:Array<String> = ['fillbg', 'bg', 'hidebg', 'song', 'fuckoff', 'sfx', 'stfusfx', 'slow', 'normal', 'shake', 'stopitbro', 'inst'];
-		if(!blockedCharacters.contains(curCharacter))
+		if(!blockedCharacters.contains(curCharacter.toLowerCase()))
 		{
 			swagDialogue.resetText(dialogueList[0]);
 			swagDialogue.start(swagDialogue.delay, true);
@@ -742,5 +745,15 @@ class DialogueBox extends FlxSpriteGroup
 
 		if(portraitMap[curPortrait].visible == false)
 			portraitMap[curPortrait].visible = true;
+	}
+
+	override function add(obj)
+	{
+		if (Reflect.field(obj, "antialiasing") != null)
+		{
+			Reflect.setField(obj, "antialiasing", true);
+		}
+
+		return super.add(obj);
 	}
 }

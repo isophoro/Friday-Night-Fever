@@ -3244,7 +3244,6 @@ class PlayState extends MusicBeatState
 							scoreTxt.setFormat(Paths.font("Retro Gaming.ttf"), #if !mobile 18 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 							font = true;
 						case 160:
-		
 							if (FlxG.save.data.shaders)
 							{
 		

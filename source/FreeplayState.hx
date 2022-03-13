@@ -84,7 +84,7 @@ class FreeplayState extends MusicBeatState
 		add(bghalloween);
 		bghalloween.alpha = 0;
 
-		halloween = new FlxText(700, 0, "HALLOWEEN UPDATE SONG");
+		halloween = new FlxText(700, 0, "HALLOWEEN UPDATE SONGS");
 		halloween.setFormat(Paths.font('vcr.ttf'), 40, FlxColor.ORANGE, CENTER, OUTLINE, FlxColor.BLACK);
 		halloween.scrollFactor.set();
 		add(halloween);
@@ -135,6 +135,17 @@ class FreeplayState extends MusicBeatState
 
 		changeSelection();
 		changeDiff();
+
+		switch (currentStyle)
+		{
+			case HALLOWEEN:
+				FlxTween.tween(bghalloween, {alpha: 1}, 1, {onComplete: (twn) -> {
+					halloween.visible = true;
+				}});
+				diffText.color = FlxColor.ORANGE;
+				FlxTween.color(diffText, 0.7, FlxColor.ORANGE, FlxColor.YELLOW, {type: PINGPONG});
+			default: //
+		}
 
 		super.create();
 
@@ -317,12 +328,7 @@ class FreeplayState extends MusicBeatState
 		switch(currentStyle)
 		{
 			case HALLOWEEN:
-				FlxTween.tween(bghalloween, {alpha: 1}, 1, {onComplete: (twn) -> {
-					halloween.visible = true;
-				}});
-
 				curDifficulty = 2;
-				diffText.color = FlxColor.ORANGE;
 				diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
 			default:
 				diffText.text = '< ' +CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';

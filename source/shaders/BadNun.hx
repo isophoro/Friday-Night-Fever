@@ -172,6 +172,7 @@ class BadNun
 				}
 
 				instance.purpleOverlay.visible = true;
+				instance.purpleOverlay.alpha = 0.33; // used for the last segment
 				instance.defaultCamZoom = 0.5;
 				instance.camGame.focusOn(new FlxPoint(instance.gf.getGraphicMidpoint().x - 55, instance.gf.getGraphicMidpoint().y - 130));
 				enableShader(false);

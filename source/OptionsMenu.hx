@@ -28,7 +28,7 @@ class OptionsMenu extends MusicBeatState
 			new OpponentOption("Play as either the opponent or as Fever (Default as Fever)"),
 			new IntroOption("Disables the startup anime opening video"),
 			new SubtitlesOption("Disable subtitles (found in certain songs)"),
-			new NotesplashOption("Toggle the sparkle effect upon hitting a \"Sick!\" note")
+			new BasicOption("Toggle the sparkle effect upon hitting a \"Sick!\" note", "notesplash", "Note Sparkles")
 		]),
 		new OptionCategory("Performance", [
 			#if desktop

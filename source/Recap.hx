@@ -24,26 +24,25 @@ class Recap extends MusicBeatState
     {
         super.create();
 
-
         var dialogueString:String = 'recap';
         dialogue = CoolUtil.coolTextFile(Paths.txt(dialogueString));
 
         var doof:DialogueBox = new DialogueBox(false, dialogue);
-		doof.scrollFactor.set();
+        doof.finishThing = () -> {
+            LoadingState.loadAndSwitchState(new PlayState());
+        }
 
         recappslsss(doof);
-
     }
 
-    function recappslsss(?dialogueBox:DialogueBox):Void {
+    function recappslsss(?dialogueBox:DialogueBox):Void 
+    {
         add(dialogueBox);
     }
 
     override function update(elapsed:Float)
     {
-
+        super.update(elapsed);
     }
-
-
 }
 

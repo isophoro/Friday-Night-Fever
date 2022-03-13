@@ -697,26 +697,6 @@ class SubtitlesOption extends Option
 		return "Subtitles " + (FlxG.save.data.subtitles ? "on" : "off");
 }
 
-class NotesplashOption extends Option
-{
-	public function new(desc:String)
-	{
-		super();
-		description = desc;
-	}
-
-	public override function press():Bool
-	{
-		FlxG.save.data.notesplash = !FlxG.save.data.notesplash;
-		trace('Note Sparkles : ' + FlxG.save.data.notesplash);
-		display = updateDisplay();
-		return true;
-	}
-	
-	private override function updateDisplay():String
-		return "Note Sparkles " + (FlxG.save.data.subtitles ? "on" : "off");
-}
-
 class OpponentOption extends Option
 {
 	public function new(desc:String)
