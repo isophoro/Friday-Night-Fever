@@ -1128,6 +1128,10 @@ class Character extends FlxSprite
 		}
 	}
 
+	var floatX:Float = 0;
+	var floatY:Float = 0;
+	var floatAngle:Float = 0;
+
 	override function update(elapsed:Float)
 	{
 		if (animation.curAnim.name.startsWith('sing'))
@@ -1167,6 +1171,23 @@ class Character extends FlxSprite
 				{
 					playAnim('idle-loop');
 				}
+			case 'makocorrupt':
+				floatY += 0.1; // i'd rather much redo this with tweening but im lazy
+				y += Math.sin(floatY);
+			case 'hallow' | 'gf-notea':
+				floatY += 0.07;
+				y += Math.sin(floatY);
+
+				if (curCharacter == 'gf-notea')
+				{
+					floatAngle += 0.05;
+					angle = Math.sin(floatAngle);
+				}
+			case 'tea-bat':
+				floatX += 0.02;
+				x += Math.sin(floatX);
+				floatY += 0.07;
+				y += Math.sin(floatY);
 		}
 
 		super.update(elapsed);

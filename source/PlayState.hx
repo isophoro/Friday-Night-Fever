@@ -138,11 +138,6 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
-	var speakerFloatRotate:Float = 0;
-	var floatstuffagainLMAO:Float = 0;
-	private var floatshit:Float = 0; // thanks panzu :thumbs:
-	var float:Float = 0;
-
 	public var dialogue:Array<String> = [];
 
 	// stage sprites
@@ -474,7 +469,6 @@ class PlayState extends MusicBeatState
 					var bg:FlxSprite = new FlxSprite(-820, -200).loadGraphic(Paths.image('christmas/lastsongyukichi', 'week5'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set(0.9, 0.9);
-					bg.active = false;
 					add(bg);
 				}
 			case 'robocesbg':
@@ -566,7 +560,6 @@ class PlayState extends MusicBeatState
 					var bg:FlxSprite = new FlxSprite(-820, -200).loadGraphic(Paths.image('christmas/first2songs', 'week5'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set(0.9, 0.9);
-					bg.active = false;
 					add(bg);
 				}
 			case 'week5othercrowd':
@@ -576,7 +569,6 @@ class PlayState extends MusicBeatState
 					var bg:FlxSprite = new FlxSprite(-820, -200).loadGraphic(Paths.image('christmas/first2songs', 'week5'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set(0.9, 0.9);
-					bg.active = false;
 					add(bg);
 				}
 			case 'princess': 
@@ -633,7 +625,6 @@ class PlayState extends MusicBeatState
 				stageFront.updateHitbox();
 				stageFront.antialiasing = true;
 				stageFront.scrollFactor.set(0.9, 0.9);
-				stageFront.active = false;
 				add(stageFront);
 
 				var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image(SONG.song == 'Down-Bad' ? 'stagecurtainsDOWNBAD' : 'stagecurtains'));
@@ -641,8 +632,6 @@ class PlayState extends MusicBeatState
 				stageCurtains.updateHitbox();
 				stageCurtains.antialiasing = true;
 				stageCurtains.scrollFactor.set(0.9, 0.9);
-				stageCurtains.active = false;
-
 				add(stageCurtains);
 			}
 		}
@@ -1654,8 +1643,10 @@ class PlayState extends MusicBeatState
 		super.openSubState(SubState);
 	}
 
-	override function closeSubState() {
-		if (paused) {
+	override function closeSubState() 
+	{
+		if (paused) 
+		{
 			if (FlxG.sound.music != null && !startingSong) {
 				resyncVocals();
 			}
@@ -1733,52 +1724,9 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float) 
 	{
 		#if debug
-		if (FlxG.keys.justPressed.TWO)
+		if (FlxG.keys.anyJustPressed([TWO, THREE, FOUR]))
 		{
-			var strumTime:Float = Conductor.songPosition + 10000;
-
-			if (strumTime > FlxG.sound.music.length)
-			{
-				endSong();
-			}
-
-			var toKill:Array<Note> = [];
-			for (i in notes)
-			{
-				if (strumTime > i.strumTime)
-				{
-					toKill.push(i);
-				}
-			}
-
-			for (i in unspawnNotes)
-			{
-				if (strumTime > i.strumTime)
-				{
-					toKill.push(i);
-				}				
-			}
-
-			for (i in toKill)
-			{
-				i.kill();
-				if (notes.members.contains(i))
-					notes.remove(i, true);
-				else
-					unspawnNotes.remove(i);
-			}
-
-			var stepDiff:Int = Math.floor((strumTime - Conductor.songPosition) / Conductor.stepCrochet);
-			for (i in curStep...stepDiff + 1)
-			{
-				curStep = i;
-				stepHit();
-			}
-
-			strumTime -= 500; // so we dont skip immediately to a note
-			FlxG.sound.music.time = strumTime;
-			vocals.time = strumTime;
-			Conductor.songPosition = strumTime;
+			songJump(FlxG.keys.justPressed.TWO ? 3 : FlxG.keys.justPressed.THREE ? 10 : 30);
 		}
 		#end
 
@@ -1793,11 +1741,6 @@ class PlayState extends MusicBeatState
 		}
 
 		hurtTimer -= elapsed;
-		floatshit += 0.1;
-		float += 0.07;
-		speakerFloatRotate += 0.05;
-
-		floatstuffagainLMAO += 0.02;
 
 		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
@@ -1917,24 +1860,6 @@ class PlayState extends MusicBeatState
 				luaModchart = null;
 			}
 			#end
-		}
-
-		if (dad.curCharacter == "makocorrupt") {
-			dad.y += Math.sin(floatshit);
-		}
-
-		if (dad.curCharacter == "hallow") {
-			dad.y += Math.sin(float);
-		}
-
-		if (dad.curCharacter == "tea-bat") {
-			dad.y += Math.sin(float);
-			dad.x += Math.sin(floatstuffagainLMAO);
-		}
-
-		if (gf.curCharacter == "gf-notea") {
-			gf.y += Math.sin(float);
-			gf.angle = Math.sin(speakerFloatRotate);
 		}
 
 		var iconOffset:Int = 26;
@@ -2407,7 +2332,6 @@ class PlayState extends MusicBeatState
 								}
 								gf.playAnim('scared');
 							case 'hallow':
-								hurtTimer = 0.45;
 								if (healthBar.percent > 5) {
 									health -= 0.05;
 								}
@@ -2436,8 +2360,6 @@ class PlayState extends MusicBeatState
 
 					if (SONG.needsVoices)
 						vocals.volume = 1;
-
-					daNote.active = false;
 
 					daNote.kill();
 					notes.remove(daNote, true);
@@ -3503,5 +3425,53 @@ class PlayState extends MusicBeatState
 		FlxG.signals.gameResized.remove(onGameResize);
 
 		return true;
+	}
+
+	function songJump(seconds:Float)
+	{
+		var strumTime:Float = Conductor.songPosition + (seconds * 1000);
+
+		if (strumTime > FlxG.sound.music.length)
+		{
+			endSong();
+		}
+
+		var toKill:Array<Note> = [];
+		for (i in notes)
+		{
+			if (strumTime > i.strumTime)
+			{
+				toKill.push(i);
+			}
+		}
+
+		for (i in unspawnNotes)
+		{
+			if (strumTime > i.strumTime)
+			{
+				toKill.push(i);
+			}				
+		}
+
+		for (i in toKill)
+		{
+			i.kill();
+			if (notes.members.contains(i))
+				notes.remove(i, true);
+			else
+				unspawnNotes.remove(i);
+		}
+
+		var stepDiff:Int = Math.floor((strumTime - Conductor.songPosition) / Conductor.stepCrochet);
+		for (i in curStep...stepDiff + 1)
+		{
+			curStep = i;
+			stepHit();
+		}
+
+		strumTime -= 500; // so we dont skip immediately to a note
+		FlxG.sound.music.time = strumTime;
+		vocals.time = strumTime;
+		Conductor.songPosition = strumTime;
 	}
 }
