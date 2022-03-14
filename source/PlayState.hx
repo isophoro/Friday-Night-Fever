@@ -201,6 +201,7 @@ class PlayState extends MusicBeatState
 		remove(object);
 	}
 
+	var scoreBop:FlxTween;
 	var wiggleEffect:WiggleEffect;
 	var vignette:FlxSprite;
 
@@ -281,7 +282,7 @@ class PlayState extends MusicBeatState
 		FlxCamera.defaultCameras = [camGame];
 
 		currentTimingShown = new FlxText(0, 0, 0, "0ms");
-		currentTimingShown.setFormat(null, 14, FlxColor.CYAN, LEFT, OUTLINE, FlxColor.BLACK);
+		currentTimingShown.setFormat(null, 18, FlxColor.CYAN, LEFT, OUTLINE, FlxColor.BLACK);
 
 		currentTimingShown.cameras = [camHUD];
 
@@ -647,11 +648,6 @@ class PlayState extends MusicBeatState
 			case 'gf':
 				dad.setPosition(gf.x, gf.y);
 				gf.visible = false;
-				if (isStoryMode) {
-					camPos.x += 600;
-					tweenCamIn();
-				}
-
 			case "spooky":
 				dad.y -= 160;
 				dad.x -= 50;
@@ -726,6 +722,9 @@ class PlayState extends MusicBeatState
 
 		boyfriend = new Boyfriend(770, 450, curBoyfriend == null ? SONG.player1 : curBoyfriend);
 	
+		if (SONG.song.toLowerCase() == 'hardships')
+			boyfriend.useAlternateIdle = true;
+
 		curPlayer = opponent ? dad : boyfriend;
 		curOpponent = opponent ? boyfriend : dad;
 
@@ -1610,10 +1609,6 @@ class PlayState extends MusicBeatState
 		lanes.add(square);
 	}
 
-	function tweenCamIn():Void {
-		FlxTween.tween(FlxG.camera, {zoom: 1.3}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut});
-	}
-
 	override function openSubState(SubState:FlxSubState) 
 	{
 		if (paused) {
@@ -2030,6 +2025,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y - 60;
 					case 'bdbfever':
 						camFollow.y = dad.getMidpoint().y - 200;
+					case 'gf':
+						camFollow.y = dad.getMidpoint().y - 50;
 				}
 			}
 
@@ -2930,6 +2927,17 @@ class PlayState extends MusicBeatState
 			//note.destroy();
 
 			updateAccuracy();
+
+			if (scoreBop != null)
+				scoreBop.cancel();
+
+			scoreTxt.scale.set(1.075, 1.075);
+			scoreBop = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.24, {
+				onComplete: (twn) ->
+				{
+					scoreBop = null;
+				}
+			});
 		}
 	}
 
@@ -3337,6 +3345,7 @@ class PlayState extends MusicBeatState
 		curPlayer.holdTimer = 0;
 		keysHeld[key] = true;
 
+		var dumbNotes:Array<Note> = []; // notes to kill later
 		var closestNote:Note = null;
 		var noteNearby:Bool = false;
 
@@ -3348,7 +3357,11 @@ class PlayState extends MusicBeatState
 				{
 					if (closestNote != null)
 					{
-						if (closestNote.strumTime > note.strumTime)
+						if (closestNote.noteData == note.noteData && Math.abs(note.strumTime - closestNote.strumTime) < 10)
+						{
+							dumbNotes.push(note);
+						}
+						else if (closestNote.strumTime > note.strumTime)
 						{
 							closestNote = note;
 						}
@@ -3367,6 +3380,14 @@ class PlayState extends MusicBeatState
 				}
 			}
 		});
+
+		for (note in dumbNotes)
+		{
+			FlxG.log.add("killing dumb ass note at " + note.strumTime);
+			note.kill();
+			notes.remove(note, true);
+			note.destroy();
+		}
 
 		if (closestNote != null)
 		{

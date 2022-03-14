@@ -536,18 +536,18 @@ class Character extends FlxSprite
 				animation.addByPrefix('scared', 'GF FEAR', 24);
 
 				addOffset('cheer');
-				addOffset('sad', -2, -20);
+				addOffset('sad', -2, -24);
 				addOffset('danceLeft', 0, -9);
 				addOffset('danceRight', 0, -9);
 
-				addOffset("singUP", 0, 4);
-				addOffset("singRIGHT", 0, -13);
-				addOffset("singLEFT", 0, -19);
-				addOffset("singDOWN", 0, -20);
-				addOffset('hairBlow', 1, -8);
+				addOffset("singUP", 0, 16);
+				addOffset("singRIGHT", 0, -18);
+				addOffset("singLEFT", 0, -21);
+				addOffset("singDOWN", 0, -18);
+				addOffset('hairBlow', 0, -10);
 				addOffset('hairFall', 0, -8);
 
-				addOffset('scared', -2, -17);
+				addOffset('scared', -2, -14);
 
 				playAnim('danceRight');
 
