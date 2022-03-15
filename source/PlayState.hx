@@ -649,7 +649,8 @@ class PlayState extends MusicBeatState
 				dad.setPosition(gf.x, gf.y);
 				gf.visible = false;
 			case "spooky":
-				dad.y -= 160;
+				dad.y -= 30;
+				//dad.y += 150;
 				dad.x -= 50;
 			case "feralspooky":
 				dad.y -= 160;
@@ -1955,7 +1956,6 @@ class PlayState extends MusicBeatState
 				if (luaModchart != null)
 					luaModchart.executeState('playerTwoTurn', []);
 				#end
-				// camFollow.setPosition(lucky.getMidpoint().x - 120, lucky.getMidpoint().y + 210);
 
 				switch (dad.curCharacter) {
 					case 'mom' | 'mom-carnight' | 'mom-car':
@@ -1967,7 +1967,7 @@ class PlayState extends MusicBeatState
 						camFollow.x = dad.getMidpoint().x - -400;
 					case 'spooky' | 'feralspooky':
 						camFollow.x = dad.getMidpoint().x + 190;
-						camFollow.y = dad.getMidpoint().y + 30;
+						camFollow.y = dad.getMidpoint().y - 30;
 					case 'taki':
 						camFollow.x = dad.getMidpoint().x + 120;
 						camFollow.y = dad.getMidpoint().y - 50;
@@ -2028,6 +2028,8 @@ class PlayState extends MusicBeatState
 					case 'gf':
 						camFollow.y = dad.getMidpoint().y - 50;
 				}
+
+				//defaultCamZoom = 1.55;
 			}
 
 			if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && camFollow.x != boyfriend.getMidpoint().x - 100) 
@@ -2304,6 +2306,8 @@ class PlayState extends MusicBeatState
 					if (storyDifficulty != 4 && !opponent) 
 					{
 						switch (dad.curCharacter) {
+							case 'gf':
+								health -= 0.02;
 							case 'mom-car':
 								health -= 0.01;
 							case 'mom-carnight':
@@ -2928,16 +2932,19 @@ class PlayState extends MusicBeatState
 
 			updateAccuracy();
 
-			if (scoreBop != null)
-				scoreBop.cancel();
-
-			scoreTxt.scale.set(1.075, 1.075);
-			scoreBop = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.24, {
-				onComplete: (twn) ->
-				{
-					scoreBop = null;
-				}
-			});
+			if (!note.isSustainNote)
+			{
+				if (scoreBop != null)
+					scoreBop.cancel();
+	
+				scoreTxt.scale.set(1.075, 1.075);
+				scoreBop = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.24, {
+					onComplete: (twn) ->
+					{
+						scoreBop = null;
+					}
+				});
+			}
 		}
 	}
 
@@ -2982,6 +2989,8 @@ class PlayState extends MusicBeatState
 			switch(curStep)
 			{
 				case 121: health += 0.32;
+				case 1476 | 1508: defaultCamZoom = 1.25;
+				case 1500 | 1522: defaultCamZoom = 0.6;
 				case 1524: health += 0.40;
 			}
 		}

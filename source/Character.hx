@@ -762,6 +762,7 @@ class Character extends FlxSprite
 				animation.addByIndices('danceLeft', 'spooky dance idle', [0, 2, 6], "", 12, false);
 				animation.addByIndices('danceRight', 'spooky dance idle', [8, 10, 12, 14], "", 12, false);
 
+				scale.set(0.77, 0.77);
 				addOffset('danceLeft');
 				addOffset('danceRight');
 
@@ -769,6 +770,9 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", 1, -7);
 				addOffset("singLEFT", 3, -2);
 				addOffset("singDOWN", -7, 1);
+
+				for (k => v in animOffsets)
+					animOffsets[k] = [v[0] * scale.x, v[1] * scale.y];
 
 				playAnim('danceRight');
 
@@ -839,12 +843,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'robo right', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", 32, 45);
-				addOffset("singRIGHT", 11, -11);
-				addOffset("singLEFT", 94, -1);
-				addOffset("singDOWN", 103, -79);
-
-				//flipX = true;
+				addOffset("singUP", 33, 42);
+				addOffset("singRIGHT", 16, -14);
+				addOffset("singLEFT", 96, -1);
+				addOffset("singDOWN", 91, -79);
 
 				playAnim('idle');
 			case 'robo-cesar-pixel':
