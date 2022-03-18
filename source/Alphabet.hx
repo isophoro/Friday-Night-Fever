@@ -93,6 +93,7 @@ class Alphabet extends FlxSpriteGroup
 				}
 
 				var letter:AlphaCharacter = new AlphaCharacter(xPos, 0);
+				letter.antialiasing = true;
 				listOAlphabets.add(letter);
 
 				if (isBold)

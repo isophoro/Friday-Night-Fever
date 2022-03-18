@@ -5,6 +5,9 @@ class KadeEngineData
 {
     public static function initSave()
     {
+		if (FlxG.save.data.fcs == null)
+            FlxG.save.data.fcs = new Array<String>();
+
 		if (FlxG.save.data.popups == null)
             FlxG.save.data.popups = new Array<String>();
 		

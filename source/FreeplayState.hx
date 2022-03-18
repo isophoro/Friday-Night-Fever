@@ -109,6 +109,10 @@ class FreeplayState extends MusicBeatState
 			iconArray.push(icon);
 			add(icon);
 
+			if (FlxG.save.data.fcs.contains(songs[i].songName))
+			{
+				icon.animation.play("hurt");
+			}
 			// songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			// songText.screenCenter(X);
@@ -176,6 +180,7 @@ class FreeplayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
+		Conductor.songPosition = FlxG.sound.music.time;
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
@@ -382,6 +387,17 @@ class FreeplayState extends MusicBeatState
 				item.alpha = 1;
 				// item.setGraphicSize(Std.int(item.width));
 			}
+		}
+	}
+
+	override function beatHit()
+	{
+		if (curBeat >= 16 && !FlxG.sound.muted && FlxG.sound.volume > 0)
+		{
+			var icon = iconArray[curSelected];
+			icon.origin.set(icon.width / 2,0);
+			icon.scale.set(1 + (.135 * FlxG.sound.volume), 1 + (.135 * FlxG.sound.volume));
+			FlxTween.tween(icon.scale, {x: 1, y: 1}, (Conductor.crochet / 1000) / 2);
 		}
 	}
 }

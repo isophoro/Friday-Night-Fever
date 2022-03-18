@@ -13,8 +13,8 @@ Farmed:makocorrupt:4
 Honey:mom:5
 Bunnii:mom:5
 Throw-it-back:mom:5
-Mild:monster-christmas:6
-Spice:monster-christmas:6
+Mild:pepper:6
+Spice:pepper:6
 Party-Crasher:yukichi:6
 Ur-girl:senpai:7
 Chicken-sandwich:senpai:7

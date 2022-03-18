@@ -957,7 +957,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-			case 'monster-christmas': // THE PEPPER DEMON
+			case 'pepper': // THE PEPPER DEMON
 				iconColor = '7F64DA';
 				tex = Paths.getSparrowAtlas('characters/dickbutt');
 				frames = tex;

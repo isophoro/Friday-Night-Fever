@@ -251,7 +251,15 @@ class PlayState extends MusicBeatState
 		// Making difficulty text for Discord Rich Presence.
 		storyDifficultyText = CoolUtil.capitalizeFirstLetters(CoolUtil.difficultyArray[storyDifficulty]);
 
-		iconRPC = SONG.player2.split('-')[0]; // To avoid having duplicate images in Discord assets
+		switch (SONG.player2)
+		{
+			case 'taki':
+				iconRPC = 'monster';
+			case 'peasus':
+				iconRPC = 'dad';
+			default:
+				iconRPC = SONG.player2.split('-')[0]; // To avoid having duplicate images in Discord assets
+		}
 		detailsPausedText = "Paused - " + detailsText;	// String for when the game is paused
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
@@ -669,7 +677,7 @@ class PlayState extends MusicBeatState
 					dad.x = 388;
 				}
 
-			case 'monster-christmas':
+			case 'pepper':
 				dad.y += 100;
 				dad.x -= 100;
 				dad.scrollFactor.set(0.9, 0.9);
@@ -1073,6 +1081,7 @@ class PlayState extends MusicBeatState
 		FlxG.keys.preventDefaultKeys = [];
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		onGameResize(FlxG.stage.window.width, FlxG.stage.window.height);
 	}
 
 	function jumpscare(?dialogueBox:DialogueBox):Void 
@@ -1979,7 +1988,7 @@ class PlayState extends MusicBeatState
 							camFollow.x = dad.getMidpoint().x - -400;
 							camFollow.y = dad.getMidpoint().y - -100;
 						}
-					case 'monster-christmas':
+					case 'pepper':
 						camFollow.y = dad.getMidpoint().y - 50;
 						camFollow.x = dad.getMidpoint().x + 250;
 					case 'spookyHALLOW':
@@ -2325,7 +2334,7 @@ class PlayState extends MusicBeatState
 								{
 									case 'Prayer':
 										if (curStep >= 1359 && curStep < 1422)
-											health -= 0.035;
+											health -= 0.025;
 										else if (curStep < 1681)
 											health -= health > 0.2 ? 0.02 : 0.0065;
 									default:
@@ -2457,6 +2466,9 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		if (SONG.validScore) 
 		{
+			if (misses == 0 && !FlxG.save.data.fcs.contains(SONG.song))
+				FlxG.save.data.fcs.push(SONG.song);
+
 			Highscore.saveScore(SONG.song, Math.round(songScore), storyDifficulty);
 		}
 
@@ -3445,7 +3457,9 @@ class PlayState extends MusicBeatState
 
 	function onGameResize(width, height)
 	{
-		scoreTxt.antialiasing = width > 1280 ? true : false;
+		var textAntialiasing:Bool = width > 1280 ? true : false;
+		currentTimingShown.antialiasing = textAntialiasing;
+		scoreTxt.antialiasing = textAntialiasing;
 	}
 
 	override function switchTo(_):Bool
