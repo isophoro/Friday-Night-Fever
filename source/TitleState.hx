@@ -152,6 +152,7 @@ class TitleState extends MusicBeatState
 
 		FlxG.mouse.visible = false;
 
+		hueShader.hue = 0;
 		if (initialized)
 			skipIntro();
 	}
@@ -192,17 +193,17 @@ class TitleState extends MusicBeatState
 
 		if (!transitioning && skippedIntro)
 		{
-			if (controls.LEFT)
+			if (FlxG.keys.pressed.LEFT)
 			{
 				hueShader.hue -= 0.35 * elapsed;
 			}
-			else if (controls.RIGHT)
+			else if (FlxG.keys.pressed.RIGHT)
 			{
 				hueShader.hue += 0.35 * elapsed;
 			}
-
-			hueShader.onUpdate();
 		}
+		
+		hueShader.onUpdate();
 
 		if (controls.ACCEPT #if mobile || (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) #end)
 		{
@@ -278,7 +279,7 @@ class TitleState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 1:
-					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+					createCoolText(['CesarFever', 'HelloItsMako', 'and more']);
 				case 3:
 					addMoreText('present');
 				case 4:

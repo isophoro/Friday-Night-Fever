@@ -78,15 +78,17 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
+		bg.antialiasing = true;
 		add(bg);
 
 		bghalloween = new FlxSprite().loadGraphic(Paths.image('halloweenBG'));
 		add(bghalloween);
+		bghalloween.antialiasing = true;
 		bghalloween.alpha = 0;
 
 		halloween = new FlxText(700, 0, "HALLOWEEN UPDATE SONGS");
 		halloween.setFormat(Paths.font('vcr.ttf'), 40, FlxColor.ORANGE, CENTER, OUTLINE, FlxColor.BLACK);
-		halloween.scrollFactor.set();
+		halloween.antialiasing = true;
 		add(halloween);
 		halloween.screenCenter(Y);
 		halloween.visible = false;
@@ -120,6 +122,7 @@ class FreeplayState extends MusicBeatState
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+		scoreText.antialiasing = true;
 
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 0.31), 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
@@ -128,6 +131,7 @@ class FreeplayState extends MusicBeatState
 
 		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
 		diffText.font = scoreText.font;
+		diffText.antialiasing = true;
 		add(diffText);
 
 		#if mobile

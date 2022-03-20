@@ -12,7 +12,7 @@ class NoteSplash extends FlxSprite
         antialiasing = true;
         alpha = 0.69;
 
-        frames = Paths.getSparrowAtlas('notesplash');
+        frames = Paths.getSparrowAtlas('notesplash', 'shared');
         animation.addByPrefix('idle', 'notesplash', 36, false);
 
         updateHitbox();

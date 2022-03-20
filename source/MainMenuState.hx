@@ -109,6 +109,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.x = FlxG.width - menuItem.width + 5;
 			menuItem.ID = i;
 			menuItems.add(menuItem);
+			menuItem.antialiasing = true;
 			
 			selectedSomethin = true;
 			menuItem.x += 550;
@@ -125,6 +126,7 @@ class MainMenuState extends MusicBeatState
 
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Friday Night Fever ${Application.current.meta.get("version")} (Running on KE 1.5.1)', 12);
 		versionShit.scrollFactor.set();
+		versionShit.antialiasing = true;
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 		
@@ -264,10 +266,10 @@ class MainMenuState extends MusicBeatState
 		switch (daChoice)
 		{
 			case 'story mode':
-				if (FlxG.save.data.popups.contains('dialogue'))
+				/*if (FlxG.save.data.popups.contains('dialogue'))*/
 					FlxG.switchState(new StoryMenuState());
-				else
-					openSubState(new sprites.PopupState('dialogue'));
+				/*else
+					openSubState(new sprites.PopupState('dialogue'));*/
 			case 'freeplay':
 				FlxG.switchState(new SelectingSongState());
 

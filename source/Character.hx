@@ -583,33 +583,23 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
-			case 'gf-car':
+			case 'gf-car' | 'gf-carnight':
 				iconColor = '99DBF6';
-				tex = Paths.getSparrowAtlas('characters/gfCar');
-				frames = tex;
-				animation.addByIndices('singUP', 'GF Dancing Beat', [0], "", 24, false);
-				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24,
+				if (character == 'gf-car')
+					frames = Paths.getSparrowAtlas('characters/gfCar');
+				else
+					frames = Paths.getSparrowAtlas('characters/gfCarNIGHT', 'shared');
+
+				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+				animation.addByIndices('danceLeft', 'GF Dancing Beat Hair blowing', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat Hair blowing', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24,
 					false);
 
 				addOffset('danceLeft', 0);
 				addOffset('danceRight', 0);
+				addOffset('sad', 0);
 
 				playAnim('danceRight');
-
-			case 'gf-carnight':
-				iconColor = '99DBF6';
-				tex = Paths.getSparrowAtlas('characters/gfCarNIGHT', 'shared');
-				frames = tex;
-				animation.addByIndices('singUP', 'GF Dancing Beat', [0], "", 24, false);
-				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-
-				addOffset('danceLeft', 0);
-				addOffset('danceRight', 0);
-
-				playAnim('danceRight');
-
 			case 'cherry-pixel':
 				iconColor = '99DBF6';
 				tex = Paths.getSparrowAtlas('characters/cherryPixel');
@@ -752,7 +742,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'spooky': // WEE
-				iconColor = '5CBEFF';
+				iconColor = '282828';
 				tex = Paths.getSparrowAtlas('characters/spooky_kids_assets');
 				frames = tex;
 				animation.addByPrefix('singUP', 'spooky UP NOTE', 24, false);
@@ -777,7 +767,7 @@ class Character extends FlxSprite
 				playAnim('danceRight');
 
 			case 'feralspooky': // WEE 
-				iconColor = '5CBEFF';
+				iconColor = '282828';
 				tex = Paths.getSparrowAtlas('characters/feral_wee_assets');
 				frames = tex;
 				animation.addByPrefix('singUP', 'feral UP NOTE', 24, false);
@@ -1243,7 +1233,7 @@ class Character extends FlxSprite
 			else
 				offset.set(0, 0);
 	
-			if (curCharacter == 'gf')
+			if (curCharacter.contains('gf'))
 			{
 				if (AnimName == 'singLEFT')
 				{

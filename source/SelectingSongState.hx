@@ -33,6 +33,7 @@ class SelectingSongState extends MusicBeatState
 	override function create()
 	{
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
+		bg.antialiasing = true;
 		add(bg);
 
 		if (FlxG.sound.music == null || !FlxG.sound.music.playing)
@@ -52,6 +53,7 @@ class SelectingSongState extends MusicBeatState
 			selecterIcons.animation.play('idle');
 			selecterIcons.scrollFactor.set();
 			selecterIcons.updateHitbox();
+			selecterIcons.antialiasing = true;
 			selecterIcons.ID = i;
 			selectorIcon.add(selecterIcons);
 

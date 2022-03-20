@@ -82,6 +82,7 @@ class PlayState extends MusicBeatState
 	public var dad:Character;
 	public var gf:Character;
 	public var boyfriend:Boyfriend;
+	var characterTrail:CharacterTrail;
 
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
@@ -730,9 +731,6 @@ class PlayState extends MusicBeatState
 		}
 
 		boyfriend = new Boyfriend(770, 450, curBoyfriend == null ? SONG.player1 : curBoyfriend);
-	
-		if (SONG.song.toLowerCase() == 'hardships')
-			boyfriend.useAlternateIdle = true;
 
 		curPlayer = opponent ? dad : boyfriend;
 		curOpponent = opponent ? boyfriend : dad;
@@ -796,8 +794,8 @@ class PlayState extends MusicBeatState
 				gf.scrollFactor.set(1.0, 1.0);
 				if (FlxG.save.data.distractions) 
 				{
-					var evilTrail = new CharacterTrail(dad, null, 15, 8, 0.3, 0.069);
-					add(evilTrail);
+					characterTrail = new CharacterTrail(dad, null, 15, 8, 0.3, 0.069);
+					add(characterTrail);
 				}
 			case 'spookyHALLOW':
 				boyfriend.x += 500;
@@ -1158,6 +1156,11 @@ class PlayState extends MusicBeatState
 				introAlts = introAssets[curStage];
 				altSuffix = introAlts[4];
 			}
+			else
+			{
+				if (SONG.bpm <= 140)
+					altSuffix = '-long';
+			}
 
 			switch (swagCounter)
 			{
@@ -1283,9 +1286,9 @@ class PlayState extends MusicBeatState
 		if (FlxG.save.data.downscroll)
 			songName.y -= 4;
 		
+		songName.antialiasing = FlxG.width > 1280 ? true : false;
 		songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songName.screenCenter(X);
-		songName.antialiasing = FlxG.stage.window.width > 1280 ? true : false;
 
 		if (FlxG.save.data.songPosition) 
 		{
@@ -1778,14 +1781,17 @@ class PlayState extends MusicBeatState
 				i.visible = showStrums;
 			}
 
-			var p1 = luaModchart.getVar("strumLine1Visible", 'bool');
-			var p2 = luaModchart.getVar("strumLine2Visible", 'bool');
-
-			for (i in 0...4) 
+			if (!opponent)
 			{
-				strumLineNotes.members[i].visible = p1;
-				if (i <= playerStrums.length)
-					playerStrums.members[i].visible = p2;
+				var p1 = luaModchart.getVar("strumLine1Visible", 'bool');
+				var p2 = luaModchart.getVar("strumLine2Visible", 'bool');
+	
+				for (i in 0...4) 
+				{
+					strumLineNotes.members[i].visible = p1;
+					if (i <= playerStrums.length)
+						playerStrums.members[i].visible = p2;
+				}
 			}
 		}
 		#end
@@ -1912,6 +1918,17 @@ class PlayState extends MusicBeatState
 				luaModchart = null;
 			}
 			#end
+		}
+		else if (FlxG.keys.justPressed.SIX)
+		{
+			FlxG.switchState(new AnimationDebug(gf.curCharacter));
+			#if windows
+			if (luaModchart != null) 
+			{
+				luaModchart.die();
+				luaModchart = null;
+			}
+			#end			
 		}
 		#end
 
@@ -2297,11 +2314,12 @@ class PlayState extends MusicBeatState
 
 					if (SONG.notes[Math.floor(curStep / 16)] != null) 
 					{
-						if (SONG.notes[Math.floor(curStep / 16)].altAnim)
+						if (!opponent && SONG.notes[Math.floor(curStep / 16)].altAnim)
 							altAnim = '-alt';
 					}
 
 					var delay:Int = 0;
+					curOpponent.holdTimer = 0;
 					// Accessing the animation name directly to play it
 					if (curSong == 'Princess' && (curBeat == 303 || curBeat == 367) && daNote.noteData == 2)
 					{
@@ -2312,49 +2330,54 @@ class PlayState extends MusicBeatState
 						curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
 					}
 
-					if (storyDifficulty != 4 && !opponent) 
+					if (!opponent)
 					{
-						switch (dad.curCharacter) {
-							case 'gf':
-								health -= 0.02;
-							case 'mom-car':
-								health -= 0.01;
-							case 'mom-carnight':
-								health -= 0.02;
-							case 'spirit':
-								switch (storyDifficulty) {
-									default:
-										health -= 0.02;
-									case 0 | 4: // easy and baby mode
-										health -= 0.01;
-								}
-							case 'monster' | 'taki':
-								hurtTimer = 0.45;
-								switch (curSong)
-								{
-									case 'Prayer':
-										if (curStep >= 1359 && curStep < 1422)
-											health -= 0.025;
-										else if (curStep < 1681)
-											health -= health > 0.2 ? 0.02 : 0.0065;
-									default:
-										health -= 0.02;
-								}
-								gf.playAnim('scared');
-							case 'hallow':
-								if (healthBar.percent > 5) {
-									health -= 0.05;
-								}
+						if (storyDifficulty != 4)
+						{
+							switch (dad.curCharacter) {
+								case 'gf':
+									health -= 0.02;
+								case 'mom-car':
+									health -= 0.01;
+								case 'mom-carnight':
+									health -= 0.02;
+								case 'spirit':
+									switch (storyDifficulty) {
+										default:
+											health -= 0.02;
+										case 0 | 4: // easy and baby mode
+											health -= 0.01;
+									}
+								case 'monster' | 'taki':
+									hurtTimer = 0.45;
+									switch (curSong)
+									{
+										case 'Prayer':
+											if (curStep >= 1359 && curStep < 1422)
+												health -= 0.025;
+											else if (curStep < 1681)
+												health -= health > 0.2 ? 0.02 : 0.0065;
+										default:
+											health -= 0.02;
+									}
+									gf.playAnim('scared');
+								case 'hallow':
+									if (healthBar.percent > 5) {
+										health -= 0.05;
+									}
+							}
+						}
+						else if (storyDifficulty == 4) 
+						{
+							health += 0.03;
+						}
+						else
+						{
+							health -= 0.04;
 						}
 					}
-					else if (storyDifficulty == 4 && !opponent) 
-					{
-						health += 0.03;
-					}
 					else
-					{
 						health -= 0.04;
-					}
 
 					if (FlxG.save.data.cpuStrums) 
 					{
@@ -2365,8 +2388,6 @@ class PlayState extends MusicBeatState
 					if (luaModchart != null)
 						luaModchart.executeState('playerTwoSing', [Math.abs(daNote.noteData), Conductor.songPosition]);
 					#end
-
-					curOpponent.holdTimer = 0;
 
 					if (SONG.needsVoices)
 						vocals.volume = 1;
@@ -2846,6 +2867,9 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1, ?daNote:Note):Void 
 	{
+		if (!opponent && combo >= 10)
+			gf.playAnim('sad');
+
 		health -= 0.04;
 		songScore -= 10;
 		combo = 0;
@@ -2853,8 +2877,6 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.save.data.accuracyMod == 1)
 			totalNotesHit -= 1;
-
-		gf.playAnim('sad');
 
 		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 
@@ -3001,8 +3023,13 @@ class PlayState extends MusicBeatState
 			switch(curStep)
 			{
 				case 121: health += 0.32;
-				case 1476 | 1508: defaultCamZoom = 1.25;
-				case 1500 | 1522: defaultCamZoom = 0.6;
+				case 1476 | 1508:
+					characterTrail.visible = false;
+					defaultCamZoom = 0.95;
+				case 1500 | 1522:
+					if (curStep == 1522)
+						characterTrail.visible = true;
+					defaultCamZoom = 0.6;
 				case 1524: health += 0.40;
 			}
 		}
@@ -3113,6 +3140,9 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
+				case 'hardships':
+					if (curBeat == 158)
+						boyfriend.useAlternateIdle = true;
 				case 'loaded': 
 					roboStage.beatHit(curBeat);
 				case 'soul' | 'portrait':
@@ -3258,7 +3288,9 @@ class PlayState extends MusicBeatState
 		if (boyfriend.animation.curAnim.name != 'hey') 
 		{
 			// disgusting code
-			if (gf.animation.curAnim.name != 'scared' || gf.animation.curAnim.name == 'scared' && dad.holdTimer < -0.35)
+			if (gf.animation.curAnim.name != 'scared' && gf.animation.curAnim.name != 'sad' || 
+				gf.animation.curAnim.name == 'sad' && gf.animation.finished || 
+				gf.animation.curAnim.name == 'scared' && dad.holdTimer < -0.35)
 				gf.dance();
 		}
 
@@ -3460,6 +3492,9 @@ class PlayState extends MusicBeatState
 		var textAntialiasing:Bool = width > 1280 ? true : false;
 		currentTimingShown.antialiasing = textAntialiasing;
 		scoreTxt.antialiasing = textAntialiasing;
+
+		if (songName != null)
+			songName.antialiasing = textAntialiasing;
 	}
 
 	override function switchTo(_):Bool
