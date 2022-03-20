@@ -29,7 +29,7 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
 			case 'bf-carnight' | 'bfdemoncesar' | 'bf-casualdemon':
 				loadGraphic(Paths.image('icons/icon-bfdemoncesar'), true, 150, 150);
-			case 'gf' | 'gf-painting' | 'gf-christmas' | 'gf-pixel':
+			case 'gf' | 'gf-painting' | 'gf-christmas' | 'tea-pixel':
 				loadGraphic(Paths.image('icons/icon-gf'), true, 150, 150);
 			case 'dad': 
 				loadGraphic(Paths.image('icons/icon-peakek'), true, 150, 150);
@@ -47,7 +47,7 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-$char'), true, 150, 150);
 		}
 
-		var pixel:Array<String> = ['spirit', 'senpai', 'bdbfever'];
+		var pixel:Array<String> = ['flippy', 'senpai', 'bdbfever'];
 		antialiasing = StringTools.contains(char, 'pixel') || pixel.contains(char) ? false : true;
 		animation.add('healthy', [0], 0, false, isPlayer);
 		animation.add('hurt', [1], 0, false, isPlayer);
@@ -57,7 +57,7 @@ class HealthIcon extends FlxSprite
 
 		switch(char)
 		{
-			case 'bf-pixel' | 'senpai' | 'senpai-angry' | 'spirit' | 'gf-pixel':
+			case 'bf-pixel' | 'senpai' | 'senpai-angry' | 'flippy' | 'tea-pixel':
 				antialiasing = false;
 		}
 	}

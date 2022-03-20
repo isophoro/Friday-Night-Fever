@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pixeltea.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="TeaCHEER0000" x="0" y="0" width="128" height="104" pivotX="64" pivotY="52"/>
+	<SubTexture name="TeaCHEER0001" x="0" y="0" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0002" x="128" y="0" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0003" x="128" y="0" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0004" x="256" y="0" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0005" x="256" y="0" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0006" x="384" y="0" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0007" x="384" y="0" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0008" x="0" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0009" x="0" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0010" x="128" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0011" x="128" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0012" x="256" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0013" x="256" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0014" x="384" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0015" x="384" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0016" x="384" y="104" width="128" height="104"/>
+	<SubTexture name="TeaCHEER0017" x="384" y="104" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0000" x="0" y="208" width="128" height="104" pivotX="64" pivotY="52"/>
+	<SubTexture name="TeaIDLE0001" x="0" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0002" x="0" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0003" x="0" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0004" x="0" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0005" x="128" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0006" x="128" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0007" x="128" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0008" x="128" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0009" x="256" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0010" x="256" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0011" x="256" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0012" x="256" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0013" x="384" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0014" x="384" y="208" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0015" x="0" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0016" x="0" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0017" x="128" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0018" x="128" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0019" x="128" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0020" x="256" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0021" x="256" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0022" x="256" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0023" x="256" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0024" x="256" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0025" x="384" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0026" x="384" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0027" x="384" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0028" x="384" y="312" width="128" height="104"/>
+	<SubTexture name="TeaIDLE0029" x="384" y="312" width="128" height="104"/>
+</TextureAtlas>

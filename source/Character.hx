@@ -321,16 +321,16 @@ class Character extends FlxSprite
 
 			case 'bf-pixel':
 				iconColor = 'C353E3';
-				frames = Paths.getSparrowAtlas('characters/bfPixel');
-				animation.addByPrefix('idle', 'BF IDLE', 24, false);
-				animation.addByPrefix('singUP', 'BF UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'BF LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'BF DOWN NOTE', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF DOWN MISS', 24, false);
+				frames = Paths.getSparrowAtlas('characters/feverpixel');
+				animation.addByPrefix('idle', 'FEVERIDLE', 24, false);
+				animation.addByPrefix('singUP', 'FEVERSINGUP', 24, false);
+				animation.addByPrefix('singLEFT', 'FEVERSINGLEFT', 24, false);
+				animation.addByPrefix('singRIGHT', 'FEVERSINGRIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'FEVERSINGDOWN', 24, false);
+				animation.addByPrefix('singUPmiss', 'FEVERUPMISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'FEVERLEFTMISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'FEVERRIGHTMISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'FEVERDOWNMISS', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP");
@@ -428,15 +428,15 @@ class Character extends FlxSprite
 			case 'bf-pixeldemon':
 				iconColor = 'E353C8';
 				frames = Paths.getSparrowAtlas('characters/demonCesarPixel');
-				animation.addByPrefix('idle', 'BF IDLE', 24, false);
-				animation.addByPrefix('singUP', 'BF UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'BF LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'BF DOWN NOTE', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF DOWN MISS', 24, false);
+				animation.addByPrefix('idle', 'DemonFeverIDLE', 24, false);
+				animation.addByPrefix('singUP', 'DemonFeverUP', 24, false);
+				animation.addByPrefix('singLEFT', 'DemonFeverLEFT', 24, false);
+				animation.addByPrefix('singRIGHT', 'DemonFeverRIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'DemonFeverDOWN', 24, false);
+				animation.addByPrefix('singUPmiss', 'DemonFeverUpMISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'DemonFeverLeftMISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'DemonFeverRightMISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'DemonFeverDownMISS', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP");
@@ -616,15 +616,12 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
 				antialiasing = false;
-
-
-			case 'gf-pixel':
+			case 'tea-pixel':
 				iconColor = '99DBF6';
-				tex = Paths.getSparrowAtlas('characters/gfPixel');
+				tex = Paths.getSparrowAtlas('characters/pixeltea');
 				frames = tex;
-				animation.addByIndices('singUP', 'GF IDLE', [2], "", 24, false);
-				animation.addByIndices('danceLeft', 'GF IDLE', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				animation.addByIndices('danceRight', 'GF IDLE', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+				animation.addByIndices('danceLeft', 'TeaIDLE', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'TeaIDLE', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 
 				addOffset('danceLeft', 0);
 				addOffset('danceRight', 0);
@@ -1027,20 +1024,20 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
-			case 'spirit': //FLIPPY
+			case 'flippy': //FLIPPY
 				iconColor = '4E4E4E';
-				frames = Paths.getPackerAtlas('characters/spirit');
-				animation.addByPrefix('idle', "idle spirit_", 24, false);
-				animation.addByPrefix('singUP', "up_", 24, false);
-				animation.addByPrefix('singRIGHT', "right_", 24, false);
-				animation.addByPrefix('singLEFT', "left_", 24, false);
-				animation.addByPrefix('singDOWN', "spirit down_", 24, false);
+				frames = Paths.getSparrowAtlas('characters/flippy');
+				animation.addByPrefix('idle', "Flippy IDLE", 24, false);
+				animation.addByPrefix('singUP', "Flippy UP", 24, false);
+				animation.addByPrefix('singRIGHT', "Flippy RIGHT", 24, false);
+				animation.addByPrefix('singLEFT', "Flippy LEFT", 24, false);
+				animation.addByPrefix('singDOWN', "Flippy DOWN", 24, false);
 
-				addOffset('idle', -220, -280);
-				addOffset('singUP', -496, -106);
-				addOffset("singRIGHT", -244, -316);
-				addOffset("singLEFT", -316, -310);
-				addOffset("singDOWN", -628, -616);
+				addOffset('idle', 0, 0);
+				addOffset('singUP', 0, 0);
+				addOffset("singRIGHT", 0, 0);
+				addOffset("singLEFT", 0, 0);
+				addOffset("singDOWN", 0, 0);
 
 				setGraphicSize(Std.int(width * 6));
 				updateHitbox();

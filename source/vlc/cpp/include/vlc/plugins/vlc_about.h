@@ -238,7 +238,7 @@ static const char psz_license[] =
 "\n"
 "  9. The Free Software Foundation may publish revised and/or new versions\n"
 "of the General Public License from time to time.  Such new versions will\n"
-"be similar in spirit to the present version, but may differ in detail to\n"
+"be similar in flippy to the present version, but may differ in detail to\n"
 "address new problems or concerns.\n"
 "\n"
 "Each version is given a distinguishing version number.  If the Program\n"

@@ -34,7 +34,7 @@ class RoboBackground
         {
             taki = new Character(0, 0, "taki-gf");
             robofever = new Character(0,0, "robo-cesar-pixel");
-            tea_pixel = new Character(0,0, "gf-pixel");
+            tea_pixel = new Character(0,0, "tea-pixel");
             fever_pixel = new Character(0,0, "bf-pixel", true);
             cherry = new Character(400, 130, "gf-car", false);
             tea_pixel.scrollFactor.set(0.9, 0.9);

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="feverpixel.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="FEVERSINGDOWN0000" x="0" y="0" width="100" height="100" pivotX="50" pivotY="103"/>
+	<SubTexture name="FEVERSINGDOWN0001" x="0" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0002" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0003" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0004" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0005" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0006" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0007" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0008" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0009" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0010" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0011" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0012" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERSINGDOWN0013" x="100" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0000" x="200" y="0" width="100" height="100" pivotX="50" pivotY="50"/>
+	<SubTexture name="FEVERDOWNMISS0001" x="200" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0002" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0003" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0004" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0005" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0006" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0007" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0008" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0009" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0010" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0011" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0012" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERDOWNMISS0013" x="300" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0000" x="400" y="0" width="100" height="100" pivotX="50" pivotY="50"/>
+	<SubTexture name="FEVERFROWNIDLE0001" x="400" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0002" x="500" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0003" x="500" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0004" x="600" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0005" x="600" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0006" x="700" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0007" x="700" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0008" x="800" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0009" x="800" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0010" x="800" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0011" x="800" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0012" x="800" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERFROWNIDLE0013" x="800" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0000" x="900" y="0" width="100" height="100" pivotX="50" pivotY="50"/>
+	<SubTexture name="FEVERHEY0001" x="900" y="0" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0002" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0003" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0004" x="100" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0005" x="100" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0006" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0007" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0008" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0009" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0010" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0011" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0012" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERHEY0013" x="0" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0000" x="200" y="100" width="100" height="100" pivotX="46" pivotY="46"/>
+	<SubTexture name="FEVERIDLE0001" x="200" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0002" x="300" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0003" x="300" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0004" x="400" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0005" x="400" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0006" x="500" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0007" x="500" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0008" x="600" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0009" x="600" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0010" x="600" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0011" x="600" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0012" x="600" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERIDLE0013" x="600" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0000" x="700" y="100" width="100" height="100" pivotX="50" pivotY="50"/>
+	<SubTexture name="FEVERSINGLEFT0001" x="700" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0002" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0003" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0004" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0005" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0006" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0007" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0008" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0009" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0010" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0011" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0012" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERSINGLEFT0013" x="800" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0000" x="900" y="100" width="100" height="100" pivotX="50" pivotY="50"/>
+	<SubTexture name="FEVERLEFTMISS0001" x="900" y="100" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0002" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0003" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0004" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0005" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0006" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0007" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0008" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0009" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0010" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0011" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0012" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERLEFTMISS0013" x="0" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0000" x="100" y="200" width="100" height="100" pivotX="50" pivotY="50"/>
+	<SubTexture name="FEVERSINGRIGHT0001" x="100" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0002" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0003" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0004" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0005" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0006" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0007" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0008" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0009" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0010" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0011" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0012" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGRIGHT0013" x="200" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0000" x="300" y="200" width="100" height="100" pivotX="50" pivotY="50"/>
+	<SubTexture name="FEVERRIGHTMISS0001" x="300" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0002" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0003" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0004" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0005" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0006" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0007" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0008" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0009" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0010" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0011" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0012" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERRIGHTMISS0013" x="400" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0000" x="500" y="200" width="100" height="100" pivotX="50" pivotY="50"/>
+	<SubTexture name="FEVERSINGUP0001" x="500" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0002" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0003" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0004" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0005" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0006" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0007" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0008" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0009" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0010" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0011" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0012" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0013" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERSINGUP0014" x="600" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0000" x="700" y="200" width="100" height="100" pivotX="50" pivotY="260"/>
+	<SubTexture name="FEVERUPMISS0001" x="700" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0002" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0003" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0004" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0005" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0006" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0007" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0008" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0009" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0010" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0011" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0012" x="800" y="200" width="100" height="100"/>
+	<SubTexture name="FEVERUPMISS0013" x="800" y="200" width="100" height="100"/>
+</TextureAtlas>

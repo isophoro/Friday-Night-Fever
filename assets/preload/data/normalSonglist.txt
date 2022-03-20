@@ -18,7 +18,7 @@ Spice:pepper:6
 Party-Crasher:yukichi:6
 Ur-girl:senpai:7
 Chicken-sandwich:senpai:7
-Funkin-god:spirit:7
+Funkin-god:flippy:7
 C354R:robo-cesar:8
 Loaded:robo-cesar:8
 Tranquility:scarlet:8

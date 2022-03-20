@@ -20,7 +20,7 @@ bf-pixel
 bf-pixeldemon
 senpai
 senpai-angry
-spirit
+flippy
 robo-cesar
 robo-cesar-pixel
 scarlet

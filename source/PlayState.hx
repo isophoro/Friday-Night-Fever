@@ -709,9 +709,9 @@ class PlayState extends MusicBeatState
 				dad.x += 150;
 				dad.y += 350;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
-			case 'spirit':
-				dad.x -= 300;
-				dad.y -= 20;
+			case 'flippy':
+				dad.y += 200;
+				dad.x += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'makocorrupt':
 				dad.y -= 100;
@@ -754,7 +754,7 @@ class PlayState extends MusicBeatState
 				dad.y -= 80;
 			case 'school':
 				boyfriend.x += 200;
-				boyfriend.y += 220;
+				boyfriend.y += 150;
 				gf.x += 180;
 				gf.y += 300;
 				boyfriend.scrollFactor.set(0.9, 0.9);
@@ -762,11 +762,11 @@ class PlayState extends MusicBeatState
 			case 'schoolEvil':
 				if (FlxG.save.data.distractions) 
 				{
-					var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
+					var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.1, 0.069);
 					add(evilTrail);
 				}
-				boyfriend.x += 200;
-				boyfriend.y += 220;
+				boyfriend.x += 290;
+				boyfriend.y += 40;
 				gf.x += 180;
 				gf.y += 300;
 				boyfriend.scrollFactor.set(0.9, 0.9);
@@ -2053,6 +2053,9 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y - 200;
 					case 'gf':
 						camFollow.y = dad.getMidpoint().y - 50;
+					case 'flippy':
+						camFollow.x = dad.getMidpoint().x - 360;
+						camFollow.y = dad.getMidpoint().y - 440;
 				}
 
 				//defaultCamZoom = 1.55;
@@ -2085,8 +2088,8 @@ class PlayState extends MusicBeatState
 					case 'mall':
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 					case 'school' | 'schoolEvil':
-						camFollow.x = boyfriend.getMidpoint().x - 200;
-						camFollow.y = boyfriend.getMidpoint().y - 200;
+						camFollow.x = boyfriend.getMidpoint().x - 530;
+						camFollow.y = boyfriend.getMidpoint().y - 260;
 					case 'spooky' | 'spookyBOO':
 						camFollow.x = boyfriend.getMidpoint().x - 320;
 						camFollow.y = boyfriend.getMidpoint().y - 250;
@@ -2341,7 +2344,7 @@ class PlayState extends MusicBeatState
 									health -= 0.01;
 								case 'mom-carnight':
 									health -= 0.02;
-								case 'spirit':
+								case 'flippy':
 									switch (storyDifficulty) {
 										default:
 											health -= 0.02;
