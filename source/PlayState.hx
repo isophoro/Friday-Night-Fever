@@ -89,6 +89,7 @@ class PlayState extends MusicBeatState
 	public var defaultCamZoom:Float = 1.05;
 	public var camZooming:Bool = false;
 	public var disableCamera:Bool = false;
+	public var disableHUD:Bool = false;
 	public var disableModCamera:Bool = false; // disables the modchart from messing around with the camera
 	public var camFollow:FlxObject;
 	private static var prevCamFollow:FlxObject;
@@ -173,6 +174,7 @@ class PlayState extends MusicBeatState
 
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
+	var blackScreen:FlxSprite;
 
 	public static var deaths:Int = 0;
 	public static var easierMode:Bool = false;
@@ -203,6 +205,7 @@ class PlayState extends MusicBeatState
 	}
 
 	var scoreBop:FlxTween;
+	var disableScoreBop:Bool = false;
 	var wiggleEffect:WiggleEffect;
 	var vignette:FlxSprite;
 
@@ -982,6 +985,12 @@ class PlayState extends MusicBeatState
 			purpleOverlay.cameras = [camHUD];
 			purpleOverlay.scale.set(1.5, 1.5);
 			purpleOverlay.scrollFactor.set();
+
+			blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+			blackScreen.alpha = 0;
+			blackScreen.scrollFactor.set();
+			blackScreen.scale.set(5,5);
+			add(blackScreen);
 
 			if (curSong.toLowerCase() == 'tranquility')
 			{
@@ -2656,9 +2665,18 @@ class PlayState extends MusicBeatState
 			rating.y -= 50;
 			rating.x = (FlxG.width * 0.55) - 125;
 
-			if (FlxG.save.data.changedHit) {
-				rating.x = FlxG.save.data.changedHitX;
-				rating.y = FlxG.save.data.changedHitY;
+			if (!disableHUD)
+			{
+				if (FlxG.save.data.changedHit) {
+					rating.x = FlxG.save.data.changedHitX;
+					rating.y = FlxG.save.data.changedHitY;
+				}
+			}
+			else
+			{
+				rating.x = cpuStrums.members[cpuStrums.length - 1].x + cpuStrums.members[cpuStrums.length - 1].width;
+				rating.y = cpuStrums.members[cpuStrums.length - 1].y;
+				rating.alpha = 0.6;
 			}
 
 			rating.acceleration.y = 550;
@@ -2670,6 +2688,7 @@ class PlayState extends MusicBeatState
 				msTiming = 0;
 
 			currentTimingShown.text = msTiming + 'ms';
+			currentTimingShown.alpha = rating.alpha;
 
 			switch (daRating) 
 			{
@@ -2733,6 +2752,7 @@ class PlayState extends MusicBeatState
 				numScore.x = rating.x + (43 * daLoop) - 50;
 				numScore.y = rating.y + 100;
 				numScore.cameras = [camHUD];
+				numScore.alpha = rating.alpha;
 
 				if (usePixelAssets)
 				{
@@ -2971,11 +2991,14 @@ class PlayState extends MusicBeatState
 
 			if (!note.isSustainNote)
 			{
+				if (disableScoreBop)
+					return;
+
 				if (scoreBop != null)
 					scoreBop.cancel();
 	
-				scoreTxt.scale.set(1.075, 1.075);
-				scoreBop = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.24, {
+				scoreTxt.scale.set(scoreTxt.scale.x < 0.9 ? 0.875 : 1.075, scoreTxt.scale.y < 0.9 ? 0.875 : 1.075);
+				scoreBop = FlxTween.tween(scoreTxt.scale, {x: scoreTxt.scale.x < 0.9 ? 0.8 : 1, y: scoreTxt.scale.y < 0.9 ? 0.8 : 1}, 0.24, {
 					onComplete: (twn) ->
 					{
 						scoreBop = null;
@@ -3172,6 +3195,31 @@ class PlayState extends MusicBeatState
 				case 'tranquility':
 					switch (curBeat)
 					{
+						case 48:
+							disableCamera = true;
+							FlxTween.tween(camFollow, {y: camFollow.y - 550}, 0.64);
+							FlxTween.tween(blackScreen, {alpha: 1}, 0.58, {onComplete: (twn) -> {
+								FlxTween.tween(wiggleEffect, {waveAmplitude: 0}, 0.6);
+								FlxTween.cancelTweensOf(purpleOverlay);
+								FlxTween.tween(purpleOverlay, {alpha: 0}, 0.1);
+								try {
+									@:privateAccess FlxTimer.globalManager._timers[0].cancel();
+								} catch (e) {}
+								disableHUD = true;
+								for (i in strumLineNotes)
+									FlxTween.tween(i, {alpha: 0.6}, 0.6);
+								for (i in [iconP1, iconP2, healthBar, healthBarBG])
+									FlxTween.tween(i, {alpha: 0}, 0.46, {onComplete: (twn) -> {
+										if (i == healthBarBG)
+										{
+											FlxTween.tween(scoreTxt, {y: FlxG.save.data.downscroll ? scoreTxt.y - 80 : scoreTxt.y + 80}, 0.38);
+											disableScoreBop = true;
+											FlxTween.tween(scoreTxt.scale, {x: 0.8, y: 0.8}, 0.38, {onComplete: (twn) -> {
+												disableScoreBop = false;
+											}});
+										}
+									}});
+							}});
 						case 146:
 							for (i in [dad, boyfriend, gf])
 							{
@@ -3181,7 +3229,7 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(whittyBG, {alpha: 0.65}, 3);
 						case 176 | 180 | 194:
 							FlxTween.tween(whittyBG, {alpha: 0.9}, (Conductor.crochet / 1000) * 2);
-						case 178 | 192:
+						case 178 /* | 192 */:
 							FlxTween.tween(whittyBG, {alpha: 0.65}, (Conductor.crochet / 1000) * 2);
 						case 208:
 							for (i in [dad, boyfriend, gf])

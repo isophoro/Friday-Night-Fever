@@ -7,6 +7,11 @@ import flixel.group.FlxSpriteGroup;
 
 using StringTools;
 
+/*
+    THIS IS SUCH AN OLD REWRITE PLEASE IGNORE THIS LMAO
+    I HATE THIS SHIT
+*/
+
 enum Alignment
 {
     LEFT;
@@ -27,12 +32,6 @@ typedef Properties =
 
 class AlphabetQuick extends FlxSpriteGroup
 {
-    /*
-        made by rifxii
-        little rewrite of alphabet so i could do what i wanted with it
-        dont make this shit change text every frame PLEASE
-    */
-
     public var text:String = '';
     var lastText:String = '';
     public var isBold:Bool = true;
@@ -47,15 +46,6 @@ class AlphabetQuick extends FlxSpriteGroup
 
     public var graphicsize:Float = 1;
     public var spacing:Int = 0;
-    public var rainbow:Array<FlxColor> = [
-		FlxColor.fromString('#9400D3'),
-		FlxColor.fromString('#4B0082'),
-		FlxColor.fromString('#0000FF'),
-		FlxColor.fromString('#00FF00'),
-		FlxColor.fromString('#FFFF00'),
-		FlxColor.fromString('#FF7F00'),
-		FlxColor.fromString('#FF0000')
-	];
 
     public var onComplete:AlphabetQuick->Void = function(c:AlphabetQuick){};
     public var screenCenterX:Bool = false;
@@ -191,30 +181,6 @@ class AlphabetQuick extends FlxSpriteGroup
         {
             var scaledY = FlxMath.remapToRange(targetY, 0, 1, 0, 1.5);
         }
-
-        if(isRainbow)
-        {
-            for(i in character_array)
-            {
-                i.color = FlxColor.interpolate(i.color, rainbow[step], 0.0384);
-            }
-        }
-    }
-
-    public function changeColor(color:FlxColor)
-    {
-        for(i in character_array)
-            i.color = color;
-    }
-
-    var step:Int = 0;
-    public var isRainbow:Bool = false;
-    public function colorStep()
-    {
-        isRainbow = true;
-        step++;
-        if(step > rainbow.length - 1)
-            step = 0;
     }
 }
 
