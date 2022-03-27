@@ -1,5 +1,6 @@
 package;
 
+import flixel.system.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
@@ -68,7 +69,6 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y - 85, 1, 1);
 		add(camFollow);
-
 
 		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
 		Conductor.changeBPM(100);

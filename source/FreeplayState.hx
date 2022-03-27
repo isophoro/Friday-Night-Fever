@@ -330,9 +330,11 @@ class FreeplayState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 3;
-		if (curDifficulty > 3)
+			curDifficulty = songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 3 : 2;
+		if (curDifficulty > (songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 3 : 2))
 			curDifficulty = 0;
+
+		PlayState.minus = curDifficulty == 3;
 
 		switch(currentStyle)
 		{
@@ -360,6 +362,8 @@ class FreeplayState extends MusicBeatState
 			curSelected = songs.length - 1;
 		if (curSelected >= songs.length)
 			curSelected = 0;
+
+		changeDiff();
 
 		#if !switch
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);

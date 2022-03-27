@@ -533,19 +533,30 @@ class Character extends FlxSprite
 				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
 				animation.addByPrefix('scared', 'GF FEAR', 24);
 
-				addOffset('cheer');
-				addOffset('sad', -2, -24);
-				addOffset('danceLeft', 0, -9);
-				addOffset('danceRight', 0, -9);
-
-				addOffset("singUP", 0, 16);
-				addOffset("singRIGHT", 0, -18);
-				addOffset("singLEFT", 0, -21);
-				addOffset("singDOWN", 0, -18);
-				addOffset('hairBlow', 0, -10);
-				addOffset('hairFall', 0, -8);
-
-				addOffset('scared', -2, -14);
+				if (!PlayState.minus)
+				{
+					addOffset('cheer');
+					addOffset('sad', -2, -24);
+					addOffset('danceLeft', 0, -9);
+					addOffset('danceRight', 0, -9);
+	
+					addOffset("singUP", 0, 16);
+					addOffset("singRIGHT", 0, -18);
+					addOffset("singLEFT", 0, -21);
+					addOffset("singDOWN", 0, -18);
+					addOffset('hairBlow', 0, -10);
+					addOffset('hairFall', 0, -8);
+	
+					addOffset('scared', -2, -14);
+				}
+				else
+				{
+					addOffset('danceLeft', 0, -9);
+					addOffset('danceRight', 0, -9);
+					addOffset('scared', -1, -11);
+					addOffset('cheer', -2, -16);
+					addOffset('sad', 0, -12);
+				}
 
 				playAnim('danceRight');
 

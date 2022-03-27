@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxDirectionFlags;
 import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
 import openfl.system.System;
@@ -1950,6 +1951,17 @@ class PlayState extends MusicBeatState
 			}
 			#end			
 		}
+		else if (FlxG.keys.justPressed.FIVE)
+		{
+			FlxG.switchState(new AnimationDebug(boyfriend.curCharacter));
+			#if windows
+			if (luaModchart != null) 
+			{
+				luaModchart.die();
+				luaModchart = null;
+			}
+			#end			
+		}
 		#end
 
 		if (startingSong) 
@@ -2383,7 +2395,8 @@ class PlayState extends MusicBeatState
 										default:
 											health -= 0.02;
 									}
-									gf.playAnim('scared');
+									if (!minus)
+										gf.playAnim('scared');
 								case 'hallow':
 									if (healthBar.percent > 5) {
 										health -= 0.05;
@@ -2582,10 +2595,10 @@ class PlayState extends MusicBeatState
 			} else {
 				var difficulty:String = "";
 
-				if (storyDifficulty == 0 || storyDifficulty == 3)
+				if (storyDifficulty == 0)
 					difficulty = '-easy';
 
-				if (storyDifficulty == 2)
+				if (storyDifficulty == 2 || storyDifficulty == 3)
 					difficulty = '-hard';
 				trace('LOADING NEXT SONG');
 				trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
@@ -3061,10 +3074,11 @@ class PlayState extends MusicBeatState
 			{
 				case 121: health += 0.32;
 				case 1476 | 1508:
-					characterTrail.visible = false;
+					if (!minus)
+						characterTrail.visible = false;
 					defaultCamZoom = 0.95;
 				case 1500 | 1522:
-					if (curStep == 1522)
+					if (curStep == 1522 && !minus)
 						characterTrail.visible = true;
 					defaultCamZoom = 0.6;
 				case 1524: health += 0.40;
