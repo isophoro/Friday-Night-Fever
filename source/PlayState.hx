@@ -47,7 +47,8 @@ import sys.FileSystem;
 class PlayState extends MusicBeatState 
 {
 	public static var instance:PlayState = null;
-
+	public static var minus:Bool = false;
+	
 	public static var SONG:SwagSong;
 	public static var curStage:String = '';
 	private var curSong:String = "";
@@ -795,7 +796,7 @@ class PlayState extends MusicBeatState
 				gf.x = 524;
 				gf.y = 245;
 				gf.scrollFactor.set(1.0, 1.0);
-				if (FlxG.save.data.distractions) 
+				if (FlxG.save.data.distractions && !minus) 
 				{
 					characterTrail = new CharacterTrail(dad, null, 15, 8, 0.3, 0.069);
 					add(characterTrail);
@@ -850,8 +851,18 @@ class PlayState extends MusicBeatState
 		{
 			gf.y -= 15;
 			gf.x += 180;
-			boyfriend.x += 160;
-			dad.x += 95;
+			if (!minus)
+			{
+				boyfriend.x += 160;
+				dad.x += 95;
+			}
+			else 
+			{
+				boyfriend.x += 160;
+				boyfriend.y -= 45;
+				dad.y -= 350;
+				dad.x -= 105;
+			}
 		}
 
 		add(gf);
@@ -2005,7 +2016,7 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y - 30;
 					case 'taki':
 						camFollow.x = dad.getMidpoint().x + 120;
-						camFollow.y = dad.getMidpoint().y - 50;
+						camFollow.y = minus ? dad.getMidpoint().y + 150 : dad.getMidpoint().y - 50;
 					case 'monster':
 						if (SONG.song.toLowerCase() == 'prayer') {
 							camFollow.x = dad.getMidpoint().x - -560;
@@ -2100,8 +2111,8 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 530;
 						camFollow.y = boyfriend.getMidpoint().y - 260;
 					case 'spooky' | 'spookyBOO':
-						camFollow.x = boyfriend.getMidpoint().x - 320;
-						camFollow.y = boyfriend.getMidpoint().y - 250;
+						camFollow.x = minus ? boyfriend.getMidpoint().x - 550 : boyfriend.getMidpoint().x - 320;
+						camFollow.y = minus ? boyfriend.getMidpoint().y - 165 : boyfriend.getMidpoint().y - 250;
 					case 'church':
 						camFollow.x = boyfriend.getMidpoint().x - 465;
 						camFollow.y = boyfriend.getMidpoint().y - 365;

@@ -45,7 +45,7 @@ class StoryMenuState extends MusicBeatState
 		return [
 			['Milk-Tea'],
 			['Metamorphosis', 'Void', 'Down-bad'],
-			['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
+			PlayState.minus ? ['Bazinga', 'Crucify'] : ['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
 			['Prayer', 'Bad-Nun'],
 			['Hallow', 'Portrait', 'Soul'],
 			['Mako', 'VIM', "Retribution"],
@@ -77,19 +77,24 @@ class StoryMenuState extends MusicBeatState
 		['senpai', 'bf', 'gf']
 	];
 
-	var weekNames:Array<String> = [
-		"SWEET SERVICE!",
-		"STICKY SITUATION!",
-		"SWEET AND SOUR!",
-		"TAKI'S REVENGE!",
-		"???",
-		"MELONCHOLY!",
-		"BUNNI MURDER!",
-		"DINNER TIME!",
-		"GOD DAMN!",
-		"ROBERT FEVER WEEK"
-		//"PRINCESS WEEK"
-	];
+	var weekNames(get, never):Array<String>; 
+	
+	function get_weekNames()
+	{
+		return[
+			"SWEET SERVICE!",
+			"STICKY SITUATION!",
+			PlayState.minus ? "VS MINUS TAKI" : "SWEET AND SOUR!",
+			"TAKI'S REVENGE!",
+			"???",
+			"MELONCHOLY!",
+			"BUNNI MURDER!",
+			"DINNER TIME!",
+			"GOD DAMN!",
+			"ROBERT FEVER WEEK"
+			//"PRINCESS WEEK"
+		];
+	}
 
 	var txtWeekTitle:FlxText;
 
@@ -227,9 +232,8 @@ class StoryMenuState extends MusicBeatState
 		sprDifficulty.frames = ui_tex;
 		sprDifficulty.animation.addByPrefix('easy', 'EASY');
 		sprDifficulty.animation.addByPrefix('normal', 'NORMAL');
-		sprDifficulty.animation.addByPrefix('hard', 'NOTHARD');
-		//sprDifficulty.animation.addByPrefix('hard plus', 'HARD +');
-		sprDifficulty.animation.addByPrefix('baby', 'BABY');
+		sprDifficulty.animation.addByPrefix('hard', 'HARD');
+		sprDifficulty.animation.addByPrefix('minus', 'MINUS');
 
 		difficultySelectors.add(sprDifficulty);
 
@@ -400,10 +404,9 @@ class StoryMenuState extends MusicBeatState
 
 			switch (curDifficulty)
 			{
-					
-				case 0 | 3:
+				case 0:
 					diffic = '-easy';
-				case 2:
+				case 2 | 3:
 					diffic = '-hard';
 			}
 
@@ -431,21 +434,26 @@ class StoryMenuState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 3;
-		if (curDifficulty > 3)
+			curDifficulty = curWeek == 2 ? 3 : 2;
+		else if (curDifficulty > 3 && curWeek == 2 || curDifficulty > 2 && curWeek != 2)
 			curDifficulty = 0;
 
 		switch (curDifficulty)
 		{
 			case 0:
 				sprDifficulty.animation.play('easy');
+				PlayState.minus = false;
 			case 1:
 				sprDifficulty.animation.play('normal');
 			case 2:
 				sprDifficulty.animation.play('hard');
+				PlayState.minus = false;
 			case 3:
-				sprDifficulty.animation.play('baby');
+				sprDifficulty.animation.play('minus');
+				PlayState.minus = true;
 		}
+
+		updateText();
 		
 		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
 
@@ -464,7 +472,6 @@ class StoryMenuState extends MusicBeatState
 
 	function changeWeek(change:Int = 0):Void
 	{
-
 		curWeek += change;
 
 		if (curWeek >= weekData.length)
@@ -509,7 +516,7 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist.text = "Tracks\n";
 		var stringThing:Array<String> = weekData[curWeek];
 
-		var hiddenSongs:Array<String> = ['Bazinga', 'Crucify'];
+		var hiddenSongs:Array<String> = [];
 		for (i in stringThing)
 		{
 			if(!hiddenSongs.contains(i))

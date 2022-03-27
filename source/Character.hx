@@ -61,45 +61,25 @@ class Character extends FlxSprite
 				switch (curCharacter)
 				{
 					case 'bfdemoncesar':
-						frames = Paths.getSparrowAtlas('characters/demon_fever_assets', 'shared');
+						frames = Paths.getSparrowAtlas(PlayState.minus ? 'characters/mfever demon_assets' : 'characters/demon_fever_assets', 'shared');
 					default:
 						frames = Paths.getSparrowAtlas('characters/fever_assets', 'shared');
 				}
 
-				animation.addByPrefix('idle', 'fever idle0', 24, false);
+				var prefix:String = PlayState.minus ? "m" : "";
+				animation.addByPrefix('idle', prefix + 'fever idle0', 24, false);
 				animation.addByPrefix('idle-frown', 'fever idle frown', 24, false);
-				animation.addByPrefix('singUP', 'fever up0', 24, false);
-				animation.addByPrefix('singLEFT', 'fever left0', 24, false);
-				animation.addByPrefix('singRIGHT', 'fever right0', 24, false);
-				animation.addByPrefix('singDOWN', 'fever down0', 24, false);
-				animation.addByPrefix('singUPmiss', 'fever up miss', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'fever left miss', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'fever right miss', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'fever down miss', 24, false);
-				animation.addByPrefix('scared', 'fever fear', 24);
-				animation.addByPrefix('hey', 'fever hey', 24, false);
-				animation.addByPrefix('dodge', 'fever dodge', 24, false);
-
-				/*@:privateAccess
-				{
-					var animArray:Array<String> = [];
-					for (i in animation._sprite.frames.frames)
-					{
-						trace(i.name);
-						var str = '';
-						for (char in 0...i.name.length)
-						{
-							if (Std.parseInt(i.name.charAt(char)) == null)
-								str += i.name.charAt(char);
-						}
-
-						if (animArray.indexOf(str) == -1)
-						{
-							animArray.push(str);
-						}
-					}
-					trace(animArray);
-				}*/
+				animation.addByPrefix('singUP', prefix + 'fever up0', 24, false);
+				animation.addByPrefix('singLEFT', prefix + 'fever left0', 24, false);
+				animation.addByPrefix('singRIGHT', prefix + 'fever right0', 24, false);
+				animation.addByPrefix('singDOWN', prefix + 'fever down0', 24, false);
+				animation.addByPrefix('singUPmiss', 'fever up miss'.replace(PlayState.minus ? 'fever ' : 'penis', ''), 24, false);
+				animation.addByPrefix('singLEFTmiss', 'fever left miss'.replace(PlayState.minus ? 'fever ' : 'penis', ''), 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'fever right miss'.replace(PlayState.minus ? 'fever ' : 'penis', ''), 24, false);
+				animation.addByPrefix('singDOWNmiss', 'fever down miss'.replace(PlayState.minus ? 'fever ' : 'penis', ''), 24, false);
+				animation.addByPrefix('scared', prefix + 'fever fear'.replace(PlayState.minus ? 'fear' : 'penis', 'scared'), 24);
+				animation.addByPrefix('hey', prefix + 'fever hey', 24, false);
+				animation.addByPrefix('dodge', prefix + 'fever dodge', 24, false);
 
 				if (curCharacter != 'bfdemoncesar')
 				{
@@ -119,19 +99,37 @@ class Character extends FlxSprite
 				}
 				else
 				{
-					addOffset('idle', 6, 93);
-					addOffset('idle-frown', 6, 93);
-					addOffset("singUP", -35, 96);
-					addOffset("singRIGHT", -6, 87);
-					addOffset("singLEFT", 43, 95);
-					addOffset("singDOWN", 40, 15);
-					addOffset("singUPmiss", -14, 103);
-					addOffset("singRIGHTmiss", -20, 91);
-					addOffset("singLEFTmiss", 40, 93);
-					addOffset("singDOWNmiss", 45, 14);
-					addOffset("hey", 0, 89);
-					addOffset('scared', 2, 92);
-					addOffset('dodge', 21, 92);
+					if (!PlayState.minus)
+					{
+						addOffset('idle', 6, 93);
+						addOffset('idle-frown', 6, 93);
+						addOffset("singUP", -35, 96);
+						addOffset("singRIGHT", -6, 87);
+						addOffset("singLEFT", 43, 95);
+						addOffset("singDOWN", 40, 15);
+						addOffset("singUPmiss", -14, 103);
+						addOffset("singRIGHTmiss", -20, 91);
+						addOffset("singLEFTmiss", 40, 93);
+						addOffset("singDOWNmiss", 45, 14);
+						addOffset("hey", 0, 89);
+						addOffset('scared', 2, 92);
+						addOffset('dodge', 21, 92);
+					}
+					else
+					{
+						addOffset('idle', 6, 93);
+						addOffset('singDOWN', 24, -20);
+						addOffset('singUP', 53, 112);
+						addOffset('singLEFT', 132, 31);
+						addOffset('singRIGHT', 15, 91);
+						addOffset('singRIGHTmiss', 100, 41);
+						addOffset('singLEFTmiss', 253, 62);
+						addOffset('singDOWNmiss', 605, 4);
+						addOffset('singUPmiss', -52, 133);
+						addOffset('dodge', 66, 87);
+						addOffset('hey', -16, 94);
+						addOffset('scared', -38, 142);
+					}
 				}
 
 				dance();
@@ -521,7 +519,7 @@ class Character extends FlxSprite
 
 			case 'gf':
 				iconColor = '99DBF6';
-				tex = Paths.getSparrowAtlas('characters/GF_assets');
+				tex = Paths.getSparrowAtlas(PlayState.minus ? 'characters/mtea_assets' : 'characters/GF_assets');
 				frames = tex;
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
 				animation.addByPrefix('singLEFT', 'GF left note', 24, false);
@@ -785,19 +783,31 @@ class Character extends FlxSprite
 
 			case 'taki': // TAKI
 				iconColor = 'D34470';
-				tex = Paths.getSparrowAtlas('characters/taki_assets');
+				tex = Paths.getSparrowAtlas('characters/' + (PlayState.minus ? 'm' : '') + 'taki_assets');
 				frames = tex;
-				animation.addByPrefix('idle', 'takiidle', 24, false);
-				animation.addByPrefix('singUP', 'takiup', 24, false);
-				animation.addByPrefix('singDOWN', 'takidown', 24, false);
-				animation.addByPrefix('singLEFT', 'takileft', 24, false);
-				animation.addByPrefix('singRIGHT', 'takiright', 24, false);
 
-				addOffset('idle');
-				addOffset("singUP", -6, 8);
-				addOffset("singRIGHT", -17, -5);
-				addOffset("singLEFT", 13, -18);
-				addOffset("singDOWN", 21, -164);
+				animation.addByPrefix('idle', 'takiidle'.replace('taki', PlayState.minus ? 'mtaki ' : 'taki'), 24, false);
+				animation.addByPrefix('singUP', 'takiup'.replace('taki', PlayState.minus ? 'mtaki ' : 'taki'), 24, false);
+				animation.addByPrefix('singDOWN', 'takidown'.replace('taki', PlayState.minus ? 'mtaki ' : 'taki'), 24, false);
+				animation.addByPrefix('singLEFT', 'takileft'.replace('taki', PlayState.minus ? 'mtaki ' : 'taki'), 24, false);
+				animation.addByPrefix('singRIGHT', 'takiright'.replace('taki', PlayState.minus ? 'mtaki ' : 'taki'), 24, false);
+
+				if (!PlayState.minus)
+				{
+					addOffset('idle');
+					addOffset("singUP", -6, 8);
+					addOffset("singRIGHT", -17, -5);
+					addOffset("singLEFT", 13, -18);
+					addOffset("singDOWN", 21, -164);
+				}
+				else
+				{
+					addOffset('idle');
+					addOffset("singUP", 146, -76);
+					addOffset("singRIGHT", -16, -145);
+					addOffset("singLEFT", 193, -438);
+					addOffset("singDOWN", 311, -172);
+				}
 
 				playAnim('idle');
 			case 'monster': // TAKI
