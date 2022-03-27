@@ -721,11 +721,11 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'Dad Sing Note DOWN', 24);
 				animation.addByPrefix('singLEFT', 'dad sing note LEFT', 24);
 
-				addOffset('idle');
-				addOffset("singUP", -135, 54);
-				addOffset("singRIGHT", -211, -16);
-				addOffset("singLEFT", -152, 30);
-				addOffset("singDOWN", -200, -66);
+				addOffset("idle", 0, 0);
+				addOffset("singDOWN", -200, -16);
+				addOffset("singRIGHT", -181, 17);
+				addOffset("singUP", -155, 24);
+				addOffset("singLEFT", -152, 30);				
 
 				playAnim('idle');
 	
@@ -781,14 +781,12 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'feral note sing left', 24, false);
 				animation.addByPrefix('singRIGHT', 'feral sing right', 24, false);
 				animation.addByPrefix('idle', 'feral dance idle', 24, false);
-		
 
-				addOffset('idle');
-
-				addOffset("singUP", -12, 4);
-				addOffset("singRIGHT", 1, -7);
-				addOffset("singLEFT", 3, -2);
+				addOffset("idle", 0, 0);
 				addOffset("singDOWN", -7, 1);
+				addOffset("singRIGHT", 11, -2);
+				addOffset("singUP", 1, -3);
+				addOffset("singLEFT", 24, -2);				
 
 				playAnim('idle');
 
@@ -905,11 +903,11 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'Pico Note Right0', 24, false);
 				animation.addByPrefix('singRIGHT', 'Pico NOTE LEFT0', 24, false);
 				
-				addOffset('idle');
-				addOffset("singUP", 21, -37);
-				addOffset("singRIGHT", -12, 14);
-				addOffset("singLEFT", 26, 12);
-				addOffset("singDOWN", 21, 61);
+				addOffset("idle", 0, 0);
+				addOffset("singDOWN", -19, 51);
+				addOffset("singRIGHT", 8, 14);
+				addOffset("singUP", -19, -37);
+				addOffset("singLEFT", -24, 12);				
 				
 				playAnim('idle');
 

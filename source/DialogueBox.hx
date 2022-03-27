@@ -71,7 +71,7 @@ class DialogueBox extends FlxSpriteGroup
 		if (!PlayState.isStoryMode)
 			return;
 
-		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
+		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), FlxColor.BLACK);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
 		if(!Recap.inRecap)
@@ -84,13 +84,8 @@ class DialogueBox extends FlxSpriteGroup
 		bg.visible = false;
 		bg.scrollFactor.set();
 	
-		new FlxTimer().start(0.83, function(tmr:FlxTimer)
-		{
-			bgFade.alpha += (1 / 5) * 0.7;
-			if (bgFade.alpha > 0.7)
-				bgFade.alpha = 0.7;
-		}, 5);
-
+		FlxTween.tween(bgFade, {alpha: 0.7}, 0.83);
+		
 		box = new FlxSprite(-20, 472);
 		box.loadGraphic(Paths.image('dialogue/textbox'));
 		if(Recap.inRecap)

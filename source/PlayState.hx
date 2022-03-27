@@ -1335,7 +1335,7 @@ class PlayState extends MusicBeatState
 			add(songName);
 			songName.cameras = [camHUD];
 
-			songName.size = 18;
+			songName.size = 20;
 			songName.alpha = 0;
 			FlxTween.tween(songName, {alpha:1}, 0.7, {onComplete: (twn) -> {
 				new FlxTimer().start(5.8, (t) -> {
@@ -2712,20 +2712,16 @@ class PlayState extends MusicBeatState
 				msTiming = 0;
 
 			currentTimingShown.text = msTiming + 'ms';
-			currentTimingShown.alpha = rating.alpha;
 
 			switch (daRating) 
 			{
-				case 'shit' | 'bad': currentTimingShown.color = FlxColor.RED;
-				case 'good': currentTimingShown.color = FlxColor.GREEN;
-				case 'sick': currentTimingShown.color = FlxColor.CYAN;
+				case 'shit' | 'bad': currentTimingShown.color = 0xFFC4012D;
+				case 'good': currentTimingShown.color = 0xFFE398DD;
+				case 'sick': currentTimingShown.color = 0xFF7A55BB;
 			}
 
-			if (currentTimingShown.alpha != 1)
-			{
-				FlxTween.cancelTweensOf(currentTimingShown);
-				currentTimingShown.alpha = 1;
-			}
+			FlxTween.cancelTweensOf(currentTimingShown);
+			currentTimingShown.alpha = 1;
 
 			var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2, assetLib));
 			comboSpr.x = rating.x;
@@ -2736,7 +2732,7 @@ class PlayState extends MusicBeatState
 			currentTimingShown.x = comboSpr.x + 140;
 			currentTimingShown.y = rating.y + 100;
 			currentTimingShown.acceleration.y = 600;
-			currentTimingShown.velocity.y -= 150;
+			currentTimingShown.velocity.y = -150;
 
 			comboSpr.velocity.x += FlxG.random.int(1, 10);
 			currentTimingShown.velocity.x += comboSpr.velocity.x;
@@ -2800,25 +2796,25 @@ class PlayState extends MusicBeatState
 						numScore.shader = wiggleEffect.shader;
 				}
 
-				FlxTween.tween(numScore, {alpha: 0}, 0.2, {
+				FlxTween.tween(numScore, {alpha: 0}, 0.5, {
 					onComplete: function(tween:FlxTween) {
 						numScore.kill();
 					},
-					startDelay: Conductor.crochet * 0.002
+					startDelay: 0.3
 				});
 
 				daLoop++;
 			}
 
-			FlxTween.tween(rating, {alpha: 0}, 0.2, {startDelay: Conductor.crochet * 0.001});
-			FlxTween.tween(currentTimingShown, {alpha:0}, 0.2, {startDelay: Conductor.crochet * 0.001});
+			FlxTween.tween(rating, {alpha: 0}, 0.45, {startDelay: 0.27});
+			FlxTween.tween(currentTimingShown, {alpha:0}, 0.45, {startDelay: 0.27});
 
-			FlxTween.tween(comboSpr, {alpha: 0}, 0.2, {
+			FlxTween.tween(comboSpr, {alpha: 0}, 0.45, {
 				onComplete: function(tween:FlxTween) {
 					comboSpr.kill();
 					rating.kill();
 				},
-				startDelay: Conductor.crochet * 0.001
+				startDelay: 0.27
 			});
 		}
 	}
