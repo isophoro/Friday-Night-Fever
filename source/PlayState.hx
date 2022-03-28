@@ -160,6 +160,7 @@ class PlayState extends MusicBeatState
 	var whittyBG:FlxSprite; // princess week
 	var princessBG:FlxSprite;
 	var princessFloor:FlxSprite;
+	var princessCrystals:FlxSprite;
 
 	public var scoreTxt:FlxText;
 	public var subtitles:Subtitles;
@@ -600,7 +601,7 @@ class PlayState extends MusicBeatState
 				{
 					princessBG = new FlxSprite(-446, -611).loadGraphic(Paths.image('roboStage/princessBG'));
 					princessBG.antialiasing = true;
-					princessBG.scrollFactor.set(0.9, 0.9);
+					princessBG.scrollFactor.set(0.75, 0.8);
 					princessBG.scale.set(1.25, 1.25);
 					add(princessBG);
 					princessBG.visible = false;
@@ -611,8 +612,15 @@ class PlayState extends MusicBeatState
 					princessFloor.scale.set(1.25, 1.25);
 					add(princessFloor);
 					princessFloor.visible = false;
+
+					princessCrystals = new FlxSprite(-446, -591).loadGraphic(Paths.image('roboStage/princessCrystals'));
+					princessCrystals.antialiasing = true;
+					princessCrystals.scrollFactor.set(0.9, 0.9);
+					princessCrystals.scale.set(1.25, 1.25);
+					add(princessCrystals);
+					princessCrystals.visible = false;
+					FlxTween.tween(princessCrystals, {y: princessCrystals.y - 70}, 3.4, {type: PINGPONG});
 				}
-				
 			default:
 			{
 				defaultCamZoom = 0.9;
@@ -3104,6 +3112,7 @@ class PlayState extends MusicBeatState
 					camHUD.flash(FlxColor.WHITE, 0.5);
 					princessBG.visible = true;
 					princessFloor.visible = true;
+					princessCrystals.visible = true;
 					defaultCamZoom = 0.65;
 					gf.y += 60;
 			}
@@ -3445,6 +3454,9 @@ class PlayState extends MusicBeatState
 
 	private function onKeyPress(input:KeyboardEvent)
 	{
+		if (paused)
+			return;
+
 		// Stolen from my engine, changed shit to support kade engine
 		var key:Int = -1;
 
@@ -3534,6 +3546,9 @@ class PlayState extends MusicBeatState
 
 	private function onKeyRelease(event:KeyboardEvent)
 	{
+		if (paused)
+			return;
+		
 		@:privateAccess
 		var key:Int = keybinds.indexOf(FlxKey.toStringMap.get(event.keyCode));
 
