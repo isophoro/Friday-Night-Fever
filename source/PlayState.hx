@@ -275,7 +275,10 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText
 			+ " "
-			+ SONG.song
+			+ 	if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+					"im not leaking this song L"
+				else
+					SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") "
@@ -1356,7 +1359,10 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText
 			+ " "
-			+ SONG.song
+			+ 	if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+					"im not leaking this song L"
+				else
+					SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") "
@@ -1661,7 +1667,10 @@ class PlayState extends MusicBeatState
 
 			#if windows
 			DiscordClient.changePresence("PAUSED on "
-				+ SONG.song
+				+ 	if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+						"im not leaking this song L"
+					else
+						SONG.song
 				+ " ("
 				+ storyDifficultyText
 				+ ") "
@@ -1702,7 +1711,10 @@ class PlayState extends MusicBeatState
 			if (startTimer.finished) {
 				DiscordClient.changePresence(detailsText
 					+ " "
-					+ SONG.song
+					+ 	if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+							"im not leaking this song L"
+						else
+							SONG.song
 					+ " ("
 					+ storyDifficultyText
 					+ ") "
@@ -1716,8 +1728,13 @@ class PlayState extends MusicBeatState
 					songLength
 					- Conductor.songPosition);
 			} else {
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), iconRPC);
-			}
+				DiscordClient.changePresence(detailsText, 
+				if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+					"im not leaking this song L"
+				else
+					SONG.song 
+				+ " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), iconRPC);
+				}
 			#end
 		}
 
@@ -1739,7 +1756,10 @@ class PlayState extends MusicBeatState
 		#if windows
 		DiscordClient.changePresence(detailsText
 			+ " "
-			+ SONG.song
+			+ 	if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+					"im not leaking this song L"
+				else
+					SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") "
@@ -2193,7 +2213,10 @@ class PlayState extends MusicBeatState
 			#if windows
 			// Game Over doesn't get his own variable because it's only used here
 			DiscordClient.changePresence("GAME OVER -- "
-				+ SONG.song
+				+ 	if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+						"im not leaking this song L"
+					else
+						SONG.song
 				+ " ("
 				+ storyDifficultyText
 				+ ") "
@@ -2221,7 +2244,10 @@ class PlayState extends MusicBeatState
 			#if windows
 			// Game Over doesn't get his own variable because it's only used here
 			DiscordClient.changePresence("GAME OVER -- "
-				+ SONG.song
+				+ 	if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+						"im not leaking this song L"
+					else
+						SONG.song
 				+ " ("
 				+ storyDifficultyText
 				+ ") "
@@ -3166,7 +3192,10 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText
 			+ " "
-			+ SONG.song
+			+ 	if(curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish")
+					"im not leaking this song L"
+				else
+					SONG.song
 			+ " ("
 			+ storyDifficultyText
 			+ ") "
