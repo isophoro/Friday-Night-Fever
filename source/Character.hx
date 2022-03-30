@@ -1045,12 +1045,34 @@ class Character extends FlxSprite
 
 			case 'flippy': //FLIPPY
 				iconColor = '4E4E4E';
-				frames = Paths.getSparrowAtlas('characters/flippy');
-				animation.addByPrefix('idle', "Flippy IDLE", 24, false);
-				animation.addByPrefix('singUP', "Flippy UP", 24, false);
-				animation.addByPrefix('singRIGHT', "Flippy RIGHT", 24, false);
-				animation.addByPrefix('singLEFT', "Flippy LEFT", 24, false);
-				animation.addByPrefix('singDOWN', "Flippy DOWN", 24, false);
+				frames = Paths.getSparrowAtlas('characters/flippysolo');
+				animation.addByPrefix('idle', "FLIPPY IDLE", 24, false);
+				animation.addByPrefix('singUP', "FLIPPY UP", 24, false);
+				animation.addByPrefix('singRIGHT', "FLIPPY RIGHT", 24, false);
+				animation.addByPrefix('singLEFT', "FLIPPY LEFT", 24, false);
+				animation.addByPrefix('singDOWN', "FLIPPY DOWN", 24, false);
+
+				addOffset('idle', 0, 0);
+				addOffset('singUP', 0, 0);
+				addOffset("singRIGHT", 0, 0);
+				addOffset("singLEFT", 0, 0);
+				addOffset("singDOWN", 0, 0);
+
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+
+				playAnim('idle');
+
+				antialiasing = false;
+
+			case 'meat': //MEAT
+				iconColor = '4E4E4E';
+				frames = Paths.getSparrowAtlas('characters/meatsolo');
+				animation.addByPrefix('idle', "MEATIDLE0", 24, false);
+				animation.addByPrefix('singUP', "MEATUP0", 24, false);
+				animation.addByPrefix('singRIGHT', "MEATRIGHT0", 24, false);
+				animation.addByPrefix('singLEFT', "MEATLEFT0", 24, false);
+				animation.addByPrefix('singDOWN', "MEATDOWN0", 24, false);
 
 				addOffset('idle', 0, 0);
 				addOffset('singUP', 0, 0);

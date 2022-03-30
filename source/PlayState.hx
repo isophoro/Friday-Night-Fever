@@ -212,12 +212,17 @@ class PlayState extends MusicBeatState
 	var wiggleEffect:WiggleEffect;
 	var vignette:FlxSprite;
 
+	var meat:Character;
+
 	override public function create() 
 	{
 		if (!isStoryMode || StoryMenuState.get_weekData()[storyWeek][0].toLowerCase() == SONG.song.toLowerCase())
 		{
 			Main.clearMemory();
 		}
+
+
+
 		#if cpp 
 		Gc.run(true);
 		#end
@@ -665,6 +670,8 @@ class PlayState extends MusicBeatState
 		gf = new Character(400, 130, SONG.gfVersion == null ? 'gf' : SONG.gfVersion);
 		gf.scrollFactor.set(0.95, 0.95);
 
+		meat = new Character(260, 100.9, 'meat');
+
 		dad = new Character(100, 100, SONG.player2);
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
@@ -883,6 +890,12 @@ class PlayState extends MusicBeatState
 		if (curStage.startsWith('limo'))
 			add(limo);
 
+		if(curStage == 'schoolEvil')
+		{
+			add(meat);
+			//FlxTween.tween(meat, {y: meat.y - 50}, 2, {type: PINGPONG, ease: FlxEase.cubeOut});
+			FlxTween.circularMotion(meat, 300, 200, 50, 0, true, 4, true, {type: PINGPONG});
+		}
 		add(dad);
 		add(boyfriend);
 
@@ -1171,6 +1184,10 @@ class PlayState extends MusicBeatState
 
 		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer) {
 			dad.dance();
+			if(curStage == 'schoolEvil')
+			{
+				meat.dance();
+			}
 			gf.dance();
 			boyfriend.dance();
 
@@ -2397,6 +2414,10 @@ class PlayState extends MusicBeatState
 					else
 					{
 						curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
+						if(curStage == 'schoolEvil')
+						{
+							meat.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
+						}
 					}
 
 					if (!opponent)

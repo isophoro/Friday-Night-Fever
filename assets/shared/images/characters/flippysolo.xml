@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="flippysolo.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="FLIPPY DOWN0000" x="0" y="0" width="225" height="184" pivotX="113" pivotY="92"/>
+	<SubTexture name="FLIPPY DOWN0001" x="0" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0002" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0003" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0004" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0005" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0006" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0007" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0008" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0009" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0010" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0011" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0012" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY DOWN0013" x="225" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0000" x="450" y="0" width="225" height="184" pivotX="113" pivotY="92"/>
+	<SubTexture name="FLIPPY IDLE0001" x="675" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0002" x="675" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0003" x="0" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0004" x="0" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0005" x="675" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0006" x="675" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0007" x="450" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0008" x="450" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0009" x="450" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY IDLE0010" x="450" y="0" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0000" x="225" y="184" width="225" height="184" pivotX="113" pivotY="92"/>
+	<SubTexture name="FLIPPY LEFT0001" x="225" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0002" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0003" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0004" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0005" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0006" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0007" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0008" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0009" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0010" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0011" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0012" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY LEFT0013" x="450" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0000" x="675" y="184" width="225" height="184" pivotX="112" pivotY="92"/>
+	<SubTexture name="FLIPPY RIGHT0001" x="675" y="184" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0002" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0003" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0004" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0005" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0006" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0007" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0008" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0009" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0010" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0011" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0012" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY RIGHT0013" x="0" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0000" x="225" y="368" width="225" height="184" pivotX="113" pivotY="92"/>
+	<SubTexture name="FLIPPY UP0001" x="225" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0002" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0003" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0004" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0005" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0006" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0007" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0008" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0009" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0010" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0011" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0012" x="450" y="368" width="225" height="184"/>
+	<SubTexture name="FLIPPY UP0013" x="450" y="368" width="225" height="184"/>
+</TextureAtlas>
