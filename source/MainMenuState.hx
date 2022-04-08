@@ -166,6 +166,10 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.switchState(new CreditsState());
 		}
+		else if (FlxG.keys.justPressed.V)
+		{
+			LoadingState.loadAndSwitchState(new ClosetState());
+		}
 		#end
 
 		if (FlxG.sound.music.volume < 0.8)

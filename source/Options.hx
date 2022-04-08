@@ -1,6 +1,8 @@
 package;
 
 
+import Character.Costume;
+import Character.CostumeName;
 import lime.app.Application;
 import lime.system.DisplayMode;
 import flixel.util.FlxColor;
@@ -806,6 +808,56 @@ class LaneOption extends Option
 		if (FlxG.save.data.laneTransparency > 100)
 			FlxG.save.data.laneTransparency = 100;
 
+		return true;
+	}
+}
+
+class DebugLock extends Option
+{
+	var character:CostumeName;
+	public function new(character:CostumeName)
+	{
+		description = "Lock the character (DEBUG ONLY)";
+		this.character = character;
+		super();
+	}
+
+	private override function updateDisplay():String
+	{
+		return 'Lock ${Costume.ref[character].displayName}';
+	}
+
+	public override function press():Bool
+	{
+		if (FlxG.save.data.unlockedCostumes.contains(character))
+			FlxG.save.data.unlockedCostumes.remove(character);
+		
+		display = updateDisplay();
+		return true;
+	}
+}
+
+class DebugUnlock extends Option
+{
+	var character:CostumeName;
+	public function new(character:CostumeName)
+	{
+		description = "Unlock the character (DEBUG ONLY)";
+		this.character = character;
+		super();
+	}
+
+	private override function updateDisplay():String
+	{
+		return 'Unlock ${Costume.ref[character].displayName}';
+	}
+
+	public override function press():Bool
+	{
+		if (!FlxG.save.data.unlockedCostumes.contains(character))
+			FlxG.save.data.unlockedCostumes.push(character);
+		
+		display = updateDisplay();
 		return true;
 	}
 }

@@ -6,6 +6,7 @@ class ChromaticAberration extends FlxShader
 {
 	public var redOffset(default, set):Float = 0;
 	public var blueOffset(default, set):Float = 0;
+	public var greenOffset(default, set):Float = 0;
 	
 	function set_redOffset(v:Float):Float
 	{
@@ -18,6 +19,13 @@ class ChromaticAberration extends FlxShader
 	{
 		blueOffset = v;
 		data.bOffset.value = [v];
+		return v;
+	}
+
+	function set_greenOffset(v:Float):Float
+	{
+		greenOffset = v;
+		data.gOffset.value = [v];
 		return v;
 	}
 
@@ -37,7 +45,6 @@ class ChromaticAberration extends FlxShader
 			toUse.r = col1.r;
 			toUse.g = col2.g;
 			toUse.b = col3.b;
-			//float someshit = col4.r + col4.g + col4.b;
 
 			gl_FragColor = toUse;
 		}')

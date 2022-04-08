@@ -119,7 +119,6 @@ class StoryMenuState extends MusicBeatState
 
 	override function create()
 	{
-
 		PlayState.easierMode = false;
 		PlayState.deaths = 0;
 		
@@ -134,10 +133,9 @@ class StoryMenuState extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		if (FlxG.sound.music != null)
+		if (FlxG.sound.music == null || FlxG.sound.music != null && !FlxG.sound.music.playing || FlxG.sound.music != null && FlxG.sound.music.volume <= 0.1)
 		{
-			if (!FlxG.sound.music.playing)
-				Main.playFreakyMenu();
+			Main.playFreakyMenu();
 		}
 
 		persistentUpdate = persistentDraw = true;

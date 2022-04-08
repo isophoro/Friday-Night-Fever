@@ -1,5 +1,6 @@
 package;
 
+import Character.Costume;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import openfl.Lib;
@@ -24,6 +25,16 @@ class OptionsMenu extends MusicBeatState
 	var curSelected:Int = 0;
 
 	var options:Array<OptionCategory> = [
+		#if debug
+		new OptionCategory("DEBUG LOCK CHARACTER", [
+			for (i in Costume.PlayerList)
+				new DebugLock(i)
+		]),
+		new OptionCategory("DEBUG UNLOCK CHARACTER", [
+			for (i in Costume.PlayerList)
+				new DebugUnlock(i)
+		]),
+		#end
 		new OptionCategory("Mod Specific", [
 			new OpponentOption("Play as either the opponent or as Fever (Default as Fever)"),
 			new IntroOption("Disables the startup anime opening video"),
@@ -53,7 +64,6 @@ class OptionsMenu extends MusicBeatState
 			new LaneOption("How transparent your lane is, higher = more visible."),
 			//new NPSDisplayOption("Shows your current Notes Per Second."),
 			new SongPositionOption("Show the songs current position (as a bar)"),
-			new CpuStrums("CPU's strumline lights up when a note hits it."),
 			#else
 			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay.")
 			#end

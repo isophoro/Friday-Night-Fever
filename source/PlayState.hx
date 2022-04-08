@@ -1,5 +1,8 @@
 package;
 
+import Section.SwagSection;
+import Character.CostumeName;
+import Character.Costume;
 import flixel.util.FlxDirectionFlags;
 import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
@@ -10,7 +13,6 @@ import sprites.Crowd;
 import openfl.display.BitmapData;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import sprites.CharacterTrail;
-import Section.SwagSection;
 import Song.SwagSong;
 import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
@@ -178,6 +180,7 @@ class PlayState extends MusicBeatState
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
 	var blackScreen:FlxSprite;
+	var takiBGSprites:Array<FlxSprite> = [];
 
 	public static var deaths:Int = 0;
 	public static var easierMode:Bool = false;
@@ -216,6 +219,7 @@ class PlayState extends MusicBeatState
 
 	override public function create() 
 	{
+		trace(storyWeek);
 		if (!isStoryMode || StoryMenuState.get_weekData()[storyWeek][0].toLowerCase() == SONG.song.toLowerCase())
 		{
 			Main.clearMemory();
@@ -417,8 +421,34 @@ class PlayState extends MusicBeatState
 					if (curSong == 'Hallow' || curSong == 'Portrait') {
 						var bg:FlxSprite = new FlxSprite(-200, -100).loadGraphic(Paths.image('week2bghallow'));
 					}
+
 					bg.antialiasing = true;
 					add(bg);
+
+					if (SONG.song == 'Crucify')
+					{
+						var sky:FlxSprite = new FlxSprite(bg.x + 165, bg.y + 90).loadGraphic(Paths.image('takiSky', 'week2'));
+						sky.antialiasing = true;
+						add(sky);
+						sky.visible = false;
+						takiBGSprites.push(sky);
+
+						var islands:FlxSprite = new FlxSprite(sky.x, sky.y).loadGraphic(Paths.image('takiIslands', 'week2'));
+						islands.antialiasing = true;
+						add(islands);
+						islands.visible = false;
+						takiBGSprites.push(islands);
+
+						var main:FlxSprite = new FlxSprite(sky.x, sky.y).loadGraphic(Paths.image('takiMain', 'week2'));
+						main.antialiasing = true;
+						add(main);
+						main.visible = false;
+						takiBGSprites.push(main);
+
+						for (i in takiBGSprites)
+							i.scale.set(1.145, 1.145);
+						FlxTween.tween(islands, {y: islands.y - 50}, 2.85, {type: PINGPONG});
+					}
 				}
 			case 'week3stage':
 				{
@@ -815,7 +845,7 @@ class PlayState extends MusicBeatState
 				gf.x = 524;
 				gf.y = 245;
 				gf.scrollFactor.set(1.0, 1.0);
-				if (FlxG.save.data.distractions && !minus) 
+				if (FlxG.save.data.distractions && !minus && SONG.song != 'Crucify') 
 				{
 					characterTrail = new CharacterTrail(dad, null, 15, 8, 0.3, 0.069);
 					add(characterTrail);
@@ -870,15 +900,15 @@ class PlayState extends MusicBeatState
 		{
 			gf.y -= 15;
 			gf.x += 180;
+			boyfriend.x += 140;
 			if (!minus)
 			{
-				boyfriend.x += 160;
 				dad.x += 95;
+				dad.y -= 40;	
+				boyfriend.y -= 35;	
 			}
-			else 
+			else
 			{
-				boyfriend.x += 160;
-				boyfriend.y -= 45;
 				dad.y -= 350;
 				dad.x -= 105;
 			}
@@ -887,17 +917,18 @@ class PlayState extends MusicBeatState
 		add(gf);
 
 		// Shitty layering but whatev it works LOL
-		if (curStage.startsWith('limo'))
+		if (limo != null)
 			add(limo);
 
 		if(curStage == 'schoolEvil')
 		{
 			add(meat);
-			//FlxTween.tween(meat, {y: meat.y - 50}, 2, {type: PINGPONG, ease: FlxEase.cubeOut});
-			FlxTween.circularMotion(meat, 300, 200, 50, 0, true, 4, true, {type: PINGPONG});
+			FlxTween.circularMotion(meat, 300, 200, 50, 0, true, 4, true, {type: LOOPING});
 		}
 		add(dad);
 		add(boyfriend);
+
+		boyfriend.setPosition(boyfriend.x + Costume.PlayerCostume.offsetPos.x, boyfriend.y + Costume.PlayerCostume.offsetPos.y);
 
 		if (roboStage != null)
 			add(roboForeground);
@@ -1151,6 +1182,7 @@ class PlayState extends MusicBeatState
 
 	function openDialogue(?dialogueBox:DialogueBox):Void 
 	{
+		inCutscene = true;
 		camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 		add(dialogueBox);
 	}
@@ -1870,7 +1902,7 @@ class PlayState extends MusicBeatState
 				iconP1.swapCharacter('bf-old');
 		}
 
-		if (FlxG.keys.justPressed.SPACE && boyfriend.animation.curAnim.name != 'hey') 
+		if (!inCutscene && FlxG.keys.justPressed.SPACE && boyfriend.animation.curAnim.name != 'hey') 
 		{
 			boyfriend.playAnim('hey');
 			gf.playAnim('cheer');
@@ -2072,7 +2104,7 @@ class PlayState extends MusicBeatState
 						camFollow.x = dad.getMidpoint().x + 190;
 						camFollow.y = dad.getMidpoint().y - 30;
 					case 'taki':
-						camFollow.x = dad.getMidpoint().x + 120;
+						camFollow.x = dad.getMidpoint().x + 155;
 						camFollow.y = minus ? dad.getMidpoint().y + 150 : dad.getMidpoint().y - 50;
 					case 'monster':
 						if (SONG.song.toLowerCase() == 'prayer') {
@@ -2168,8 +2200,8 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 530;
 						camFollow.y = boyfriend.getMidpoint().y - 260;
 					case 'spooky' | 'spookyBOO':
-						camFollow.x = minus ? boyfriend.getMidpoint().x - 550 : boyfriend.getMidpoint().x - 320;
-						camFollow.y = minus ? boyfriend.getMidpoint().y - 165 : boyfriend.getMidpoint().y - 250;
+						camFollow.x = boyfriend.getMidpoint().x - 355;
+						camFollow.y = boyfriend.getMidpoint().y - 250;
 					case 'church':
 						camFollow.x = boyfriend.getMidpoint().x - 465;
 						camFollow.y = boyfriend.getMidpoint().y - 365;
@@ -2204,6 +2236,9 @@ class PlayState extends MusicBeatState
 								camFollow.y = boyfriend.getMidpoint().y - 280;
 						}
 				}
+
+				camFollow.x += Costume.PlayerCostume.camOffsetPos.x;
+				camFollow.y += Costume.PlayerCostume.camOffsetPos.y;
 			}
 
 			camFollow.x += fevercamX;
@@ -2425,6 +2460,10 @@ class PlayState extends MusicBeatState
 						if (storyDifficulty != 4)
 						{
 							switch (dad.curCharacter) {
+								case 'robo-cesar':
+									if (curSong == 'Loaded')
+										if (curBeat >= 400 && curBeat < 432)
+											health -= 0.01;
 								case 'gf':
 									health -= 0.02;
 								case 'mom-car':
@@ -2448,7 +2487,7 @@ class PlayState extends MusicBeatState
 											else if (curStep < 1681)
 												health -= health > 0.2 ? 0.02 : 0.0065;
 										default:
-											health -= 0.02;
+											health -= SONG.song == 'Crucify' ? 0.01 : 0.02;
 									}
 									if (!minus)
 										gf.playAnim('scared');
@@ -2470,10 +2509,7 @@ class PlayState extends MusicBeatState
 					else
 						health -= 0.04;
 
-					if (FlxG.save.data.cpuStrums) 
-					{
-						cpuStrums.members[daNote.noteData].animation.play('confirm', true);
-					}
+					cpuStrums.members[daNote.noteData].animation.play('confirm', true);
 
 					#if windows
 					if (luaModchart != null)
@@ -2533,14 +2569,12 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		if (FlxG.save.data.cpuStrums) {
-			cpuStrums.forEach(function(spr:FlxSprite) {
-				if (spr.animation.finished) {
-					spr.animation.play('static');
-					spr.centerOffsets();
-				}
-			});
-		}
+		cpuStrums.forEach(function(spr:FlxSprite) {
+			if (spr.animation.finished) {
+				spr.animation.play('static');
+				spr.centerOffsets();
+			}
+		});
 
 		if (!inCutscene)
 			keyShit();
@@ -2604,9 +2638,6 @@ class PlayState extends MusicBeatState
 				}
 				#end
 
-				// if ()
-				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
-
 				if (SONG.validScore) 
 				{
 					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
@@ -2614,6 +2645,9 @@ class PlayState extends MusicBeatState
 
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
+
+				if (storyWeek == 5)
+					Costume.unlockCostume(Fever_Casual);
 
 				if (storyWeek != StoryMenuState.weekData.length - 1) 
 				{
@@ -3165,17 +3199,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		/*if (curSong == 'Retribution')
-		{
-			if (curStep == 192)
-			{
-				boyfriend.visible = false;
-				curPlayer = theEater;
-				theEater.setPosition(boyfriend.x - 60, boyfriend.y - 80);
-				add(theEater);	
-			}
-		}*/
-
 		if (curSong == 'Milk-Tea')
 		{
 			switch (curStep)
@@ -3372,6 +3395,16 @@ class PlayState extends MusicBeatState
 								camHUD.zoom += 0.03;
 							}
 					}
+				case 'crucify':
+					if (curBeat == 160)
+					{
+						camGame.flash(FlxColor.BLACK, 1.3);
+						moreDark.visible = false;
+						gf.visible = false;
+						camZooming = true;
+						for (i in takiBGSprites)
+							i.visible = true;
+					}
 			}
 		}
 
@@ -3504,7 +3537,7 @@ class PlayState extends MusicBeatState
 
 	private function onKeyPress(input:KeyboardEvent)
 	{
-		if (paused)
+		if (paused || inCutscene)
 			return;
 
 		// Stolen from my engine, changed shit to support kade engine
@@ -3573,7 +3606,6 @@ class PlayState extends MusicBeatState
 			FlxG.log.add("killing dumb ass note at " + note.strumTime);
 			note.kill();
 			notes.remove(note, true);
-			note.destroy();
 		}
 
 		if (closestNote != null)
@@ -3596,7 +3628,7 @@ class PlayState extends MusicBeatState
 
 	private function onKeyRelease(event:KeyboardEvent)
 	{
-		if (paused)
+		if (paused || inCutscene)
 			return;
 		
 		@:privateAccess

@@ -471,9 +471,6 @@ class DialogueBox extends FlxSpriteGroup
 
 					new FlxTimer().start(0.2, function(tmr:FlxTimer)
 					{
-						if (FlxG.sound.music != null)
-							FlxG.sound.music.stop();
-
 						for(key in portraitMap.keys())
 							portraitMap[key].alpha -= 1 / 5;
 						box.alpha -= 1 / 5;

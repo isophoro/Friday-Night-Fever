@@ -34,6 +34,9 @@ class Intro extends MusicBeatState
 		Options.checkSaveCompatibility();
 		Highscore.load();
 
+		@:privateAccess
+		FlxG.sound.loadSavedPrefs();
+
 		#if windows
 		DiscordClient.initialize();
 
