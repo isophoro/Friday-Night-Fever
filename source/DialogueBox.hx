@@ -120,6 +120,7 @@ class DialogueBox extends FlxSpriteGroup
 		fever.animation.addByPrefix('casFine', 'casualfine', 24, false);
 		fever.animation.addByPrefix('casAnnoyed', 'casualannoyed', 24, false);
 		fever.scrollFactor.set();
+		fever.scale.set(1.2, 1.2);
 		add(fever);
 		fever.visible = false;
 

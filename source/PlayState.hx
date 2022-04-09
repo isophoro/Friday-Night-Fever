@@ -220,6 +220,9 @@ class PlayState extends MusicBeatState
 
 	var shooting:FlxSprite;
 
+	var alarm:FlxText;
+	var roboFeverAttack:FlxSprite;
+
 	override public function create() 
 	{
 		trace(storyWeek);
@@ -930,6 +933,17 @@ class PlayState extends MusicBeatState
 		}
 		add(dad);
 		add(boyfriend);
+		//if(curStage == 'robocesbg')
+		//{
+			roboFeverAttack = new FlxSprite(dad.x - 60, dad.y);
+			roboFeverAttack.frames = Paths.getSparrowAtlas('mechanicShit/roboShoot');
+			roboFeverAttack.animation.addByPrefix('Attack', 'robo shoot', 24, false);
+			roboFeverAttack.updateHitbox();
+			roboFeverAttack.antialiasing = true;
+			roboFeverAttack.alpha = 0;
+			add(roboFeverAttack);
+		//}
+
 
 		boyfriend.setPosition(boyfriend.x + Costume.PlayerCostume.offsetPos.x, boyfriend.y + Costume.PlayerCostume.offsetPos.y);
 
@@ -1049,6 +1063,13 @@ class PlayState extends MusicBeatState
 		{
 			add(shooting);
 		}
+
+		alarm = new FlxText(0, 0, 0, "", 20);
+		alarm.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		alarm.scrollFactor.set();
+		add(alarm);
+		alarm.screenCenter();
+		alarm.cameras = [camHUD];
 		
 
 
@@ -1332,6 +1353,48 @@ class PlayState extends MusicBeatState
 
 			swagCounter++;
 		}, 5);
+	}
+
+	var canPressSpace:Bool = false;
+	var pressedSpace = false;
+
+	function roboShoot()
+	{
+			pressedSpace = false;
+			canPressSpace = true;
+			
+			alarm.alpha = 1;
+			alarm.text = 'dodge!!!';
+	
+			roboFeverAttack.alpha = 1;
+			dad.alpha = 0;
+			roboFeverAttack.animation.play('Attack', true);
+			roboFeverAttack.animation.finishCallback = function(name:String)
+			{
+					roboFeverAttack.alpha = 0;
+					dad.alpha = 1;
+					dad.dance();
+			};
+	
+	
+			new FlxTimer().start(0.55, function(tmr:FlxTimer)
+			{
+				alarm.alpha = 0;
+	
+				if(pressedSpace)
+				{
+					boyfriend.playAnim('dodge', true);
+					health += 0.2;
+	
+				}
+				else
+				{
+					health -= 1;
+					FlxG.camera.shake(0.005);
+					boyfriend.playAnim('singUPmiss', true);
+				}
+			});
+		
 	}
 
 	function endingDialogue() 
@@ -1850,6 +1913,8 @@ class PlayState extends MusicBeatState
 
 	var shootCoolDown:Float = 0;
 
+	var isSooting:Bool = false;
+
 
 	override public function update(elapsed:Float) 
 	{
@@ -1881,6 +1946,9 @@ class PlayState extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('gunShoot'), 0.9);
 
+				roboFeverAttack.x = dad.x - 60;
+				roboFeverAttack.y = dad.y;
+
 				FlxTween.tween(dad, {x: dad.x - 50}, 1, {ease: FlxEase.circOut, type: PINGPONG, onComplete: (twn) -> {
 					dad.dance();
 					FlxTween.cancelTweensOf(dad);
@@ -1888,9 +1956,18 @@ class PlayState extends MusicBeatState
 
 				
 
+				
+
 				health += 0.2;
 				FlxG.camera.shake(0.005);
 			});
+		}
+
+
+		if(canPressSpace && FlxG.keys.justPressed.SPACE)
+		{
+			pressedSpace = true;
+			canPressSpace = false;
 		}
 
 
@@ -1967,7 +2044,7 @@ class PlayState extends MusicBeatState
 				iconP1.swapCharacter('bf-old');
 		}
 
-		if (!inCutscene && FlxG.keys.justPressed.SPACE && boyfriend.animation.curAnim.name != 'hey') 
+		if (!inCutscene && !pressedSpace && FlxG.keys.justPressed.SPACE && boyfriend.animation.curAnim.name != 'hey') 
 		{
 			boyfriend.playAnim('hey');
 			gf.playAnim('cheer');
@@ -3348,6 +3425,34 @@ class PlayState extends MusicBeatState
 						boyfriend.useAlternateIdle = true;
 				case 'loaded': 
 					roboStage.beatHit(curBeat);
+				case 'c354r': 
+					switch(curBeat)
+					{
+						case 47: 
+							roboShoot();
+						case 55:
+							roboShoot();
+						case 78:
+							roboShoot();
+						case 103:
+							roboShoot();
+						case 143: 
+							roboShoot();
+						case 175: 
+							roboShoot();
+						case 271: 
+							roboShoot();
+						case 280:
+							roboShoot();
+						case 304:
+							roboShoot();
+						case 319:
+							roboShoot();
+						case 364:
+							roboShoot();
+						case 383:
+							roboShoot();
+					}
 				case 'soul' | 'portrait':
 					switch(curBeat)
 					{
