@@ -107,7 +107,7 @@ class Main extends Sprite
 		FlxG.console.registerClass(MusicBeatState);
 
 		#if !mobile
-		fpsCounter = new FPS(10, 3, 0xFFFFFF);
+		fpsCounter = new FPS_MEM(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
 		toggleFPS(FlxG.save.data.fps);
 		#end

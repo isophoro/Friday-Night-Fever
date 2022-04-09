@@ -9,6 +9,16 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 
+/*
+    Code for all of the events including camera zooming and background switching in Loaded.
+    this should probably be extending a flxgroup with the background stuff being inside of it and not
+    some random ass object that uses PlayState.instance left and right. I dont feel like rewriting it 
+    as im lazy and it would be my third time doing, but alas, here we are :( - rf
+
+    To add a stage all you have to do is create the sprite variables contained inside the stage and create an instance in the stages map
+        stages['stage name'] = new RoboStage([background_sprites], [foreground_sprites], [positioning], [character scrollfactors], cameraZoom);
+*/
+
 class RoboBackground
 {
     public var stages:Map<String, RoboStage> = [];
@@ -32,24 +42,24 @@ class RoboBackground
         bg.antialiasing = true;
         bg.scrollFactor.set(0.8, 0.85);
 
-        floor = new FlxSprite(-1348, -844).loadGraphic(Paths.image('roboStage/robofeverfloor'));
+        floor = new FlxSprite(-1348, -854).loadGraphic(Paths.image('roboStage/robofeverfloor'));
         floor.antialiasing = true;
         floor.scrollFactor.set(0.9, 0.9);
 
         sign = new FlxSprite(-1348, -844).loadGraphic(Paths.image('roboStage/sign'));
         sign.antialiasing = true;
         sign.scrollFactor.set(0.8, 0.75);
-        FlxTween.tween(sign, {y: sign.y - 50}, 2.5, {type: PINGPONG, ease: FlxEase.backOut});
+        FlxTween.tween(sign, {y: sign.y - 35}, 2.5, {type: PINGPONG, ease: FlxEase.backOut});
 
         stages['default'] = new RoboStage([bg, floor, sign], [], [], [], 0.4);
 
         if (PlayState.SONG.song == 'Loaded')
         {
-            taki = new Character(0, 0, "taki-gf");
+            taki = new Character(0, 0, "gf-taki");
             robofever = new Character(0,0, "robo-cesar-pixel");
             tea_pixel = new Character(0,0, "tea-pixel");
             fever_pixel = new Character(0,0, "bf-pixel", true);
-            cherry = new Character(400, 130, "gf-car", false);
+            cherry = new Character(400, 130, "gf-cherry", false);
             tea_pixel.scrollFactor.set(0.9, 0.9);
             fever_pixel.scrollFactor.set(0.9, 0.9);
             robofever.scrollFactor.set(0.9, 0.9);
@@ -63,7 +73,7 @@ class RoboBackground
             zardybg.antialiasing = true;
             zardybg.scrollFactor.set(0.75, 0.3);
 
-            var zardytown:FlxSprite = new FlxSprite(161.65 - dumboffset, 1.1 - offsetY).loadGraphic(Paths.image('roboStage/zardy_fevertown'));
+            var zardytown:FlxSprite = new FlxSprite(140.65 - dumboffset, 1.1 - offsetY).loadGraphic(Paths.image('roboStage/zardy_fevertown'));
             zardytown.antialiasing = true;
             zardytown.scrollFactor.set(0.6, 1);
 
@@ -124,9 +134,9 @@ class RoboBackground
 
             var dumboffset:Int = 95;
             stages['matt'] = new RoboStage([mattbg, mattcrowd, mattfg], [spotlight], [
-                "boyfriend" => [1350.2 - dumboffset, 482.3 - 150], 
+                "boyfriend" => [1280.2 - dumboffset, 482.3 - 150], 
                 "gf" => [585 - dumboffset, 149 - 70], 
-                "dad" => [60.7 - dumboffset + (100), 365.3 - 150 - (50)] // 100 and 50 are for the new sprites
+                "dad" => [130.7 - dumboffset + (100), 365.3 - 150 - (50)] // 100 and 50 are for the new sprites
             ], [], 0.73);
 
             // week 1
@@ -280,19 +290,28 @@ class RoboBackground
         if (curStage == stage)
             return;
 
+        if (instance.health > 1)
+            instance.health = 1;
+        
+        instance.gf.color = instance.boyfriend.color = instance.dad.color = FlxColor.WHITE;
         switch (stage)
         {
-            case 'tricky': 
+            case 'tricky':
                 instance.gf.color = instance.boyfriend.color = instance.dad.color = FlxColor.fromString("#FFE6D8");
             case 'church': replaceGf('taki');
-            case 'limo': replaceGf('die');
+            case 'limo' | 'matt': replaceGf('die');
             default: 
-                instance.gf.color = instance.boyfriend.color = instance.dad.color = FlxColor.WHITE;
                 replaceGf('gf');
         }
 
+        var curGF:Character = stage == 'church' ? taki : stage == 'limo' ? cherry : stage == 'school' ? tea_pixel : instance.gf;
+        instance.camFollow.setPosition(curGF.getGraphicMidpoint().x - 460, curGF.getGraphicMidpoint().y + 250);
+
         curStage = stage;
-        instance.camGame.flash(FlxColor.WHITE, 0.45);
+        instance.camGame.flash(stage == 'default' ? FlxColor.BLACK : FlxColor.WHITE, 0.45);
+
+        if (curStage == 'default')
+            instance.camGame.zoom = _stage.cameraZoom;
 
         instance.camZooming = true;
         instance.disableCamera = false;
@@ -327,9 +346,21 @@ class RoboBackground
         {
             switch (curBeat)
             {
+                case 0 | 1:
+                    instance.camHUD.visible = false;
                 case 32:
+                    instance.camHUD.visible = true;
                     switchStage('zardy');
-                case 96 | 464:
+                    instance.defaultCamZoom += 0.22;
+                case 64:
+                    instance.defaultCamZoom -= 0.22;
+                case 88:
+                    instance.defaultCamZoom += 0.3;
+                case 92 | 104 | 123 | 464 | 470 | 472 | 475 | 488 | 491:
+                    instance.defaultCamZoom += curBeat > 480 ? 0.05 : 0.085;
+                case 399 | 528:
+                    instance.gf.playAnim('cheer', true);
+                case 96 | 463:
                     switchStage('tricky');
                 case 128:
                     switchStage('whitty');
