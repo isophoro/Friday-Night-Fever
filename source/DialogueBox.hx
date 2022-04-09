@@ -350,6 +350,7 @@ class DialogueBox extends FlxSpriteGroup
 
 		if(Recap.inRecap)
 			{
+				swagDialogue = new FlxTypeText(50, 500, Std.int(FlxG.width * 1), "", 46);
 				swagDialogue.setFormat(Paths.font("Tommy.otf"), 46, FlxColor.WHITE, CENTER);
 				swagDialogue.screenCenter(X);
 				swagDialogue.y += 125;
@@ -453,7 +454,7 @@ class DialogueBox extends FlxSpriteGroup
 		if (swagDialogue != null)
 			dropText.text = swagDialogue.text;
 
-		if ((dialogueStarted && !isEnding) && FlxG.keys.anyJustPressed([ENTER, SPACE]) && !Recap.inRecap)
+		if ((dialogueStarted && !isEnding) && FlxG.keys.anyJustPressed([ENTER, SPACE]) /*&& !Recap.inRecap*/)
 		{
 			if (@:privateAccess (!swagDialogue._typing || dialogueList[0].length < 1))
 			{	

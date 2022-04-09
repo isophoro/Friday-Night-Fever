@@ -14,6 +14,10 @@ import flixel.FlxState;
 import flixel.system.FlxSound;
 import flixel.input.keyboard.FlxKey;
 
+#if windows
+import Discord.DiscordClient;
+#end
+
 using StringTools;
 
 class Recap extends MusicBeatState
@@ -23,6 +27,12 @@ class Recap extends MusicBeatState
 
     override function create()
     {
+        #if windows
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In Week 7 RECAP", null);
+		#end
+
+
         super.create();
 
         inRecap = true;

@@ -63,7 +63,7 @@ class Character extends FlxSprite
 					case 'bfdemoncesar':
 						frames = Paths.getSparrowAtlas(PlayState.minus ? 'characters/mfever demon_assets' : 'characters/demon_fever_assets', 'shared');
 					default:
-						frames = Paths.getSparrowAtlas('characters/fever_assets', 'shared');
+						frames = Paths.getSparrowAtlas('characters/human_fvr', 'shared');
 				}
 
 				var prefix:String = PlayState.minus ? "m" : "";
@@ -80,6 +80,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('scared', prefix + 'fever fear'.replace(PlayState.minus ? 'fear' : 'penis', 'scared'), 24);
 				animation.addByPrefix('hey', prefix + 'fever hey', 24, false);
 				animation.addByPrefix('dodge', prefix + 'fever dodge', 24, false);
+				animation.addByPrefix('shoot', prefix + 'fever shoot', 24, false);
 
 				if (curCharacter != 'bfdemoncesar')
 				{
@@ -96,6 +97,7 @@ class Character extends FlxSprite
 					addOffset("hey", -3, 93);
 					addOffset('scared', -1, 92);
 					addOffset('dodge', 21, 92);
+					addOffset('shoot', 52, 101);
 				}
 				else
 				{
@@ -114,6 +116,7 @@ class Character extends FlxSprite
 						addOffset("hey", 0, 89);
 						addOffset('scared', 2, 92);
 						addOffset('dodge', 21, 92);
+						
 					}
 					else
 					{
@@ -129,6 +132,7 @@ class Character extends FlxSprite
 						addOffset('dodge', 66, 87);
 						addOffset('hey', -16, 94);
 						addOffset('scared', -38, 142);
+						
 					}
 				}
 

@@ -6,6 +6,7 @@ import openfl.events.KeyboardEvent;
 import openfl.system.System;
 #if cpp import cpp.vm.Gc; #end
 import sprites.RoboBackground;
+import flixel.effects.FlxFlicker;
 import sprites.Crowd;
 import openfl.display.BitmapData;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
@@ -213,6 +214,8 @@ class PlayState extends MusicBeatState
 	var vignette:FlxSprite;
 
 	var meat:Character;
+
+	var shooting:FlxSprite;
 
 	override public function create() 
 	{
@@ -1001,6 +1004,23 @@ class PlayState extends MusicBeatState
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
 
+		shooting = new FlxSprite(50, 50);
+		shooting.frames = Paths.getSparrowAtlas('mechanicShit/shoot');
+		shooting.animation.addByPrefix('0', 'shoot icon', 24);
+		shooting.animation.addByPrefix('5', 'shoot five', 24);
+		shooting.animation.addByPrefix('4', 'shoot four', 24);
+		shooting.animation.addByPrefix('3', 'shoot three', 24);
+		shooting.animation.addByPrefix('2', 'shoot two', 24);
+		shooting.animation.addByPrefix('1', 'shoot one', 24);
+		shooting.animation.play('0');
+		shooting.scrollFactor.set();
+		if(boyfriend.curCharacter == 'bf')
+		{
+			add(shooting);
+		}
+		
+
+
 		if (FlxG.save.data.botplay && !loadRep)
 			add(botPlayState);
 
@@ -1055,6 +1075,7 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		shooting.cameras = [camHUD];
 
 		if(subtitles != null)
 		{
@@ -1795,8 +1816,52 @@ class PlayState extends MusicBeatState
 	var canPause:Bool = true;
 	var hurtTimer:Float = 0;
 
+	var shootCoolDown:Float = 0;
+
+
 	override public function update(elapsed:Float) 
 	{
+		if(shootCoolDown > 0)
+		{
+			trace(shootCoolDown);
+			shootCoolDown -= elapsed;
+			shooting.animation.play('${Math.ceil(shootCoolDown)}');
+		}
+		else
+		{
+			shooting.animation.play('0');
+
+		}
+
+
+		trace(shootCoolDown);
+
+		if(boyfriend.curCharacter == 'bf' && FlxG.keys.justPressed.SHIFT && shootCoolDown == 0 || boyfriend.curCharacter == 'bf' && FlxG.keys.justPressed.SHIFT && shootCoolDown < 0)
+		{
+			shootCoolDown = 5;
+			boyfriend.playAnim('shoot', true);
+			boyfriend.animation.finishCallback = function(name:String)
+			{
+				boyfriend.dance();
+			};
+
+			new FlxTimer().start(0.55, function(tmr:FlxTimer)
+			{
+				FlxG.sound.play(Paths.sound('gunShoot'), 0.9);
+
+				FlxTween.tween(dad, {x: dad.x - 50}, 1, {ease: FlxEase.circOut, type: PINGPONG, onComplete: (twn) -> {
+					dad.dance();
+					FlxTween.cancelTweensOf(dad);
+				}});
+
+				
+
+				health += 0.2;
+				FlxG.camera.shake(0.005);
+			});
+		}
+
+
 		#if debug
 		if (FlxG.keys.anyJustPressed([TWO, THREE, FOUR]))
 		{
@@ -2977,9 +3042,12 @@ class PlayState extends MusicBeatState
 			totalNotesHit -= 1;
 
 		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+		if(boyfriend.animation.curAnim.name != 'shoot')
+		{
+			curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
 
-		curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
-
+		}
+	
 		#if windows
 		if (luaModchart != null)
 			luaModchart.executeState('playerOneMiss', [direction, Conductor.songPosition]);
@@ -3011,7 +3079,13 @@ class PlayState extends MusicBeatState
 			else
 				totalNotesHit += 1;
 
-			curPlayer.playAnim('sing' + dataSuffix[note.noteData], true);
+			if(boyfriend.animation.curAnim.name != 'shoot')
+				{
+					curPlayer.playAnim('sing' + dataSuffix[note.noteData], true);
+		
+				}
+
+			
 
 			switch (note.noteData)
 			{
@@ -3427,7 +3501,7 @@ class PlayState extends MusicBeatState
 
 		if (!curPlayer.animation.curAnim.name.startsWith("sing") && !opponent) 
 		{
-			var specialAnims:Array<String> = ['dodge', 'hey'];
+			var specialAnims:Array<String> = ['dodge', 'hey', 'shoot'];
 			if (!specialAnims.contains(curPlayer.animation.curAnim.name) || curPlayer.animation.finished) 
 			{
 				curPlayer.dance();

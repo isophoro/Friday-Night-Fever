@@ -1,0 +1,74 @@
+:song:legendaryhero
+:startslow:
+:narrator: 
+:bg:recapOne
+:fadein:
+:normalauto:
+:storyslow:
+:narrator: Our story begins… very recently…
+:fadeout:
+:narrator: ...
+:bg:recapTwo
+:fadein:
+:narrator: There was a young demon in prison,
+:narrator: who had done many bad deeds in the past. 
+:narrator: His name was Fever, and he hates authority.
+:narrator: Things didn’t look too bright for his future, 
+:narrator: until one day, all of the prisoners tried to escape.
+:fadeout:
+:narrator: ...
+:bg:recapThree
+:fadein:
+:narrator: Stealing a spaceship, a gun, and a suit,
+:narrator: Fever heads back towards Earth to lay low.
+:narrator: Unfortunately for Fever, 
+:narrator: he does not know how to drive spaceships.
+:fadeout:
+:narrator: ...
+:bg:recapFour
+:fadein:
+:narrator: Fever landed in an empty place… 
+:narrator: things weren’t looking too good for the demon.
+:narrator: But it was a LOT better than being in the prisons above.
+:narrator: The demon uses his gun to wipe the horde out, 
+:narrator: and begins to change the lands.
+:fadeout:
+:narrator: ...
+:bg:recapFive
+:fadein:
+:narrator: Now the mayor of Fever Town, 
+:narrator: it is up to Fever and his girlfriend,
+:narrator: Tea, to deal with the problems that come!
+:narrator: There may be more opponents…
+:bg:recapSix
+:narrator: . . .
+:fadeout:
+:narrator: ..
+:bg:recapSeven
+:fadein:
+:storyslow:
+:narrator: One day, Fever and Tea meet a robot.
+:narrator: The robot seemed familiar.
+:narrator: Fever and Tea begin to talk with the robot.
+:fadeout:
+:narrator: ...
+:bg:recapEight
+:fadein:
+:narrator: Then, the robot shot them both.
+:narrator: Again.
+:narrator: And again.
+:normal:
+:narrator: And again.
+:narrator: Everyone in Fever Town dies.
+:narrator: The End.
+:fadeout:
+:storyslow:
+:cutoff:
+:narrator: …?
+
+
+
+
+
+
+

@@ -1,79 +1,70 @@
-:song:legendaryhero
+:song:Silence
 :startslow:
 :narrator: 
 :bg:recapOne
 :fadein:
 :normalauto:
 :storyslow:
-:narrator: Fevertown.
-:narrator: Truly an interesting place.
-:narrator: Last time we saw Fever,
-:narrator: he was fighting Yukichi.
+:narrator: Our story begins… very recently…
 :fadeout:
 :narrator: ...
 :bg:recapTwo
 :fadein:
-:narrator: He got arreste-
-:normal:
-:narrator: wait wtf i thought he was let go
-:fadechatin:
-:narrator: also is that fucking chat from birthday build?????
-:fadechatout:
-:narrator: man i really dont know the fucking lore
-:narrator: whatever back to the fucking whole story vibe >:(
-:storyslow:
-:narrator: He got arrested.
-:narrator: Shortly after though...
+:narrator: There was a young demon in prison,
+:narrator: who had done many bad deeds in the past. 
+:narrator: His name was Fever, and he hates authority.
+:narrator: Things didn’t look too bright for his future, 
+:narrator: until one day, all of the prisoners tried to escape.
 :fadeout:
 :narrator: ...
 :bg:recapThree
 :fadein:
-:narrator: He escaped from Space Jai-
-:normal:
-:narrator: BRO WTF HOW DID HE ESCAPE???
-:narrator: this makes literally no sense :sob:
-:narrator: where did the spaceship come from????
-:narrator: whatever smfh
-:storyslow:
-:narrator: He escaped from Space Jail, returning back to earth.
+:narrator: Stealing a spaceship, a gun, and a suit,
+:narrator: Fever heads back towards Earth to lay low.
+:narrator: Unfortunately for Fever, 
+:narrator: he does not know how to drive spaceships.
 :fadeout:
 :narrator: ...
 :bg:recapFour
 :fadein:
-:narrator: There were zombi-
-:normal: 
-:narrator: BRO
-:narrator: WHAT IS GOING ON ANYMORE???
-:narrator: cesar gonna have to explain himself :sob:
+:narrator: Fever landed in an empty place… 
+:narrator: things weren’t looking too good for the demon.
+:narrator: But it was a LOT better than being in the prisons above.
+:narrator: The demon uses his gun to wipe the horde out, 
+:narrator: and begins to change the lands.
 :fadeout:
-:narrator: literally sobbing
+:narrator: ...
 :bg:recapFive
 :fadein:
-:narrator: FINALLY
-:narrator: something normal
-:storyslow: 
-:narrator: He fought taki, but then...
+:narrator: Now the mayor of Fever Town, 
+:narrator: it is up to Fever and his girlfriend,
+:narrator: Tea, to deal with the problems that come!
+:narrator: There may be more opponents…
 :bg:recapSix
-:normal:
-:narrator: who the fuck are these people
-:narrator: why are they in the recap????
+:narrator: . . .
 :fadeout:
-:narrator: literally so confused
+:narrator: ..
 :bg:recapSeven
 :fadein:
 :storyslow:
-:narrator: Fever and Tea got confronted by someone...
-:narrator: Someone who...
-:narrator: Had a heart made of metal...
+:narrator: One day, Fever and Tea meet a robot.
+:narrator: The robot seemed familiar.
+:narrator: Fever and Tea begin to talk with the robot.
 :fadeout:
 :narrator: ...
 :bg:recapEight
 :fadein:
-:narrator: Fever and Te-
+:narrator: Then, the robot shot them both.
+:narrator: Again.
+:narrator: And again.
 :normal:
-:narrator: ...
+:narrator: And again.
+:narrator: Everyone in Fever Town dies.
+:narrator: The End.
+:fadeout:
+:storyslow:
 :cutoff:
-:narrator: THEY FUCKING DIE-
+:narrator: …?
 
 
 
