@@ -11,6 +11,8 @@ import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
+import GameJolt.GameJoltAPI;
+import GameJolt;
 
 enum PreloadStrength
 {
@@ -23,6 +25,8 @@ class Main extends Sprite
 {
 	public static var preloadType:PreloadStrength = NONE;
 	public static var totalRam:Int = 0;
+
+	public static var gjToastManager:GJToastManager;
 
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
@@ -70,6 +74,9 @@ class Main extends Sprite
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
+
+		gjToastManager = new GJToastManager();
+		addChild(gjToastManager);
 
 		if (zoom == -1)
 		{

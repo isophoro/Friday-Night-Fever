@@ -13,6 +13,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
+import GameJolt;
 
 #if windows
 import Discord.DiscordClient;
@@ -57,6 +58,7 @@ class MainMenuState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
+		TitleState.lastState = false;
 
 		PlayState.easierMode = false;
 		PlayState.deaths = 0;
@@ -124,7 +126,17 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Friday Night Fever ${Application.current.meta.get("version")} (Running on KE 1.5.1)', 12);
+		if(GameJoltAPI.getStatus() == true)
+		{
+			trace('logged in');
+
+		}
+		else
+		{
+			trace('not logged in');
+		}
+
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Friday Night Fever ${Application.current.meta.get("version")} (Running on KE 1.5.1), (Logged in as ' + FlxG.save.data.gjUser + ')', 12);
 		versionShit.scrollFactor.set();
 		versionShit.antialiasing = true;
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

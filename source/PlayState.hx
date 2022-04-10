@@ -40,6 +40,8 @@ import openfl.Lib;
 import openfl.filters.BitmapFilter;
 import shaders.Shaders;
 import shaders.ModChart;
+import GameJolt;
+import GameJolt.GameJoltAPI;
 
 using StringTools;
 
@@ -935,7 +937,7 @@ class PlayState extends MusicBeatState
 		add(boyfriend);
 		//if(curStage == 'robocesbg')
 		//{
-			roboFeverAttack = new FlxSprite(dad.x - 60, dad.y);
+			roboFeverAttack = new FlxSprite(dad.x - 100, dad.y);
 			roboFeverAttack.frames = Paths.getSparrowAtlas('mechanicShit/roboShoot');
 			roboFeverAttack.animation.addByPrefix('Attack', 'robo shoot', 24, false);
 			roboFeverAttack.updateHitbox();
@@ -1930,8 +1932,13 @@ class PlayState extends MusicBeatState
 
 		}
 
+		if(FlxG.keys.justPressed.U)
+		{
+			GameJoltAPI.getTrophy(160623);
+		}
 
-		trace(shootCoolDown);
+
+		//trace(shootCoolDown);
 
 		if(boyfriend.curCharacter == 'bf' && FlxG.keys.justPressed.SHIFT && shootCoolDown == 0 || boyfriend.curCharacter == 'bf' && FlxG.keys.justPressed.SHIFT && shootCoolDown < 0)
 		{
@@ -1946,7 +1953,7 @@ class PlayState extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('gunShoot'), 0.9);
 
-				roboFeverAttack.x = dad.x - 60;
+				roboFeverAttack.x = dad.x - 100;
 				roboFeverAttack.y = dad.y;
 
 				FlxTween.tween(dad, {x: dad.x - 50}, 1, {ease: FlxEase.circOut, type: PINGPONG, onComplete: (twn) -> {
@@ -2784,6 +2791,7 @@ class PlayState extends MusicBeatState
 				{
 					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 				}
+
 
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();

@@ -10,6 +10,8 @@ import Controls.KeyboardScheme;
 import flixel.FlxG;
 import openfl.display.FPS;
 import openfl.Lib;
+import GameJolt.GameJoltAPI;
+import GameJolt;
 
 class Options
 {
@@ -161,6 +163,51 @@ class DFJKOption extends Option
 	private override function updateDisplay():String
 	{
 		return "Key Bindings";
+	}
+}
+
+class LogInOption extends Option
+{
+
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		GameJoltAPI.connect();
+		GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);	
+
+		FlxG.switchState(new GameJoltLogin());
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Log In";
+	}
+}
+
+class LogOutOption extends Option
+{
+
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		GameJoltAPI.deAuthDaUser();
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Log Out";
 	}
 }
 

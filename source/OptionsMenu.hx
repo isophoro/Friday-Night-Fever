@@ -16,6 +16,8 @@ import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import GameJolt.GameJoltAPI;
+import GameJolt;
 
 class OptionsMenu extends MusicBeatState
 {
@@ -35,6 +37,10 @@ class OptionsMenu extends MusicBeatState
 				new DebugUnlock(i)
 		]),
 		#end
+		new OptionCategory("GameJolt", [
+			new LogInOption("Log In to GameJolt"),
+			new LogOutOption("Log Out of GameJolt (Closes Game)")
+		]),
 		new OptionCategory("Mod Specific", [
 			new OpponentOption("Play as either the opponent or as Fever (Default as Fever)"),
 			new IntroOption("Disables the startup anime opening video"),

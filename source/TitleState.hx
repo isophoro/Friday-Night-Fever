@@ -1,5 +1,6 @@
 package;
 
+import GameJolt.GameJoltLogin;
 #if cpp
 import cpp.vm.Gc;
 #end 
@@ -22,6 +23,8 @@ import lime.app.Application;
 import openfl.Assets;
 import shaders.ColorShader;
 
+import GameJolt.GameJoltAPI;
+
 #if windows
 import Discord.DiscordClient;
 #end
@@ -43,9 +46,20 @@ class TitleState extends MusicBeatState
 
 	var wackyImage:FlxSprite;
 
+	public static var lastState:Bool;
+
 	override public function create():Void
 	{
 		PlayerSettings.init();
+
+		GameJoltAPI.connect();
+		GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);	
+		if(GameJoltAPI.getStatus() == false)
+		{
+			FlxG.switchState(new GameJoltLogin());
+		}
+		lastState = true;
+		
 
 		super.create();
 
