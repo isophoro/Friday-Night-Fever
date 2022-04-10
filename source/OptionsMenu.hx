@@ -41,6 +41,9 @@ class OptionsMenu extends MusicBeatState
 			new LogInOption("Log In to GameJolt"),
 			new LogOutOption("Log Out of GameJolt (Closes Game)")
 		]),
+		new OptionCategory("Achievements", [
+			new AchievementsMenu("Achievements Menu")
+		]),
 		new OptionCategory("Mod Specific", [
 			new OpponentOption("Play as either the opponent or as Fever (Default as Fever)"),
 			new IntroOption("Disables the startup anime opening video"),

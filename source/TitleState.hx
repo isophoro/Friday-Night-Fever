@@ -75,7 +75,7 @@ class TitleState extends MusicBeatState
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
-		if (FlxG.sound.music == null)
+		if (FlxG.sound.music == null && GameJoltAPI.getStatus())
 		{
 			Main.playFreakyMenu();
 		}

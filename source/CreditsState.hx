@@ -84,6 +84,7 @@ class CreditsState extends MusicBeatState
                 new FlxTimer().start(2, function(tmr:FlxTimer){
                     FlxG.sound.play(Paths.music('isoUnlock'));
                     FlxTween.tween(playasISO, {alpha: 1}, 1, {ease: FlxEase.circInOut});
+                    Achievements.getAchievement(6);
                 });
 			}),
 			new KeyCombo('kermo week when', () -> {

@@ -166,6 +166,28 @@ class DFJKOption extends Option
 	}
 }
 
+class AchievementsMenu extends Option
+{
+
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.switchState(new AchievementsState());
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Achievements";
+	}
+}
+
+
 class LogInOption extends Option
 {
 

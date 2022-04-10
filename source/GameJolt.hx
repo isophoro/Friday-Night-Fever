@@ -545,7 +545,10 @@ class GameJoltLogin extends MusicBeatSubstate
             FlxG.save.flush();
             FlxG.sound.play(Paths.sound('confirmMenu'), 0.7, false, null, true, function(){
                 FlxG.save.flush();
-                FlxG.sound.music.stop();
+                if(FlxG.sound.music != null)
+                {
+                    FlxG.sound.music.stop();
+                }
                 FlxG.switchState(new MainMenuState());
             });
         });
@@ -645,10 +648,6 @@ class GameJoltLogin extends MusicBeatSubstate
         if (FlxG.sound.music != null)
             Conductor.songPosition = FlxG.sound.music.time;
 
-        if (!FlxG.sound.music.playing)
-        {
-            FlxG.sound.playMusic(Paths.music('freakyMenu'));
-        }
 
         if (FlxG.keys.justPressed.ESCAPE)
         {

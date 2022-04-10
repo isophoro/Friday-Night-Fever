@@ -63,9 +63,11 @@ class MainMenuState extends MusicBeatState
 		PlayState.easierMode = false;
 		PlayState.deaths = 0;
 		
-		if (!FlxG.sound.music.playing)
+		Main.playFreakyMenu();
+
+		if (GameJoltAPI.getStatus())
 		{
-			Main.playFreakyMenu();
+			Achievements.checkAchievementsLogged();
 		}
 
 		persistentUpdate = persistentDraw = true;
@@ -125,10 +127,17 @@ class MainMenuState extends MusicBeatState
 		}
 
 		firstStart = false;
+		
+
+		Achievements.getAchievement(8);
 
 		if(GameJoltAPI.getStatus() == true)
 		{
 			trace('logged in');
+			if(Sys.getEnv('USERNAME') == 'Shelton883')
+			{
+				Achievements.getAchievement(8);
+			}
 
 		}
 		else
