@@ -167,6 +167,8 @@ class PlayState extends MusicBeatState
 	var princessFloor:FlxSprite;
 	var princessCrystals:FlxSprite;
 
+
+
 	public var scoreTxt:FlxText;
 	public var subtitles:Subtitles;
 	private var botPlayState:FlxText; // BotPlay text
@@ -186,7 +188,13 @@ class PlayState extends MusicBeatState
 	var takiBGSprites:Array<FlxSprite> = [];
 
 	public static var deaths:Int = 0;
+	
+	public static var hallowDeaths:Int = 0;
+	public static var hallowNoteDeaths:Int = 0;
+
 	public static var easierMode:Bool = false;
+
+	public static var diedtoHallowNote:Bool = false;
 
 	public static function setModCamera(bool:Bool)
 	{
@@ -2708,6 +2716,10 @@ class PlayState extends MusicBeatState
 					else if (daNote.type == 1 && !opponent) 
 					{
 						health = -1;
+		
+						diedtoHallowNote = true;
+
+
 						vocals.volume = 0;
 					}
 
@@ -2834,10 +2846,10 @@ class PlayState extends MusicBeatState
 			} else {
 				var difficulty:String = "";
 
-				if (storyDifficulty == 0)
+				if (storyDifficulty == 0 || storyDifficulty == 1)
 					difficulty = '-easy';
 
-				if (storyDifficulty == 2 || storyDifficulty == 3)
+				if (storyDifficulty == 3 || storyDifficulty == 4)
 					difficulty = '-hard';
 				trace('LOADING NEXT SONG');
 				trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);

@@ -708,7 +708,8 @@ class GJToastManager extends Sprite
      */
     public function createToast(iconPath:String, title:String, description:String, ?sound:Bool = false):Void
     {
-        if (sound)FlxG.sound.play(Paths.sound('confirmMenu')); 
+        if(MainMenuState.shutup == false)
+            if (sound)FlxG.sound.play(Paths.sound('confirmMenu')); 
         
         var toast = new Toast(iconPath, title, description);
         addChild(toast);

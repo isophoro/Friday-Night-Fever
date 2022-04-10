@@ -81,15 +81,58 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.camera.shake(0.0095, 0.3);
 
 		PlayState.deaths += 1;
-		trace(PlayState.deaths);
+
+		FlxG.save.data.deaths += 1;
+
+		if(PlayState.diedtoHallowNote == true)
+		{
+			FlxG.save.data.hallowNoteDeaths += 1;
+			trace(FlxG.save.data.hallowNoteDeaths + " Hallow Note Deaths");
+
+			PlayState.diedtoHallowNote = false;
+		}
+
+		
+
+
+
+		trace(PlayState.deaths + " Deaths");
+
+		if(PlayState.storyWeek == 8)
+		{
+			FlxG.save.data.hallowDeaths += 1;
+		}
+
+		trace(FlxG.save.data.deaths + " Save Deaths");
+
+
+
+		trace(FlxG.save.data.hallowDeaths + " Hallow Deaths");
+
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if(FlxG.save.data.hallowNoteDeaths == 10)
+		{
+			Achievements.getAchievement(5);
+		}
+
+		if(FlxG.save.data.hallowDeaths == 5)
+		{
+			Achievements.getAchievement(1);
+		}
+
+		if(FlxG.save.data.deaths >= 5)
+		{
+			Achievements.getAchievement(0);
+		}
 		
 		if(PlayState.deaths == 5)
 		{
+
 			if(FlxG.keys.justPressed.Y)
 				{
 					yes.animation.play('selected');

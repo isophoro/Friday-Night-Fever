@@ -52,6 +52,8 @@ class MainMenuState extends MusicBeatState
 	'options' => ['cogwheel', 58, 126, false]
 ];
 
+	public static var shutup:Bool;
+
 	override function create()
 	{
 		#if windows
@@ -62,14 +64,17 @@ class MainMenuState extends MusicBeatState
 
 		PlayState.easierMode = false;
 		PlayState.deaths = 0;
+
+		shutup = true;
 		
-		Main.playFreakyMenu();
+		//Main.playFreakyMenu();
+
+		FlxG.save.data.deaths = 0;
 
 		if (GameJoltAPI.getStatus())
 		{
 			Achievements.checkAchievementsLogged();
 		}
-
 		persistentUpdate = persistentDraw = true;
 
 		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('menuBG'));
@@ -128,8 +133,6 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 		
-
-		Achievements.getAchievement(8);
 
 		if(GameJoltAPI.getStatus() == true)
 		{
@@ -245,6 +248,7 @@ class MainMenuState extends MusicBeatState
 
 			if (accepted)
 			{
+				shutup = false;
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				

@@ -127,6 +127,15 @@ class KadeEngineData
 		if (FlxG.save.data.customStrumLine == null)
 			FlxG.save.data.customStrumLine = 0;
 
+		if (FlxG.save.data.hallowDeaths == null)
+			FlxG.save.data.hallowDeaths = 0;
+
+		if (FlxG.save.data.deaths == null)
+			FlxG.save.data.deaths = 0;
+
+		if (FlxG.save.data.hallowNoteDeaths == null)
+			FlxG.save.data.hallowNoteDeaths = 0;
+
 		Achievements.defaultYAYY();
 
 		Conductor.recalculateTimings();

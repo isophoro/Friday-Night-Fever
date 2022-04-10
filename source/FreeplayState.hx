@@ -330,8 +330,8 @@ class FreeplayState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 3 : 2;
-		if (curDifficulty > (songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 3 : 2))
+			curDifficulty = songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 4 : 3;
+		if (curDifficulty > (songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 4 : 3))
 			curDifficulty = 0;
 
 		PlayState.minus = curDifficulty == 3;
@@ -339,7 +339,7 @@ class FreeplayState extends MusicBeatState
 		switch(currentStyle)
 		{
 			case HALLOWEEN:
-				curDifficulty = 2;
+				curDifficulty = 4;
 				diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
 			default:
 				diffText.text = '< ' +CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';
