@@ -334,7 +334,7 @@ class FreeplayState extends MusicBeatState
 		if (curDifficulty > (songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 4 : 3))
 			curDifficulty = 0;
 
-		PlayState.minus = curDifficulty == 3;
+		PlayState.minus = curDifficulty == 4;
 
 		switch(currentStyle)
 		{

@@ -26,7 +26,7 @@ class Achievements
         //bronze
         ["Pwned", "Die 5 Times on a Single Song", "achievements/pwned", false, 160615],
         ["Marketable NFT", "Die 5 Times on Hallow", "achievements/markNFT", false, 160616],
-        ["Miracle", "Die on Milk Tea with Baby Mode", "achievements/miracle", false, 160617],
+        ["Miracle", "Beat Milk Tea on Baby Mode", "achievements/miracle", false, 160617],
         ["Cheater", "Turn on BotPlay", "achievements/cheater", false, 160618],
         //silver
         ["Getting There!", "FC Tutorial", "achievements/fc", false, 160619],
@@ -55,6 +55,10 @@ class Achievements
             
             if(!alreadyHave) 
                 GameJoltAPI.getTrophy(achievements[achieveID][4]);
+                FlxTween.tween(PlayState.unlocked, {alpha: 1}, 1, {onComplete: (twn) -> {
+                    FlxTween.tween(PlayState.unlocked, {alpha: 0}, 1);
+                }});
+                PlayState.unlocked.text = "Rewarded " + achievements[achieveID][0] + " Achievement!";
 
             FlxG.save.flush();
         }
