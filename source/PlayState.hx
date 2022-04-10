@@ -2417,6 +2417,11 @@ class PlayState extends MusicBeatState
 			vocals.stop();
 			FlxG.sound.music.stop();
 
+			if(SONG.song.toLowerCase() == 'milk-tea' && storyDifficulty == 0)
+			{
+				Achievements.getAchievement(2);
+			}
+
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
 			#if windows
@@ -2614,7 +2619,7 @@ class PlayState extends MusicBeatState
 
 					if (!opponent)
 					{
-						if (storyDifficulty != 4)
+						if (storyDifficulty != 0)
 						{
 							switch (dad.curCharacter) {
 								case 'robo-cesar':
@@ -2631,7 +2636,7 @@ class PlayState extends MusicBeatState
 									switch (storyDifficulty) {
 										default:
 											health -= 0.02;
-										case 0 | 4: // easy and baby mode
+										case 0 | 1: // easy and baby mode
 											health -= 0.01;
 									}
 								case 'monster' | 'taki':
@@ -2654,7 +2659,7 @@ class PlayState extends MusicBeatState
 									}
 							}
 						}
-						else if (storyDifficulty == 4) 
+						else if (storyDifficulty == 0) 
 						{
 							health += 0.03;
 						}
