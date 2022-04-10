@@ -37,7 +37,7 @@ class FreeplayState extends MusicBeatState
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var iconArray:Array<HealthIcon> = [];
 
-	var curDifficulty:Int = 1;
+	var curDifficulty:Int = 2;
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
 

@@ -57,7 +57,7 @@ class StoryMenuState extends MusicBeatState
 		];	
 	}
 
-	var curDifficulty:Int = 1;
+	var curDifficulty:Int = 2;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var wiggleEffect:WiggleEffect;
 
@@ -404,9 +404,9 @@ class StoryMenuState extends MusicBeatState
 
 			switch (curDifficulty)
 			{
-				case 0:
+				case 0 | 1:
 					diffic = '-easy';
-				case 2 | 3:
+				case 3 | 4:
 					diffic = '-hard';
 			}
 
@@ -434,8 +434,8 @@ class StoryMenuState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = curWeek == 2 ? 3 : 2;
-		else if (curDifficulty > 3 && curWeek == 2 || curDifficulty > 2 && curWeek != 2)
+			curDifficulty = curWeek == 3 ? 4 : 3;
+		else if (curDifficulty > 4 && curWeek == 2 || curDifficulty > 3 && curWeek != 2)
 			curDifficulty = 0;
 
 		switch (curDifficulty)
@@ -444,11 +444,14 @@ class StoryMenuState extends MusicBeatState
 				sprDifficulty.animation.play('easy');
 				PlayState.minus = false;
 			case 1:
-				sprDifficulty.animation.play('normal');
+				sprDifficulty.animation.play('easy');
+				PlayState.minus = false;
 			case 2:
+				sprDifficulty.animation.play('normal');
+			case 3:
 				sprDifficulty.animation.play('hard');
 				PlayState.minus = false;
-			case 3:
+			case 4:
 				sprDifficulty.animation.play('minus');
 				PlayState.minus = true;
 		}
