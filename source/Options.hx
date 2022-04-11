@@ -188,6 +188,30 @@ class AchievementsMenu extends Option
 }
 
 
+class ResetAchievements extends Option
+{
+
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		Achievements.defaultYAYY(true);
+		FlxG.save.data.hallowNoteDeaths = 0;
+		FlxG.save.data.hallowDeaths = 0;
+		FlxG.save.data.deaths = 0;
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Reset Achievements";
+	}
+}
+
 class LogInOption extends Option
 {
 

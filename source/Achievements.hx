@@ -21,6 +21,11 @@ using StringTools;
 class Achievements
 {
 
+
+    static var alert:FlxText;
+
+    
+
     public static var achievements:Array<Dynamic> =
     [
         //bronze
@@ -43,8 +48,10 @@ class Achievements
         ["The Eater", "FC Week 3", "achievements/fc", false, 160628],
         ["FC Week 4", "FC Week 4", "achievements/fc", false, 160629],
         ["Tax Evader", "FC Week 5", "achievements/fc", false, 160630],
-        ["FC Week 6", "FC Week 6", "achievements/fc", false, 160631]
+        ["FC Week 6", "FC Week 6", "achievements/fc", false, 160631],
+        ["Completionist", "Get Every Achievement", "achievements/theend", true, 160637]
     ];  //0           1            2                  3      4
+
 
 
     public static function getAchievement(achieveID:Int, alreadyHave:Null<Bool> = false):Void 
@@ -52,13 +59,25 @@ class Achievements
         if (!FlxG.save.data.achievements[achieveID])
         {
             FlxG.save.data.achievements[achieveID] = true;
+
+            alert = new FlxText(FlxG.width / 2 - 235, FlxG.height * 0.95, 0, "", 20);
+            alert.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+            alert.scrollFactor.set(0.9, 0.9);
+            alert.alpha = 0;
+            alert.cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+            FlxG.state.add(alert);
+
             
             if(!alreadyHave) 
                 GameJoltAPI.getTrophy(achievements[achieveID][4]);
-                FlxTween.tween(PlayState.unlocked, {alpha: 1}, 1, {onComplete: (twn) -> {
-                    FlxTween.tween(PlayState.unlocked, {alpha: 0}, 1);
-                }});
-                PlayState.unlocked.text = "Rewarded " + achievements[achieveID][0] + " Achievement!";
+                if(alert != null)
+                {
+                    FlxTween.tween(alert, {alpha: 1}, 1, {onComplete: (twn) -> {
+                        FlxTween.tween(alert, {alpha: 0}, 1);
+                    }});
+                    alert.text = "Rewarded " + achievements[achieveID][0] + " Achievement!";
+                }
+
 
             FlxG.save.flush();
         }
@@ -70,19 +89,22 @@ class Achievements
 		{
 			if (FlxG.save.data.achievements[i])
 			{
+
 				GameJoltAPI.getTrophy(achievements[i][4]);
 			}
 		}
     }
 
-	public static function defaultYAYY()
+	public static function defaultYAYY(?reset:Bool = false)
 	{
-		if (FlxG.save.data.achievements == null)
+		if (FlxG.save.data.achievements == null || reset)
 		{
 			FlxG.save.data.achievements = [
-				false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+				false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
 			];
 		}
+
+
 	}
 
 }

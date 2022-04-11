@@ -262,12 +262,59 @@ class StoryMenuState extends MusicBeatState
 		updateText();
 		changeDifficulty();
 
+		trace(FlxG.save.data.misses);
+
 		super.create();
 	}
 
 	override function update(elapsed:Float)
 	{
 		var accepted:Bool = controls.ACCEPT;
+
+		if(PlayState.endingSong == true)
+		{
+			if(PlayState.SONG.song.toLowerCase() == 'milk-tea' && PlayState.storyDifficulty == 0)
+			{
+				Achievements.getAchievement(2);
+			}
+
+			if (PlayState.isStoryMode && PlayState.storyPlaylist.length <= 1)
+			{
+				if(FlxG.save.data.misses == 0)
+				{
+					switch (PlayState.storyWeek)
+					{
+						case 0:
+							Achievements.getAchievement(4);
+						case 1:
+							Achievements.getAchievement(9);
+						case 2:
+							Achievements.getAchievement(10);
+						case 3:
+							Achievements.getAchievement(11);
+						case 4: 
+							Achievements.getAchievement(12);
+						case 5: 
+							Achievements.getAchievement(13);
+						case 6: 
+							Achievements.getAchievement(14);
+						case 7:
+							Achievements.getAchievement(15);
+						case 8:
+							Achievements.getAchievement(16);
+						default:
+							trace('yay!!!');
+						
+					}
+				}	
+				else
+				{
+					PlayState.endingSong = false;
+					FlxG.save.data.misses = 0;
+				}
+			}
+
+		}
 
 		#if mobile
 		if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) 

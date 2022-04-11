@@ -54,6 +54,8 @@ class PlayState extends MusicBeatState
 {
 	public static var instance:PlayState = null;
 	public static var minus:Bool = false;
+
+	public static var endingSong:Bool;
 	
 	public static var SONG:SwagSong;
 	public static var curStage:String = '';
@@ -243,7 +245,7 @@ class PlayState extends MusicBeatState
 			Main.clearMemory();
 		}
 
-
+		endingSong = false;
 
 		#if cpp 
 		Gc.run(true);
@@ -1097,12 +1099,14 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		add(scoreTxt);
 
-		unlocked = new FlxText(640, healthBarBG.y + 100, 0, "", 20);
+		unlocked = new FlxText(scoreTxt.x, healthBarBG.y + 100, 0, "", 20);
 		unlocked.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		unlocked.scrollFactor.set();
 		add(unlocked);
 		unlocked.alpha = 0;
 		unlocked.cameras = [camHUD];
+		if (!FlxG.save.data.downscroll)
+			healthBarBG.y - 100;
 		
 
 		if (curSong.toLowerCase() == 'tranquility' || curStage == 'church')
@@ -1954,7 +1958,7 @@ class PlayState extends MusicBeatState
 
 		if(FlxG.keys.justPressed.U)
 		{
-			Achievements.getAchievement(11);
+			Achievements.getAchievement(15);
 		}
 
 
@@ -2781,6 +2785,8 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+	
+
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
@@ -2821,10 +2827,8 @@ class PlayState extends MusicBeatState
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
 
-				if(SONG.song.toLowerCase() == 'milk-tea' && storyDifficulty == 0)
-				{
-					Achievements.getAchievement(2);
-				}
+				endingSong = true;
+
 
 				if (storyWeek == 5)
 					Costume.unlockCostume(Fever_Casual);
@@ -2833,6 +2837,7 @@ class PlayState extends MusicBeatState
 				{
 					Main.playFreakyMenu();
 					FlxG.switchState(new StoryMenuState());
+
 				} 
 				else 
 				{
@@ -2913,6 +2918,7 @@ class PlayState extends MusicBeatState
 				score = -300;
 				combo = 0;
 				misses++;
+				FlxG.save.data.misses++;
 				health -= 0.2;
 				shits++;
 				if (FlxG.save.data.accuracyMod == 0)
@@ -3186,6 +3192,7 @@ class PlayState extends MusicBeatState
 		songScore -= 10;
 		combo = 0;
 		misses++;
+		FlxG.save.data.misses++;
 
 		if (FlxG.save.data.accuracyMod == 1)
 			totalNotesHit -= 1;

@@ -136,6 +136,9 @@ class KadeEngineData
 		if (FlxG.save.data.hallowNoteDeaths == null)
 			FlxG.save.data.hallowNoteDeaths = 0;
 
+		if (FlxG.save.data.misses == null)
+			FlxG.save.data.misses = 0;
+
 		Achievements.defaultYAYY();
 
 		Conductor.recalculateTimings();

@@ -42,7 +42,8 @@ class OptionsMenu extends MusicBeatState
 			new LogOutOption("Log Out of GameJolt (Closes Game)")
 		]),
 		new OptionCategory("Achievements", [
-			new AchievementsMenu("Achievements Menu")
+			new AchievementsMenu("Achievements Menu"),
+			new ResetAchievements("Resets Achievements!!!")
 		]),
 		new OptionCategory("Mod Specific", [
 			new OpponentOption("Play as either the opponent or as Fever (Default as Fever)"),

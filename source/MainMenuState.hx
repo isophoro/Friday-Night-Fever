@@ -13,6 +13,8 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
+import flash.display.DisplayObject;
+import openfl.Lib;
 import GameJolt;
 
 #if windows
@@ -54,6 +56,8 @@ class MainMenuState extends MusicBeatState
 
 	public static var shutup:Bool;
 
+	public static var alert:FlxText;
+
 	override function create()
 	{
 		#if windows
@@ -65,7 +69,13 @@ class MainMenuState extends MusicBeatState
 		PlayState.easierMode = false;
 		PlayState.deaths = 0;
 
+
 		shutup = true;
+
+		#if debug
+		Achievements.getAchievement(17);
+		Achievements.getAchievement(8);
+		#end
 		
 		//Main.playFreakyMenu();
 
@@ -156,6 +166,7 @@ class MainMenuState extends MusicBeatState
 		
 		versionShit.text += '\nPress C to visit the credits menu';
 		versionShit.y -= 18;
+
 
 		if (FlxG.save.data.dfjk)
 			controls.setKeyboardScheme(KeyboardScheme.Solo, true);

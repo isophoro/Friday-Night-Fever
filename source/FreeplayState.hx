@@ -339,7 +339,7 @@ class FreeplayState extends MusicBeatState
 		switch(currentStyle)
 		{
 			case HALLOWEEN:
-				curDifficulty = 4;
+				curDifficulty = 3;
 				diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
 			default:
 				diffText.text = '< ' +CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';
