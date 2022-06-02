@@ -3501,7 +3501,7 @@ class PlayState extends MusicBeatState
 				case 'c354r': 
 					switch(curBeat)
 					{
-						case 47: 
+						/*case 47: 
 							roboShoot();
 						case 55:
 							roboShoot();
@@ -3524,7 +3524,7 @@ class PlayState extends MusicBeatState
 						case 364:
 							roboShoot();
 						case 383:
-							roboShoot();
+							roboShoot();*/
 					}
 				case 'soul' | 'portrait':
 					switch(curBeat)
@@ -3678,7 +3678,10 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (!curOpponent.animation.curAnim.name.startsWith('sing'))
+		if (!meat.animation.curAnim.name.startsWith('sing') || meat.animOverrideList.contains(meat.animation.curAnim.name) && meat.animation.curAnim.finished ||!meat.animOverrideList.contains(meat.animation.curAnim.name))
+			meat.dance();
+
+		if (!curOpponent.animation.curAnim.name.startsWith('sing') || curOpponent.animOverrideList.contains(curOpponent.animation.curAnim.name) && curOpponent.animation.curAnim.finished ||!curOpponent.animOverrideList.contains(curOpponent.animation.curAnim.name))
 			curOpponent.dance();
 
 		var iconBop:Float = curBeat % 4 == 0 ? 1.2 : 1.135;

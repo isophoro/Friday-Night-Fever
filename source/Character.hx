@@ -134,6 +134,29 @@ class Character extends FlxSprite
 	public var holdTimer:Float = 0;
 	public var useAlternateIdle:Bool = false;
 
+
+	public var charSize:Float = 1; //size, makes it easier to scale characters. example, you did offsets and character is too small, you can make them-
+	//bigger with this and the offsets would be unchanged being perfect.
+
+	public var animOverList:Array<String> = ['idle','sing'];
+	public var animOverrideList:Array<String> = [];
+	//arrays for anims that overlap singing, idle, ect. (i did this before i saw ur code in beathit LMAO but still might be useful)
+	//only coded for dad and meat at the moment
+
+	//use BEFORE offsets. example
+
+	/*
+		animation.addByPrefix('hey', 'BF HEY', 24, false);
+
+		animOverList.push('hey');
+
+		addOffset("hey", -10, 3);
+
+	*/
+
+	//everything else is already covered.
+
+
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
@@ -1217,6 +1240,8 @@ class Character extends FlxSprite
 
 				setGraphicSize(Std.int(width * 0.8));
 
+				//setCharSize(2); or something idk its not multiplied its just what it sets the size to, it uses scale.set
+
 				playAnim('idle');
 
 			case 'senpai': // MEGA
@@ -1485,7 +1510,7 @@ class Character extends FlxSprite
 			var daOffset = animOffsets.get(AnimName);
 			if (animOffsets.exists(AnimName))
 			{
-				offset.set(daOffset[0], daOffset[1]);
+				offset.set(daOffset[0]* charSize, daOffset[1] * charSize);
 			}
 			else
 				offset.set(0, 0);
@@ -1519,8 +1544,34 @@ class Character extends FlxSprite
 		}
 	}
 
+	public function setSizeChar(?toChange:Float = 1):Void
+	{
+		charSize = toChange;
+		scale.set(toChange, toChange);
+	}
+
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
 	{
+
+		if (check(name))
+			animOverrideList.push(name);
+
+
 		animOffsets[name] = [x, y];
+	}
+
+	public function check(str:String) 
+	{
+		var total = animOverList.length;
+		var amt=0;
+		for (i in 0...animOverList.length)
+		{
+			if (!str.contains(animOverList[i]))
+				amt++;
+		}
+		if (amt == total)
+			return true;
+		else
+			return false;
 	}
 }
