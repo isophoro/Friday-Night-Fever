@@ -97,7 +97,10 @@ class CreditsState extends MusicBeatState
     {
         super.create();
 
-        Achievements.getAchievement(7);
+        new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+            Achievements.getAchievement(7);
+		});
 
         FlxG.save.data.visitedCredits = true;
         FlxG.save.flush();

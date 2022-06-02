@@ -10,6 +10,7 @@ import openfl.system.System;
 #if cpp import cpp.vm.Gc; #end
 import sprites.RoboBackground;
 import flixel.effects.FlxFlicker;
+import flixel.util.FlxCollision;
 import sprites.Crowd;
 import openfl.display.BitmapData;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
@@ -237,8 +238,11 @@ class PlayState extends MusicBeatState
 
 	public static var unlocked:FlxText;
 
+	var curBFY:Float = 0;
+
 	override public function create() 
 	{
+		
 		trace(storyWeek);
 		if (!isStoryMode || StoryMenuState.get_weekData()[storyWeek][0].toLowerCase() == SONG.song.toLowerCase())
 		{
@@ -933,6 +937,7 @@ class PlayState extends MusicBeatState
 				dad.x -= 105;
 			}
 		}
+		
 
 		add(gf);
 
@@ -947,6 +952,11 @@ class PlayState extends MusicBeatState
 		}
 		add(dad);
 		add(boyfriend);
+		curBFY = boyfriend.y;
+
+		trace(boyfriend.y);
+		trace('curbfy position is ' + curBFY);
+
 		//if(curStage == 'robocesbg')
 		//{
 			roboFeverAttack = new FlxSprite(dad.x - 100, dad.y);
@@ -1407,7 +1417,12 @@ class PlayState extends MusicBeatState
 	
 				if(pressedSpace)
 				{
-					boyfriend.playAnim('dodge', true);
+					if(boyfriend.curCharacter == 'bf-teasar')
+					{
+						boyfriend.playAnim('hey', true);
+					}
+					else
+						boyfriend.playAnim('dodge', true);
 					health += 0.2;
 	
 				}
@@ -1939,9 +1954,13 @@ class PlayState extends MusicBeatState
 
 	var isSooting:Bool = false;
 
+	var jumping:Bool = false;
+
 
 	override public function update(elapsed:Float) 
 	{
+
+
 
 
 		if(shootCoolDown > 0)
@@ -1966,6 +1985,7 @@ class PlayState extends MusicBeatState
 
 		if(boyfriend.curCharacter == 'bf' && FlxG.keys.justPressed.SHIFT && shootCoolDown == 0 || boyfriend.curCharacter == 'bf' && FlxG.keys.justPressed.SHIFT && shootCoolDown < 0)
 		{
+
 			shootCoolDown = 5;
 			boyfriend.playAnim('shoot', true);
 			boyfriend.animation.finishCallback = function(name:String)
@@ -1977,8 +1997,10 @@ class PlayState extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('gunShoot'), 0.9);
 
-				roboFeverAttack.x = dad.x - 100;
-				roboFeverAttack.y = dad.y;
+				if(dad.curCharacter == 'dad' || dad.curCharacter == 'peasus')
+				{
+					Achievements.getAchievement(18);
+				}
 
 				FlxTween.tween(dad, {x: dad.x - 50}, 1, {ease: FlxEase.circOut, type: PINGPONG, onComplete: (twn) -> {
 					dad.dance();
@@ -2408,6 +2430,12 @@ class PlayState extends MusicBeatState
 								camFollow.x = boyfriend.getMidpoint().x - 490;
 								camFollow.y = boyfriend.getMidpoint().y - 280;
 						}
+				}
+
+				if(boyfriend.curCharacter == 'bfiso')
+				{
+					camFollow.x += 35;
+					camFollow.y += 75;
 				}
 
 				camFollow.x += Costume.PlayerCostume.camOffsetPos.x;

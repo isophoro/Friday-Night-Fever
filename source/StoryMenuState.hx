@@ -6,6 +6,8 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
+import Character.CostumeName;
+import Character.Costume;
 
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
@@ -276,6 +278,7 @@ class StoryMenuState extends MusicBeatState
 			if(PlayState.SONG.song.toLowerCase() == 'milk-tea' && PlayState.storyDifficulty == 0)
 			{
 				Achievements.getAchievement(2);
+				Costume.unlockCostume(Teasar);
 			}
 
 			if (PlayState.isStoryMode && PlayState.storyPlaylist.length <= 1)

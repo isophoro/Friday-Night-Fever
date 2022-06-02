@@ -4,6 +4,7 @@ import Section.SwagSection;
 import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
+import flixel.FlxG;
 
 using StringTools;
 
@@ -90,6 +91,7 @@ class Song
 				daBpm = songData.bpm; */
 
 		return parseJSONshit(rawJson);
+
 	}
 
 	public static function parseJSONshit(rawJson:String):SwagSong

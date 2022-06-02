@@ -15,6 +15,7 @@ enum CostumeName
 	Fever;
 	Fever_Casual;
 	Fever_Minus;
+	Teasar;
 	Fever_Old;
 	Fever_Iso;
 	Tea;
@@ -64,8 +65,9 @@ class Costume
 		Fever =>  new Costume("Fever", "", "The mayor himself.", "Sprites made by Kip", [Normal, Pixel], new Vector2(0,0)),
 		Fever_Casual => new Costume("Fever (Casual)", "", "Unlock: On Hard difficulty, full combo Week 3. (Story Mode)", "Sprites made by Kip", [Normal]),
 		Fever_Minus => new Costume("Fever (Minus)", "minus", "Unlock: On Minus difficulty, full combo Week 2. (Story Mode)", "Sprites made by EMG", [Normal], new Vector2(-20, -70), new Vector2(-330, 35)),
-		Fever_Old => new Costume("Fever (Old)", "old", "Unlock: Have a save file before v1.5, or beat all the original weeks. (Excludes Week 2.5 and ???)", "Sprites made by Kip", [Normal, Pixel]),
 		Fever_Iso => new Costume("Iso", "iso", "Unlock: type isophoro in one of the menus or something idfk", [Normal, Pixel]),
+		Teasar => new Costume("Teasar", "", "Unlock: Beat Milk Tea on Baby Mode", [Normal]),
+		Fever_Old => new Costume("Fever (Old)", "old", "Unlock: Have a save file before v1.5, or beat all the original weeks. (Excludes Week 2.5 and ???)", "Sprites made by Kip", [Normal, Pixel]),
 		Tea => new Costume("Tea", "", "there are no requirements goofy", [Normal, Pixel]),
 		Tea_Taki => new Costume("Taki", "taki", "Full combo all four Taki songs (Week 2 - 2.5)", [Normal]),
 		Tea_Minus => new Costume("Tea (Minus)", "minus", "On Minus difficulty, full combo Week 2. (Story Mode)", [Normal]),
@@ -73,7 +75,7 @@ class Costume
 		Tea_Old => new Costume("Tea (Old)", "old", "Have a save file from the mod before v1.5, or beat the original six weeks in story mode.", [Normal, Pixel])
 	];
 
-	public static var PlayerList(default, never):Array<CostumeName> = [Fever, Fever_Minus, Fever_Casual, Fever_Old];
+	public static var PlayerList(default, never):Array<CostumeName> = [Fever, Fever_Minus, Fever_Casual, Teasar, Fever_Old];
 	public static var GFList(default , never):Array<CostumeName> = [Tea, Tea_Taki, Tea_Cherry, Tea_Minus, Tea_Old];
 
 	public static var PlayerCostume(get, never):Costume;
@@ -330,7 +332,7 @@ class Character extends FlxSprite
 				flipX = true;
 			case 'bfiso':
 				iconColor = 'C353E3';
-				var tex = Paths.getSparrowAtlas('characters/iso', 'shared');
+				var tex = Paths.getSparrowAtlas('characters/isoBF', 'shared');
 				frames = tex;
 
 				trace(tex.frames.length);
@@ -504,6 +506,34 @@ class Character extends FlxSprite
 				addOffset("singDOWNmiss", -21, -65);
 				playAnim('idle');
 
+				flipX = true;
+
+			case 'bf-teasar':
+				iconColor = 'C353E3';
+				frames = Paths.getSparrowAtlas('characters/teasar');
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up0', 24, false);
+				animation.addByPrefix('singLEFT', 'left0', 24, false);
+				animation.addByPrefix('singRIGHT', 'right0', 24, false);
+				animation.addByPrefix('singDOWN', 'down0', 24, false);
+				animation.addByPrefix('singUPmiss', 'up miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'left miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'right miss', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'down miss', 24, false);
+				animation.addByPrefix('hey', 'hey', 24, false);
+
+				addOffset('idle', 0, 70);
+				addOffset("singUP", -90, 110);
+				addOffset("singRIGHT", -52, 80);
+				addOffset("singLEFT", -10, 69);
+				addOffset("singDOWN", 20, 30);
+				addOffset("singUPmiss", -40, 100);
+				addOffset("singRIGHTmiss", -50, 80);
+				addOffset("singLEFTmiss", 0, 70);
+				addOffset("singDOWNmiss", 20, 30);
+				addOffset("hey", -40, 80);
+
+				playAnim('idle');
 				flipX = true;
 
 			case 'bf-pixel':

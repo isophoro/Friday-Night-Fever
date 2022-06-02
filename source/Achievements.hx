@@ -49,7 +49,8 @@ class Achievements
         ["FC Week 4", "FC Week 4", "achievements/fc", false, 160629],
         ["Tax Evader", "FC Week 5", "achievements/fc", false, 160630],
         ["FC Week 6", "FC Week 6", "achievements/fc", false, 160631],
-        ["Completionist", "Get Every Achievement", "achievements/theend", true, 160637]
+        ["Completionist", "Get Every Achievement", "achievements/theend", true, 160637],
+        ["Horny Police", "Shoot Peakek", "achievements/shootpeakek", false, 160690]
     ];  //0           1            2                  3      4
 
 
@@ -60,12 +61,15 @@ class Achievements
         {
             FlxG.save.data.achievements[achieveID] = true;
 
-            alert = new FlxText(FlxG.width / 2 - 235, FlxG.height * 0.95, 0, "", 20);
+            alert = new FlxText(405, 670, 0, "", 20);
             alert.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+            alert.updateHitbox();
             alert.scrollFactor.set(0.9, 0.9);
             alert.alpha = 0;
             alert.cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
             FlxG.state.add(alert);
+            //trace(alert.x + " is the x position!");
+            //trace(alert.y + " is the y position!");
 
             
             if(!alreadyHave) 
@@ -100,7 +104,7 @@ class Achievements
 		if (FlxG.save.data.achievements == null || reset)
 		{
 			FlxG.save.data.achievements = [
-				false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+				false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
 			];
 		}
 
