@@ -21,14 +21,28 @@ class Crowd extends FlxSprite
                 updateHitbox();
                 setPosition(-635, 850);
             case 'party-crasher' | 'loaded': 
-                loadGraphic(Paths.image('boppers/finalcrowd', 'week5'));
-                updateHitbox();
-                setPosition(-635, 830);
+                if(PlayState.instance.font == true)
+                {
+                    loadGraphic(Paths.image('boppers/finalcrowdpixel', 'week5'));
+                    updateHitbox();
+                    setPosition(-635, 830);
+					var widShit = Std.int(width * 6);
+					setGraphicSize(widShit);
+					updateHitbox();
+                }
+                else
+                {
+                    loadGraphic(Paths.image('boppers/finalcrowd', 'week5'));
+                    updateHitbox();
+                    setPosition(-635, 830);
+                }
         }
 
         origin.y += height / 2;
         scrollFactor.set(0.9, 0.9);
         antialiasing = true;
+
+
 
         beatHit();
     }
@@ -37,6 +51,7 @@ class Crowd extends FlxSprite
 
     public function beatHit()
     {
+
         scale.set(scales[0], scales[1]);
         FlxTween.tween(this, {"scale.y": scales[0], "scale.x": scales[2]}, (Conductor.crochet / 1000) / 1.3);
     }

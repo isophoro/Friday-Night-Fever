@@ -12,7 +12,7 @@ enum WiggleEffectType
 	FLAG;
 }
 
-class WiggleEffect
+class WiggleEffect 
 {
 	public var shader(default, null):WiggleShader = new WiggleShader();
 	public var effectType(default, set):WiggleEffectType = DREAMY;

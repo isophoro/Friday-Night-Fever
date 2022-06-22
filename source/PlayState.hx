@@ -92,6 +92,12 @@ class PlayState extends MusicBeatState
 	public var dad:Character;
 	public var gf:Character;
 	public var boyfriend:Boyfriend;
+
+	private var yukichi_pixel:Character;
+    var tea_pixel:Character;
+    var fever_pixel:Character;
+
+
 	var characterTrail:CharacterTrail;
 
 	public var camHUD:FlxCamera;
@@ -228,6 +234,9 @@ class PlayState extends MusicBeatState
 	var disableScoreBop:Bool = false;
 	var wiggleEffect:WiggleEffect;
 	var vignette:FlxSprite;
+
+	var diner:FlxSprite;
+	var pixelDiner:FlxSprite;
 
 	var meat:Character;
 
@@ -404,15 +413,6 @@ class PlayState extends MusicBeatState
 					painting.visible = false;
 					if(SONG.song.toLowerCase() == 'soul')
 					{
-						if (FlxG.save.data.shaders)
-						{
-							wiggleEffect = new WiggleEffect();
-							wiggleEffect.effectType = WiggleEffectType.WAVY;
-							wiggleEffect.waveAmplitude = 0.05;
-							wiggleEffect.waveFrequency = 3;
-							wiggleEffect.waveSpeed = 1;
-							painting.shader = wiggleEffect.shader;
-						}
 
 						painting.visible = true;
 
@@ -544,10 +544,20 @@ class PlayState extends MusicBeatState
 				{
 					curStage = 'ripdiner';
 					defaultCamZoom = 0.5;
-					var bg:FlxSprite = new FlxSprite(-820, -200).loadGraphic(Paths.image('christmas/lastsongyukichi', 'week5'));
-					bg.antialiasing = true;
-					bg.scrollFactor.set(0.9, 0.9);
-					add(bg);
+
+					diner = new FlxSprite(-820, -200).loadGraphic(Paths.image('christmas/lastsongyukichi', 'week5'));
+					diner.antialiasing = true;
+					diner.scrollFactor.set(0.9, 0.9);
+					add(diner);
+
+					pixelDiner = new FlxSprite(-820, -200).loadGraphic(Paths.image('christmas/Week5YukichiBGPIXEL', 'week5'));
+					pixelDiner.antialiasing = true;
+					pixelDiner.scrollFactor.set(0.9, 0.9);
+					add(pixelDiner);
+					var widShit = Std.int(pixelDiner.width * 6);
+					pixelDiner.setGraphicSize(widShit);
+					pixelDiner.updateHitbox();
+					pixelDiner.visible = false;
 				}
 			case 'robocesbg':
 				{
@@ -976,6 +986,19 @@ class PlayState extends MusicBeatState
 
 		if (curStage.startsWith('week5') || curStage == 'ripdiner')
 		{
+			//no pixel yukichi atm
+            tea_pixel = new Character(0,0, "tea-pixel");
+            fever_pixel = new Character(0,0, "bf-pixeldemon", true);
+			tea_pixel.scrollFactor.set(0.9, 0.9);
+            fever_pixel.scrollFactor.set(0.9, 0.9);
+			tea_pixel.setPosition(gf.x + 460, gf.y + 265);
+			fever_pixel.setPosition(boyfriend.x + 190, boyfriend.y + 50);
+
+			add(tea_pixel);
+			add(fever_pixel);
+			fever_pixel.visible = false;
+			tea_pixel.visible = false;
+
 			bottomBoppers = new Crowd();
 			add(bottomBoppers);
 		}
@@ -1268,6 +1291,65 @@ class PlayState extends MusicBeatState
 	#if windows
 	public static var luaModchart:ModchartState = null;
 	#end
+
+	public function changeStrums(?pixel:Bool)//stolen from yknow that one thing
+    {
+        if (pixel)
+        {
+            strumLineNotes.forEach(function(babyArrow:FlxSprite){
+				babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
+				babyArrow.animation.add('green', [6]);
+				babyArrow.animation.add('red', [7]);
+				babyArrow.animation.add('blue', [5]);
+				babyArrow.animation.add('purplel', [4]);
+
+				babyArrow.setGraphicSize(Std.int(babyArrow.width * 6));
+				babyArrow.updateHitbox();
+				babyArrow.antialiasing = false;
+				switch(babyArrow.ID)
+				{
+					case 2:
+						babyArrow.animation.add('static', [2]);
+						babyArrow.animation.add('pressed', [6, 10], 12, false);
+						babyArrow.animation.add('confirm', [14, 18], 12, false);
+					case 3:
+						babyArrow.animation.add('static', [3]);
+						babyArrow.animation.add('pressed', [7, 11], 12, false);
+						babyArrow.animation.add('confirm', [15, 19], 24, false);
+					case 1:
+						babyArrow.animation.add('static', [1]);
+						babyArrow.animation.add('pressed', [5, 9], 12, false);
+						babyArrow.animation.add('confirm', [13, 17], 24, false);
+					case 0:
+						babyArrow.animation.add('static', [0]);
+						babyArrow.animation.add('pressed', [4, 8], 12, false);
+						babyArrow.animation.add('confirm', [12, 16], 24, false);					
+				}
+				babyArrow.animation.play('static');
+			});
+        }
+        else
+        {
+            strumLineNotes.forEach(function(babyArrow:FlxSprite){
+                var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
+	            var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
+
+				babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+				babyArrow.animation.addByPrefix(dataColor[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);	
+
+				var lowerDir:String = dataSuffix[babyArrow.ID].toLowerCase();
+
+				babyArrow.animation.addByPrefix('static', 'arrow' + dataSuffix[babyArrow.ID]);
+				babyArrow.animation.addByPrefix('pressed', lowerDir + ' press', 24, false);
+				babyArrow.animation.addByPrefix('confirm', lowerDir + ' confirm', 24, false);
+
+				babyArrow.antialiasing = true;
+				babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
+				babyArrow.updateHitbox();
+				babyArrow.animation.play('static');
+			});
+        }
+    }
 
 	function startCountdown():Void 
 	{
@@ -3531,6 +3613,19 @@ class PlayState extends MusicBeatState
 					{
 						case 32:
 							camHUD.flash(FlxColor.WHITE, 0.5);
+
+							if (FlxG.save.data.shaders)
+							{
+								wiggleEffect = new WiggleEffect();
+								wiggleEffect.effectType = WiggleEffectType.WAVY;
+								wiggleEffect.waveAmplitude = 0.05;
+								wiggleEffect.waveFrequency = 3;
+								wiggleEffect.waveSpeed = 1;
+
+								//filters.push(wiggleEffect.shader);
+								//camGame.filtersEnabled = true;
+								painting.shader = wiggleEffect.shader;
+							}
 		
 							if(curSong == 'Portrait')
 							{
@@ -3614,7 +3709,25 @@ class PlayState extends MusicBeatState
 		
 								modchart.addCamEffect(tvshit);
 							}
-				
+							pixelDiner.visible = true;
+
+							bottomBoppers.loadGraphic(Paths.image('boppers/finalcrowdpixel', 'week5'));
+							var widShit = Std.int(bottomBoppers.width * 6);
+							bottomBoppers.setGraphicSize(widShit);
+							bottomBoppers.setPosition(-635, 830);
+							bottomBoppers.updateHitbox();
+							bottomBoppers.antialiasing = false;
+
+							boyfriend.visible = false;
+							fever_pixel.visible = true;
+
+							gf.visible = false;
+							tea_pixel.visible = true;
+							iconP1.swapCharacter('bf-pixeldemon');
+
+							curPlayer = fever_pixel;
+							changeStrums(true);
+
 							scoreTxt.setFormat(Paths.font("Retro Gaming.ttf"), #if !mobile 18 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 							font = true;
 						case 160:
@@ -3625,7 +3738,24 @@ class PlayState extends MusicBeatState
 								camHUD.filtersEnabled = false;
 								modchart.removeCamEffect(tvshit);
 							}
+
+							pixelDiner.visible = false;
+
+							iconP1.swapCharacter('bfdemoncesar');
+							bottomBoppers.loadGraphic(Paths.image('boppers/finalcrowd', 'week5'));
+							bottomBoppers.updateHitbox();
+							bottomBoppers.setPosition(-635, 830);
+
+							fever_pixel.visible = false;
+							boyfriend.visible = true;
+
+							gf.visible = true;
+							tea_pixel.visible = false;
+
+							curPlayer = boyfriend;
 				
+							changeStrums();
+
 							font = false;
 							scoreTxt.setFormat(Paths.font("vcr.ttf"), #if !mobile 18 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 					}
@@ -3678,6 +3808,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+
 		if (!meat.animation.curAnim.name.startsWith('sing') || meat.animOverrideList.contains(meat.animation.curAnim.name) && meat.animation.curAnim.finished ||!meat.animOverrideList.contains(meat.animation.curAnim.name))
 			meat.dance();
 
@@ -3711,6 +3842,10 @@ class PlayState extends MusicBeatState
 				gf.animation.curAnim.name == 'sad' && gf.animation.finished || 
 				gf.animation.curAnim.name == 'scared' && dad.holdTimer < -0.35)
 				gf.dance();
+				if(tea_pixel != null)
+				{
+					tea_pixel.dance();
+				}
 		}
 
 		if (!curPlayer.animation.curAnim.name.startsWith("sing") && !opponent) 
