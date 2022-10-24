@@ -1,159 +1,159 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="isoPixel.png">
+<TextureAtlas imagePath="IsoPIXEL.png">
 	<!-- Created with Adobe Animate version 21.0.0.35450 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="BF DOWN MISS instance0000" x="0" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0001" x="0" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0002" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0003" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0004" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0005" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0006" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0007" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0008" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0009" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0010" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0011" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0012" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN MISS instance0013" x="100" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0000" x="200" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0001" x="200" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0002" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0003" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0004" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0005" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0006" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0007" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0008" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0009" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0010" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0011" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0012" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF DOWN NOTE instance0013" x="300" y="0" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0000" x="400" y="0" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0001" x="400" y="0" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0002" x="0" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0003" x="0" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0004" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0005" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0006" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0007" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0008" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0009" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0010" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0011" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0012" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF HEY!!0013" x="100" y="74" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0000" x="200" y="74" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0001" x="200" y="74" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0002" x="300" y="74" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0003" x="300" y="74" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0004" x="400" y="74" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0005" x="400" y="74" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0006" x="0" y="148" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0007" x="0" y="148" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0008" x="100" y="148" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0009" x="100" y="148" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0010" x="100" y="148" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0011" x="100" y="148" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0012" x="100" y="148" width="100" height="74"/>
-	<SubTexture name="BF IDLE instance0013" x="100" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0000" x="200" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0001" x="200" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0002" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0003" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0004" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0005" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0006" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0007" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0008" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0009" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0010" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0011" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0012" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT MISS instance0013" x="300" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0000" x="400" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0001" x="400" y="148" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0002" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0003" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0004" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0005" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0006" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0007" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0008" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0009" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0010" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0011" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0012" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF LEFT NOTE instance0013" x="0" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0000" x="100" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0001" x="100" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0002" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0003" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0004" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0005" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0006" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0007" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0008" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0009" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0010" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0011" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0012" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT MISS instance0013" x="200" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0000" x="300" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0001" x="300" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0002" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0003" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0004" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0005" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0006" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0007" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0008" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0009" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0010" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0011" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0012" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF RIGHT NOTE instance0013" x="400" y="222" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0000" x="0" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0001" x="0" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0002" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0003" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0004" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0005" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0006" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0007" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0008" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0009" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0010" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0011" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0012" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP MISS instance0013" x="100" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0000" x="200" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0001" x="200" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0002" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0003" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0004" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0005" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0006" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0007" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0008" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0009" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0010" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0011" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0012" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF UP NOTE instance0013" x="300" y="296" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0000" x="400" y="296" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0001" x="400" y="296" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0002" x="0" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0003" x="0" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0004" x="100" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0005" x="100" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0006" x="200" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0007" x="200" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0008" x="200" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0009" x="200" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0010" x="200" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0011" x="200" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0012" x="200" y="370" width="100" height="74"/>
-	<SubTexture name="BF DODGE instance0013" x="200" y="370" width="100" height="74"/>
+	<SubTexture name="IsoDODGE0000" x="0" y="0" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoDODGE0001" x="0" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0002" x="82" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0003" x="82" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0004" x="164" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0005" x="164" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0006" x="246" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0007" x="246" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0008" x="246" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0009" x="246" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0010" x="246" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0011" x="246" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0012" x="246" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDODGE0013" x="246" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0000" x="328" y="0" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoDOWN0001" x="328" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0002" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0003" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0004" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0005" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0006" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0007" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0008" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0009" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0010" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0011" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0012" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoDOWN0013" x="410" y="0" width="82" height="74"/>
+	<SubTexture name="IsoHEY0000" x="0" y="74" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoHEY0001" x="0" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0002" x="82" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0003" x="82" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0004" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0005" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0006" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0007" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0008" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0009" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0010" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0011" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0012" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoHEY0013" x="164" y="74" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0000" x="246" y="74" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoIDLE0001" x="246" y="74" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0002" x="328" y="74" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0003" x="328" y="74" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0004" x="410" y="74" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0005" x="410" y="74" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0006" x="0" y="148" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0007" x="0" y="148" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0008" x="82" y="148" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0009" x="82" y="148" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0010" x="82" y="148" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0011" x="82" y="148" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0012" x="82" y="148" width="82" height="74"/>
+	<SubTexture name="IsoIDLE0013" x="82" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0000" x="164" y="148" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoLEFT0001" x="164" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0002" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0003" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0004" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0005" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0006" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0007" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0008" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0009" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0010" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0011" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0012" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoLEFT0013" x="246" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0000" x="328" y="148" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoMissDOWN0001" x="328" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0002" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0003" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0004" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0005" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0006" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0007" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0008" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0009" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0010" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0011" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0012" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissDOWN0013" x="410" y="148" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0000" x="0" y="222" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoMissLEFT0001" x="0" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0002" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0003" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0004" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0005" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0006" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0007" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0008" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0009" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0010" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0011" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0012" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissLEFT0013" x="82" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0000" x="164" y="222" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoMissRIGHT0001" x="164" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0002" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0003" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0004" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0005" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0006" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0007" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0008" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0009" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0010" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0011" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0012" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissRIGHT0013" x="246" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0000" x="328" y="222" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoMissUP0001" x="328" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0002" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0003" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0004" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0005" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0006" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0007" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0008" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0009" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0010" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0011" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0012" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoMissUP0013" x="410" y="222" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0000" x="0" y="296" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoRIGHT0001" x="0" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0002" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0003" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0004" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0005" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0006" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0007" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0008" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0009" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0010" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0011" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0012" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoRIGHT0013" x="82" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0000" x="164" y="296" width="82" height="74" pivotX="41" pivotY="37"/>
+	<SubTexture name="IsoUP0001" x="164" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0002" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0003" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0004" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0005" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0006" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0007" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0008" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0009" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0010" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0011" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0012" x="246" y="296" width="82" height="74"/>
+	<SubTexture name="IsoUP0013" x="246" y="296" width="82" height="74"/>
 </TextureAtlas>

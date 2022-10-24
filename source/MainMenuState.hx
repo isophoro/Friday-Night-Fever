@@ -16,6 +16,7 @@ import lime.app.Application;
 import flash.display.DisplayObject;
 import openfl.Lib;
 import GameJolt;
+import Character.CostumeName;
 
 #if windows
 import Discord.DiscordClient;
@@ -49,7 +50,7 @@ class MainMenuState extends MusicBeatState
 	var menuMap:Map<String, Array<Dynamic>> = [
 	'story mode' => ['fever', -50, -40, true],
 	'freeplay' => ['teaa', -20, -226, true],
-	'jukebox' => ['jukebox', 40, 62, false],
+	'jukebox' => ['jukebox', 40, 62, false], 
 	'gallery' => ['monaLisaCesar', 82, 16, false],
 	'options' => ['cogwheel', 58, 126, false]
 ];
@@ -78,6 +79,7 @@ class MainMenuState extends MusicBeatState
 		#end
 		
 		//Main.playFreakyMenu();
+		FlxG.save.data.currentCostume = Fever;
 
 		FlxG.save.data.deaths = 0;
 
@@ -207,10 +209,10 @@ class MainMenuState extends MusicBeatState
 		}
 		#end
 
-		if (FlxG.sound.music.volume < 0.8)
-		{
-			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
-		}
+		//if (FlxG.sound.music.volume != null)
+		//{
+		//	FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+		//}
 
 		if (!selectedSomethin)
 		{

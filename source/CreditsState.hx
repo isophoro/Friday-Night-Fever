@@ -74,19 +74,6 @@ class CreditsState extends MusicBeatState
 	inline function get_passwords():Array<KeyCombo>
 	{
 		return [
-			new KeyCombo('isophoro', () -> {
-				trace('isophoro');
-                PlayState.curBoyfriend = 'bfiso';
-
-                FlxTween.tween(blacktransitionLOL, {alpha: 1}, 1, {ease: FlxEase.circInOut});
-                FlxG.sound.music.fadeOut(1, 0);
-
-                new FlxTimer().start(2, function(tmr:FlxTimer){
-                    FlxG.sound.play(Paths.music('isoUnlock'));
-                    FlxTween.tween(playasISO, {alpha: 1}, 1, {ease: FlxEase.circInOut});
-                    Achievements.getAchievement(6);
-                });
-			}),
 			new KeyCombo('kermo week when', () -> {
 				trace('but literally when fever');
 			}),

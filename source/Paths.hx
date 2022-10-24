@@ -104,7 +104,7 @@ class Paths
 	inline static public function voices(song:String)
 	{
 		song = StringTools.replace(song," ", "-");
-		if(PlayState.curBoyfriend == 'bfiso' && PlayState.SONG.song.toLowerCase() == 'party-crasher')
+		if(PlayState.isIso == true && PlayState.SONG.song.toLowerCase() == 'party-crasher')
 		{
 			return 'songs:assets/songs/${song.toLowerCase()}/VoicesIso.$SOUND_EXT';
 		}

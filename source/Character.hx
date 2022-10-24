@@ -531,6 +531,34 @@ class Character extends FlxSprite
 
 				flipX = true;
 
+			case 'bf-roblox':
+				iconColor = 'C353E3';
+				frames = Paths.getSparrowAtlas('characters/EliteBFSpriteR', 'roblox');
+				animation.addByPrefix('idle', 'BF idle dance', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
+				animation.addByPrefix('hey', 'BF HEY', 24, false);
+
+				addOffset('idle', -5, 160);
+				addOffset("singUP", -46, 183);
+				addOffset("singRIGHT", -74, 49);
+				addOffset("singLEFT", 109, 49);
+				addOffset("singDOWN", 10, 15);
+				addOffset("singUPmiss", 184, 266);
+				addOffset("singRIGHTmiss", 126, 245);
+				addOffset("singLEFTmiss", 77, 135);
+				addOffset("singDOWNmiss", 85, 105);
+				addOffset("hey", 17, 28);
+
+				playAnim('idle');
+				flipX = true;
+
 			case 'bf-teasar':
 				iconColor = 'C353E3';
 				frames = Paths.getSparrowAtlas('characters/teasar');
@@ -630,18 +658,18 @@ class Character extends FlxSprite
 
 				flipX = true;
 
-			case 'bfiso-pixel':
+			case 'bf-pixeliso':
 				iconColor = 'C353E3';
-				frames = Paths.getSparrowAtlas('characters/isoPixel');
-				animation.addByPrefix('idle', 'BF IDLE', 24, false);
-				animation.addByPrefix('singUP', 'BF UP NOTE', 24, false);
-				animation.addByPrefix('singLEFT', 'BF LEFT NOTE', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF RIGHT NOTE', 24, false);
-				animation.addByPrefix('singDOWN', 'BF DOWN NOTE', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF DOWN MISS', 24, false);
+				frames = Paths.getSparrowAtlas('characters/IsoPIXEL', 'shared');
+				animation.addByPrefix('idle', 'IsoIDLE', 24, false);
+				animation.addByPrefix('singUP', 'IsoUP', 24, false);
+				animation.addByPrefix('singLEFT', 'IsoLEFT', 24, false);
+				animation.addByPrefix('singRIGHT', 'IsoRIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'IsoDOWN', 24, false);
+				animation.addByPrefix('singUPmiss', 'IsoMissUP', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'IsoMissLEFT', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'IsoMissRIGHT', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'IsoMissDOWN', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP");

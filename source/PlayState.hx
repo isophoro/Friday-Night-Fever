@@ -1,6 +1,6 @@
 package;
-
 import Section.SwagSection;
+import openfl.filters.ShaderFilter;
 import Character.CostumeName;
 import Character.Costume;
 import flixel.util.FlxDirectionFlags;
@@ -41,6 +41,7 @@ import openfl.Lib;
 import openfl.filters.BitmapFilter;
 import shaders.Shaders;
 import shaders.ModChart;
+import flixel.system.FlxAssets.FlxShader;
 import GameJolt;
 import GameJolt.GameJoltAPI;
 
@@ -85,7 +86,7 @@ class PlayState extends MusicBeatState
 	public static var repReleases:Int = 0;
 
 	public static var opponent:Bool = true; // decides if the player should play as fever or the opponent
-	public static var curBoyfriend:Null<String>; // not to be confused with curPlayer, this overrides what character BF is
+	var curBoyfriend:String = SONG.player1; // not to be confused with curPlayer, this overrides what character BF is
 	public var curOpponent:Character; // these two variables are for the "swapping sides" portion
 	public var curPlayer:Character; // just use the dad / boyfriend variables so stuff doesnt break
 
@@ -96,6 +97,9 @@ class PlayState extends MusicBeatState
 	private var yukichi_pixel:Character;
     var tea_pixel:Character;
     var fever_pixel:Character;
+
+	var shader:FlxShaderToyShader;
+	var shaderTwo:FlxShaderToyShader;
 
 
 	var characterTrail:CharacterTrail;
@@ -204,6 +208,8 @@ class PlayState extends MusicBeatState
 	public static var easierMode:Bool = false;
 
 	public static var diedtoHallowNote:Bool = false;
+
+	public static var isIso:Bool = false;
 
 	public static function setModCamera(bool:Bool)
 	{
@@ -352,6 +358,7 @@ class PlayState extends MusicBeatState
 			camGame.filtersEnabled = true;
 			camHUD.setFilters(camfilters);
 			camHUD.filtersEnabled = true;
+
 		}
 
 		persistentUpdate = true;
@@ -380,6 +387,50 @@ class PlayState extends MusicBeatState
 				subtitles = new Subtitles(FlxG.height * 0.68, haxe.Json.parse(CoolUtil.getFile(Paths.json(subtitleString))));
 			}
 		}
+
+		switch(SONG.song.toLowerCase())
+		{
+			case 'milk-tea' | 'metamorphosis' | 'void' | 'star-baby' | 'last-meow' | 'mild' | 'spice' | 'c354r' | 'loaded' | 'tranquility' | 'princess' | 'banish':
+				if(isIso == true)
+				{
+					curBoyfriend = 'bfiso';
+				}
+				else
+					curBoyfriend = 'bf';
+
+			case 'down-bad' | 'party-crasher' | 'gears' | 'hallow' | 'portrait' | 'soul' | 'hardships' | 'prayer' | 'bad-nun' | 'bazinga' | 'crucify':
+				if(isIso == true)
+				{
+					curBoyfriend = 'bfiso';
+				}
+				else
+					curBoyfriend = 'bfdemoncesar';
+
+				
+			case 'ur-girl' | 'chicken-sandwich' | 'space-demons':
+				if(isIso == true)
+				{
+					curBoyfriend = 'bf-pixeliso';
+				}
+				else
+					curBoyfriend = 'bf-pixel';
+			case 'funkin-god':
+				if(isIso == true)
+				{
+					curBoyfriend = 'bfiso-pixel';
+				}
+				else
+					curBoyfriend = 'bf-pixeldemon';
+			case 'mako' | 'vim':
+				curBoyfriend = 'bf-casual';
+			case 'retribution' | 'farmed':
+				curBoyfriend = 'bf-casualdemon';
+			case 'honey' | 'bunnii':
+				curBoyfriend = 'bf-car';
+			case 'throw-it-back':
+				curBoyfriend = 'bf-carnight';
+		}
+
 
 		switch (SONG.stage) {
 			case 'halloween':
@@ -418,7 +469,12 @@ class PlayState extends MusicBeatState
 
 						if(FlxG.save.data.shaders)
 						{
-							filters.push(ShadersHandler.chromaticAberration);
+							//filters.push(ShadersHandler.glitch);
+
+							//shader = new Bend();
+							//shaderTwo = new Glitch();
+							//FlxG.game.setFilters([new ShaderFilter(shaderTwo)]);
+							//filters.push(ShadersHandler.glitchy);
 							camfilters.push(ShadersHandler.chromaticAberration);
 							ShadersHandler.setChrome(FlxG.random.int(2, 2) / 1000);
 
@@ -817,7 +873,7 @@ class PlayState extends MusicBeatState
 
 		}
 
-		boyfriend = new Boyfriend(770, 450, curBoyfriend == null ? SONG.player1 : curBoyfriend);
+		boyfriend = new Boyfriend(770, 450, curBoyfriend);
 
 		curPlayer = opponent ? dad : boyfriend;
 		curOpponent = opponent ? boyfriend : dad;
@@ -961,6 +1017,8 @@ class PlayState extends MusicBeatState
 			FlxTween.circularMotion(meat, 300, 200, 50, 0, true, 4, true, {type: LOOPING});
 		}
 		add(dad);
+
+		
 		add(boyfriend);
 		curBFY = boyfriend.y;
 
@@ -1123,7 +1181,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.save.data.botplay && !loadRep)
 			add(botPlayState);
 
-		iconP1 = new HealthIcon(curBoyfriend == null ? SONG.player1 : curBoyfriend, true);
+		iconP1 = new HealthIcon(boyfriend.curCharacter, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
 
@@ -2042,6 +2100,10 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float) 
 	{
 
+		if(FlxG.keys.justPressed.T && SONG.song.toLowerCase() == 'party-crasher') { //SKI P THE FUCKING PARYCRASHER INTRO I HATE IT
+			setSongTime(18613);
+		}
+
 
 
 
@@ -2061,7 +2123,6 @@ class PlayState extends MusicBeatState
 		{
 			Achievements.getAchievement(15);
 		}
-
 
 		//trace(shootCoolDown);
 
@@ -2174,7 +2235,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.NINE)
 		{
 			if (iconP1.curCharacter == 'bf-old')
-				iconP1.swapCharacter(SONG.player1);
+				iconP1.swapCharacter(boyfriend.curCharacter);
 			else
 				iconP1.swapCharacter('bf-old');
 		}
@@ -2200,6 +2261,11 @@ class PlayState extends MusicBeatState
 			if(tvshit!=null)
 			{
 				tvshit.update(elapsed);
+			}
+
+			if (shader != null)
+			{
+				shader.update(elapsed, FlxG.mouse);
 			}
 		}
 
@@ -3561,6 +3627,21 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	public function setSongTime(time:Float) //I HATE THE PARTY CRASHER INTRO ITS SO FUCKING LONG
+	{
+		if(time < 0) time = 0;
+
+		FlxG.sound.music.pause();
+		vocals.pause();
+
+		FlxG.sound.music.time = time;
+		FlxG.sound.music.play();
+
+		vocals.time = time;
+		vocals.play();
+		Conductor.songPosition = time;
+	}
+
 	override function beatHit() 
 	{
 		super.beatHit();
@@ -3613,6 +3694,9 @@ class PlayState extends MusicBeatState
 					{
 						case 32:
 							camHUD.flash(FlxColor.WHITE, 0.5);
+
+							//FlxG.game.setFilters([new ShaderFilter(shaderTwo)]);
+						
 
 							if (FlxG.save.data.shaders)
 							{
@@ -3704,19 +3788,17 @@ class PlayState extends MusicBeatState
 		
 							if (FlxG.save.data.shaders)
 							{
-								camfilters.push(ShadersHandler.scanline);
-								camHUD.filtersEnabled = true;
+								filters.push(ShadersHandler.glitchy);
+								camGame.filtersEnabled = true;
 		
 								modchart.addCamEffect(tvshit);
 							}
 							pixelDiner.visible = true;
 
 							bottomBoppers.loadGraphic(Paths.image('boppers/finalcrowdpixel', 'week5'));
-							var widShit = Std.int(bottomBoppers.width * 6);
-							bottomBoppers.setGraphicSize(widShit);
-							bottomBoppers.setPosition(-635, 830);
-							bottomBoppers.updateHitbox();
+							bottomBoppers.setPosition(-600, 840);
 							bottomBoppers.antialiasing = false;
+							bottomBoppers.updateHitbox();
 
 							boyfriend.visible = false;
 							fever_pixel.visible = true;
@@ -3745,6 +3827,7 @@ class PlayState extends MusicBeatState
 							bottomBoppers.loadGraphic(Paths.image('boppers/finalcrowd', 'week5'));
 							bottomBoppers.updateHitbox();
 							bottomBoppers.setPosition(-635, 830);
+							bottomBoppers.antialiasing = true;
 
 							fever_pixel.visible = false;
 							boyfriend.visible = true;
@@ -4112,4 +4195,107 @@ class PlayState extends MusicBeatState
 		vocals.time = strumTime;
 		Conductor.songPosition = strumTime;
 	}
+}
+
+class Bend extends FlxShaderToyShader {
+
+	public function new()
+        {
+            super('
+			const float pi = 3.14159265358979323846;
+			const float epsilon = 1e-6;
+			
+			const float fringeExp = 2.3;
+			const float fringeScale = 0.02;
+			const float distortionExp = 2.0;
+			const float distortionScale = 0.65;
+			
+			const float startAngle = 1.23456 + pi;	// tweak to get different fringe colouration
+			const float angleStep = pi * 2.0 / 3.0;	// space samples every 120 degrees
+			
+			void mainImage( out vec4 fragColor, in vec2 fragCoord )
+			{
+				vec2 baseUV = vec2(openfl_TextureCoordv.x, openfl_TextureCoordv.y);
+				vec2 fromCentre = baseUV - vec2(0.5, 0.5);
+				// correct for aspect ratio
+				fromCentre.y *= iResolution.y / iResolution.x;
+				float radius = length(fromCentre);
+				fromCentre = radius > epsilon
+					? (fromCentre * (1.0 / radius))
+					: vec2(0);
+				
+				float strength = 0.2;
+				float rotation = 2.0 * pi;
+				
+				float fringing = fringeScale * pow(radius, fringeExp) * strength;
+				float distortion = distortionScale * pow(radius, distortionExp) * strength;
+				
+				vec2 distortUV = baseUV - fromCentre * distortion;
+				
+				float angle;
+				vec2 dir;
+				
+				angle = startAngle + rotation;
+				dir = vec2(sin(angle), cos(angle));
+				vec4 redPlane = texture2D(bitmap,	distortUV + fringing * dir);
+				angle += angleStep;
+				dir = vec2(sin(angle), cos(angle));
+				vec4 greenPlane = texture2D(bitmap,	distortUV + fringing * dir);
+				angle += angleStep;
+				dir = vec2(sin(angle), cos(angle));
+				vec4 bluePlane = texture2D(bitmap,	distortUV + fringing * dir);
+				
+				fragColor = vec4(redPlane.r, greenPlane.g, bluePlane.b, 1.0);
+			}
+            ');
+        }
+}
+
+class Glitch extends FlxShaderToyShader {
+
+	public function new()
+        {
+            super('
+			/*
+			Transverse Chromatic Aberration
+		
+			Based on https://github.com/FlexMonkey/Filterpedia/blob/7a0d4a7070894eb77b9d1831f689f9d8765c12ca/Filterpedia/customFilters/TransverseChromaticAberration.swift
+		
+			Simon Gladman | http://flexmonkey.blogspot.co.uk | September 2017
+		*/
+		
+		int sampleCount = 50;
+		float blur = 0.25; 
+		float falloff = 3.0; 
+		
+		// use iChannel0 for video, iChannel1 for test grid
+		#define INPUT iChannel0
+		
+		void mainImage( out vec4 fragColor, in vec2 fragCoord )
+		{
+			vec2 destCoord = fragCoord.xy / iResolution.xy;
+		
+			vec2 direction = normalize(destCoord - 0.5); 
+			vec2 velocity = direction * blur * pow(length(destCoord - 0.5), falloff);
+			float inverseSampleCount = 1.0 / float(sampleCount); 
+			
+			mat3x2 increments = mat3x2(velocity * 1.0 * inverseSampleCount,
+									   velocity * 2.0 * inverseSampleCount,
+									   velocity * 4.0 * inverseSampleCount);
+		
+			vec3 accumulator = vec3(0);
+			mat3x2 offsets = mat3x2(0); 
+			
+			for (int i = 0; i < sampleCount; i++) {
+				accumulator.r += texture(INPUT, destCoord + offsets[0]).r; 
+				accumulator.g += texture(INPUT, destCoord + offsets[1]).g; 
+				accumulator.b += texture(INPUT, destCoord + offsets[2]).b; 
+				
+				offsets -= increments;
+			}
+		
+			fragColor = vec4(accumulator / float(sampleCount), 1.0);
+		}
+            ');
+        }
 }
