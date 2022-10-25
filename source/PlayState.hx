@@ -1,4 +1,5 @@
 package;
+import flixel.addons.display.FlxBackdrop;
 import Section.SwagSection;
 import openfl.filters.ShaderFilter;
 import Character.CostumeName;
@@ -43,6 +44,8 @@ import shaders.Shaders;
 import shaders.ModChart;
 import flixel.system.FlxAssets.FlxShader;
 import GameJolt;
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
 import GameJolt.GameJoltAPI;
 
 using StringTools;
@@ -255,6 +258,12 @@ class PlayState extends MusicBeatState
 
 	var curBFY:Float = 0;
 
+	//finale stage
+	var buildings1:FlxBackdrop;
+	var buildings2:FlxBackdrop;
+	var buildings3:FlxBackdrop;
+	var sky:FlxSprite;
+
 	override public function create() 
 	{
 		
@@ -312,6 +321,8 @@ class PlayState extends MusicBeatState
 				iconRPC = 'monster';
 			case 'peasus':
 				iconRPC = 'dad';
+			case 'robofvr-final':
+				iconRPC = 'roboff';
 			default:
 				iconRPC = SONG.player2.split('-')[0]; // To avoid having duplicate images in Discord assets
 		}
@@ -398,7 +409,7 @@ class PlayState extends MusicBeatState
 				else
 					curBoyfriend = 'bf';
 
-			case 'down-bad' | 'party-crasher' | 'gears' | 'hallow' | 'portrait' | 'soul' | 'hardships' | 'prayer' | 'bad-nun' | 'bazinga' | 'crucify':
+			case 'down-bad' | 'party-crasher' | 'hallow' | 'portrait' | 'soul' | 'hardships' | 'prayer' | 'bad-nun' | 'bazinga' | 'crucify':
 				if(isIso == true)
 				{
 					curBoyfriend = 'bfiso';
@@ -429,10 +440,73 @@ class PlayState extends MusicBeatState
 				curBoyfriend = 'bf-car';
 			case 'throw-it-back':
 				curBoyfriend = 'bf-carnight';
+			case 'gears':
+				curBoyfriend = 'bf-mad';
 		}
 
 
 		switch (SONG.stage) {
+			case 'finale':
+			{
+				curStage = 'finale';
+				defaultCamZoom = 0.3;
+
+				sky = new FlxSprite(0, -1000).loadGraphic(Paths.image('roboStage/sky'));
+				sky.antialiasing = true;
+				sky.scrollFactor.set(0.9, 0.9);
+				sky.setGraphicSize(Std.int(sky.width * 1.75));
+				sky.updateHitbox();
+				add(sky);
+
+				
+
+				buildings1 = new FlxBackdrop(Paths.image('roboStage/buildings_3'), 0, 0, true, false);
+				buildings1.antialiasing = true;
+				buildings1.scrollFactor.set(0.9, 0.9);
+				buildings1.setGraphicSize(Std.int(buildings1.width * 1.75));
+				buildings1.updateHitbox();
+				buildings1.y -= 800;
+				buildings1.x -= 600;
+				add(buildings1);
+
+				buildings2 = new FlxBackdrop(Paths.image('roboStage/buildings_2'), 0, 0, true, false);
+				buildings2.antialiasing = true;
+				buildings2.scrollFactor.set(0.9, 0.9);
+				buildings2.setGraphicSize(Std.int(buildings2.width * 1.75));
+				buildings2.updateHitbox();
+				buildings2.y -= 1500;
+				buildings2.x -= 600;
+				add(buildings2);
+
+				buildings3 = new FlxBackdrop(Paths.image('roboStage/buildings_1'), 0, 0, true, false);
+				buildings3.antialiasing = true;
+				buildings3.scrollFactor.set(0.9, 0.9);
+				buildings3.setGraphicSize(Std.int(buildings3.width * 1.75));
+				buildings3.updateHitbox();
+				buildings3.y -= 2500;
+				buildings3.x -= 600;
+				add(buildings3);
+
+				
+				var train:FlxSprite = new FlxSprite(0, 666);
+				train.frames = Paths.getSparrowAtlas('roboStage/train');
+				train.animation.addByPrefix('drive', "all train", 24);
+				train.animation.play('drive');
+				train.antialiasing = true;
+				train.scrollFactor.set(0.9, 0.9);
+				train.setGraphicSize(Std.int(train.width * 1.75));
+				train.updateHitbox();
+				add(train);
+
+				if(FlxG.save.data.shaders)
+				{
+
+					filters.push(ShadersHandler.bloom);
+					camGame.filtersEnabled = true;
+				}
+
+				 
+			}
 			case 'halloween':
 				{
 					curStage = 'spooky';
@@ -929,6 +1003,12 @@ class PlayState extends MusicBeatState
 				gf.x = 948;
 				gf.y = 722;
 				gf.scrollFactor.set(1.0, 1.0);
+			case 'finale':
+				boyfriend.x = 2850;
+				boyfriend.y = 380;
+				dad.x += 1850;
+				dad.y -= 500;
+				boyfriend.scrollFactor.set(0.9, 0.9);
 			case 'spookyBOO':
 				boyfriend.x = 1086.7;
 				boyfriend.y = 604.7;
@@ -1006,6 +1086,8 @@ class PlayState extends MusicBeatState
 		
 
 		add(gf);
+		if(curStage == 'finale')
+			gf.visible = false;
 
 		// Shitty layering but whatev it works LOL
 		if (limo != null)
@@ -1025,16 +1107,6 @@ class PlayState extends MusicBeatState
 		trace(boyfriend.y);
 		trace('curbfy position is ' + curBFY);
 
-		//if(curStage == 'robocesbg')
-		//{
-			roboFeverAttack = new FlxSprite(dad.x - 100, dad.y);
-			roboFeverAttack.frames = Paths.getSparrowAtlas('mechanicShit/roboShoot');
-			roboFeverAttack.animation.addByPrefix('Attack', 'robo shoot', 24, false);
-			roboFeverAttack.updateHitbox();
-			roboFeverAttack.antialiasing = true;
-			roboFeverAttack.alpha = 0;
-			add(roboFeverAttack);
-		//}
 
 
 		boyfriend.setPosition(boyfriend.x + Costume.PlayerCostume.offsetPos.x, boyfriend.y + Costume.PlayerCostume.offsetPos.y);
@@ -1099,7 +1171,7 @@ class PlayState extends MusicBeatState
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 
-		camPos.set(instance.gf.getGraphicMidpoint().x - 100, instance.gf.getGraphicMidpoint().y + 130);
+		camPos.set(instance.dad.getGraphicMidpoint().x, instance.dad.getGraphicMidpoint().y + 130);
 		camFollow.setPosition(camPos.x, camPos.y);
 
 		if (prevCamFollow != null) {
@@ -1153,21 +1225,6 @@ class PlayState extends MusicBeatState
 		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "BOTPLAY", 20);
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
-
-		shooting = new FlxSprite(50, 50);
-		shooting.frames = Paths.getSparrowAtlas('mechanicShit/shoot');
-		shooting.animation.addByPrefix('0', 'shoot icon', 24);
-		shooting.animation.addByPrefix('5', 'shoot five', 24);
-		shooting.animation.addByPrefix('4', 'shoot four', 24);
-		shooting.animation.addByPrefix('3', 'shoot three', 24);
-		shooting.animation.addByPrefix('2', 'shoot two', 24);
-		shooting.animation.addByPrefix('1', 'shoot one', 24);
-		shooting.animation.play('0');
-		shooting.scrollFactor.set();
-		if(boyfriend.curCharacter == 'bf')
-		{
-			add(shooting);
-		}
 
 		alarm = new FlxText(0, 0, 0, "", 20);
 		alarm.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1242,7 +1299,6 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
-		shooting.cameras = [camHUD];
 
 		if(subtitles != null)
 		{
@@ -1531,50 +1587,6 @@ class PlayState extends MusicBeatState
 
 	var canPressSpace:Bool = false;
 	var pressedSpace = false;
-
-	function roboShoot()
-	{
-			pressedSpace = false;
-			canPressSpace = true;
-			
-			alarm.alpha = 1;
-			alarm.text = 'dodge!!!';
-	
-			roboFeverAttack.alpha = 1;
-			dad.alpha = 0;
-			roboFeverAttack.animation.play('Attack', true);
-			roboFeverAttack.animation.finishCallback = function(name:String)
-			{
-					roboFeverAttack.alpha = 0;
-					dad.alpha = 1;
-					dad.dance();
-			};
-	
-	
-			new FlxTimer().start(0.55, function(tmr:FlxTimer)
-			{
-				alarm.alpha = 0;
-	
-				if(pressedSpace)
-				{
-					if(boyfriend.curCharacter == 'bf-teasar')
-					{
-						boyfriend.playAnim('hey', true);
-					}
-					else
-						boyfriend.playAnim('dodge', true);
-					health += 0.2;
-	
-				}
-				else
-				{
-					health -= 1;
-					FlxG.camera.shake(0.005);
-					boyfriend.playAnim('singUPmiss', true);
-				}
-			});
-		
-	}
 
 	function endingDialogue() 
 	{
@@ -2105,66 +2117,22 @@ class PlayState extends MusicBeatState
 		}
 
 
-
-
-		if(shootCoolDown > 0)
+		if(curStage == 'finale')
 		{
-			trace(shootCoolDown);
-			shootCoolDown -= elapsed;
-			shooting.animation.play('${Math.ceil(shootCoolDown)}');
+			sky.x -= 0.05;
+			buildings3.x -= 0.6 * Conductor.crochet / 50;
+			buildings2.x -= 0.7 * Conductor.crochet / 50;
+			buildings1.x -= 0.8 * Conductor.crochet / 50;
+			ShadersHandler.setBloom(daVal);
 		}
-		else
-		{
-			shooting.animation.play('0');
 
-		}
 
 		if(FlxG.keys.justPressed.U)
 		{
 			Achievements.getAchievement(15);
 		}
 
-		//trace(shootCoolDown);
-
-		if(boyfriend.curCharacter == 'bf' && FlxG.keys.justPressed.SHIFT && shootCoolDown == 0 || boyfriend.curCharacter == 'bf' && FlxG.keys.justPressed.SHIFT && shootCoolDown < 0)
-		{
-
-			shootCoolDown = 5;
-			boyfriend.playAnim('shoot', true);
-			boyfriend.animation.finishCallback = function(name:String)
-			{
-				boyfriend.dance();
-			};
-
-			new FlxTimer().start(0.55, function(tmr:FlxTimer)
-			{
-				FlxG.sound.play(Paths.sound('gunShoot'), 0.9);
-
-				if(dad.curCharacter == 'dad' || dad.curCharacter == 'peasus')
-				{
-					Achievements.getAchievement(18);
-				}
-
-				FlxTween.tween(dad, {x: dad.x - 50}, 1, {ease: FlxEase.circOut, type: PINGPONG, onComplete: (twn) -> {
-					dad.dance();
-					FlxTween.cancelTweensOf(dad);
-				}});
-
-				
-
-				
-
-				health += 0.2;
-				FlxG.camera.shake(0.005);
-			});
-		}
-
-
-		if(canPressSpace && FlxG.keys.justPressed.SPACE)
-		{
-			pressedSpace = true;
-			canPressSpace = false;
-		}
+		//trace(shootCoolDown);s
 
 
 		#if debug
@@ -2508,6 +2476,9 @@ class PlayState extends MusicBeatState
 					case 'flippy':
 						camFollow.x = dad.getMidpoint().x - 360;
 						camFollow.y = dad.getMidpoint().y - 440;
+					case 'robofvr-final':
+						camFollow.x = dad.getMidpoint().x + 350;
+						camFollow.y = dad.getMidpoint().y + 150;
 				}
 
 				//defaultCamZoom = 1.55;
@@ -2559,6 +2530,9 @@ class PlayState extends MusicBeatState
 					case 'princess':
 						camFollow.y = boyfriend.getMidpoint().y - 330;
 						camFollow.x = boyfriend.getMidpoint().x - 450;
+					case 'finale': 
+						camFollow.y = boyfriend.getMidpoint().y - 500;
+						camFollow.x = boyfriend.getMidpoint().x - 800;
 					case 'robocesbg':
 						switch (roboStage.curStage)
 						{
@@ -3516,6 +3490,11 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	var daVal:Float = 0.3;
+	var emitt:FlxTypedGroup<FlxEmitter>;
+	var emitter:FlxEmitter;
+
+
 	override function stepHit() 
 	{
 		super.stepHit();
@@ -3523,6 +3502,51 @@ class PlayState extends MusicBeatState
 		if(subtitles != null)
 		{
 			subtitles.stepHit(curStep);
+		}
+
+		if(curSong == "Gears")
+		{
+			switch(curStep)
+			{
+				case 1728: 
+					defaultCamZoom = 0.5;
+					camHUD.flash(FlxColor.WHITE, 1);
+					daVal = 0.4;
+				case 1984: 
+					defaultCamZoom = 0.4;
+					FlxTween.tween(this, {daVal: 0.7}, 1);
+
+					emitt = new FlxTypedGroup<FlxEmitter>();
+					add(emitt);
+					for (i in 0...3)
+					{
+						
+						emitter = new FlxEmitter(FlxG.width*1.85/2-2500, 1300);
+						emitter.scale.set(0.9, 0.9, 2, 2, 0.9, 0.9, 1, 1);
+						emitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+						emitter.width = FlxG.width*10;
+						emitter.alpha.set(1, 1, 1, 0);
+						emitter.lifespan.set(5, 10);
+						emitter.launchMode = FlxEmitterMode.SQUARE;
+						emitter.velocity.set(-50, -150, 50, -750, -100, 0, 100, -100);
+						emitter.loadParticles(Paths.image('roboStage/part'), 500, 16, true);
+						emitter.start(false, FlxG.random.float(0.2, 0.3), 10000000);
+						emitt.add(emitter);
+					}
+				case 2240:
+					defaultCamZoom = 0.3;
+					FlxTween.tween(this, {daVal: 0.3}, 1);
+					remove(emitt);
+
+					
+				case 2496:
+					defaultCamZoom = 0.4;
+					FlxTween.tween(this, {daVal: 0.6}, 0.5);
+				case 2754:
+					defaultCamZoom = 0.3;
+					camHUD.flash(FlxColor.WHITE, 1);
+					daVal = 0.3;
+			}
 		}
 
 		if(curSong == 'Bazinga')

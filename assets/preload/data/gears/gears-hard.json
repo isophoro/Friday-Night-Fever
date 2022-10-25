@@ -1,7 +1,8 @@
 {
 	"song": {
-		"player1": "bf",
-		"player2": "robo-cesar",
+		"player1": "bf-mad",
+		"player2": "robofvr-final",
+		"stage": "finale",
 		"notes": [
 			{
 				"lengthInSteps": 16,

@@ -42,13 +42,15 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (!daBf.contains('pixel'))
 		{
-			if (daBf.contains('demon') || daBf == 'bf-carnight')
+			if (daBf.contains('demon') || daBf == 'bf-carnight' || daBf == 'bf-mad')
 			{
 				// For demon fever
 				switch(PlayState.SONG.song.toLowerCase())
 				{
 					case 'hallow' | 'portrait' | 'soul':
 						daBf = 'bf-hallow-dead';
+					case 'gears':
+						daBf = 'madDeath';
 					default:
 						daBf = 'demonDeath';
 				}
@@ -70,12 +72,14 @@ class GameOverSubstate extends MusicBeatSubstate
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y - 85, 1, 1);
 		add(camFollow);
 
-		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+		if(daBf != 'madDeath')
+			FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
 		Conductor.changeBPM(100);
 
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
 
+		
 		bf.playAnim('firstDeath');
 
 		FlxG.camera.shake(0.0095, 0.3);

@@ -12,12 +12,23 @@ class ShadersHandler
 	public static var hq2x:ShaderFilter = new ShaderFilter(new Hq2x());
 	public static var tiltshift:ShaderFilter = new ShaderFilter(new Tiltshift());
 	public static var wiggle:ShaderFilter = new ShaderFilter(new WiggleShader());
+<<<<<<< Updated upstream
 	public static var glitchy:ShaderFilter;
+=======
+	public static var glitchy:ShaderFilter = new ShaderFilter(new Glitchy());
+	public static var bloom:ShaderFilter = new ShaderFilter(new Bloom());
+
+>>>>>>> Stashed changes
 	
 	public static function setChrome(chromeOffset:Float):Void
 	{
 		chromaticAberration.shader.data.rOffset.value = [chromeOffset];
 		chromaticAberration.shader.data.gOffset.value = [0.0];
 		chromaticAberration.shader.data.bOffset.value = [chromeOffset * -1];
+	}
+
+	public static function setBloom(val:Float):Void
+	{
+		bloom.shader.data.actualScale.value = [val];
 	}
 }

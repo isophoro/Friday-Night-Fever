@@ -268,7 +268,7 @@ class Character extends FlxSprite
 				addOffset('scared', -38, 142);
 
 				flipX = true;
-			case 'bf' | 'bfdemoncesar':
+			case 'bf' | 'bfdemoncesar' | 'bf-mad':
 				iconColor = 'C353E3';
 				
 				var prefix:String = "";
@@ -277,6 +277,8 @@ class Character extends FlxSprite
 					case 'bfdemoncesar':
 						prefix = PlayState.minus ? "m" : "";
 						frames = Paths.getSparrowAtlas(PlayState.minus ? 'characters/mfever demon_assets' : 'characters/demon_fever_assets', 'shared');
+					case 'bf-mad':
+						frames = Paths.getSparrowAtlas('characters/fever_mad', 'shared');
 					default:
 						frames = Paths.getSparrowAtlas('characters/human_fvr', 'shared');
 				}
@@ -296,7 +298,19 @@ class Character extends FlxSprite
 				animation.addByPrefix('dodge', prefix + 'fever dodge', 24, false);
 				animation.addByPrefix('shoot', prefix + 'fever shoot', 24, false);
 
-				if (curCharacter != 'bfdemoncesar')
+				if(curCharacter == 'bf-mad')
+				{
+					addOffset('idle', 6, 93);
+					addOffset("singUP", -40, 130);
+					addOffset("singRIGHT", -59, 70);
+					addOffset("singLEFT", 33, 93);
+					addOffset("singDOWN", -31, 54);
+					addOffset("singUPmiss", -43, 129);
+					addOffset("singRIGHTmiss", -47, 68);
+					addOffset("singLEFTmiss", 40, 93);
+					addOffset("singDOWNmiss", -31, 54);
+				}
+				else if (curCharacter != 'bfdemoncesar')
 				{
 					addOffset('idle', 6, 93);
 					addOffset('idle-frown', 6, 93);
@@ -762,6 +776,20 @@ class Character extends FlxSprite
 
 				flipX = true;
 				isDeathAnim = true;
+			case 'madDeath':
+				frames = Paths.getSparrowAtlas('characters/fever_mad');
+				animation.addByPrefix('firstDeath', "fever dies", 24, false);
+				animation.addByPrefix('deathLoop', "fever dead loop", 24, true);
+				animation.addByPrefix('deathConfirm', "fever dead confirm", 24, false);
+				animation.play('firstDeath');
+
+				addOffset('firstDeath');
+				addOffset('deathLoop',-488, -115);
+				addOffset('deathConfirm', -273, -125);
+				playAnim('firstDeath');
+
+				flipX = true;
+				isDeathAnim = true;
 			// TEA + TEA VARIANTS \\
 			case 'gf-notea':
 				iconColor = '99DBF6';
@@ -1142,6 +1170,22 @@ class Character extends FlxSprite
 				scale.set(6,6);
 
 				flipX = true;
+			case 'robofvr-final': 
+				iconColor = '9236B4';
+				frames = Paths.getSparrowAtlas('characters/robo_final');
+				animation.addByPrefix('idle', "Robo idle", 24, false);
+				animation.addByPrefix('singUP', 'Robo Up', 24, false);
+				animation.addByPrefix('singDOWN', 'Robo down', 24, false);
+				animation.addByPrefix('singLEFT', 'Robo left', 24, false);
+				animation.addByPrefix('singRIGHT', 'Robo right', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 163, 52);
+				addOffset("singRIGHT", -114, -64);
+				addOffset("singLEFT", 356, 49);
+				addOffset("singDOWN", -39, -259);
+
+				playAnim('idle');
 			case 'pico': // MAKO
 				iconColor = '47CC40';
 				tex = Paths.getSparrowAtlas('characters/Pico_FNF_assetss');
