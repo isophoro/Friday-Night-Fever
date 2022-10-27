@@ -314,7 +314,6 @@ class FreeplayState extends MusicBeatState
 					PlayState.storyDifficulty = 2;
 	
 					PlayState.storyWeek = 0;
-					PlayState.loadRep = false;
 					LoadingState.loadAndSwitchState(new PlayState());
 				}
 			}

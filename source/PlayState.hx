@@ -65,7 +65,6 @@ class PlayState extends MusicBeatState
 	public static var SONG:SwagSong;
 	public static var curStage:String = '';
 	private var curSong:String = "";
-	public static var songOffset:Float = 0;	// Per song additive offset
 	private var vocals:FlxSound;
 	private var generatedMusic:Bool = false;
 	private var startingSong:Bool = false;
@@ -80,13 +79,6 @@ class PlayState extends MusicBeatState
 	public static var storyDifficulty:Int = 1;
 	public static var campaignScore:Int = 0;
 	public static var skipDialogue:Bool = false;
-
-	// Replay shit
-	public static var rep:Replay;
-	public static var loadRep:Bool = false;
-	private var saveNotes:Array<Float> = [];
-	public static var repPresses:Int = 0;
-	public static var repReleases:Int = 0;
 
 	public static var opponent:Bool = true; // decides if the player should play as fever or the opponent
 	var curBoyfriend:String = SONG.player1; // not to be confused with curPlayer, this overrides what character BF is
@@ -195,7 +187,6 @@ class PlayState extends MusicBeatState
 	var healthBarBG:FlxSprite;
 	var healthBar:FlxBar;
 	var songPositionBar:Float = 0;
-	var replayTxt:FlxText;
 	public var purpleOverlay:FlxSprite;
 
 	var dark:FlxSprite;
@@ -1133,16 +1124,6 @@ class PlayState extends MusicBeatState
 			add(bottomBoppers);
 		}
 
-		if (loadRep) 
-		{
-			FlxG.watch.addQuick('rep presses', repPresses);
-			FlxG.watch.addQuick('rep releases', repReleases);
-
-			FlxG.save.data.botplay = true;
-			FlxG.save.data.scrollSpeed = rep.replay.noteSpeed;
-			FlxG.save.data.downscroll = rep.replay.isDownscroll;
-		}
-
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		doof.scrollFactor.set();
 		doof.finishThing = startCountdown;
@@ -1213,14 +1194,6 @@ class PlayState extends MusicBeatState
 		scoreTxt.borderSize = 1.25;
 		FlxG.signals.gameResized.add(onGameResize);
 
-		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "REPLAY", 20);
-		replayTxt.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		replayTxt.scrollFactor.set();
-		if (loadRep)
-		{
-			add(replayTxt);
-		}
-
 		// Literally copy-paste of the above, fu
 		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "BOTPLAY", 20);
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1235,7 +1208,7 @@ class PlayState extends MusicBeatState
 		
 
 
-		if (FlxG.save.data.botplay && !loadRep)
+		if (FlxG.save.data.botplay)
 			add(botPlayState);
 
 		iconP1 = new HealthIcon(boyfriend.curCharacter, true);
@@ -1337,8 +1310,6 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		if (loadRep)
-			replayTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 		startingSong = true;
 
@@ -1361,9 +1332,6 @@ class PlayState extends MusicBeatState
 		{
 			startCountdown();
 		}
-
-		if (!loadRep)
-			rep = new Replay("na");
 
 		FlxG.keys.preventDefaultKeys = [];
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
@@ -1727,32 +1695,12 @@ class PlayState extends MusicBeatState
 		// NEW SHIT
 		noteData = songData.notes;
 
-		var playerCounter:Int = 0;
-
-		// Per song offset check
-		#if windows
-		var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
-		for (file in sys.FileSystem.readDirectory(songPath)) {
-			var path = haxe.io.Path.join([songPath, file]);
-			if (!sys.FileSystem.isDirectory(path)) {
-				if (path.endsWith('.offset')) {
-					trace('Found offset file: ' + path);
-					songOffset = Std.parseFloat(file.substring(0, file.indexOf('.off')));
-					break;
-				} else {
-					trace('Offset file not found. Creating one @: ' + songPath);
-					sys.io.File.saveContent(songPath + songOffset + '.offset', '');
-				}
-			}
-		}
-		#end
-
 		for (section in noteData) {
 
 			var coolSection:Int = Std.int(section.lengthInSteps / 4);
 
 			for (songNotes in section.sectionNotes) {
-				var daStrumTime:Float = songNotes[0] + FlxG.save.data.offset + songOffset;
+				var daStrumTime:Float = songNotes[0] + FlxG.save.data.offset;
 				if (daStrumTime < 0)
 					daStrumTime = 0;
 				var daNoteData:Int = Std.int(songNotes[1] % 4);
@@ -2917,14 +2865,6 @@ class PlayState extends MusicBeatState
 	{
 		skipDialogue = false;
 
-		if (!loadRep)
-			rep.SaveReplay(saveNotes);
-		else {
-			FlxG.save.data.botplay = false;
-			FlxG.save.data.scrollSpeed = 1;
-			FlxG.save.data.downscroll = false;
-		}
-
 		if (FlxG.save.data.fpsCap > 290)
 			(cast(Lib.current.getChildAt(0), Main)).setFPSCap(290);
 
@@ -3302,17 +3242,10 @@ class PlayState extends MusicBeatState
 		notes.forEachAlive(function(daNote:Note) {
 			if (FlxG.save.data.downscroll && daNote.y > strumLine.y || !FlxG.save.data.downscroll && daNote.y < strumLine.y) {
 				// Force good note hit regardless if it's too late to hit it or not as a fail safe
-				if (FlxG.save.data.botplay && daNote.canBeHit && daNote.mustPress || FlxG.save.data.botplay && daNote.tooLate && daNote.mustPress) {
-					if (loadRep) {
-						// trace('ReplayNote ' + tmpRepNote.strumtime + ' | ' + tmpRepNote.direction);
-						if (rep.replay.songNotes.contains(FlxMath.roundDecimal(daNote.strumTime, 2))) {
-							goodNoteHit(daNote);
-							curPlayer.holdTimer = daNote.sustainLength;
-						}
-					} else {
-						goodNoteHit(daNote);
-						curPlayer.holdTimer = daNote.sustainLength;
-					}
+				if (FlxG.save.data.botplay && daNote.canBeHit && daNote.mustPress || FlxG.save.data.botplay && daNote.tooLate && daNote.mustPress) 
+				{
+					goodNoteHit(daNote);
+					curPlayer.holdTimer = daNote.sustainLength;
 				}
 			}
 		});
@@ -3418,9 +3351,6 @@ class PlayState extends MusicBeatState
 			if (luaModchart != null)
 				luaModchart.executeState('playerOneSing', [note.noteData, Conductor.songPosition]);
 			#end
-
-			if (!loadRep && note.mustPress)
-				saveNotes.push(FlxMath.roundDecimal(note.strumTime, 2));
 
 			playerStrums.forEach(function(spr:FlxSprite) {
 				if (Math.abs(note.noteData) == spr.ID) {

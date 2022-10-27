@@ -16,30 +16,30 @@ class OptionsState extends MusicBeatState
 
     var categories:Array<OptionCategory> = [
         {"name":"Controls", options:[
-            new BOption("Left", "", "leftBind", KEYBIND),
-            new BOption("Down", "", "downBind", KEYBIND),
-            new BOption("Up", "", "upBind", KEYBIND),
-            new BOption("Right", "", "rightBind", KEYBIND),
-            new BOption("Reset", "", "resetBind", KEYBIND)
+            new Option("Left", "", "leftBind", KEYBIND),
+            new Option("Down", "", "downBind", KEYBIND),
+            new Option("Up", "", "upBind", KEYBIND),
+            new Option("Right", "", "rightBind", KEYBIND),
+            new Option("Reset", "", "resetBind", KEYBIND)
         ]},
         {"name":"Gameplay", options: [
-            new BOption("Downscroll", "When enabled, notes will scroll from the top of the screen to the bottom.", "downscroll", BOOL),
-            new BOption("Offset", "In milliseconds, how long a note should be offset from it's initial timing.", "offset", INT, {range:[-250, 250], suffix:"ms"}),
-            new BOption("Ghost Tapping", "When enabled, misinputs will no longer cause misses.", "ghost", BOOL),
-            new BOption("Play with Modcharts", "When enabled, modcharts will be automatically forced on for every song.", "modcharts", BOOL),
-            new BOption("Botplay", "When enabled, player input will be locked and songs will automatically play themselves.", "botplay", BOOL)
+            new Option("Downscroll", "When enabled, notes will scroll from the top of the screen to the bottom.", "downscroll", BOOL),
+            new Option("Offset", "In milliseconds, how long a note should be offset from it's initial timing.", "offset", INT, {range:[-250, 250], suffix:"ms"}),
+            new Option("Ghost Tapping", "When enabled, misinputs will no longer cause misses.", "ghost", BOOL),
+            new Option("Play with Modcharts", "When enabled, modcharts will be automatically forced on for every song.", "modcharts", BOOL),
+            new Option("Botplay", "When enabled, player input will be locked and songs will automatically play themselves.", "botplay", BOOL)
         ]},
         {"name":"Visuals", options:[
-            new BOption("Show Note Splashes", "When enabled, \"Sick\" ratings will causes the corresponding arrow to sparkle.", "notesplash", BOOL),
-            new BOption("Show Subtitles", "When enabled, songs containing lyrics display subtitles on screen.", "subtitles", BOOL),
-            new BOption("Show Song Position", "When enabled, the time duration of the current song will always display.", "songPosition", BOOL),
+            new Option("Show Note Splashes", "When enabled, \"Sick\" ratings will causes the corresponding arrow to sparkle.", "notesplash", BOOL),
+            new Option("Show Subtitles", "When enabled, songs containing lyrics display subtitles on screen.", "subtitles", BOOL),
+            new Option("Show Song Position", "When enabled, the time duration of the current song will always display.", "songPosition", BOOL),
         ]},
         {"name":"Performance", options: [
-            new BOption("FPS Cap ", "Caps your framerate.", "fpsCap", INT, {range:[60, 240], increaseInterval: 20}),
-            new BOption("Show FPS Counter", "When enabled, a FPS and Memory counter will be shown in the top left.", "fps", BOOL, {callback: () -> { (cast (openfl.Lib.current.getChildAt(0), Main)).toggleFPS(FlxG.save.data.fps); }}),
-            new BOption("Anti Aliasing", "When disabled, forces all sprites to not have anti-aliasing. (In-Game Only)", "antialiasing", BOOL),
-            new BOption("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL),
-            new BOption("Play Intro on Startup", "When disabled, the intro played on startup will no longer be played.", "animeIntro", BOOL)
+            new Option("FPS Cap ", "Caps your framerate.", "fpsCap", INT, {range:[60, 240], increaseInterval: 20}),
+            new Option("Show FPS Counter", "When enabled, a FPS and Memory counter will be shown in the top left.", "fps", BOOL, {callback: () -> { (cast (openfl.Lib.current.getChildAt(0), Main)).toggleFPS(FlxG.save.data.fps); }}),
+            new Option("Anti Aliasing", "When disabled, forces all sprites to not have anti-aliasing. (In-Game Only)", "antialiasing", BOOL),
+            new Option("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL),
+            new Option("Play Intro on Startup", "When disabled, the intro played on startup will no longer be played.", "animeIntro", BOOL)
         ]}
     ];
 
@@ -296,7 +296,7 @@ class OptionsState extends MusicBeatState
 
 typedef OptionCategory = {
     name:String,
-    options:Array<BOption>
+    options:Array<Option>
 }
 
 enum OptionType
@@ -307,7 +307,7 @@ enum OptionType
     KEYBIND;
 }
 
-class BOption
+class Option
 {
     /**
      * @param display What text is visibly displayed on the options menu
