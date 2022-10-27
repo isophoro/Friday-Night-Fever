@@ -54,10 +54,10 @@ class TitleState extends MusicBeatState
 
 		GameJoltAPI.connect();
 		GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);	
-		if(GameJoltAPI.getStatus() == false)
+		/*if(GameJoltAPI.getStatus() == false) // disabling this for rn so i can test without it popping up everytime i build
 		{
 			FlxG.switchState(new GameJoltLogin());
-		}
+		}*/
 		lastState = true;
 		
 
@@ -75,7 +75,7 @@ class TitleState extends MusicBeatState
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
-		if (FlxG.sound.music == null && GameJoltAPI.getStatus())
+		if (FlxG.sound.music == null)
 		{
 			Main.playFreakyMenu();
 		}

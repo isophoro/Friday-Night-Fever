@@ -3812,8 +3812,6 @@ class PlayState extends MusicBeatState
 		
 							if (FlxG.save.data.shaders)
 							{
-								ShadersHandler.glitchy  = new ShaderFilter(new Glitch());
-								filters.push(ShadersHandler.glitchy);
 								camGame.filtersEnabled = true;
 		
 								modchart.addCamEffect(tvshit);

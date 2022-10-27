@@ -73,7 +73,7 @@ class PopupState extends MusicBeatSubstate
     {
         switch(instance)
         {
-            case 'dialogue': FlxG.switchState(new OptionsMenu());
+            case 'dialogue': FlxG.switchState(new options.OptionsState());
         }
     }
 }

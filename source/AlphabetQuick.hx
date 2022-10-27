@@ -8,8 +8,8 @@ import flixel.group.FlxSpriteGroup;
 using StringTools;
 
 /*
-    THIS IS SUCH AN OLD REWRITE PLEASE IGNORE THIS LMAO
-    I HATE THIS SHIT
+    THIS IS SUCH AN OLD REWRITE FROM AROUND SPRING 2021 SOME OF THIS CODE IS HORRIBLE!!
+    PLEASE BEAR WITH ME I'LL REWRITE AGAIN SOMEDAY
 */
 
 enum Alignment
@@ -28,6 +28,7 @@ typedef Properties =
     var ?settingsItem:Bool;
     var ?menuItem:Bool;
     var ?fieldWidth:Int;
+    var ?dontBoldNumbers:Bool;
 }
 
 class AlphabetQuick extends FlxSpriteGroup
@@ -50,6 +51,7 @@ class AlphabetQuick extends FlxSpriteGroup
     public var onComplete:AlphabetQuick->Void = function(c:AlphabetQuick){};
     public var screenCenterX:Bool = false;
     public var fieldWidth:Int = 0;
+    public var boldNumbers:Bool = true;
 
     public function new(X:Float, Y:Float, Text:String, properties:Properties, ?_onComplete:AlphabetQuick->Void)
     {
@@ -64,6 +66,7 @@ class AlphabetQuick extends FlxSpriteGroup
         isSettingItem = properties.settingsItem;
         isMenuItem = properties.menuItem;
         fieldWidth = properties.fieldWidth;
+        boldNumbers = properties.dontBoldNumbers;
 
         if(_onComplete != null)
             onComplete = _onComplete;
@@ -109,7 +112,7 @@ class AlphabetQuick extends FlxSpriteGroup
             }
             else
             {
-                var letter:AlphabetCharacter = new AlphabetCharacter(splitArray[i], isBold, liner);
+                var letter:AlphabetCharacter = new AlphabetCharacter(splitArray[i], Std.parseInt(splitArray[i]) != null && isBold ? !boldNumbers : isBold, liner);
                 letter.ID = i;
                 add(letter);
                 character_array.push(letter);
@@ -166,6 +169,10 @@ class AlphabetQuick extends FlxSpriteGroup
         if(lastText != text)
         {
             lastText = text;
+            for (i in members)
+            {
+                i.kill();
+            }
             clear();
             genText();
         }
@@ -174,8 +181,8 @@ class AlphabetQuick extends FlxSpriteGroup
         {
             var scaledY = FlxMath.remapToRange(targetY, 0, 1, 0, 1.3);
 
-            y = FlxMath.lerp(y, (scaledY * 120) + (FlxG.height * 0.48), 0.16);
-            x = FlxMath.lerp(x, (targetY * 20) + 90, 0.16);
+            y = FlxMath.lerp(y, (scaledY * (120 * (graphicsize / 1))) + (FlxG.height * 0.28),  0.16 * (60 / FlxG.stage.application.window.frameRate));
+            //x = FlxMath.lerp(x, (targetY * (20 * (graphicsize / 1)) + (90 * (graphicsize / 1))), 0.16);
         }
         if(isSettingItem)
         {
