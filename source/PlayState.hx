@@ -96,7 +96,6 @@ class PlayState extends MusicBeatState
 	var shader:FlxShaderToyShader;
 	var shaderTwo:FlxShaderToyShader;
 
-
 	var characterTrail:CharacterTrail;
 
 	public var camHUD:FlxCamera;
@@ -265,10 +264,6 @@ class PlayState extends MusicBeatState
 		}
 
 		endingSong = false;
-
-		#if cpp 
-		Gc.run(true);
-		#end
 
 		super.create();
 		add(new NoteSplash(0,0,0));
@@ -1091,14 +1086,11 @@ class PlayState extends MusicBeatState
 		}
 		add(dad);
 
-		
 		add(boyfriend);
 		curBFY = boyfriend.y;
 
 		trace(boyfriend.y);
 		trace('curbfy position is ' + curBFY);
-
-
 
 		boyfriend.setPosition(boyfriend.x + Costume.PlayerCostume.offsetPos.x, boyfriend.y + Costume.PlayerCostume.offsetPos.y);
 
@@ -1337,6 +1329,8 @@ class PlayState extends MusicBeatState
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		onGameResize(FlxG.stage.window.width, FlxG.stage.window.height);
+
+		System.gc();
 	}
 
 	function jumpscare(?dialogueBox:DialogueBox):Void 
