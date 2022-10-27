@@ -3845,10 +3845,10 @@ class PlayState extends MusicBeatState
 		#end
 
 
-		if (!meat.animation.curAnim.name.startsWith('sing') || meat.animOverrideList.contains(meat.animation.curAnim.name) && meat.animation.curAnim.finished ||!meat.animOverrideList.contains(meat.animation.curAnim.name))
+		if (!meat.animation.curAnim.name.startsWith('sing') || meat.animOverrideList.contains(meat.animation.curAnim.name) && meat.animation.curAnim.finished)
 			meat.dance();
 
-		if (!curOpponent.animation.curAnim.name.startsWith('sing') || curOpponent.animOverrideList.contains(curOpponent.animation.curAnim.name) && curOpponent.animation.curAnim.finished ||!curOpponent.animOverrideList.contains(curOpponent.animation.curAnim.name))
+		if (!curOpponent.animation.curAnim.name.startsWith('sing') || curOpponent.animOverrideList.contains(curOpponent.animation.curAnim.name) && curOpponent.animation.curAnim.finished)
 			curOpponent.dance();
 
 		var iconBop:Float = curBeat % 4 == 0 ? 1.2 : 1.135;
