@@ -1095,7 +1095,10 @@ class PlayState extends MusicBeatState
 		boyfriend.setPosition(boyfriend.x + Costume.PlayerCostume.offsetPos.x, boyfriend.y + Costume.PlayerCostume.offsetPos.y);
 
 		if (roboStage != null)
+		{
 			add(roboForeground);
+			roboStage.switchStage(roboStage.curStage);
+		}
 
 		if (curStage.startsWith('week5') || curStage == 'ripdiner')
 		{
@@ -2383,6 +2386,9 @@ class PlayState extends MusicBeatState
 								default:
 									camFollow.y = dad.getMidpoint().y - 130;
 									camFollow.x = dad.getMidpoint().x + 475;
+								case 'c354r-default':
+									camFollow.x = dad.getMidpoint().x + 110;
+									camFollow.y = dad.getMidpoint().y - 280;		
 								case 'tricky':
 									camFollow.y = dad.getMidpoint().y - 100;
 									camFollow.x = dad.getMidpoint().x + 230;
@@ -2489,7 +2495,10 @@ class PlayState extends MusicBeatState
 								camFollow.y = boyfriend.getMidpoint().y - 330;
 							case 'tricky':
 								camFollow.x = boyfriend.getMidpoint().x - 320;
-								camFollow.y = boyfriend.getMidpoint().y - 300;															
+								camFollow.y = boyfriend.getMidpoint().y - 300;	
+							case 'c354r-default':
+								camFollow.x = boyfriend.getMidpoint().x - 210;
+								camFollow.y = boyfriend.getMidpoint().y - 410;																						
 							default:
 								camFollow.x = boyfriend.getMidpoint().x - 490;
 								camFollow.y = boyfriend.getMidpoint().y - 280;

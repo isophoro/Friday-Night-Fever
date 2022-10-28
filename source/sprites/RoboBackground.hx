@@ -22,7 +22,7 @@ import flixel.util.FlxColor;
 class RoboBackground
 {
     public var stages:Map<String, RoboStage> = [];
-    public var curStage:String = 'default';
+    public var curStage:String = 'c354r-default';
     public var instance:PlayState;
 
     private var taki:Character;
@@ -37,6 +37,38 @@ class RoboBackground
     public function new() 
     {
         instance = PlayState.instance;
+
+        var bg:FlxSprite = new FlxSprite(-450, -355).loadGraphic(Paths.image('roboStage/ROBO_BG'));
+        bg.antialiasing = true;
+        bg.scale.set(1.85, 1.85);
+        bg.scrollFactor.set(0.9, 0.85);
+
+        var city:FlxSprite = new FlxSprite(-450, -355).loadGraphic(Paths.image('roboStage/ROBO_BG_CITY'));
+        city.antialiasing = true;
+        city.scale.set(1.85, 1.85);
+        city.scrollFactor.set(0.85, 0.95);
+
+        var sky:FlxSprite = new FlxSprite(-450, -355).loadGraphic(Paths.image('roboStage/ROBO_BG_SKY'));
+        sky.antialiasing = true;
+        sky.scale.set(1.85, 1.85);
+        sky.scrollFactor.set(0.65, 0.95);
+
+        var overlay:FlxSprite = new FlxSprite(-450, -355).loadGraphic(Paths.image('roboStage/ROBO_BG_OVERLAY'));
+        overlay.antialiasing = true;
+        overlay.scale.set(1.85, 1.85);
+        overlay.scrollFactor.set(0.85, 0.85);
+        overlay.alpha = 0.35;
+
+        var wires:FlxSprite = new FlxSprite(-450, -355).loadGraphic(Paths.image('roboStage/ROBO_BG_WIRES'));
+        wires.antialiasing = true;
+        wires.scale.set(1.85, 1.85);
+        wires.scrollFactor.set(0.85, 0.85);
+
+        stages['c354r-default'] = new RoboStage([sky, city, bg, wires], [overlay], [
+            "boyfriend" => [880, 482.3],
+            "gf" => [335, 149],
+            "dad" => [160, 315.3]
+        ], [], 0.4);
 
         var bg:FlxSprite = new FlxSprite(-1348, -844).loadGraphic(Paths.image('roboStage/robofeverback'));
         bg.antialiasing = true;
@@ -259,8 +291,6 @@ class RoboBackground
             // fixes initial lag spike when switching to the week 4 stage
             addSprites(stages['limo'].backgroundSprites, instance.roboBackground);
         }
-
-        switchStage('default');
     }
 
     public function switchStage(stage:String)
@@ -308,9 +338,9 @@ class RoboBackground
         instance.camFollow.setPosition(curGF.getGraphicMidpoint().x - 460, curGF.getGraphicMidpoint().y + 250);
 
         curStage = stage;
-        instance.camGame.flash(stage == 'default' ? FlxColor.BLACK : FlxColor.WHITE, 0.45);
+        instance.camGame.flash(stage == 'default' || stage == 'c354r-default' ? FlxColor.BLACK : FlxColor.WHITE, 0.45);
 
-        if (curStage == 'default')
+        if (curStage == 'default' || curStage == 'c354r-default')
             instance.camGame.zoom = _stage.cameraZoom;
 
         instance.camZooming = true;
@@ -367,7 +397,7 @@ class RoboBackground
                 case 144 | 288:
                     switchStage('limo');
                 case 160 | 592:
-                    switchStage('default');
+                    switchStage(/* 'default' */ 'c354r-default');
                 case 224 | 560:
                     switchStage('week1');
                 case 256 | 432:
@@ -391,7 +421,7 @@ class RoboBackground
                     instance.curOpponent = PlayState.opponent ? fever_pixel : robofever;
                     instance.curPlayer = PlayState.opponent ? robofever : fever_pixel;
                 case 336:
-                    switchStage('default');
+                    switchStage(/* 'default' */ 'c354r-default');
                     changeStrums();
                     instance.usePixelAssets = false;
                     instance.iconP1.swapCharacter(PlayState.SONG.player1);
@@ -415,10 +445,10 @@ class RoboBackground
                     {
                         FlxTween.tween(ShadersHandler.chromaticAberration.shader, {redOffset: 0.0065}, Conductor.crochet / 1300);
                         FlxTween.tween(ShadersHandler.chromaticAberration.shader, {blueOffset: -0.0065}, Conductor.crochet / 1300);
-                        instance.camGame.focusOn(new FlxPoint(instance.dad.getMidpoint().x + 500, instance.dad.getMidpoint().y - 190));
+                        instance.camGame.focusOn(new FlxPoint(instance.dad.getMidpoint().x + 250, instance.dad.getMidpoint().y - 190));
                     }
                     else
-                        instance.camGame.focusOn(new FlxPoint(instance.boyfriend.getMidpoint().x - 490, instance.boyfriend.getMidpoint().y - 320));
+                        instance.camGame.focusOn(new FlxPoint(instance.boyfriend.getMidpoint().x - 300, instance.boyfriend.getMidpoint().y - 320));
                     instance.defaultCamZoom += 0.245;
                     instance.camGame.zoom = instance.defaultCamZoom;
                 case 356 | 360 | 388 | 392:
@@ -581,6 +611,12 @@ class RoboStage
             {
                 characterScrolling[k] = 0.9;
             }
+        }
+
+        if (PlayState.minus)
+        {
+            positioning["dad"][0] -= 70;
+            positioning["dad"][1] -= 90;
         }
 
         this.positioning = positioning;
