@@ -103,10 +103,11 @@ class OptionsState extends MusicBeatState
                 for (i in 0...categories[curCategory].options.length)
                 {
                     var opt = categories[curCategory].options[i];
-                    if (Reflect.field(FlxG.save.data, opt.saveVariable) == key)
+                    if (Reflect.field(FlxG.save.data, opt.saveVariable) == key && i != curSelected)
                     {
-                        Reflect.setField(FlxG.save.data, opt.saveVariable, null);
+                        Reflect.setField(FlxG.save.data, opt.saveVariable, Reflect.field(FlxG.save.data, categories[curCategory].options[curSelected].saveVariable));
                         items.members[i].text = opt.getDisplay();
+                        break;
                     }
                 }
 
