@@ -21,7 +21,7 @@ Chicken-sandwich:senpai:7
 Funkin-god:flippy:7
 C354R:robo-cesar:8
 Loaded:robo-cesar:8
-Gears:robo-cesar:8
+Gears:robofvr-final:8
 Tranquility:scarlet:8
 Princess:scarlet:8
 Banish:scarlet:8

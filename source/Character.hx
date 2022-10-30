@@ -938,9 +938,7 @@ class Character extends FlxSprite
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
 				antialiasing = false;
-
-			// PEAKEK + PEAKEK VARIANT \\
-
+			// PEAKEK + PEAKEK VARIANT
 			case 'dad':
 				iconColor = '99D4F4';
 				tex = Paths.getSparrowAtlas('characters/DADDY_DEAREST', 'shared');
@@ -958,24 +956,8 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -189, -68);
 
 				playAnim('idle');
-
-			case 'feverbob':
-				iconColor = '000000';
-				tex = Paths.getSparrowAtlas('characters/feverRun', 'shared');
-				frames = tex;
-				animation.addByPrefix('idle', 'feverRun idle', 24);
-				animation.addByPrefix('singUP', 'lol', 24);
-				animation.addByPrefix('singRIGHT', 'lol', 24);
-				animation.addByPrefix('singDOWN', 'lol', 24);
-				animation.addByPrefix('singLEFT', 'lol', 24);
-
-				addOffset('idle');
-
-				flipX = true;
-	
-				playAnim('idle');
-
 			case 'tea-bat':
+				iconColor = '99DBF6';
 				tex = Paths.getSparrowAtlas('characters/tea_bat', 'shared');
 				frames = tex;
 				animation.addByPrefix('idle', 'tea bat idle', 24);
@@ -991,7 +973,6 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -21, -8);
 
 				playAnim('idle');
-
 			case 'hallow':
 				tex = Paths.getSparrowAtlas('characters/Hallow', 'shared');
 				frames = tex;
@@ -1006,9 +987,9 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -208, 4);
 				addOffset("singLEFT", -8, 20);
 				addOffset("singDOWN", -179, -48);
+				iconColor = "C6C1F3";
 
 				playAnim('idle');
-
 			case 'peasus':
 				iconColor = '99D4F4';
 				tex = Paths.getSparrowAtlas('characters/peaky_horny', 'shared');
@@ -1171,7 +1152,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 			case 'robofvr-final': 
-				iconColor = '9236B4';
+				iconColor = '504BA6';
 				frames = Paths.getSparrowAtlas('characters/robo_final');
 				animation.addByPrefix('idle', "Robo idle", 24, false);
 				animation.addByPrefix('singUP', 'Robo Up', 24, false);

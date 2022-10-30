@@ -166,6 +166,8 @@ class AlphabetQuick extends FlxSpriteGroup
 
     override function update(elapsed:Float)
     {
+        super.update(elapsed);
+
         if(lastText != text)
         {
             lastText = text;

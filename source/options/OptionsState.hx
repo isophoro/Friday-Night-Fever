@@ -20,7 +20,8 @@ class OptionsState extends MusicBeatState
             new Option("Down", "", "downBind", KEYBIND),
             new Option("Up", "", "upBind", KEYBIND),
             new Option("Right", "", "rightBind", KEYBIND),
-            new Option("Reset", "", "resetBind", KEYBIND)
+            new Option("Reset", "", "killBind", KEYBIND),
+            new Option("Enable Reset Keybind", "When enabled, pressing the RESET keybind will automatically cause a game over.", "resetButton", BOOL)
         ]},
         {"name":"Gameplay", options: [
             new Option("Downscroll", "When enabled, notes will scroll from the top of the screen to the bottom.", "downscroll", BOOL),
@@ -105,6 +106,7 @@ class OptionsState extends MusicBeatState
                     var opt = categories[curCategory].options[i];
                     if (Reflect.field(FlxG.save.data, opt.saveVariable) == key && i != curSelected)
                     {
+                        updateDescription("Conflicting Keybind: " + opt.display + " has been swapped to " + Reflect.field(FlxG.save.data, categories[curCategory].options[curSelected].saveVariable));
                         Reflect.setField(FlxG.save.data, opt.saveVariable, Reflect.field(FlxG.save.data, categories[curCategory].options[curSelected].saveVariable));
                         items.members[i].text = opt.getDisplay();
                         break;
@@ -165,15 +167,16 @@ class OptionsState extends MusicBeatState
         }
     }
 
-    function updateDescription()
+    function updateDescription(?forcedDescription:String)
     {
-        if (!inCategory || categories[curCategory].options[curSelected].description.length <= 0)
+        var forceDesc:Bool = forcedDescription != null;
+        if (!inCategory && !forceDesc || categories[curCategory].options[curSelected].description.length <= 0 && !forceDesc)
         {
             descText.visible = descBox.visible = false;
             return;
         }
 
-        var str:String = categories[curCategory].options[curSelected].description;
+        var str:String = forceDesc ? forcedDescription : categories[curCategory].options[curSelected].description;
         descText.visible = descBox.visible = true;
         descText.text = str;
         descText.screenCenter(X);
