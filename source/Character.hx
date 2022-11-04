@@ -635,10 +635,8 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 				flipX = true;
-
-
 			case 'bdbfever':
-				iconColor = 'C353E3';
+				iconColor = '7E32B1';
 				frames = Paths.getSparrowAtlas('characters/bdbFever');
 				animation.addByPrefix('idle', 'BF IDLE', 24, false);
 				animation.addByPrefix('singUP', 'BF UP NOTE', 24, false);

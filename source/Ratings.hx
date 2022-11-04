@@ -6,11 +6,12 @@ class Ratings
     public static function GenerateLetterRank(accuracy:Float) // generate a letter ranking
     {
         var ranking:String = "N/A";
+
         if(FlxG.save.data.botplay)
-            ranking = "BotPlay";
+            return "BotPlay";
 
         if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods == 0) // Marvelous (SICK) Full Combo
-            ranking = "(MFC)";
+            ranking = "(SFC)";
         else if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods >= 1) // Good Full Combo (Nothing but Goods & Sicks)
             ranking = "(GFC)";
         else if (PlayState.misses == 0) // Regular FC
@@ -18,10 +19,9 @@ class Ratings
         else if (PlayState.misses < 10) // Single Digit Combo Breaks
             ranking = "(SDCB)";
         else
-            ranking = "(Clear)";
+            ranking = "";
 
         // WIFE TIME :)))) (based on Wife3)
-
         var wifeConditions:Array<Bool> = [
             accuracy >= 99.9935, // AAAAA
             accuracy >= 99.980, // AAAA:
@@ -40,6 +40,8 @@ class Ratings
             accuracy >= 60, // C
             accuracy < 60 // D
         ];
+
+        var cutSpace:Bool = ranking.length == 0;
 
         for(i in 0...wifeConditions.length)
         {
@@ -85,10 +87,8 @@ class Ratings
             }
         }
 
-        if (accuracy == 0)
-            ranking = "N/A";
-        else if(FlxG.save.data.botplay)
-            ranking = "BotPlay";
+        if (cutSpace)
+            ranking = ranking.substring(1, ranking.length);
 
         return ranking;
     }
@@ -100,8 +100,8 @@ class Ratings
         if (customSafeZone != null)
             customTimeScale = customSafeZone / 166;
 
-        if (FlxG.save.data.botplay)
-            return "good"; // FUNNY
+        /*if (FlxG.save.data.botplay)
+            return "good"; // i hate who did this */
         
         if (noteDiff > 166 * customTimeScale) // so god damn early its a miss
             return "miss";
@@ -129,9 +129,9 @@ class Ratings
             return
             new UnicodeString((!FlxG.save.data.botplay ?
             "スコア: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
-            " | 見逃した: " + PlayState.misses + 																				// Misses/Combo Breaks
-            " | 正確さ: " + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + "%") +  				// Accuracy
-            " - " + GenerateLetterRank(accuracy) : "")); 	
+            " | 見逃した: " + PlayState.misses +																	// Misses/Combo Breaks
+            " | 正確さ: " + (FlxG.save.data.botplay ? "N/A" : (Math.isNaN(accuracy) ? 100 : FlxMath.roundDecimal(accuracy, 2)) + "%") +  				// Accuracy
+            " • " + GenerateLetterRank(accuracy) : "")); 	
         }
         else
         {
@@ -141,8 +141,8 @@ class Ratings
             (!FlxG.save.data.botplay ?
             "Score: " + (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score) + 									// Score
             " | Misses: " + PlayState.misses + 																				// Misses/Combo Breaks
-            " | Accuracy: " + (FlxG.save.data.botplay ? "N/A" : FlxMath.roundDecimal(accuracy, 2) + "%") +  				// Accuracy
-            " - " + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
+            " | Accuracy: " + (FlxG.save.data.botplay ? "N/A" : (Math.isNaN(accuracy) ? 100 : FlxMath.roundDecimal(accuracy, 2)) + "%") +  				// Accuracy
+            " • " + GenerateLetterRank(accuracy) : ""); 																			// Letter Rank
         }
     }
 

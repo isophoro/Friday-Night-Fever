@@ -1,5 +1,6 @@
 package;
 
+import openfl.text.TextFormat;
 import flixel.effects.postprocess.PostProcess;
 import openfl.system.System;
 import flixel.util.FlxColor;
@@ -129,18 +130,33 @@ class Main extends Sprite
 
 	public static function clearMemory()
 	{
-		@:privateAccess
+		if (FlxG.sound.music != null)
+			FlxG.sound.music.destroy();
+
+		for (i in FlxG.sound.list)
 		{
-			for (key in FlxG.bitmap._cache.keys())
+			if (i != null)
 			{
-				var obj = FlxG.bitmap._cache.get(key);
-				if (obj == null) continue;
-	
-				openfl.Assets.cache.removeBitmapData(key);
-				FlxG.bitmap._cache.remove(key);
-				obj.destroy();
+				i.destroy();
 			}
 		}
+
+		@:privateAccess
+		{
+			for (k => v in FlxG.bitmap._cache)
+			{
+				if (v != null)
+				{
+					FlxG.bitmap._cache.remove(k);
+					v.destroy();
+				}
+			}
+		}
+
+		System.gc();
+		#if cpp // listen im desperate
+		cpp.vm.Gc.run(true);
+		#end
 	}
 
 	var game:FlxGame;
@@ -201,6 +217,10 @@ class FPS_MEM extends FPS
 	{
 		super.__enterFrame(deltaTime);
 		var mem:Float = Math.round(System.totalMemory / 1024 / 1024 * 100)/100;
+
+		// this is just straight up lying but i hate seeing the stuttering fps
+		if (currentFPS > FlxG.save.data.fpsCap)
+			currentFPS = FlxG.save.data.fpsCap;
 
 		text = "FPS: " + currentFPS + '\nMem: '+mem+'MB';
 	}

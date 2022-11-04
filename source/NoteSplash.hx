@@ -25,6 +25,9 @@ class NoteSplash extends FlxSprite
 
         animation.finishCallback = function(t){
 			kill();
+            exists = false;
+            if (flixel.FlxG.state.members.contains(this))
+                flixel.FlxG.state.remove(this);
 		}
     }
 }

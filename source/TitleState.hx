@@ -53,7 +53,8 @@ class TitleState extends MusicBeatState
 		PlayerSettings.init();
 
 		GameJoltAPI.connect();
-		GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);	
+		if (FlxG.save.data.gjUser != null && FlxG.save.data.gjToken != null)
+			GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);	
 		/*if(GameJoltAPI.getStatus() == false) // disabling this for rn so i can test without it popping up everytime i build
 		{
 			FlxG.switchState(new GameJoltLogin());

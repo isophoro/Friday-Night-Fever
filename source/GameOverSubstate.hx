@@ -69,7 +69,9 @@ class GameOverSubstate extends MusicBeatSubstate
 		bf = new Boyfriend(x, y, daBf);
 		add(bf);
 
-		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y - 85, 1, 1);
+		bf.playAnim('firstDeath');
+
+		camFollow = new FlxObject(bf.getGraphicMidpoint().x - bf.offset.x, bf.getGraphicMidpoint().y - bf.offset.y, 1, 1);
 		add(camFollow);
 
 		if(daBf != 'madDeath')
@@ -78,9 +80,6 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
-
-		
-		bf.playAnim('firstDeath');
 
 		FlxG.camera.shake(0.0095, 0.3);
 
@@ -96,10 +95,6 @@ class GameOverSubstate extends MusicBeatSubstate
 			PlayState.diedtoHallowNote = false;
 		}
 
-		
-
-
-
 		trace(PlayState.deaths + " Deaths");
 
 		if(PlayState.storyWeek == 8)
@@ -109,10 +104,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		trace(FlxG.save.data.deaths + " Save Deaths");
 
-
-
 		trace(FlxG.save.data.hallowDeaths + " Hallow Deaths");
-
 	}
 
 	override function update(elapsed:Float)

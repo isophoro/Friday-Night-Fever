@@ -330,8 +330,6 @@ class DialogueBox extends FlxSpriteGroup
 		
 		add(box);
 
-		FlxG.mouse.visible = true;
-
 		box.screenCenter(X);
 
 		//handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));

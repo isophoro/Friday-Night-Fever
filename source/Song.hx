@@ -39,7 +39,7 @@ class Song
 	public var stage:String = 'stage';
 
 	public static var artists:Map<Array<String>, String> = [
-		["hallow", "portrait", "soul", "hardships", "banish"] => "FPLester",
+		["hallow", "portrait", "soul", "hardships", "banish", "bloom"] => "FPLester",
 		["c354r", "loaded", "gears", "space-demons", "princess", "tranquility"] => "Biddle3",
 		["party-crasher"] => "BirdBonanza"
 	];
