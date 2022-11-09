@@ -1,8 +1,5 @@
 package;
 
-
-import Character.Costume;
-import Character.CostumeName;
 import lime.app.Application;
 import lime.system.DisplayMode;
 import flixel.util.FlxColor;

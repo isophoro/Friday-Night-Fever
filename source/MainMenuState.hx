@@ -16,7 +16,6 @@ import lime.app.Application;
 import flash.display.DisplayObject;
 import openfl.Lib;
 import GameJolt;
-import Character.CostumeName;
 
 #if windows
 import Discord.DiscordClient;
@@ -77,9 +76,6 @@ class MainMenuState extends MusicBeatState
 		Achievements.getAchievement(17);
 		Achievements.getAchievement(8);
 		#end
-		
-		//Main.playFreakyMenu();
-		FlxG.save.data.currentCostume = Fever;
 
 		FlxG.save.data.deaths = 0;
 
@@ -193,7 +189,7 @@ class MainMenuState extends MusicBeatState
 			{
 				var randomX:Float = FlxG.random.float(menuImage.x, menuImage.x + menuImage.width);
 				var randomY:Float = FlxG.random.float(menuImage.y, menuImage.y + menuImage.height);
-				var sparkle:NoteSplash = new NoteSplash(randomX, randomY, 2);
+				var sparkle:sprites.NoteSplash = new sprites.NoteSplash(randomX, randomY, 2);
 				add(sparkle);
 			}
 		}
@@ -205,7 +201,7 @@ class MainMenuState extends MusicBeatState
 		}
 		else if (FlxG.keys.justPressed.V)
 		{
-			LoadingState.loadAndSwitchState(new ClosetState());
+			//LoadingState.loadAndSwitchState(new ClosetState());
 		}
 		#end
 

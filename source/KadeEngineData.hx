@@ -1,4 +1,3 @@
-import Character.CostumeName;
 import openfl.Lib;
 import flixel.FlxG;
 
@@ -6,26 +5,13 @@ class KadeEngineData
 {
     public static function initSave()
     {
-		if (FlxG.save.data.unlockedCostumes == null)
-		{
-			trace("Setting up costume save data stuff");
-            FlxG.save.data.unlockedCostumes = new Array<CostumeName>();
-			FlxG.save.data.unlockedCostumes.push(Fever);
-			FlxG.save.data.currentCostume = Fever;
-		}
-
-		if (FlxG.save.data.unlockedGFCostumes == null)
-		{
-			FlxG.save.data.unlockedGFCostumes = new Array<CostumeName>();
-			FlxG.save.data.unlockedGFCostumes.push(Tea);
-			FlxG.save.data.currentGFCostume = Tea;
-		}
+		CostumeHandler.checkSave();
 
 		if (FlxG.save.data.fcs == null)
-            FlxG.save.data.fcs = new Array<String>();
+            FlxG.save.data.fcs = [];
 
 		if (FlxG.save.data.popups == null)
-            FlxG.save.data.popups = new Array<String>();
+            FlxG.save.data.popups = [];
 		
 		if (FlxG.save.data.antialiasing == null)
 			FlxG.save.data.antialiasing = true;

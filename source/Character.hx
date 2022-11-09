@@ -10,7 +10,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 
 using StringTools;
 
-enum CostumeName
+/*enum CostumeName
 {
 	Fever;
 	Fever_Casual;
@@ -42,7 +42,7 @@ enum CostumeName
 			default:
 				return Normal;
 		}
-	}*/
+	}
 
 	public static function getList():Array<String>
 	{
@@ -120,7 +120,7 @@ class Costume
 		if (camOffsetPos != null)
 			this.camOffsetPos = camOffsetPos;
 	}
-}
+} */
 
 class Character extends FlxSprite
 {
@@ -268,13 +268,13 @@ class Character extends FlxSprite
 				addOffset('scared', -38, 142);
 
 				flipX = true;
-			case 'bf' | 'bfdemoncesar' | 'bf-mad':
+			case 'bf' | 'bf-demon' | 'bf-mad':
 				iconColor = 'C353E3';
 				
 				var prefix:String = "";
 				switch (curCharacter)
 				{
-					case 'bfdemoncesar':
+					case 'bf-demon':
 						prefix = PlayState.minus ? "m" : "";
 						frames = Paths.getSparrowAtlas(PlayState.minus ? 'characters/mfever demon_assets' : 'characters/demon_fever_assets', 'shared');
 					case 'bf-mad':
@@ -310,7 +310,7 @@ class Character extends FlxSprite
 					addOffset("singLEFTmiss", 40, 93);
 					addOffset("singDOWNmiss", -31, 54);
 				}
-				else if (curCharacter != 'bfdemoncesar')
+				else if (curCharacter != 'bf-demon')
 				{
 					addOffset('idle', 6, 93);
 					addOffset('idle-frown', 6, 93);
@@ -1543,7 +1543,7 @@ class Character extends FlxSprite
 			{
 				switch(curCharacter)
 				{
-					case 'bf' | 'bfdemoncesar':
+					case 'bf' | 'bf-demon':
 						playAnim('idle' + ((PlayState.instance != null && PlayState.SONG.player2 == 'robo-cesar' || useAlternateIdle) ? '-frown' : ''));
 					default: 
 						playAnim('idle');

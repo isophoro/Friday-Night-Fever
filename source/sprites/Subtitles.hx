@@ -1,4 +1,4 @@
-package;
+package sprites;
 
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
