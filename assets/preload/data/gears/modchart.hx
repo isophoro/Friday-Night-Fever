@@ -1,17 +1,18 @@
 import("Character");
+import("Boyfriend");
 
 // this truly was a friday night fever
 
-var feverFalling:Character;
+var feverFalling:Boyfriend;
 var roboFalling:Character;
 var roboFallingCool:Character;
 
-var feverTunnel:Character;
+var feverTunnel:Boyfriend;
 var roboTunnel:Character;
 
 function onCreate()
 {
-    feverTunnel = new Character(boyfriend.x, boyfriend.y, "bf-mad-glow", true);
+    feverTunnel = new Boyfriend(boyfriend.x, boyfriend.y, "bf-mad-glow", true);
     feverTunnel.scrollFactor.copyFrom(boyfriend.scrollFactor);
     add(feverTunnel);
     feverTunnel.visible = false;
@@ -21,7 +22,7 @@ function onCreate()
     add(roboTunnel);
     roboTunnel.visible = false;
 
-    feverFalling = new Character(boyfriend.x, boyfriend.y + 145, "fever-fall", true);
+    feverFalling = new Boyfriend(boyfriend.x, boyfriend.y + 145, "bf-fall", true);
     add(feverFalling);
     feverFalling.visible = false;
 
@@ -107,14 +108,17 @@ function onBeatHit(curBeat:Int)
             feverFalling.visible = true;
             game.defaultCamZoom += 0.635;
             camGame.zoom = game.defaultCamZoom + 0.15;
-            bfAltSuffix = '-cool';
 
             for (i in 0...4)
                 strumLineNotes[i].visible = false;
+        case 456:
+            bfAltSuffix = '-cool';
+        case 487 | 504:
+            game.curOpponent = roboFallingCool;
+        case 500 | 506: 
+            game.curOpponent = roboFalling;
         case 464:
             game.curOpponent = roboFallingCool;
-        case 496:
-            game.curOpponent = roboFalling;
         case 495:
             bfAltSuffix = '';
     }

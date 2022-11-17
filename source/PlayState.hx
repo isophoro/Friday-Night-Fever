@@ -845,6 +845,10 @@ class PlayState extends MusicBeatState
 		dad = new Character(100, 100, SONG.player2);
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
+		if(dad.curCharacter == 'pepper')
+		{
+			defaultCamZoom = 0.8;
+		}
 
 		switch (SONG.player2) {
 			case 'gf':
@@ -871,7 +875,7 @@ class PlayState extends MusicBeatState
 					dad.x = 388;
 				}
 			case 'pepper':
-				dad.y += 100;
+				dad.y += 150;
 				dad.x -= 100;
 				dad.scrollFactor.set(0.9, 0.9);
 			case 'dad':
@@ -1007,7 +1011,15 @@ class PlayState extends MusicBeatState
 					var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
 					add(evilTrail);
 				}
-			case 'week5' | 'week5othercrowd' | 'ripdiner':
+			case 'week5' | 'week5othercrowd':
+				boyfriend.x += 100;
+				boyfriend.y += 165;
+				boyfriend.scrollFactor.set(0.9, 0.9);
+				dad.y += 100;
+				gf.x -= 70;
+				gf.y += 200;
+				gf.scrollFactor.set(0.9, 0.9);
+			case 'ripdiner':
 				boyfriend.x += 100;
 				boyfriend.y += 165;
 				boyfriend.scrollFactor.set(0.9, 0.9);
@@ -1075,6 +1087,8 @@ class PlayState extends MusicBeatState
 
 		add(boyfriend);
 		curBFY = boyfriend.y;
+
+
 
 		trace(boyfriend.y);
 		trace('curbfy position is ' + curBFY);
@@ -2611,8 +2625,9 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y - -100;
 					}
 				case 'pepper':
-					camFollow.y = dad.getMidpoint().y - 50;
-					camFollow.x = dad.getMidpoint().x + 250;
+					camFollow.y = dad.getMidpoint().y += 65;
+					camFollow.x = dad.getMidpoint().x += 40;
+					defaultCamZoom = 0.8;
 				case 'hallow':
 					camFollow.x = dad.getMidpoint().x - -500;
 					camFollow.y = dad.getMidpoint().y - -100;
@@ -2670,6 +2685,13 @@ class PlayState extends MusicBeatState
 		{
 			camFollow.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
 	
+			switch (boyfriend.curCharacter)
+			{
+				case 'bf':
+					if(curStage == 'week5' || curStage == 'week5othercrowd')
+						defaultCamZoom = 0.6;
+			}
+
 			switch (curStage) 
 			{
 				case 'stage':
@@ -2694,6 +2716,7 @@ class PlayState extends MusicBeatState
 				case 'week5' | 'ripdiner' | 'week5othercrowd':
 					camFollow.x = boyfriend.getMidpoint().x - 350;
 					camFollow.y = boyfriend.getMidpoint().y - 340;
+					
 				case 'week3stage':
 					camFollow.x = boyfriend.getMidpoint().x - 380;
 				case 'princess':

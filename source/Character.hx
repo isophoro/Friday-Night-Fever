@@ -201,7 +201,7 @@ class Character extends FlxSprite
 				addOffset("singLEFT", 2, 21);
 				
 				playAnim("idle");
-			case 'fever-fall':
+			case 'bf-fall':
 				frames = Paths.getSparrowAtlas('characters/fever_fall', 'shared');
 				animation.addByPrefix('idle', 'fever fall idle', 24, false);
 				animation.addByPrefix('singUP', 'fever fall Up0', 24, false);
@@ -1361,19 +1361,19 @@ class Character extends FlxSprite
 
 			case 'pepper': // THE PEPPER DEMON
 				iconColor = '7F64DA';
-				tex = Paths.getSparrowAtlas('characters/dickbutt');
+				tex = Paths.getSparrowAtlas('characters/pepp');
 				frames = tex;
-				animation.addByPrefix('idle', 'Pepper Idle', 24, false);
-				animation.addByPrefix('singUP', 'Pepper Up', 24, false);
-				animation.addByPrefix('singDOWN', 'Pepper Down', 24, false);
-				animation.addByPrefix('singLEFT', 'Pepper Left', 24, false);
-				animation.addByPrefix('singRIGHT', 'Pepper Right', 24, false);
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
 
-				addOffset('idle');
-				addOffset("singUP", 32, 26);
-				addOffset("singRIGHT", -54, 13);
-				addOffset("singLEFT", 312, -160);
-				addOffset("singDOWN", 165, -206);
+				addOffset('idle', 0,-30);
+				addOffset("singUP", -28, -14);
+				addOffset("singRIGHT", -23, -18);
+				addOffset("singLEFT", -13, -40);
+				addOffset("singDOWN", -65, -62);
 				playAnim('idle');
 			
 			case 'yukichi': // YUKICHI
