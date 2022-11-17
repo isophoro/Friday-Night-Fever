@@ -1245,12 +1245,14 @@ class Character extends FlxSprite
 				animation.addByPrefix('singDOWN', 'Robo down', 24, false);
 				animation.addByPrefix('singLEFT', 'Robo left', 24, false);
 				animation.addByPrefix('singRIGHT', 'Robo right', 24, false);
+				animation.addByPrefix('fall', 'Robo fall', 24, false);
 
 				addOffset('idle');
 				addOffset("singUP", 163, 52);
 				addOffset("singRIGHT", -114, -64);
 				addOffset("singLEFT", 356, 49);
 				addOffset("singDOWN", -39, -259);
+				addOffset('fall', 0, 0);
 
 				playAnim('idle');
 

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fever_mad_fall.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fever fall0000" x="0" y="0" width="703" height="561" pivotX="40.6" pivotY="-5.9"/>
+	<SubTexture name="fever fall0001" x="703" y="0" width="703" height="561"/>
+	<SubTexture name="fever fall0002" x="1406" y="0" width="703" height="561"/>
+	<SubTexture name="fever fall0003" x="2109" y="0" width="703" height="561"/>
+	<SubTexture name="fever fall0004" x="2812" y="0" width="703" height="561"/>
+	<SubTexture name="fever fall0005" x="0" y="561" width="703" height="561"/>
+	<SubTexture name="fever fall0006" x="703" y="561" width="703" height="561"/>
+	<SubTexture name="fever fall0007" x="1406" y="561" width="703" height="561"/>
+	<SubTexture name="fever fall0008" x="2109" y="561" width="703" height="561"/>
+	<SubTexture name="fever fall0009" x="2812" y="561" width="703" height="561"/>
+	<SubTexture name="fever fall0010" x="0" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0011" x="703" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0012" x="1406" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0013" x="2109" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0014" x="2812" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0015" x="0" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0016" x="703" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0017" x="1406" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0018" x="2109" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0019" x="2812" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0020" x="0" y="2244" width="703" height="561"/>
+	<SubTexture name="fever fall0021" x="703" y="2244" width="703" height="561"/>
+	<SubTexture name="fever fall0022" x="0" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0023" x="703" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0024" x="1406" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0025" x="2109" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0026" x="2812" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0027" x="0" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0028" x="703" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0029" x="1406" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0030" x="2109" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0031" x="2812" y="1683" width="703" height="561"/>
+	<SubTexture name="fever fall0032" x="0" y="2244" width="703" height="561"/>
+	<SubTexture name="fever fall0033" x="703" y="2244" width="703" height="561"/>
+	<SubTexture name="fever fall0034" x="0" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0035" x="703" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0036" x="1406" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0037" x="2109" y="1122" width="703" height="561"/>
+	<SubTexture name="fever fall0038" x="2812" y="1122" width="703" height="561"/>
+</TextureAtlas>
