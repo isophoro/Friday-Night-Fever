@@ -3275,7 +3275,7 @@ class PlayState extends MusicBeatState
 			subtitles.stepHit(curStep);
 		}
 
-		if(curSong == "GearsSSczxczx") // making this not work for rn as it overlaps with the fever falling down portion and breaks stuff
+		if(curSong == "Gears-------------fr") // making this stuff not get called for rn as it overlaps with the falling part and breaks stuff
 		{
 			switch(curStep)
 			{
@@ -3307,8 +3307,6 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.3;
 					FlxTween.tween(this, {daVal: 0.3}, 1);
 					remove(emitt);
-
-					
 				case 2496:
 					defaultCamZoom = 0.4;
 					FlxTween.tween(this, {daVal: 0.6}, 0.5);
@@ -3665,11 +3663,6 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-
-		if (curStage == 'schoolEvil')
-			if (!meat.animation.curAnim.name.startsWith('sing') || meat.animOverrideList.contains(meat.animation.curAnim.name) && meat.animation.curAnim.finished)
-				meat.dance();
-
 		if (!curOpponent.animation.curAnim.name.startsWith('sing') || curOpponent.animOverrideList.contains(curOpponent.animation.curAnim.name) && curOpponent.animation.curAnim.finished)
 			curOpponent.dance();
 
@@ -3725,6 +3718,9 @@ class PlayState extends MusicBeatState
 
 		switch (curStage) 
 		{
+			case 'schoolEvil':
+				if (!meat.animation.curAnim.name.startsWith('sing') || meat.animOverrideList.contains(meat.animation.curAnim.name) && meat.animation.curAnim.finished)
+					meat.dance();
 			case 'finale':
 				train.animation.play('drive');
 			case 'school':

@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxSprite;
 import flixel.math.FlxPoint;
 import flixel.FlxG;
 import flixel.tweens.FlxEase;
@@ -12,19 +13,36 @@ import flixel.util.FlxColor;
 
 class GameScript extends Interp
 {
+    static final AUTOIMPORTS:Array<Class<Dynamic>> = [Math, FlxG, FlxSprite, FlxPoint, FlxTween, FlxEase, Conductor, Paths];
+
     public var updatableVars:Array<String> = [];
     public var valid:Bool = false;
 
-    public function new()
+    public function new(?path:String)
     {
         super();
 
-        var path:String = "assets/data/" + PlayState.SONG.song.toLowerCase() + "/modchart.hx";
+        if (path == null)
+            path = "assets/data/" + PlayState.SONG.song.toLowerCase() + "/modchart.hx";
+
         if (!FileSystem.exists(path))
         {
             return;
         }
 
+        setupVariables();
+        updateVars();
+
+        var parser = new Parser();
+        parser.allowTypes = true;
+        parser.allowJSON = true;
+        valid = true;
+        execute(parser.parseString(File.getContent(path)));
+    }
+
+    function setupVariables()
+    {
+        // Import all non-static fields from PlayState
         for (i in Reflect.fields(PlayState.instance))
         {
             if (!variables.exists(i))
@@ -32,14 +50,15 @@ class GameScript extends Interp
                 var reflected = Reflect.field(PlayState.instance, i);
                 variables.set(i, reflected);
 
+                // Push non-object variables into an array to update them automatically ( updateVars(); )
                 if (reflected is Int || reflected is Bool || reflected is Float || reflected is String)
                 {
-                    //trace("Pushing " + i);
                     updatableVars.push(i);
                 }
             }
         }
 
+        // Import all static fields from PlayState
         for (i in Reflect.fields(PlayState))
         {
             if (!variables.exists(i))
@@ -49,28 +68,23 @@ class GameScript extends Interp
             }
         }
 
+        // Import all classes from the AUTOIMPORTS const
+        for (i in AUTOIMPORTS)
+        {
+            var split:Array<String> = Type.getClassName(i).split('.');
+            variables.set(split[split.length - 1], i);
+        }
+
+        // set up work arounds for abstract classes
+        variables.set("FlxColor", HScriptColorAccess);
+        var tweenTypes:Dynamic = {PINGPONG: 4, BACKWARD: 16, LOOPING: 2, ONESHOT: 8, PERSIST: 1};
+        variables.set("FlxTweenType", tweenTypes);
+
         variables.set("import", (classStr:String) -> {
             var split:Array<String> = classStr.split('.');
             trace("Importing class: " + split[split.length - 1]);
             variables.set(split[split.length - 1], Type.resolveClass(classStr));
         });
-
-        variables.set("FlxG", flixel.FlxG);
-        variables.set("FlxSprite", flixel.FlxSprite);
-        variables.set("FlxPoint", FlxPoint);
-        variables.set("Math", Math);
-        variables.set("FlxTween", FlxTween);
-
-        var tweenTypes:Dynamic = {PINGPONG: 4, BACKWARD: 16, LOOPING: 2, ONESHOT: 8, PERSIST: 1};
-        variables.set("FlxTweenType", tweenTypes);
-        variables.set("FlxEase", FlxEase);
-
-        variables.set("Conductor", Conductor);
-        variables.set("Paths", Paths);
-
-        variables.set("strumLineNotes", PlayState.strumLineNotes.members); // WHY ARE THESE STATIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        variables.set("playerStrums", PlayState.playerStrums.members); // WHO HURT YOU KADE ENGINE
-        variables.set("cpuStrums", PlayState.cpuStrums.members);
 
         variables.set("getIndexOfMember", (item:flixel.FlxBasic) -> {
             return PlayState.instance.members.indexOf(item);
@@ -86,6 +100,13 @@ class GameScript extends Interp
                 item.cameras = [camera];
         });
 
+        variables.set("remove", (item:flixel.FlxBasic, ?destroy:Bool) -> {
+            PlayState.instance.remove(item);
+
+            if (destroy)
+                item.destroy();
+        });
+
         variables.set("snapCamera", (?pos:FlxPoint) -> {
             if (pos != null)
             {
@@ -98,6 +119,10 @@ class GameScript extends Interp
 
         variables.set("game", FlxG.state);
 
+        variables.set("strumLineNotes", PlayState.strumLineNotes.members); // WHY ARE THESE STATIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        variables.set("playerStrums", PlayState.playerStrums.members); // WHO HURT YOU KADE ENGINE
+        variables.set("cpuStrums", PlayState.cpuStrums.members);
+
         for (i in 0...PlayState.strumLineNotes.length)
         {
             var babyArrow = PlayState.strumLineNotes.members[i];
@@ -106,17 +131,13 @@ class GameScript extends Interp
             else
                 variables.set("defaultStrumPos", [new FlxPoint(babyArrow.x, babyArrow.y)]);
         }
-
-        variables.set("remove", (item:flixel.FlxBasic) -> {
-            PlayState.instance.remove(item);
-        });
-
-        variables.set("FlxColor", HScriptColorAccess);
-
+    
         variables.set("assignShader", (item:flixel.FlxSprite, shader:String) -> {
             switch (shader)
             {
-                case "BWShader": // keeping this here because dce is cringe
+                case "BWShader": 
+                    // Not sure how this works it mighhttt have something to do with DCE?
+                    // but when i remove this line this shader does NOT work at all when imported into the bloom modchart
                     item.shader = new shaders.BWShader();
                 case "SolidColorShader":
                     item.shader = new shaders.BadNun.SolidColorShader();
@@ -124,16 +145,16 @@ class GameScript extends Interp
                     item.shader = null;
             }
         });
-        
-        updateVars();
+    }
 
-        var parser = new Parser();
-        parser.allowTypes = true;
-        parser.allowJSON = true;
-        valid = true;
-        execute(parser.parseString(File.getContent(path)));
-
-        callFunction("onScriptCreate");
+    public function updateVars()
+    {
+        for (i in updatableVars)
+        {
+            var reflected = Reflect.field(PlayState.instance, i);
+            if (variables[i] != reflected)
+            variables.set(i, reflected);
+        }
     }
 
     public function callFunction(func:String, ?args:Array<Dynamic>)
@@ -151,16 +172,6 @@ class GameScript extends Interp
             {
                 trace("SCRIPT ERROR: Failed calling function " + func + ". Error: " + e);
             }
-        }
-    }
-
-    public function updateVars()
-    {
-        for (i in updatableVars)
-        {
-            var reflected = Reflect.field(PlayState.instance, i);
-            if (variables[i] != reflected)
-            variables.set(i, reflected);
         }
     }
 }

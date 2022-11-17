@@ -23,7 +23,7 @@ import flixel.system.FlxAssets.FlxShader;
     @:glFragmentSource('
     #pragma header
 
-    uniform float u_colorFactor = 1.0;
+    uniform float u_colorFactor;
 
     void main() {
         vec4 sample = flixel_texture2D(bitmap, openfl_TextureCoordv);
@@ -35,5 +35,6 @@ import flixel.system.FlxAssets.FlxShader;
     public function new()
     {
         super();
+        colorFactor = 1.0;
     }
 }
