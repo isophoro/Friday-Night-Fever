@@ -170,6 +170,72 @@ class Character extends FlxSprite
 
 		switch (curCharacter)
 		{
+			case 'robo-fall':
+				frames = Paths.getSparrowAtlas('characters/robo_fall', 'shared');
+				animation.addByPrefix('idle', 'Robo fever idle', 24, false);
+				animation.addByPrefix('singUP', 'Robo fever up', 24, false);
+				animation.addByPrefix('singLEFT', 'Robo fever left', 24, false);
+				animation.addByPrefix('singRIGHT', 'Robo fever right', 24, false);
+				animation.addByPrefix('singDOWN', 'Robo fever down', 24, false);
+
+				addOffset("idle", 0, 20);
+				addOffset("singRIGHT", -1, -15);
+				addOffset("singDOWN", 6, -13);
+				addOffset("singLEFT", 8, 8);
+				addOffset("singUP", 0, 20);						
+
+				playAnim('idle');
+			case 'robo-fall-cool':
+				frames = Paths.getSparrowAtlas('characters/robo_fall_cool', 'shared');
+
+				animation.addByPrefix('idle', 'Robo fever cool up', 24, false); // NO IDLE
+				animation.addByPrefix('singUP', 'Robo fever cool up', 24, false);
+				animation.addByPrefix('singLEFT', 'Robo fever cool left', 24, false);
+				animation.addByPrefix('singRIGHT', 'Robo fever cool right', 24, false);
+				animation.addByPrefix('singDOWN', 'Robo fever cool down', 24, false);
+
+				addOffset("singDOWN", 8, 13);
+				addOffset("singRIGHT", -9, 0);
+				addOffset("singUP", 0, 20);
+				addOffset("idle", 0, 20);
+				addOffset("singLEFT", 2, 21);
+				
+				playAnim("idle");
+			case 'fever-fall':
+				frames = Paths.getSparrowAtlas('characters/fever_fall', 'shared');
+				animation.addByPrefix('idle', 'fever fall idle', 24, false);
+				animation.addByPrefix('singUP', 'fever fall Up0', 24, false);
+				animation.addByPrefix('singLEFT', 'fever fall left0', 24, false);
+				animation.addByPrefix('singRIGHT', 'fever fall right0', 24, false);
+				animation.addByPrefix('singDOWN', 'fever fall cool down', 24, false);
+
+				animation.addByPrefix('singUP-cool', 'fever fall cool up', 24, false);
+				animation.addByPrefix('singLEFT-cool', 'fever fall cool left', 24, false);
+				animation.addByPrefix('singRIGHT-cool', 'fever fall cool right', 24, false);
+				animation.addByPrefix('singDOWN-cool', 'fever fall cool down', 24, false);
+
+				animation.addByPrefix('singUPmiss', 'fever fall Up miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'fever fall left miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'fever fall right miss', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'fever fall down miss', 24, false);
+
+				addOffset("singLEFT-cool", 0, 0);
+				addOffset("singRIGHT-cool", -17, -4);
+				addOffset("singDOWN", -7, -11);
+				addOffset("singRIGHTmiss", -10, 0);
+				addOffset("singLEFTmiss", -2, 0);
+				addOffset("singUP", -10, 7);
+				addOffset("singUP-cool", -62, -18);
+				addOffset("idle", 0, 0);
+				addOffset("singDOWN-cool", -13, -15);
+				addOffset("singDOWNmiss", -11, -19);
+				addOffset("singRIGHT", -12, -1);
+				addOffset("singUPmiss", -4, 7);
+				addOffset("singLEFT", -3, 0);
+
+				playAnim('idle');
+
+				flipX = true;
 			case 'bf-old':
 				iconColor = 'C353E3';
 				/*switch (variant)
@@ -267,6 +333,28 @@ class Character extends FlxSprite
 				addOffset('hey', -16, 94);
 				addOffset('scared', -38, 142);
 
+				flipX = true;
+			case 'bf-mad-glow':
+				frames = Paths.getSparrowAtlas('characters/fever_mad_glow', 'shared');
+				animation.addByPrefix('idle', 'fever idle dark', 24, false);
+				animation.addByPrefix('singUP', 'Fever up dark', 24, false);
+				animation.addByPrefix('singLEFT', 'Fever left dark', 24, false);
+				animation.addByPrefix('singRIGHT', 'Fever right dark', 24, false);
+				animation.addByPrefix('singDOWN', 'Fever down dark', 24, false);
+				animation.addByPrefix('singUPmiss', 'fever up miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'fever left miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'fever right miss', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'fever down miss', 24, false);
+
+				addOffset('idle', 6, 93);
+				addOffset("singUP", -40, 130);
+				addOffset("singRIGHT", -59, 70);
+				addOffset("singLEFT", 33, 93);
+				addOffset("singDOWN", -31, 54);
+				addOffset("singUPmiss", -43, 129);
+				addOffset("singRIGHTmiss", -47, 68);
+				addOffset("singLEFTmiss", 40, 93);
+				addOffset("singDOWNmiss", -31, 54);
 				flipX = true;
 			case 'bf' | 'bf-demon' | 'bf-mad':
 				iconColor = 'C353E3';
@@ -1165,6 +1253,21 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -39, -259);
 
 				playAnim('idle');
+
+			case 'robo-final-glow': 
+				iconColor = '504BA6';
+				frames = Paths.getSparrowAtlas('characters/robo_final_glow');
+				animation.addByPrefix('idle', "Robo idle dark", 24, false);
+				animation.addByPrefix('singUP', 'Robo up dark', 24, false);
+				animation.addByPrefix('singDOWN', 'Robo down dark', 24, false);
+				animation.addByPrefix('singLEFT', 'Robo left dark', 24, false);
+				animation.addByPrefix('singRIGHT', 'Robo right dark', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 163, 52);
+				addOffset("singRIGHT", -114, -64);
+				addOffset("singLEFT", 356, 49);
+				addOffset("singDOWN", -39, -259);
 			case 'pico': // MAKO
 				iconColor = '47CC40';
 				tex = Paths.getSparrowAtlas('characters/Pico_FNF_assetss');

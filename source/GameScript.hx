@@ -107,7 +107,24 @@ class GameScript extends Interp
                 variables.set("defaultStrumPos", [new FlxPoint(babyArrow.x, babyArrow.y)]);
         }
 
+        variables.set("remove", (item:flixel.FlxBasic) -> {
+            PlayState.instance.remove(item);
+        });
+
         variables.set("FlxColor", HScriptColorAccess);
+
+        variables.set("assignShader", (item:flixel.FlxSprite, shader:String) -> {
+            switch (shader)
+            {
+                case "BWShader": // keeping this here because dce is cringe
+                    item.shader = new shaders.BWShader();
+                case "SolidColorShader":
+                    item.shader = new shaders.BadNun.SolidColorShader();
+                default:
+                    item.shader = null;
+            }
+        });
+        
         updateVars();
 
         var parser = new Parser();

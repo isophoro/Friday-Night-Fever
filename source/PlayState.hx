@@ -67,6 +67,7 @@ class PlayState extends MusicBeatState
 	private var generatedMusic:Bool = false;
 	private var startingSong:Bool = false;
 	var inCutscene:Bool = false;
+	public var gfSpeed:Int = 1;
 
 	private var executeModchart = false;
 	public var beatClass:Class<Dynamic> = null;
@@ -243,6 +244,7 @@ class PlayState extends MusicBeatState
 	var buildings2:FlxBackdrop;
 	var buildings3:FlxBackdrop;
 	var sky:FlxSprite;
+	var train:FlxSprite;
 
 	var script:GameScript;
 	var curSection:Int = 0;
@@ -467,10 +469,9 @@ class PlayState extends MusicBeatState
 				buildings3.x -= 600;
 				add(buildings3);
 
-				
-				var train:FlxSprite = new FlxSprite(0, 666);
+				train = new FlxSprite(0, 666);
 				train.frames = Paths.getSparrowAtlas('roboStage/train');
-				train.animation.addByPrefix('drive', "all train", 24);
+				train.animation.addByPrefix('drive', "all train", 24, false);
 				train.animation.play('drive');
 				train.antialiasing = true;
 				train.scrollFactor.set(0.9, 0.9);
@@ -2573,6 +2574,8 @@ class PlayState extends MusicBeatState
 		if(FlxG.keys.justPressed.ONE)
 			endSong();
 		#end
+
+		script.callFunction("onPostUpdate", [elapsed]);
 	}
 
 	public var DAD_CAM_POS:FlxPoint = new FlxPoint(0,0);
@@ -2878,6 +2881,8 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	public var curComboSprites:Array<FlxSprite> = [];
+
 	private function popUpScore(daNote:Note):Void 
 	{
 		var noteDiff:Float = Math.abs(Conductor.songPosition - daNote.strumTime);
@@ -2933,13 +2938,20 @@ class PlayState extends MusicBeatState
 			rating.setPosition((FlxG.width * 0.55) - 125, (FlxG.height * 0.5) - (rating.height / 2) - 50);
 			rating.velocity.set(-FlxG.random.int(0, 10), -FlxG.random.int(140, 175));
 			rating.acceleration.y = 550;
+			curComboSprites.push(rating);
 
 			if (!disableHUD)
 			{
-				if (FlxG.save.data.changedHit) {
+				if (script.variables.exists("forceComboPos") && (script.variables["forceComboPos"].x != 0 || script.variables["forceComboPos"].y != 0))
+				{
+					rating.x = script.variables["forceComboPos"].x;
+					rating.y = script.variables["forceComboPos"].y;
+				}
+				else if (FlxG.save.data.changedHit) 
+				{
 					rating.x = FlxG.save.data.changedHitX;
 					rating.y = FlxG.save.data.changedHitY;
-				}
+				} 
 			}
 			else
 			{
@@ -3014,12 +3026,14 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(numScore, {alpha: 0}, 0.5, {
 						onComplete: function(tween:FlxTween) {
 							numScore.kill();
+							curComboSprites.remove(numScore);
 							numScore.exists = false;
 						},
 						startDelay: 0.3
 					});
 	
 					daLoop++;
+					curComboSprites.push(numScore);
 				}
 			}
 
@@ -3028,6 +3042,7 @@ class PlayState extends MusicBeatState
 			FlxTween.tween(rating, {alpha: 0}, 0.45, {
 				onComplete: function(tween:FlxTween) {
 					rating.kill();
+					curComboSprites.remove(rating);
 					rating.exists = false;
 				},
 				startDelay: 0.27
@@ -3159,9 +3174,15 @@ class PlayState extends MusicBeatState
 			else
 				totalNotesHit += 1;
 
+			var altSuffix:String = '';
+			if (script.variables.exists("bfAltSuffix"))
+			{
+				altSuffix = script.variables.get("bfAltSuffix");
+			}
+
 			if(boyfriend.animation.curAnim.name != 'shoot')
 			{
-				curPlayer.playAnim('sing' + dataSuffix[note.noteData], true);
+				curPlayer.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
 			}
 
 			switch (note.noteData)
@@ -3254,7 +3275,7 @@ class PlayState extends MusicBeatState
 			subtitles.stepHit(curStep);
 		}
 
-		if(curSong == "Gears")
+		if(curSong == "GearsSSczxczx") // making this not work for rn as it overlaps with the fever falling down portion and breaks stuff
 		{
 			switch(curStep)
 			{
@@ -3674,15 +3695,18 @@ class PlayState extends MusicBeatState
 
 		if (boyfriend.animation.curAnim.name != 'hey') 
 		{
-			// disgusting code
-			if (gf.animation.curAnim.name != 'scared' && gf.animation.curAnim.name != 'sad' || 
-				gf.animation.curAnim.name == 'sad' && gf.animation.finished || 
-				gf.animation.curAnim.name == 'scared' && dad.holdTimer < -0.35)
-				gf.dance();
-				if(tea_pixel != null)
-				{
-					tea_pixel.dance();
-				}
+			if (curBeat % gfSpeed == 0)
+			{
+				// disgusting code
+				if (gf.animation.curAnim.name != 'scared' && gf.animation.curAnim.name != 'sad' || 
+					gf.animation.curAnim.name == 'sad' && gf.animation.finished || 
+					gf.animation.curAnim.name == 'scared' && dad.holdTimer < -0.35)
+					gf.dance();
+					if(tea_pixel != null)
+					{
+						tea_pixel.dance();
+					}
+			}
 		}
 
 		if (!curPlayer.animation.curAnim.name.startsWith("sing") && !opponent) 
@@ -3701,6 +3725,8 @@ class PlayState extends MusicBeatState
 
 		switch (curStage) 
 		{
+			case 'finale':
+				train.animation.play('drive');
 			case 'school':
 				if(SONG.song.toLowerCase() != 'space-demons')
 				{
@@ -3957,53 +3983,4 @@ class PlayState extends MusicBeatState
 		vocals.time = strumTime;
 		Conductor.songPosition = strumTime;
 	}
-}
-
-class Glitch extends FlxShaderToyShader {
-
-	public function new()
-        {
-            super('
-			/*
-			Transverse Chromatic Aberration
-		
-			Based on https://github.com/FlexMonkey/Filterpedia/blob/7a0d4a7070894eb77b9d1831f689f9d8765c12ca/Filterpedia/customFilters/TransverseChromaticAberration.swift
-		
-			Simon Gladman | http://flexmonkey.blogspot.co.uk | September 2017
-			*/
-			
-			int sampleCount = 50;
-			float blur = 0.25; 
-			float falloff = 3.0; 
-			
-			// use iChannel0 for video, iChannel1 for test grid
-			#define INPUT iChannel0
-			
-			void mainImage( out vec4 fragColor, in vec2 fragCoord )
-			{
-				vec2 destCoord = fragCoord.xy / iResolution.xy;
-			
-				vec2 direction = normalize(destCoord - 0.5); 
-				vec2 velocity = direction * blur * pow(length(destCoord - 0.5), falloff);
-				float inverseSampleCount = 1.0 / float(sampleCount); 
-				
-				mat3x2 increments = mat3x2(velocity * 1.0 * inverseSampleCount,
-										velocity * 2.0 * inverseSampleCount,
-										velocity * 4.0 * inverseSampleCount);
-			
-				vec3 accumulator = vec3(0);
-				mat3x2 offsets = mat3x2(0); 
-				
-				for (int i = 0; i < sampleCount; i++) {
-					accumulator.r += texture(INPUT, destCoord + offsets[0]).r; 
-					accumulator.g += texture(INPUT, destCoord + offsets[1]).g; 
-					accumulator.b += texture(INPUT, destCoord + offsets[2]).b; 
-					
-					offsets -= increments;
-				}
-			
-				fragColor = vec4(accumulator / float(sampleCount), 1.0);
-			}
-            ');
-        }
 }

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Robo tunnel.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Robo down dark0000" x="753" y="1097" width="725" height="773" pivotX="-71.45" pivotY="41"/>
+	<SubTexture name="Robo down dark0001" x="753" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0002" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0003" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0004" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0005" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0006" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0007" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0008" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0009" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0010" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0011" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0012" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0013" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo down dark0014" x="1478" y="1097" width="725" height="773"/>
+	<SubTexture name="Robo idle dark0000" x="0" y="0" width="611" height="1050" pivotX="1.05" pivotY="8.4"/>
+	<SubTexture name="Robo idle dark0001" x="0" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0002" x="611" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0003" x="611" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0004" x="1222" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0005" x="1833" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0006" x="2444" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0007" x="3055" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0008" x="3666" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0009" x="4277" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0010" x="4888" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0011" x="5499" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0012" x="4888" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0013" x="6110" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo idle dark0014" x="6721" y="0" width="611" height="1050"/>
+	<SubTexture name="Robo left dark0000" x="7332" y="0" width="753" height="1097" pivotX="41" pivotY="-3.9"/>
+	<SubTexture name="Robo left dark0001" x="7332" y="0" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0002" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0003" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0004" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0005" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0006" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0007" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0008" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0009" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0010" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0011" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0012" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0013" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo left dark0014" x="0" y="1097" width="753" height="1097"/>
+	<SubTexture name="Robo right dark0000" x="2203" y="1097" width="794" height="976" pivotX="11.4" pivotY="-25.6"/>
+	<SubTexture name="Robo right dark0001" x="2203" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0002" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0003" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0004" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0005" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0006" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0007" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0008" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0009" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0010" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0011" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0012" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0013" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo right dark0014" x="2997" y="1097" width="794" height="976"/>
+	<SubTexture name="Robo up dark0000" x="3791" y="1097" width="800" height="1101" pivotX="39.75" pivotY="0"/>
+	<SubTexture name="Robo up dark0001" x="3791" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0002" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0003" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0004" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0005" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0006" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0007" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0008" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0009" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0010" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0011" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0012" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0013" x="4591" y="1097" width="800" height="1101"/>
+	<SubTexture name="Robo up dark0014" x="4591" y="1097" width="800" height="1101"/>
+</TextureAtlas>

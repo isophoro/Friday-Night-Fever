@@ -1,5 +1,6 @@
 package;
 
+import openfl.net.URLLoader;
 import GameJolt.GameJoltLogin;
 #if cpp
 import cpp.vm.Gc;
@@ -191,7 +192,8 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		camera.zoom = FlxMath.lerp(1, camera.zoom, 0.95);
+		if (!transitioning)
+			camera.zoom = FlxMath.lerp(1, camera.zoom, 0.95);
 
 		if(controls.BACK)
 		{
@@ -220,7 +222,7 @@ class TitleState extends MusicBeatState
 		
 		hueShader.onUpdate();
 
-		if (controls.ACCEPT #if mobile || (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) #end)
+		if (controls.ACCEPT)
 		{
 			if (!transitioning && skippedIntro)
 			{
@@ -230,12 +232,10 @@ class TitleState extends MusicBeatState
 				if (FlxG.save.data.flashing)
 					titleText.animation.play('press');
 	
-				FlxTween.tween(titleText, {y: 1200}, 1.23, { ease: FlxEase.elasticInOut });
+				FlxTween.tween(titleText, {y: 1200, alpha: 0}, 1.23, { ease: FlxEase.elasticInOut });
 	
 				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-	
-				MainMenuState.firstStart = true;
 	
 				new FlxTimer().start(0.4, function(tmr:FlxTimer)
 				{
@@ -313,12 +313,14 @@ class TitleState extends MusicBeatState
 					addMoreText(curWacky[1]);
 				case 11:
 					deleteCoolText();
-				case 13:
+				case 12:
 					addMoreText('Friday');
-				case 14:
+				case 13:
 					addMoreText('Night');
-				case 15:
+				case 14:
 					addMoreText('Fever');
+				case 15:
+					addMoreText("Frenzy");
 				case 16:
 					skipIntro();
 			}

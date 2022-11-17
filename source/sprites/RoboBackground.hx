@@ -348,6 +348,8 @@ class RoboBackground
 
         instance.remove(instance.roboForeground);
         instance.add(instance.roboForeground);
+
+        instance.moveCamera(!PlayState.SONG.notes[Std.int(instance.curStep / 16)].mustHitSection);
     }
 
     public function addSprites(sprites:Array<FlxSprite>, typedGroup:FlxTypedGroup<FlxSprite>)

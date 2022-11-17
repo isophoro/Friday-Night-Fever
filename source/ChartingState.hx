@@ -95,6 +95,7 @@ class ChartingState extends MusicBeatState
 	var rightIcon:HealthIcon;
 	var styles:Array<String> = ['normal', 'painting'];
 	var curStyle:Int = 0;
+	var styleText:FlxText;
 
 	private var lastNote:Note;
 	var claps:Array<Note> = [];
@@ -204,7 +205,11 @@ class ChartingState extends MusicBeatState
 		add(blackBorder);
 		add(snapText);
 
-
+		styleText = new FlxText(0, 0, 0, "", 12);
+		styleText.scrollFactor.set();
+		styleText.setFormat(flixel.system.FlxAssets.FONT_DEFAULT, 12, 0xFFFFFFFF, LEFT, OUTLINE, 0xFF000000);
+		styleText.borderSize = 2;
+		add(styleText);
 
 		super.create();
 	}
@@ -682,6 +687,9 @@ class ChartingState extends MusicBeatState
 			if(curStyle < 0)
 				curStyle = styles.length - 1;
 		}
+
+		styleText.text = "Current Note Type: " + styles[curStyle] + " | Press X / Z to scroll through note types.";
+		styleText.y = FlxG.height - styleText.height;
 
 		updateHeads();
 

@@ -35,8 +35,6 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
 
-	public static var firstStart:Bool = true;
-
 	public static var nightly:String = "";
 
 	public static var kadeEngineVer:String = "1.5.1" + nightly;
@@ -138,9 +136,6 @@ class MainMenuState extends MusicBeatState
 				}
 			}});
 		}
-
-		firstStart = false;
-		
 
 		if(GameJoltAPI.getStatus() == true)
 		{
