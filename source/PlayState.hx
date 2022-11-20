@@ -936,6 +936,7 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'fireplace':
+				boyfriend.scrollFactor.set(0.9, 0.9);
 				boyfriend.x += 300;
 				gf.x += 300;
 			case 'limo' | 'limonight':
@@ -3113,7 +3114,7 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		if (curPlayer.holdTimer > Conductor.stepCrochet * 4 * 0.001 && (!holdArray.contains(true) || FlxG.save.data.botplay))
+		if (curPlayer.holdTimer > (Conductor.stepCrochet * 0.0011) * 5.78)
 		{
 			if (curPlayer.animation.curAnim.name.startsWith('sing') && !curPlayer.animation.curAnim.name.endsWith('miss'))
 			{
@@ -3182,6 +3183,7 @@ class PlayState extends MusicBeatState
 
 			if (boyfriend.animation.curAnim.name != 'shoot')
 			{
+				curPlayer.holdTimer = 0;
 				curPlayer.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
 			}
 
@@ -3842,7 +3844,6 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		curPlayer.holdTimer = 0;
 		keysHeld[key] = true;
 
 		var dumbNotes:Array<Note> = []; // notes to kill later
