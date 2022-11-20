@@ -237,18 +237,18 @@ class ModchartState
 	function changeDadCharacter(id:String)
 	{				var olddadx = PlayState.instance.dad.x;
 					var olddady = PlayState.instance.dad.y;
-					PlayState.instance.removeObject(PlayState.instance.dad);
+					PlayState.instance.remove(PlayState.instance.dad);
 					PlayState.instance.dad = new Character(olddadx, olddady, id);
-					PlayState.instance.addObject(PlayState.instance.dad);
+					PlayState.instance.add(PlayState.instance.dad);
 					PlayState.instance.iconP2.animation.play(id);
 	}
 
 	function changeBoyfriendCharacter(id:String)
 	{				var oldboyfriendx = PlayState.instance.boyfriend.x;
 					var oldboyfriendy = PlayState.instance.boyfriend.y;
-					PlayState.instance.removeObject(PlayState.instance.boyfriend);
+					PlayState.instance.remove(PlayState.instance.boyfriend);
 					PlayState.instance.boyfriend = new Boyfriend(oldboyfriendx, oldboyfriendy, id);
-					PlayState.instance.addObject(PlayState.instance.boyfriend);
+					PlayState.instance.add(PlayState.instance.boyfriend);
 					PlayState.instance.iconP2.animation.play(id);
 	}
 
@@ -272,7 +272,7 @@ class ModchartState
 
 		luaSprites.set(id,sprite);
 
-        PlayState.instance.addObject(sprite);
+        PlayState.instance.add(sprite);
 
 		sprite.animation.play(startAnim);
 		return id;
@@ -310,16 +310,16 @@ class ModchartState
         {
             if (drawBehind)
             {
-                PlayState.instance.removeObject(PlayState.instance.gf);
-                PlayState.instance.removeObject(PlayState.instance.boyfriend);
-                PlayState.instance.removeObject(PlayState.instance.dad);
+                PlayState.instance.remove(PlayState.instance.gf);
+                PlayState.instance.remove(PlayState.instance.boyfriend);
+                PlayState.instance.remove(PlayState.instance.dad);
             }
-            PlayState.instance.addObject(sprite);
+            PlayState.instance.add(sprite);
             if (drawBehind)
             {
-                PlayState.instance.addObject(PlayState.instance.gf);
-                PlayState.instance.addObject(PlayState.instance.boyfriend);
-                PlayState.instance.addObject(PlayState.instance.dad);
+                PlayState.instance.add(PlayState.instance.gf);
+                PlayState.instance.add(PlayState.instance.boyfriend);
+                PlayState.instance.add(PlayState.instance.dad);
             }
         }
 		#end
@@ -410,7 +410,7 @@ class ModchartState
 					var sprite = luaSprites.get(id);
 					if (sprite == null)
 						return false;
-					PlayState.instance.removeObject(sprite);
+					PlayState.instance.remove(sprite);
 					return true;
 				});
 

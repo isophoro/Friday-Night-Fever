@@ -1,17 +1,17 @@
 package;
 
-import lime.math.Vector2;
-import flixel.util.FlxColor;
-import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
+import lime.math.Vector2;
 
 using StringTools;
 
 /*enum CostumeName
-{
+	{
 	Fever;
 	Fever_Casual;
 	Fever_Minus;
@@ -23,10 +23,10 @@ using StringTools;
 	Tea_Cherry;
 	Tea_Taki;
 	Tea_Old;
-}
+	}
 
-@:enum abstract FeverCostumeVariant(String) from String to String
-{
+	@:enum abstract FeverCostumeVariant(String) from String to String
+	{
 	/*public static function fromSong(song:String)
 	{
 		song = song.toLowerCase();
@@ -57,10 +57,10 @@ using StringTools;
 	var Car_Night = "Car Night";
 	var Pixel = "Pixel";
 	var Pixel_Demon = "Pixel Demon";
-}
+	}
 
-class Costume
-{
+	class Costume
+	{
 	public static var ref:Map<CostumeName, Costume> = [
 		Fever =>  new Costume("Fever", "", "The mayor himself.", "Sprites made by Kip", [Normal, Pixel], new Vector2(0,0)),
 		Fever_Casual => new Costume("Fever (Casual)", "", "Unlock: On Hard difficulty, full combo Week 3. (Story Mode)", "Sprites made by Kip", [Normal]),
@@ -103,7 +103,7 @@ class Costume
 	public var requirements:String = "";
 	public var credits:String = "";
 	public var variants:Array<FeverCostumeVariant> = [];
-	
+
 	public function new(displayName:String, character:String, requirements:String, ?credits:String, ?variants:Array<FeverCostumeVariant>, ?offsetPos:Null<Vector2>, ?camOffsetPos:Null<Vector2>)
 	{
 		this.displayName = displayName;
@@ -120,8 +120,7 @@ class Costume
 		if (camOffsetPos != null)
 			this.camOffsetPos = camOffsetPos;
 	}
-} */
-
+}*/
 class Character extends FlxSprite
 {
 	public var animOffsets:Map<String, Array<Dynamic>>;
@@ -134,17 +133,15 @@ class Character extends FlxSprite
 	public var holdTimer:Float = 0;
 	public var useAlternateIdle:Bool = false;
 
+	public var charSize:Float = 1; // size, makes it easier to scale characters. example, you did offsets and character is too small, you can make them-
 
-	public var charSize:Float = 1; //size, makes it easier to scale characters. example, you did offsets and character is too small, you can make them-
-	//bigger with this and the offsets would be unchanged being perfect.
-
-	public var animOverList:Array<String> = ['idle','sing'];
+	// bigger with this and the offsets would be unchanged being perfect.
+	public var animOverList:Array<String> = ['idle', 'sing'];
 	public var animOverrideList:Array<String> = [];
-	//arrays for anims that overlap singing, idle, ect. (i did this before i saw ur code in beathit LMAO but still might be useful)
-	//only coded for dad and meat at the moment
 
-	//use BEFORE offsets. example
-
+	// arrays for anims that overlap singing, idle, ect. (i did this before i saw ur code in beathit LMAO but still might be useful)
+	// only coded for dad and meat at the moment
+	// use BEFORE offsets. example
 	/*
 		animation.addByPrefix('hey', 'BF HEY', 24, false);
 
@@ -152,10 +149,8 @@ class Character extends FlxSprite
 
 		addOffset("hey", -10, 3);
 
-	*/
-
-	//everything else is already covered.
-
+	 */
+	// everything else is already covered.
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
@@ -170,6 +165,42 @@ class Character extends FlxSprite
 
 		switch (curCharacter)
 		{
+			case 'toothpaste':
+				frames = Paths.getSparrowAtlas('characters/paste', 'shared');
+				animation.addByPrefix('idle', 'Toothpaste idle', 24, false);
+				animation.addByPrefix('transition', 'Toothpaste transition', 24, false);
+
+				addOffset("idle");
+				@:privateAccess
+				for (i in PlayState.instance.dataSuffix)
+				{
+					animation.addByPrefix('sing' + i, 'Toothpaste ' + i.toLowerCase(), 24, false);
+				}
+
+				addOffset("transition", 74, 96);
+				addOffset("singRIGHT", 0, 6);
+				addOffset("singDOWN", 4, 2);
+				addOffset("singLEFT", 2, 0);
+				addOffset("singUP", 4, 29);
+
+				playAnim("idle");
+			case 'toothpaste-mad':
+				frames = Paths.getSparrowAtlas('characters/pasteMad', 'shared');
+				animation.addByPrefix('idle', 'toothpaste mad idle', 24, false);
+
+				addOffset("idle");
+				@:privateAccess
+				for (i in PlayState.instance.dataSuffix)
+				{
+					animation.addByPrefix('sing' + i, 'toothpaste mad ' + i.toLowerCase(), 24, false);
+				}
+
+				addOffset("singDOWN", -296, -318);
+				addOffset("singRIGHT", -100, -24);
+				addOffset("singUP", -146, 229);
+				addOffset("singLEFT", -198, 50);
+
+				playAnim("idle");
 			case 'robo-fall':
 				frames = Paths.getSparrowAtlas('characters/robo_fall', 'shared');
 				animation.addByPrefix('idle', 'Robo fever idle', 24, false);
@@ -182,7 +213,7 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -1, -15);
 				addOffset("singDOWN", 6, -13);
 				addOffset("singLEFT", 8, 8);
-				addOffset("singUP", 0, 20);						
+				addOffset("singUP", 0, 20);
 
 				playAnim('idle');
 			case 'robo-fall-cool':
@@ -199,7 +230,7 @@ class Character extends FlxSprite
 				addOffset("singUP", 0, 20);
 				addOffset("idle", 0, 20);
 				addOffset("singLEFT", 2, 21);
-				
+
 				playAnim("idle");
 			case 'bf-fall':
 				frames = Paths.getSparrowAtlas('characters/fever_fall', 'shared');
@@ -238,28 +269,28 @@ class Character extends FlxSprite
 				flipX = true;
 			case 'bf-old':
 				iconColor = 'C353E3';
-				/*switch (variant)
-				{*/
-					default:
-						frames = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
+			/*switch (variant)
+				{ */
+			default:
+				frames = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
 
-						animation.addByPrefix('idle', 'BF idle dance', 24, false);
-						animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-						animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-						animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-						animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-						animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-						animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-						animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-						animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-						animation.addByPrefix('scared', 'BF idle shaking', 24);
-						animation.addByPrefix('hey', 'BF HEY', 24, false);
-						animation.addByPrefix('transition', 'BF Transition', 24, false);
-		
-						animation.addByPrefix('firstDeath', "BF dies", 24, false);
-						animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
-						animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-				//}
+				animation.addByPrefix('idle', 'BF idle dance', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
+				animation.addByPrefix('scared', 'BF idle shaking', 24);
+				animation.addByPrefix('hey', 'BF HEY', 24, false);
+				animation.addByPrefix('transition', 'BF Transition', 24, false);
+
+				animation.addByPrefix('firstDeath', "BF dies", 24, false);
+				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
+				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
+				// }
 
 				addOffset('idle', -5);
 				addOffset("singUP", -28, 13);
@@ -287,7 +318,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('deathLoop', "fever dead loop", 24, true);
 				animation.addByPrefix('deathConfirm', "fever dead confirm", 24, false);
 
-				switch(curCharacter)
+				switch (curCharacter)
 				{
 					case 'humanDeath':
 						addOffset('firstDeath', 42, 108);
@@ -358,7 +389,7 @@ class Character extends FlxSprite
 				flipX = true;
 			case 'bf' | 'bf-demon' | 'bf-mad':
 				iconColor = 'C353E3';
-				
+
 				var prefix:String = "";
 				switch (curCharacter)
 				{
@@ -386,7 +417,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('dodge', prefix + 'fever dodge', 24, false);
 				animation.addByPrefix('shoot', prefix + 'fever shoot', 24, false);
 
-				if(curCharacter == 'bf-mad')
+				if (curCharacter == 'bf-mad')
 				{
 					addOffset('idle', 6, 93);
 					addOffset("singUP", -40, 130);
@@ -432,7 +463,6 @@ class Character extends FlxSprite
 						addOffset("hey", 0, 89);
 						addOffset('scared', 2, 92);
 						addOffset('dodge', 21, 92);
-						
 					}
 					else
 					{
@@ -448,7 +478,6 @@ class Character extends FlxSprite
 						addOffset('dodge', 66, 87);
 						addOffset('hey', -16, 94);
 						addOffset('scared', -38, 142);
-						
 					}
 				}
 
@@ -856,7 +885,7 @@ class Character extends FlxSprite
 				animation.play('firstDeath');
 
 				addOffset('firstDeath');
-				addOffset('deathLoop',-93, -75);
+				addOffset('deathLoop', -93, -75);
 				addOffset('deathConfirm', -30, -121);
 				playAnim('firstDeath');
 
@@ -870,7 +899,7 @@ class Character extends FlxSprite
 				animation.play('firstDeath');
 
 				addOffset('firstDeath');
-				addOffset('deathLoop',-488, -115);
+				addOffset('deathLoop', -488, -115);
 				addOffset('deathConfirm', -273, -125);
 				playAnim('firstDeath');
 
@@ -889,17 +918,17 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
-				case 'gfpainting':
-					iconColor = '99DBF6';
-					tex = Paths.getSparrowAtlas('characters/tea_painting');
-					frames = tex;
-					animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-					animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-	
-					addOffset('danceLeft', 0, -9);
-					addOffset('danceRight', 0, -9);
-	
-					playAnim('danceRight');
+			case 'gfpainting':
+				iconColor = '99DBF6';
+				tex = Paths.getSparrowAtlas('characters/tea_painting');
+				frames = tex;
+				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				addOffset('danceLeft', 0, -9);
+				addOffset('danceRight', 0, -9);
+
+				playAnim('danceRight');
 
 			case 'gf':
 				iconColor = '99DBF6';
@@ -923,14 +952,14 @@ class Character extends FlxSprite
 					addOffset('sad', -2, -24);
 					addOffset('danceLeft', 0, -9);
 					addOffset('danceRight', 0, -9);
-	
+
 					addOffset("singUP", 0, 16);
 					addOffset("singRIGHT", 0, -18);
 					addOffset("singLEFT", 0, -21);
 					addOffset("singDOWN", 0, -18);
 					addOffset('hairBlow', 0, -10);
 					addOffset('hairFall', 0, -8);
-	
+
 					addOffset('scared', -2, -14);
 				}
 				else
@@ -1090,10 +1119,10 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -200, -16);
 				addOffset("singRIGHT", -181, 17);
 				addOffset("singUP", -155, 24);
-				addOffset("singLEFT", -152, 30);				
+				addOffset("singLEFT", -152, 30);
 
 				playAnim('idle');
-	
+
 			case 'peacensored':
 				iconColor = '99D4F4';
 				tex = Paths.getSparrowAtlas('characters/peaky_censored', 'shared');
@@ -1137,7 +1166,7 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
-			case 'feralspooky': // WEE 
+			case 'feralspooky': // WEE
 				iconColor = '282828';
 				tex = Paths.getSparrowAtlas('characters/feral_wee_assets');
 				frames = tex;
@@ -1151,7 +1180,7 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -7, 1);
 				addOffset("singRIGHT", 11, -2);
 				addOffset("singUP", 1, -3);
-				addOffset("singLEFT", 24, -2);				
+				addOffset("singLEFT", 24, -2);
 
 				playAnim('idle');
 
@@ -1201,7 +1230,7 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -30, -210);
 
 				setGraphicSize(Std.int(width * 1.4));
-				
+
 				playAnim('idle');
 
 			case 'robo-cesar': // MAKO
@@ -1234,10 +1263,10 @@ class Character extends FlxSprite
 				addOffset("singRIGHT");
 				addOffset("singLEFT");
 				addOffset("singDOWN");
-				scale.set(6,6);
+				scale.set(6, 6);
 
 				flipX = true;
-			case 'robofvr-final': 
+			case 'robofvr-final':
 				iconColor = '504BA6';
 				frames = Paths.getSparrowAtlas('characters/robo_final');
 				animation.addByPrefix('idle', "Robo idle", 24, false);
@@ -1256,7 +1285,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-			case 'robo-final-glow': 
+			case 'robo-final-glow':
 				iconColor = '504BA6';
 				frames = Paths.getSparrowAtlas('characters/robo_final_glow');
 				animation.addByPrefix('idle', "Robo idle dark", 24, false);
@@ -1294,19 +1323,19 @@ class Character extends FlxSprite
 
 				setGraphicSize(Std.int(width * 0.95));
 				frames = Paths.getSparrowAtlas('characters/makoCorrupt');
-				
+
 				animation.addByPrefix('idle', "Pico Idle Dance", 24);
 				animation.addByPrefix('singUP', 'pico Up note0', 24, false);
 				animation.addByPrefix('singDOWN', 'Pico Down Note0', 24, false);
 				animation.addByPrefix('singLEFT', 'Pico Note Right0', 24, false);
 				animation.addByPrefix('singRIGHT', 'Pico NOTE LEFT0', 24, false);
-				
+
 				addOffset("idle", 0, 0);
 				addOffset("singDOWN", -19, 51);
 				addOffset("singRIGHT", 8, 14);
 				addOffset("singUP", -19, -37);
-				addOffset("singLEFT", -24, 12);				
-				
+				addOffset("singLEFT", -24, 12);
+
 				playAnim('idle');
 
 			case 'mom-car': // HUNNII
@@ -1323,7 +1352,6 @@ class Character extends FlxSprite
 				// CUZ DAVE IS DUMB!
 				animation.addByPrefix('singRIGHT', 'Mom Pose Left', 24, false);
 
-
 				addOffset('idle', 0, 4);
 				addOffset("singUP", 63, 37);
 				addOffset("singLEFT", 92, 8);
@@ -1339,7 +1367,7 @@ class Character extends FlxSprite
 				iconColor = 'FF517E';
 				tex = Paths.getSparrowAtlas('characters/momCarNIGHT', 'shared');
 				frames = tex;
-				
+
 				animation.addByPrefix('idle', "Mom Idle", 24, false);
 				animation.addByIndices('idle-loop', 'Mom Idle', [11, 12, 13], "", 24, true);
 				animation.addByPrefix('singUP', "Mom Up Pose", 24, false);
@@ -1348,7 +1376,6 @@ class Character extends FlxSprite
 				// ANIMATION IS CALLED MOM LEFT POSE BUT ITS FOR THE RIGHT
 				// CUZ DAVE IS DUMB!
 				animation.addByPrefix('singRIGHT', 'Mom Pose Left', 24, false);
-
 
 				addOffset('idle', 0, 4);
 				addOffset("singUP", 63, 37);
@@ -1371,13 +1398,13 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'left', 24, false);
 				animation.addByPrefix('singRIGHT', 'right', 24, false);
 
-				addOffset('idle', 0,-30);
+				addOffset('idle', 0, -30);
 				addOffset("singUP", -28, -14);
 				addOffset("singRIGHT", -23, -18);
 				addOffset("singLEFT", -13, -40);
 				addOffset("singDOWN", -65, -62);
 				playAnim('idle');
-			
+
 			case 'yukichi': // YUKICHI
 				iconColor = 'FF97F0';
 				frames = Paths.getSparrowAtlas('characters/yukichi_leader_assets', 'shared');
@@ -1396,7 +1423,7 @@ class Character extends FlxSprite
 
 				setGraphicSize(Std.int(width * 0.8));
 
-				//setCharSize(2); or something idk its not multiplied its just what it sets the size to, it uses scale.set
+				// setCharSize(2); or something idk its not multiplied its just what it sets the size to, it uses scale.set
 
 				playAnim('idle');
 
@@ -1443,7 +1470,7 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
-			case 'flippy': //FLIPPY
+			case 'flippy': // FLIPPY
 				iconColor = '4E4E4E';
 				frames = Paths.getSparrowAtlas('characters/flippysolo');
 				animation.addByPrefix('idle', "FLIPPY IDLE", 24, false);
@@ -1465,7 +1492,7 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
-			case 'meat': //MEAT
+			case 'meat': // MEAT
 				iconColor = '4E4E4E';
 				frames = Paths.getSparrowAtlas('characters/meatsolo');
 				animation.addByPrefix('idle', "MEATIDLE0", 24, false);
@@ -1597,7 +1624,7 @@ class Character extends FlxSprite
 				if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
 					playAnim('danceRight');
 			case 'mom-car' | 'mom-carnight':
-				if(animation.curAnim.finished && animation.curAnim.name == 'idle')
+				if (animation.curAnim.finished && animation.curAnim.name == 'idle')
 				{
 					playAnim('idle-loop');
 				}
@@ -1632,7 +1659,7 @@ class Character extends FlxSprite
 	{
 		if (!debugMode)
 		{
-			if(animOffsets.exists('danceLeft'))
+			if (animOffsets.exists('danceLeft'))
 			{
 				if (!animation.curAnim.name.startsWith('hair'))
 				{
@@ -1646,11 +1673,13 @@ class Character extends FlxSprite
 			}
 			else
 			{
-				switch(curCharacter)
+				switch (curCharacter)
 				{
 					case 'bf' | 'bf-demon':
-						playAnim('idle' + ((PlayState.instance != null && PlayState.SONG.player2 == 'robo-cesar' || useAlternateIdle) ? '-frown' : ''));
-					default: 
+						playAnim('idle' + ((PlayState.instance != null
+							&& PlayState.SONG.player2 == 'robo-cesar'
+							|| useAlternateIdle) ? '-frown' : ''));
+					default:
 						playAnim('idle');
 				}
 			}
@@ -1659,18 +1688,18 @@ class Character extends FlxSprite
 
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
 	{
-		if(animOffsets.exists(AnimName))
+		if (animOffsets.exists(AnimName))
 		{
 			animation.play(AnimName, Force, Reversed, Frame);
 
 			var daOffset = animOffsets.get(AnimName);
 			if (animOffsets.exists(AnimName))
 			{
-				offset.set(daOffset[0]* charSize, daOffset[1] * charSize);
+				offset.set(daOffset[0] * charSize, daOffset[1] * charSize);
 			}
 			else
 				offset.set(0, 0);
-	
+
 			if (curCharacter.contains('gf'))
 			{
 				if (AnimName == 'singLEFT')
@@ -1681,12 +1710,12 @@ class Character extends FlxSprite
 				{
 					danced = false;
 				}
-	
+
 				if (AnimName == 'singUP' || AnimName == 'singDOWN')
 				{
 					danced = !danced;
 				}
-			}			
+			}
 		}
 		else
 		{
@@ -1708,18 +1737,16 @@ class Character extends FlxSprite
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
 	{
-
 		if (check(name))
 			animOverrideList.push(name);
-
 
 		animOffsets[name] = [x, y];
 	}
 
-	public function check(str:String) 
+	public function check(str:String)
 	{
 		var total = animOverList.length;
-		var amt=0;
+		var amt = 0;
 		for (i in 0...animOverList.length)
 		{
 			if (!str.contains(animOverList[i]))

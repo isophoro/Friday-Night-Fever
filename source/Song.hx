@@ -1,10 +1,10 @@
 package;
 
 import Section.SwagSection;
+import flixel.FlxG;
 import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
-import flixel.FlxG;
 
 using StringTools;
 
@@ -39,7 +39,7 @@ class Song
 	public var stage:String = 'stage';
 
 	public static var artists:Map<Array<String>, String> = [
-		["hallow", "portrait", "soul", "hardships", "banish", "bloom"] => "FPLester",
+		["hallow", "portrait", "soul", "hardships", "banish", "bloom", "dead-mans-melody"] => "FPLester",
 		["c354r", "loaded", "gears", "space-demons", "princess", "tranquility"] => "Biddle3",
 		["party-crasher"] => "BirdBonanza"
 	];
@@ -91,7 +91,6 @@ class Song
 				daBpm = songData.bpm; */
 
 		return parseJSONshit(rawJson);
-
 	}
 
 	public static function parseJSONshit(rawJson:String):SwagSong
