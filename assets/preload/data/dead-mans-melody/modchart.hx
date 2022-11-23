@@ -20,12 +20,23 @@ function onCreate()
 		snapCamera(DAD_CAM_POS);
 		FlxG.sound.music.time = 42950;
 		Conductor.songPosition = 42950;
-		
+
 		defaultCamZoom = 0.76;
 		boyfriend.visible = false;
 		gf.visible = false;
 		blackScreen.visible = true;
+	}
+	else
+	{
+		gf.visible = false;
+		boyfriend.visible = false;
 
+		FlxTween.tween(camGame, {zoom: 0.76}, 15, {
+			onComplete: function(twn)
+			{
+				defaultCamZoom = 0.76;
+			}
+		});
 	}
 }
 
@@ -53,7 +64,6 @@ function onStepHit(curStep:Int)
 
 			boyfriend.playAnim("scared", true);
 			gf.playAnim("scared", true);
-
 		}
 	}
 }
