@@ -20,6 +20,12 @@ function onCreate()
 		snapCamera(DAD_CAM_POS);
 		FlxG.sound.music.time = 42950;
 		Conductor.songPosition = 42950;
+		
+		defaultCamZoom = 0.76;
+		boyfriend.visible = false;
+		gf.visible = false;
+		blackScreen.visible = true;
+
 	}
 }
 
@@ -40,6 +46,14 @@ function onStepHit(curStep:Int)
 			dad.visible = false;
 			pasta.visible = true;
 			game.defaultCamZoom = game.defaultCamZoom - 0.25;
+
+			boyfriend.visible = true;
+			gf.visible = true;
+			blackScreen.visible = false;
+
+			boyfriend.playAnim("scared", true);
+			gf.playAnim("scared", true);
+
 		}
 	}
 }
