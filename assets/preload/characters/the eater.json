@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 9,
+			"anim": "idle ",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 9,
+			"anim": "down ",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 9,
+			"anim": "down ",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 9,
+			"anim": "left ",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 9,
+			"anim": "left ",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "the eater",
+	"color": "50a5eb"
+}

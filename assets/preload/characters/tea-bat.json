@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "tea bat idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				8,
+				-8
+			],
+			"fps": 24,
+			"anim": "tea bat down",
+			"loop": true,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-108,
+				-6
+			],
+			"fps": 24,
+			"anim": "tea bat right",
+			"loop": true,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-2,
+				17
+			],
+			"fps": 24,
+			"anim": "tea bat up",
+			"loop": true,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				22,
+				0
+			],
+			"fps": 24,
+			"anim": "tea bat left",
+			"loop": true,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "tea_bat",
+	"color": "99DBF6"
+}

@@ -1,0 +1,59 @@
+{
+	"scale": 6,
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Angry Senpai Idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-1,
+				0
+			],
+			"fps": 24,
+			"anim": "Angry Senpai DOWN NOTE",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				0,
+				-1
+			],
+			"fps": 24,
+			"anim": "Angry Senpai RIGHT NOTE",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-1,
+				-3
+			],
+			"fps": 24,
+			"anim": "Angry Senpai UP NOTE",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Angry Senpai LEFT NOTE",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "senpai",
+	"color": "9F0030"
+}

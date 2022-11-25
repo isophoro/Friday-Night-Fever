@@ -1,0 +1,59 @@
+{
+	"scale": 6,
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "FLIPPY IDLE",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "FLIPPY DOWN",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "FLIPPY RIGHT",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "FLIPPY UP",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "FLIPPY LEFT",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "flippysolo",
+	"color": "4E4E4E"
+}

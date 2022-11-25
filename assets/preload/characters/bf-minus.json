@@ -1,0 +1,128 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-38,
+				142
+			],
+			"fps": 24,
+			"anim": "mfever scared",
+			"loop": true,
+			"name": "scared"
+		},
+		{
+			"offsets": [
+				100,
+				41
+			],
+			"fps": 24,
+			"anim": "right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				24,
+				-20
+			],
+			"fps": 24,
+			"anim": "mfever down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				253,
+				62
+			],
+			"fps": 24,
+			"anim": "left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				53,
+				112
+			],
+			"fps": 24,
+			"anim": "mfever up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-16,
+				94
+			],
+			"fps": 24,
+			"anim": "mfever hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "mfever idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				15,
+				91
+			],
+			"fps": 24,
+			"anim": "mfever right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				605,
+				4
+			],
+			"fps": 24,
+			"anim": "down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-52,
+				133
+			],
+			"fps": 24,
+			"anim": "up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				132,
+				31
+			],
+			"fps": 24,
+			"anim": "mfever left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				66,
+				87
+			],
+			"fps": 24,
+			"anim": "mfever dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": true,
+	"file": "mfever demon_assets",
+	"color": "50a5eb"
+}

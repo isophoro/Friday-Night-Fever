@@ -1,0 +1,57 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "toothpaste mad idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-100,
+				-24
+			],
+			"fps": 24,
+			"anim": "toothpaste mad right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-296,
+				-318
+			],
+			"fps": 24,
+			"anim": "toothpaste mad down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-198,
+				50
+			],
+			"fps": 24,
+			"anim": "toothpaste mad left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-146,
+				229
+			],
+			"fps": 24,
+			"anim": "toothpaste mad up",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"flipX": false,
+	"file": "pasteMad",
+	"color": "50a5eb"
+}

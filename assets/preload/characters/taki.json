@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "takiidle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				21,
+				-164
+			],
+			"fps": 24,
+			"anim": "takidown",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-17,
+				-5
+			],
+			"fps": 24,
+			"anim": "takiright",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-6,
+				8
+			],
+			"fps": 24,
+			"anim": "takiup",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				13,
+				-18
+			],
+			"fps": 24,
+			"anim": "takileft",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "taki_assets",
+	"color": "D34470"
+}

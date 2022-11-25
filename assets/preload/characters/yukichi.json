@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "yukichi idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-139,
+				-62
+			],
+			"fps": 24,
+			"anim": "yukichi down note",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-54,
+				-7
+			],
+			"fps": 24,
+			"anim": "yukichi right note",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-27,
+				17
+			],
+			"fps": 24,
+			"anim": "yukichi up note",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				47,
+				4
+			],
+			"fps": 24,
+			"anim": "yukichi left note",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"flipX": false,
+	"file": "yukichi_leader_assets",
+	"color": "FF97F0",
+	"scale": 0.8
+}

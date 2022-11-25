@@ -1,0 +1,98 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-47,
+				68
+			],
+			"fps": 24,
+			"anim": "fever right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				-31,
+				54
+			],
+			"fps": 24,
+			"anim": "Fever down dark",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				40,
+				93
+			],
+			"fps": 24,
+			"anim": "fever left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				-40,
+				130
+			],
+			"fps": 24,
+			"anim": "Fever up dark",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "fever idle dark",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-31,
+				54
+			],
+			"fps": 24,
+			"anim": "fever down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-59,
+				70
+			],
+			"fps": 24,
+			"anim": "Fever right dark",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				33,
+				93
+			],
+			"fps": 24,
+			"anim": "Fever left dark",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-43,
+				129
+			],
+			"fps": 24,
+			"anim": "fever up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": true,
+	"file": "fever_mad_glow",
+	"color": "50a5eb"
+}

@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Pico Idle Dance",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				43,
+				-2
+			],
+			"fps": 24,
+			"anim": "Pico Down Note0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				4,
+				1
+			],
+			"fps": 24,
+			"anim": "Pico Note Right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				17,
+				-1
+			],
+			"fps": 24,
+			"anim": "pico Up note0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-4,
+				2
+			],
+			"fps": 24,
+			"anim": "Pico NOTE LEFT0",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "Pico_FNF_assetss",
+	"color": "47CC40"
+}

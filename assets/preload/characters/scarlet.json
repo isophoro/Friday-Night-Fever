@@ -1,0 +1,67 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Scar Idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				0,
+				-170
+			],
+			"fps": 24,
+			"anim": "Scar down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				2,
+				-41
+			],
+			"fps": 24,
+			"anim": "Scar right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				11,
+				29
+			],
+			"fps": 24,
+			"anim": "Scar up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				110,
+				-20
+			],
+			"fps": 24,
+			"anim": "Scar left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				30,
+				0
+			],
+			"fps": 24,
+			"anim": "Scar Laugh",
+			"loop": false,
+			"name": "singLaugh"
+		}
+	],
+	"facingLeft": null,
+	"file": "Scarlet",
+	"color": "E059B1"
+}

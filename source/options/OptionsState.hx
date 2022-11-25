@@ -1,12 +1,13 @@
 package options;
 
-import flixel.util.FlxColor;
-import flixel.text.FlxText;
-import flixel.util.FlxDirection;
-import flixel.effects.FlxFlicker;
-import flixel.FlxSprite;
-import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.effects.FlxFlicker;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+import flixel.util.FlxDirection;
+
 using StringTools;
 
 class OptionsState extends MusicBeatState
@@ -33,7 +34,7 @@ class OptionsState extends MusicBeatState
         {"name":"Visuals", options:[
             new Option("Show Note Splashes", "When enabled, \"Sick\" ratings will causes the corresponding arrow to sparkle.", "notesplash", BOOL),
             new Option("Show Subtitles", "When enabled, songs containing lyrics display subtitles on screen.", "subtitles", BOOL),
-            new Option("Show Song Position", "When enabled, the time duration of the current song will always display.", "songPosition", BOOL),
+            new Option("Show Song Position", "When enabled, the time duration of the song being played will always be displayed.", "songPosition", BOOL),
         ]},
         {"name":"Performance", options: [
             new Option("FPS Cap ", "Caps your framerate.", "fpsCap", INT, {range:[60, 240], increaseInterval: 20}),
@@ -206,6 +207,11 @@ class OptionsState extends MusicBeatState
             {
                 item.alpha = 1;
             }
+        }
+
+        for (i in checkboxes)
+        {
+            i.alpha = i.ID == curSelected ? 1 : 0.6;
         }
 
         updateDescription();

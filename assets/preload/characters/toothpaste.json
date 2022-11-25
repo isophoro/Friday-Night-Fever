@@ -1,0 +1,67 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Toothpaste idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				4,
+				2
+			],
+			"fps": 24,
+			"anim": "Toothpaste down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				0,
+				6
+			],
+			"fps": 24,
+			"anim": "Toothpaste right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				74,
+				96
+			],
+			"fps": 24,
+			"anim": "Toothpaste transition",
+			"loop": false,
+			"name": "transition"
+		},
+		{
+			"offsets": [
+				4,
+				29
+			],
+			"fps": 24,
+			"anim": "Toothpaste up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				2,
+				0
+			],
+			"fps": 24,
+			"anim": "Toothpaste left",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"flipX": false,
+	"file": "paste",
+	"color": "50a5eb"
+}

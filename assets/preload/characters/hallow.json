@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Hallow idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-208,
+				4
+			],
+			"fps": 24,
+			"anim": "Hallow right",
+			"loop": true,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-179,
+				-48
+			],
+			"fps": 24,
+			"anim": "Hallow down",
+			"loop": true,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-8,
+				20
+			],
+			"fps": 24,
+			"anim": "Hallow left",
+			"loop": true,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-133,
+				74
+			],
+			"fps": 24,
+			"anim": "Hallow up",
+			"loop": true,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "Hallow",
+	"color": "C6C1F3"
+}

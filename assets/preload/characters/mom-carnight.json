@@ -1,0 +1,74 @@
+{
+	"scale": 0.8,
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Mom Idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"indices": [
+				11,
+				12,
+				13
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Mom Idle",
+			"loop": true,
+			"name": "idle-loop"
+		},
+		{
+			"offsets": [
+				-20,
+				-193
+			],
+			"fps": 24,
+			"anim": "MOM DOWN POSE",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-70,
+				-24
+			],
+			"fps": 24,
+			"anim": "Mom Pose Left",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-28,
+				37
+			],
+			"fps": 24,
+			"anim": "Mom Up Pose",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				92,
+				8
+			],
+			"fps": 24,
+			"anim": "Mom Left Pose",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "momCarNIGHT",
+	"color": "FF517E"
+}

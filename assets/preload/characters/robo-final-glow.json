@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Robo idle dark",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-39,
+				-259
+			],
+			"fps": 24,
+			"anim": "Robo down dark",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-114,
+				-64
+			],
+			"fps": 24,
+			"anim": "Robo right dark",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				163,
+				52
+			],
+			"fps": 24,
+			"anim": "Robo up dark",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				356,
+				49
+			],
+			"fps": 24,
+			"anim": "Robo left dark",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "robo_final_glow",
+	"color": "504BA6"
+}

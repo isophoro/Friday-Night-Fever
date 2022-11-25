@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "feral dance idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				11,
+				-2
+			],
+			"fps": 24,
+			"anim": "feral sing right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-7,
+				1
+			],
+			"fps": 24,
+			"anim": "feral DOWN note",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				24,
+				-2
+			],
+			"fps": 24,
+			"anim": "feral note sing left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				1,
+				-3
+			],
+			"fps": 24,
+			"anim": "feral UP NOTE",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "feral_wee_assets",
+	"color": "282828"
+}

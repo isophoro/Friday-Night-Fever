@@ -1,0 +1,59 @@
+{
+	"scale": 6,
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "C354R IDLE",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "C354R RIGHT ",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "C354R DOWN-",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "C354R LEFT-",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "C354R UP",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": true,
+	"file": "robofever-pixel",
+	"color": "50a5eb"
+}

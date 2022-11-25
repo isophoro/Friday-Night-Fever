@@ -1,0 +1,187 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-2,
+				-14
+			],
+			"fps": 24,
+			"anim": "GF FEAR",
+			"loop": true,
+			"name": "scared"
+		},
+		{
+			"offsets": [
+				0,
+				-18
+			],
+			"fps": 24,
+			"anim": "GF Down Note",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"indices": [
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29
+			],
+			"offsets": [
+				0,
+				-9
+			],
+			"fps": 24,
+			"anim": "GF Dancing Beat",
+			"loop": false,
+			"name": "danceRight"
+		},
+		{
+			"offsets": [
+				0,
+				16
+			],
+			"fps": 24,
+			"anim": "GF Up Note",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"indices": [
+				30,
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14
+			],
+			"offsets": [
+				0,
+				-9
+			],
+			"fps": 24,
+			"anim": "GF Dancing Beat",
+			"loop": false,
+			"name": "danceLeft"
+		},
+		{
+			"indices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"offsets": [
+				0,
+				-10
+			],
+			"fps": 24,
+			"anim": "GF Dancing Beat Hair blowing",
+			"loop": true,
+			"name": "hairBlow"
+		},
+		{
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11
+			],
+			"offsets": [
+				0,
+				-8
+			],
+			"fps": 24,
+			"anim": "GF Dancing Beat Hair Landing",
+			"loop": false,
+			"name": "hairFall"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "GF Cheer",
+			"loop": false,
+			"name": "cheer"
+		},
+		{
+			"offsets": [
+				0,
+				-18
+			],
+			"fps": 24,
+			"anim": "GF Right Note",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+			],
+			"offsets": [
+				-2,
+				-24
+			],
+			"fps": 24,
+			"anim": "gf sad",
+			"loop": false,
+			"name": "sad"
+		},
+		{
+			"offsets": [
+				0,
+				-21
+			],
+			"fps": 24,
+			"anim": "GF left note",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"facingLeft": false,
+	"file": "GF_assets",
+	"color": "99DBF6"
+}

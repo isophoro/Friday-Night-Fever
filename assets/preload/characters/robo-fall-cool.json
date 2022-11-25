@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				20
+			],
+			"fps": 24,
+			"anim": "Robo fever cool up",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-11,
+				0
+			],
+			"fps": 24,
+			"anim": "Robo fever cool right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				8,
+				-17
+			],
+			"fps": 24,
+			"anim": "Robo fever cool down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				15,
+				18
+			],
+			"fps": 24,
+			"anim": "Robo fever cool left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				0,
+				22
+			],
+			"fps": 24,
+			"anim": "Robo fever cool up",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "robo_fall_cool",
+	"color": "50a5eb"
+}

@@ -1,0 +1,57 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				-30
+			],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-65,
+				-62
+			],
+			"fps": 24,
+			"anim": "down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-23,
+				-18
+			],
+			"fps": 24,
+			"anim": "right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-28,
+				-14
+			],
+			"fps": 24,
+			"anim": "up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-13,
+				-40
+			],
+			"fps": 24,
+			"anim": "left",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"flipX": false,
+	"file": "pepp",
+	"color": "7F64DA"
+}

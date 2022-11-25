@@ -897,7 +897,7 @@ class PlayState extends MusicBeatState
 				dad.y += 150;
 				dad.x -= 100;
 				dad.scrollFactor.set(0.9, 0.9);
-			case 'dad':
+			case 'peakek':
 				dad.y += 60;
 				dad.x -= 100;
 				camPos.x += 400;
@@ -2103,16 +2103,14 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		var iconOffset:Int = 26;
-
 		switch (healthBar.fillDirection)
 		{
 			default:
-				iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
-				iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+				iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - 26);
+				iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - 26);
 			case LEFT_TO_RIGHT:
-				iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01) - iconOffset);
-				iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+				iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01) - 26);
+				iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01)) - (iconP2.width - 26);
 		}
 
 		if (health > 2)
@@ -2252,70 +2250,58 @@ class PlayState extends MusicBeatState
 					daNote.animPlayed = true;
 				}
 
+				// trying to do cool modchart stuff and the kade engine code for this stuff was annoying so i rewrote it
+				// like there was no reason to tie the sustain note clipping to be disabled when modifiedByLua is true LMAO
+				var strum = strumLineNotes.members[(daNote.mustPress ? 4 : 0) + daNote.noteData];
 				if (!daNote.modifiedByLua)
+				{
+					daNote.x = strum.x;
+					if (FlxG.save.data.downscroll)
+						daNote.y = strum.y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2);
+					else
+						daNote.y = strum.y - 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2);
+
+					daNote.visible = strum.visible;
+					if (!daNote.isSustainNote)
+						daNote.angle = strum.angle;
+					daNote.alpha = daNote.isSustainNote ? (strum.alpha > 0.7 ? 0.7 : strum.alpha) : strum.alpha;
+				}
+
+				if (daNote.isSustainNote)
 				{
 					if (FlxG.save.data.downscroll)
 					{
-						if (daNote.mustPress)
-							daNote.y = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y
-								+
-								0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(FlxG.save.data.scrollSpeed == 1 ? SONG.speed : FlxG.save.data.scrollSpeed,
-									2));
+						// Remember = minus makes notes go up, plus makes them go down
+						if (daNote.animation.curAnim.name.endsWith('end') && daNote.prevNote != null)
+							daNote.y += daNote.prevNote.height;
 						else
-							daNote.y = (cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].y
-								+
-								0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(FlxG.save.data.scrollSpeed == 1 ? SONG.speed : FlxG.save.data.scrollSpeed,
-									2));
-						if (daNote.isSustainNote)
+							daNote.y += daNote.height / 2;
+
+						// If not in botplay, only clip sustain notes when properly hit, botplay gets to clip it everytime
+						if (FlxG.save.data.botplay
+							|| (!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
+							&& daNote.y - daNote.offset.y * daNote.scale.y + daNote.height >= (strumLine.y + Note.swagWidth / 2))
 						{
-							// Remember = minus makes notes go up, plus makes them go down
-							if (daNote.animation.curAnim.name.endsWith('end') && daNote.prevNote != null)
-								daNote.y += daNote.prevNote.height;
-							else
-								daNote.y += daNote.height / 2;
-
-							// If not in botplay, only clip sustain notes when properly hit, botplay gets to clip it everytime
-							if (FlxG.save.data.botplay
-								|| (!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
-								&& daNote.y - daNote.offset.y * daNote.scale.y + daNote.height >= (strumLine.y + Note.swagWidth / 2))
-							{
-								// Clip to strumline
-								var swagRect = new FlxRect(0, 0, daNote.frameWidth * 2, daNote.frameHeight * 2);
-								swagRect.height = (cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].y
-									+ Note.swagWidth / 2
-									- daNote.y) / daNote.scale.y;
-								swagRect.y = daNote.frameHeight - swagRect.height;
-
-								daNote.clipRect = swagRect;
-							}
+							// Clip to strumline
+							daNote.clipRect = FlxRect.weak(0, daNote.frameHeight - (daNote.frameHeight * 2), daNote.frameWidth * 2,
+								(cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].y + Note.swagWidth / 2 - daNote.y) / daNote.scale.y);
 						}
 					}
 					else
 					{
-						if (daNote.mustPress)
-							daNote.y = (playerStrums.members[Math.floor(Math.abs(daNote.noteData))].y
-								- 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(FlxG.save.data.scrollSpeed == 1 ? SONG.speed : FlxG.save.data.scrollSpeed,
-									2));
-						else
-							daNote.y = (cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].y
-								- 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(FlxG.save.data.scrollSpeed == 1 ? SONG.speed : FlxG.save.data.scrollSpeed,
-									2));
+						daNote.y -= daNote.height / 2;
 
-						if (daNote.isSustainNote)
+						if (FlxG.save.data.botplay
+							|| (!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
+							&& daNote.y + daNote.offset.y * daNote.scale.y <= (strumLine.y + Note.swagWidth / 2))
 						{
-							daNote.y -= daNote.height / 2;
+							// Clip to strumline
+							var swagRect = FlxRect.weak(0,
+								(cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].y + Note.swagWidth / 2 - daNote.y) / daNote.scale.y,
+								daNote.width / daNote.scale.x, daNote.height / daNote.scale.y);
+							swagRect.height -= swagRect.y;
 
-							if (FlxG.save.data.botplay
-								|| (!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
-								&& daNote.y + daNote.offset.y * daNote.scale.y <= (strumLine.y + Note.swagWidth / 2))
-							{
-								// Clip to strumline
-								var swagRect = new FlxRect(0, 0, daNote.width / daNote.scale.x, daNote.height / daNote.scale.y);
-								swagRect.y = (cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].y + Note.swagWidth / 2 - daNote.y) / daNote.scale.y;
-								swagRect.height -= swagRect.y;
-
-								daNote.clipRect = swagRect;
-							}
+							daNote.clipRect = swagRect;
 						}
 					}
 				}
@@ -2420,23 +2406,6 @@ class PlayState extends MusicBeatState
 					notes.remove(daNote, true);
 				}
 
-				if (daNote.mustPress && !daNote.modifiedByLua)
-				{
-					daNote.visible = !opponent ? playerStrums.members[Math.floor(Math.abs(daNote.noteData))].visible : true;
-					daNote.x = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
-					if (!daNote.isSustainNote)
-						daNote.angle = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
-					daNote.alpha = playerStrums.members[Math.floor(Math.abs(daNote.noteData))].alpha;
-				}
-				else if (!daNote.wasGoodHit && !daNote.modifiedByLua)
-				{
-					daNote.visible = cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].visible;
-					daNote.x = cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].x;
-					if (!daNote.isSustainNote)
-						daNote.angle = cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].angle;
-					daNote.alpha = cpuStrums.members[Math.floor(Math.abs(daNote.noteData))].alpha;
-				}
-
 				if (daNote.isSustainNote)
 					daNote.x += daNote.width / 2 + (usePixelAssets ? 10 : 17);
 
@@ -2507,7 +2476,7 @@ class PlayState extends MusicBeatState
 				case 'senpai' | 'senpai-angry':
 					camFollow.y = dad.getMidpoint().y - 430;
 					camFollow.x = dad.getMidpoint().x - 100;
-				case 'dad' | 'peasus':
+				case 'peakek' | 'peasus':
 					camFollow.x = dad.getMidpoint().x - -400;
 				case 'spooky' | 'feralspooky':
 					camFollow.x = dad.getMidpoint().x + 190;

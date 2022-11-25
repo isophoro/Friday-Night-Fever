@@ -1,0 +1,68 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Robo idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-39,
+				-259
+			],
+			"fps": 24,
+			"anim": "Robo down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-114,
+				-64
+			],
+			"fps": 24,
+			"anim": "Robo right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				163,
+				52
+			],
+			"fps": 24,
+			"anim": "Robo Up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				356,
+				49
+			],
+			"fps": 24,
+			"anim": "Robo left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Robo fall",
+			"loop": false,
+			"name": "fall"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "robo_final",
+	"color": "504BA6"
+}

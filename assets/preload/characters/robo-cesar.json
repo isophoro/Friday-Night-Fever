@@ -1,0 +1,57 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "robo idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				82,
+				-79
+			],
+			"fps": 24,
+			"anim": "robo down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				14,
+				-13
+			],
+			"fps": 24,
+			"anim": "robo right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				31,
+				45
+			],
+			"fps": 24,
+			"anim": "robo up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				96,
+				-1
+			],
+			"fps": 24,
+			"anim": "robo left",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"facingLeft": false,
+	"file": "robo_fever_assets",
+	"color": "9236B4"
+}

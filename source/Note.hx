@@ -1,12 +1,7 @@
 package;
 
-import flixel.addons.effects.FlxSkewedSprite;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
-
-import flixel.util.FlxColor;
-import PlayState;
 import shaders.ColorShader;
 
 using StringTools;
@@ -27,6 +22,7 @@ class Note extends FlxSprite
 	public var isSustainNote:Bool = false;
 
 	public static var swagWidth:Float = 160 * 0.7;
+
 	public var type:Int = 0;
 
 	public var rating:String = "shit";
@@ -48,7 +44,7 @@ class Note extends FlxSprite
 
 		this.noteData = noteData;
 		var noteStyle:String = PlayState.SONG.noteStyle;
-		
+
 		if (PlayState.SONG.song == 'Loaded')
 		{
 			if (strumTime >= Conductor.crochet * 320 && strumTime < Conductor.crochet * 336)
@@ -58,7 +54,7 @@ class Note extends FlxSprite
 		switch (noteStyle)
 		{
 			case 'pixel':
-				loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels','week6'), true, 17, 17);
+				loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
 
 				animation.add('greenScroll', [6]);
 				animation.add('redScroll', [7]);
@@ -67,7 +63,7 @@ class Note extends FlxSprite
 
 				if (isSustainNote)
 				{
-					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds','week6'), true, 7, 6);
+					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds', 'week6'), true, 7, 6);
 
 					animation.add('purpleholdend', [4]);
 					animation.add('greenholdend', [6]);
@@ -84,9 +80,9 @@ class Note extends FlxSprite
 
 				updateHitbox();
 			default:
-				if(noteType == 0)
+				if (noteType == 0)
 				{
-					switch(PlayState.SONG.song.toLowerCase())
+					switch (PlayState.SONG.song.toLowerCase())
 					{
 						case 'throw-it-back':
 							frames = Paths.getSparrowAtlas('customArrows/throwIBNotes');
@@ -100,7 +96,7 @@ class Note extends FlxSprite
 				}
 				else
 				{
-					switch(noteType)
+					switch (noteType)
 					{
 						case 1: // hallow
 							frames = Paths.getSparrowAtlas('NOTE_HALLOW');
@@ -114,7 +110,7 @@ class Note extends FlxSprite
 							}
 						default:
 							frames = Paths.getSparrowAtlas('NOTE_assets');
-					}	
+					}
 				}
 
 				animation.addByPrefix('greenScroll', 'green0');
@@ -152,7 +148,7 @@ class Note extends FlxSprite
 		// we make sure its downscroll and its a SUSTAIN NOTE (aka a trail, not a note)
 		// and flip it so it doesn't look weird.
 		// THIS DOESN'T FUCKING FLIP THE NOTE, CONTRIBUTERS DON'T JUST COMMENT THIS OUT JESUS
-		if (FlxG.save.data.downscroll && sustainNote) 
+		if (FlxG.save.data.downscroll && sustainNote)
 			flipY = true;
 
 		if (isSustainNote && prevNote != null)
@@ -194,8 +190,7 @@ class Note extends FlxSprite
 						prevNote.animation.play('redhold');
 				}
 
-
-				if(FlxG.save.data.scrollSpeed != 1)
+				if (FlxG.save.data.scrollSpeed != 1)
 					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * FlxG.save.data.scrollSpeed;
 				else
 					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed;

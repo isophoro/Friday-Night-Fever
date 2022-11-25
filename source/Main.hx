@@ -1,32 +1,19 @@
 package;
 
-import openfl.text.TextFormat;
-import flixel.effects.postprocess.PostProcess;
-import openfl.system.System;
-import flixel.util.FlxColor;
+import GameJolt;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
+import flixel.util.FlxColor;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
-import GameJolt.GameJoltAPI;
-import GameJolt;
-
-enum PreloadStrength
-{
-	NONE;
-	LOW; // Preload songs
-	HIGH; // Preload songs and characters
-}
+import openfl.system.System;
 
 class Main extends Sprite
 {
-	public static var preloadType:PreloadStrength = NONE;
-	public static var totalRam:Int = 0;
-
 	public static var gjToastManager:GJToastManager;
 
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
@@ -41,8 +28,7 @@ class Main extends Sprite
 
 	public static function main():Void
 	{
-
-		// quick checks 
+		// quick checks
 
 		Lib.current.addChild(new Main());
 	}
@@ -91,22 +77,6 @@ class Main extends Sprite
 		#if !debug
 		initialState = Intro;
 		#end
-
-		/*#if windows
-		try {
-			var process:sys.io.Process = new sys.io.Process("wmic ComputerSystem get TotalPhysicalMemory", null);
-			totalRam = Math.round(Std.parseFloat(process.stdout.readAll().toString().split('\n')[1]) / Math.pow(1024, 3));
-			trace('Total Ram : $totalRam GB');
-		} 
-		catch (e)
-		{
-			trace('Failed getting ram : $e');
-		}
-		#elseif mobile
-		gameWidth = 1280;
-		gameHeight = 720;
-		zoom = 1;
-		#end*/
 
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 		addChild(game);
@@ -163,7 +133,8 @@ class Main extends Sprite
 
 	var fpsCounter:FPS;
 
-	public function toggleFPS(fpsEnabled:Bool):Void {
+	public function toggleFPS(fpsEnabled:Bool):Void
+	{
 		#if !mobile
 		fpsCounter.visible = fpsEnabled;
 		#end
@@ -200,7 +171,7 @@ class Main extends Sprite
 		PlayState.skipDialogue = false;
 		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 		Conductor.changeBPM(90);
-		
+
 		FlxG.sound.music.fadeIn(4, 0, 0.7);
 	}
 }
@@ -209,19 +180,33 @@ class FPS_MEM extends FPS
 {
 	override public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
 	{
-		super(x,y,color);
+		super(x, y, color);
 		autoSize = NONE;
 	}
 
 	override function __enterFrame(deltaTime:Float):Void
 	{
-		super.__enterFrame(deltaTime);
-		var mem:Float = Math.round(System.totalMemory / 1024 / 1024 * 100)/100;
+		currentTime += deltaTime;
+		times.push(currentTime);
 
-		// this is just straight up lying but i hate seeing the stuttering fps
+		while (times[0] < currentTime - 1000)
+		{
+			times.shift();
+		}
+
+		var currentCount = times.length;
+		currentFPS = Math.round((currentCount + cacheCount) / 2);
+
+		// if psych engine can get away with this so can i :)
 		if (currentFPS > FlxG.save.data.fpsCap)
 			currentFPS = FlxG.save.data.fpsCap;
 
-		text = "FPS: " + currentFPS + '\nMem: '+mem+'MB';
+		if (currentCount != cacheCount)
+		{
+			var mem:Float = Math.round(#if cpp cpp.vm.Gc.memInfo(0) #else System.totalMemory #end / 1024 / 1024 * 100) / 100;
+			text = "FPS: " + currentFPS + '\nMem: ' + mem + 'MB';
+		}
+
+		cacheCount = currentCount;
 	}
 }

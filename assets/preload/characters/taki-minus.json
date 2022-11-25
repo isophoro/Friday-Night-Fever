@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "mtaki idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				311,
+				-172
+			],
+			"fps": 24,
+			"anim": "mtaki down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-16,
+				-145
+			],
+			"fps": 24,
+			"anim": "mtaki right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				146,
+				-76
+			],
+			"fps": 24,
+			"anim": "mtaki up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				193,
+				-438
+			],
+			"fps": 24,
+			"anim": "mtaki left",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": true,
+	"facingLeft": false,
+	"file": "mtaki_assets",
+	"color": "D34470"
+}
