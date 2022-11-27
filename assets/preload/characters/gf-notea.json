@@ -56,7 +56,7 @@
 			"name": "danceRight"
 		}
 	],
-	"noAntialiasing": true,
+	"noAntialiasing": false,
 	"facingLeft": false,
 	"file": "wheredaTea",
 	"color": "99DBF6"

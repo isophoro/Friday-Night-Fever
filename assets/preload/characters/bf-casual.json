@@ -141,7 +141,7 @@
 			"name": "singUPmiss"
 		}
 	],
-	"noAntialiasing": true,
+	"noAntialiasing": false,
 	"facingLeft": true,
 	"file": "casFEVER",
 	"color": "C353E3"

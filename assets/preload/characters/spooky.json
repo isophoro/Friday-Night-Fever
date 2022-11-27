@@ -73,7 +73,7 @@
 			"name": "singUP"
 		}
 	],
-	"noAntialiasing": true,
+	"noAntialiasing": false,
 	"facingLeft": false,
 	"file": "spooky_kids_assets",
 	"color": "282828"

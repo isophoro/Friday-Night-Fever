@@ -1,6 +1,7 @@
 package;
 
 import GameScript.ScriptGroup;
+import Note.QueuedNote;
 import Song.SwagSong;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
@@ -107,7 +108,7 @@ class PlayState extends MusicBeatState
 
 	public var notes:FlxTypedGroup<Note> = new FlxTypedGroup<Note>();
 
-	private var unspawnNotes:Array<Note> = [];
+	private var unspawnNotes:Array<QueuedNote> = [];
 
 	public var strumLine:FlxSprite;
 	public var lanes:FlxTypedGroup<FlxSprite>;
@@ -1688,41 +1689,17 @@ class PlayState extends MusicBeatState
 				var noteType:Int = songNotes[3];
 				var gottaHitNote:Bool = songNotes[1] > 3 ? !section.mustHitSection : section.mustHitSection;
 
-				var oldNote:Note;
-				if (unspawnNotes.length > 0)
-					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
-				else
-					oldNote = null;
-
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, null, noteType);
-				swagNote.sustainLength = songNotes[2];
-				swagNote.scrollFactor.set(0, 0);
-
-				var susLength:Float = swagNote.sustainLength;
-				susLength = susLength / Conductor.stepCrochet;
-				unspawnNotes.push(swagNote);
-
-				for (susNote in 0...Math.floor(susLength))
-				{
-					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
-
-					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true);
-					sustainNote.scrollFactor.set();
-					unspawnNotes.push(sustainNote);
-
-					sustainNote.mustPress = opponent ? !gottaHitNote : gottaHitNote;
-
-					if (sustainNote.mustPress)
-					{
-						sustainNote.x += FlxG.width / 2; // general offset
-					}
-				}
-
-				swagNote.mustPress = opponent ? !gottaHitNote : gottaHitNote;
+				unspawnNotes.push({
+					strumTime: daStrumTime,
+					noteData: daNoteData,
+					mustPress: gottaHitNote,
+					sustainLength: songNotes[2],
+					type: noteType
+				});
 			}
 		}
 
-		unspawnNotes.sort((Obj1:Note, Obj2:Note) ->
+		unspawnNotes.sort((Obj1:QueuedNote, Obj2:QueuedNote) ->
 		{
 			return FlxSort.byValues(FlxSort.ASCENDING, Obj1.strumTime, Obj2.strumTime);
 		});
@@ -2229,11 +2206,34 @@ class PlayState extends MusicBeatState
 		{
 			if (unspawnNotes[0].strumTime - Conductor.songPosition < 3500)
 			{
-				var dunceNote:Note = unspawnNotes[0];
-				notes.add(dunceNote);
+				var data:QueuedNote = unspawnNotes[0];
+				var note = notes.recycle(Note);
+				note.create(data.strumTime, data.noteData, null, false, data.type);
+				note.mustPress = data.mustPress;
+				notes.add(note);
 
-				var index:Int = unspawnNotes.indexOf(dunceNote);
-				unspawnNotes.splice(index, 1);
+				if (data.sustainLength > 0)
+				{
+					var susLength:Float = data.sustainLength / Conductor.stepCrochet;
+					var prevSus:Note = null;
+
+					for (susNote in 0...Math.floor(susLength))
+					{
+						var sustainNote:Note = notes.recycle(Note);
+						sustainNote.create(data.strumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, data.noteData,
+							prevSus == null ? note : prevSus, true);
+						sustainNote.mustPress = data.mustPress;
+
+						notes.add(sustainNote);
+
+						if (prevSus != null)
+							prevSus.nextNote = sustainNote;
+
+						prevSus = sustainNote;
+					}
+				}
+
+				unspawnNotes.shift();
 			}
 		}
 
@@ -2264,7 +2264,7 @@ class PlayState extends MusicBeatState
 					daNote.visible = strum.visible;
 					if (!daNote.isSustainNote)
 						daNote.angle = strum.angle;
-					daNote.alpha = daNote.isSustainNote ? (strum.alpha > 0.7 ? 0.7 : strum.alpha) : strum.alpha;
+					daNote.alpha = daNote.isSustainNote ? (strum.alpha > 0.6 ? 0.6 : strum.alpha) : strum.alpha;
 				}
 
 				if (daNote.isSustainNote)
@@ -2278,9 +2278,7 @@ class PlayState extends MusicBeatState
 							daNote.y += daNote.height / 2;
 
 						// If not in botplay, only clip sustain notes when properly hit, botplay gets to clip it everytime
-						if (FlxG.save.data.botplay
-							|| (!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
-							&& daNote.y - daNote.offset.y * daNote.scale.y + daNote.height >= (strumLine.y + Note.swagWidth / 2))
+						if (daNote.y - daNote.offset.y * daNote.scale.y + daNote.height >= (strumLine.y + Note.swagWidth / 2))
 						{
 							// Clip to strumline
 							daNote.clipRect = FlxRect.weak(0, daNote.frameHeight - (daNote.frameHeight * 2), daNote.frameWidth * 2,
@@ -2291,9 +2289,7 @@ class PlayState extends MusicBeatState
 					{
 						daNote.y -= daNote.height / 2;
 
-						if (FlxG.save.data.botplay
-							|| (!daNote.mustPress || daNote.wasGoodHit || daNote.prevNote.wasGoodHit && !daNote.canBeHit)
-							&& daNote.y + daNote.offset.y * daNote.scale.y <= (strumLine.y + Note.swagWidth / 2))
+						if (daNote.y + daNote.offset.y * daNote.scale.y <= (strumLine.y + Note.swagWidth / 2))
 						{
 							// Clip to strumline
 							var swagRect = FlxRect.weak(0,
@@ -2403,21 +2399,13 @@ class PlayState extends MusicBeatState
 
 					daNote.kill();
 					daNote.exists = false;
-					notes.remove(daNote, true);
 				}
 
 				if (daNote.isSustainNote)
 					daNote.x += daNote.width / 2 + (usePixelAssets ? 10 : 17);
 
-				if ((daNote.mustPress && daNote.tooLate && !FlxG.save.data.downscroll || daNote.mustPress && daNote.tooLate && FlxG.save.data.downscroll)
-					&& daNote.mustPress)
+				if (daNote.mustPress && (daNote.strumTime - Conductor.songPosition) < -166)
 				{
-					if (daNote.isSustainNote && daNote.wasGoodHit)
-					{
-						daNote.kill();
-						daNote.exists = false;
-						notes.remove(daNote, true);
-					}
 					if (daNote.type == 0)
 					{
 						health -= 0.075;
@@ -2435,7 +2423,6 @@ class PlayState extends MusicBeatState
 
 					daNote.kill();
 					daNote.exists = false;
-					notes.remove(daNote, true);
 				}
 			});
 		}
@@ -2984,7 +2971,7 @@ class PlayState extends MusicBeatState
 
 			notes.forEachAlive(function(daNote:Note)
 			{
-				if (daNote.isSustainNote && daNote.canBeHit && daNote.mustPress && holdArray[daNote.noteData])
+				if (holdArray[daNote.noteData] && daNote.mustPress && daNote.isSustainNote && daNote.canBeHit)
 					goodNoteHit(daNote);
 			});
 		}
@@ -2996,7 +2983,6 @@ class PlayState extends MusicBeatState
 				if (daNote.mustPress && daNote.strumTime - Conductor.songPosition <= 40)
 				{
 					goodNoteHit(daNote);
-					// curPlayer.holdTimer = daNote.sustainLength;
 				}
 			});
 		}
@@ -3114,7 +3100,6 @@ class PlayState extends MusicBeatState
 
 			note.kill();
 			note.exists = false;
-			notes.remove(note, true);
 
 			totalPlayed++;
 			updateScoring(!note.isSustainNote);
@@ -3774,7 +3759,6 @@ class PlayState extends MusicBeatState
 			FlxG.log.add("killing dumb ass note at " + note.strumTime);
 			note.kill();
 			note.exists = false;
-			notes.remove(note, true);
 		}
 
 		if (closestNote != null)
@@ -3796,7 +3780,6 @@ class PlayState extends MusicBeatState
 					{
 						nearbyNote.kill();
 						nearbyNote.exists = false;
-						notes.remove(nearbyNote, true);
 						health -= 0.02; // more punishing
 						noteMiss();
 					}
@@ -3873,21 +3856,19 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		for (i in unspawnNotes)
-		{
-			if (strumTime > i.strumTime)
+		/*for (i in unspawnNotes)
 			{
-				toKill.push(i);
-			}
-		}
+				if (strumTime > i.strumTime)
+				{
+					unspawnNotes.remove(i);
+				}
+		}*/
 
 		for (i in toKill)
 		{
 			i.kill();
 			if (notes.members.contains(i))
 				notes.remove(i, true);
-			else
-				unspawnNotes.remove(i);
 		}
 
 		var stepDiff:Int = Math.floor((strumTime - Conductor.songPosition) / Conductor.stepCrochet);

@@ -52,7 +52,7 @@
 			"name": "singLEFT"
 		}
 	],
-	"noAntialiasing": false,
+	"noAntialiasing": true,
 	"facingLeft": false,
 	"file": "senpai",
 	"color": "9F0030"

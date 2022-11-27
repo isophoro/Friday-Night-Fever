@@ -52,7 +52,7 @@
 			"name": "singLEFT"
 		}
 	],
-	"noAntialiasing": false,
+	"noAntialiasing": true,
 	"facingLeft": false,
 	"file": "meatsolo",
 	"color": "4E4E4E"

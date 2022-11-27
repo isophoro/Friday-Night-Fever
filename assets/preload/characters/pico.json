@@ -51,7 +51,7 @@
 			"name": "singLEFT"
 		}
 	],
-	"noAntialiasing": true,
+	"noAntialiasing": false,
 	"facingLeft": false,
 	"file": "Pico_FNF_assetss",
 	"color": "47CC40"

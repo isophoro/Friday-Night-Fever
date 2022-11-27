@@ -92,7 +92,7 @@
 			"name": "singUPmiss"
 		}
 	],
-	"noAntialiasing": false,
+	"noAntialiasing": true,
 	"facingLeft": true,
 	"file": "demonCesarPixel",
 	"color": "E353C8"

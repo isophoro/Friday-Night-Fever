@@ -57,7 +57,7 @@
 			"name": "danceRight"
 		}
 	],
-	"noAntialiasing": false,
+	"noAntialiasing": true,
 	"facingLeft": false,
 	"file": "cherryPixel",
 	"color": "99DBF6"

@@ -51,7 +51,7 @@
 			"name": "singUP"
 		}
 	],
-	"noAntialiasing": true,
+	"noAntialiasing": false,
 	"facingLeft": false,
 	"file": "Hallow",
 	"color": "C6C1F3"

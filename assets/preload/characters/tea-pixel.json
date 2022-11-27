@@ -56,7 +56,7 @@
 			"name": "danceRight"
 		}
 	],
-	"noAntialiasing": false,
+	"noAntialiasing": true,
 	"facingLeft": false,
 	"file": "pixeltea",
 	"color": "99DBF6"

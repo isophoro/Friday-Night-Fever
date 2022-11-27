@@ -169,7 +169,7 @@ class AnimationDebug extends FlxUIState
 			animations: [],
 			color: char.iconColor,
 			facingLeft: char.charData.facingLeft,
-			noAntialiasing: char.antialiasing
+			noAntialiasing: !char.antialiasing
 		};
 
 		if (char.scale.x != 1)

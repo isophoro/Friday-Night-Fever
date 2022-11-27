@@ -81,7 +81,7 @@
 			"name": "danceRight"
 		}
 	],
-	"noAntialiasing": true,
+	"noAntialiasing": false,
 	"facingLeft": false,
 	"file": "gfCarNIGHT",
 	"color": "99DBF6"

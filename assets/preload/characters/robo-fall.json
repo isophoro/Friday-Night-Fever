@@ -51,7 +51,7 @@
 			"name": "singLEFT"
 		}
 	],
-	"noAntialiasing": true,
+	"noAntialiasing": false,
 	"facingLeft": false,
 	"file": "robo_fall",
 	"color": "50a5eb"

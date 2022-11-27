@@ -61,7 +61,7 @@
 			"name": "fall"
 		}
 	],
-	"noAntialiasing": true,
+	"noAntialiasing": false,
 	"facingLeft": false,
 	"file": "robo_final",
 	"color": "504BA6"
