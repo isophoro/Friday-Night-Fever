@@ -30,7 +30,17 @@ class ScriptGroup
 
 class GameScript extends Interp
 {
-	static final AUTOIMPORTS:Array<Class<Dynamic>> = [Math, FlxG, FlxSprite, FlxPoint, FlxTween, FlxEase, Conductor, Paths];
+	static final AUTOIMPORTS:Array<Class<Dynamic>> = [
+		Math,
+		FlxG,
+		FlxSprite,
+		FlxPoint,
+		FlxTween,
+		FlxEase,
+		Conductor,
+		Paths,
+		ClientPrefs
+	];
 
 	public var updatableVars:Array<String> = [];
 	public var valid:Bool = false;

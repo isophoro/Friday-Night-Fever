@@ -1,17 +1,18 @@
 package;
 
+import flash.system.System;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.FlxObject;
+import flixel.FlxSprite;
+import flixel.FlxSubState;
+import flixel.math.FlxPoint;
 import flixel.system.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import flixel.FlxG;
-import flixel.FlxObject;
-import flixel.FlxSubState;
-import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
-import flash.system.System;
 import flixel.util.FlxTimer;
-import flixel.FlxSprite;
-import flixel.FlxCamera;
+
 using StringTools;
 
 class GameOverSubstate extends MusicBeatSubstate
@@ -45,7 +46,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			if (daBf.contains('demon') || daBf == 'bf-carnight' || daBf == 'bf-mad')
 			{
 				// For demon fever
-				switch(PlayState.SONG.song.toLowerCase())
+				switch (PlayState.SONG.song.toLowerCase())
 				{
 					case 'hallow' | 'portrait' | 'soul':
 						daBf = 'bf-hallow-dead';
@@ -74,7 +75,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x - bf.offset.x, bf.getGraphicMidpoint().y - bf.offset.y, 1, 1);
 		add(camFollow);
 
-		if(daBf != 'madDeath')
+		if (daBf != 'madDeath')
 			FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
 		Conductor.changeBPM(100);
 
@@ -85,62 +86,61 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		PlayState.deaths += 1;
 
-		FlxG.save.data.deaths += 1;
+		ClientPrefs.deaths += 1;
 
-		if(PlayState.diedtoHallowNote == true)
+		if (PlayState.diedtoHallowNote == true)
 		{
-			FlxG.save.data.hallowNoteDeaths += 1;
-			trace(FlxG.save.data.hallowNoteDeaths + " Hallow Note Deaths");
+			ClientPrefs.hallowNoteDeaths += 1;
+			trace(ClientPrefs.hallowNoteDeaths + " Hallow Note Deaths");
 
 			PlayState.diedtoHallowNote = false;
 		}
 
 		trace(PlayState.deaths + " Deaths");
 
-		if(PlayState.storyWeek == 8)
+		if (PlayState.storyWeek == 8)
 		{
-			FlxG.save.data.hallowDeaths += 1;
+			ClientPrefs.hallowDeaths += 1;
 		}
 
-		trace(FlxG.save.data.deaths + " Save Deaths");
+		trace(ClientPrefs.deaths + " Save Deaths");
 
-		trace(FlxG.save.data.hallowDeaths + " Hallow Deaths");
+		trace(ClientPrefs.hallowDeaths + " Hallow Deaths");
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if(FlxG.save.data.hallowNoteDeaths == 10)
+		if (ClientPrefs.hallowNoteDeaths == 10)
 		{
 			Achievements.getAchievement(5);
 		}
 
-		if(FlxG.save.data.hallowDeaths == 5)
+		if (ClientPrefs.hallowDeaths == 5)
 		{
 			Achievements.getAchievement(1);
 		}
 
-		if(FlxG.save.data.deaths >= 5)
+		if (ClientPrefs.deaths >= 5)
 		{
 			Achievements.getAchievement(0);
 		}
-		
-		if(PlayState.deaths == 5)
-		{
 
-			if(FlxG.keys.justPressed.Y)
-				{
-					yes.animation.play('selected');
-					PlayState.easierMode = true;
-					endBullshit();
-				}
-		
-				if(FlxG.keys.justPressed.N)
-				{
-					no.animation.play('selected');
-					endBullshit();
-				}
+		if (PlayState.deaths == 5)
+		{
+			if (FlxG.keys.justPressed.Y)
+			{
+				yes.animation.play('selected');
+				PlayState.easierMode = true;
+				endBullshit();
+			}
+
+			if (FlxG.keys.justPressed.N)
+			{
+				no.animation.play('selected');
+				endBullshit();
+			}
 		}
 
 		if (controls.ACCEPT #if mobile || FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed #end)
@@ -166,7 +166,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		{
-			if(PlayState.deaths == 5)
+			if (PlayState.deaths == 5)
 			{
 				box = new FlxSprite(638.35, 68.4);
 				box.frames = Paths.getSparrowAtlas('youFUCKINGDIEDL/retrythingy');
@@ -175,7 +175,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				box.scrollFactor.set(0.9, 0.9);
 				box.antialiasing = true;
 				box.cameras = [camHUD];
-		
+
 				yes = new FlxSprite(813.05, 267.75);
 				yes.frames = Paths.getSparrowAtlas('youFUCKINGDIEDL/retrythingy');
 				yes.animation.addByPrefix('yes', "yes0", 24, false);
@@ -185,7 +185,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				yes.scrollFactor.set(0.9, 0.9);
 				yes.antialiasing = true;
 				yes.cameras = [camHUD];
-		
+
 				no = new FlxSprite(966, 278.8);
 				no.frames = Paths.getSparrowAtlas('youFUCKINGDIEDL/retrythingy');
 				no.animation.addByPrefix('no', "no0", 24, false);
@@ -210,7 +210,6 @@ class GameOverSubstate extends MusicBeatSubstate
 					};
 				};
 			}
-	
 
 			switch (PlayState.SONG.song.toLowerCase())
 			{
@@ -238,12 +237,12 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		if (!isEnding)
 		{
-			if(PlayState.deaths == 5)
-				{
-					FlxTween.tween(box, {x: 2000}, 1, {ease: FlxEase.bounceOut});
-					FlxTween.tween(yes, {x: 2000}, 1, {ease: FlxEase.bounceOut});
-					FlxTween.tween(no, {x: 2000}, 1, {ease: FlxEase.bounceOut});
-				}
+			if (PlayState.deaths == 5)
+			{
+				FlxTween.tween(box, {x: 2000}, 1, {ease: FlxEase.bounceOut});
+				FlxTween.tween(yes, {x: 2000}, 1, {ease: FlxEase.bounceOut});
+				FlxTween.tween(no, {x: 2000}, 1, {ease: FlxEase.bounceOut});
+			}
 
 			isEnding = true;
 			bf.playAnim('deathConfirm', true);
@@ -256,7 +255,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				default:
 					FlxG.sound.play(Paths.music('gameOverEnd'));
 			}
-		
+
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()

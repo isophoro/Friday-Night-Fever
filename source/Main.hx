@@ -83,11 +83,12 @@ class Main extends Sprite
 
 		FlxG.console.registerClass(PlayState);
 		FlxG.console.registerClass(MusicBeatState);
+		FlxG.console.registerClass(ClientPrefs);
 
 		#if !mobile
 		fpsCounter = new FPS_MEM(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
-		toggleFPS(FlxG.save.data.fps);
+		toggleFPS(ClientPrefs.fps);
 		#end
 	}
 
@@ -147,14 +148,14 @@ class Main extends Sprite
 		#end
 	}
 
-	public function setFPSCap(cap:Float)
+	public function setFPSCap(cap:Int)
 	{
 		openfl.Lib.current.stage.frameRate = cap;
 	}
 
-	public function getFPSCap():Float
+	public function getFPSCap():Int
 	{
-		return openfl.Lib.current.stage.frameRate;
+		return ClientPrefs.fpsCap;
 	}
 
 	public function getFPS():Float
@@ -198,8 +199,8 @@ class FPS_MEM extends FPS
 		currentFPS = Math.round((currentCount + cacheCount) / 2);
 
 		// if psych engine can get away with this so can i :)
-		if (currentFPS > FlxG.save.data.fpsCap)
-			currentFPS = FlxG.save.data.fpsCap;
+		if (currentFPS > ClientPrefs.fpsCap)
+			currentFPS = ClientPrefs.fpsCap;
 
 		if (currentCount != cacheCount)
 		{

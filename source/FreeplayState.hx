@@ -1,26 +1,25 @@
 package;
 
-import openfl.Assets;
-import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.group.FlxGroup.FlxTypedGroup;
-
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import openfl.Assets;
+
+using StringTools;
 
 #if windows
 import Discord.DiscordClient;
 #end
 
-using StringTools;
-
-@:enum abstract FreeplayStyle(String) from String to String 
+@:enum abstract FreeplayStyle(String) from String to String
 {
 	var NORMAL = "normal";
 	var HALLOWEEN = "halloween";
-	
+
 	@:keep public static function getArrayInOrder():Array<String>
 	{
 		return [NORMAL, HALLOWEEN];
@@ -47,7 +46,6 @@ class FreeplayState extends MusicBeatState
 	var diffText:FlxText;
 	var scoreBG:FlxSprite;
 
-	final secretCode:String = '354';
 	var userInput:String;
 	var secretFound:Bool = false;
 
@@ -55,7 +53,7 @@ class FreeplayState extends MusicBeatState
 	{
 		PlayState.easierMode = false;
 		PlayState.deaths = 0;
-		
+
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
@@ -70,7 +68,7 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-		//FlxG.random.shuffle(songs);
+		// FlxG.random.shuffle(songs);
 
 		#if windows
 		// Updating Discord Rich Presence
@@ -111,7 +109,7 @@ class FreeplayState extends MusicBeatState
 			iconArray.push(icon);
 			add(icon);
 
-			if (FlxG.save.data.fcs.contains(songs[i].songName))
+			if (Highscore.fullCombos.exists(songs[i].songName))
 			{
 				icon.animation.play("hurt");
 			}
@@ -147,17 +145,18 @@ class FreeplayState extends MusicBeatState
 		switch (currentStyle)
 		{
 			case HALLOWEEN:
-				FlxTween.tween(bghalloween, {alpha: 1}, 1, {onComplete: (twn) -> {
-					halloween.visible = true;
-				}});
+				FlxTween.tween(bghalloween, {alpha: 1}, 1, {
+					onComplete: (twn) ->
+					{
+						halloween.visible = true;
+					}
+				});
 				diffText.color = FlxColor.ORANGE;
 				FlxTween.color(diffText, 0.7, FlxColor.ORANGE, FlxColor.YELLOW, {type: PINGPONG});
 			default: //
 		}
 
 		super.create();
-
-		userInput = secretCode;
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String)
@@ -203,9 +202,9 @@ class FreeplayState extends MusicBeatState
 		diffText.x = scoreBG.x + ((scoreBG.width / 2) / scoreBG.scale.x) - (diffText.width / 2);
 
 		var accepted:Bool = controls.ACCEPT;
-		
+
 		#if mobile
-		if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) 
+		if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed)
 		{
 			for (sprite in grpSongs)
 			{
@@ -258,69 +257,23 @@ class FreeplayState extends MusicBeatState
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
 			}
-	
+
 			FlxG.switchState(new SelectingSongState());
 		}
 
 		if (accepted)
-		{	
+		{
 			FlxTransitionableState.skipNextTransOut = false;
-			var poop:String = Highscore.formatSong(StringTools.replace(songs[curSelected].songName," ", "-").toLowerCase(), curDifficulty);
+			var poop:String = Highscore.formatSong(StringTools.replace(songs[curSelected].songName, " ", "-").toLowerCase(), curDifficulty);
 
 			trace(poop);
 
-			PlayState.SONG = Song.loadFromJson(poop, StringTools.replace(songs[curSelected].songName," ", "-").toLowerCase());
+			PlayState.SONG = Song.loadFromJson(poop, StringTools.replace(songs[curSelected].songName, " ", "-").toLowerCase());
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = songs[curSelected].week;
 			trace('CUR WEEK' + PlayState.storyWeek);
 			LoadingState.loadAndSwitchState(new PlayState());
-		}
-
-		if (FlxG.keys.justPressed.ANY && !secretFound)
-		{
-			var keyPressed = FlxG.keys.getIsDown()[0].ID.toString().toLowerCase();
-
-			var numbers:Map<String, String> = [
-				'one' => '1', 
-				'two' => '2', 
-				'three' => '3', 
-				'four' => '4', 
-				'five' => '5', 
-				'six' => '6', 
-				'seven' => '7',
-				'eight' => '8', 
-				'nine' => '9', 
-				'zero' => '0'
-			];
-
-			if(numbers.get(keyPressed) != null)
-				keyPressed = numbers.get(keyPressed);
-
-			if (userInput.charAt(0) == keyPressed)
-			{
-				userInput = userInput.substring(1, userInput.length);
-				trace(userInput);
-
-				if (userInput.length <= 0)
-				{
-					secretFound = true;
-					trace('swag');
-
-					var poop:String = Highscore.formatSong("C354R", 2);
-
-					PlayState.SONG = Song.loadFromJson(poop, "C354R");
-					PlayState.isStoryMode = false;
-					PlayState.storyDifficulty = 2;
-	
-					PlayState.storyWeek = 0;
-					LoadingState.loadAndSwitchState(new PlayState());
-				}
-			}
-			else
-			{
-				userInput = secretCode;
-			}
 		}
 	}
 
@@ -335,13 +288,13 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.minus = curDifficulty == 4;
 
-		switch(currentStyle)
+		switch (currentStyle)
 		{
 			case HALLOWEEN:
 				curDifficulty = 3;
 				diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
 			default:
-				diffText.text = '< ' +CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';
+				diffText.text = '< ' + CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';
 		}
 
 		#if !switch
@@ -369,7 +322,7 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		#if (PRELOAD_ALL && !mobile)
-		//FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
+		// FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
 		#end
 
 		var bullShit:Int = 0;
@@ -402,7 +355,7 @@ class FreeplayState extends MusicBeatState
 		if (curBeat >= 16 && !FlxG.sound.muted && FlxG.sound.volume > 0)
 		{
 			var icon = iconArray[curSelected];
-			icon.origin.set(icon.width / 2,0);
+			icon.origin.set(icon.width / 2, 0);
 			icon.scale.set(1 + (.135 * FlxG.sound.volume), 1 + (.135 * FlxG.sound.volume));
 			FlxTween.tween(icon.scale, {x: 1, y: 1}, (Conductor.crochet / 1000) / 2);
 		}

@@ -1,6 +1,8 @@
 package;
 
 import Controls.KeyboardScheme;
+import GameJolt;
+import flash.display.DisplayObject;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -13,15 +15,13 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
-import flash.display.DisplayObject;
 import openfl.Lib;
-import GameJolt;
+
+using StringTools;
 
 #if windows
 import Discord.DiscordClient;
 #end
-
-using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
@@ -42,15 +42,17 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
+
 	public static var finishedFunnyMove:Bool = false;
+
 	var menuImage:FlxSprite;
 	var menuMap:Map<String, Array<Dynamic>> = [
-	'story mode' => ['fever', -50, -40, true],
-	'freeplay' => ['teaa', -20, -226, true],
-	'jukebox' => ['jukebox', 40, 62, false], 
-	'gallery' => ['monaLisaCesar', 82, 16, false],
-	'options' => ['cogwheel', 58, 126, false]
-];
+		'story mode' => ['fever', -50, -40, true],
+		'freeplay' => ['teaa', -20, -226, true],
+		'jukebox' => ['jukebox', 40, 62, false],
+		'gallery' => ['monaLisaCesar', 82, 16, false],
+		'options' => ['cogwheel', 58, 126, false]
+	];
 
 	public static var shutup:Bool;
 
@@ -67,7 +69,6 @@ class MainMenuState extends MusicBeatState
 		PlayState.easierMode = false;
 		PlayState.deaths = 0;
 
-
 		shutup = true;
 
 		#if debug
@@ -75,7 +76,7 @@ class MainMenuState extends MusicBeatState
 		Achievements.getAchievement(8);
 		#end
 
-		FlxG.save.data.deaths = 0;
+		ClientPrefs.deaths = 0;
 
 		if (GameJoltAPI.getStatus())
 		{
@@ -125,46 +126,47 @@ class MainMenuState extends MusicBeatState
 			menuItem.ID = i;
 			menuItems.add(menuItem);
 			menuItem.antialiasing = true;
-			
+
 			selectedSomethin = true;
 			menuItem.x += 550;
-			FlxTween.tween(menuItem, {x: FlxG.width - menuItem.width + 5}, 0.65 + (0.12 * i), {ease:FlxEase.smoothStepInOut, onComplete:function(twn:FlxTween){
-				if(menuItem.ID == optionShit.length - 1)
+			FlxTween.tween(menuItem, {x: FlxG.width - menuItem.width + 5}, 0.65 + (0.12 * i), {
+				ease: FlxEase.smoothStepInOut,
+				onComplete: function(twn:FlxTween)
 				{
-					selectedSomethin = false;
-					changeItem();
+					if (menuItem.ID == optionShit.length - 1)
+					{
+						selectedSomethin = false;
+						changeItem();
+					}
 				}
-			}});
+			});
 		}
 
-		if(GameJoltAPI.getStatus() == true)
+		if (GameJoltAPI.getStatus() == true)
 		{
 			trace('logged in');
-			if(Sys.getEnv('USERNAME') == 'Shelton883')
+			if (Sys.getEnv('USERNAME') == 'Shelton883')
 			{
 				Achievements.getAchievement(8);
 			}
-
 		}
 		else
 		{
 			trace('not logged in');
 		}
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Friday Night Fever ${Application.current.meta.get("version")} (Running on KE 1.5.1), (Logged in as ' + FlxG.save.data.gjUser + ')', 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height
+			- 18, 0,
+			'Friday Night Fever ${Application.current.meta.get("version")} (Running on KE 1.5.1), (Logged in as '
+			+ FlxG.save.data.gjUser
+			+ ')', 12);
 		versionShit.scrollFactor.set();
 		versionShit.antialiasing = true;
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		
+
 		versionShit.text += '\nPress C to visit the credits menu';
-		versionShit.y -= 18;
-
-
-		if (FlxG.save.data.dfjk)
-			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
-		else
-			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
+		versionShit.y = FlxG.height - versionShit.height;
 
 		changeItem();
 
@@ -175,12 +177,12 @@ class MainMenuState extends MusicBeatState
 	var elapsedTimer:Float = 0;
 
 	override function update(elapsed:Float)
-	{	
+	{
 		elapsedTimer += elapsed;
-		if(elapsedTimer > 0.84)
+		if (elapsedTimer > 0.84)
 		{
 			elapsedTimer = 0;
-			if(optionShit[curSelected] == 'gallery')
+			if (optionShit[curSelected] == 'gallery')
 			{
 				var randomX:Float = FlxG.random.float(menuImage.x, menuImage.x + menuImage.width);
 				var randomY:Float = FlxG.random.float(menuImage.y, menuImage.y + menuImage.height);
@@ -196,21 +198,21 @@ class MainMenuState extends MusicBeatState
 		}
 		else if (FlxG.keys.justPressed.V)
 		{
-			//LoadingState.loadAndSwitchState(new ClosetState());
+			// LoadingState.loadAndSwitchState(new ClosetState());
 		}
 		#end
 
-		//if (FlxG.sound.music.volume != null)
-		//{
+		// if (FlxG.sound.music.volume != null)
+		// {
 		//	FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
-		//}
+		// }
 
 		if (!selectedSomethin)
 		{
 			var accepted:Bool = controls.ACCEPT;
 
 			#if mobile
-			if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) 
+			if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed)
 			{
 				for (sprite in menuItems)
 				{
@@ -255,7 +257,7 @@ class MainMenuState extends MusicBeatState
 				shutup = false;
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
-				
+
 				if (FlxG.save.data.flashing)
 					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
@@ -263,9 +265,13 @@ class MainMenuState extends MusicBeatState
 				{
 					if (curSelected != spr.ID)
 					{
-						FlxTween.tween(spr, {x:FlxG.width + spr.width}, 0.44, {ease:FlxEase.smoothStepInOut, onComplete:function(twn:FlxTween){
-							spr.kill();
-						}});
+						FlxTween.tween(spr, {x: FlxG.width + spr.width}, 0.44, {
+							ease: FlxEase.smoothStepInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								spr.kill();
+							}
+						});
 					}
 					else
 					{
@@ -289,9 +295,8 @@ class MainMenuState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-
 	}
-	
+
 	function goToState()
 	{
 		var daChoice:String = optionShit[curSelected];
@@ -300,9 +305,9 @@ class MainMenuState extends MusicBeatState
 		{
 			case 'story mode':
 				/*if (FlxG.save.data.popups.contains('dialogue'))*/
-					FlxG.switchState(new StoryMenuState());
-				/*else
-					openSubState(new sprites.PopupState('dialogue'));*/
+				FlxG.switchState(new StoryMenuState());
+			/*else
+				openSubState(new sprites.PopupState('dialogue')); */
 			case 'freeplay':
 				FlxG.switchState(new SelectingSongState());
 
@@ -332,28 +337,28 @@ class MainMenuState extends MusicBeatState
 			if (spr.ID == curSelected)
 			{
 				spr.animation.play('selected');
-				//camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
+				// camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
 			}
 
 			spr.updateHitbox();
-			if(!selectedSomethin)
+			if (!selectedSomethin)
 				spr.x = FlxG.width - spr.width + 5;
 		});
-		
-		if(huh != 0 || mobileTap)
+
+		if (huh != 0 || mobileTap)
 		{
 			FlxTween.cancelTweensOf(menuImage);
 
-			if(menuMap.get(optionShit[curSelected])[3])
+			if (menuMap.get(optionShit[curSelected])[3])
 			{
 				menuImage.y = FlxG.height;
-				FlxTween.tween(menuImage, {y:menuMap.get(optionShit[curSelected])[2]}, 0.36, {ease:FlxEase.smoothStepInOut});
+				FlxTween.tween(menuImage, {y: menuMap.get(optionShit[curSelected])[2]}, 0.36, {ease: FlxEase.smoothStepInOut});
 			}
 			else
 			{
 				menuImage.y = menuMap.get(optionShit[curSelected])[2];
 			}
-			
+
 			menuImage.loadGraphic(Paths.image(menuMap.get(optionShit[curSelected])[0]));
 			menuImage.updateHitbox();
 			menuImage.x = menuMap.get(optionShit[curSelected])[1];

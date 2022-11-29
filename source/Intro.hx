@@ -3,15 +3,14 @@ package;
 import flixel.FlxG;
 import lime.app.Application;
 
+using StringTools;
+
 #if windows
 import Discord.DiscordClient;
 #end
-
 #if cpp
 import sys.thread.Thread;
 #end
-
-using StringTools;
 
 class Intro extends MusicBeatState
 {
@@ -30,8 +29,7 @@ class Intro extends MusicBeatState
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 		PlayerSettings.init();
-		KadeEngineData.initSave();
-		Options.checkSaveCompatibility();
+		ClientPrefs.load();
 		Highscore.load();
 
 		@:privateAccess
@@ -40,9 +38,10 @@ class Intro extends MusicBeatState
 		#if windows
 		DiscordClient.initialize();
 
-		Application.current.onExit.add (function (exitCode) {
+		Application.current.onExit.add(function(exitCode)
+		{
 			DiscordClient.shutdown();
-		 });
+		});
 		#end
 
 		#if mobile
@@ -69,7 +68,7 @@ class Intro extends MusicBeatState
 				StoryMenuState.weekUnlocked[0] = true;
 		}
 
-		if (#if sys Sys.args().contains("-disableIntro") ||#end !FlxG.save.data.animeIntro)
+		if (#if sys Sys.args().contains("-disableIntro") || #end!ClientPrefs.animeIntro)
 		{
 			FlxG.switchState(new TitleState());
 		}
@@ -104,7 +103,7 @@ class Intro extends MusicBeatState
 		{
 			#if (cpp && !mobile)
 			video.playMP4(Paths.video('animeintrofinal'));
-            video.finishCallback = finishCallback;
+			video.finishCallback = finishCallback;
 			#end
 		}
 	}

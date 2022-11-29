@@ -137,7 +137,7 @@ class Note extends FlxSprite
 		alpha = 1;
 		visible = true;
 		clipRect = null;
-		flipY = FlxG.save.data.downscroll && isSustainNote;
+		flipY = ClientPrefs.downscroll && isSustainNote;
 
 		var noteStyle:String = PlayState.SONG.noteStyle;
 
@@ -148,8 +148,6 @@ class Note extends FlxSprite
 		}
 
 		loadNote(noteStyle);
-
-		animation.play(colorSuffix[noteData].toLowerCase() + 'Scroll', true);
 
 		if (isSustainNote)
 		{
@@ -163,14 +161,16 @@ class Note extends FlxSprite
 			{
 				prevNote.animation.play(colorSuffix[noteData].toLowerCase() + 'hold', true);
 
-				if (FlxG.save.data.scrollSpeed != 1)
-					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * FlxG.save.data.scrollSpeed;
+				if (ClientPrefs.scrollSpeed != 1)
+					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * ClientPrefs.scrollSpeed;
 				else
 					prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed;
 
 				prevNote.updateHitbox();
 			}
 		}
+		else
+			animation.play(colorSuffix[noteData].toLowerCase() + 'Scroll', true);
 	}
 
 	override function update(elapsed:Float)
@@ -181,8 +181,8 @@ class Note extends FlxSprite
 		{
 			if (isSustainNote)
 			{
-				if (strumTime - Conductor.songPosition <= (((60 * Conductor.timeScale) * 0.5))
-					&& strumTime - Conductor.songPosition >= (((-60 * Conductor.timeScale))))
+				if (strumTime - Conductor.songPosition <= (((100 * Conductor.timeScale) * 0.5))
+					&& strumTime - Conductor.songPosition >= (((-100 * Conductor.timeScale))))
 					canBeHit = true;
 				else
 					canBeHit = false;

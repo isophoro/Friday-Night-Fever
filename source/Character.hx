@@ -41,47 +41,27 @@ class Character extends FlxSprite
 		facingLeft: false
 	};
 
+	// DEBUGGING PURPOSES
 	public var internalNames:Map<String, String> = [];
 	public var internalIndices:Map<String, Array<Int>> = [];
-
-	public var animOffsets:Map<String, Array<Int>>;
 	public var debugMode:Bool = false;
 
-	public var isPlayer:Bool = false;
+	public var animOffsets:Map<String, Array<Int>> = new Map<String, Array<Int>>();
 	public var curCharacter:String = 'bf';
 	public var iconColor:String = "50a5eb";
+	public var isPlayer:Bool = false;
 	public var isDeathAnim:Bool = false;
-	public var holdTimer:Float = 0;
+
+	public var danced:Bool = false;
 	public var useAlternateIdle:Bool = false;
-
-	public var charSize:Float = 1; // size, makes it easier to scale characters. example, you did offsets and character is too small, you can make them-
-
-	// bigger with this and the offsets would be unchanged being perfect.
-	public var animOverList:Array<String> = ['idle', 'sing'];
-	public var animOverrideList:Array<String> = [];
-
-	// arrays for anims that overlap singing, idle, ect. (i did this before i saw ur code in beathit LMAO but still might be useful)
-	// only coded for dad and meat at the moment
-	// use BEFORE offsets. example
-	/*
-		addByPrefix('hey', 'BF HEY', 24, false);
-
-		animOverList.push('hey');
-
-		addOffset("hey", -10, 3);
-
-	 */
-	// everything else is already covered.
+	public var holdTimer:Float = 0;
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
 
-		animOffsets = new Map<String, Array<Int>>();
 		curCharacter = character;
 		this.isPlayer = isPlayer;
-
-		var tex:FlxAtlasFrames;
 		antialiasing = true;
 
 		var path = 'assets/characters/$character.json';
@@ -213,11 +193,6 @@ class Character extends FlxSprite
 			holdTimer -= elapsed;
 		}
 
-		if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
-		{
-			playAnim('idle', true, false, 10);
-		}
-
 		if (!isPlayer && !PlayState.opponent || isPlayer && PlayState.opponent)
 		{
 			if (holdTimer >= Conductor.stepCrochet * (curCharacter == 'dad' ? 6.1 : 4) * 0.001)
@@ -227,45 +202,51 @@ class Character extends FlxSprite
 			}
 		}
 
-		switch (curCharacter)
+		if (!debugMode)
 		{
-			case 'gf':
-				if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
-					playAnim('danceRight');
-			case 'mom-car' | 'mom-carnight':
-				if (animation.curAnim.finished && animation.curAnim.name == 'idle')
-				{
-					playAnim('idle-loop');
-				}
-			case 'makocorrupt':
-				floatY += 0.1; // i'd rather much redo this with tweening but im lazy
-				y += Math.sin(floatY);
-			case 'hallow' | 'gf-notea':
-				floatY += 0.07;
-				y += Math.sin(floatY);
+			if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished)
+			{
+				playAnim('idle', true, false, 10);
+			}
 
-				if (curCharacter == 'gf-notea')
-				{
-					floatAngle += 0.05;
-					angle = Math.sin(floatAngle);
-				}
-			case 'tea-bat':
-				floatX += 0.02;
-				x += Math.sin(floatX);
-				floatY += 0.07;
-				y += Math.sin(floatY);
+			switch (curCharacter)
+			{
+				case 'gf':
+					if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
+						playAnim('danceRight');
+				case 'mom-car' | 'mom-carnight':
+					if (animation.curAnim.finished && animation.curAnim.name == 'idle')
+					{
+						playAnim('idle-loop');
+					}
+				case 'makocorrupt':
+					floatY += 0.1; // i'd rather much redo this with tweening but im lazy
+					y += Math.sin(floatY);
+				case 'hallow' | 'gf-notea':
+					floatY += 0.07;
+					y += Math.sin(floatY);
+
+					if (curCharacter == 'gf-notea')
+					{
+						floatAngle += 0.05;
+						angle = Math.sin(floatAngle);
+					}
+				case 'tea-bat':
+					floatX += 0.02;
+					x += Math.sin(floatX);
+					floatY += 0.07;
+					y += Math.sin(floatY);
+			}
 		}
 
 		super.update(elapsed);
 	}
 
-	private var danced:Bool = false;
-
-	/**
-	 * FOR GF DANCING SHIT
-	 */
 	public function dance()
 	{
+		if (!canIdle())
+			return;
+
 		if (!debugMode)
 		{
 			if (animOffsets.exists('danceLeft'))
@@ -304,7 +285,7 @@ class Character extends FlxSprite
 			var daOffset = animOffsets.get(AnimName);
 			if (animOffsets.exists(AnimName))
 			{
-				offset.set(daOffset[0] * charSize, daOffset[1] * charSize);
+				offset.set(daOffset[0], daOffset[1]);
 			}
 			else
 				offset.set(0, 0);
@@ -338,33 +319,23 @@ class Character extends FlxSprite
 		}
 	}
 
-	public function setSizeChar(?toChange:Float = 1):Void
+	public function canIdle():Bool
 	{
-		charSize = toChange;
-		scale.set(toChange, toChange);
+		if (animation.curAnim == null)
+			return true;
+
+		switch (curCharacter)
+		{
+			case 'gf':
+				return animation.curAnim.name != 'sad' || animation.curAnim.name == 'sad' && animation.finished;
+			default:
+				return true;
+		}
 	}
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
 	{
-		if (check(name))
-			animOverrideList.push(name);
-
 		animOffsets[name] = [Math.floor(x), Math.floor(y)];
-	}
-
-	public function check(str:String)
-	{
-		var total = animOverList.length;
-		var amt = 0;
-		for (i in 0...animOverList.length)
-		{
-			if (!str.contains(animOverList[i]))
-				amt++;
-		}
-		if (amt == total)
-			return true;
-		else
-			return false;
 	}
 
 	function addByPrefix(animName:String, xmlName:String, fps:Int = 24, loop:Bool = true)

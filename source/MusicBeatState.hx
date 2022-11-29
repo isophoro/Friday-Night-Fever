@@ -1,18 +1,18 @@
 package;
 
-import openfl.system.System;
-#if windows
-import Discord.DiscordClient;
-#end
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import openfl.Lib;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import openfl.Lib;
+import openfl.system.System;
+#if windows
+import Discord.DiscordClient;
+#end
 
 class MusicBeatState extends FlxUIState
 {
@@ -21,6 +21,7 @@ class MusicBeatState extends FlxUIState
 
 	public var curStep:Int = 0;
 	public var curBeat:Int = 0;
+
 	private var controls(get, never):Controls;
 	private var disableBeathit:Bool = false;
 
@@ -29,8 +30,8 @@ class MusicBeatState extends FlxUIState
 
 	override function create()
 	{
-		//Main.clearCache();
-		(cast (Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
+		// Main.clearCache();
+		(cast(Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap);
 
 		if (transIn != null)
 			trace('reg ' + transIn.region);
@@ -45,12 +46,12 @@ class MusicBeatState extends FlxUIState
 		FlxColor.fromRGB(0, 255, 0),
 		FlxColor.fromRGB(255, 255, 0),
 		FlxColor.fromRGB(255, 127, 0),
-		FlxColor.fromRGB(255, 0 , 0)
+		FlxColor.fromRGB(255, 0, 0)
 	];
 
 	override function update(elapsed:Float)
 	{
-		//everyStep();
+		// everyStep();
 		var oldStep:Int = curStep;
 
 		updateCurStep();
@@ -58,9 +59,6 @@ class MusicBeatState extends FlxUIState
 
 		if (oldStep != curStep && curStep > 0)
 			stepHit();
-
-		if ((cast (Lib.current.getChildAt(0), Main)).getFPSCap != FlxG.save.data.fpsCap && FlxG.save.data.fpsCap <= 290)
-			(cast (Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
 
 		super.update(elapsed);
 	}
@@ -97,9 +95,9 @@ class MusicBeatState extends FlxUIState
 
 	public function beatHit():Void
 	{
-		//do literally nothing dumbass
+		// do literally nothing dumbass
 	}
-	
+
 	public function fancyOpenURL(schmancy:String)
 	{
 		#if linux

@@ -38,7 +38,7 @@ class OptionsState extends MusicBeatState
         ]},
         {"name":"Performance", options: [
             new Option("FPS Cap ", "Caps your framerate.", "fpsCap", INT, {range:[60, 240], increaseInterval: 20}),
-            new Option("Show FPS Counter", "When enabled, a FPS and Memory counter will be shown in the top left.", "fps", BOOL, {callback: () -> { (cast (openfl.Lib.current.getChildAt(0), Main)).toggleFPS(FlxG.save.data.fps); }}),
+            new Option("Show FPS Counter", "When enabled, a FPS and Memory counter will be shown in the top left.", "fps", BOOL, {callback: () -> { (cast(openfl.Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap); }}),
             new Option("Anti Aliasing", "When disabled, forces all sprites to not have anti-aliasing. (In-Game Only)", "antialiasing", BOOL),
             new Option("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL),
             new Option("Play Intro on Startup", "When disabled, the intro played on startup will no longer be played.", "animeIntro", BOOL)
@@ -105,16 +105,16 @@ class OptionsState extends MusicBeatState
                 for (i in 0...categories[curCategory].options.length)
                 {
                     var opt = categories[curCategory].options[i];
-                    if (Reflect.field(FlxG.save.data, opt.saveVariable) == key && i != curSelected)
+                    if (Reflect.field(ClientPrefs, opt.saveVariable) == key && i != curSelected)
                     {
-                        updateDescription("Conflicting Keybind: " + opt.display + " has been swapped to " + Reflect.field(FlxG.save.data, categories[curCategory].options[curSelected].saveVariable));
-                        Reflect.setField(FlxG.save.data, opt.saveVariable, Reflect.field(FlxG.save.data, categories[curCategory].options[curSelected].saveVariable));
+                        updateDescription("Conflicting Keybind: " + opt.display + " has been swapped to " + Reflect.field(ClientPrefs, categories[curCategory].options[curSelected].saveVariable));
+                        Reflect.setField(ClientPrefs, opt.saveVariable, Reflect.field(ClientPrefs, categories[curCategory].options[curSelected].saveVariable));
                         items.members[i].text = opt.getDisplay();
                         break;
                     }
                 }
 
-                Reflect.setField(FlxG.save.data, categories[curCategory].options[curSelected].saveVariable, key);
+                Reflect.setField(ClientPrefs, categories[curCategory].options[curSelected].saveVariable, key);
                 items.members[curSelected].text = categories[curCategory].options[curSelected].getDisplay();
                 FlxFlicker.stopFlickering(items.members[curSelected]);
                 awaitingInput = false;
@@ -162,7 +162,7 @@ class OptionsState extends MusicBeatState
             }
             else
             {
-                FlxG.save.flush();
+                ClientPrefs.save();
                 FlxG.switchState(new MainMenuState());
             }
         }
@@ -282,7 +282,7 @@ class OptionsState extends MusicBeatState
                     case BOOL:
                         var checkbox:Checkbox = new Checkbox(text);
                         checkbox.setPosition(text.x + text.width + 20, text.y + ((text.height / 2) - checkbox.height / 2));
-                        if (Reflect.field(FlxG.save.data, categories[curCategory].options[i].saveVariable) == true)
+                        if (Reflect.field(ClientPrefs, categories[curCategory].options[i].saveVariable))
                         {
                             checkbox.animation.play("selected", true);
                             checkbox.centerOffsets();
@@ -375,8 +375,8 @@ class Option
         switch (type)
         {
             case INT:
-                var newValue:Int = cast FlxMath.bound(Reflect.getProperty(FlxG.save.data, saveVariable) + (direction == LEFT ? -increaseInterval : increaseInterval), range[0], range[1]);
-                Reflect.setProperty(FlxG.save.data, saveVariable, newValue);
+                var newValue:Int = cast FlxMath.bound(Reflect.field(ClientPrefs, saveVariable) + (direction == LEFT ? -increaseInterval : increaseInterval), range[0], range[1]);
+                Reflect.setField(ClientPrefs, saveVariable, newValue);
                 trace("Changing " + saveVariable + " to " + newValue);
                 return true;
             default:
@@ -390,8 +390,8 @@ class Option
         switch (type)
         {
             case BOOL:
-                trace("Changing " + saveVariable + " to " + !Reflect.getProperty(FlxG.save.data, saveVariable));
-                Reflect.setProperty(FlxG.save.data, saveVariable, !Reflect.getProperty(FlxG.save.data, saveVariable));
+                trace("Changing " + saveVariable + " to " + !Reflect.field(ClientPrefs, saveVariable));
+                Reflect.setField(ClientPrefs, saveVariable, !Reflect.field(ClientPrefs, saveVariable));
             case STATE:
                 FlxG.switchState(Type.createInstance(state, [0]));
             default:
@@ -407,9 +407,9 @@ class Option
         switch (type)
         {
             case INT:
-                return display + " < " + Reflect.field(FlxG.save.data, saveVariable) + suffix + " >";
+                return display + " < " + Reflect.field(ClientPrefs, saveVariable) + suffix + " >";
             case KEYBIND:
-                return display + ": " + Reflect.field(FlxG.save.data, saveVariable);
+                return display + ": " + Reflect.field(ClientPrefs, saveVariable);
             default:
                 return display;
         }

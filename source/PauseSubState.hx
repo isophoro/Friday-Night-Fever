@@ -1,9 +1,5 @@
 package;
 
-import openfl.Lib;
-#if windows
-import llua.Lua;
-#end
 import Controls.Control;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -16,6 +12,10 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import openfl.Lib;
+#if windows
+import llua.Lua;
+#end
 
 class PauseSubState extends MusicBeatSubstate
 {
@@ -28,7 +28,7 @@ class PauseSubState extends MusicBeatSubstate
 
 	var pauseMusic:FlxSound;
 	var scanlines:FlxSprite;
-	
+
 	var offsetChanged:Bool = false;
 	var levelDifficulty:FlxText;
 	var songText:Alphabet;
@@ -39,8 +39,8 @@ class PauseSubState extends MusicBeatSubstate
 		super();
 		menuItems = menuItemsOG;
 
-		
-		for (i in 0...CoolUtil.difficultyArray.length) {
+		for (i in 0...CoolUtil.difficultyArray.length)
+		{
 			var diff:String = '' + CoolUtil.difficultyArray[i];
 			difficultyChoices.push(diff);
 		}
@@ -100,13 +100,13 @@ class PauseSubState extends MusicBeatSubstate
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
-		if(PlayState.instance.font)
+		if (PlayState.instance.font)
 		{
 			levelDifficulty.setFormat(Paths.font('Retro Gaming.ttf'), 32);
 			levelInfo.setFormat(Paths.font("Retro Gaming.ttf"), 32);
 			levelDifficulty.screenCenter(X);
 			levelInfo.screenCenter(X);
-			
+
 			scanlines.visible = true;
 		}
 	}
@@ -129,8 +129,8 @@ class PauseSubState extends MusicBeatSubstate
 		if (upP)
 		{
 			changeSelection(-1);
-   
-		}else if (downP)
+		}
+		else if (downP)
 		{
 			changeSelection(1);
 		}
@@ -138,18 +138,20 @@ class PauseSubState extends MusicBeatSubstate
 		if (accepted)
 		{
 			var daSelected:String = menuItems[curSelected];
-			for (i in 0...difficultyChoices.length-1) {
-				if(difficultyChoices[i] == daSelected) {
+			for (i in 0...difficultyChoices.length - 1)
+			{
+				if (difficultyChoices[i] == daSelected)
+				{
 					var name:String = PlayState.SONG.song.toLowerCase();
 					var poop = Highscore.formatSong(name, curSelected);
 					PlayState.SONG = Song.loadFromJson(poop, name);
 					PlayState.storyDifficulty = curSelected;
-					//CustomFadeTransition.nextCamera = transCamera;
+					// CustomFadeTransition.nextCamera = transCamera;
 					FlxG.resetState();
 					FlxG.sound.music.volume = 0;
 					return;
 				}
-			} 
+			}
 
 			switch (daSelected)
 			{
@@ -168,14 +170,14 @@ class PauseSubState extends MusicBeatSubstate
 						PlayState.luaModchart = null;
 					}
 					#end
-					if (FlxG.save.data.fpsCap > 290)
-						(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
-					
-					if(PlayState.isStoryMode)
+					if (ClientPrefs.fpsCap > 290)
+						(cast(Lib.current.getChildAt(0), Main)).setFPSCap(290);
+
+					if (PlayState.isStoryMode)
 						FlxG.switchState(new StoryMenuState());
 					else
 						FlxG.switchState(new FreeplayState());
-					
+
 				case 'BACK':
 					menuItems = menuItemsOG;
 					regenMenu();
@@ -196,11 +198,14 @@ class PauseSubState extends MusicBeatSubstate
 		super.destroy();
 	}
 
-	function regenMenu():Void {
-		for (i in 0...grpMenuShit.members.length) {
+	function regenMenu():Void
+	{
+		for (i in 0...grpMenuShit.members.length)
+		{
 			this.grpMenuShit.remove(this.grpMenuShit.members[0], true);
 		}
-		for (i in 0...menuItems.length) {
+		for (i in 0...menuItems.length)
+		{
 			var item = new Alphabet(0, 70 * i + 30, menuItems[i], true, false);
 			item.isMenuItem = true;
 			item.targetY = i;

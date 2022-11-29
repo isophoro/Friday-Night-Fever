@@ -1,12 +1,7 @@
 package;
 
-import openfl.net.URLLoader;
+import GameJolt.GameJoltAPI;
 import GameJolt.GameJoltLogin;
-#if cpp
-import cpp.vm.Gc;
-#end 
-
-
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
@@ -22,15 +17,17 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
+import openfl.net.URLLoader;
 import shaders.ColorShader;
 
-import GameJolt.GameJoltAPI;
+using StringTools;
 
+#if cpp
+import cpp.vm.Gc;
+#end
 #if windows
 import Discord.DiscordClient;
 #end
-
-using StringTools;
 
 class TitleState extends MusicBeatState
 {
@@ -55,13 +52,12 @@ class TitleState extends MusicBeatState
 
 		GameJoltAPI.connect();
 		if (FlxG.save.data.gjUser != null && FlxG.save.data.gjToken != null)
-			GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);	
+			GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);
 		/*if(GameJoltAPI.getStatus() == false) // disabling this for rn so i can test without it popping up everytime i build
-		{
-			FlxG.switchState(new GameJoltLogin());
+			{
+				FlxG.switchState(new GameJoltLogin());
 		}*/
 		lastState = true;
-		
 
 		super.create();
 
@@ -106,15 +102,15 @@ class TitleState extends MusicBeatState
 			diamond.persist = true;
 			diamond.destroyOnNoUse = false;
 
-			FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.6, new FlxPoint(0, -1), {asset: diamond, width: 32, height: 32},
-				new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+			FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.6, new FlxPoint(0, -1),
+				{asset: diamond, width: 32, height: 32}, new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
 			FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.6, new FlxPoint(0, 1),
 				{asset: diamond, width: 32, height: 32}, new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
 
 			transIn = FlxTransitionableState.defaultTransIn;
 			transOut = FlxTransitionableState.defaultTransOut;
 		}
-		
+
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('menuBackground'));
@@ -195,7 +191,7 @@ class TitleState extends MusicBeatState
 		if (!transitioning)
 			camera.zoom = FlxMath.lerp(1, camera.zoom, 0.95);
 
-		if(controls.BACK)
+		if (controls.BACK)
 		{
 			gotoIntro();
 		}
@@ -219,7 +215,7 @@ class TitleState extends MusicBeatState
 				hueShader.hue += 0.35 * elapsed;
 			}
 		}
-		
+
 		hueShader.onUpdate();
 
 		if (controls.ACCEPT)
@@ -228,15 +224,15 @@ class TitleState extends MusicBeatState
 			{
 				initialized = true;
 				transitioning = true;
-				
+
 				if (FlxG.save.data.flashing)
 					titleText.animation.play('press');
-	
-				FlxTween.tween(titleText, {y: 1200, alpha: 0}, 1.23, { ease: FlxEase.elasticInOut });
-	
+
+				FlxTween.tween(titleText, {y: 1200, alpha: 0}, 1.23, {ease: FlxEase.elasticInOut});
+
 				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-	
+
 				new FlxTimer().start(0.4, function(tmr:FlxTimer)
 				{
 					FlxG.switchState(new MainMenuState());
@@ -288,7 +284,7 @@ class TitleState extends MusicBeatState
 		logoBl.animation.play('bump');
 		feverTown.animation.play('bump');
 
-		if(!initialized && !skippedIntro)
+		if (!initialized && !skippedIntro)
 		{
 			FlxG.camera.zoom += 0.015;
 			switch (curBeat)
@@ -335,7 +331,7 @@ class TitleState extends MusicBeatState
 		{
 			remove(ngSpr);
 
-			if(!initialized)
+			if (!initialized)
 				FlxG.camera.flash(FlxColor.WHITE, 4);
 
 			remove(credGroup);
@@ -346,7 +342,7 @@ class TitleState extends MusicBeatState
 	function gotoIntro(?fuckoffflxtimer)
 	{
 		#if (cpp && !mobile)
-		if (!transitioning #if sys && !Sys.args().contains("-disableIntro") #end && FlxG.save.data.animeIntro)
+		if (!transitioning #if sys && !Sys.args().contains("-disableIntro") #end && ClientPrefs.animeIntro)
 		{
 			initialized = false;
 			FlxG.sound.music.stop();

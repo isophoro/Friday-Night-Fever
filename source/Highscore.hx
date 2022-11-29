@@ -6,16 +6,16 @@ class Highscore
 {
 	#if (haxe >= "4.0.0")
 	public static var songScores:Map<String, Int> = new Map();
+	public static var fullCombos:Map<String, Int> = new Map();
 	#else
 	public static var songScores:Map<String, Int> = new Map<String, Int>();
 	#end
-
 
 	public static function saveScore(song:String, score:Int = 0, ?diff:Int = 0):Void
 	{
 		var daSong:String = formatSong(song, diff);
 
-		if(!FlxG.save.data.botplay)
+		if (!FlxG.save.data.botplay)
 		{
 			if (songScores.exists(daSong))
 			{
@@ -24,12 +24,14 @@ class Highscore
 			}
 			else
 				setScore(daSong, score);
-		}else trace('BotPlay detected. Score saving is disabled.');
+		}
+		else
+			trace('BotPlay detected. Score saving is disabled.');
 	}
 
 	public static function saveWeekScore(week:Int = 1, score:Int = 0, ?diff:Int = 0):Void
 	{
-		if(!FlxG.save.data.botplay)
+		if (!FlxG.save.data.botplay)
 		{
 			var daWeek:String = formatSong('week' + week, diff);
 
@@ -40,7 +42,9 @@ class Highscore
 			}
 			else
 				setScore(daWeek, score);
-		}else trace('BotPlay detected. Score saving is disabled.');
+		}
+		else
+			trace('BotPlay detected. Score saving is disabled.');
 	}
 
 	/**
@@ -51,6 +55,7 @@ class Highscore
 		// Reminder that I don't need to format this song, it should come formatted!
 		songScores.set(song, score);
 		FlxG.save.data.songScores = songScores;
+		FlxG.save.data.fullCombos = fullCombos;
 		FlxG.save.flush();
 	}
 
@@ -63,7 +68,7 @@ class Highscore
 		else if (diff >= 2)
 			daSong += '-hard';
 
-		//trace(daSong);
+		// trace(daSong);
 		return daSong;
 	}
 
@@ -88,6 +93,11 @@ class Highscore
 		if (FlxG.save.data.songScores != null)
 		{
 			songScores = FlxG.save.data.songScores;
+		}
+
+		if (FlxG.save.data.fullCombos != null)
+		{
+			fullCombos = FlxG.save.data.fullCombos;
 		}
 	}
 }
