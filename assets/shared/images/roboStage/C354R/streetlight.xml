@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Street light.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="street light go0000" x="0" y="0" width="1007" height="1447"/>
+	<SubTexture name="street light go0001" x="0" y="0" width="1007" height="1447"/>
+	<SubTexture name="street light go0002" x="0" y="0" width="1007" height="1447"/>
+	<SubTexture name="street light go0003" x="0" y="0" width="1007" height="1447"/>
+	<SubTexture name="street light go0004" x="0" y="0" width="1007" height="1447"/>
+	<SubTexture name="street light go0005" x="0" y="0" width="1007" height="1447"/>
+	<SubTexture name="street light stop0000" x="1007" y="0" width="917" height="1447"/>
+	<SubTexture name="street light stop0001" x="1007" y="0" width="917" height="1447"/>
+	<SubTexture name="street light stop0002" x="1007" y="0" width="917" height="1447"/>
+	<SubTexture name="street light stop0003" x="1007" y="0" width="917" height="1447"/>
+	<SubTexture name="street light stop0004" x="1007" y="0" width="917" height="1447"/>
+	<SubTexture name="street light stop0005" x="1007" y="0" width="917" height="1447"/>
+</TextureAtlas>

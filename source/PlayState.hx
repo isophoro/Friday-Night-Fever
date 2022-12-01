@@ -206,8 +206,6 @@ class PlayState extends MusicBeatState
 
 	public static var diedtoHallowNote:Bool = false;
 
-	public static var isIso:Bool = false;
-
 	public static function setModCamera(bool:Bool)
 	{
 		if (FlxG.save.data.disableModCamera)
@@ -244,8 +242,8 @@ class PlayState extends MusicBeatState
 	var sky:FlxSprite;
 	var train:FlxSprite;
 
-	var scripts:ScriptGroup;
-	var script:GameScript;
+	var scripts:ScriptGroup = new ScriptGroup();
+	var songScript:GameScript;
 	var curSection:Int = 0;
 
 	override public function create()
@@ -375,37 +373,6 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song.toLowerCase())
 		{
-			case 'milk-tea' | 'metamorphosis' | 'void' | 'star-baby' | 'last-meow' | 'mild' | 'spice' | 'c354r' | 'loaded' | 'tranquility' | 'princess' |
-				'banish':
-				if (isIso == true)
-				{
-					curBoyfriend = 'bfiso';
-				}
-				else
-					curBoyfriend = 'bf';
-
-			case 'down-bad' | 'party-crasher' | 'hallow' | 'portrait' | 'soul' | 'hardships' | 'prayer' | 'bad-nun' | 'bazinga' | 'crucify':
-				if (isIso == true)
-				{
-					curBoyfriend = 'bfiso';
-				}
-				else
-					curBoyfriend = 'bf-demon';
-
-			case 'ur-girl' | 'chicken-sandwich' | 'space-demons':
-				if (isIso == true)
-				{
-					curBoyfriend = 'bf-pixeliso';
-				}
-				else
-					curBoyfriend = 'bf-pixel';
-			case 'funkin-god':
-				if (isIso == true)
-				{
-					curBoyfriend = 'bfiso-pixel';
-				}
-				else
-					curBoyfriend = 'bf-pixeldemon';
 			case 'mako' | 'vim':
 				curBoyfriend = 'bf-casual';
 			case 'retribution' | 'farmed':
@@ -418,8 +385,17 @@ class PlayState extends MusicBeatState
 				curBoyfriend = 'bf-mad';
 		}
 
+		gf = new Character(400, 130, SONG.gfVersion == null ? 'gf' : SONG.gfVersion);
+		boyfriend = new Boyfriend(770, 450, curBoyfriend);
+		dad = new Character(100, 100, SONG.player2);
+
 		switch (SONG.stage)
 		{
+			case 'city':
+				curStage = SONG.stage;
+				var stageScript:GameScript = new GameScript('assets/stages/$curStage.hx');
+				scripts.add(stageScript);
+				stageScript.callFunction("onCreate");
 			case 'fireplace':
 				curStage = 'fireplace';
 				// defaultCamZoom = 0.76;
@@ -852,13 +828,10 @@ class PlayState extends MusicBeatState
 				}
 		}
 
-		gf = new Character(400, 130, SONG.gfVersion == null ? 'gf' : SONG.gfVersion);
 		gf.scrollFactor.set(0.95, 0.95);
 
 		if (curStage == "schoolEvil")
 			meat = new Character(260, 100.9, 'meat');
-
-		dad = new Character(100, 100, SONG.player2);
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 		if (dad.curCharacter == 'pepper')
@@ -944,8 +917,6 @@ class PlayState extends MusicBeatState
 				dad.y = 365.3;
 				dad.scrollFactor.set(0.9, 0.9);
 		}
-
-		boyfriend = new Boyfriend(770, 450, curBoyfriend);
 
 		curPlayer = opponent ? dad : boyfriend;
 		curOpponent = opponent ? boyfriend : dad;
@@ -1327,7 +1298,15 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 		startingSong = true;
 
-		if (isStoryMode && dialogue.length > 0 && !skipDialogue)
+		var cutscenePath:String = 'assets/data/${SONG.song.toLowerCase()}/cutscene.hx';
+		if (Assets.exists(cutscenePath))
+		{
+			inCutscene = true;
+			var cutsceneScript:GameScript = new GameScript(cutscenePath);
+			scripts.add(cutsceneScript);
+			cutsceneScript.callFunction("onCreate");
+		}
+		else if (isStoryMode && dialogue.length > 0 && !skipDialogue)
 		{
 			switch (curSong.toLowerCase())
 			{
@@ -1355,8 +1334,11 @@ class PlayState extends MusicBeatState
 
 		moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
 
-		script = new GameScript();
-		script.callFunction("onCreate");
+		songScript = new GameScript();
+		songScript.callFunction("onCreate");
+
+		scripts.callFunction("onCreatePost");
+		scripts.add(songScript);
 
 		System.gc();
 	}
@@ -1927,8 +1909,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		if (script.valid)
-			script.updateVars();
+		scripts.updateVars();
 
 		if (FlxG.keys.justPressed.T && SONG.song.toLowerCase() == 'party-crasher')
 		{
@@ -2041,7 +2022,7 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-		script.callFunction("onUpdate", [elapsed]);
+		scripts.callFunction("onUpdate", [elapsed]);
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -2444,7 +2425,7 @@ class PlayState extends MusicBeatState
 			endSong();
 		#end
 
-		script.callFunction("onPostUpdate", [elapsed]);
+		scripts.callFunction("onPostUpdate", [elapsed]);
 	}
 
 	public var DAD_CAM_POS:FlxPoint = new FlxPoint(0, 0);
@@ -2513,7 +2494,7 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
-						camFollow.y = dad.getMidpoint().y - 340;
+						camFollow.y = dad.getMidpoint().y - 150;
 						camFollow.x = dad.getMidpoint().x - -600;
 					}
 				case 'tea-bat':
@@ -2606,19 +2587,15 @@ class PlayState extends MusicBeatState
 							camFollow.x = boyfriend.getMidpoint().x - 490;
 							camFollow.y = boyfriend.getMidpoint().y - 280;
 					}
-			}
-
-			if (boyfriend.curCharacter == 'bfiso')
-			{
-				camFollow.x += 35;
-				camFollow.y += 75;
+				case 'city':
+					camFollow.x = boyfriend.getMidpoint().x - 180;
+					camFollow.y = boyfriend.getMidpoint().y - 320;
 			}
 
 			BF_CAM_POS.set(camFollow.x, camFollow.y);
 		}
 
-		if (script != null)
-			script.callFunction("onMoveCamera", [isDad]);
+		scripts.callFunction("onMoveCamera", [isDad]);
 	}
 
 	function updateScoring(bop:Bool = false)
@@ -2827,11 +2804,11 @@ class PlayState extends MusicBeatState
 
 			if (!disableHUD)
 			{
-				if (script.variables.exists("forceComboPos")
-					&& (script.variables["forceComboPos"].x != 0 || script.variables["forceComboPos"].y != 0))
+				if (songScript.variables.exists("forceComboPos")
+					&& (songScript.variables["forceComboPos"].x != 0 || songScript.variables["forceComboPos"].y != 0))
 				{
-					rating.x = script.variables["forceComboPos"].x;
-					rating.y = script.variables["forceComboPos"].y;
+					rating.x = songScript.variables["forceComboPos"].x;
+					rating.y = songScript.variables["forceComboPos"].y;
 				}
 				else if (ClientPrefs.changedHit)
 				{
@@ -3050,9 +3027,9 @@ class PlayState extends MusicBeatState
 				totalNotesHit += 1;
 
 			var altSuffix:String = '';
-			if (script.variables.exists("bfAltSuffix"))
+			if (songScript.variables.exists("bfAltSuffix"))
 			{
-				altSuffix = script.variables.get("bfAltSuffix");
+				altSuffix = songScript.variables.get("bfAltSuffix");
 			}
 
 			if (boyfriend.animation.curAnim.name != 'shoot')
@@ -3143,7 +3120,7 @@ class PlayState extends MusicBeatState
 	{
 		super.stepHit();
 
-		script.callFunction("onStepHit", [curStep]);
+		scripts.callFunction("onStepHit", [curStep]);
 
 		if (subtitles != null)
 		{
@@ -3316,7 +3293,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		script.callFunction("onBeatHit", [curBeat]);
+		scripts.callFunction("onBeatHit", [curBeat]);
 
 		// reset cam lerp
 		FlxG.camera.followLerp = 0.04 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS());
@@ -3551,7 +3528,13 @@ class PlayState extends MusicBeatState
 		#end
 
 		if (!curOpponent.animation.curAnim.name.startsWith('sing'))
-			curOpponent.dance();
+		{
+			var specialAnims:Array<String> = ['dodge', 'hey', 'shoot'];
+			if (!specialAnims.contains(curOpponent.animation.curAnim.name) || curOpponent.animation.finished)
+			{
+				curOpponent.dance();
+			}
+		}
 
 		var iconBop:Float = curBeat % 4 == 0 ? 1.2 : 1.135;
 

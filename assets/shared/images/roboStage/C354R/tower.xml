@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="robo mako.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="building0000" x="0" y="0" width="165" height="978" pivotX="0" pivotY="62.15"/>
+	<SubTexture name="building0001" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0002" x="165" y="0" width="165" height="978"/>
+	<SubTexture name="building0003" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0004" x="165" y="0" width="165" height="978"/>
+	<SubTexture name="building0005" x="330" y="0" width="165" height="978"/>
+	<SubTexture name="building0006" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0007" x="330" y="0" width="165" height="978"/>
+	<SubTexture name="building0008" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0009" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0010" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0011" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0012" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0013" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0014" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0015" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0016" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0017" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0018" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0019" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0020" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0021" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0022" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0023" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0024" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0025" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0026" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0027" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0028" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0029" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0030" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0031" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0032" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0033" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building0034" x="0" y="0" width="165" height="978"/>
+	<SubTexture name="building mako0000" x="495" y="0" width="444" height="1135" pivotX="279.6" pivotY="219.55"/>
+	<SubTexture name="building mako0001" x="939" y="0" width="444" height="1135"/>
+	<SubTexture name="building mako0002" x="1383" y="0" width="444" height="1135"/>
+	<SubTexture name="building mako0003" x="1827" y="0" width="444" height="1135"/>
+	<SubTexture name="building mako0004" x="2271" y="0" width="444" height="1135"/>
+	<SubTexture name="building mako0005" x="2715" y="0" width="444" height="1135"/>
+	<SubTexture name="building mako0006" x="3159" y="0" width="444" height="1135"/>
+	<SubTexture name="building mako0007" x="3603" y="0" width="444" height="1135"/>
+	<SubTexture name="building mako0008" x="0" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0009" x="444" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0010" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0011" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0012" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0013" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0014" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0015" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0016" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0017" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0018" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0019" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0020" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0021" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0022" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0023" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0024" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0025" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0026" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0027" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0028" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0029" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0030" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0031" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0032" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0033" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0034" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0035" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0036" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0037" x="1332" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0038" x="888" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0039" x="1776" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0040" x="2220" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0041" x="2664" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0042" x="3108" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0043" x="3552" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0044" x="3552" y="1135" width="444" height="1135"/>
+	<SubTexture name="building mako0045" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0046" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0047" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0048" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0049" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0050" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0051" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0052" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0053" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0054" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0055" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0056" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0057" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0058" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0059" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0060" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0061" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0062" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0063" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0064" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0065" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0066" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0067" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0068" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0069" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0070" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0071" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0072" x="1332" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0073" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0074" x="1332" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0075" x="1776" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0076" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0077" x="1776" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0078" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0079" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0080" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0081" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0082" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0083" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0084" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0085" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0086" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0087" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0088" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0089" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0090" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0091" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0092" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0093" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0094" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0095" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0096" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0097" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0098" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0099" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0100" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0101" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0102" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0103" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0104" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0105" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0106" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0107" x="1332" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0108" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0109" x="1332" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0110" x="2220" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0111" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0112" x="2220" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0113" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0114" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0115" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0116" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0117" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0118" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0119" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0120" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0121" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0122" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0123" x="444" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0124" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0125" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0126" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0127" x="0" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0128" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0129" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0130" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0131" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0132" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako0133" x="888" y="2270" width="444" height="1135"/>
+	<SubTexture name="building mako loop0000" x="2664" y="2270" width="274" height="978" pivotX="109.95" pivotY="62.15"/>
+	<SubTexture name="building mako loop0001" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0002" x="2938" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0003" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0004" x="2938" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0005" x="3212" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0006" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0007" x="3212" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0008" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0009" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0010" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0011" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0012" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0013" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0014" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0015" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0016" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0017" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0018" x="3486" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0019" x="3486" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0020" x="3486" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0021" x="3486" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0022" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0023" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0024" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0025" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0026" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0027" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0028" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0029" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0030" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0031" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0032" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0033" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0034" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0035" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0036" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0037" x="2938" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0038" x="2664" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0039" x="2938" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0040" x="3760" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0041" x="3486" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0042" x="3760" y="2270" width="274" height="978"/>
+	<SubTexture name="building mako loop0043" x="3486" y="2270" width="274" height="978"/>
+</TextureAtlas>

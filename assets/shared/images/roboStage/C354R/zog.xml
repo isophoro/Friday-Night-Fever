@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="zombieee.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="zogs0000" x="0" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0001" x="0" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0002" x="346" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0003" x="346" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0004" x="692" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0005" x="692" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0006" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0007" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0008" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0009" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0010" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0011" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0012" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0013" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs0014" x="1038" y="0" width="346" height="471"/>
+	<SubTexture name="zogs explod0000" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0001" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0002" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0003" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0004" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0005" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0006" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0007" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0008" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0009" x="1384" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0010" x="1730" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0011" x="2076" y="0" width="346" height="471" frameX="-293" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0012" x="2422" y="0" width="387" height="471" frameX="-282" frameY="-246" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0013" x="2809" y="0" width="571" height="540" frameX="-148" frameY="-200" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0014" x="3380" y="0" width="608" height="582" frameX="-148" frameY="-200" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0015" x="0" y="582" width="652" height="649" frameX="-138" frameY="-166" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0016" x="652" y="582" width="686" height="708" frameX="-132" frameY="-137" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0017" x="1338" y="582" width="728" height="752" frameX="-111" frameY="-115" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0018" x="2066" y="582" width="764" height="789" frameX="-93" frameY="-96" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0019" x="2830" y="582" width="790" height="815" frameX="-80" frameY="-83" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0020" x="0" y="1397" width="807" height="833" frameX="-71" frameY="-74" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0021" x="807" y="1397" width="820" height="847" frameX="-65" frameY="-67" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0022" x="1627" y="1397" width="828" height="855" frameX="-61" frameY="-63" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0023" x="2455" y="1397" width="832" height="859" frameX="-59" frameY="-61" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0024" x="0" y="2256" width="832" height="859" frameX="-59" frameY="-61" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0025" x="832" y="2256" width="954" height="982"/>
+	<SubTexture name="zogs explod0029" x="1786" y="2256" width="694" height="700" frameX="-119" frameY="-141" frameWidth="954" frameHeight="982"/>
+	<SubTexture name="zogs explod0031" x="1786" y="2256" width="694" height="700" frameX="-119" frameY="-141" frameWidth="954" frameHeight="982"/>
+</TextureAtlas>

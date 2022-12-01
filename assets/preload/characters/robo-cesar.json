@@ -49,6 +49,16 @@
 			"anim": "robo left",
 			"loop": false,
 			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				15,
+				2
+			],
+			"fps": 24,
+			"anim": "robo hey",
+			"loop": false,
+			"name": "hey"
 		}
 	],
 	"facingLeft": false,

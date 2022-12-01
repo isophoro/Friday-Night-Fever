@@ -14,11 +14,24 @@ import sys.io.File;
 class ScriptGroup
 {
 	public var grp:Array<GameScript> = [];
+	public var globalVars:Map<String, Dynamic> = [];
 
 	public function new(?grp:Array<GameScript>)
 	{
 		if (grp != null)
 			this.grp = grp;
+	}
+
+	public function add(script:GameScript)
+	{
+		script.parentGrp = this;
+		grp.push(script);
+	}
+
+	public function updateVars()
+	{
+		for (i in grp)
+			i.updateVars();
 	}
 
 	public function callFunction(func:String, ?args:Array<Dynamic>)
@@ -42,8 +55,10 @@ class GameScript extends Interp
 		ClientPrefs
 	];
 
+	public var label:String = "";
 	public var updatableVars:Array<String> = [];
 	public var valid:Bool = false;
+	public var parentGrp:ScriptGroup = null;
 
 	public function new(?path:String)
 	{
@@ -69,6 +84,26 @@ class GameScript extends Interp
 
 	function setupVariables()
 	{
+		variables.set("setLabel", (l:String) ->
+		{
+			label = l;
+		});
+
+		variables.set("setGlobalVar", (name:String, obj:Dynamic) ->
+		{
+			trace("Setting global var: " + name);
+			if (parentGrp != null)
+				parentGrp.globalVars.set(name, obj);
+		});
+
+		variables.set("getGlobalVar", (name:String) ->
+		{
+			if (parentGrp != null && parentGrp.globalVars.exists(name))
+				return parentGrp.globalVars.get(name);
+
+			return null;
+		});
+
 		// Import all non-static fields from PlayState
 		for (i in Reflect.fields(PlayState.instance))
 		{
@@ -157,17 +192,23 @@ class GameScript extends Interp
 
 		variables.set("game", FlxG.state);
 
-		variables.set("strumLineNotes", PlayState.strumLineNotes.members); // WHY ARE THESE STATIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		variables.set("playerStrums", PlayState.playerStrums.members); // WHO HURT YOU KADE ENGINE
-		variables.set("cpuStrums", PlayState.cpuStrums.members);
-
-		for (i in 0...PlayState.strumLineNotes.length)
+		if (PlayState.strumLineNotes != null && PlayState.strumLineNotes.members != null)
 		{
-			var babyArrow = PlayState.strumLineNotes.members[i];
-			if (variables.exists("defaultStrumPos"))
-				variables.get("defaultStrumPos")[i] = new FlxPoint(babyArrow.x, babyArrow.y);
-			else
-				variables.set("defaultStrumPos", [new FlxPoint(babyArrow.x, babyArrow.y)]);
+			variables.set("strumLineNotes", PlayState.strumLineNotes.members); // WHY ARE THESE STATIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			variables.set("playerStrums", PlayState.playerStrums.members); // WHO HURT YOU KADE ENGINE
+			variables.set("cpuStrums", PlayState.cpuStrums.members);
+
+			for (i in 0...PlayState.strumLineNotes.length)
+			{
+				if (PlayState.strumLineNotes.members[i] == null)
+					continue;
+
+				var babyArrow = PlayState.strumLineNotes.members[i];
+				if (variables.exists("defaultStrumPos"))
+					variables.get("defaultStrumPos")[i] = new FlxPoint(babyArrow.x, babyArrow.y);
+				else
+					variables.set("defaultStrumPos", [new FlxPoint(babyArrow.x, babyArrow.y)]);
+			}
 		}
 
 		variables.set("assignShader", (item:flixel.FlxSprite, shader:String) ->
@@ -188,6 +229,9 @@ class GameScript extends Interp
 
 	public function updateVars()
 	{
+		if (!valid)
+			return;
+
 		for (i in updatableVars)
 		{
 			var reflected = Reflect.field(PlayState.instance, i);
@@ -212,6 +256,15 @@ class GameScript extends Interp
 				trace("SCRIPT ERROR: Failed calling function " + func + ". Error: " + e);
 			}
 		}
+	}
+
+	public function kill()
+	{
+		for (k in variables.keys())
+			variables[k] = null;
+
+		updatableVars = [];
+		valid = false;
 	}
 }
 

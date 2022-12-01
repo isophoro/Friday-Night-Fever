@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Broken light.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="light broken0000" x="0" y="0" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0001" x="426" y="0" width="429" height="351" frameX="-14" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0002" x="855" y="0" width="435" height="351" frameX="-8" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0003" x="1290" y="0" width="443" height="351"/>
+	<SubTexture name="light broken0004" x="0" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0005" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0006" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0007" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0008" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0009" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0010" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0011" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0012" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0013" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0014" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0015" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0016" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0017" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0018" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0019" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0020" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0021" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0022" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0023" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0024" x="852" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0025" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0026" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0027" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+	<SubTexture name="light broken0028" x="426" y="351" width="426" height="351" frameX="-17" frameY="0" frameWidth="443" frameHeight="351"/>
+</TextureAtlas>

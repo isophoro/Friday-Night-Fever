@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="vai oc.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="food truck0000" x="0" y="0" width="1132" height="553"/>
+	<SubTexture name="food truck0001" x="0" y="0" width="1132" height="553"/>
+	<SubTexture name="food truck0002" x="1132" y="0" width="1132" height="553"/>
+	<SubTexture name="food truck0003" x="1132" y="0" width="1132" height="553"/>
+	<SubTexture name="food truck0004" x="2264" y="0" width="1132" height="553"/>
+	<SubTexture name="food truck0005" x="2264" y="0" width="1132" height="553"/>
+	<SubTexture name="food truck0006" x="0" y="553" width="1132" height="553"/>
+	<SubTexture name="food truck0007" x="0" y="553" width="1132" height="553"/>
+	<SubTexture name="food truck0008" x="0" y="553" width="1132" height="553"/>
+	<SubTexture name="food truck0009" x="0" y="553" width="1132" height="553"/>
+	<SubTexture name="food truck0010" x="0" y="553" width="1132" height="553"/>
+	<SubTexture name="food truck0011" x="0" y="553" width="1132" height="553"/>
+	<SubTexture name="food truck0012" x="0" y="553" width="1132" height="553"/>
+	<SubTexture name="food truck0013" x="0" y="553" width="1132" height="553"/>
+	<SubTexture name="food truck0014" x="0" y="553" width="1132" height="553"/>
+</TextureAtlas>

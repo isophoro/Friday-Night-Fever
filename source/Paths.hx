@@ -55,7 +55,7 @@ class Paths
 		return getPath(file, type, library);
 	}
 
-	inline static public function lua(key:String,?library:String)
+	inline static public function lua(key:String, ?library:String)
 	{
 		return getPath('data/$key.lua', TEXT, library);
 	}
@@ -103,20 +103,13 @@ class Paths
 
 	inline static public function voices(song:String)
 	{
-		song = StringTools.replace(song," ", "-");
-		if(PlayState.isIso == true && PlayState.SONG.song.toLowerCase() == 'party-crasher')
-		{
-			return 'songs:assets/songs/${song.toLowerCase()}/VoicesIso.$SOUND_EXT';
-		}
-		else
-		{
-			return 'songs:assets/songs/${song.toLowerCase()}/Voices.$SOUND_EXT';
-		}
+		song = StringTools.replace(song, " ", "-");
+		return 'songs:assets/songs/${song.toLowerCase()}/Voices.$SOUND_EXT';
 	}
 
 	inline static public function inst(song:String)
 	{
-		song = StringTools.replace(song," ", "-");
+		song = StringTools.replace(song, " ", "-");
 		return 'songs:assets/songs/${song.toLowerCase()}/Inst.$SOUND_EXT';
 	}
 
