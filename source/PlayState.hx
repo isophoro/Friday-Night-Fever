@@ -913,7 +913,7 @@ class PlayState extends MusicBeatState
 				dad.x -= 130;
 				dad.scrollFactor.set(0.9, 0.9);
 			case 'robo-cesar':
-				dad.x = -354.7;
+				dad.x = -365;
 				dad.y = 365.3;
 				dad.scrollFactor.set(0.9, 0.9);
 		}
@@ -2495,7 +2495,7 @@ class PlayState extends MusicBeatState
 					else
 					{
 						camFollow.y = dad.getMidpoint().y - 150;
-						camFollow.x = dad.getMidpoint().x - -600;
+						camFollow.x = dad.getMidpoint().x + 490;
 					}
 				case 'tea-bat':
 					camFollow.x = dad.getMidpoint().x - -600;
@@ -2588,8 +2588,8 @@ class PlayState extends MusicBeatState
 							camFollow.y = boyfriend.getMidpoint().y - 280;
 					}
 				case 'city':
-					camFollow.x = boyfriend.getMidpoint().x - 180;
-					camFollow.y = boyfriend.getMidpoint().y - 320;
+					camFollow.x = boyfriend.getMidpoint().x - 330;
+					camFollow.y = boyfriend.getMidpoint().y - 385;
 			}
 
 			BF_CAM_POS.set(camFollow.x, camFollow.y);

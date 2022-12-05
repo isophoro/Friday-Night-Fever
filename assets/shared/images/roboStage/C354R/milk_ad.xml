@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="milk_ad.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="straw ad0000" x="0" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0001" x="359" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0002" x="718" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0003" x="1077" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0004" x="1436" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0005" x="1795" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0006" x="2154" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0007" x="2513" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0008" x="2872" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0009" x="3231" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0010" x="3590" y="0" width="359" height="534"/>
+	<SubTexture name="straw ad0011" x="0" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0012" x="359" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0013" x="718" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0014" x="1077" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0015" x="1436" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0016" x="1795" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0017" x="2154" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0018" x="2513" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0019" x="2872" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0020" x="3231" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0021" x="3590" y="534" width="359" height="534"/>
+	<SubTexture name="straw ad0022" x="0" y="1068" width="359" height="534"/>
+	<SubTexture name="straw ad0023" x="0" y="0" width="359" height="534"/>
+</TextureAtlas>

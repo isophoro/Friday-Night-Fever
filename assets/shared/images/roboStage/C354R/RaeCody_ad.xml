@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="RaeCody_ad.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="soulsplit0000" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0001" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0002" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0003" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0004" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0005" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0006" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0007" x="671" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0008" x="1342" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0009" x="0" y="248" width="671" height="248"/>
+	<SubTexture name="soulsplit0010" x="671" y="248" width="671" height="248"/>
+	<SubTexture name="soulsplit0011" x="1342" y="248" width="671" height="248"/>
+	<SubTexture name="soulsplit0012" x="0" y="496" width="671" height="248"/>
+	<SubTexture name="soulsplit0013" x="671" y="496" width="671" height="248"/>
+	<SubTexture name="soulsplit0014" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0015" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0016" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0017" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0018" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0019" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0020" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0021" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0022" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0023" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0024" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0025" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0026" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0027" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0028" x="0" y="0" width="671" height="248"/>
+	<SubTexture name="soulsplit0029" x="0" y="0" width="671" height="248"/>
+</TextureAtlas>

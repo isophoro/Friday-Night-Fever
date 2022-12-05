@@ -1,18 +1,22 @@
+// the "city" stage from V.S Taki Mod
 setLabel("stage");
 import("flixel.effects.FlxFlicker");
 import("shaders.ColorShader");
 
 var sky:FlxSprite;
-var ads:FlxSprite;
 var mainBG:FlxSprite;
 var frontBG:FlxSprite;
+var lights:FlxSprite;
+var tower:FlxSprite;
 var makolicious:FlxSprite;
+var debra:FlxSprite;
 var robos:FlxSprite;
 var truck:FlxSprite;
 var broken:FlxSprite;
 var zombie:FlxSprite;
 var glow1:FlxSprite;
 var glow2:FlxSprite;
+var zombFlicker:Bool = false;
 
 // STREETLIGHT / CAR STUFF
 var streetlight:FlxSprite;
@@ -21,9 +25,7 @@ var randomWait:Float = 0;
 var elapsedTimer:Float = 0;
 var streetlightTimer:Float = 0;
 var streetlightMaxTime:Float = 8;
-
-//
-var zombFlicker:Bool = false;
+var adsGrp:Array<FlxSprite> = [];
 
 function image(img:String)
 {
@@ -42,20 +44,26 @@ function centerSpriteY(sprite1, sprite2)
 
 function onCreate()
 {
-	game.defaultCamZoom = 0.41;
+	game.defaultCamZoom = 0.36;
 
-	sky = new FlxSprite(-1350, -800).loadGraphic(image("sky"));
+	sky = new FlxSprite(-1450, -900).loadGraphic(image("sky"));
 	sky.antialiasing = true;
 	add(sky);
 
-	makolicious = new FlxSprite(-1350, -550);
+	makolicious = new FlxSprite(-1350, -650);
 	makolicious.frames = Paths.getSparrowAtlas("roboStage/C354R/tower");
 	makolicious.animation.addByPrefix("normal", "building0", 24, true);
 	makolicious.animation.addByPrefix("MAKO", "building mako0", 24, false);
 	makolicious.animation.addByPrefix("weewoo", "building mako loop", 24, true);
 	makolicious.animation.play("normal");
 	makolicious.antialiasing = true;
-	add(makolicious);
+
+	tower = new FlxSprite(-1350, -650);
+	tower.frames = Paths.getSparrowAtlas("roboStage/C354R/peakek");
+	tower.animation.addByPrefix("normal", "building0", 24, true);
+	tower.animation.play("normal");
+	tower.antialiasing = true;
+	add(tower);
 
 	robos = new FlxSprite(-1350, -430);
 	robos.frames = Paths.getSparrowAtlas("roboStage/C354R/robots");
@@ -65,13 +73,26 @@ function onCreate()
 	robos.visible = false;
 	add(robos);
 
-	ads = new FlxSprite(-1350, -800).loadGraphic(image("ads"));
-	ads.antialiasing = true;
-	add(ads);
+	createAd("hallow_ad", 21, 120, 1.25, "hallow ad", false);
+	createAd("milk_ad", 581, 120, 1.22, "straw ad", false);
+	createAd("roll_ad", 1081, 120, 1.22, "roll ad", true);
+	createAd("Shino_ad", 2534, 419, 1.22, "shino", false);
+	createAd("RaeCody_ad", 2537, 106, 1.22, "soulsplit", false);
+	// tacky tacky tacky but dont make her unhappy
+	createAd("taki_ad", 3518, 106, 1.22, "tacky tacky tacky sweet like laff", false);
+	// don't question it
 
-	mainBG = new FlxSprite(-1350, -800).loadGraphic(image("back_bg"));
+	mainBG = new FlxSprite(sky.x, sky.y).loadGraphic(image("back_bg"));
 	mainBG.antialiasing = true;
 	add(mainBG);
+
+	lights = new FlxSprite(sky.x, sky.y).loadGraphic(image("building_lights"));
+	lights.antialiasing = true;
+	add(lights);
+
+	debra = new FlxSprite(sky.x, sky.y).loadGraphic(image("debris_bg"));
+	debra.antialiasing = true;
+	add(debra);
 
 	zombie = new FlxSprite();
 	zombie.frames = Paths.getSparrowAtlas("roboStage/C354R/zog");
@@ -82,9 +103,10 @@ function onCreate()
 	add(zombie);
 	setGlobalVar("zombie", zombie);
 
-	zombie.setPosition(centerSpriteX(mainBG, zombie) - 850, centerSpriteY(mainBG, zombie) - 60);
+	zombie.setPosition(centerSpriteX(mainBG, zombie) - 850, centerSpriteY(mainBG, zombie));
 
 	makolicious.x = centerSpriteX(mainBG, makolicious) + 88;
+	tower.x = centerSpriteX(mainBG, makolicious) + 88;
 	robos.x = makolicious.x - 250;
 
 	truck = new FlxSprite();
@@ -94,14 +116,13 @@ function onCreate()
 	truck.antialiasing = true;
 	add(truck);
 
-	truck.setPosition(centerSpriteX(mainBG, truck) + 1200, centerSpriteY(mainBG, truck) + 70);
+	truck.setPosition(centerSpriteX(mainBG, truck) + 1700, centerSpriteY(mainBG, truck) + 120);
 
-	broken = new FlxSprite(-910, 865);
+	broken = new FlxSprite(-920, 765);
 	broken.frames = Paths.getSparrowAtlas("roboStage/C354R/light");
 	broken.animation.addByPrefix("idle", "light broken", 24, true);
 	broken.animation.play("idle");
 	broken.antialiasing = true;
-	add(broken);
 
 	streetlight = new FlxSprite(1350, -760);
 	streetlight.frames = Paths.getSparrowAtlas("roboStage/C354R/streetlight");
@@ -111,17 +132,21 @@ function onCreate()
 	streetlight.antialiasing = true;
 	add(streetlight);
 
-	frontBG = new FlxSprite(-1350, -800).loadGraphic(image("front_stuff"));
+	frontBG = new FlxSprite(sky.x, sky.y).loadGraphic(image("front_stuff"));
 	frontBG.antialiasing = true;
 	add(frontBG);
+	add(broken);
 
-	glow1 = new FlxSprite(-1350, -800).loadGraphic(image("glow"));
+	glow1 = new FlxSprite(sky.x, sky.y).loadGraphic(image("glow"));
 	glow1.antialiasing = true;
 	add(glow1);
 
-	glow2 = new FlxSprite(-1350, -800).loadGraphic(image("top_glow"));
+	glow2 = new FlxSprite(sky.x, sky.y).loadGraphic(image("top_glow"));
 	glow2.antialiasing = true;
 	add(glow2);
+
+	for (i in [boyfriend, dad, gf, zombie, broken])
+		i.color = 0xFFC681C6;
 }
 
 function onCreatePost()
@@ -135,6 +160,9 @@ function onCreatePost()
 
 	remove(gf);
 	add(gf, getIndexOfMember(frontBG));
+
+	remove(boyfriend);
+	add(boyfriend, getIndexOfMember(frontBG));
 }
 
 function onUpdate(elapsed:Float)
@@ -219,12 +247,16 @@ function spawnCar()
 	cars.push(car);
 	trace("car added");
 
-	FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.7);
+	FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.4);
 }
 
 function onBeatHit(curBeat:Int)
 {
 	truck.animation.play("bop", true);
+
+	for (i in adsGrp)
+		if (i.ID == 1)
+			i.animation.play("animation");
 
 	switch (streetlight.animation.curAnim.name)
 	{
@@ -247,12 +279,15 @@ function onBeatHit(curBeat:Int)
 			makolicious.offset.y += 158;
 			game.disableCamera = true;
 			game.camZooming = true;
-			game.camFollow.setPosition(makolicious.x + (makolicious.width / 2), makolicious.y + (makolicious.height / 2));
-			game.defaultCamZoom = 0.6;
+			game.camFollow.setPosition(makolicious.x + (makolicious.width / 2), makolicious.y + (makolicious.height / 2) - 50);
+			game.defaultCamZoom = 0.65;
+		case 287:
+			FlxTween.tween(camHUD, {alpha: 0.2}, 0.7);
 		case 302:
 			game.defaultCamZoom = 0.41;
 			game.disableCamera = false;
 			game.moveCamera(false);
+			FlxTween.tween(camHUD, {alpha: 1}, 0.3);
 	}
 
 	if (makolicious.animation.curAnim.name == "MAKO" && makolicious.animation.finished || makolicious.animation.curAnim.name == "weewoo")
@@ -274,4 +309,20 @@ function onStepHit(curStep:Int)
 		gf.playAnim("cheer", true);
 		boyfriend.playAnim("hey", true);
 	}
+}
+
+function createAd(img:String, x:Int, y:Int, scale:Float, anim:String, bop:Bool = false)
+{
+	trace('creating ad');
+	var ad:FlxSprite = new FlxSprite(sky.x + x, sky.y + y);
+	ad.frames = Paths.getSparrowAtlas("roboStage/C354R/" + img);
+	ad.animation.addByPrefix("animation", anim, 24, !bop);
+	ad.ID = bop ? 1 : 0;
+	ad.animation.play("animation");
+	ad.origin.set(0, 0);
+	ad.scale.scale(scale);
+	ad.antialiasing = true;
+	add(ad);
+	adsGrp.push(ad);
+	trace("ad create");
 }

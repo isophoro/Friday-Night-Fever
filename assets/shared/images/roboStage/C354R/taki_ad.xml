@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="taki_ad.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="tacky tacky tacky sweet like laff0000" x="0" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0001" x="332" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0002" x="664" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0003" x="996" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0004" x="0" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0005" x="1328" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0006" x="1660" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0007" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0008" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0009" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0010" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0011" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0012" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0013" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0014" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0015" x="0" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0016" x="332" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0017" x="1328" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0018" x="996" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0019" x="664" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0020" x="996" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0021" x="996" y="0" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0022" x="1328" y="575" width="332" height="575"/>
+	<SubTexture name="tacky tacky tacky sweet like laff0023" x="332" y="0" width="332" height="575"/>
+</TextureAtlas>

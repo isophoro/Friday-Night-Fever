@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hallow_ad.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="hallow ad0000" x="0" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0001" x="0" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0002" x="352" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0003" x="704" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0004" x="1056" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0005" x="1408" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0006" x="1760" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0007" x="2112" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0008" x="2464" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0009" x="2816" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0010" x="3168" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0011" x="3520" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0012" x="3520" y="0" width="352" height="550"/>
+	<SubTexture name="hallow ad0013" x="0" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0014" x="352" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0015" x="704" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0016" x="1056" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0017" x="1408" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0018" x="1760" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0019" x="2112" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0020" x="2464" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0021" x="2816" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0022" x="3168" y="550" width="352" height="550"/>
+	<SubTexture name="hallow ad0023" x="3520" y="550" width="352" height="550"/>
+</TextureAtlas>

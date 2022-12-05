@@ -67,12 +67,18 @@ function onCreate()
 		fever.visible = false;
 		boyfriend.visible = true;
 	}
+
+	for (i in [fever, tea, robo])
+		i.color = 0xFFC681C6;
 }
 
 function onCreatePost()
 {
 	remove(tea);
 	add(tea, getIndexOfMember(gf));
+
+	remove(fever);
+	add(fever, getIndexOfMember(boyfriend));
 
 	game.disableCamera = true;
 	snapCamera(DAD_CAM_POS);
