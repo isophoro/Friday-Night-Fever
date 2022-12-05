@@ -1459,7 +1459,7 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -Conductor.crochet * 5;
 
-		if (SONG.song.toLowerCase() == 'dead-mans-melody')
+		if (SONG.song.toLowerCase() == 'dead-mans-melody' || SONG.song.toLowerCase() == 'c354r')
 		{
 			return;
 		}

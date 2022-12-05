@@ -1,4 +1,6 @@
 setLabel("cutscene");
+import("flixel.FlxG");
+import("flixel.util.FlxTimer");
 function image(img:String)
 {
 	return Paths.image("roboStage/C354R/" + img, 'shared');
@@ -12,9 +14,15 @@ var zombie:FlxSprite;
 function onCreate()
 {
 	trace("Hi");
+	
 	camHUD.visible = false;
 	camGame.zoom += 0.12;
 	camGame.flash(FlxColor.BLACK, 1.3);
+
+	new FlxTimer().start(0.08, function(tmr:FlxTimer)
+	{
+		FlxG.sound.play(Paths.sound('robertCutscene'));
+	});
 
 	dad.visible = false;
 	boyfriend.visible = false;
@@ -85,8 +93,12 @@ function onCreatePost()
 	zombie = getGlobalVar("zombie");
 }
 
+
+
 function onUpdate(elapsed:Float)
 {
+
+
 	if (robo.animation.curAnim.curFrame >= 53 && zombie.animation.curAnim.name != "EXPLODE")
 	{
 		zombie.animation.play("EXPLODE");
