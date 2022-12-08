@@ -6,6 +6,7 @@ import flixel.math.FlxPoint;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxDestroyUtil.IFlxDestroyable;
 import hscript.Interp;
 import hscript.Parser;
 import sys.FileSystem;
@@ -41,24 +42,73 @@ class ScriptGroup
 	}
 }
 
-class GameScript extends Interp
+class GameScript extends Interp implements IFlxDestroyable
 {
 	static final AUTOIMPORTS:Array<Class<Dynamic>> = [
-		Math,
-		FlxG,
-		FlxSprite,
-		FlxPoint,
-		FlxTween,
-		FlxEase,
-		Conductor,
-		Paths,
-		ClientPrefs
+		Math, Std, FlxG, FlxSprite, FlxPoint, FlxTween, FlxEase, Conductor, Paths, ClientPrefs
+	];
+
+	static var functions(default, never):Map<String, Dynamic> = [
+		"add" => (item:flixel.FlxBasic, pos:Int = -1, ?camera:flixel.FlxCamera) ->
+		{
+			if (camera != null)
+				item.cameras = [camera];
+			if (pos != -1)
+			{
+				PlayState.instance.insert(pos, item);
+			}
+			else
+			{
+				PlayState.instance.add(item);
+			}
+		},
+		"remove" => (item:flixel.FlxBasic, ?destroy:Bool) ->
+		{
+			PlayState.instance.remove(item);
+			if (destroy)
+				item.destroy();
+		},
+		"tween" => FlxTween.tween,
+		"setNoteX" => (x:Float, num:Int) ->
+		{
+			PlayState.strumLineNotes.members[num].x = x;
+		},
+		"setNoteY" => (y:Float, num:Int) ->
+		{
+			PlayState.strumLineNotes.members[num].y = y;
+		},
+		"setNoteAngle" => (angle:Float, num:Int) ->
+		{
+			PlayState.strumLineNotes.members[num].angle = angle;
+		},
+		"setNoteProperty" => (note:Note, property:String, val:Dynamic) ->
+		{
+			Reflect.setField(note.properties, property, val);
+		},
+		"getNoteProperty" => (note:Note, property:String) ->
+		{
+			return Reflect.field(note.properties, property);
+		},
+		"getIndexOfMember" => (item:flixel.FlxBasic) ->
+		{
+			return PlayState.instance.members.indexOf(item);
+		},
+		"snapCamera" => (?pos:FlxPoint) ->
+		{
+			if (pos != null)
+			{
+				PlayState.instance.camFollow.setPosition(pos.x, pos.y);
+			}
+			var camFollow = PlayState.instance.camFollow;
+			PlayState.instance.camGame.focusOn(pos == null ? new FlxPoint(camFollow.x, camFollow.y) : pos);
+		}
 	];
 
 	public var label:String = "";
 	public var updatableVars:Array<String> = [];
 	public var valid:Bool = false;
 	public var parentGrp:ScriptGroup = null;
+	public var ownedGlobals:Array<String> = [];
 
 	public function new(?path:String)
 	{
@@ -93,7 +143,10 @@ class GameScript extends Interp
 		{
 			trace("Setting global var: " + name);
 			if (parentGrp != null)
+			{
 				parentGrp.globalVars.set(name, obj);
+				ownedGlobals.push(name);
+			}
 		});
 
 		variables.set("getGlobalVar", (name:String) ->
@@ -137,6 +190,9 @@ class GameScript extends Interp
 			variables.set(split[split.length - 1], i);
 		}
 
+		for (k => v in functions)
+			variables.set(k, v);
+
 		// set up work arounds for abstract classes
 		variables.set("FlxColor", HScriptColorAccess);
 		var tweenTypes:Dynamic = {
@@ -146,6 +202,7 @@ class GameScript extends Interp
 			ONESHOT: 8,
 			PERSIST: 1
 		};
+
 		variables.set("FlxTweenType", tweenTypes);
 
 		variables.set("import", (classStr:String) ->
@@ -153,41 +210,6 @@ class GameScript extends Interp
 			var split:Array<String> = classStr.split('.');
 			trace("Importing class: " + split[split.length - 1]);
 			variables.set(split[split.length - 1], Type.resolveClass(classStr));
-		});
-
-		variables.set("getIndexOfMember", (item:flixel.FlxBasic) ->
-		{
-			return PlayState.instance.members.indexOf(item);
-		});
-
-		variables.set("add", (item:flixel.FlxBasic, pos:Int = -1, ?camera:flixel.FlxCamera) ->
-		{
-			if (pos != -1)
-				PlayState.instance.insert(pos, item);
-			else
-				PlayState.instance.add(item);
-
-			if (camera != null)
-				item.cameras = [camera];
-		});
-
-		variables.set("remove", (item:flixel.FlxBasic, ?destroy:Bool) ->
-		{
-			PlayState.instance.remove(item);
-
-			if (destroy)
-				item.destroy();
-		});
-
-		variables.set("snapCamera", (?pos:FlxPoint) ->
-		{
-			if (pos != null)
-			{
-				PlayState.instance.camFollow.setPosition(pos.x, pos.y);
-			}
-
-			var camFollow = PlayState.instance.camFollow;
-			PlayState.instance.camGame.focusOn(pos == null ? new FlxPoint(camFollow.x, camFollow.y) : pos);
 		});
 
 		variables.set("game", FlxG.state);
@@ -258,13 +280,18 @@ class GameScript extends Interp
 		}
 	}
 
-	public function kill()
+	public function destroy()
 	{
 		for (k in variables.keys())
 			variables[k] = null;
 
 		updatableVars = [];
 		valid = false;
+
+		if (parentGrp != null)
+		{
+			parentGrp.grp.remove(this);
+		}
 	}
 }
 

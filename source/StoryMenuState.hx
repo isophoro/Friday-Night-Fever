@@ -9,19 +9,18 @@ import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import shaders.WiggleEffect;
-import shaders.WiggleEffect.WiggleEffectType;
 import flixel.util.FlxTimer;
-import openfl.filters.BitmapFilter;
 import lime.net.curl.CURLCode;
+import openfl.filters.BitmapFilter;
 import openfl.filters.ShaderFilter;
+import shaders.WiggleEffect.WiggleEffectType;
+import shaders.WiggleEffect;
+
+using StringTools;
 
 #if windows
 import Discord.DiscordClient;
 #end
-
-using StringTools;
-
 #if shaders
 import openfl.filters.ShaderFilter;
 #end
@@ -51,9 +50,8 @@ class StoryMenuState extends MusicBeatState
 			['Honey', "Bunnii", "Throw-it-back"],
 			['Mild', 'Spice', 'Party-Crasher'],
 			['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
-			['C354R', 'Loaded']
-			//['Tranquility', 'Princess', 'Banish']
-		];	
+			['C354R', 'Loaded'] // ['Tranquility', 'Princess', 'Banish']
+		];
 	}
 
 	var curDifficulty:Int = 2;
@@ -64,11 +62,11 @@ class StoryMenuState extends MusicBeatState
 
 	public static var weekUnlocked:Array<Bool> = [for (i in get_weekData()) true];
 
-	var weekNames(get, never):Array<String>; 
-	
+	var weekNames(get, never):Array<String>;
+
 	function get_weekNames()
 	{
-		return[
+		return [
 			"SWEET SERVICE!",
 			"STICKY SITUATION!",
 			PlayState.minus ? "VS MINUS TAKI" : "SWEET AND SOUR!",
@@ -78,8 +76,7 @@ class StoryMenuState extends MusicBeatState
 			"BUNNI MURDER!",
 			"DINNER TIME!",
 			"GOD DAMN!",
-			"ROBERT FEVER WEEK"
-			//"PRINCESS WEEK"
+			"ROBERT FEVER WEEK" // "PRINCESS WEEK"
 		];
 	}
 
@@ -107,7 +104,7 @@ class StoryMenuState extends MusicBeatState
 	{
 		PlayState.easierMode = false;
 		PlayState.deaths = 0;
-		
+
 		FlxG.camera.setFilters(filters);
 		FlxG.camera.filtersEnabled = true;
 
@@ -115,7 +112,6 @@ class StoryMenuState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Story Mode Menu", null);
 		#end
-		
 
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
@@ -140,10 +136,8 @@ class StoryMenuState extends MusicBeatState
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
 
-		
 		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
 		var arrow = Paths.getSparrowAtlas('newStory/arrows');
-		var yellowBG:FlxSprite = new FlxSprite(0, 56).loadGraphic(Paths.image("campaign thing"));
 
 		peakek = new FlxSprite(0, 0).loadGraphic(Paths.image('newStory/week1'));
 		peakek.antialiasing = true;
@@ -160,7 +154,7 @@ class StoryMenuState extends MusicBeatState
 		var blackThing:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('newStory/menu'));
 		blackThing.scrollFactor.set();
 		add(blackThing);
-		
+
 		grpWeekText = new FlxTypedGroup<MenuItem>();
 		add(grpWeekText);
 
@@ -235,7 +229,6 @@ class StoryMenuState extends MusicBeatState
 		add(alert);
 		alert.visible = false;
 
-
 		updateText();
 		changeDifficulty();
 
@@ -248,17 +241,17 @@ class StoryMenuState extends MusicBeatState
 	{
 		var accepted:Bool = controls.ACCEPT;
 
-		if(PlayState.endingSong == true)
+		if (PlayState.endingSong == true)
 		{
-			if(PlayState.SONG.song.toLowerCase() == 'milk-tea' && PlayState.storyDifficulty == 0)
+			if (PlayState.SONG.song.toLowerCase() == 'milk-tea' && PlayState.storyDifficulty == 0)
 			{
 				Achievements.getAchievement(2);
-				//Costume.unlockCostume(Teasar);
+				// Costume.unlockCostume(Teasar);
 			}
 
 			if (PlayState.isStoryMode && PlayState.storyPlaylist.length <= 1)
 			{
-				if(FlxG.save.data.misses == 0)
+				if (FlxG.save.data.misses == 0)
 				{
 					switch (PlayState.storyWeek)
 					{
@@ -270,11 +263,11 @@ class StoryMenuState extends MusicBeatState
 							Achievements.getAchievement(10);
 						case 3:
 							Achievements.getAchievement(11);
-						case 4: 
+						case 4:
 							Achievements.getAchievement(12);
-						case 5: 
+						case 5:
 							Achievements.getAchievement(13);
-						case 6: 
+						case 6:
 							Achievements.getAchievement(14);
 						case 7:
 							Achievements.getAchievement(15);
@@ -282,20 +275,18 @@ class StoryMenuState extends MusicBeatState
 							Achievements.getAchievement(16);
 						default:
 							trace('yay!!!');
-						
 					}
-				}	
+				}
 				else
 				{
 					PlayState.endingSong = false;
 					FlxG.save.data.misses = 0;
 				}
 			}
-
 		}
 
 		#if mobile
-		if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed) 
+		if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed)
 		{
 			for (sprite in grpWeekText)
 			{
@@ -333,21 +324,21 @@ class StoryMenuState extends MusicBeatState
 			lock.y = grpWeekText.members[lock.ID].y;
 		});
 
-		if(selectedWeek)
+		if (selectedWeek)
 		{
-			if(FlxG.keys.justPressed.Y)
-				{
-					saidYES = true;
-					selectWeek();
-				}
+			if (FlxG.keys.justPressed.Y)
+			{
+				saidYES = true;
+				selectWeek();
+			}
 
-				if(FlxG.keys.justPressed.N)
-				{
-					saidYES = false;
-					selectWeek();
-				}
+			if (FlxG.keys.justPressed.N)
+			{
+				saidYES = false;
+				selectWeek();
+			}
 		}
-		
+
 		if (!movedBack)
 		{
 			if (!selectedWeek)
@@ -371,27 +362,24 @@ class StoryMenuState extends MusicBeatState
 					leftArrow.animation.play('press');
 				else
 					leftArrow.animation.play('idle');
-				
+
 				if (controls.RIGHT_P)
 					changeDifficulty(1);
 				if (controls.LEFT_P)
 					changeDifficulty(-1);
-
 			}
 
 			if (accepted && !stopspamming)
 			{
-				if(curWeek == 9)
+				if (curWeek == 9)
 				{
 					alert.visible = true;
-					selectedWeek = true;	
-
+					selectedWeek = true;
 				}
-				else 
+				else
 				{
 					selectWeek();
 				}
-
 			}
 		}
 
@@ -436,12 +424,13 @@ class StoryMenuState extends MusicBeatState
 
 			PlayState.storyDifficulty = curDifficulty;
 
-			PlayState.SONG = Song.loadFromJson(StringTools.replace(PlayState.storyPlaylist[0]," ", "-").toLowerCase() + diffic, StringTools.replace(PlayState.storyPlaylist[0]," ", "-").toLowerCase());
+			PlayState.SONG = Song.loadFromJson(StringTools.replace(PlayState.storyPlaylist[0], " ", "-").toLowerCase() + diffic,
+				StringTools.replace(PlayState.storyPlaylist[0], " ", "-").toLowerCase());
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				if(saidYES == true)
+				if (saidYES == true)
 				{
 					FlxG.switchState(new Recap());
 				}
@@ -481,7 +470,7 @@ class StoryMenuState extends MusicBeatState
 		}
 
 		updateText();
-		
+
 		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
 
 		sprDifficulty.updateHitbox();
@@ -525,11 +514,10 @@ class StoryMenuState extends MusicBeatState
 
 	function updateText()
 	{
-		if(lime.utils.Assets.exists(Paths.image('newStory/week'+curWeek)))
+		if (lime.utils.Assets.exists(Paths.image('newStory/week' + curWeek)))
 		{
-			peakek.loadGraphic(Paths.image('newStory/week'+curWeek));
+			peakek.loadGraphic(Paths.image('newStory/week' + curWeek));
 			peakek.visible = true;
-			
 		}
 		else
 			peakek.visible = false;
@@ -540,7 +528,7 @@ class StoryMenuState extends MusicBeatState
 		var hiddenSongs:Array<String> = [];
 		for (i in stringThing)
 		{
-			if(!hiddenSongs.contains(i))
+			if (!hiddenSongs.contains(i))
 				txtTracklist.text += "\n" + StringTools.replace(i, "-", " ");
 		}
 

@@ -39,6 +39,7 @@ class Note extends FlxSprite
 	public var type:Int = 0;
 
 	public var rating:String = "shit";
+	public var properties:Dynamic = {};
 
 	public function new()
 	{
@@ -138,6 +139,7 @@ class Note extends FlxSprite
 		visible = true;
 		clipRect = null;
 		flipY = ClientPrefs.downscroll && isSustainNote;
+		properties = {};
 
 		var noteStyle:String = PlayState.SONG.noteStyle;
 
