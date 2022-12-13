@@ -1,7 +1,7 @@
 package;
 
 import Conductor.BPMChangeEvent;
-import Section.SwagSection;
+import Song.SwagSection;
 import Song.SwagSong;
 import flixel.FlxCamera;
 import flixel.FlxG;

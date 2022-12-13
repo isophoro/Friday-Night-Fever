@@ -193,7 +193,7 @@ class Character extends FlxSprite
 			holdTimer -= elapsed;
 		}
 
-		if (!isPlayer && !PlayState.opponent || isPlayer && PlayState.opponent)
+		if (!isPlayer)
 		{
 			if (holdTimer >= Conductor.stepCrochet * (curCharacter == 'dad' ? 6.1 : 4) * 0.001)
 			{

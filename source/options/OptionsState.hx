@@ -32,7 +32,9 @@ class OptionsState extends MusicBeatState
             new Option("Botplay", "When enabled, player input will be locked and songs will automatically play themselves.", "botplay", BOOL)
         ]},
         {"name":"Visuals", options:[
+            new Option("Flashing Lights", "When disabled, flashing lights in the menus and in game will no longer happen.", "flashing", BOOL),
             new Option("Show Note Splashes", "When enabled, \"Sick\" ratings will causes the corresponding arrow to sparkle.", "notesplash", BOOL),
+			new Option("Show Note Precision", "When enabled, the precision of hit notes (in milliseconds) will be displayed next to your combo.", "showPrecision", BOOL),
             new Option("Show Subtitles", "When enabled, songs containing lyrics display subtitles on screen.", "subtitles", BOOL),
             new Option("Show Song Position", "When enabled, the time duration of the song being played will always be displayed.", "songPosition", BOOL),
         ]},

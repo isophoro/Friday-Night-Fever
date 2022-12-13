@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Scarlet Final clap.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Final scarlet slap0000" x="0" y="0" width="1781" height="1216" pivotX="734.4" pivotY="519.15"/>
+	<SubTexture name="Final scarlet slap0001" x="1781" y="0" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0002" x="3562" y="0" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0003" x="5343" y="0" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0004" x="0" y="1216" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0005" x="0" y="1216" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0006" x="1781" y="1216" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0007" x="1781" y="1216" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0008" x="3562" y="1216" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0009" x="3562" y="1216" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0010" x="5343" y="1216" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0011" x="0" y="2432" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0012" x="1781" y="2432" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0013" x="3562" y="2432" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0014" x="5343" y="2432" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0015" x="0" y="3648" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0016" x="1781" y="3648" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0017" x="3562" y="3648" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0018" x="5343" y="3648" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0019" x="0" y="4864" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0020" x="1781" y="4864" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0021" x="3562" y="4864" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0022" x="5343" y="4864" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0023" x="5343" y="4864" width="1781" height="1216"/>
+	<SubTexture name="Final scarlet slap0024" x="5343" y="4864" width="1781" height="1216"/>
+</TextureAtlas>

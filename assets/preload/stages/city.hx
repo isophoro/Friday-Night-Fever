@@ -145,7 +145,7 @@ function onCreate()
 	glow2.antialiasing = true;
 	add(glow2);
 
-	for (i in [boyfriend, dad, gf, zombie, broken])
+	for (i in [boyfriend, dad, gf, zombie, broken, truck])
 		i.color = 0xFFC681C6;
 }
 

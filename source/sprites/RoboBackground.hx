@@ -410,8 +410,8 @@ class RoboBackground
 					instance.gf.visible = false;
 					instance.dad.visible = false;
 					instance.boyfriend.visible = false;
-					instance.curOpponent = PlayState.opponent ? fever_pixel : robofever;
-					instance.curPlayer = PlayState.opponent ? robofever : fever_pixel;
+					instance.curOpponent = robofever;
+					instance.curPlayer = fever_pixel;
 				case 336:
 					switchStage(/* 'default' */ 'c354r-default');
 					changeStrums();
@@ -423,8 +423,8 @@ class RoboBackground
 					instance.remove(robofever);
 					instance.dad.visible = true;
 					instance.boyfriend.visible = true;
-					instance.curOpponent = PlayState.opponent ? instance.boyfriend : instance.dad;
-					instance.curPlayer = PlayState.opponent ? instance.dad : instance.boyfriend;
+					instance.curOpponent = instance.dad;
+					instance.curPlayer = instance.boyfriend;
 				case 400:
 					switchStage('church');
 				case 496:

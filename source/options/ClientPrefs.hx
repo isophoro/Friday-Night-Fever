@@ -23,6 +23,7 @@ class ClientPrefs
 	public static var scrollSpeed:Float = 1;
 	public static var botplay:Bool = false;
 
+	public static var showPrecision:Bool = true;
 	public static var changedHit = false;
 	public static var changedHitX = -1;
 	public static var changedHitY = -1;
@@ -32,6 +33,7 @@ class ClientPrefs
 	public static var shaders:Bool = true;
 	public static var animeIntro:Bool = true;
 
+	public static var flashing:Bool = true;
 	public static var songPosition:Bool = false;
 	public static var subtitles:Bool = true;
 	public static var notesplash = true;
@@ -41,6 +43,8 @@ class ClientPrefs
 	public static var hallowDeaths:Int = 0;
 	public static var hallowNoteDeaths:Int = 0;
 	public static var deaths:Int = 0;
+
+	public static var opponent:Bool = false;
 
 	public static function get_keybinds():Array<String>
 	{

@@ -155,18 +155,14 @@ class MainMenuState extends MusicBeatState
 			trace('not logged in');
 		}
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height
-			- 18, 0,
-			'Friday Night Fever ${Application.current.meta.get("version")} (Running on KE 1.5.1), (Logged in as '
-			+ FlxG.save.data.gjUser
-			+ ')', 12);
-		versionShit.scrollFactor.set();
-		versionShit.antialiasing = true;
+		var versionShit:FlxText = new FlxText(5, 0, 0,
+			'Friday Night Fever ${Application.current.meta.get("version")}\nGamejolt: ' +
+			(GameJoltAPI.userLogin ? "Not logged in" : 'Logged in as ${FlxG.save.data.gjUser}'),
+			12);
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-
-		versionShit.text += '\nPress C to visit the credits menu';
+		versionShit.antialiasing = true;
 		versionShit.y = FlxG.height - versionShit.height;
+		add(versionShit);
 
 		changeItem();
 
@@ -258,7 +254,7 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 
-				if (FlxG.save.data.flashing)
+				if (ClientPrefs.flashing)
 					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
 				menuItems.forEach(function(spr:FlxSprite)
@@ -275,7 +271,7 @@ class MainMenuState extends MusicBeatState
 					}
 					else
 					{
-						if (FlxG.save.data.flashing)
+						if (ClientPrefs.flashing)
 						{
 							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
 							{
@@ -304,14 +300,9 @@ class MainMenuState extends MusicBeatState
 		switch (daChoice)
 		{
 			case 'story mode':
-				/*if (FlxG.save.data.popups.contains('dialogue'))*/
 				FlxG.switchState(new StoryMenuState());
-			/*else
-				openSubState(new sprites.PopupState('dialogue')); */
 			case 'freeplay':
 				FlxG.switchState(new SelectingSongState());
-
-				trace("Freeplay Menu Selected");
 			case 'jukebox':
 				FlxG.switchState(new JukeboxState());
 			case 'gallery':
@@ -337,7 +328,6 @@ class MainMenuState extends MusicBeatState
 			if (spr.ID == curSelected)
 			{
 				spr.animation.play('selected');
-				// camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
 			}
 
 			spr.updateHitbox();

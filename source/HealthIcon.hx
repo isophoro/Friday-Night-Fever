@@ -42,6 +42,8 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-mom'), true, 150, 150);
 			case 'taki' | 'monster':
 				loadGraphic(Paths.image('icons/icon-monster'), true, 150, 150);
+			case 'scarlet-final':
+				loadGraphic(Paths.image('icons/icon-scarlet'), true, 150, 150);
 			default:
 				loadGraphic(Paths.image('icons/icon-$char'), true, 150, 150);
 		}

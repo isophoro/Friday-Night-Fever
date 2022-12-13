@@ -1,6 +1,7 @@
 setLabel("cutscene");
 import("flixel.FlxG");
 import("flixel.util.FlxTimer");
+
 function image(img:String)
 {
 	return Paths.image("roboStage/C354R/" + img, 'shared');
@@ -14,7 +15,7 @@ var zombie:FlxSprite;
 function onCreate()
 {
 	trace("Hi");
-	
+
 	camHUD.visible = false;
 	camGame.zoom += 0.12;
 	camGame.flash(FlxColor.BLACK, 1.3);
@@ -93,12 +94,8 @@ function onCreatePost()
 	zombie = getGlobalVar("zombie");
 }
 
-
-
 function onUpdate(elapsed:Float)
 {
-
-
 	if (robo.animation.curAnim.curFrame >= 53 && zombie.animation.curAnim.name != "EXPLODE")
 	{
 		zombie.animation.play("EXPLODE");

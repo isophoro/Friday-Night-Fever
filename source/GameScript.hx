@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
 import flixel.math.FlxPoint;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -67,6 +68,11 @@ class GameScript extends Interp implements IFlxDestroyable
 			PlayState.instance.remove(item);
 			if (destroy)
 				item.destroy();
+		},
+		"createBackdrop" => (img:String, spacingX:Int = 0, spacingY:Int = 0, repeatY:Bool = false) ->
+		{
+			// doing new FlxBackdrop contains evil enums in the constructor so we cant do that in hscript
+			return new FlxBackdrop(img, repeatY ? XY : X, spacingX, spacingY);
 		},
 		"tween" => FlxTween.tween,
 		"setNoteX" => (x:Float, num:Int) ->

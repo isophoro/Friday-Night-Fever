@@ -225,7 +225,7 @@ class TitleState extends MusicBeatState
 				initialized = true;
 				transitioning = true;
 
-				if (FlxG.save.data.flashing)
+				if (ClientPrefs.flashing)
 					titleText.animation.play('press');
 
 				FlxTween.tween(titleText, {y: 1200, alpha: 0}, 1.23, {ease: FlxEase.elasticInOut});

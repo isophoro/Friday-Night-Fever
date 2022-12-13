@@ -52,7 +52,7 @@
 			"name": "singUP"
 		}
 	],
-	"noAntialiasing": false,
+	"noAntialiasing": true,
 	"facingLeft": true,
 	"file": "robofever-pixel",
 	"color": "50a5eb"

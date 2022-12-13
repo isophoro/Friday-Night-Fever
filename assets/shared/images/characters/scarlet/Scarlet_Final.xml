@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Scarlet Final.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Final scarlet down0000" x="0" y="0" width="1302" height="1019" pivotX="407.8" pivotY="328.45"/>
+	<SubTexture name="Final scarlet down0001" x="0" y="0" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0002" x="1302" y="0" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0003" x="1302" y="0" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0004" x="2604" y="0" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0005" x="2604" y="0" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0006" x="3906" y="0" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0007" x="5208" y="0" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0008" x="6510" y="0" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0009" x="0" y="1019" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0010" x="1302" y="1019" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0011" x="1302" y="1019" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0012" x="2604" y="1019" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0013" x="3906" y="1019" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0014" x="5208" y="1019" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0015" x="6510" y="1019" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0016" x="0" y="2038" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0017" x="1302" y="2038" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0018" x="2604" y="2038" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0019" x="3906" y="2038" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0020" x="5208" y="2038" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0021" x="5208" y="2038" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet down0022" x="6510" y="2038" width="1302" height="1019"/>
+	<SubTexture name="Final scarlet idle0000" x="0" y="3057" width="1123" height="1171" pivotX="452.4" pivotY="476.55"/>
+	<SubTexture name="Final scarlet idle0001" x="0" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0002" x="1123" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0003" x="1123" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0004" x="2246" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0005" x="2246" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0006" x="3369" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0007" x="3369" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0008" x="4492" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0009" x="4492" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0010" x="5615" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0011" x="5615" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0012" x="5615" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet idle0013" x="5615" y="3057" width="1123" height="1171"/>
+	<SubTexture name="Final scarlet left0000" x="6738" y="3057" width="887" height="1191" pivotX="252.15" pivotY="502.15"/>
+	<SubTexture name="Final scarlet left0001" x="6738" y="3057" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0002" x="0" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0003" x="0" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0004" x="887" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0005" x="887" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0006" x="1774" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0007" x="1774" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0008" x="2661" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0009" x="2661" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0010" x="2661" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0011" x="2661" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0012" x="2661" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0013" x="2661" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet left0014" x="2661" y="4248" width="887" height="1191"/>
+	<SubTexture name="Final scarlet right0000" x="3548" y="4248" width="926" height="1179" pivotX="101.4" pivotY="488.15"/>
+	<SubTexture name="Final scarlet right0001" x="3548" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0002" x="4474" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0003" x="4474" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0004" x="5400" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0005" x="5400" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0006" x="6326" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0007" x="6326" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0008" x="7252" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0009" x="7252" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0010" x="7252" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0011" x="7252" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0012" x="7252" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0013" x="7252" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet right0014" x="7252" y="4248" width="926" height="1179"/>
+	<SubTexture name="Final scarlet up0000" x="0" y="5439" width="791" height="1266" pivotX="294.85" pivotY="570.55"/>
+	<SubTexture name="Final scarlet up0001" x="0" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0002" x="791" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0003" x="791" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0004" x="1582" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0005" x="1582" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0006" x="791" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0007" x="791" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0008" x="2373" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0009" x="2373" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0010" x="2373" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0011" x="2373" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0012" x="2373" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0013" x="2373" y="5439" width="791" height="1266"/>
+	<SubTexture name="Final scarlet up0014" x="2373" y="5439" width="791" height="1266"/>
+</TextureAtlas>

@@ -2,147 +2,123 @@
 	"animations": [
 		{
 			"offsets": [
-				-26,
-				-9
+				-20,
+				91
 			],
 			"fps": 24,
-			"anim": "BF idle shaking",
-			"loop": true,
-			"name": "scared"
-		},
-		{
-			"offsets": [
-				37,
-				5
-			],
-			"fps": 24,
-			"anim": "BF Dead Loop",
-			"loop": true,
-			"name": "deathLoop"
-		},
-		{
-			"offsets": [
-				-48,
-				-15
-			],
-			"fps": 24,
-			"anim": "BF NOTE RIGHT MISS",
+			"anim": "fever right miss",
 			"loop": false,
 			"name": "singRIGHTmiss"
 		},
 		{
 			"offsets": [
-				-29,
-				-75
+				12,
+				12
 			],
 			"fps": 24,
-			"anim": "BF NOTE DOWN0",
+			"anim": "fever down0",
 			"loop": false,
 			"name": "singDOWN"
 		},
 		{
 			"offsets": [
-				21,
-				-3
+				6,
+				93
 			],
 			"fps": 24,
-			"anim": "BF NOTE LEFT MISS",
+			"anim": "fever idle frown",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				40,
+				93
+			],
+			"fps": 24,
+			"anim": "fever left miss",
 			"loop": false,
 			"name": "singLEFTmiss"
 		},
 		{
 			"offsets": [
-				-28,
-				13
+				-26, 95
 			],
 			"fps": 24,
-			"anim": "BF NOTE UP0",
+			"anim": "fever up0",
 			"loop": false,
 			"name": "singUP"
 		},
 		{
 			"offsets": [
-				37,
-				69
+				-3,
+				93
 			],
 			"fps": 24,
-			"anim": "BF Dead confirm",
-			"loop": false,
-			"name": "deathConfirm"
-		},
-		{
-			"offsets": [
-				37,
-				11
-			],
-			"fps": 24,
-			"anim": "BF dies",
-			"loop": false,
-			"name": "firstDeath"
-		},
-		{
-			"offsets": [
-				-10,
-				3
-			],
-			"fps": 24,
-			"anim": "BF HEY",
+			"anim": "fever hey",
 			"loop": false,
 			"name": "hey"
 		},
 		{
 			"offsets": [
-				-5,
-				0
+				6,
+				93
 			],
 			"fps": 24,
-			"anim": "BF idle dance",
+			"anim": "fever idle0",
 			"loop": false,
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				-33,
-				-75
+				11,
+				14
 			],
 			"fps": 24,
-			"anim": "BF NOTE DOWN MISS",
+			"anim": "fever down miss",
 			"loop": false,
 			"name": "singDOWNmiss"
 		},
 		{
 			"offsets": [
-				-55,
-				-9
+				-21, 93
 			],
 			"fps": 24,
-			"anim": "BF NOTE RIGHT0",
+			"anim": "fever right0",
 			"loop": false,
 			"name": "singRIGHT"
 		},
 		{
 			"offsets": [
-				14,
-				-2
+				42, 92
 			],
 			"fps": 24,
-			"anim": "BF NOTE LEFT0",
+			"anim": "fever left0",
 			"loop": false,
 			"name": "singLEFT"
 		},
 		{
 			"offsets": [
-				-56,
-				10
+				-14,
+				103
 			],
 			"fps": 24,
-			"anim": "BF NOTE UP MISS",
+			"anim": "fever up miss",
 			"loop": false,
 			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				32,
+				92
+			],
+			"fps": 24,
+			"anim": "fever dodge",
+			"loop": false,
+			"name": "dodge"
 		}
 	],
-	"noAntialiasing": false,
 	"facingLeft": true,
-	"file": "casFEVER",
+	"file": "fever/casual_fever",
 	"color": "C353E3"
 }

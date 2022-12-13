@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="streaks.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="streaks bg0000" x="0" y="0" width="1989" height="1388" pivotX="-155.35" pivotY="-196.45"/>
+	<SubTexture name="streaks bg0001" x="1989" y="0" width="1989" height="1388"/>
+</TextureAtlas>

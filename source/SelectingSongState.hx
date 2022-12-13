@@ -1,26 +1,24 @@
 package;
 
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
-import flixel.group.FlxGroup.FlxTypedGroup;
-
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
-import lime.utils.Assets;
-import flixel.effects.FlxFlicker;
-import flixel.util.FlxTimer;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.effects.FlxFlicker;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
+import lime.utils.Assets;
 
+using StringTools;
 
 #if windows
 import Discord.DiscordClient;
 #end
-
-using StringTools;
 
 class SelectingSongState extends MusicBeatState
 {
@@ -57,7 +55,8 @@ class SelectingSongState extends MusicBeatState
 			selecterIcons.ID = i;
 			selectorIcon.add(selecterIcons);
 
-			selectorIcon.forEach(function(spr:FlxSprite){
+			selectorIcon.forEach(function(spr:FlxSprite)
+			{
 				FlxTween.tween(spr, {y: 200}, 0.8, {ease: FlxEase.smoothStepInOut});
 			});
 		}
@@ -68,7 +67,7 @@ class SelectingSongState extends MusicBeatState
 		#end
 
 		changeItem();
-	
+
 		super.create();
 	}
 
@@ -118,24 +117,24 @@ class SelectingSongState extends MusicBeatState
 				}
 			}
 			#end
-	
+
 			if (controls.LEFT_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(-1);
 			}
-	
+
 			if (controls.RIGHT_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(1);
 			}
-	
+
 			if (controls.getBack())
 			{
 				FlxG.switchState(new MainMenuState());
 			}
-	
+
 			if (controls.ACCEPT)
 			{
 				selectItem();
@@ -145,9 +144,9 @@ class SelectingSongState extends MusicBeatState
 
 	function goToState()
 	{
-		if(FreeplayState.currentStyle != selectors[curSelected])
+		if (FreeplayState.currentStyle != selectors[curSelected])
 			FreeplayState.curSelected = 0;
-		
+
 		FreeplayState.currentStyle = selectors[curSelected];
 
 		FlxTransitionableState.skipNextTransIn = true;
@@ -160,24 +159,24 @@ class SelectingSongState extends MusicBeatState
 	{
 		disableInput = true;
 		FlxG.sound.play(Paths.sound('confirmMenu'));
-	
+
 		selectorIcon.forEach(function(spr:FlxSprite)
 		{
 			FlxTween.tween(spr, {y: 2000}, 0.8, {ease: FlxEase.smoothStepInOut});
-				if (FlxG.save.data.flashing)
+			if (ClientPrefs.flashing)
+			{
+				FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
 				{
-					FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
-					{
-						goToState();
-					});
-				}
-				else
+					goToState();
+				});
+			}
+			else
+			{
+				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					new FlxTimer().start(1, function(tmr:FlxTimer)
-					{
-						goToState();
-					});
-				}
+					goToState();
+				});
+			}
 		});
 	}
 }

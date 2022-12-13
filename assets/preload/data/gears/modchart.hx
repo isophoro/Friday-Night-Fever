@@ -74,6 +74,8 @@ function onBeatHit(curBeat:Int)
 			camGame.zoom += 0.02;
 		case 8:
 			camGame.zoom += 0.02;
+		case 271:
+			getGlobalVar("enterTunnel")();
 		case 272:
 			roboTunnel.visible = true;
 			dad.visible = false;
@@ -83,6 +85,17 @@ function onBeatHit(curBeat:Int)
 
 			game.curPlayer = feverTunnel;
 			game.curOpponent = roboTunnel;
+		case 367:
+			getGlobalVar("exitTunnel")();
+		case 368:
+			roboTunnel.visible = false;
+			dad.visible = true;
+
+			feverTunnel.visible = false;
+			boyfriend.visible = true;
+
+			game.curPlayer = boyfriend;
+			game.curOpponent = dad;
 		case 432:
 			camGame.flash(FlxColor.WHITE, 0.45);
 			forceComboPos = new FlxPoint(FlxG.width * (ClientPrefs.downscroll ? 0.78 : 0.05), 30);

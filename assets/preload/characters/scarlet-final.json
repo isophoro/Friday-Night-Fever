@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Final scarlet idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-301,
+				-2
+			],
+			"fps": 24,
+			"anim": "Final scarlet right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-20,
+				-160
+			],
+			"fps": 24,
+			"anim": "Final scarlet down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-200,
+				2
+			],
+			"fps": 24,
+			"anim": "Final scarlet left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-180,
+				99
+			],
+			"fps": 24,
+			"anim": "Final scarlet up",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": null,
+	"file": "scarlet/Scarlet_Final",
+	"color": "E059B1"
+}

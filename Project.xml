@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Fever" file="Kade Engine" packageName="com.fnfever.fevertown" package="com.fnfever.fevertown" main="Main" version="1.4.3" company="kadedev" />
+	<app title="Friday Night Fever" file="Kade Engine" packageName="com.fnfever.fevertown" package="com.fnfever.fevertown" main="Main" version="1.5.0" company="kadedev" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -36,13 +36,17 @@
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
-	<set name="BUILD_DIR" value="export/debug" if="debug" />
-	<set name="BUILD_DIR" value="export/release" unless="debug" />
-	<set name="BUILD_DIR" value="export/32bit" if="32bit" />
+	<section if="debug">
+		<set name="BUILD_DIR" value="export/debug" unless="32bit" />
+		<set name="BUILD_DIR" value="export/debug-32bit" if="32bit" />
+	</section>
+	
+	<section unless="debug">
+		<set name="BUILD_DIR" value="export/release" unless="32bit" />
+		<set name="BUILD_DIR" value="export/release-32bit" if="32bit" />	
+	</section>
 
 	<classpath name="source" />
-
-	<assets path="assets/roblox" embed="true" library="roblox"/>
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web"/>

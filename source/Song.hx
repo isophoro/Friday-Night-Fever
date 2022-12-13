@@ -1,9 +1,6 @@
 package;
 
-import Section.SwagSection;
-import flixel.FlxG;
 import haxe.Json;
-import haxe.format.JsonParser;
 import lime.utils.Assets;
 
 using StringTools;
@@ -22,6 +19,18 @@ typedef SwagSong =
 	var noteStyle:String;
 	var stage:String;
 	var validScore:Bool;
+}
+
+typedef SwagSection =
+{
+	var sectionNotes:Array<Dynamic>;
+	var lengthInSteps:Int;
+	var typeOfSection:Int;
+	var mustHitSection:Bool;
+	var bpm:Float;
+	var changeBPM:Bool;
+	var altAnim:Bool;
+	var ?sectionBeats:Int;
 }
 
 class Song

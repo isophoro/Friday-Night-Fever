@@ -204,8 +204,8 @@ class FPS_MEM extends FPS
 
 		if (currentCount != cacheCount)
 		{
-			var mem:Float = Math.round(#if cpp cpp.vm.Gc.memInfo(0) #else System.totalMemory #end / 1024 / 1024 * 100) / 100;
-			text = "FPS: " + currentFPS + '\nMem: ' + mem + 'MB';
+			var mem:Float = Math.round(#if cpp Math.abs(cpp.vm.Gc.memInfo(0)) #else System.totalMemory #end / 1024 / 1024 * 100) / 100;
+			text = "TEST BUILD\nFPS: " + currentFPS + '\nMem: ' + mem + 'MB';
 		}
 
 		cacheCount = currentCount;
