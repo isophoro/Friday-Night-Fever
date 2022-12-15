@@ -2854,7 +2854,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (useDirectionalCamera)
+		if (useDirectionalCamera && PlayState.SONG.notes[curSection] != null)
 		{
 			var curAnim:String = (cast(PlayState.SONG.notes[curSection].mustHitSection ? curPlayer : curOpponent) : Character).animation.curAnim.name;
 			var camPos:FlxPoint = PlayState.SONG.notes[curSection].mustHitSection ? BF_CAM_POS : DAD_CAM_POS;
