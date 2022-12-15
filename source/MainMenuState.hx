@@ -45,15 +45,6 @@ class MainMenuState extends MusicBeatState
 
 	public static var finishedFunnyMove:Bool = false;
 
-	var menuImage:FlxSprite;
-	var menuMap:Map<String, Array<Dynamic>> = [
-		'story mode' => ['fever', -50, -40, true],
-		'freeplay' => ['teaa', -20, -226, true],
-		'jukebox' => ['jukebox', 40, 62, false],
-		'gallery' => ['monaLisaCesar', 82, 16, false],
-		'options' => ['cogwheel', 58, 126, false]
-	];
-
 	public static var shutup:Bool;
 
 	public static var alert:FlxText;
@@ -106,10 +97,6 @@ class MainMenuState extends MusicBeatState
 		magenta.antialiasing = true;
 		magenta.color = 0xFFfd719b;
 		add(magenta);
-
-		menuImage = new FlxSprite(0, 0).loadGraphic(Paths.image(menuMap.get('story mode')[0]));
-		menuImage.antialiasing = true;
-		add(menuImage);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
@@ -170,23 +157,9 @@ class MainMenuState extends MusicBeatState
 	}
 
 	var selectedSomethin:Bool = false;
-	var elapsedTimer:Float = 0;
 
 	override function update(elapsed:Float)
 	{
-		elapsedTimer += elapsed;
-		if (elapsedTimer > 0.84)
-		{
-			elapsedTimer = 0;
-			if (optionShit[curSelected] == 'gallery')
-			{
-				var randomX:Float = FlxG.random.float(menuImage.x, menuImage.x + menuImage.width);
-				var randomY:Float = FlxG.random.float(menuImage.y, menuImage.y + menuImage.height);
-				var sparkle:sprites.NoteSplash = new sprites.NoteSplash(randomX, randomY, 2);
-				add(sparkle);
-			}
-		}
-
 		#if !mobile
 		if (FlxG.keys.justPressed.C)
 		{
@@ -334,24 +307,5 @@ class MainMenuState extends MusicBeatState
 			if (!selectedSomethin)
 				spr.x = FlxG.width - spr.width + 5;
 		});
-
-		if (huh != 0 || mobileTap)
-		{
-			FlxTween.cancelTweensOf(menuImage);
-
-			if (menuMap.get(optionShit[curSelected])[3])
-			{
-				menuImage.y = FlxG.height;
-				FlxTween.tween(menuImage, {y: menuMap.get(optionShit[curSelected])[2]}, 0.36, {ease: FlxEase.smoothStepInOut});
-			}
-			else
-			{
-				menuImage.y = menuMap.get(optionShit[curSelected])[2];
-			}
-
-			menuImage.loadGraphic(Paths.image(menuMap.get(optionShit[curSelected])[0]));
-			menuImage.updateHitbox();
-			menuImage.x = menuMap.get(optionShit[curSelected])[1];
-		}
 	}
 }

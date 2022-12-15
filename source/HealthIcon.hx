@@ -26,7 +26,9 @@ class HealthIcon extends FlxSprite
 		// i hate this code and i hate how the characters are named since this makes it twenty times harder than it should
 		switch (char)
 		{
-			case 'bf' | 'bf-casual' | 'bf-car' | 'bf-roblox' | 'bf-mad':
+			case 'robo-cesar-minus':
+				loadGraphic(Paths.image('icons/icon-robo-cesar'), true, 150, 150);
+			case 'bf' | 'bf-casual' | 'bf-car' | 'bf-roblox' | 'bf-mad' | 'bf-minus':
 				loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
 			case "robofvr-final":
 				loadGraphic(Paths.image('icons/icon-roboff'), true, 150, 150);
@@ -42,8 +44,6 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-mom'), true, 150, 150);
 			case 'taki' | 'monster':
 				loadGraphic(Paths.image('icons/icon-monster'), true, 150, 150);
-			case 'scarlet-final':
-				loadGraphic(Paths.image('icons/icon-scarlet'), true, 150, 150);
 			default:
 				loadGraphic(Paths.image('icons/icon-$char'), true, 150, 150);
 		}

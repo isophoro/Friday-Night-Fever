@@ -66,21 +66,6 @@ class RoboBackground
 		stages['c354r-default'] = new RoboStage([sky, city, bg, wires], [overlay], ["boyfriend" => [880, 482.3], "gf" => [335, 149], "dad" => [160, 315.3]],
 			[], 0.4);
 
-		var bg:FlxSprite = new FlxSprite(-1348, -844).loadGraphic(Paths.image('roboStage/robofeverback'));
-		bg.antialiasing = true;
-		bg.scrollFactor.set(0.8, 0.85);
-
-		floor = new FlxSprite(-1348, -854).loadGraphic(Paths.image('roboStage/robofeverfloor'));
-		floor.antialiasing = true;
-		floor.scrollFactor.set(0.9, 0.9);
-
-		sign = new FlxSprite(-1348, -844).loadGraphic(Paths.image('roboStage/sign'));
-		sign.antialiasing = true;
-		sign.scrollFactor.set(0.8, 0.75);
-		FlxTween.tween(sign, {y: sign.y - 35}, 2.5, {type: PINGPONG, ease: FlxEase.backOut});
-
-		stages['default'] = new RoboStage([bg, floor, sign], [], [], [], 0.4);
-
 		if (PlayState.SONG.song == 'Loaded')
 		{
 			taki = new Character(0, 0, "gf-taki");
@@ -605,7 +590,7 @@ class RoboStage
 			}
 		}
 
-		if (PlayState.minus)
+		if (PlayState.instance.dad.curCharacter == "robo-cesar-minus")
 		{
 			positioning["dad"][0] -= 70;
 			positioning["dad"][1] -= 90;

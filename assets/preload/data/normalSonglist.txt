@@ -22,8 +22,8 @@ Funkin-god:flippy:7
 C354R:robo-cesar:8
 Loaded:robo-cesar:8
 Gears:robofvr-final:8
+Grando:robo-cesar:7
 Tranquility:scarlet:8
 Princess:scarlet:8
-Bloom:scarlet:8
-Banish:scarlet:8
+Bloom:scarlet-final:8
 Dead-Mans-Melody:toothpaste:8

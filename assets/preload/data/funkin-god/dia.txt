@@ -19,7 +19,7 @@
 :teaworry: Wait, what are you doi-
 :feverpointtwo: Hey, don't do anything stu-
 :hidebg:
-:bg:white flashy shit
+:fillbg:FFFFFF
 :sfx:heavenlychoir
 :shake
 :narrator:

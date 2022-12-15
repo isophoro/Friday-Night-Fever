@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.util.FlxColor;
+import lime.app.Application;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.FPS;
@@ -89,6 +90,13 @@ class Main extends Sprite
 		fpsCounter = new FPS_MEM(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
 		toggleFPS(ClientPrefs.fps);
+		#end
+
+		#if desktop
+		Application.current.window.onClose.add(function()
+		{
+			Discord.DiscordClient.shutdown();
+		});
 		#end
 	}
 

@@ -689,7 +689,7 @@ class ChartingState extends MusicBeatState
 				curStyle = styles.length - 1;
 		}
 
-		styleText.text = "Current Note Type: " + styles[curStyle] + " | Press X / Z to scroll through note types.";
+		styleText.text = "Current Note Type: " + styles[curStyle] + " | Press Z / X to scroll through note types.";
 		styleText.y = FlxG.height - styleText.height;
 
 		updateHeads();
@@ -1651,8 +1651,6 @@ class ChartNote extends FlxSprite
 				{
 					switch (PlayState.SONG.song.toLowerCase())
 					{
-						case 'throw-it-back':
-							frames = Paths.getSparrowAtlas('customArrows/throwIBNotes');
 						case 'party-crasher':
 							frames = Paths.getSparrowAtlas('customArrows/partyCrasherNotes');
 						case 'bazinga' | 'crucify':

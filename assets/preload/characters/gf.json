@@ -98,7 +98,7 @@
 			],
 			"fps": 24,
 			"anim": "GF Dancing Beat Hair blowing",
-			"loop": true,
+			"loop": false,
 			"name": "hairBlow"
 		},
 		{

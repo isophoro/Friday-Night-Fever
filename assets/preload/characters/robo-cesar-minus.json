@@ -1,0 +1,57 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "m robo idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-29,
+				-119
+			],
+			"fps": 24,
+			"anim": "m robo down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-42,
+				-37
+			],
+			"fps": 24,
+			"anim": "m robo right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-86,
+				35
+			],
+			"fps": 24,
+			"anim": "m robo up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-6,
+				-6
+			],
+			"fps": 24,
+			"anim": "m robo left",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"facingLeft": false,
+	"file": "m_robo",
+	"color": "9236B4"
+}

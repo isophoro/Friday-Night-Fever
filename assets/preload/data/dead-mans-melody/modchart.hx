@@ -2,7 +2,10 @@ import ("Character");
 import("PlayState");
 import("flixel.util.FlxTimer");
 
+var isDad:Bool = false;
 var pasta:Character;
+var camTween:FlxTween;
+var rowProperties = [];
 
 function onCreate()
 {
@@ -31,13 +34,32 @@ function onCreate()
 		gf.visible = false;
 		boyfriend.visible = false;
 
-		FlxTween.tween(camGame, {zoom: 0.76}, 15, {
+		camTween = FlxTween.tween(camGame, {zoom: 0.76}, 15, {
 			onComplete: function(twn)
 			{
-				defaultCamZoom = 0.76;
+				game.defaultCamZoom = 0.76;
 			}
 		});
 	}
+}
+
+/*function onUpdate(elapsed:Float)
+	{
+	var currentBeat = (Conductor.songPosition / 1000) * (Conductor.bpm / 60);
+	for (i in 4...8)
+	{
+		setNoteX(defaultStrumPos[i].x + (1 - (elapsed * 3.125)) * (strumLineNotes[i].x - defaultStrumPos[i].x), i);
+		setNoteY(defaultStrumPos[i].y + ((5 * Math.cos(currentBeat * Math.PI)) * (i % 2 == 0 ? -1 : 1)), i);
+	}
+
+	// camHUD.angle = (0.35 * Math.cos(currentBeat * Math.PI));
+	// camHUD.x = (6 * Math.cos(currentBeat * Math.PI));
+	// camHUD.y = (6 * Math.cos(currentBeat * Math.PI));
+}*/
+//
+function onMoveCamera(dad:Bool)
+{
+	isDad = dad;
 }
 
 function onStepHit(curStep:Int)
@@ -56,6 +78,10 @@ function onStepHit(curStep:Int)
 			camGame.flash(FlxColor.WHITE, 0.85);
 			dad.visible = false;
 			pasta.visible = true;
+
+			if (camTween != null)
+				camTween.cancel();
+
 			game.defaultCamZoom = game.defaultCamZoom - 0.25;
 
 			boyfriend.visible = true;
@@ -68,10 +94,26 @@ function onStepHit(curStep:Int)
 	}
 }
 
+var beat:Float = 6;
+
 function onBeatHit(curBeat:Int)
 {
-	iconP2.y = healthBar.y - (iconP2.height / 2) - 25;
-	FlxTween.tween(iconP2, {y: iconP2.y + 25}, 0.3, {ease: FlxEase.elasticInOut});
+	// iconP2.y = healthBar.y - (iconP2.height / 2) - 25;
+	// FlxTween.tween(iconP2, {y: iconP2.y + 25}, 0.3, {ease: FlxEase.elasticInOut});
+
+	/*if (curBeat % 2 == 0)
+		for (i in 4...8)
+		{
+			var nextX:Float = defaultStrumPos[i].x;
+			nextX += ((4 * beat) * (curBeat % 4 == 0 ? -1 : 1));
+			if (curBeat % 12 == 0)
+			{
+				nextX += (i < 6 ? -15 : 45);
+				strumLineNotes[i].angle = 45;
+				tween(strumLineNotes[i], {angle: 0}, 0.1);
+			}
+			tween(strumLineNotes[i], {x: nextX}, 0.1);
+	}*/
 }
 
 function setHUDVisibility(theBool:Bool)
