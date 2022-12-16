@@ -42,6 +42,12 @@ class RoboBackground
 		bg.scale.set(1.85, 1.85);
 		bg.scrollFactor.set(0.9, 0.85);
 
+		var rail:FlxSprite = new FlxSprite(-450 + 660, -355 + 413).loadGraphic(Paths.image('roboStage/rail'));
+		rail.antialiasing = true;
+		rail.origin.set(0, 0);
+		rail.scale.set(1.85, 1.85);
+		rail.scrollFactor.set(0.9, 0.85);
+
 		var city:FlxSprite = new FlxSprite(-450, -355).loadGraphic(Paths.image('roboStage/ROBO_BG_CITY'));
 		city.antialiasing = true;
 		city.scale.set(1.85, 1.85);
@@ -63,8 +69,8 @@ class RoboBackground
 		wires.scale.set(1.85, 1.85);
 		wires.scrollFactor.set(0.85, 0.85);
 
-		stages['c354r-default'] = new RoboStage([sky, city, bg, wires], [overlay], ["boyfriend" => [880, 482.3], "gf" => [335, 149], "dad" => [160, 315.3]],
-			[], 0.4);
+		stages['c354r-default'] = new RoboStage([sky, city, rail, bg, wires], [overlay],
+			["boyfriend" => [880, 482.3], "gf" => [335, 149], "dad" => [160, 315.3]], [], 0.4);
 
 		if (PlayState.SONG.song == 'Loaded')
 		{

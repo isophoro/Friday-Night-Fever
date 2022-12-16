@@ -1,6 +1,5 @@
 package;
 
-import openfl.display.BlendMode;
 import Note.QueuedNote;
 import Song.SwagSong;
 import flixel.FlxBasic;
@@ -27,6 +26,7 @@ import flixel.util.FlxTimer;
 import lime.utils.Assets;
 import openfl.Lib;
 import openfl.display.BitmapData;
+import openfl.display.BlendMode;
 import openfl.events.KeyboardEvent;
 import openfl.filters.BitmapFilter;
 import openfl.system.System;
@@ -126,8 +126,6 @@ class PlayState extends MusicBeatState
 	private var combo:Int = 0;
 
 	public static var misses:Int = 0;
-
-	var pasta:Character;
 
 	private var accuracy:Float = 0.00;
 	private var totalNotesHit:Float = 0;
@@ -1004,17 +1002,8 @@ class PlayState extends MusicBeatState
 		}
 		add(dad);
 
-
 		add(boyfriend);
 		curBFY = boyfriend.y;
-
-		if(dad.curCharacter == 'toothpaste')
-			{
-				pasta = new Character(dad.x - 320, dad.y - 290, "toothpaste-mad", false);
-				add(pasta);
-				pasta.visible = false;
-				//pasta.blend = BlendMode.ADD;
-			}
 
 		trace(boyfriend.y);
 		trace('curbfy position is ' + curBFY);
@@ -2206,6 +2195,8 @@ class PlayState extends MusicBeatState
 					else
 					{
 						curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
+						scripts.callFunction("onOpponentNoteHit", [daNote]);
+
 						if (curStage == 'schoolEvil')
 						{
 							meat.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
@@ -2938,6 +2929,7 @@ class PlayState extends MusicBeatState
 			{
 				curPlayer.holdTimer = 0;
 				curPlayer.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
+				scripts.callFunction("onPlayerNoteHit", [note]);
 			}
 
 			#if windows

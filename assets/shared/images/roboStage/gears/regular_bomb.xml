@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Regular bomb.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Mako Bomb Normal0000" x="0" y="0" width="493" height="540" pivotX="1146.3" pivotY="-409.6"/>
+	<SubTexture name="Mako Bomb Normal0001" x="493" y="0" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0002" x="986" y="0" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0003" x="1479" y="0" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0004" x="1972" y="0" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0005" x="2465" y="0" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0006" x="2958" y="0" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0007" x="3451" y="0" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0008" x="0" y="540" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0009" x="493" y="540" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0010" x="986" y="540" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0011" x="1479" y="540" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0012" x="1972" y="540" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0013" x="2465" y="540" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0014" x="2958" y="540" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0015" x="3451" y="540" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0016" x="0" y="1080" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0017" x="493" y="1080" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0018" x="986" y="1080" width="493" height="540"/>
+	<SubTexture name="Mako Bomb Normal0019" x="1479" y="1080" width="493" height="540"/>
+</TextureAtlas>

@@ -105,7 +105,15 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		parser.allowTypes = true;
 		parser.allowJSON = true;
 		valid = true;
-		execute(parser.parseString(File.getContent(path)));
+		try
+		{
+			execute(parser.parseString(File.getContent(path)));
+		}
+		catch (e)
+		{
+			trace(e);
+			FlxG.stage.application.window.alert('${e.stack}\n${e.message}', "HScript Compile Time Error");
+		}
 	}
 
 	function setupVariables()
