@@ -1,5 +1,6 @@
 package;
 
+import openfl.display.BlendMode;
 import Note.QueuedNote;
 import Song.SwagSong;
 import flixel.FlxBasic;
@@ -125,6 +126,8 @@ class PlayState extends MusicBeatState
 	private var combo:Int = 0;
 
 	public static var misses:Int = 0;
+
+	var pasta:Character;
 
 	private var accuracy:Float = 0.00;
 	private var totalNotesHit:Float = 0;
@@ -765,7 +768,9 @@ class PlayState extends MusicBeatState
 		switch (SONG.player2)
 		{
 			case 'toothpaste':
+				dad.blend = BlendMode.ADD;
 				dad.scrollFactor.set(0.9, 0.9);
+
 			case 'gf':
 				dad.setPosition(gf.x, gf.y);
 				gf.visible = false;
@@ -999,8 +1004,17 @@ class PlayState extends MusicBeatState
 		}
 		add(dad);
 
+
 		add(boyfriend);
 		curBFY = boyfriend.y;
+
+		if(dad.curCharacter == 'toothpaste')
+			{
+				pasta = new Character(dad.x - 320, dad.y - 290, "toothpaste-mad", false);
+				add(pasta);
+				pasta.visible = false;
+				//pasta.blend = BlendMode.ADD;
+			}
 
 		trace(boyfriend.y);
 		trace('curbfy position is ' + curBFY);

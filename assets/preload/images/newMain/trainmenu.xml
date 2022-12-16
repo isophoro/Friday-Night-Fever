@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="trainmenu.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Train come0000" x="0" y="0" width="1328" height="785" pivotX="1328.85" pivotY="36.2"/>
+	<SubTexture name="Train come0001" x="0" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0002" x="1328" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0003" x="1328" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0004" x="2656" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0005" x="3984" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0006" x="5312" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0007" x="5312" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0008" x="6640" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0009" x="6640" y="0" width="1328" height="785"/>
+	<SubTexture name="Train come0010" x="0" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0011" x="0" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0012" x="0" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0013" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0014" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0015" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0016" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0017" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0018" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0019" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0020" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0021" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0022" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0023" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train come0024" x="1328" y="785" width="1328" height="785"/>
+	<SubTexture name="Train confirm0000" x="2656" y="785" width="1202" height="875" pivotX="1326.25" pivotY="63.45"/>
+	<SubTexture name="Train confirm0001" x="2656" y="785" width="1202" height="875"/>
+	<SubTexture name="Train confirm0002" x="3858" y="785" width="1202" height="875"/>
+	<SubTexture name="Train confirm0003" x="3858" y="785" width="1202" height="875"/>
+	<SubTexture name="Train notselected0000" x="5060" y="785" width="1202" height="785" pivotX="1326.25" pivotY="36.2"/>
+	<SubTexture name="Train notselected0001" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0002" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0003" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0004" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0005" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0006" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0007" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0008" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0009" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0010" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0011" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0012" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0013" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0014" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0015" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0016" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0017" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0018" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0019" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0020" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0021" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0022" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0023" x="6262" y="785" width="1202" height="785"/>
+	<SubTexture name="Train notselected0024" x="5060" y="785" width="1202" height="785"/>
+	<SubTexture name="Train selected0000" x="0" y="1660" width="1202" height="912" pivotX="1326.25" pivotY="100.7"/>
+	<SubTexture name="Train selected0001" x="0" y="1660" width="1202" height="912"/>
+	<SubTexture name="Train selected0002" x="1202" y="1660" width="1202" height="912"/>
+	<SubTexture name="Train selected0003" x="1202" y="1660" width="1202" height="912"/>
+	<SubTexture name="Train selected0004" x="2404" y="1660" width="1202" height="912"/>
+	<SubTexture name="Train selected0005" x="3606" y="1660" width="1202" height="912"/>
+	<SubTexture name="Train selected0006" x="4808" y="1660" width="1202" height="912"/>
+	<SubTexture name="Train selected0007" x="6010" y="1660" width="1202" height="912"/>
+	<SubTexture name="Train selected0008" x="6010" y="1660" width="1202" height="912"/>
+	<SubTexture name="Train selected0009" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0010" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0011" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0012" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0013" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0014" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0015" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0016" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0017" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0018" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0019" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0020" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0021" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0022" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0023" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0024" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0025" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0026" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0027" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0028" x="0" y="2572" width="1202" height="912"/>
+	<SubTexture name="Train selected0029" x="0" y="2572" width="1202" height="912"/>
+</TextureAtlas>

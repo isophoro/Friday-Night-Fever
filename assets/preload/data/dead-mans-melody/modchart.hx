@@ -3,15 +3,11 @@ import("PlayState");
 import("flixel.util.FlxTimer");
 
 var isDad:Bool = false;
-var pasta:Character;
 var camTween:FlxTween;
 var rowProperties = [];
 
 function onCreate()
 {
-	pasta = new Character(dad.x - 320, dad.y - 290, "toothpaste-mad", false);
-	add(pasta);
-	pasta.visible = false;
 
 	setHUDVisibility(false);
 	// if the player has died before, skip the countdown and intro part of the song

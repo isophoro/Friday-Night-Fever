@@ -49,6 +49,17 @@ class MainMenuState extends MusicBeatState
 
 	public static var alert:FlxText;
 
+	
+	var train:FlxSprite;
+	var freeplay:FlxSprite;
+	var options:FlxSprite;
+	var boombox:FlxSprite;
+	var credits:FlxSprite;
+	var costumes:FlxSprite;
+	var extras:FlxSprite;
+
+	var cursorr:FlxSprite;
+
 	override function create()
 	{
 		#if windows
@@ -153,6 +164,70 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
+		var trainBG:FlxSprite = new FlxSprite(77.95, -70.35);
+		trainBG.loadGraphic(Paths.image("newMain/subway_bg_2"));
+		trainBG.setGraphicSize(Std.int(trainBG.width / 1.35));
+		trainBG.antialiasing = true;
+		trainBG.updateHitbox();
+		add(trainBG);
+
+		train = new FlxSprite(110, -20);
+		train.frames = Paths.getSparrowAtlas('newMain/trainmenu');
+		train.animation.addByPrefix('come', 'Train come', 24, false);
+		train.animation.addByPrefix('idle', 'Train notselected', 24, true);
+		train.animation.addByPrefix('select', 'Train selected', 24);
+		train.animation.play('come');
+		train.setGraphicSize(Std.int(train.width / 1.35));
+		train.antialiasing = true;
+		train.updateHitbox();
+		add(train);
+		train.animation.finishCallback = function(anim){
+			train.animation.play('idle');
+		}
+
+		var overlapBG:FlxSprite = new FlxSprite(-70.35, -69.95);
+		overlapBG.loadGraphic(Paths.image("newMain/subway_bg"));
+		overlapBG.setGraphicSize(Std.int(overlapBG.width / 1.35));
+		overlapBG.antialiasing = true;
+		overlapBG.updateHitbox();
+		add(overlapBG);
+
+
+		options = new FlxSprite(905.5, 555.55);
+		options.frames = Paths.getSparrowAtlas('newMain/options');
+		options.animation.addByPrefix('idle', 'options notselected', 24, true);
+		options.animation.addByPrefix('select', 'options selected', 24);
+		options.animation.play('idle');
+		options.setGraphicSize(Std.int(options.width / 1.35));
+		options.antialiasing = true;
+		options.updateHitbox();
+		add(options);
+
+
+		credits = new FlxSprite(-32.45, 38.9);
+		credits.frames = Paths.getSparrowAtlas('newMain/credits');
+		credits.animation.addByPrefix('idle', 'credits notselected', 24, true);
+		credits.animation.addByPrefix('select', 'credits selected', 24);
+		credits.animation.play('idle');
+		credits.setGraphicSize(Std.int(credits.width / 1.35));
+		credits.antialiasing = true;
+		credits.updateHitbox();
+		add(credits);
+
+		FlxG.mouse.visible = false;
+
+		cursorr = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
+		cursorr.frames = Paths.getSparrowAtlas('newMain/cursor');
+		cursorr.animation.addByPrefix('idle', 'cursor nonselect', 0);
+		cursorr.animation.addByPrefix('select', 'cursor select', 0);
+		cursorr.animation.play('idle');
+		cursorr.setGraphicSize(Std.int(cursorr.width / 1.5));
+		cursorr.antialiasing = true;
+		cursorr.updateHitbox();
+		add(cursorr);
+		
+
+
 		super.create();
 	}
 
@@ -170,6 +245,19 @@ class MainMenuState extends MusicBeatState
 			// LoadingState.loadAndSwitchState(new ClosetState());
 		}
 		#end
+
+		cursorr.x = FlxG.mouse.x;
+		cursorr.y = FlxG.mouse.y;
+
+		if(FlxG.mouse.pressed)
+		{
+			cursorr.animation.play('select');
+		}
+		
+		if(FlxG.mouse.justReleased)
+		{
+			cursorr.animation.play('idle');
+		}
 
 		// if (FlxG.sound.music.volume != null)
 		// {

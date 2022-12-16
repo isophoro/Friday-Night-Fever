@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="options.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="options confirm0000" x="0" y="0" width="502" height="200" pivotX="0" pivotY="48.75"/>
+	<SubTexture name="options confirm0001" x="0" y="0" width="502" height="200"/>
+	<SubTexture name="options confirm0002" x="0" y="800" width="502" height="200"/>
+	<SubTexture name="options confirm0003" x="0" y="800" width="502" height="200"/>
+	<SubTexture name="options notselected0000" x="502" y="0" width="502" height="152" pivotX="0" pivotY="0.1"/>
+	<SubTexture name="options notselected0001" x="502" y="0" width="502" height="152"/>
+	<SubTexture name="options notselected0002" x="502" y="0" width="502" height="152"/>
+	<SubTexture name="options notselected0003" x="502" y="0" width="502" height="152"/>
+	<SubTexture name="options notselected0004" x="0" y="200" width="502" height="152"/>
+	<SubTexture name="options notselected0005" x="0" y="200" width="502" height="152"/>
+	<SubTexture name="options notselected0006" x="0" y="200" width="502" height="152"/>
+	<SubTexture name="options notselected0007" x="502" y="0" width="502" height="152"/>
+	<SubTexture name="options notselected0008" x="502" y="0" width="502" height="152"/>
+	<SubTexture name="options selected0000" x="502" y="200" width="502" height="200" pivotX="0" pivotY="48.75"/>
+	<SubTexture name="options selected0001" x="502" y="200" width="502" height="200"/>
+	<SubTexture name="options selected0002" x="0" y="400" width="502" height="200"/>
+	<SubTexture name="options selected0003" x="502" y="400" width="502" height="200"/>
+	<SubTexture name="options selected0004" x="502" y="400" width="502" height="200"/>
+	<SubTexture name="options selected0005" x="0" y="600" width="502" height="200"/>
+	<SubTexture name="options selected0006" x="0" y="600" width="502" height="200"/>
+	<SubTexture name="options selected0007" x="502" y="600" width="502" height="200"/>
+	<SubTexture name="options selected0008" x="0" y="800" width="502" height="200"/>
+	<SubTexture name="options selected0009" x="0" y="800" width="502" height="200"/>
+	<SubTexture name="options selected0010" x="0" y="800" width="502" height="200"/>
+	<SubTexture name="options selected0011" x="0" y="800" width="502" height="200"/>
+	<SubTexture name="options selected0012" x="0" y="800" width="502" height="200"/>
+	<SubTexture name="options selected0013" x="0" y="800" width="502" height="200"/>
+	<SubTexture name="options selected0014" x="0" y="800" width="502" height="200"/>
+</TextureAtlas>

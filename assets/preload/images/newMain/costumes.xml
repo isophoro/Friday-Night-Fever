@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="costumes.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="costume confirm0000" x="0" y="0" width="530" height="268" pivotX="94.35" pivotY="95.6"/>
+	<SubTexture name="costume confirm0001" x="0" y="0" width="530" height="268"/>
+	<SubTexture name="costume confirm0002" x="530" y="0" width="530" height="268"/>
+	<SubTexture name="costume confirm0003" x="530" y="0" width="530" height="268"/>
+	<SubTexture name="costume notselected0000" x="1060" y="0" width="339" height="173" pivotX="0" pivotY="0"/>
+	<SubTexture name="costume notselected0001" x="1060" y="0" width="339" height="173"/>
+	<SubTexture name="costume notselected0002" x="1060" y="0" width="339" height="173"/>
+	<SubTexture name="costume notselected0003" x="1399" y="0" width="339" height="173"/>
+	<SubTexture name="costume notselected0004" x="1399" y="0" width="339" height="173"/>
+	<SubTexture name="costume notselected0005" x="1399" y="0" width="339" height="173"/>
+	<SubTexture name="costume notselected0006" x="1060" y="0" width="339" height="173"/>
+	<SubTexture name="costume notselected0007" x="1060" y="0" width="339" height="173"/>
+	<SubTexture name="costume notselected0008" x="1060" y="0" width="339" height="173"/>
+	<SubTexture name="costume selected0000" x="0" y="268" width="578" height="318" pivotX="118.05" pivotY="145.8"/>
+	<SubTexture name="costume selected0001" x="0" y="268" width="578" height="318"/>
+	<SubTexture name="costume selected0002" x="578" y="268" width="578" height="318"/>
+	<SubTexture name="costume selected0003" x="578" y="268" width="578" height="318"/>
+	<SubTexture name="costume selected0004" x="1156" y="268" width="578" height="318"/>
+	<SubTexture name="costume selected0005" x="1156" y="268" width="578" height="318"/>
+	<SubTexture name="costume selected0006" x="0" y="586" width="578" height="318"/>
+	<SubTexture name="costume selected0007" x="0" y="586" width="578" height="318"/>
+	<SubTexture name="costume selected0008" x="0" y="586" width="578" height="318"/>
+	<SubTexture name="costume selected0009" x="0" y="586" width="578" height="318"/>
+	<SubTexture name="costume selected0010" x="0" y="586" width="578" height="318"/>
+	<SubTexture name="costume selected0011" x="0" y="586" width="578" height="318"/>
+	<SubTexture name="costume selected0012" x="0" y="586" width="578" height="318"/>
+	<SubTexture name="costume selected0013" x="0" y="586" width="578" height="318"/>
+	<SubTexture name="costume selected0014" x="0" y="586" width="578" height="318"/>
+</TextureAtlas>

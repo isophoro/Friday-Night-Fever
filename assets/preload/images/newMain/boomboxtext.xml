@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="boomboxtext.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="boombox text0000" x="0" y="0" width="465" height="237" pivotX="148.85" pivotY="13.4"/>
+	<SubTexture name="boombox text0001" x="0" y="0" width="465" height="237"/>
+	<SubTexture name="boombox text0002" x="465" y="0" width="465" height="237"/>
+	<SubTexture name="boombox text0003" x="465" y="0" width="465" height="237"/>
+	<SubTexture name="boombox text0004" x="0" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0005" x="0" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0006" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0007" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0008" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0009" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0010" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0011" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0012" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0013" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0014" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0015" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0016" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0017" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0018" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0019" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0020" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0021" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0022" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0023" x="465" y="237" width="465" height="237"/>
+	<SubTexture name="boombox text0024" x="465" y="237" width="465" height="237"/>
+</TextureAtlas>

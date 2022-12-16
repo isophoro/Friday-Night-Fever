@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="boombox.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="boombox confirm0000" x="0" y="0" width="403" height="351" pivotX="170.6" pivotY="0.15"/>
+	<SubTexture name="boombox confirm0001" x="0" y="0" width="403" height="351"/>
+	<SubTexture name="boombox confirm0002" x="403" y="0" width="403" height="351"/>
+	<SubTexture name="boombox confirm0003" x="403" y="0" width="403" height="351"/>
+	<SubTexture name="boombox not selected0000" x="0" y="351" width="233" height="212" pivotX="0" pivotY="0.6"/>
+	<SubTexture name="boombox not selected0001" x="0" y="351" width="233" height="212"/>
+	<SubTexture name="boombox not selected0002" x="0" y="351" width="233" height="212"/>
+	<SubTexture name="boombox not selected0003" x="233" y="351" width="233" height="212"/>
+	<SubTexture name="boombox not selected0004" x="233" y="351" width="233" height="212"/>
+	<SubTexture name="boombox not selected0005" x="233" y="351" width="233" height="212"/>
+	<SubTexture name="boombox not selected0006" x="0" y="351" width="233" height="212"/>
+	<SubTexture name="boombox not selected0007" x="0" y="351" width="233" height="212"/>
+	<SubTexture name="boombox not selected0008" x="0" y="351" width="233" height="212"/>
+	<SubTexture name="boombox selected0000" x="466" y="351" width="233" height="219" pivotX="0" pivotY="7.85"/>
+	<SubTexture name="boombox selected0001" x="466" y="351" width="233" height="219"/>
+	<SubTexture name="boombox selected0002" x="699" y="351" width="233" height="219"/>
+	<SubTexture name="boombox selected0003" x="699" y="351" width="233" height="219"/>
+	<SubTexture name="boombox selected0004" x="0" y="570" width="233" height="219"/>
+	<SubTexture name="boombox selected0005" x="0" y="570" width="233" height="219"/>
+	<SubTexture name="boombox selected0006" x="0" y="570" width="233" height="219"/>
+	<SubTexture name="boombox selected0007" x="0" y="570" width="233" height="219"/>
+	<SubTexture name="boombox selected0008" x="0" y="570" width="233" height="219"/>
+</TextureAtlas>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="cursor.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cursor nonselect0000" x="0" y="0" width="97" height="97" pivotX="0" pivotY="0"/>
+	<SubTexture name="cursor qnonselect0000" x="97" y="0" width="140" height="131" pivotX="0" pivotY="34.25"/>
+	<SubTexture name="cursor qselect0000" x="237" y="0" width="139" height="131" pivotX="0" pivotY="38.1"/>
+	<SubTexture name="cursor select0000" x="376" y="0" width="97" height="93" pivotX="0" pivotY="0"/>
+</TextureAtlas>
