@@ -3,6 +3,8 @@ import("Character");
 
 // this truly was a friday night fever
 
+var fallBG:FlxSprite;
+var fallStreaks:FlxSprite;
 var feverFalling:Boyfriend;
 var roboFalling:Character;
 var roboFallingCool:Character;
@@ -11,6 +13,21 @@ var roboTunnel:Character;
 
 function onCreate()
 {
+	fallBG = new FlxSprite().loadGraphic(Paths.image("roboStage/gears/fallBG"));
+	fallBG.visible = false;
+	fallBG.antialiasing = true;
+	fallBG.scale.scale(1.25);
+	add(fallBG);
+
+	fallStreaks = new FlxSprite();
+	fallStreaks.frames = Paths.getSparrowAtlas("roboStage/gears/streaks");
+	fallStreaks.animation.addByPrefix("idle", "streaks bg", 24);
+	fallStreaks.animation.play("idle");
+	fallStreaks.antialiasing = true;
+	fallStreaks.scale.scale(0.9);
+	add(fallStreaks);
+	fallStreaks.visible = false;
+
 	feverTunnel = new Boyfriend(boyfriend.x, boyfriend.y, "bf-mad-glow");
 	feverTunnel.scrollFactor.copyFrom(boyfriend.scrollFactor);
 	add(feverTunnel);
@@ -74,9 +91,9 @@ function onBeatHit(curBeat:Int)
 			camGame.zoom += 0.02;
 		case 8:
 			camGame.zoom += 0.02;
-		case 271:
+		case 205:
 			getGlobalVar("enterTunnel")();
-		case 272:
+		case 206:
 			roboTunnel.visible = true;
 			dad.visible = false;
 
@@ -85,9 +102,9 @@ function onBeatHit(curBeat:Int)
 
 			game.curPlayer = feverTunnel;
 			game.curOpponent = roboTunnel;
-		case 367:
+		case 271:
 			getGlobalVar("exitTunnel")();
-		case 368:
+		case 272:
 			roboTunnel.visible = false;
 			dad.visible = true;
 
@@ -120,8 +137,16 @@ function onBeatHit(curBeat:Int)
 			snapCamera(new FlxPoint(BF_CAM_POS.x - 240, BF_CAM_POS.y + 370));
 			game.curPlayer = feverFalling;
 			game.curOpponent = roboFalling;
+
+			FlxTween.tween(fallBG, {"scale.x": 1.9, "scale.y": 1.9}, 19);
+			fallBG.visible = true;
+			fallBG.setPosition(camFollow.x - 800, camFollow.y - 550);
+			fallStreaks.visible = true;
+			fallStreaks.setPosition(camFollow.x - 900, camFollow.y - 550);
+
 			roboFalling.visible = true;
 			feverFalling.visible = true;
+
 			game.defaultCamZoom += 0.635;
 			camGame.zoom = game.defaultCamZoom + 0.15;
 			bfAltSuffix = '-cool';

@@ -14,6 +14,7 @@ var tunnelBG:FlxBackdrop;
 var lights:FlxBackdrop;
 var fakeTunnelBG:FlxSprite;
 var outerBuilding:FlxSprite;
+var bomb:FlxSprite;
 
 function onCreate()
 {
@@ -103,6 +104,15 @@ function onCreate()
 	add(trainGlow);
 	trainGlow.visible = false;
 
+	bomb = new FlxSprite();
+	bomb.frames = Paths.getSparrowAtlas('roboStage/gears/regular_bomb');
+	bomb.scrollFactor.set(0.9, 0.9);
+	bomb.animation.addByPrefix("idle", "Mako Bomb Normal", 24);
+	bomb.animation.play("idle");
+	bomb.antialiasing = true;
+	bomb.scale.scale(1.5);
+	add(bomb);
+
 	fakeTunnelBG = new FlxSprite(0, -50).loadGraphic(Paths.image("roboStage/gears/tunnel"));
 	fakeTunnelBG.antialiasing = true;
 	fakeTunnelBG.x = FlxG.width;
@@ -113,6 +123,11 @@ function onCreate()
 	tunnelEnterance.antialiasing = true;
 	tunnelEnterance.x = FlxG.width;
 	add(tunnelEnterance, 1, camHUD);
+}
+
+function onCreatePost()
+{
+	bomb.setPosition(dad.x + 400, dad.y + 350);
 }
 
 var p_elapsedT:Float = 0;
@@ -130,6 +145,7 @@ function enterTunnel()
 			tunnelBG.visible = true;
 			lights.visible = true;
 			poles.visible = false;
+			trainGlow.visible = true;
 			camGame.flash(FlxColor.BLACK, 1.3);
 		}
 	});
@@ -164,6 +180,9 @@ function exitTunnel()
 
 function onUpdate(elapsed:Float)
 {
+	var currentBeat = (Conductor.songPosition / 1000) * (Conductor.bpm / 60);
+	bomb.y = dad.y + 350 + (5 * Math.sin(currentBeat * Math.PI));
+
 	if (FlxG.keys.justPressed.V && !inTunnel)
 		enterTunnel();
 	else if (FlxG.keys.justPressed.V)
@@ -197,7 +216,7 @@ function onBeatHit(curBeat:Int)
 	else
 		train.animation.play('drive');
 
-	if (curBeat == 272)
+	if (curBeat == 206)
 	{
 		trainGlow.visible = true;
 		train.visible = false;
