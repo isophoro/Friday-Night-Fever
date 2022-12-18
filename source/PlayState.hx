@@ -1843,11 +1843,6 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (mashPity > 0)
-		{
-			mashPity -= elapsed;
-		}
-
 		if (easierMode == true)
 		{
 			health += 0.0001;
@@ -3506,7 +3501,6 @@ class PlayState extends MusicBeatState
 
 	// NEW INPUT SHIT
 	var keysHeld:Array<Bool> = [false, false, false, false];
-	var mashPity:Float = 0;
 
 	private function onKeyPress(input:KeyboardEvent)
 	{
@@ -3589,25 +3583,6 @@ class PlayState extends MusicBeatState
 			playerStrums.members[closestNote.noteData].animation.play('confirm');
 
 			goodNoteHit(closestNote);
-		}
-		else
-		{
-			if (nearbyNote != null)
-			{
-				mashPity += 2;
-
-				if (mashPity >= 4)
-				{
-					// cant mash and delete hallow's notes
-					if (nearbyNote.type == 0)
-					{
-						nearbyNote.kill();
-						nearbyNote.exists = false;
-						health -= 0.02; // more punishing
-						noteMiss();
-					}
-				}
-			}
 		}
 	}
 

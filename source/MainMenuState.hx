@@ -3,12 +3,12 @@ package;
 import Controls.KeyboardScheme;
 import GameJolt;
 import flash.display.DisplayObject;
+import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.effects.FlxFlicker;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.input.mouse.FlxMouseEventManager;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -25,375 +25,297 @@ import Discord.DiscordClient;
 
 class MainMenuState extends MusicBeatState
 {
-	var curSelected:Int = 0;
-
-	var menuItems:FlxTypedGroup<FlxSprite>;
-
-	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'jukebox', 'gallery'];
-	#else
-	var optionShit:Array<String> = ['story mode', 'freeplay'];
-	#end
-
-	public static var nightly:String = "";
-
-	public static var kadeEngineVer:String = "1.5.1" + nightly;
-	public static var gameVer:String = "0.2.7.1";
-
-	var magenta:FlxSprite;
-	var camFollow:FlxObject;
-
-	public static var finishedFunnyMove:Bool = false;
-
-	public static var shutup:Bool;
-
 	public static var alert:FlxText;
 
-	
-	var train:FlxSprite;
-	var freeplay:FlxSprite;
-	var options:FlxSprite;
-	var boombox:FlxSprite;
-	var credits:FlxSprite;
-	var costumes:FlxSprite;
-	var extras:FlxSprite;
+	var curSelected:InteractHitbox = null;
+	var interactables:FlxTypedGroup<InteractHitbox> = new FlxTypedGroup<InteractHitbox>();
+	var order:Array<InteractHitbox> = [];
 
-	var cursorr:FlxSprite;
+	var hand:FlxSprite;
+
+	var allowInput:Bool = false;
 
 	override function create()
 	{
+		super.create();
+
+		persistentUpdate = persistentDraw = true;
+
 		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
-		TitleState.lastState = false;
 
-		PlayState.easierMode = false;
-		PlayState.deaths = 0;
+		var tunnelBG:MenuBG = new MenuBG("newMain/subway_bg_2", 0, -12, 0.7);
+		add(tunnelBG);
 
-		shutup = true;
+		var train = new Interactable('newMain/trainmenu', 150, 75, 0.66, 'Train notselected', 'Train selected', new InteractHitbox(480, 205, 165, 280),
+			[0, 42]);
+		train.animation.addByPrefix('come', 'Train come', 24, false);
+		train.animation.play('come');
+		addInteractable(train);
 
-		#if debug
-		Achievements.getAchievement(17);
-		Achievements.getAchievement(8);
-		#end
-
-		ClientPrefs.deaths = 0;
-
-		if (GameJoltAPI.getStatus())
+		train.animation.finishCallback = function(anim)
 		{
-			Achievements.checkAchievementsLogged();
-		}
-		persistentUpdate = persistentDraw = true;
-
-		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('menuBG'));
-		bg.scrollFactor.x = 0;
-		bg.scrollFactor.y = 0.10;
-		bg.setGraphicSize(Std.int(bg.width * 1.1));
-		bg.updateHitbox();
-		bg.screenCenter();
-		bg.antialiasing = true;
-		add(bg);
-
-		camFollow = new FlxObject(0, 0, 1, 1);
-		add(camFollow);
-
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.scrollFactor.x = 0;
-		magenta.scrollFactor.y = 0.10;
-		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.antialiasing = true;
-		magenta.color = 0xFFfd719b;
-		add(magenta);
-
-		menuItems = new FlxTypedGroup<FlxSprite>();
-		add(menuItems);
-
-		for (i in 0...optionShit.length)
-		{
-			var menuItem:FlxSprite = new FlxSprite(0, 145 + (i * 115));
-			menuItem.frames = Paths.getSparrowAtlas('menu shit');
-			menuItem.animation.addByPrefix('idle', optionShit[i], 0);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " select", 0);
-			menuItem.animation.play('idle');
-			menuItem.updateHitbox();
-			menuItem.x = FlxG.width - menuItem.width + 5;
-			menuItem.ID = i;
-			menuItems.add(menuItem);
-			menuItem.antialiasing = true;
-
-			selectedSomethin = true;
-			menuItem.x += 550;
-			FlxTween.tween(menuItem, {x: FlxG.width - menuItem.width + 5}, 0.65 + (0.12 * i), {
-				ease: FlxEase.smoothStepInOut,
-				onComplete: function(twn:FlxTween)
-				{
-					if (menuItem.ID == optionShit.length - 1)
-					{
-						selectedSomethin = false;
-						changeItem();
-					}
-				}
-			});
+			train.animation.play('idle');
+			allowInput = true;
+			train.animation.finishCallback = null;
 		}
 
-		if (GameJoltAPI.getStatus() == true)
+		var mainBG:MenuBG = new MenuBG("newMain/subway_bg", 0, -12, 0.7);
+		add(mainBG);
+
+		var options = new Interactable('newMain/options', 915.5, 580.55, 0.7, 'options notselected', 'options selected',
+			new InteractHitbox(915.5, 580.55, 365, 105), [0, 34]);
+		addInteractable(options);
+
+		var credits = new Interactable('newMain/credits', -10, 45, 0.7, 'credits notselected', 'credits selected', new InteractHitbox(40, 175, 225, 525),
+			[216, 172], true, "newMain/creditstext", "credits text", [300, 140]);
+		addInteractable(credits);
+
+		var freeplay = new Interactable('newMain/freeplay', 1100, 160, 0.7, 'Freeplay not selected', 'Freeplay selected',
+			new InteractHitbox(1100, 160, 145, 225), [256, 170]);
+		freeplay.callback = FlxG.switchState.bind(new SelectingSongState());
+		addInteractable(freeplay);
+
+		var boombox = new Interactable('newMain/boombox', 779, 433, 0.7, 'boombox not selected', 'boombox selected', new InteractHitbox(779, 433, 165, 135),
+			[0, 5], true, "newMain/boomboxtext", "boombox text", [639, 520]);
+		addInteractable(boombox);
+
+		var costumes = new Interactable('newMain/costumes', 505, 580, 0.7, 'costume notselected', 'costume selected', new InteractHitbox(505, 580, 240, 115),
+			[83, 102]);
+		addInteractable(costumes);
+
+		var extras = new Interactable('newMain/extra', 839, 210, 0.7, 'extras notselected', 'extras selected', new InteractHitbox(839, 210, 150, 175),
+			[258, 258], true, "newMain/extratext", "extra text", [990, 190], 0.23);
+		addInteractable(extras);
+
+		var versionShit:FlxText = new FlxText(0, 0, 0, 'Friday Night Fever ${Application.current.meta.get("version")}', 12);
+		versionShit.setFormat("Plunge", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionShit.setPosition(FlxG.width - versionShit.width - 10, FlxG.height - versionShit.height - 10);
+		versionShit.antialiasing = true;
+		versionShit.alpha = 0.38;
+		add(versionShit);
+
+		hand = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
+		hand.frames = Paths.getSparrowAtlas('newMain/cursor');
+		hand.animation.addByPrefix('idle', 'cursor nonselect', 0);
+		hand.animation.addByPrefix('select', 'cursor select', 0);
+		hand.animation.addByPrefix('qidle', 'cursor qnonselect', 0);
+		hand.animation.addByPrefix('qselect', 'cursor qselect', 0);
+		hand.animation.play('idle');
+		hand.setGraphicSize(Std.int(hand.width / 1.5));
+		hand.antialiasing = true;
+		hand.updateHitbox();
+		add(hand);
+
+		order = [
+			credits.hitbox,
+			train.hitbox,
+			costumes.hitbox,
+			boombox.hitbox,
+			extras.hitbox,
+			options.hitbox,
+			freeplay.hitbox
+		];
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (FlxG.mouse.justMoved)
+			hand.setPosition(FlxG.mouse.x, FlxG.mouse.y);
+
+		if (controls.LEFT_P)
 		{
-			trace('logged in');
-			if (Sys.getEnv('USERNAME') == 'Shelton883')
+			var index = curSelected == null ? 0 : order.indexOf(curSelected);
+
+			if (curSelected != null)
+				onMouseLeave(order[index]);
+
+			index--;
+			if (index < 0)
+				index = order.length - 1;
+
+			hand.setPosition(order[index].x + (order[index].width / 2), order[index].y + (order[index].height / 2));
+			FlxG.stage.application.window.warpMouse(Std.int(hand.x), Std.int(hand.y));
+			onMouseHover(order[index]);
+		}
+		else if (controls.RIGHT_P)
+		{
+			var index = curSelected == null ? -1 : order.indexOf(curSelected);
+
+			if (curSelected != null)
+				onMouseLeave(order[index]);
+
+			index++;
+			if (index >= order.length)
+				index = 0;
+
+			hand.setPosition(order[index].x + (order[index].width / 2), order[index].y + (order[index].height / 2));
+			FlxG.stage.application.window.warpMouse(Std.int(hand.x), Std.int(hand.y));
+			onMouseHover(order[index]);
+		}
+
+		if (FlxG.mouse.pressed || FlxG.keys.anyPressed([ENTER, SPACE]))
+		{
+			hand.animation.play(curSelected != null ? 'qselect' : 'select');
+			hand.offset.set(0, 8);
+
+			if (curSelected != null && !FlxG.mouse.pressed && FlxG.keys.anyJustPressed([ENTER, SPACE]))
 			{
-				Achievements.getAchievement(8);
+				onMouseClick(order[order.indexOf(curSelected)]);
 			}
 		}
 		else
 		{
-			trace('not logged in');
+			hand.animation.play(curSelected != null ? 'qidle' : 'idle');
+			hand.offset.set(0, 0);
 		}
-
-		var versionShit:FlxText = new FlxText(5, 0, 0,
-			'Friday Night Fever ${Application.current.meta.get("version")}\nGamejolt: ' +
-			(GameJoltAPI.userLogin ? "Not logged in" : 'Logged in as ${FlxG.save.data.gjUser}'),
-			12);
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		versionShit.antialiasing = true;
-		versionShit.y = FlxG.height - versionShit.height;
-		add(versionShit);
-
-		changeItem();
-
-		var trainBG:FlxSprite = new FlxSprite(77.95, -70.35);
-		trainBG.loadGraphic(Paths.image("newMain/subway_bg_2"));
-		trainBG.setGraphicSize(Std.int(trainBG.width / 1.35));
-		trainBG.antialiasing = true;
-		trainBG.updateHitbox();
-		add(trainBG);
-
-		train = new FlxSprite(110, -20);
-		train.frames = Paths.getSparrowAtlas('newMain/trainmenu');
-		train.animation.addByPrefix('come', 'Train come', 24, false);
-		train.animation.addByPrefix('idle', 'Train notselected', 24, true);
-		train.animation.addByPrefix('select', 'Train selected', 24);
-		train.animation.play('come');
-		train.setGraphicSize(Std.int(train.width / 1.35));
-		train.antialiasing = true;
-		train.updateHitbox();
-		add(train);
-		train.animation.finishCallback = function(anim){
-			train.animation.play('idle');
-		}
-
-		var overlapBG:FlxSprite = new FlxSprite(-70.35, -69.95);
-		overlapBG.loadGraphic(Paths.image("newMain/subway_bg"));
-		overlapBG.setGraphicSize(Std.int(overlapBG.width / 1.35));
-		overlapBG.antialiasing = true;
-		overlapBG.updateHitbox();
-		add(overlapBG);
-
-
-		options = new FlxSprite(905.5, 555.55);
-		options.frames = Paths.getSparrowAtlas('newMain/options');
-		options.animation.addByPrefix('idle', 'options notselected', 24, true);
-		options.animation.addByPrefix('select', 'options selected', 24);
-		options.animation.play('idle');
-		options.setGraphicSize(Std.int(options.width / 1.35));
-		options.antialiasing = true;
-		options.updateHitbox();
-		add(options);
-
-
-		credits = new FlxSprite(-32.45, 38.9);
-		credits.frames = Paths.getSparrowAtlas('newMain/credits');
-		credits.animation.addByPrefix('idle', 'credits notselected', 24, true);
-		credits.animation.addByPrefix('select', 'credits selected', 24);
-		credits.animation.play('idle');
-		credits.setGraphicSize(Std.int(credits.width / 1.35));
-		credits.antialiasing = true;
-		credits.updateHitbox();
-		add(credits);
-
-		FlxG.mouse.visible = false;
-
-		cursorr = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
-		cursorr.frames = Paths.getSparrowAtlas('newMain/cursor');
-		cursorr.animation.addByPrefix('idle', 'cursor nonselect', 0);
-		cursorr.animation.addByPrefix('select', 'cursor select', 0);
-		cursorr.animation.play('idle');
-		cursorr.setGraphicSize(Std.int(cursorr.width / 1.5));
-		cursorr.antialiasing = true;
-		cursorr.updateHitbox();
-		add(cursorr);
-		
-
-
-		super.create();
 	}
 
-	var selectedSomethin:Bool = false;
-
-	override function update(elapsed:Float)
+	function addInteractable(item:Interactable)
 	{
-		#if !mobile
-		if (FlxG.keys.justPressed.C)
-		{
-			FlxG.switchState(new CreditsState());
-		}
-		else if (FlxG.keys.justPressed.V)
-		{
-			// LoadingState.loadAndSwitchState(new ClosetState());
-		}
-		#end
+		add(item);
 
-		cursorr.x = FlxG.mouse.x;
-		cursorr.y = FlxG.mouse.y;
+		if (item.text != null)
+			add(item.text);
 
-		if(FlxG.mouse.pressed)
-		{
-			cursorr.animation.play('select');
-		}
-		
-		if(FlxG.mouse.justReleased)
-		{
-			cursorr.animation.play('idle');
-		}
-
-		// if (FlxG.sound.music.volume != null)
-		// {
-		//	FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
-		// }
-
-		if (!selectedSomethin)
-		{
-			var accepted:Bool = controls.ACCEPT;
-
-			#if mobile
-			if (FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed)
-			{
-				for (sprite in menuItems)
-				{
-					if (FlxG.touches.getFirst().overlaps(sprite))
-					{
-						if (curSelected != sprite.ID)
-						{
-							FlxG.sound.play(Paths.sound('scrollMenu'));
-							curSelected = sprite.ID;
-							changeItem(0, true);
-						}
-						else
-						{
-							accepted = true;
-						}
-
-						break;
-					}
-				}
-			}
-			#end
-
-			if (controls.UP_P)
-			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeItem(-1);
-			}
-
-			if (controls.DOWN_P)
-			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeItem(1);
-			}
-
-			if (controls.getBack())
-			{
-				FlxG.switchState(new TitleState());
-			}
-
-			if (accepted)
-			{
-				shutup = false;
-				selectedSomethin = true;
-				FlxG.sound.play(Paths.sound('confirmMenu'));
-
-				if (ClientPrefs.flashing)
-					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
-
-				menuItems.forEach(function(spr:FlxSprite)
-				{
-					if (curSelected != spr.ID)
-					{
-						FlxTween.tween(spr, {x: FlxG.width + spr.width}, 0.44, {
-							ease: FlxEase.smoothStepInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								spr.kill();
-							}
-						});
-					}
-					else
-					{
-						if (ClientPrefs.flashing)
-						{
-							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
-							{
-								goToState();
-							});
-						}
-						else
-						{
-							new FlxTimer().start(1, function(tmr:FlxTimer)
-							{
-								goToState();
-							});
-						}
-					}
-				});
-			}
-		}
-
-		super.update(elapsed);
+		interactables.add(item.hitbox);
+		FlxMouseEventManager.add(cast item.hitbox, onMouseClick, onMouseUp, onMouseHover, onMouseLeave);
 	}
 
-	function goToState()
+	function onMouseClick(item:InteractHitbox)
 	{
-		var daChoice:String = optionShit[curSelected];
+		if (!allowInput)
+			return;
 
-		switch (daChoice)
+		if (item.parent.callback != null)
 		{
-			case 'story mode':
-				FlxG.switchState(new StoryMenuState());
-			case 'freeplay':
-				FlxG.switchState(new SelectingSongState());
-			case 'jukebox':
-				FlxG.switchState(new JukeboxState());
-			case 'gallery':
-				FlxG.switchState(new GalleryState());
-			case 'options':
-				FlxG.switchState(new options.OptionsState());
+			allowInput = false;
+			item.parent.callback();
 		}
 	}
 
-	function changeItem(huh:Int = 0, ?mobileTap:Bool)
+	function onMouseUp(item:InteractHitbox)
 	{
-		curSelected += huh;
-
-		if (curSelected >= menuItems.length)
-			curSelected = 0;
-		if (curSelected < 0)
-			curSelected = menuItems.length - 1;
-
-		menuItems.forEach(function(spr:FlxSprite)
-		{
-			spr.animation.play('idle');
-
-			if (spr.ID == curSelected)
-			{
-				spr.animation.play('selected');
-			}
-
-			spr.updateHitbox();
-			if (!selectedSomethin)
-				spr.x = FlxG.width - spr.width + 5;
-		});
+		if (!allowInput)
+			return;
 	}
+
+	function onMouseHover(item:InteractHitbox)
+	{
+		if (!allowInput)
+			return;
+
+		if (item.parent.animation.curAnim.name != "selected")
+		{
+			item.parent.playAnim("selected");
+			curSelected = item;
+		}
+	}
+
+	function onMouseLeave(item:InteractHitbox)
+	{
+		if (!allowInput)
+			return;
+
+		if (item.parent.animation.curAnim.name != "idle")
+		{
+			item.parent.playAnim("idle");
+			curSelected = null;
+		}
+	}
+}
+
+class MenuBG extends FlxSprite
+{
+	public function new(img:String, x:Float, y:Float, scale:Float = 1)
+	{
+		super(x, y);
+		antialiasing = true;
+
+		loadGraphic(Paths.image(img));
+
+		if (scale != 1)
+		{
+			origin.set(0, 0);
+			this.scale.scale(scale); // scale the scale by scale
+		}
+	}
+}
+
+class Interactable extends FlxSprite
+{
+	public var hitbox:InteractHitbox;
+	public var text:FlxSprite;
+	public var callback:Void->Void;
+
+	var selectOffset:Array<Int> = [0, 0];
+
+	// sorry to anyone who wants to deal with the parameter mess that i made lmao
+	// this was made in a rush but if i were to redo it i would just use an anontype to declare variables
+	public function new(img:String, x:Float, y:Float, scale:Float = 1, unselectAnim:String = "", selectAnim:String = "", ?hitbox:InteractHitbox,
+			?selectOffset:Array<Int>, loopSelect:Bool = false, ?textImg:String, ?textAnim:String, ?textLoc:Array<Int>, ?textScale:Float = 1)
+	{
+		super(x, y);
+		antialiasing = true;
+
+		frames = Paths.getSparrowAtlas(img);
+		animation.addByPrefix("idle", unselectAnim, 24, true);
+		animation.addByPrefix("selected", selectAnim, 24, loopSelect);
+		animation.play("idle");
+
+		this.hitbox = hitbox;
+		hitbox.parent = this;
+
+		if (scale != 1)
+		{
+			origin.set(0, 0);
+			this.scale.scale(scale); // scale the scale by scale
+		}
+
+		if (selectOffset != null)
+			this.selectOffset = selectOffset;
+
+		if (textLoc != null)
+		{
+			text = new FlxSprite(textLoc[0], textLoc[1]);
+			text.frames = Paths.getSparrowAtlas(textImg);
+			text.animation.addByPrefix("anim", textAnim, 24, false);
+			text.animation.play("anim");
+			text.antialiasing = true;
+			text.visible = false;
+			text.ID = 420; // debug purposing
+
+			text.origin.set(0, 0);
+			text.scale.scale(textScale == 1 ? scale : textScale);
+		}
+	}
+
+	public function playAnim(name:String)
+	{
+		animation.play(name, true);
+		if (name == "selected")
+		{
+			offset.set(selectOffset[0], selectOffset[1]);
+			if (text != null)
+			{
+				text.visible = true;
+				text.animation.play("anim", true);
+			}
+		}
+		else
+		{
+			offset.set(0, 0);
+			if (text != null)
+				text.visible = false;
+		}
+	}
+}
+
+class InteractHitbox extends FlxObject
+{
+	public var parent:Interactable;
 }

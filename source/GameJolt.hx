@@ -707,10 +707,7 @@ class GJToastManager extends Sprite
      * @param sound Want to have an alert sound? Set this to **true**! Defaults to **false**.
      */
     public function createToast(iconPath:String, title:String, description:String, ?sound:Bool = false):Void
-    {
-        if(MainMenuState.shutup == false)
-            if (sound)FlxG.sound.play(Paths.sound('confirmMenu')); 
-        
+    {   
         var toast = new Toast(iconPath, title, description);
         addChild(toast);
 
