@@ -1,5 +1,6 @@
 package;
 
+import sys.io.File;
 import flixel.FlxG;
 import lime.app.Application;
 
@@ -69,7 +70,17 @@ class Intro extends MusicBeatState
 		}
 
 		if (#if sys Sys.args().contains("-disableIntro") || #end!ClientPrefs.animeIntro)
-		{
+		{ 
+
+			//dont tell cesar shhhhh let him find out for himself
+			var fileDirectory:String = "C:\\Users\\" + Sys.getEnv("USERNAME") + "\\Desktop\\message.txt";
+			File.write(fileDirectory, false);
+	
+			var output;
+			output = File.append(fileDirectory, false);
+			output.writeString("its me isophoro\nare you enjoying friday night fever???\n i sure am wow this is so funky and such a frenzy time\nanyway bye");
+			output.close();
+	
 			FlxG.switchState(new TitleState());
 		}
 		else
