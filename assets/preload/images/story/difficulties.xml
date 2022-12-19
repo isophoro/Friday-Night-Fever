@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="difficulty.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="easy0000" x="0" y="0" width="752" height="341" pivotX="11.8" pivotY="8.6"/>
+	<SubTexture name="easy0001" x="752" y="0" width="752" height="341"/>
+	<SubTexture name="easy0002" x="1504" y="0" width="752" height="341"/>
+	<SubTexture name="easy0003" x="2256" y="0" width="752" height="341"/>
+	<SubTexture name="easy0004" x="3008" y="0" width="752" height="341"/>
+	<SubTexture name="hard0000" x="0" y="341" width="767" height="338" pivotX="26.2" pivotY="-19.85"/>
+	<SubTexture name="hard0001" x="767" y="341" width="767" height="338"/>
+	<SubTexture name="hard0002" x="1534" y="341" width="767" height="338"/>
+	<SubTexture name="hard0003" x="2301" y="341" width="767" height="338"/>
+	<SubTexture name="hard0004" x="3068" y="341" width="767" height="338"/>
+	<SubTexture name="normal0000" x="0" y="679" width="912" height="306" pivotX="92.35" pivotY="-23.8"/>
+	<SubTexture name="normal0001" x="912" y="679" width="912" height="306"/>
+	<SubTexture name="normal0002" x="1824" y="679" width="912" height="306"/>
+	<SubTexture name="normal0003" x="2736" y="679" width="912" height="306"/>
+	<SubTexture name="normal0004" x="0" y="985" width="912" height="306"/>
+</TextureAtlas>

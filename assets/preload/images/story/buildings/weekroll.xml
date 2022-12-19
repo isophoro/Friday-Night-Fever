@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="weekbonestory.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="week arnselected0000" x="0" y="0" width="268" height="208" pivotX="0" pivotY="0"/>
+	<SubTexture name="week arselected0000" x="268" y="0" width="457" height="363" pivotX="85.4" pivotY="155.55"/>
+	<SubTexture name="week arselected0001" x="0" y="363" width="457" height="363"/>
+	<SubTexture name="week arselected0002" x="457" y="363" width="457" height="363"/>
+	<SubTexture name="week arselected0003" x="268" y="0" width="457" height="363"/>
+	<SubTexture name="week arselected0004" x="0" y="363" width="457" height="363"/>
+	<SubTexture name="week arselected0005" x="457" y="363" width="457" height="363"/>
+	<SubTexture name="week arselected0006" x="268" y="0" width="457" height="363"/>
+	<SubTexture name="week arselected0007" x="0" y="363" width="457" height="363"/>
+	<SubTexture name="week arselected0008" x="457" y="363" width="457" height="363"/>
+</TextureAtlas>

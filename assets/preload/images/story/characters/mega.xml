@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="megaart.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="megaart0000" x="0" y="0" width="510" height="872" pivotX="8.35" pivotY="-21.3"/>
+	<SubTexture name="megaart0001" x="0" y="0" width="510" height="872"/>
+	<SubTexture name="megaart0002" x="510" y="0" width="510" height="872"/>
+	<SubTexture name="megaart0003" x="510" y="0" width="510" height="872"/>
+	<SubTexture name="megaart0004" x="1020" y="0" width="510" height="872"/>
+	<SubTexture name="megaart0005" x="1020" y="0" width="510" height="872"/>
+	<SubTexture name="megaart0006" x="1530" y="0" width="510" height="872"/>
+	<SubTexture name="megaart0007" x="1530" y="0" width="510" height="872"/>
+	<SubTexture name="megaart0008" x="0" y="872" width="510" height="872"/>
+	<SubTexture name="megaart0009" x="0" y="872" width="510" height="872"/>
+	<SubTexture name="megaart flare0000" x="510" y="872" width="505" height="872" pivotX="3.6" pivotY="-21.45"/>
+	<SubTexture name="megaart flare0001" x="510" y="872" width="505" height="872"/>
+	<SubTexture name="megaart flare0002" x="510" y="872" width="505" height="872"/>
+	<SubTexture name="megaart flare0003" x="510" y="872" width="505" height="872"/>
+	<SubTexture name="megaart flare0004" x="1015" y="872" width="505" height="872"/>
+	<SubTexture name="megaart flare0005" x="1015" y="872" width="505" height="872"/>
+	<SubTexture name="megaart flare0006" x="1015" y="872" width="505" height="872"/>
+	<SubTexture name="megaart flare0007" x="1015" y="872" width="505" height="872"/>
+	<SubTexture name="megaart flare0008" x="1015" y="872" width="505" height="872"/>
+	<SubTexture name="megaart flare0009" x="1015" y="872" width="505" height="872"/>
+</TextureAtlas>

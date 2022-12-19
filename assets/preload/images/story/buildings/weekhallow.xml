@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="weekhallow.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="week ?nselected0000" x="0" y="0" width="801" height="766" pivotX="0" pivotY="0"/>
+	<SubTexture name="week ?selected0000" x="801" y="0" width="842" height="798" pivotX="0" pivotY="32.35"/>
+	<SubTexture name="week ?selected0001" x="0" y="798" width="842" height="798"/>
+	<SubTexture name="week ?selected0002" x="842" y="798" width="842" height="798"/>
+	<SubTexture name="week ?selected0003" x="801" y="0" width="842" height="798"/>
+	<SubTexture name="week ?selected0004" x="0" y="798" width="842" height="798"/>
+	<SubTexture name="week ?selected0005" x="842" y="798" width="842" height="798"/>
+	<SubTexture name="week ?selected0006" x="801" y="0" width="842" height="798"/>
+	<SubTexture name="week ?selected0007" x="0" y="798" width="842" height="798"/>
+	<SubTexture name="week ?selected0008" x="842" y="798" width="842" height="798"/>
+</TextureAtlas>

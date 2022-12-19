@@ -39,8 +39,8 @@ class OptionsState extends MusicBeatState
             new Option("Show Song Position", "When enabled, the time duration of the song being played will always be displayed.", "songPosition", BOOL),
         ]},
         {"name":"Performance", options: [
-            new Option("FPS Cap ", "Caps your framerate.", "fpsCap", INT, {range:[60, 240], increaseInterval: 20}),
-            new Option("Show FPS Counter", "When enabled, a FPS and Memory counter will be shown in the top left.", "fps", BOOL, {callback: () -> { (cast(openfl.Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap); }}),
+			new Option("FPS Cap ", 'Caps the in-game framerate.\nDefault: 60 FPS | Refresh Rate: ${FlxG.stage.window.displayMode.refreshRate}hz', "fpsCap", INT, {range:[60, 240], increaseInterval: 20}),
+			new Option("Performance Display", "When enabled, the game's FPS and currently used RAM will be shown in the top left.", "fps", BOOL, {callback: () -> { (cast(openfl.Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap); }}),
             new Option("Anti Aliasing", "When disabled, forces all sprites to not have anti-aliasing. (In-Game Only)", "antialiasing", BOOL),
             new Option("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL),
             new Option("Play Intro on Startup", "When disabled, the intro played on startup will no longer be played.", "animeIntro", BOOL)
@@ -79,7 +79,7 @@ class OptionsState extends MusicBeatState
         add(descBox);
 
         descText = new FlxText(0, FlxG.height * 0.9, 0, "", 24);
-        descText.setFormat("VCR OSD Mono", 18, FlxColor.WHITE, CENTER);
+        descText.setFormat("VCR OSD Mono", 22, FlxColor.WHITE, CENTER);
         add(descText);
 
         resetItems();

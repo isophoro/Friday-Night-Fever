@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="week6story.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="week6notselected0000" x="0" y="0" width="181" height="290" pivotX="0" pivotY="0"/>
+	<SubTexture name="week6selected0000" x="181" y="0" width="384" height="381" pivotX="92.05" pivotY="91.6"/>
+	<SubTexture name="week6selected0001" x="565" y="0" width="384" height="381"/>
+	<SubTexture name="week6selected0002" x="0" y="381" width="384" height="381"/>
+</TextureAtlas>

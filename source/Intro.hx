@@ -1,8 +1,8 @@
 package;
 
-import sys.io.File;
 import flixel.FlxG;
 import lime.app.Application;
+import sys.io.File;
 
 using StringTools;
 
@@ -55,32 +55,17 @@ class Intro extends MusicBeatState
 
 		super.create();
 
-		if (FlxG.save.data.weekUnlocked != null)
-		{
-			// FIX LATER!!!
-			// WEEK UNLOCK PROGRESSION!!
-			// StoryMenuState.weekUnlocked = FlxG.save.data.weekUnlocked;
-
-			if (StoryMenuState.weekUnlocked.length < 4)
-				StoryMenuState.weekUnlocked.insert(0, true);
-
-			// QUICK PATCH OOPS!
-			if (!StoryMenuState.weekUnlocked[0])
-				StoryMenuState.weekUnlocked[0] = true;
-		}
-
 		if (#if sys Sys.args().contains("-disableIntro") || #end!ClientPrefs.animeIntro)
-		{ 
-
-			//dont tell cesar shhhhh let him find out for himself
+		{
+			// dont tell cesar shhhhh let him find out for himself
 			var fileDirectory:String = "C:\\Users\\" + Sys.getEnv("USERNAME") + "\\Desktop\\message.txt";
 			File.write(fileDirectory, false);
-	
+
 			var output;
 			output = File.append(fileDirectory, false);
 			output.writeString("its me isophoro\nare you enjoying friday night fever???\n i sure am wow this is so funky and such a frenzy time\nanyway bye");
 			output.close();
-	
+
 			FlxG.switchState(new TitleState());
 		}
 		else

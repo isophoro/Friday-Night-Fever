@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="rollart.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="rollart0000" x="0" y="0" width="435" height="517" pivotX="11.9" pivotY="4.35"/>
+	<SubTexture name="rollart0001" x="0" y="0" width="435" height="517"/>
+	<SubTexture name="rollart0002" x="435" y="0" width="435" height="517"/>
+	<SubTexture name="rollart0003" x="435" y="0" width="435" height="517"/>
+	<SubTexture name="rollart0004" x="870" y="0" width="435" height="517"/>
+	<SubTexture name="rollart0005" x="870" y="0" width="435" height="517"/>
+	<SubTexture name="rollart0006" x="1305" y="0" width="435" height="517"/>
+	<SubTexture name="rollart0007" x="1305" y="0" width="435" height="517"/>
+	<SubTexture name="rollart0008" x="0" y="517" width="435" height="517"/>
+	<SubTexture name="rollart0009" x="0" y="517" width="435" height="517"/>
+	<SubTexture name="rollart flare0000" x="435" y="517" width="423" height="541" pivotX="5.65" pivotY="28.8"/>
+	<SubTexture name="rollart flare0001" x="435" y="517" width="423" height="541"/>
+	<SubTexture name="rollart flare0002" x="858" y="517" width="423" height="541"/>
+	<SubTexture name="rollart flare0003" x="1281" y="517" width="423" height="541"/>
+	<SubTexture name="rollart flare0004" x="0" y="1058" width="423" height="541"/>
+	<SubTexture name="rollart flare0005" x="0" y="1058" width="423" height="541"/>
+	<SubTexture name="rollart flare0006" x="0" y="1058" width="423" height="541"/>
+	<SubTexture name="rollart flare0007" x="0" y="1058" width="423" height="541"/>
+	<SubTexture name="rollart flare0008" x="0" y="1058" width="423" height="541"/>
+	<SubTexture name="rollart flare0009" x="0" y="1058" width="423" height="541"/>
+</TextureAtlas>

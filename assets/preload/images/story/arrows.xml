@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="arrow menu.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="arrow0000" x="0" y="0" width="50" height="77" pivotX="0" pivotY="0"/>
+	<SubTexture name="arrow press0000" x="50" y="0" width="75" height="99" pivotX="12.7" pivotY="11.1"/>
+	<SubTexture name="arrow press0001" x="125" y="0" width="75" height="99"/>
+	<SubTexture name="arrow press0002" x="200" y="0" width="75" height="99"/>
+	<SubTexture name="arrow press0003" x="275" y="0" width="75" height="99"/>
+	<SubTexture name="arrow press0004" x="350" y="0" width="75" height="99"/>
+	<SubTexture name="arrow press0005" x="425" y="0" width="75" height="99"/>
+	<SubTexture name="arrow press0006" x="0" y="99" width="75" height="99"/>
+	<SubTexture name="arrow press0007" x="75" y="99" width="75" height="99"/>
+</TextureAtlas>

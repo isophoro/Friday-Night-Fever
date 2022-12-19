@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hallowart.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Hallowart0000" x="0" y="0" width="756" height="982" pivotX="16.7" pivotY="19.45"/>
+	<SubTexture name="Hallowart0001" x="0" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart0002" x="756" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart0003" x="756" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart0004" x="1512" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart0005" x="1512" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart0006" x="2268" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart0007" x="2268" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart0008" x="3024" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart0009" x="3024" y="0" width="756" height="982"/>
+	<SubTexture name="Hallowart flare0000" x="0" y="982" width="742" height="982" pivotX="16.7" pivotY="19.45"/>
+	<SubTexture name="Hallowart flare0001" x="742" y="982" width="742" height="982"/>
+	<SubTexture name="Hallowart flare0002" x="0" y="982" width="742" height="982"/>
+	<SubTexture name="Hallowart flare0003" x="742" y="982" width="742" height="982"/>
+	<SubTexture name="Hallowart flare0004" x="1484" y="982" width="742" height="982"/>
+	<SubTexture name="Hallowart flare0005" x="2226" y="982" width="742" height="982"/>
+	<SubTexture name="Hallowart flare0006" x="2968" y="982" width="742" height="982"/>
+	<SubTexture name="Hallowart flare0007" x="2968" y="982" width="742" height="982"/>
+	<SubTexture name="Hallowart flare0008" x="2968" y="982" width="742" height="982"/>
+	<SubTexture name="Hallowart flare0009" x="2968" y="982" width="742" height="982"/>
+</TextureAtlas>

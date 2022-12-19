@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pepperart.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="pepperart0000" x="0" y="0" width="445" height="906" pivotX="-90.2" pivotY="-3.75"/>
+	<SubTexture name="pepperart0001" x="0" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart0002" x="445" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart0003" x="445" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart0004" x="890" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart0005" x="890" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart0006" x="1335" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart0007" x="1335" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart0008" x="1780" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart0009" x="1780" y="0" width="445" height="906"/>
+	<SubTexture name="pepperart flare0000" x="2225" y="0" width="441" height="906" pivotX="-91.05" pivotY="-3.75"/>
+	<SubTexture name="pepperart flare0001" x="2225" y="0" width="441" height="906"/>
+	<SubTexture name="pepperart flare0002" x="2666" y="0" width="441" height="906"/>
+	<SubTexture name="pepperart flare0003" x="3107" y="0" width="441" height="906"/>
+	<SubTexture name="pepperart flare0004" x="3548" y="0" width="441" height="906"/>
+	<SubTexture name="pepperart flare0005" x="3548" y="0" width="441" height="906"/>
+	<SubTexture name="pepperart flare0006" x="3548" y="0" width="441" height="906"/>
+	<SubTexture name="pepperart flare0007" x="3548" y="0" width="441" height="906"/>
+	<SubTexture name="pepperart flare0008" x="3548" y="0" width="441" height="906"/>
+	<SubTexture name="pepperart flare0009" x="3548" y="0" width="441" height="906"/>
+</TextureAtlas>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="story bgs.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="hallow bg0000" x="0" y="0" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="hallow bg0001" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hallow bg0002" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hallow bg0003" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hallow bg0004" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hallow bg0005" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hallow bg0006" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hallow bg0007" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hallow bg0008" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hallow bg0009" x="0" y="0" width="1229" height="1155"/>
+	<SubTexture name="hunni bg0000" x="1229" y="0" width="1210" height="1155" pivotX="-20.4" pivotY="-189.1"/>
+	<SubTexture name="hunni bg0001" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="hunni bg0002" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="hunni bg0003" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="hunni bg0004" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="hunni bg0005" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="hunni bg0006" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="hunni bg0007" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="hunni bg0008" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="hunni bg0009" x="1229" y="0" width="1210" height="1155"/>
+	<SubTexture name="mako bg0000" x="2439" y="0" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="mako bg0001" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mako bg0002" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mako bg0003" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mako bg0004" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mako bg0005" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mako bg0006" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mako bg0007" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mako bg0008" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mako bg0009" x="2439" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0000" x="3668" y="0" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="mega bg0001" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0002" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0003" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0004" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0005" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0006" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0007" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0008" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="mega bg0009" x="3668" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10000" x="4897" y="0" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="peakek10001" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10002" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10003" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10004" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10005" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10006" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10007" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10008" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="peakek10009" x="4897" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0000" x="6126" y="0" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="pepper bg0001" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0002" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0003" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0004" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0005" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0006" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0007" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0008" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="pepper bg0009" x="6126" y="0" width="1229" height="1155"/>
+	<SubTexture name="robo bg0000" x="0" y="1155" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="robo bg0001" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="robo bg0002" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="robo bg0003" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="robo bg0004" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="robo bg0005" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="robo bg0006" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="robo bg0007" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="robo bg0008" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="robo bg0009" x="0" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0000" x="1229" y="1155" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="rolldog bg0001" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0002" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0003" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0004" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0005" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0006" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0007" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0008" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="rolldog bg0009" x="1229" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0000" x="2458" y="1155" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="scarlet bg0001" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0002" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0003" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0004" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0005" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0006" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0007" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0008" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="scarlet bg0009" x="2458" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0000" x="3687" y="1155" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="taki bg0001" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0002" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0003" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0004" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0005" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0006" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0007" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0008" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="taki bg0009" x="3687" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0000" x="4916" y="1155" width="1229" height="1155" pivotX="-1.75" pivotY="-189.1"/>
+	<SubTexture name="wee bg0001" x="4916" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0002" x="4916" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0003" x="4916" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0004" x="4916" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0005" x="4916" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0006" x="4916" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0007" x="4916" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0008" x="4916" y="1155" width="1229" height="1155"/>
+	<SubTexture name="wee bg0009" x="4916" y="1155" width="1229" height="1155"/>
+</TextureAtlas>

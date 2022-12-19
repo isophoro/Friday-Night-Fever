@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="takiart.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="takiart0000" x="0" y="0" width="902" height="1175" pivotX="-8.45" pivotY="75.25"/>
+	<SubTexture name="takiart0001" x="0" y="0" width="902" height="1175"/>
+	<SubTexture name="takiart0002" x="902" y="0" width="902" height="1175"/>
+	<SubTexture name="takiart0003" x="902" y="0" width="902" height="1175"/>
+	<SubTexture name="takiart0004" x="1804" y="0" width="902" height="1175"/>
+	<SubTexture name="takiart0005" x="1804" y="0" width="902" height="1175"/>
+	<SubTexture name="takiart0006" x="2706" y="0" width="902" height="1175"/>
+	<SubTexture name="takiart0007" x="2706" y="0" width="902" height="1175"/>
+	<SubTexture name="takiart0008" x="0" y="1175" width="902" height="1175"/>
+	<SubTexture name="takiart0009" x="0" y="1175" width="902" height="1175"/>
+	<SubTexture name="takiart flare0000" x="902" y="1175" width="890" height="1175" pivotX="-15.2" pivotY="75.25"/>
+	<SubTexture name="takiart flare0001" x="902" y="1175" width="890" height="1175"/>
+	<SubTexture name="takiart flare0002" x="902" y="1175" width="890" height="1175"/>
+	<SubTexture name="takiart flare0003" x="902" y="1175" width="890" height="1175"/>
+	<SubTexture name="takiart flare0004" x="1792" y="1175" width="890" height="1175"/>
+	<SubTexture name="takiart flare0005" x="1792" y="1175" width="890" height="1175"/>
+	<SubTexture name="takiart flare0006" x="1792" y="1175" width="890" height="1175"/>
+	<SubTexture name="takiart flare0007" x="1792" y="1175" width="890" height="1175"/>
+	<SubTexture name="takiart flare0008" x="1792" y="1175" width="890" height="1175"/>
+	<SubTexture name="takiart flare0009" x="1792" y="1175" width="890" height="1175"/>
+</TextureAtlas>

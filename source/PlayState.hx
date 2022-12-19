@@ -2561,7 +2561,6 @@ class PlayState extends MusicBeatState
 					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 				}
 
-				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
 
 				endingSong = true;
