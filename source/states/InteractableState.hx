@@ -76,7 +76,7 @@ class InteractableState extends MusicBeatState
 		if (FlxG.mouse.pressed || FlxG.keys.anyPressed([ENTER, SPACE]))
 		{
 			hand.animation.play(curSelected != null ? 'qselect' : 'select');
-			hand.offset.set(0, 8);
+			hand.offset.y = curSelected != null ? 34 : 8;
 
 			if (curSelected != null && !FlxG.mouse.pressed && FlxG.keys.anyJustPressed([ENTER, SPACE]))
 			{
@@ -86,7 +86,7 @@ class InteractableState extends MusicBeatState
 		else
 		{
 			hand.animation.play(curSelected != null ? 'qidle' : 'idle');
-			hand.offset.set(0, 0);
+			hand.offset.y = curSelected != null ? 24 : 0;
 		}
 	}
 

@@ -105,8 +105,8 @@ class StoryMenuState extends InteractableState
 	override function addInteractable(i:Interactable)
 	{
 		super.addInteractable(i);
-		i.callback = () -> {
-			// openSubState(new states.WeekPreviewSubState(order.indexOf(i.hitbox)));
-		}
+		/* i.callback = () -> {
+			openSubState(new states.WeekPreviewSubState(order.indexOf(i.hitbox)));
+		}*/
 	}
 }
