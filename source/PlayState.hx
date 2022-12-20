@@ -205,8 +205,6 @@ class PlayState extends MusicBeatState
 	public static var hallowDeaths:Int = 0;
 	public static var hallowNoteDeaths:Int = 0;
 
-	public static var easierMode:Bool = false;
-
 	public static var diedtoHallowNote:Bool = false;
 
 	public static function setModCamera(bool:Bool)
@@ -1837,11 +1835,6 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (easierMode == true)
-		{
-			health += 0.0001;
-		}
-
 		hurtTimer -= elapsed;
 
 		if (FlxG.save.data.botplay && FlxG.keys.justPressed.ONE)
@@ -1874,8 +1867,7 @@ class PlayState extends MusicBeatState
 			for (i in 0...4)
 			{
 				strumLineNotes.members[i].visible = p1;
-				if (i <= playerStrums.length)
-					playerStrums.members[i].visible = p2;
+				playerStrums.members[i].visible = p2;
 			}
 		}
 		#end

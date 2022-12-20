@@ -14,8 +14,6 @@ var zombie:FlxSprite;
 
 function onCreate()
 {
-	trace("Hi");
-
 	camHUD.visible = false;
 	camGame.zoom += 0.12;
 	camGame.flash(FlxColor.BLACK, 1.3);
@@ -56,9 +54,8 @@ function onCreate()
 		robo.visible = false;
 		dad.visible = true;
 		camHUD.visible = true;
-		game.startCountdown();
 		game.camZooming = false;
-		FlxTween.tween(camGame, {zoom: game.defaultCamZoom}, 0.45);
+		FlxTween.tween(camGame, {zoom: game.defaultCamZoom}, 0.6);
 		game.disableCamera = false;
 		camFollow.setPosition(BF_CAM_POS.x, BF_CAM_POS.y);
 	}
@@ -101,5 +98,14 @@ function onUpdate(elapsed:Float)
 		zombie.animation.play("EXPLODE");
 		zombie.offset.x += 293;
 		zombie.offset.y += 247;
+
+		zombie.animation.finishCallback = function(a)
+		{
+			zombie.animation.finishCallback = null;
+			new FlxTimer().start(1.45, function(t)
+			{
+				game.startCountdown();
+			});
+		}
 	}
 }

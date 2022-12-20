@@ -37,7 +37,6 @@ class StoryMenuState extends InteractableState
 		FlxG.camera.zoom = 0.91; // i fucked up scaling this stuff so we zooming out
 		FlxG.camera.scroll.y = 20;
 
-		PlayState.easierMode = false;
 		PlayState.deaths = 0;
 
 		#if windows
