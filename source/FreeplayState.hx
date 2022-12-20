@@ -36,7 +36,7 @@ class FreeplayState extends MusicBeatState
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var iconArray:Array<HealthIcon> = [];
 
-	var curDifficulty:Int = 2;
+	var curDifficulty:Int = 1;
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
 
@@ -282,8 +282,8 @@ class FreeplayState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 4 : 3;
-		if (curDifficulty > (songs[curSelected].week == 2 && songs[curSelected].songCharacter == 'monster' ? 4 : 3))
+			curDifficulty = CoolUtil.difficultyArray.length - 1;
+		else if (curDifficulty >= CoolUtil.difficultyArray.length)
 			curDifficulty = 0;
 
 		PlayState.minus = curDifficulty == 4;
@@ -291,7 +291,7 @@ class FreeplayState extends MusicBeatState
 		switch (currentStyle)
 		{
 			case HALLOWEEN:
-				curDifficulty = 3;
+				curDifficulty = 2;
 				diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
 			default:
 				diffText.text = '< ' + CoolUtil.difficultyArray[curDifficulty].toUpperCase() + ' >';

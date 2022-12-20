@@ -68,7 +68,7 @@ class InteractableState extends MusicBeatState
 			if (index >= order.length)
 				index = 0;
 
-			hand.setPosition(order[index].x + (order[index].width / 2), order[index].y + (order[index].height / 2));
+			hand.setPosition(order[index].x + (order[index].width / 2) - (hand.width / 2), order[index].y + (order[index].height / 2) - (hand.height / 2));
 			FlxG.stage.application.window.warpMouse(Std.int(hand.x), Std.int(hand.y));
 			onMouseHover(order[index]);
 		}
@@ -133,10 +133,7 @@ class InteractableState extends MusicBeatState
 
 	function onMouseLeave(item:InteractHitbox)
 	{
-		if (!allowInput)
-			return;
-
-		if (item.parent.animation.curAnim.name != "idle")
+		if (item.parent.animation.curAnim.name != "idle" && item.parent.animation.name != 'come')
 		{
 			item.parent.playAnim("idle");
 			curSelected = null;

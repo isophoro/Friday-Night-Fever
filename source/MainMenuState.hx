@@ -12,6 +12,7 @@ import Discord.DiscordClient;
 
 class MainMenuState extends InteractableState
 {
+	public static var firstTime:Bool = true;
 	public static var alert:FlxText;
 
 	override function create()
@@ -22,7 +23,7 @@ class MainMenuState extends InteractableState
 
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Main Menu", null);
 		#end
 
 		var tunnelBG:MenuBG = new MenuBG("newMain/subway_bg_2", 0, -12, 0.7);
@@ -31,20 +32,28 @@ class MainMenuState extends InteractableState
 		var train = new Interactable('newMain/trainmenu', 150, 75, 0.66, 'Train notselected', 'Train selected', new InteractHitbox(480, 205, 165, 280),
 			[0, 42]);
 		train.animation.addByPrefix('come', 'Train come', 24, false);
-		train.animation.play('come');
-		train.animation.pause();
 		addInteractable(train);
 
-		new FlxTimer().start(0.6, (t) ->
+		if (firstTime)
 		{
-			train.animation.resume();
-		});
+			train.visible = false;
+			train.animation.finishCallback = function(anim)
+			{
+				train.animation.play('idle');
+				allowInput = true;
+				train.animation.finishCallback = null;
+			}
 
-		train.animation.finishCallback = function(anim)
+			new FlxTimer().start(0.5, (t) ->
+			{
+				train.animation.play('come');
+				train.visible = true;
+			});
+		}
+		else
 		{
-			train.animation.play('idle');
 			allowInput = true;
-			train.animation.finishCallback = null;
+			train.animation.play('idle');
 		}
 
 		train.callback = () ->
@@ -106,5 +115,7 @@ class MainMenuState extends InteractableState
 			options.hitbox,
 			freeplay.hitbox
 		];
+
+		firstTime = false;
 	}
 }

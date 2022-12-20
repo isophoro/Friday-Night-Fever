@@ -2,15 +2,16 @@
 <TextureAtlas imagePath="weeks.png">
 	<!-- Created with Adobe Animate version 21.0.3.38773 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="week10000" x="0" y="0" width="692" height="272" pivotX="-32" pivotY="-63.15"/>
-	<SubTexture name="mweek20000" x="692" y="0" width="696" height="272" pivotX="-32" pivotY="-63.15"/>
-	<SubTexture name="mweek2.50000" x="0" y="272" width="797" height="258" pivotX="15.8" pivotY="-70.05"/>
-	<SubTexture name="mweek30000" x="797" y="272" width="700" height="272" pivotX="-32" pivotY="-63.15"/>
-	<SubTexture name="mweek40000" x="0" y="544" width="727" height="272" pivotX="-32" pivotY="-63.15"/>
-	<SubTexture name="mweek50000" x="727" y="544" width="696" height="272" pivotX="-32" pivotY="-63.15"/>
-	<SubTexture name="mweek60000" x="0" y="816" width="700" height="276" pivotX="-32" pivotY="-59.55"/>
-	<SubTexture name="mweek70000" x="700" y="816" width="702" height="272" pivotX="-32" pivotY="-63.15"/>
-	<SubTexture name="mweek80000" x="0" y="1092" width="713" height="276" pivotX="-32" pivotY="-59.2"/>
-	<SubTexture name="mweek?0000" x="713" y="1092" width="705" height="272" pivotX="-32" pivotY="-63.15"/>
-	<SubTexture name="mweekbone0000" x="0" y="1368" width="728" height="298" pivotX="-32" pivotY="-37.2"/>
+	<SubTexture name="tutorial0000" x="0" y="0" width="786" height="264" pivotX="0" pivotY="-102.35"/>
+	<SubTexture name="week10000" x="786" y="0" width="692" height="272" pivotX="-32" pivotY="-63.15"/>
+	<SubTexture name="week20000" x="0" y="272" width="696" height="272" pivotX="-32" pivotY="-63.15"/>
+	<SubTexture name="week2.50000" x="696" y="272" width="797" height="258" pivotX="15.8" pivotY="-70.05"/>
+	<SubTexture name="week30000" x="0" y="544" width="700" height="272" pivotX="-32" pivotY="-63.15"/>
+	<SubTexture name="week40000" x="700" y="544" width="727" height="272" pivotX="-32" pivotY="-63.15"/>
+	<SubTexture name="week50000" x="0" y="816" width="696" height="272" pivotX="-32" pivotY="-63.15"/>
+	<SubTexture name="week60000" x="696" y="816" width="700" height="276" pivotX="-32" pivotY="-59.55"/>
+	<SubTexture name="week70000" x="0" y="1092" width="702" height="272" pivotX="-32" pivotY="-63.15"/>
+	<SubTexture name="week80000" x="702" y="1092" width="713" height="276" pivotX="-32" pivotY="-59.2"/>
+	<SubTexture name="week?0000" x="0" y="1368" width="705" height="272" pivotX="-32" pivotY="-63.15"/>
+	<SubTexture name="weekbone0000" x="705" y="1368" width="728" height="298" pivotX="-32" pivotY="-37.2"/>
 </TextureAtlas>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Makomelon.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="mako down0000" x="0" y="0" width="399" height="349" pivotX="9.5" pivotY="-20"/>
+	<SubTexture name="mako down0001" x="0" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0002" x="399" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0003" x="399" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0004" x="798" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0005" x="798" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0006" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0007" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0008" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0009" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0010" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0011" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0012" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0013" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako down0014" x="1197" y="0" width="399" height="349"/>
+	<SubTexture name="mako idle0000" x="1596" y="0" width="314" height="364" pivotX="3.6" pivotY="-5.35"/>
+	<SubTexture name="mako idle0001" x="1596" y="0" width="314" height="364"/>
+	<SubTexture name="mako idle0002" x="0" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0003" x="0" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0004" x="314" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0005" x="314" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0006" x="628" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0007" x="628" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0008" x="942" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0009" x="942" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0010" x="942" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0011" x="942" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0012" x="942" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0013" x="942" y="364" width="314" height="364"/>
+	<SubTexture name="mako idle0014" x="942" y="364" width="314" height="364"/>
+	<SubTexture name="mako left0000" x="1256" y="364" width="373" height="444" pivotX="181" pivotY="79"/>
+	<SubTexture name="mako left0001" x="1256" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0002" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0003" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0004" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0005" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0006" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0007" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0008" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0009" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0010" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0011" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0012" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0013" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako left0014" x="1629" y="364" width="373" height="444"/>
+	<SubTexture name="mako right0000" x="0" y="808" width="404" height="365" pivotX="2.25" pivotY="-4.55"/>
+	<SubTexture name="mako right0001" x="0" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0002" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0003" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0004" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0005" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0006" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0007" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0008" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0009" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0010" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0011" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0012" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0013" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako right0014" x="404" y="808" width="404" height="365"/>
+	<SubTexture name="mako up0000" x="808" y="808" width="331" height="384" pivotX="26.2" pivotY="22.45"/>
+	<SubTexture name="mako up0001" x="808" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0002" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0003" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0004" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0005" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0006" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0007" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0008" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0009" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0010" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0011" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0012" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0013" x="1139" y="808" width="331" height="384"/>
+	<SubTexture name="mako up0014" x="1139" y="808" width="331" height="384"/>
+</TextureAtlas>

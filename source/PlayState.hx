@@ -23,6 +23,7 @@ import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
+import lime.graphics.Image;
 import lime.utils.Assets;
 import openfl.Lib;
 import openfl.display.BitmapData;
@@ -805,10 +806,9 @@ class PlayState extends MusicBeatState
 				dad.y += 60;
 				dad.x -= 100;
 				camPos.x += 400;
-			case 'pico':
-				camPos.x += 600;
-				dad.y += 20;
-				dad.x -= 200;
+			case 'mako':
+				dad.y += 445;
+				dad.x += 25;
 			case 'parents-christmas':
 				dad.x -= 500;
 			case 'bdbfever':
@@ -828,9 +828,9 @@ class PlayState extends MusicBeatState
 				dad.y += 200;
 				dad.x += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
-			case 'makocorrupt':
-				dad.y -= 100;
-				dad.x -= 290;
+			case 'mako-demon': // 275 350
+				dad.y += 250;
+				dad.x -= 15;
 			case 'mom-car' | 'mom-carnight':
 				dad.x -= 30;
 				dad.y -= 165;
@@ -847,7 +847,6 @@ class PlayState extends MusicBeatState
 				dad.y -= 500;
 				dad.scrollFactor.set(0.9, 0.9);
 		}
-
 		curPlayer = boyfriend;
 		curOpponent = dad;
 
@@ -1826,11 +1825,6 @@ class PlayState extends MusicBeatState
 	{
 		scripts.updateVars();
 
-		if (FlxG.keys.justPressed.T && SONG.song.toLowerCase() == 'party-crasher')
-		{
-			setSongTime(18613); // SKI P THE FUCKING PARYCRASHER INTRO I HATE IT
-		}
-
 		if (FlxG.keys.justPressed.U)
 		{
 			Achievements.getAchievement(15);
@@ -2383,9 +2377,9 @@ class PlayState extends MusicBeatState
 				case 'yukichi':
 					camFollow.x = dad.getMidpoint().x - -423;
 					camFollow.y = dad.getMidpoint().y - 280;
-				case 'pico' | 'makocorrupt':
+				case 'mako' | 'mako-demon':
 					camFollow.x = dad.getMidpoint().x - -350;
-					camFollow.y = dad.getMidpoint().y - 60;
+					camFollow.y = dad.getMidpoint().y - (dad.curCharacter == "mako" ? 185 : 60);
 				case 'bdbfever':
 					camFollow.x = dad.getMidpoint().x + 200;
 					camFollow.y = dad.getMidpoint().y - 80;
@@ -2439,6 +2433,7 @@ class PlayState extends MusicBeatState
 
 				case 'week3stage':
 					camFollow.x = boyfriend.getMidpoint().x - 380;
+					camFollow.y = boyfriend.getMidpoint().y - 150;
 				case 'princess':
 					camFollow.y = boyfriend.getMidpoint().y - 330;
 					camFollow.x = boyfriend.getMidpoint().x - 450;
@@ -3125,22 +3120,6 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	public function setSongTime(time:Float) // I HATE THE PARTY CRASHER INTRO ITS SO FUCKING LONG
-	{
-		if (time < 0)
-			time = 0;
-
-		FlxG.sound.music.pause();
-		vocals.pause();
-
-		FlxG.sound.music.time = time;
-		FlxG.sound.music.play();
-
-		vocals.time = time;
-		vocals.play();
-		Conductor.songPosition = time;
-	}
-
 	override function beatHit()
 	{
 		super.beatHit();
@@ -3654,13 +3633,13 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		/*for (i in unspawnNotes)
+		for (i in unspawnNotes)
+		{
+			if (strumTime > i.strumTime)
 			{
-				if (strumTime > i.strumTime)
-				{
-					unspawnNotes.remove(i);
-				}
-		}*/
+				unspawnNotes.remove(i);
+			}
+		}
 
 		for (i in toKill)
 		{

@@ -18,12 +18,13 @@ class StoryMenuState extends InteractableState
 			['Metamorphosis', 'Void', 'Down-bad'],
 			['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
 			['Prayer', 'Bad-Nun'],
-			['Hallow', 'Portrait', 'Soul'],
 			['Mako', 'VIM', "Retribution"],
 			['Honey', "Bunnii", "Throw-it-back"],
 			['Mild', 'Spice', 'Party-Crasher'],
 			['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
-			['C354R', 'Loaded']
+			['Hallow', 'Portrait', 'Soul'],
+			['C354R', 'Loaded', 'Gears'],
+			['Tranquility', 'Princess', 'Banish']
 		];
 	}
 
@@ -31,8 +32,8 @@ class StoryMenuState extends InteractableState
 	{
 		super.create();
 
-		persistentUpdate = persistentDraw = true;
 		allowInput = true;
+		persistentUpdate = persistentDraw = true;
 		FlxG.camera.zoom = 0.91; // i fucked up scaling this stuff so we zooming out
 		FlxG.camera.scroll.y = 20;
 
@@ -102,11 +103,35 @@ class StoryMenuState extends InteractableState
 		];
 	}
 
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (allowInput && controls.BACK)
+		{
+			FlxG.switchState(new MainMenuState());
+		}
+	}
+
 	override function addInteractable(i:Interactable)
 	{
 		super.addInteractable(i);
-		/* i.callback = () -> {
+		i.callback = () ->
+		{
 			openSubState(new states.WeekPreviewSubState(order.indexOf(i.hitbox)));
-		}*/
+		}
+	}
+
+	override function closeSubState()
+	{
+		super.closeSubState();
+
+		if (curSelected != null)
+		{
+			onMouseLeave(curSelected);
+			curSelected = null;
+		}
+
+		allowInput = true;
 	}
 }

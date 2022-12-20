@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Makodemon.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="mako demon form0000" x="0" y="0" width="347" height="444" pivotX="42.05" pivotY="208.95"/>
+	<SubTexture name="mako demon form0001" x="0" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0002" x="347" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0003" x="347" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0004" x="694" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0005" x="694" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0006" x="1041" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0007" x="1041" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0008" x="1388" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0009" x="1388" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form0010" x="0" y="444" width="347" height="444"/>
+	<SubTexture name="mako demon form0011" x="0" y="444" width="347" height="444"/>
+	<SubTexture name="mako demon form0012" x="347" y="444" width="347" height="444"/>
+	<SubTexture name="mako demon form0013" x="347" y="444" width="347" height="444"/>
+	<SubTexture name="mako demon form0014" x="1388" y="0" width="347" height="444"/>
+	<SubTexture name="mako demon form down0000" x="694" y="444" width="362" height="416" pivotX="36.5" pivotY="195.85"/>
+	<SubTexture name="mako demon form down0001" x="694" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0002" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0003" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0004" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0005" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0006" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0007" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0008" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0009" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0010" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0011" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0012" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0013" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form down0014" x="1056" y="444" width="362" height="416"/>
+	<SubTexture name="mako demon form left0000" x="1418" y="444" width="371" height="447" pivotX="95.25" pivotY="218.2"/>
+	<SubTexture name="mako demon form left0001" x="1418" y="444" width="371" height="447"/>
+	<SubTexture name="mako demon form left0002" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0003" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0004" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0005" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0006" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0007" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0008" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0009" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0010" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0011" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0012" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0013" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form left0014" x="0" y="891" width="371" height="447"/>
+	<SubTexture name="mako demon form right0000" x="371" y="891" width="446" height="436" pivotX="16.65" pivotY="207.3"/>
+	<SubTexture name="mako demon form right0001" x="371" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0002" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0003" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0004" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0005" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0006" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0007" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0008" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0009" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0010" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0011" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0012" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0013" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form right0014" x="817" y="891" width="446" height="436"/>
+	<SubTexture name="mako demon form up0000" x="1263" y="891" width="448" height="434" pivotX="49.2" pivotY="214.8"/>
+	<SubTexture name="mako demon form up0001" x="1263" y="891" width="448" height="434"/>
+	<SubTexture name="mako demon form up0002" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0003" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0004" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0005" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0006" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0007" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0008" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0009" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0010" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0011" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0012" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0013" x="0" y="1338" width="448" height="434"/>
+	<SubTexture name="mako demon form up0014" x="0" y="1338" width="448" height="434"/>
+</TextureAtlas>

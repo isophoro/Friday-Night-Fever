@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "mako idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				8,
+				1
+			],
+			"fps": 24,
+			"anim": "mako right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				11,
+				-17
+			],
+			"fps": 24,
+			"anim": "mako down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				77,
+				72
+			],
+			"fps": 24,
+			"anim": "mako left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				18,
+				24
+			],
+			"fps": 24,
+			"anim": "mako up",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "mako/Mako",
+	"color": "47CC40"
+}

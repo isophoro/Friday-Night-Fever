@@ -184,8 +184,8 @@ class Note extends FlxSprite
 		{
 			if (isSustainNote)
 			{
-				if (strumTime - Conductor.songPosition <= (((100 * Conductor.timeScale) * 0.5))
-					&& strumTime - Conductor.songPosition >= (((-100 * Conductor.timeScale))))
+				if (strumTime - Conductor.songPosition <= (((125 * Conductor.timeScale) * 0.5))
+					&& strumTime - Conductor.songPosition >= (((-125 * Conductor.timeScale))))
 					canBeHit = true;
 				else
 					canBeHit = false;

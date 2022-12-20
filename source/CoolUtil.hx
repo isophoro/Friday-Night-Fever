@@ -1,13 +1,13 @@
 package;
 
-import lime.utils.Assets;
 import StringBuf;
+import lime.utils.Assets;
 
 using StringTools;
 
 class CoolUtil
 {
-	public static var difficultyArray:Array<String> = ["BABY", 'EASY', "NORMAL", "HARD", "HARD (MINUS)"];
+	public static var difficultyArray:Array<String> = ['EASY', "NORMAL", "HARD"];
 
 	// GITHUB CO-PILOT IS GOATED
 	public static function capitalizeFirstLetters(str:String):String
@@ -51,22 +51,22 @@ class CoolUtil
 	public static function reverseString(string:String):String
 	{
 		var newString:StringBuf = new StringBuf();
-		for (i in -string.length+1...1) 
+		for (i in -string.length + 1...1)
 			newString.addChar(string.fastCodeAt(-i));
 		return string = newString.toString();
 	}
-	
+
 	public static function coolStringFile(path:String):Array<String>
+	{
+		var daList:Array<String> = path.trim().split('\n');
+
+		for (i in 0...daList.length)
 		{
-			var daList:Array<String> = path.trim().split('\n');
-	
-			for (i in 0...daList.length)
-			{
-				daList[i] = daList[i].trim();
-			}
-	
-			return daList;
+			daList[i] = daList[i].trim();
 		}
+
+		return daList;
+	}
 
 	public static function numberArray(max:Int, ?min = 0):Array<Int>
 	{

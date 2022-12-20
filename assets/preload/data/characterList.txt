@@ -12,9 +12,9 @@ peasus
 spooky
 feralspooky
 monster
-pico
 bf-casual
-makocorrupt
+mako
+mako-demon
 bf-casualdemon
 mom-car
 bf-car

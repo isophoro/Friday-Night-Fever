@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "mako demon form0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				2,
+				10
+			],
+			"fps": 24,
+			"anim": "mako demon form down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				8,
+				4
+			],
+			"fps": 24,
+			"anim": "mako demon form left",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-9,
+				-5
+			],
+			"fps": 24,
+			"anim": "mako demon form up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				7,
+				3
+			],
+			"fps": 24,
+			"anim": "mako demon form left",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "mako/Mako_Demon",
+	"color": "47CC40"
+}

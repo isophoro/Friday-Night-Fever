@@ -219,7 +219,7 @@ class Character extends FlxSprite
 					{
 						playAnim('idle-loop');
 					}
-				case 'makocorrupt':
+				case 'mako-demon':
 					floatY += 0.1; // i'd rather much redo this with tweening but im lazy
 					y += Math.sin(floatY);
 				case 'hallow' | 'gf-notea':
