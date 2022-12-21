@@ -3683,7 +3683,7 @@
 		"song": "Grando",
 		"needsVoices": true,
 		"validScore": true,
-		"stage": "robocesbg",
+		"stage": "city-minus",
 		"bpm": 160,
 		"speed": 2.9
 	}

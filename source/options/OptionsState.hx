@@ -26,7 +26,7 @@ class OptionsState extends MusicBeatState
         ]},
         {"name":"Gameplay", options: [
             new Option("Downscroll", "When enabled, notes will scroll from the top of the screen to the bottom.", "downscroll", BOOL),
-            new Option("Offset", "In milliseconds, how long a note should be offset from it's initial timing.", "offset", INT, {range:[-250, 250], suffix:"ms"}),
+            new Option("Offset", "In milliseconds, how long a note should be offset from it's initial timing.", "offset", INT, {range:[-250, 250], suffix:"ms", shiftInterval: 10}),
             new Option("Ghost Tapping", "When enabled, misinputs will no longer cause misses.", "ghost", BOOL),
             new Option("Play with Modcharts", "When enabled, modcharts will be automatically forced on for every song.", "modcharts", BOOL),
             new Option("Botplay", "When enabled, player input will be locked and songs will automatically play themselves.", "botplay", BOOL)
@@ -51,6 +51,7 @@ class OptionsState extends MusicBeatState
     var inCategory:Bool = false;
     var curSelected:Int = 0;
     var awaitingInput:Bool = false;
+    var holdTimer:Float = 0;
 
     var bg:FlxSprite;
     var descText:FlxText;
@@ -180,6 +181,10 @@ class OptionsState extends MusicBeatState
         }
 
         var str:String = forceDesc ? forcedDescription : categories[curCategory].options[curSelected].description;
+		if (categories[curCategory].options[curSelected].shiftInterval != 1)
+		{
+            str += "\nHold SHIFT to increase by 10";
+        }
         descText.visible = descBox.visible = true;
         descText.text = str;
         descText.screenCenter(X);
@@ -351,6 +356,11 @@ class Option
                         increaseInterval = values.increaseInterval;
                     }
 
+					if (values.shiftInterval != null)
+					{
+						shiftInterval = values.shiftInterval;
+					}
+
                     if (values.range != null)
                     {
                         range = values.range;
@@ -377,7 +387,8 @@ class Option
         switch (type)
         {
             case INT:
-                var newValue:Int = cast FlxMath.bound(Reflect.field(ClientPrefs, saveVariable) + (direction == LEFT ? -increaseInterval : increaseInterval), range[0], range[1]);
+                var num:Float = (FlxG.keys.pressed.SHIFT && shiftInterval != 1 ? shiftInterval : increaseInterval);
+                var newValue:Int = cast FlxMath.bound(Reflect.field(ClientPrefs, saveVariable) + (direction == LEFT ? -num : num), range[0], range[1]);
                 Reflect.setField(ClientPrefs, saveVariable, newValue);
                 trace("Changing " + saveVariable + " to " + newValue);
                 return true;
@@ -423,9 +434,9 @@ class Option
     public var suffix:String = "";
     public var type:OptionType = BOOL;
     public var callback:Void->Void;
-
+    public var shiftInterval:Int = 1;
+	public var increaseInterval:Int = 1;
     public var state:Class<flixel.FlxState>;
 
     public var range:Array<Float> = [0, 100];
-    public var increaseInterval:Int = 1;
 }

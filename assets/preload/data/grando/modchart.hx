@@ -11,7 +11,13 @@ function onPostUpdate(elapsed:Float)
 		for (i in 0...8)
 		{
 			setNoteX(defaultStrumPos[i].x + (1 - (elapsed * 3.125)) * (strumLineNotes[i].x - defaultStrumPos[i].x), i);
-			setNoteY(defaultStrumPos[i].y + 2 * Math.sin(currentBeat * Math.PI), i);
+
+			if (curBeat >= 64 && curBeat < 128 || curBeat > 159 && curBeat < 192 || curBeat > 287 && curBeat < 356)
+			{
+				setNoteY(defaultStrumPos[i].y + (4 * Math.sin(currentBeat * Math.PI)), i);
+			}
+			else
+				setNoteY(defaultStrumPos[i].y + 2 * Math.sin(currentBeat * Math.PI), i);
 		}
 	}
 }
@@ -36,19 +42,19 @@ function onBeatHit(curBeat:Int)
 	if (curBeat == 64)
 	{
 		camGame.flash(FlxColor.WHITE, 0.45);
-		game.defaultCamZoom = 0.4;
+		game.defaultCamZoom = 0.5;
 		camGame.zoom = game.defaultCamZoom;
 	}
 
 	if (curBeat == 256)
 	{
-		game.defaultCamZoom = 0.4;
+		game.defaultCamZoom = 0.5;
 		// game.useDirectionalCamera = false;
 	}
 
 	if (curBeat == 356)
 	{
-		FlxTween.tween(game, {"defaultCamZoom": 0.4}, 1.4);
+		FlxTween.tween(game, {"defaultCamZoom": 0.5}, 1.4);
 		for (i in 0...8)
 			FlxTween.tween(strumLineNotes[i], {alpha: 0}, 1.4);
 	}
@@ -58,6 +64,10 @@ function onBeatHit(curBeat:Int)
 		{
 			var nextX:Float = defaultStrumPos[i].x;
 			nextX += ((4 * beat) * (curBeat % 2 == 0 ? -1 : 1));
+			if (curBeat == 288)
+			{
+				nextX += (i < 2 || i < 6 && i > 3 ? (i == 0 || i == 4 ? -45 : -25) : (i == 3 || i == 7 ? 45 : 25));
+			}
 			tween(strumLineNotes[i], {x: nextX, "scale.y": 0.7}, 0.1);
 		}
 }
@@ -102,7 +112,7 @@ function onStepHit(curStep:Int)
 	else if (curStep == 770)
 		game.defaultCamZoom -= 0.05;
 	else if (curStep == 834 || curStep == 896 || curStep == 961)
-		game.defaultCamZoom = 0.54;
+		game.defaultCamZoom = 0.64;
 }
 
 function onOpponentNoteHit(note:Note)

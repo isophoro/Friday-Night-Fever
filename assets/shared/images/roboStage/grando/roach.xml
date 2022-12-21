@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="roch.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="roach0000" x="0" y="0" width="256" height="163" pivotX="0.75" pivotY="3.2"/>
+	<SubTexture name="roach0001" x="0" y="0" width="256" height="163"/>
+	<SubTexture name="roach0002" x="256" y="0" width="256" height="163"/>
+	<SubTexture name="roach0003" x="256" y="0" width="256" height="163"/>
+	<SubTexture name="roach0004" x="0" y="163" width="256" height="163"/>
+	<SubTexture name="roach0005" x="0" y="163" width="256" height="163"/>
+	<SubTexture name="roach0006" x="256" y="163" width="256" height="163"/>
+	<SubTexture name="roach0007" x="256" y="163" width="256" height="163"/>
+	<SubTexture name="roach0008" x="0" y="326" width="256" height="163"/>
+	<SubTexture name="roach0009" x="0" y="326" width="256" height="163"/>
+</TextureAtlas>

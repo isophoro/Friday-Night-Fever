@@ -379,7 +379,7 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.stage)
 		{
-			case 'city' | 'train':
+			case 'city' | 'train' | 'city-minus':
 				curStage = SONG.stage;
 				var stageScript:HaxeScript = new HaxeScript('assets/stages/$curStage.hx');
 				scripts.add(stageScript);
@@ -2463,6 +2463,9 @@ class PlayState extends MusicBeatState
 				case 'city':
 					camFollow.x = boyfriend.getMidpoint().x - 330;
 					camFollow.y = boyfriend.getMidpoint().y - 385;
+				case 'city-minus':
+					camFollow.x = boyfriend.getMidpoint().x - 600;
+					camFollow.y = boyfriend.getMidpoint().y - 190;
 			}
 
 			BF_CAM_POS.set(camFollow.x, camFollow.y);
