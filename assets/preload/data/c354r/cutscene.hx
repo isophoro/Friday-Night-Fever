@@ -97,7 +97,7 @@ function onUpdate(elapsed:Float)
 	{
 		zombie.animation.play("EXPLODE");
 		zombie.offset.x += 293;
-		zombie.offset.y += 247;
+		zombie.offset.y += 246;
 
 		zombie.animation.finishCallback = function(a)
 		{
@@ -107,5 +107,10 @@ function onUpdate(elapsed:Float)
 				game.startCountdown();
 			});
 		}
+	}
+
+	if (zombie.animation.curAnim.name == "EXPLODE" && zombie.animation.curAnim.curFrame >= 14)
+	{
+		zombie.color = FlxColor.WHITE;
 	}
 }

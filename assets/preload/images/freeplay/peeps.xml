@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="peoplefreeplay.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="people0000" x="0" y="0" width="1815" height="318" pivotX="0.35" pivotY="2.3"/>
+	<SubTexture name="people0001" x="0" y="0" width="1815" height="318"/>
+	<SubTexture name="people0002" x="0" y="318" width="1815" height="318"/>
+	<SubTexture name="people0003" x="0" y="318" width="1815" height="318"/>
+	<SubTexture name="people0004" x="0" y="636" width="1815" height="318"/>
+	<SubTexture name="people0005" x="0" y="636" width="1815" height="318"/>
+	<SubTexture name="people0006" x="0" y="954" width="1815" height="318"/>
+	<SubTexture name="people0007" x="0" y="954" width="1815" height="318"/>
+	<SubTexture name="people0008" x="0" y="954" width="1815" height="318"/>
+	<SubTexture name="people0009" x="0" y="954" width="1815" height="318"/>
+</TextureAtlas>

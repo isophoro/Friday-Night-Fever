@@ -120,8 +120,7 @@ class ChartingState extends MusicBeatState
 				gfVersion: 'gf',
 				noteStyle: 'normal',
 				stage: 'stage',
-				speed: 1,
-				validScore: false
+				speed: 1
 			};
 		}
 
@@ -253,10 +252,6 @@ class ChartingState extends MusicBeatState
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
 			loadJson(_song.song.toLowerCase());
-			if (PlayState.SONG.song.toLowerCase() == 'run')
-			{
-				System.exit(0);
-			}
 		});
 
 		var restart = new FlxButton(10, 140, "Reset Chart", function()

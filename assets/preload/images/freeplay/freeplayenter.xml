@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="freeplayenter.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cover0000" x="0" y="0" width="480" height="361" pivotX="0" pivotY="104.9"/>
+	<SubTexture name="cover0001" x="0" y="0" width="480" height="361"/>
+	<SubTexture name="cover0002" x="0" y="0" width="480" height="361"/>
+	<SubTexture name="cover0003" x="0" y="0" width="480" height="361"/>
+	<SubTexture name="cover0004" x="0" y="0" width="480" height="361"/>
+	<SubTexture name="cover0005" x="0" y="0" width="480" height="361"/>
+	<SubTexture name="cover0006" x="0" y="0" width="480" height="361"/>
+	<SubTexture name="cover0007" x="0" y="0" width="480" height="361"/>
+	<SubTexture name="cover0008" x="0" y="0" width="480" height="361"/>
+	<SubTexture name="cover0009" x="480" y="0" width="480" height="361"/>
+	<SubTexture name="cover0010" x="480" y="0" width="480" height="361"/>
+	<SubTexture name="cover0011" x="960" y="0" width="480" height="361"/>
+	<SubTexture name="cover0012" x="960" y="0" width="480" height="361"/>
+	<SubTexture name="cover0013" x="1440" y="0" width="480" height="361"/>
+	<SubTexture name="cover0014" x="1440" y="0" width="480" height="361"/>
+	<SubTexture name="cover0015" x="0" y="361" width="480" height="361"/>
+	<SubTexture name="cover0016" x="480" y="361" width="480" height="361"/>
+	<SubTexture name="cover0017" x="960" y="361" width="480" height="361"/>
+	<SubTexture name="cover0018" x="960" y="361" width="480" height="361"/>
+	<SubTexture name="cover0019" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0020" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0021" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0022" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0023" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0024" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0025" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0026" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0027" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0028" x="1440" y="361" width="480" height="361"/>
+	<SubTexture name="cover0029" x="1440" y="361" width="480" height="361"/>
+</TextureAtlas>

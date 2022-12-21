@@ -18,7 +18,7 @@ typedef SwagSong =
 	var gfVersion:String;
 	var noteStyle:String;
 	var stage:String;
-	var validScore:Bool;
+	@:deprecated var ?validScore:Bool;
 }
 
 typedef SwagSection =
@@ -48,7 +48,16 @@ class Song
 	public var stage:String = 'stage';
 
 	public static var artists:Map<Array<String>, String> = [
-		["hallow", "portrait", "soul", "hardships", "banish", "bloom", "dead-mans-melody", "grando"] => "FPLester",
+		[
+			"hallow",
+			"portrait",
+			"soul",
+			"hardships",
+			"banish",
+			"bloom",
+			"dead-mans-melody",
+			"grando"
+		] => "FPLester",
 		["c354r", "loaded", "gears", "space-demons", "princess", "tranquility"] => "Biddle3",
 		["party-crasher"] => "BirdBonanza"
 	];
@@ -105,7 +114,6 @@ class Song
 	public static function parseJSONshit(rawJson:String):SwagSong
 	{
 		var swagShit:SwagSong = cast Json.parse(rawJson).song;
-		swagShit.validScore = true;
 		return swagShit;
 	}
 }

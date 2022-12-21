@@ -26,7 +26,7 @@ class OptionsState extends MusicBeatState
         ]},
         {"name":"Gameplay", options: [
             new Option("Downscroll", "When enabled, notes will scroll from the top of the screen to the bottom.", "downscroll", BOOL),
-            new Option("Offset", "In milliseconds, how long a note should be offset from it's initial timing.", "offset", INT, {range:[-250, 250], suffix:"ms", shiftInterval: 10}),
+            new Option("Offset", "In milliseconds, how long a note should be offset from it's initial timing.", "offset", INT, {range:[-250, 500], suffix:"ms", shiftInterval: 10}),
             new Option("Ghost Tapping", "When enabled, misinputs will no longer cause misses.", "ghost", BOOL),
             new Option("Play with Modcharts", "When enabled, modcharts will be automatically forced on for every song.", "modcharts", BOOL),
             new Option("Botplay", "When enabled, player input will be locked and songs will automatically play themselves.", "botplay", BOOL)

@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "ROBOIDLE",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				3,
+				-29
+			],
+			"fps": 24,
+			"anim": "ROBODOWN",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-60,
+				-4
+			],
+			"fps": 24,
+			"anim": "ROBORIGHT",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-13,
+				46
+			],
+			"fps": 24,
+			"anim": "ROBOUP",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				96,
+				-1
+			],
+			"fps": 24,
+			"anim": "ROBOLEFT",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "robo-fever/perspective",
+	"color": "504BA6"
+}

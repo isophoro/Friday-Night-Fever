@@ -2517,7 +2517,7 @@ class PlayState extends MusicBeatState
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
-		if (SONG.validScore)
+		if (!ClientPrefs.botplay)
 		{
 			if (!ClientPrefs.botplay && misses == 0 && !Highscore.fullCombos.exists(SONG.song))
 				Highscore.fullCombos.set(SONG.song, 0);
@@ -2546,7 +2546,7 @@ class PlayState extends MusicBeatState
 				}
 				#end
 
-				if (SONG.validScore)
+				if (!ClientPrefs.botplay)
 				{
 					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 				}

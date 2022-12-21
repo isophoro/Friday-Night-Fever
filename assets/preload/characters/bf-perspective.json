@@ -1,0 +1,98 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				1,
+				15
+			],
+			"fps": 24,
+			"anim": "FRIGHTMISS",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				1,
+				-14
+			],
+			"fps": 24,
+			"anim": "FEVERDOWN",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				33,
+				22
+			],
+			"fps": 24,
+			"anim": "FLEFTMISS",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				0,
+				67
+			],
+			"fps": 24,
+			"anim": "FEVERUP",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "FEVERIDLE",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				2,
+				9
+			],
+			"fps": 24,
+			"anim": "FEVERRIGHT",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				1,
+				1
+			],
+			"fps": 24,
+			"anim": "FDOWNMISS",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				26,
+				9
+			],
+			"fps": 24,
+			"anim": "FEVERLEFT",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				3,
+				67
+			],
+			"fps": 24,
+			"anim": "FUPMISS",
+			"loop": false,
+			"name": "singUPmiss"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": true,
+	"file": "fever/perspective",
+	"color": "504BA6"
+}

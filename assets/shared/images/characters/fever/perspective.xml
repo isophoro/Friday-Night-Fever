@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ROBOFEVERPERSPECTIVE.png">
+	<!-- Created with Adobe Animate version 20.0.1.19255 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="FDOWNMISS0000" x="2" y="2" width="603" height="826" frameX="0" frameY="-34" frameWidth="603" frameHeight="864"/>
+	<SubTexture name="FDOWNMISS0001" x="2" y="2" width="603" height="826" frameX="0" frameY="-34" frameWidth="603" frameHeight="864"/>
+	<SubTexture name="FDOWNMISS0002" x="606" y="2" width="576" height="856" frameX="-4" frameY="-8" frameWidth="603" frameHeight="864"/>
+	<SubTexture name="FDOWNMISS0003" x="606" y="2" width="576" height="856" frameX="-4" frameY="-8" frameWidth="603" frameHeight="864"/>
+	<SubTexture name="FDOWNMISS0004" x="1183" y="2" width="576" height="864" frameX="-4" frameY="0" frameWidth="603" frameHeight="864"/>
+	<SubTexture name="FDOWNMISS0005" x="1183" y="2" width="576" height="864" frameX="-4" frameY="0" frameWidth="603" frameHeight="864"/>
+	<SubTexture name="FEVERDOWN0000" x="2" y="2" width="603" height="826" frameX="0" frameY="-21" frameWidth="603" frameHeight="864"/>
+	<SubTexture name="FEVERDOWN0001" x="2" y="2" width="603" height="826" frameX="0" frameY="-21" frameWidth="603" frameHeight="864"/>
+	<SubTexture name="FEVERDOWN0002" x="1760" y="2" width="578" height="848" frameX="-2" frameY="0" frameWidth="603" frameHeight="848"/>
+	<SubTexture name="FEVERDOWN0003" x="1760" y="2" width="578" height="848" frameX="-2" frameY="0" frameWidth="603" frameHeight="848"/>
+	<SubTexture name="FEVERDOWN0004" x="1760" y="2" width="578" height="848" frameX="-2" frameY="0" frameWidth="603" frameHeight="848"/>
+	<SubTexture name="FEVERDOWN0005" x="1760" y="2" width="578" height="848" frameX="-2" frameY="0" frameWidth="603" frameHeight="848"/>
+	<SubTexture name="FEVERIDLE0000" x="2339" y="2" width="628" height="820" frameX="0" frameY="-45" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0001" x="2339" y="2" width="628" height="820" frameX="0" frameY="-45" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0002" x="2968" y="2" width="563" height="852" frameX="0" frameY="-13" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0003" x="2968" y="2" width="563" height="852" frameX="0" frameY="-13" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0004" x="2" y="867" width="580" height="865" frameX="0" frameY="0" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0005" x="2" y="867" width="580" height="865" frameX="0" frameY="0" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0006" x="583" y="867" width="580" height="864" frameX="0" frameY="-1" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0007" x="583" y="867" width="580" height="864" frameX="0" frameY="-1" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0008" x="1164" y="867" width="580" height="865" frameX="0" frameY="0" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0009" x="1164" y="867" width="580" height="865" frameX="0" frameY="0" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0010" x="1164" y="867" width="580" height="865" frameX="0" frameY="0" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0011" x="1164" y="867" width="580" height="865" frameX="0" frameY="0" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0012" x="1164" y="867" width="580" height="865" frameX="0" frameY="0" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERIDLE0013" x="1164" y="867" width="580" height="865" frameX="0" frameY="0" frameWidth="628" frameHeight="865"/>
+	<SubTexture name="FEVERLEFT0000" x="1745" y="867" width="615" height="861" frameX="0" frameY="-11" frameWidth="615" frameHeight="872"/>
+	<SubTexture name="FEVERLEFT0001" x="1745" y="867" width="615" height="861" frameX="0" frameY="-11" frameWidth="615" frameHeight="872"/>
+	<SubTexture name="FEVERLEFT0002" x="2361" y="867" width="594" height="872" frameX="-17" frameY="0" frameWidth="615" frameHeight="872"/>
+	<SubTexture name="FEVERLEFT0003" x="2361" y="867" width="594" height="872" frameX="-17" frameY="0" frameWidth="615" frameHeight="872"/>
+	<SubTexture name="FEVERLEFT0004" x="2361" y="867" width="594" height="872" frameX="-17" frameY="0" frameWidth="615" frameHeight="872"/>
+	<SubTexture name="FEVERLEFT0005" x="2361" y="867" width="594" height="872" frameX="-17" frameY="0" frameWidth="615" frameHeight="872"/>
+	<SubTexture name="FEVERRIGHT0000" x="2956" y="867" width="625" height="875" frameX="-3" frameY="0" frameWidth="628" frameHeight="875"/>
+	<SubTexture name="FEVERRIGHT0001" x="2956" y="867" width="625" height="875" frameX="-3" frameY="0" frameWidth="628" frameHeight="875"/>
+	<SubTexture name="FEVERRIGHT0002" x="2" y="1743" width="602" height="867" frameX="0" frameY="-8" frameWidth="628" frameHeight="875"/>
+	<SubTexture name="FEVERRIGHT0003" x="2" y="1743" width="602" height="867" frameX="0" frameY="-8" frameWidth="628" frameHeight="875"/>
+	<SubTexture name="FEVERRIGHT0004" x="2" y="1743" width="602" height="867" frameX="0" frameY="-8" frameWidth="628" frameHeight="875"/>
+	<SubTexture name="FEVERRIGHT0005" x="2" y="1743" width="602" height="867" frameX="0" frameY="-8" frameWidth="628" frameHeight="875"/>
+	<SubTexture name="FEVERUP0000" x="605" y="1743" width="559" height="931" frameX="-4" frameY="0" frameWidth="598" frameHeight="931"/>
+	<SubTexture name="FEVERUP0001" x="605" y="1743" width="559" height="931" frameX="-4" frameY="0" frameWidth="598" frameHeight="931"/>
+	<SubTexture name="FEVERUP0002" x="1165" y="1743" width="598" height="900" frameX="0" frameY="-31" frameWidth="598" frameHeight="931"/>
+	<SubTexture name="FEVERUP0003" x="1165" y="1743" width="598" height="900" frameX="0" frameY="-31" frameWidth="598" frameHeight="931"/>
+	<SubTexture name="FEVERUP0004" x="1165" y="1743" width="598" height="900" frameX="0" frameY="-31" frameWidth="598" frameHeight="931"/>
+	<SubTexture name="FEVERUP0005" x="1165" y="1743" width="598" height="900" frameX="0" frameY="-31" frameWidth="598" frameHeight="931"/>
+	<SubTexture name="FLEFTMISS0000" x="1764" y="1743" width="615" height="861" frameX="0" frameY="-24" frameWidth="628" frameHeight="885"/>
+	<SubTexture name="FLEFTMISS0001" x="1764" y="1743" width="615" height="861" frameX="0" frameY="-24" frameWidth="628" frameHeight="885"/>
+	<SubTexture name="FLEFTMISS0002" x="2380" y="1743" width="597" height="884" frameX="-27" frameY="0" frameWidth="628" frameHeight="885"/>
+	<SubTexture name="FLEFTMISS0003" x="2380" y="1743" width="597" height="884" frameX="-27" frameY="0" frameWidth="628" frameHeight="885"/>
+	<SubTexture name="FLEFTMISS0004" x="2978" y="1743" width="600" height="884" frameX="-28" frameY="0" frameWidth="628" frameHeight="885"/>
+	<SubTexture name="FLEFTMISS0005" x="2978" y="1743" width="600" height="884" frameX="-28" frameY="0" frameWidth="628" frameHeight="885"/>
+	<SubTexture name="FRIGHTMISS0000" x="2" y="2675" width="625" height="875" frameX="-2" frameY="-1" frameWidth="627" frameHeight="876"/>
+	<SubTexture name="FRIGHTMISS0001" x="2" y="2675" width="625" height="875" frameX="-2" frameY="-1" frameWidth="627" frameHeight="876"/>
+	<SubTexture name="FRIGHTMISS0002" x="628" y="2675" width="584" height="876" frameX="-1" frameY="0" frameWidth="627" frameHeight="876"/>
+	<SubTexture name="FRIGHTMISS0003" x="628" y="2675" width="584" height="876" frameX="-1" frameY="0" frameWidth="627" frameHeight="876"/>
+	<SubTexture name="FRIGHTMISS0004" x="1213" y="2675" width="575" height="876" frameX="0" frameY="0" frameWidth="627" frameHeight="876"/>
+	<SubTexture name="FRIGHTMISS0005" x="1213" y="2675" width="575" height="876" frameX="0" frameY="0" frameWidth="627" frameHeight="876"/>
+	<SubTexture name="FUPMISS0000" x="605" y="1743" width="559" height="931" frameX="-5" frameY="0" frameWidth="598" frameHeight="931"/>
+	<SubTexture name="FUPMISS0001" x="605" y="1743" width="559" height="931" frameX="-5" frameY="0" frameWidth="598" frameHeight="931"/>
+	<SubTexture name="FUPMISS0002" x="1789" y="2675" width="599" height="915" frameX="0" frameY="-22" frameWidth="601" frameHeight="937"/>
+	<SubTexture name="FUPMISS0003" x="1789" y="2675" width="599" height="915" frameX="0" frameY="-22" frameWidth="601" frameHeight="937"/>
+	<SubTexture name="FUPMISS0004" x="2389" y="2675" width="601" height="902" frameX="0" frameY="-35" frameWidth="601" frameHeight="937"/>
+	<SubTexture name="FUPMISS0005" x="2389" y="2675" width="601" height="902" frameX="0" frameY="-35" frameWidth="601" frameHeight="937"/>
+</TextureAtlas>
