@@ -207,6 +207,7 @@ class WeekPreviewSubState extends MusicBeatSubstate
 
 		if (controls.BACK)
 		{
+			FlxG.sound.play(Paths.sound("return"));
 			allowInputs = false;
 
 			for (i in [leftArrow, rightArrow, curDifficulty])
@@ -238,6 +239,7 @@ class WeekPreviewSubState extends MusicBeatSubstate
 
 		if (controls.ACCEPT)
 		{
+			FlxG.sound.play(Paths.sound("select"));
 			for (i in characters)
 			{
 				i.animation.play("confirm");

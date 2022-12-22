@@ -133,4 +133,14 @@ class StoryMenuState extends InteractableState
 
 		allowInput = true;
 	}
+
+	override function onMouseHover(item:InteractHitbox)
+	{
+		super.onMouseHover(item);
+
+		if (curSelected != null)
+		{
+			FlxG.sound.play(Paths.sound("hover"), 0.7);
+		}
+	}
 }

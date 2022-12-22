@@ -29,7 +29,7 @@ class MainMenuState extends InteractableState
 		var tunnelBG:MenuBG = new MenuBG("newMain/subway_bg_2", 0, -12, 0.7);
 		add(tunnelBG);
 
-		var train = new Interactable('newMain/trainmenu', 150, 75, 0.66, 'Train notselected', 'Train selected', new InteractHitbox(480, 205, 165, 280),
+		var train = new Interactable('newMain/trainmenu', 150, 75, 1.32, 'Train notselected', 'Train selected', new InteractHitbox(480, 205, 165, 280),
 			[0, 42]);
 		train.animation.addByPrefix('come', 'Train come', 24, false);
 		addInteractable(train);
