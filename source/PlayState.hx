@@ -2134,8 +2134,8 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
-						curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
 						scripts.callFunction("onOpponentNoteHit", [daNote]);
+						curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
 
 						if (curStage == 'schoolEvil')
 						{
@@ -2461,9 +2461,6 @@ class PlayState extends MusicBeatState
 	function endSong():Void
 	{
 		skipDialogue = false;
-
-		if (ClientPrefs.fpsCap > 290)
-			(cast(Lib.current.getChildAt(0), Main)).setFPSCap(290);
 
 		#if windows
 		if (luaModchart != null)

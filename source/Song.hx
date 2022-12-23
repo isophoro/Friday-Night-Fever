@@ -37,14 +37,7 @@ class Song
 {
 	public static var artists:Map<Array<String>, String> = [
 		[
-			"hallow",
-			"portrait",
-			"soul",
-			"hardships",
-			"banish",
-			"bloom",
-			"dead-mans-melody",
-			"grando"
+			"hallow", "eclipse", "soul", "hardships", "banish", "bloom", "dead-mans-melody", "grando", "old-portrait", "old-hallow", "old-soul"
 		] => "FPLester",
 		["c354r", "loaded", "gears", "space-demons", "princess", "tranquility"] => "Biddle3",
 		["party-crasher"] => "BirdBonanza"

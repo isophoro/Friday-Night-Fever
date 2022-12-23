@@ -274,15 +274,15 @@ class TitleState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 1:
-					createCoolText(['CesarFever', 'HelloItsMako', 'and more']);
+					createCoolText(['Friday Night', 'Fever Dev Team']);
 				case 3:
 					addMoreText('present');
 				case 4:
 					deleteCoolText();
 				case 5:
-					createCoolText(['In Partnership', 'with']);
+					createCoolText(['we should', 'probably']);
 				case 6:
-					addMoreText('Newgrounds');
+					addMoreText('replace this');
 					ngSpr.visible = true;
 				case 7:
 					deleteCoolText();

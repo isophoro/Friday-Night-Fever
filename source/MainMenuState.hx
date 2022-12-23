@@ -118,4 +118,12 @@ class MainMenuState extends InteractableState
 
 		firstTime = false;
 	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (controls.BACK)
+			FlxG.switchState(new TitleState());
+	}
 }
