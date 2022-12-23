@@ -30,7 +30,6 @@ class MusicBeatState extends FlxUIState
 
 	override function create()
 	{
-		// Main.clearCache();
 		(cast(Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap);
 
 		if (transIn != null)
@@ -98,12 +97,12 @@ class MusicBeatState extends FlxUIState
 		// do literally nothing dumbass
 	}
 
-	public function fancyOpenURL(schmancy:String)
+	inline public function fancyOpenURL(schmancy:String)
 	{
 		#if linux
-		Sys.command('/usr/bin/xdg-open', [schmancy, "&"]);
+		return Sys.command('/usr/bin/xdg-open', [schmancy, "&"]);
 		#else
-		FlxG.openURL(schmancy);
+		return FlxG.openURL(schmancy);
 		#end
 	}
 

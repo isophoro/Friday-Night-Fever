@@ -156,7 +156,6 @@ class PlayState extends MusicBeatState
 	#end
 
 	// stage sprites
-	var w1city:FlxSprite; // week 1
 	var spookyBG:FlxSprite; // week 2
 
 	public var church:FlxSprite; // week 2.5 / bad nun
@@ -369,8 +368,12 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.stage)
 		{
-			case 'city' | 'train' | 'city-minus':
-				curStage = SONG.stage;
+			default:
+				if (SONG.stage == null)
+					curStage = "stage";
+				else
+					curStage = SONG.stage;
+
 				var stageScript:HaxeScript = new HaxeScript('assets/stages/$curStage.hx');
 				scripts.add(stageScript);
 				stageScript.callFunction("onCreate");
@@ -701,43 +704,6 @@ class PlayState extends MusicBeatState
 					add(princessCrystals);
 					princessCrystals.visible = false;
 					FlxTween.tween(princessCrystals, {y: princessCrystals.y - 70}, 3.4, {type: PINGPONG});
-				}
-			default:
-				{
-					defaultCamZoom = 0.9;
-					curStage = 'stage';
-					var bmp:BitmapData = openfl.Assets.getBitmapData(Paths.image('w1city'));
-
-					var bg:FlxSprite = new FlxSprite(-720, -450).loadGraphic(bmp, true, 2560, 1400);
-					bg.animation.add('idle', [3], 0);
-					bg.animation.play('idle');
-					bg.scale.set(0.3, 0.3);
-					bg.antialiasing = true;
-					bg.scrollFactor.set(0.9, 0.9);
-					add(bg);
-
-					w1city = new FlxSprite(bg.x, bg.y).loadGraphic(bmp, true, 2560, 1400);
-					w1city.animation.add('idle', [0, 1, 2], 0);
-					w1city.animation.play('idle');
-					w1city.scale.set(bg.scale.x, bg.scale.y);
-					w1city.antialiasing = true;
-					w1city.scrollFactor.set(0.9, 0.9);
-					add(w1city);
-
-					var stageFront:FlxSprite = new FlxSprite(-730, 530).loadGraphic(Paths.image('stagefront'));
-					stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-					stageFront.updateHitbox();
-					stageFront.antialiasing = true;
-					stageFront.scrollFactor.set(0.9, 0.9);
-					add(stageFront);
-
-					var stageCurtains:FlxSprite = new FlxSprite(-500,
-						-300).loadGraphic(Paths.image(SONG.song == 'Down-Bad' ? 'stagecurtainsDOWNBAD' : 'stagecurtains'));
-					stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
-					stageCurtains.updateHitbox();
-					stageCurtains.antialiasing = true;
-					stageCurtains.scrollFactor.set(0.9, 0.9);
-					add(stageCurtains);
 				}
 		}
 
@@ -1206,7 +1172,7 @@ class PlayState extends MusicBeatState
 			scripts.add(cutsceneScript);
 			cutsceneScript.callFunction("onCreate");
 		}
-		else if (isStoryMode)
+		else if (isStoryMode || curSong == "Grando")
 		{
 			switch (curSong.toLowerCase())
 			{
@@ -2667,7 +2633,7 @@ class PlayState extends MusicBeatState
 
 			if (!disableHUD)
 			{
-				if (songScript.variables.exists("forceComboPos")
+				if (songScript.variables["forceComboPos"] != null
 					&& (songScript.variables["forceComboPos"].x != 0 || songScript.variables["forceComboPos"].y != 0))
 				{
 					rating.x = songScript.variables["forceComboPos"].x;
@@ -3424,14 +3390,6 @@ class PlayState extends MusicBeatState
 
 				if (FlxG.random.bool(10) && fastCarCanDrive)
 					fastCarDrive();
-			case 'stage':
-				if (curBeat % 2 == 0)
-				{
-					if (w1city.animation.curAnim.curFrame > 2)
-						w1city.animation.curAnim.curFrame = 0;
-					else
-						w1city.animation.curAnim.curFrame++;
-				}
 		}
 	}
 

@@ -26,7 +26,8 @@ typedef DialogueAction =
 	?side:Null<FlxDirection>,
 	?fillBG:Null<FlxColor>,
 	?setBG:String,
-	?effect:String
+	?effect:String,
+	?proceedImmediately:Bool
 }
 
 class DialoguePortrait extends FlxSprite
@@ -76,6 +77,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	var curRight:DialoguePortrait;
 
 	var dialogueStarted:Bool = false;
+	var skip:Bool = false;
 
 	public var finishCallback:Void->Void;
 
@@ -83,9 +85,9 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	{
 		super();
 
-		bg = new FlxSprite();
+		bg = new FlxSprite().makeGraphic(1280, 720, FlxColor.BLACK);
 		bg.antialiasing = true;
-		bg.visible = false;
+		bg.alpha = 0.7;
 		add(bg);
 
 		parseDialogue(dialogue);
@@ -119,7 +121,10 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.anyJustPressed([ENTER, SPACE]))
+		text.delay = FlxG.keys.pressed.SHIFT ? 0.02 : 0.04;
+
+		@:privateAccess
+		if (FlxG.keys.anyJustPressed([ENTER, SPACE]) || dialogueStarted && !text._typing && skip)
 		{
 			@:privateAccess
 			if (!text._typing)
@@ -141,14 +146,21 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 		if (action.fillBG != null)
 		{
-			bg.visible = true;
 			bg.makeGraphic(1280, 720, action.fillBG);
+			bg.alpha = 1;
 		}
 		else if (action.setBG != null)
 		{
-			bg.visible = action.setBG.length > 0;
 			if (action.setBG.length > 0)
+			{
 				bg.loadGraphic(Paths.image(action.setBG, "shared"));
+				bg.alpha = 1;
+			}
+			else
+			{
+				bg.makeGraphic(1280, 720, FlxColor.BLACK);
+				bg.alpha = 0.7;
+			}
 		}
 
 		if (action.portrait != null && portraits[action.portrait] != null)
@@ -177,6 +189,8 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			var prev = portraits[action.portraits[0]];
 			prev.color = 0xFFFFFFFF;
 		}
+
+		skip = action.proceedImmediately;
 
 		if (action.msg != null)
 		{
@@ -247,6 +261,10 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				curLeft.visible = true;
 				curLeft.setPosition(box.x, -90);
 		}
+
+		text.sounds = [
+			FlxG.sound.load(Paths.sound("dialogue/" + portrait.character.split("-")[0]), 0.6)
+		];
 
 		if (action.emotion != null)
 			portrait.animation.play(action.emotion);
@@ -323,6 +341,8 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 			if (a.has.effect)
 				action.effect = a.att.effect.toLowerCase();
+
+			action.proceedImmediately = a.has.proceedImmediately;
 
 			if (Reflect.fields(action).length > 0)
 				actions.push(action);

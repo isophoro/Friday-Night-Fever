@@ -16,6 +16,7 @@ typedef DifficutlyData =
 		NORMAL => {name: "Normal"},
 		HARD => {name: "Hard", chartSuffix: "-hard"}
 	];
+	// DIFFICULTIES
 	var BABY = -1;
 	var EASY = 0;
 	var NORMAL = 1;
