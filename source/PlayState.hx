@@ -3574,13 +3574,17 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		var unspawns:Array<QueuedNote> = [];
 		for (i in unspawnNotes)
 		{
 			if (strumTime > i.strumTime)
 			{
-				unspawnNotes.remove(i);
+				unspawns.push(i);
 			}
 		}
+
+		for (i in unspawns)
+			unspawnNotes.remove(i);
 
 		for (i in toKill)
 		{

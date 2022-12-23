@@ -6,6 +6,8 @@ Star-Baby:spooky:2
 Last-Meow:feralspooky:2
 Bazinga:monster:2
 Crucify:monster:2
+Prayer:monster:3
+Bad-Nun:monster:3
 Mako:mako:4
 VIM:mako:4
 Retribution:mako-demon:4
@@ -27,3 +29,9 @@ Tranquility:scarlet:8
 Princess:scarlet:8
 Bloom:scarlet-final:8
 Dead-Mans-Melody:toothpaste:8
+Old-Hallow:hallow:3
+Old-Portrait:hallow:3
+Old-Soul:hallow:3
+Hallow:hallow:7
+Eclipse:hallow:7
+SOUL:hallow:7

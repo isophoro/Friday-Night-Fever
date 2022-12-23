@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="logo bop.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="logo bump0000" x="0" y="0" width="967" height="683" pivotX="42" pivotY="30"/>
+	<SubTexture name="logo bump0001" x="0" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0002" x="967" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0003" x="967" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0004" x="1934" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0005" x="1934" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0006" x="2901" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0007" x="2901" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0008" x="2901" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0009" x="2901" y="0" width="967" height="683"/>
+	<SubTexture name="logo bump0010" x="0" y="683" width="967" height="683"/>
+	<SubTexture name="logo bump0011" x="0" y="683" width="967" height="683"/>
+</TextureAtlas>

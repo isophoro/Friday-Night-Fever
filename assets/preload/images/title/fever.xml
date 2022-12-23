@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fever_opening.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fever standing0000" x="0" y="0" width="403" height="720" pivotX="5.8" pivotY="32.6"/>
+	<SubTexture name="fever standing0001" x="0" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0002" x="403" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0003" x="403" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0004" x="806" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0005" x="806" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0006" x="1209" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0007" x="1209" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0008" x="1612" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0009" x="1612" y="0" width="403" height="720"/>
+	<SubTexture name="fever standing0010" x="0" y="720" width="403" height="720"/>
+	<SubTexture name="fever standing0011" x="0" y="720" width="403" height="720"/>
+</TextureAtlas>

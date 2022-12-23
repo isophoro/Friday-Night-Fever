@@ -63,12 +63,8 @@ class TitleState extends MusicBeatState
 
 		hueShader = new ColorShader();
 
-		logoBl = new FlxSprite(364, 7);
-		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+		logoBl = new FlxSprite(55, 40).loadGraphic(Paths.image('title/logo'));
 		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
-		logoBl.animation.play('bump');
-		logoBl.updateHitbox();
 		logoBl.shader = hueShader;
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
@@ -90,9 +86,8 @@ class TitleState extends MusicBeatState
 	}
 
 	var logoBl:FlxSprite;
-	var gfDance:FlxSprite;
-	var titleText:FlxSprite;
-	var feverTown:FlxSprite;
+	var feva:FlxSprite;
+	var tea:FlxSprite;
 
 	function startIntro()
 	{
@@ -113,39 +108,33 @@ class TitleState extends MusicBeatState
 
 		persistentUpdate = true;
 
-		var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('menuBackground'));
+		var bg:FlxSprite = new FlxSprite(-20, -1).loadGraphic(Paths.image('title/bg'));
 		bg.antialiasing = true;
 		add(bg);
 
 		add(logoBl);
 
-		feverTown = new FlxSprite(355, 380);
-		feverTown.frames = Paths.getSparrowAtlas('vs FeverTown');
-		feverTown.antialiasing = true;
-		feverTown.animation.addByPrefix('bump', 'Vs FeverTown', 24, false);
-		feverTown.animation.play('bump');
-		feverTown.updateHitbox();
-		add(feverTown);
+		tea = new FlxSprite(963, 290);
+		tea.frames = Paths.getSparrowAtlas('title/tea');
+		tea.animation.addByPrefix('bump', 'tea', 24);
+		tea.animation.play('bump');
+		tea.origin.set(0, 0);
+		tea.scale.scale(0.66);
+		tea.antialiasing = true;
+		add(tea);
 
-		feverTown.shader = hueShader;
+		feva = new FlxSprite(755, 282);
+		feva.frames = Paths.getSparrowAtlas('title/fever');
+		feva.animation.addByPrefix('bump', 'fever', 24);
+		feva.animation.play('bump');
+		feva.origin.set(0, 0);
+		feva.scale.scale(0.66);
+		feva.antialiasing = true;
+		add(feva);
 
-		gfDance = new FlxSprite(5, -34);
-		gfDance.frames = Paths.getSparrowAtlas('FeverAndTea');
-		gfDance.animation.addByPrefix('bump', 'FeverAndTea', 24);
-		gfDance.animation.play('bump');
-		gfDance.antialiasing = true;
-		add(gfDance);
-
-		titleText = new FlxSprite(130, FlxG.height * 0.86);
-		titleText.frames = Paths.getSparrowAtlas('titleEnter');
-		titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
-		titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
-		titleText.antialiasing = true;
-		titleText.animation.play('idle');
-		titleText.updateHitbox();
-		add(titleText);
-
-		titleText.shader = hueShader;
+		var front = new FlxSprite(544, 616).loadGraphic(Paths.image('title/front'));
+		front.antialiasing = true;
+		add(front);
 
 		credGroup = new FlxGroup();
 		add(credGroup);
@@ -225,11 +214,6 @@ class TitleState extends MusicBeatState
 				initialized = true;
 				transitioning = true;
 
-				if (ClientPrefs.flashing)
-					titleText.animation.play('press');
-
-				FlxTween.tween(titleText, {y: 1200, alpha: 0}, 1.23, {ease: FlxEase.elasticInOut});
-
 				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
@@ -281,8 +265,8 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		logoBl.animation.play('bump');
-		feverTown.animation.play('bump');
+		logoBl.scale.set(1.075, 1.075);
+		FlxTween.tween(logoBl.scale, {x: 1, y: 1}, (Conductor.crochet / 1000) / 1.5);
 
 		if (!initialized && !skippedIntro)
 		{

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tea_opening.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="tea0000" x="0" y="0" width="390" height="632" pivotX="135.3" pivotY="355.15"/>
+	<SubTexture name="tea0001" x="0" y="0" width="390" height="632"/>
+	<SubTexture name="tea0002" x="390" y="0" width="390" height="632"/>
+	<SubTexture name="tea0003" x="390" y="0" width="390" height="632"/>
+	<SubTexture name="tea0004" x="780" y="0" width="390" height="632"/>
+	<SubTexture name="tea0005" x="780" y="0" width="390" height="632"/>
+	<SubTexture name="tea0006" x="1170" y="0" width="390" height="632"/>
+	<SubTexture name="tea0007" x="1170" y="0" width="390" height="632"/>
+	<SubTexture name="tea0008" x="1560" y="0" width="390" height="632"/>
+	<SubTexture name="tea0009" x="1560" y="0" width="390" height="632"/>
+	<SubTexture name="tea0010" x="0" y="632" width="390" height="632"/>
+	<SubTexture name="tea0011" x="0" y="632" width="390" height="632"/>
+</TextureAtlas>
