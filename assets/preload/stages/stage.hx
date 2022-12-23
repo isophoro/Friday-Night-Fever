@@ -1,14 +1,11 @@
-import ("openfl.Assets");
-import("openfl.display.BitmapData");
-
 var w1city:FlxSprite;
+var leftAd:FlxSprite;
+var rightAd:FlxSprite;
 
 function onCreate()
 {
 	game.defaultCamZoom = 0.9;
-	var bmp:BitmapData = Assets.getBitmapData(Paths.image('w1city'));
-
-	var bg:FlxSprite = new FlxSprite(-720, -450).loadGraphic(bmp, true, 2560, 1400);
+	var bg:FlxSprite = new FlxSprite(-720, -450).loadGraphic(Paths.image('w1city'), true, 2560, 1400);
 	bg.animation.add('idle', [3], 0);
 	bg.animation.play('idle');
 	bg.scale.set(0.3, 0.3);
@@ -16,7 +13,7 @@ function onCreate()
 	bg.scrollFactor.set(0.9, 0.9);
 	add(bg);
 
-	w1city = new FlxSprite(bg.x, bg.y).loadGraphic(bmp, true, 2560, 1400);
+	w1city = new FlxSprite(bg.x, bg.y).loadGraphic(Paths.image('w1city'), true, 2560, 1400);
 	w1city.animation.add('idle', [0, 1, 2], 0);
 	w1city.animation.play('idle');
 	w1city.scale.set(bg.scale.x, bg.scale.y);
@@ -31,12 +28,38 @@ function onCreate()
 	stageFront.scrollFactor.set(0.9, 0.9);
 	add(stageFront);
 
-	var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image(SONG.song == 'Down-Bad' ? 'stagecurtainsDOWNBAD' : 'stagecurtains'));
+	var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image(game.curSong == 'Down-Bad' ? 'stagecurtainsDOWNBAD' : 'stagecurtains'));
 	stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
 	stageCurtains.updateHitbox();
 	stageCurtains.antialiasing = true;
 	stageCurtains.scrollFactor.set(0.9, 0.9);
 	add(stageCurtains);
+
+	leftAd = new FlxSprite(stageCurtains.x + (235 * 0.9), stageCurtains.y + (427 * 0.9));
+	leftAd.frames = Paths.getSparrowAtlas("week1/leftAds");
+	leftAd.animation.addByPrefix("a", "ad", 0);
+	leftAd.animation.play("a");
+	leftAd.setGraphicSize(Std.int(leftAd.width * 0.9));
+	leftAd.updateHitbox();
+	leftAd.scrollFactor.set(0.9, 0.9);
+	leftAd.antialiasing = true;
+	add(leftAd);
+
+	rightAd = new FlxSprite(stageCurtains.x + (1586 * 0.9), stageCurtains.y + (430 * 0.9));
+	rightAd.frames = Paths.getSparrowAtlas("week1/rightAds");
+	rightAd.animation.addByPrefix("a", "ad", 0);
+	rightAd.animation.play("a");
+	rightAd.setGraphicSize(Std.int(rightAd.width * 0.9));
+	rightAd.updateHitbox();
+	rightAd.scrollFactor.set(0.9, 0.9);
+	rightAd.antialiasing = true;
+	add(rightAd);
+}
+
+function onCreatePost()
+{
+	for (i in [dad, boyfriend, gf])
+		i.x -= 170;
 }
 
 function onBeatHit(curBeat:Int)
@@ -47,5 +70,16 @@ function onBeatHit(curBeat:Int)
 			w1city.animation.curAnim.curFrame = 0;
 		else
 			w1city.animation.curAnim.curFrame++;
+	}
+
+	if (curBeat % 8 == 0)
+	{
+		for (i in [rightAd, leftAd])
+		{
+			if (i.animation.curAnim.curFrame > 3)
+				i.animation.curAnim.curFrame = 0;
+			else
+				i.animation.curAnim.curFrame++;
+		}
 	}
 }

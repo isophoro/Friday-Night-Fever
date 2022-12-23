@@ -12,18 +12,8 @@
 		},
 		{
 			"offsets": [
-				-189,
-				-68
-			],
-			"fps": 24,
-			"anim": "Dad Sing Note DOWN",
-			"loop": true,
-			"name": "singDOWN"
-		},
-		{
-			"offsets": [
 				-181,
-				6
+				-2
 			],
 			"fps": 24,
 			"anim": "Dad Sing Note RIGHT",
@@ -32,26 +22,37 @@
 		},
 		{
 			"offsets": [
-				-141,
-				25
+				-201,
+				-90
 			],
 			"fps": 24,
-			"anim": "Dad Sing note UP",
+			"anim": "Dad Sing Note DOWN",
 			"loop": true,
-			"name": "singUP"
+			"name": "singDOWN"
 		},
 		{
 			"offsets": [
-				-29,
-				12
+				-21,
+				18
 			],
 			"fps": 24,
 			"anim": "dad sing note LEFT",
 			"loop": true,
 			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-131,
+				65
+			],
+			"fps": 24,
+			"anim": "Dad Sing note UP",
+			"loop": true,
+			"name": "singUP"
 		}
 	],
-	"flipX": false,
+	"noAntialiasing": false,
+	"facingLeft": null,
 	"file": "peakek/peakek",
 	"color": "99D4F4"
 }

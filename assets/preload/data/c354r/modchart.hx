@@ -35,17 +35,25 @@ function onCreate()
 
 function onBeatHit(curBeat:Int)
 {
+	if (curBeat >= 32 && curBeat < 64 && curBeat % 2 == 0)
+	{
+		camGame.zoom += 0.02;
+		FlxTween.tween(camGame, {zoom: 0.6}, 0.2);
+	}
+
 	if (curBeat == 32 || curBeat == 48)
 	{
+		forceComboPos = new FlxPoint(FlxG.width * (ClientPrefs.downscroll ? 0.78 : 0.05), 30);
 		game.disableCamera = true;
 		snapCamera(new FlxPoint(bgR.x + (bgR.width / 2), bgR.y + (bgR.height / 2) - 100));
+
 		if (curBeat == 32)
 		{
+			camGame.flash(FlxColor.WHITE, 0.45);
 			camGame.scroll.y += 80;
 			FlxTween.tween(camGame.scroll, {y: camGame.scroll.y - 80}, 0.8, {ease: FlxEase.quartInOut});
 		}
 
-		camGame.flash(FlxColor.WHITE, 0.45);
 		game.camGame.zoom = 0.6;
 		game.curOpponent = charR;
 		charR.visible = bgR.visible = true;
@@ -64,6 +72,7 @@ function onBeatHit(curBeat:Int)
 	}
 	else if (curBeat == 64)
 	{
+		forceComboPos = null;
 		camGame.flash(FlxColor.WHITE, 0.45);
 		bgF.visible = charF.visible = false;
 		game.curPlayer = boyfriend;
