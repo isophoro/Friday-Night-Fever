@@ -1,6 +1,4 @@
-package assets.preload.data.c354r;
-
-import("Character");
+import ("Character");
 
 var bgF:FlxSprite;
 var bgR:FlxSprite;

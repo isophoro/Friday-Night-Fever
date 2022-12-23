@@ -82,7 +82,7 @@ class MainMenuState extends InteractableState
 
 		var freeplay = new Interactable('newMain/freeplay', 1100, 160, 0.7, 'Freeplay not selected', 'Freeplay selected',
 			new InteractHitbox(1100, 160, 145, 225), [256, 170]);
-		freeplay.callback = FlxG.switchState.bind(new SelectingSongState());
+		freeplay.callback = FlxG.switchState.bind(new FreeplayState());
 		addInteractable(freeplay);
 
 		var boombox = new Interactable('newMain/boombox', 779, 433, 0.7, 'boombox not selected', 'boombox selected', new InteractHitbox(779, 433, 165, 135),

@@ -1,0 +1,7 @@
+<file>
+    <action msg="Mr Fever how do you sing like that" portrait="scarlet"/>
+    <action msg="My name is Fevertown not Fever" portrait="fever"/>
+    <action msg="Mr Scarlet how do you laugh like that" portrait="cherry" side="right" fillBG="blue"/>
+    <action msg="My name is Scarlet" portrait="scarlet" emotion="happy"/>
+    <action msg="wow we can speak at the same time!!! this mod never comin ou" portraits="scarlet,fever" effect="jump"/>
+</file>

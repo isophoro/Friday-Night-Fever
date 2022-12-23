@@ -180,7 +180,7 @@ class Main extends Sprite
 	{
 		PlayState.skipDialogue = false;
 		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-		Conductor.changeBPM(90);
+		Conductor.changeBPM(120);
 
 		FlxG.sound.music.fadeIn(4, 0, 0.7);
 	}

@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "pepper idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-24,
+				0
+			],
+			"fps": 24,
+			"anim": "pepper right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-4,
+				-7
+			],
+			"fps": 24,
+			"anim": "pepper down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				31,
+				-6
+			],
+			"fps": 24,
+			"anim": "pepper left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				3,
+				25
+			],
+			"fps": 24,
+			"anim": "pepper up",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "pepper/freeplay",
+	"color": "504BA6"
+}

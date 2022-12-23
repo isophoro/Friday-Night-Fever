@@ -255,7 +255,7 @@ class WeekPreviewSubState extends MusicBeatSubstate
 					{
 						case 0 | 1:
 							diffic = '-easy';
-						case 3 | 4:
+						case 2 | 3:
 							diffic = '-hard';
 					}
 

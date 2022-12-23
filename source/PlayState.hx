@@ -155,8 +155,6 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
-	public var dialogue:Array<String> = [];
-
 	// stage sprites
 	var w1city:FlxSprite; // week 1
 	var spookyBG:FlxSprite; // week 2
@@ -340,14 +338,6 @@ class PlayState extends MusicBeatState
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
-
-		// dialogue shit, it does the dialogue = txt file shit for u
-		var dialogueString:String = SONG.song.toLowerCase() + '/dia';
-
-		if (Assets.exists(Paths.txt(dialogueString)))
-		{
-			dialogue = CoolUtil.coolTextFile(Paths.txt(dialogueString));
-		}
 
 		if (ClientPrefs.subtitles)
 		{
@@ -1032,10 +1022,6 @@ class PlayState extends MusicBeatState
 			add(bottomBoppers);
 		}
 
-		var doof:DialogueBox = new DialogueBox(false, dialogue);
-		doof.scrollFactor.set();
-		doof.finishThing = startCountdown;
-
 		Conductor.songPosition = -5000;
 
 		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
@@ -1210,7 +1196,6 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		doof.cameras = [camHUD];
 		startingSong = true;
 
 		var cutscenePath:String = 'assets/data/${SONG.song.toLowerCase()}/cutscene.hx';
@@ -1221,17 +1206,15 @@ class PlayState extends MusicBeatState
 			scripts.add(cutsceneScript);
 			cutsceneScript.callFunction("onCreate");
 		}
-		else if (isStoryMode && dialogue.length > 0 && !skipDialogue)
+		else if (isStoryMode)
 		{
 			switch (curSong.toLowerCase())
 			{
-				case 'bazinga':
-					jumpscare(doof);
 				default:
 					if (curSong.toLowerCase() == 'chicken-sandwich')
 						FlxG.sound.play(Paths.sound('ANGRY'));
 
-					openDialogue(doof);
+					openDialogue();
 			}
 		}
 		else
@@ -1281,11 +1264,22 @@ class PlayState extends MusicBeatState
 		});
 	}
 
-	function openDialogue(?dialogueBox:DialogueBox):Void
+	function openDialogue():Void
 	{
+		var dialoguePath = 'assets/data/${SONG.song.toLowerCase()}/dialogue.xml';
+		if (!Assets.exists(dialoguePath))
+		{
+			startCountdown();
+			return;
+		}
+
 		inCutscene = true;
 		camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
-		add(dialogueBox);
+
+		var doof:DialogueBox = new DialogueBox(dialoguePath);
+		doof.cameras = [camHUD];
+		doof.finishCallback = startCountdown;
+		add(doof);
 	}
 
 	var startTimer:FlxTimer;
@@ -1467,9 +1461,8 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		FlxG.sound.music.stop();
 
-		var peSUS:DialogueBox = new DialogueBox(false, CoolUtil.coolTextFile(Paths.txt(SONG.song.toLowerCase() + '/endDia')));
-		peSUS.scrollFactor.set();
-		peSUS.finishThing = endSong;
+		var peSUS:DialogueBox = new DialogueBox('assets/data/${SONG.song.toLowerCase()}/dialogue-end.xml');
+		peSUS.finishCallback = endSong;
 		peSUS.cameras = [camHUD];
 		add(peSUS);
 	}
@@ -2517,13 +2510,11 @@ class PlayState extends MusicBeatState
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
-		if (!ClientPrefs.botplay)
-		{
-			if (!ClientPrefs.botplay && misses == 0 && !Highscore.fullCombos.exists(SONG.song))
-				Highscore.fullCombos.set(SONG.song, 0);
 
-			Highscore.saveScore(SONG.song, Math.round(songScore), storyDifficulty);
-		}
+		if (!ClientPrefs.botplay && misses == 0 && !Highscore.fullCombos.exists(SONG.song))
+			Highscore.fullCombos.set(SONG.song, 0);
+
+		Highscore.saveScore(SONG.song, Math.round(songScore), storyDifficulty);
 
 		if (isStoryMode)
 		{
@@ -2546,10 +2537,7 @@ class PlayState extends MusicBeatState
 				}
 				#end
 
-				if (!ClientPrefs.botplay)
-				{
-					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
-				}
+				Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 
 				FlxG.save.flush();
 
@@ -2595,7 +2583,7 @@ class PlayState extends MusicBeatState
 				if (storyDifficulty == 0 || storyDifficulty == 1)
 					difficulty = '-easy';
 
-				if (storyDifficulty == 3 || storyDifficulty == 4)
+				if (storyDifficulty >= 2)
 					difficulty = '-hard';
 
 				trace('LOADING NEXT SONG: ' + PlayState.storyPlaylist[0].toLowerCase() + difficulty);

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fever.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fever cocky" x="5" y="5" width="650" height="600"/>
+	<SubTexture name="fever confused" x="674" y="5" width="650" height="600"/>
+	<SubTexture name="fever confused2" x="1343" y="5" width="650" height="600"/>
+	<SubTexture name="fever facepalm" x="2012" y="5" width="650" height="600"/>
+	<SubTexture name="fever facepalm2" x="2681" y="5" width="650" height="600"/>
+	<SubTexture name="fever facepalm3" x="3350" y="5" width="650" height="600"/>
+	<SubTexture name="fever neutral" x="5" y="624" width="650" height="600"/>
+	<SubTexture name="fever neutral2" x="674" y="624" width="650" height="600"/>
+	<SubTexture name="fever ohhey" x="1343" y="624" width="650" height="600"/>
+	<SubTexture name="fever point" x="2012" y="624" width="650" height="600"/>
+	<SubTexture name="fever point2" x="2681" y="624" width="650" height="600"/>
+	<SubTexture name="fever ugh" x="3350" y="624" width="650" height="600"/>
+</TextureAtlas>

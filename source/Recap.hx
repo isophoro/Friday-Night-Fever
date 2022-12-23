@@ -1,61 +1,60 @@
 package;
 
-import flixel.tweens.FlxEase;
-import flixel.FlxObject;
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
-
-import flixel.tweens.FlxTween;
-import openfl.Lib;
+import flixel.FlxState;
+import flixel.input.keyboard.FlxKey;
+import flixel.system.FlxSound;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import flixel.FlxState;
-import flixel.system.FlxSound;
-import flixel.input.keyboard.FlxKey;
+import openfl.Lib;
+
+using StringTools;
 
 #if windows
 import Discord.DiscordClient;
 #end
 
-using StringTools;
-
 class Recap extends MusicBeatState
 {
-    public var dialogue:Array<String> = [];
-    public static var inRecap:Bool = false;
+	public var dialogue:Array<String> = [];
 
-    override function create()
-    {
-        #if windows
+	public static var inRecap:Bool = false;
+
+	override function create()
+	{
+		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In Week 7 RECAP", null);
 		#end
 
+		super.create();
 
-        super.create();
+		inRecap = true;
+		var dialogueString:String = 'recap';
+		dialogue = CoolUtil.coolTextFile(Paths.txt(dialogueString));
 
-        inRecap = true;
-        var dialogueString:String = 'recap';
-        dialogue = CoolUtil.coolTextFile(Paths.txt(dialogueString));
+		var doof:DialogueBox = new DialogueBox("");
+		doof.finishCallback = () ->
+		{
+			inRecap = false;
+			LoadingState.loadAndSwitchState(new PlayState());
+		}
 
-        var doof:DialogueBox = new DialogueBox(false, dialogue);
-        doof.finishThing = () -> {
-            inRecap = false;
-            LoadingState.loadAndSwitchState(new PlayState());
-        }
+		recappslsss(doof);
+	}
 
-        recappslsss(doof);
-    }
+	function recappslsss(?dialogueBox:DialogueBox):Void
+	{
+		add(dialogueBox);
+	}
 
-    function recappslsss(?dialogueBox:DialogueBox):Void 
-    {
-        add(dialogueBox);
-    }
-
-    override function update(elapsed:Float)
-    {
-        super.update(elapsed);
-    }
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+	}
 }
-

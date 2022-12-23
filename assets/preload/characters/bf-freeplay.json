@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "fever idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-8,
+				2
+			],
+			"fps": 24,
+			"anim": "fever right",
+			"loop": true,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				8,
+				-10
+			],
+			"fps": 24,
+			"anim": "fever down",
+			"loop": true,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				7,
+				-9
+			],
+			"fps": 24,
+			"anim": "fever left",
+			"loop": true,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-11,
+				9
+			],
+			"fps": 24,
+			"anim": "fever up",
+			"loop": true,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": true,
+	"file": "fever/freeplay",
+	"color": "99DBF6"
+}

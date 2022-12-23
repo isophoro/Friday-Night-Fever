@@ -6,843 +6,339 @@ import flixel.addons.text.FlxTypeText;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
 import flixel.input.FlxKeyManager;
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
 import flixel.input.FlxPointer;
+import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
+import flixel.util.FlxDirection;
+import flixel.util.FlxTimer;
+import haxe.xml.Access;
 
 using StringTools;
 
-class DialogueBox extends FlxSpriteGroup
+typedef DialogueAction =
 {
-	var box:FlxSprite;
+	?msg:String,
+	?portrait:String,
+	?portraits:Array<String>,
+	?emotion:String,
+	?side:Null<FlxDirection>,
+	?fillBG:Null<FlxColor>,
+	?setBG:String,
+	?effect:String
+}
 
-	var curCharacter:String = '';
+class DialoguePortrait extends FlxSprite
+{
+	public var character:String = "";
 
-	var dialogueList:Array<String> = [];
+	public function new(character:String)
+	{
+		super(0, -90);
+		antialiasing = true;
+		this.character = character;
 
-	// SECOND DIALOGUE FOR THE PIXEL SHIT INSTEAD???
-	var swagDialogue:FlxTypeText;
+		frames = Paths.getSparrowAtlas('dialogue/${character.toLowerCase()}', 'shared');
+		for (i in frames.frames)
+		{
+			var name = i.name.replace('${character.toLowerCase()} ', '');
+			if (!animation.exists(name))
+			{
+				animation.addByPrefix(name, i.name, 0);
+			}
+		}
 
-	var dropText:FlxText;
+		if (animation.exists("neutral"))
+			animation.play("neutral");
+	}
 
-	public var finishThing:Void->Void;
+	public function jump()
+	{
+		FlxTween.tween(this, {"scale.y": 1.025, y: y - 18}, 0.05, {
+			onComplete: function(twn:FlxTween)
+			{
+				FlxTween.tween(this, {"scale.y": 1, y: y + 18}, 0.04, {ease: FlxEase.elasticInOut});
+			}
+		});
+	}
+}
 
-	var fever:FlxSprite;
-	var tea:FlxSprite;
-	var mako:FlxSprite;
-	var taki:FlxSprite;
-	var nar:FlxSprite;
-	var demomFever:FlxSprite;
-	var NPC:FlxSprite;
-	var feverS:FlxSprite;
-	var peakek:FlxSprite;
-	var feverspritesAGAIN:FlxSprite;
-	var wolfie:FlxSprite;
-	var demonFever:FlxSprite;
-	var paintingtea:FlxSprite;
-	var pepperdemon:FlxSprite;
-	var yukichi:FlxSprite;
-	var mega:FlxSprite;
-	var makocorrupt:FlxSprite;
-	var hunni:FlxSprite;
-	var flippy:FlxSprite;
-	var whyFEVER:FlxSprite;
-	var impy:FlxSprite;
-	var foodieti:FlxSprite;
-	var hallow:FlxSprite;
-
-	//var handSelect:FlxSprite;
-	var bgFade:FlxSprite;
-
+class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
+{
 	var bg:FlxSprite;
-	var controls:FlxText;
+	var box:FlxSprite;
+	var text:FlxTypeText;
 
-	var theShit:Bool = false;
-	var deletethisLATER:FlxSprite;
-	var pleasCutOff:Bool = false;
+	var actions:Array<DialogueAction> = [];
+	var portraits:Map<String, DialoguePortrait> = [];
+	var curLeft:DialoguePortrait;
+	var curRight:DialoguePortrait;
 
-	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
+	var dialogueStarted:Bool = false;
+
+	public var finishCallback:Void->Void;
+
+	public function new(?dialogue:String)
 	{
 		super();
 
-		if (!PlayState.isStoryMode)
-			return;
-
-		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), FlxColor.BLACK);
-		bgFade.scrollFactor.set();
-		bgFade.alpha = 0;
-		if(!Recap.inRecap)
-		{
-			add(bgFade);
-		}
-
-		bg = new FlxSprite(0,0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		add(bg);
+		bg = new FlxSprite();
+		bg.antialiasing = true;
 		bg.visible = false;
-		bg.scrollFactor.set();
-	
-		FlxTween.tween(bgFade, {alpha: 0.7}, 0.83);
-		
-		box = new FlxSprite(-20, 472);
-		box.loadGraphic(Paths.image('dialogue/textbox'));
-		if(Recap.inRecap)
-		{
-			box.visible = false;
-		}
-		else
-		{
-			box.visible = true;
-		}
+		add(bg);
 
-		this.dialogueList = dialogueList;
+		parseDialogue(dialogue);
 
-		fever = new FlxSprite(830, -11);
-		fever.frames = Paths.getSparrowAtlas('dialogue/feversprites');
-		fever.animation.addByPrefix('point', 'feverpoint', 24, false);
-		fever.animation.addByPrefix('silly', 'feversilly', 24, false);
-		fever.animation.addByPrefix('worry', 'feverworry', 24, false);
-		fever.animation.addByPrefix('flirt', 'feverflirt', 24, false);
-		fever.animation.addByPrefix('scared', 'feverscared', 24, false);
-		fever.animation.addByPrefix('confuse', 'feverconfuse', 24, false);
-		fever.animation.addByPrefix('tired', 'fevertired', 24, false);
-		fever.animation.addByPrefix('fine', 'feverfine', 24, false);
-		fever.animation.addByPrefix('annoyed', 'feverannoyed', 24, false);
-		fever.animation.addByPrefix('casPoint', 'casualpoint', 24, false);
-		fever.animation.addByPrefix('casConfused', 'casualconfused', 24, false);
-		fever.animation.addByPrefix('casScared', 'casualscared', 24, false);
-		fever.animation.addByPrefix('casWorry', 'casualworry', 24, false);
-		fever.animation.addByPrefix('casFlirt', 'casualflirt', 24, false);
-		fever.animation.addByPrefix('casSilly', 'casualsilly', 24, false);
-		fever.animation.addByPrefix('casTired', 'casualtired', 24, false);
-		fever.animation.addByPrefix('casFine', 'casualfine', 24, false);
-		fever.animation.addByPrefix('casAnnoyed', 'casualannoyed', 24, false);
-		fever.scrollFactor.set();
-		fever.scale.set(1.2, 1.2);
-		add(fever);
-		fever.visible = false;
-
-		feverS = new FlxSprite(830, -11);
-		feverS.frames = Paths.getSparrowAtlas('dialogue/feversmile');
-		feverS.animation.addByPrefix('smile', 'feversmile idle', 24, false);
-		feverS.scrollFactor.set();
-		add(feverS);
-		feverS.visible = false;
-
-		feverspritesAGAIN = new FlxSprite(600, -11);
-		feverspritesAGAIN.frames = Paths.getSparrowAtlas('dialogue/FeverPoint2');
-		feverspritesAGAIN.animation.addByPrefix('point2', 'FeverPoint2', 24, false);
-		feverspritesAGAIN.scrollFactor.set();
-		add(feverspritesAGAIN);
-		feverspritesAGAIN.visible = false;
-
-		whyFEVER = new FlxSprite(830, -11);
-		whyFEVER.frames = Paths.getSparrowAtlas('dialogue/MOREGODDAMNFEVERSPRITES');
-		whyFEVER.animation.addByPrefix('defrown', 'demonFrown', 24, false);
-		whyFEVER.animation.addByPrefix('deprisoner', 'demonPrisoner', 24, false);
-		whyFEVER.animation.addByPrefix('desmile', 'demonSmile', 24, false);
-		whyFEVER.scrollFactor.set();
-		add(whyFEVER);
-		whyFEVER.visible = false;
-
-		peakek = new FlxSprite(0, -21);
-		peakek.frames = Paths.getSparrowAtlas('dialogue/peakek sprites');
-		peakek.animation.addByPrefix('kekHappy', 'kekHappy', 24, false);
-		peakek.animation.addByPrefix('peaClown', 'peaClown', 24, false);
-		peakek.animation.addByPrefix('peaCorrupt', 'peaCorrupt', 24, false);
-		peakek.animation.addByPrefix('peaFever', 'peaFever', 24, false);
-		peakek.animation.addByPrefix('peaHappy', 'peaHappy', 0, false);
-		peakek.animation.addByPrefix('keksmile', 'kekOtherSmile', 0, false);
-		peakek.animation.addByPrefix('suskek', 'kekSUS', 0, false);
-		peakek.animation.addByPrefix('peaew', 'peaEW', 0, false);
-		peakek.updateHitbox();
-		peakek.scrollFactor.set();
-		add(peakek);
-		peakek.visible = false;
-
-		tea = new FlxSprite(0, -21);
-		tea.frames = Paths.getSparrowAtlas('dialogue/teaSprites');
-		tea.animation.addByPrefix('smile', 'teaSmile', 24, false);
-		tea.animation.addByPrefix('neutral', 'teaNeutral', 24, false);
-		tea.animation.addByPrefix('worry', 'teaWorry', 24, false);
-		tea.animation.addByPrefix('blush', 'teaBlush', 24, false);
-		tea.animation.addByPrefix('annoy', 'teaAnnoy', 0, false);
-		tea.animation.addByPrefix('annoytwo', 'teaAnnoy2', 24, false);
-		tea.animation.addByPrefix('think', 'teaThink', 24, false);
-		tea.animation.addByPrefix('angry', 'teaAngry', 24, false);
-		tea.scrollFactor.set();
-		add(tea);
-		tea.visible = false;
-
-		mako = new FlxSprite(767, 66);
-		mako.frames = Paths.getSparrowAtlas('dialogue/makoSprites');
-		mako.animation.addByPrefix('angry', 'makoAngry', 24, false);
-		mako.animation.addByPrefix('ew', 'makoEw', 24, false);
-		mako.animation.addByPrefix('blush', 'makoBlush', 24, false);
-		mako.animation.addByPrefix('happy', 'makoHappy', 24, false);
-		mako.scrollFactor.set();
-		add(mako);
-		mako.visible = false;
-
-		impy = new FlxSprite(830, -50);
-		impy.frames = Paths.getSparrowAtlas('dialogue/impy');
-		impy.animation.addByPrefix('impy', 'impy idle', 24, false);
-		impy.scrollFactor.set();
-		add(impy);
-		impy.visible = false;
-
-		paintingtea = new FlxSprite(0, -21);
-		paintingtea.frames = Paths.getSparrowAtlas('dialogue/teapainting');
-		paintingtea.animation.addByPrefix('paintingtea', 'teapainting', 24, false);
-		paintingtea.scrollFactor.set();
-		add(paintingtea);
-		paintingtea.visible = false;
-
-		demomFever = new FlxSprite(830, -11);
-		demomFever.frames = Paths.getSparrowAtlas('dialogue/demon fever');
-		demomFever.animation.addByPrefix('prisoner', 'prisonerfever', 24, false);
-		demomFever.scrollFactor.set();
-		add(demomFever);
-		demomFever.visible = false;
-
-		hunni = new FlxSprite(0, -21);
-		hunni.frames = Paths.getSparrowAtlas('dialogue/HunniSprites');
-		hunni.animation.addByPrefix('hunnimad', 'HunniMad', 24, false);
-		hunni.animation.addByPrefix('hunnismile', 'HunniSmile', 24, false);
-		hunni.scrollFactor.set();
-		add(hunni);
-		hunni.visible = false;
-		
-		pepperdemon = new FlxSprite(0, -21);
-		pepperdemon.frames = Paths.getSparrowAtlas('dialogue/YukichiAndPepperDemonSprites');
-		pepperdemon.animation.addByPrefix('pepperdemonsmile', 'PepperDemonSmile', 24, false);
-		pepperdemon.animation.addByPrefix('pepperdemonsad', 'PepperDemonSad', 24, false);
-		pepperdemon.scrollFactor.set();
-		add(pepperdemon);
-		pepperdemon.visible = false;
-
-		yukichi = new FlxSprite(0, -21);
-		yukichi.frames = Paths.getSparrowAtlas('dialogue/YukichiAndPepperDemonSprites');
-		yukichi.animation.addByPrefix('yukichismile', 'yukichiSmile', 24, false);
-		yukichi.animation.addByPrefix('yukichinormal', 'yukichiNormal', 24, false);
-		yukichi.scrollFactor.set();
-		add(yukichi);
-		yukichi.visible = false;
-
-		flippy = new FlxSprite(0, -21);
-		flippy.frames = Paths.getSparrowAtlas('dialogue/FlippySprites');
-		flippy.animation.addByPrefix('flippysmile', 'FlippySmile', 24, false);
-		flippy.animation.addByPrefix('flippywhy', 'FlippyWHY', 24, false);
-		flippy.scrollFactor.set();
-		add(flippy);
-		flippy.visible = false;
-
-		hallow = new FlxSprite(0, -21);
-		hallow.frames = Paths.getSparrowAtlas('dialogue/hallow');
-		hallow.animation.addByPrefix('hallowangry', 'hallow angry', 24, false);
-		hallow.animation.addByPrefix('hallowenough', 'hallow HadENOUGH', 24, false);
-		hallow.animation.addByPrefix('hallownorm', 'hallow normal', 24, false);
-		hallow.scrollFactor.set();
-		add(hallow);
-		hallow.visible = false;
-
-		foodieti = new FlxSprite(400, 0);
-		foodieti.frames = Paths.getSparrowAtlas('dialogue/foodietiSprites');
-		foodieti.animation.addByPrefix('foodietiangry', 'foodANGRY', 24, false);
-		foodieti.animation.addByPrefix('foodietihappy', 'foodHAPPY', 24, false);
-		foodieti.scrollFactor.set();
-		foodieti.scale.set(0.72, 0.72);
-		add(foodieti);
-		foodieti.visible = false;
-
-		makocorrupt = new FlxSprite(767, 66);
-		makocorrupt.frames = Paths.getSparrowAtlas('dialogue/MakoCorrupt');
-		makocorrupt.animation.addByPrefix('makocorrupt', 'MakoCorrupt', 24, false);
-		makocorrupt.scrollFactor.set();
-		add(makocorrupt);
-		makocorrupt.visible = false;
-
-		mega = new FlxSprite(0, -21);
-		mega.frames = Paths.getSparrowAtlas('dialogue/MegaSprites');
-		mega.animation.addByPrefix('megasmile', 'megaSmile', 24, false);
-		mega.animation.addByPrefix('megaflex', 'megaFlex', 24, false);
-		mega.animation.addByPrefix('megamissed', 'megaMISSED', 24, false);
-		mega.animation.addByPrefix('megabug', 'megaBug', 24, false);
-		mega.animation.addByPrefix('megasurprised', 'megaSurprised', 24, false);
-		mega.animation.addByPrefix('megaconfused', 'megaConfused', 24, false);
-		mega.animation.addByPrefix('megaballistic', 'megaGoingBALLISTIC', 24, false);
-		mega.animation.addByPrefix('megahug', 'megaHug', 24, false);
-		mega.animation.addByPrefix('megablushcrazy', 'megaBlushCrazy', 24, false);
-		mega.animation.addByPrefix('megainsane', 'megaINSANEEEE', 24, false);
-		mega.scrollFactor.set();
-		mega.scale.set(1.2, 1.2);
-		mega.updateHitbox();
-		add(mega);
-		mega.visible = false;
-
-		nar = new FlxSprite(3000, 3000);
-		nar.frames = Paths.getSparrowAtlas('dialogue/makoSprites');
-		nar.animation.addByPrefix('seeme', 'makoAngry', 24, false);
-		nar.scrollFactor.set();
-		add(nar);
-		nar.visible = false;
-		
-		NPC = new FlxSprite(0, -21);
-		NPC.frames = Paths.getSparrowAtlas('dialogue/heCamefromtheShadowRealm');
-		NPC.animation.addByPrefix('boo', 'heCamefromtheShadowRealm idle', 24, false);
-		NPC.scrollFactor.set();
-		add(NPC);
-		NPC.visible = false;
-
-		demonFever = new FlxSprite(830, -11);
-		demonFever.frames = Paths.getSparrowAtlas('dialogue/MOREDemonSprites');
-		demonFever.animation.addByPrefix('demonsmile', 'demonSmile', 24, false);
-		demonFever.animation.addByPrefix('demonwtf', 'demonWTF', 24, false);
-		demonFever.animation.addByPrefix('demonwtftwo', 'demonotherWTF', 24, false);
-		demonFever.animation.addByPrefix('demonpoint', 'demonPoint', 24, false);
-		demonFever.scrollFactor.set();
-		add(demonFever);
-		demonFever.visible = false;
-
-
-		taki = new FlxSprite(0, -21);
-		taki.frames = Paths.getSparrowAtlas('dialogue/TakiSprites');
-		taki.animation.addByPrefix('takismile', 'TakiSmile', 24, false);
-		taki.animation.addByPrefix('takieyesopen', 'TakiEyesOpen', 24, false);
-		taki.animation.addByPrefix('takibouttakillu', 'TakiBouttaKillu', 24, false);
-		taki.scrollFactor.set();
-		add(taki);
-		taki.visible = false;
-
-		wolfie = new FlxSprite(0, -21);
-		wolfie.frames = Paths.getSparrowAtlas('dialogue/WolfieWeeSprites');
-		wolfie.animation.addByPrefix('weenormal', 'weeNormal', 24, false);
-		wolfie.animation.addByPrefix('weesmug', 'weeSmug', 24, false);
-		wolfie.animation.addByPrefix('weewhat', 'weeWhat', 24, false);
-		wolfie.animation.addByPrefix('wolfiehuh', 'WolfieHuh', 24, false);
-		wolfie.animation.addByPrefix('wolfiesmile', 'WolfieSmile', 24, false);
-		wolfie.animation.addByPrefix('wolfiewee', 'WolfieandWee', 24, false);
-		wolfie.scrollFactor.set();
-		add(wolfie);
-		wolfie.visible = false;
-		
+		box = new FlxSprite(0, 460).loadGraphic(Paths.image("dialogue/box", "shared"));
+		box.updateHitbox();
+		box.screenCenter(X);
+		box.antialiasing = true;
 		add(box);
 
-		box.screenCenter(X);
+		text = new FlxTypeText(box.x + 25, box.y + 25, Std.int(FlxG.width * 0.85), "", 40);
+		text.font = 'Plunge';
+		text.color = 0xffffff;
+		text.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
+		text.delay = 0.04;
+		text.setTypingVariation(0.5, true);
+		add(text);
 
-		//handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
-		//add(handSelect);
-
-		dropText = new FlxText(50, 500, Std.int(FlxG.width * 0.9), "", 46);
-		dropText.font = 'Plunge';
-		dropText.color = 0xffffff;
-		add(dropText);
-
-		swagDialogue = new FlxTypeText(50, 500, Std.int(FlxG.width * 0.9), "", 46);
-		swagDialogue.font = 'Plunge';
-		swagDialogue.color = 0xffffff;
-		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
-		swagDialogue.delay = 0.04;
-		swagDialogue.setTypingVariation(0.5, true);
-
-		if(Recap.inRecap)
+		box.y = FlxG.height;
+		FlxTween.tween(box, {y: 460}, 0.5, {
+			ease: FlxEase.elasticOut,
+			onComplete: (t) ->
 			{
-				swagDialogue = new FlxTypeText(50, 500, Std.int(FlxG.width * 1), "", 46);
-				swagDialogue.setFormat(Paths.font("Tommy.otf"), 46, FlxColor.WHITE, CENTER);
-				swagDialogue.screenCenter(X);
-				swagDialogue.y += 125;
-				dropText.visible = false;
-
-				var blackBox = new FlxSprite(0, 598).makeGraphic(1280, 122, FlxColor.BLACK);
-				add(blackBox);
-
-				deletethisLATER = new FlxSprite(0, 0).loadGraphic(Paths.image('dialogue_backgrounds/chatLMAO'));
-				deletethisLATER.alpha = 0;
-				add(deletethisLATER);
+				dialogueStarted = true;
+				startDialogue();
 			}
-
-		add(swagDialogue);
-
-		controls = new FlxText(0, box.y + box.height - 10, 0, "");
-
-		#if !mobile
-		controls.text = "Press ESC / S to Skip Dialogue | Press M to return to Main Menu";
-		#else
-		controls.text = "Press BACK to Skip Dialogue";
-		#end
-
-		controls.setFormat(Paths.font('vcr.ttf'), 22, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
-		add(controls);
-		controls.screenCenter(X);
-		if(Recap.inRecap)
-		{
-			controls.visible = false;
-
-			bg.alpha = 0;
-		}
-		else
-		{
-			controls.visible = true;
-		}
-
-		portraitMap = [
-			'fever' => fever,
-			'feverS' => feverS,
-			'feverspritesAGAIN' => feverspritesAGAIN,
-			'peakek' => peakek,
-			'tea' => tea,
-			'mako' => mako,
-			'wolfie' => wolfie,
-			'taki' => taki,
-			'nar' => nar, // might be useless
-			'NPC' => NPC,
-			'demomFever' => demomFever,
-			'demonFever' => demonFever,
-			'yukichi' => yukichi,
-			'pepperdemon' => pepperdemon,
-			'mega' => mega,
-			'makocorrupt' => makocorrupt,
-			'hunni' => hunni,
-			'flippy' => flippy,
-			'whyFEVER' => whyFEVER,
-			'impy' => impy,
-			'foodieti' => foodieti,
-			'hallow' => hallow,
-			'paintingtea' => paintingtea
-		];
-
-		startDialogue();
-		dialogueStarted = true;
+		});
 	}
-
-	var dialogueOpened:Bool = false;
-	var dialogueStarted:Bool = false;
-	var shake:Bool = false;
-	
-	var portraitMap:Map<String, FlxSprite> = [];
 
 	override function update(elapsed:Float)
 	{
-		if (PlayState.instance != null)
-			PlayState.instance.camHUD.zoom = 1;
+		super.update(elapsed);
 
-		if (shake)
+		if (FlxG.keys.anyJustPressed([ENTER, SPACE]))
 		{
-			FlxG.camera.shake(0.09);
-			PlayState.instance.camHUD.shake();(0.09);
+			@:privateAccess
+			if (!text._typing)
+				startDialogue();
+			else
+				text.skip();
+		}
+	}
+
+	function startDialogue()
+	{
+		if (actions[0] == null)
+		{
+			return endDialogue();
 		}
 
-		if(FlxG.keys.justPressed.S || FlxG.keys.justPressed.ESCAPE)
+		var action = actions[0];
+		actions.shift();
+
+		if (action.fillBG != null)
 		{
-			if(FlxG.sound.music != null)
-				FlxG.sound.music.stop();
-			finishThing();
-			kill();
+			bg.visible = true;
+			bg.makeGraphic(1280, 720, action.fillBG);
+		}
+		else if (action.setBG != null)
+		{
+			bg.visible = action.setBG.length > 0;
+			if (action.setBG.length > 0)
+				bg.loadGraphic(Paths.image(action.setBG, "shared"));
 		}
 
-		if(FlxG.keys.justPressed.M)
+		if (action.portrait != null && portraits[action.portrait] != null)
 		{
-			if (FlxG.sound.music != null)
-				FlxG.sound.music.stop();
-			
-			FlxG.switchState(new MainMenuState());			
+			setCorrectPortrait(action);
+
+			if (action.effect != null && action.effect == "jump")
+			{
+				FlxTween.completeTweensOf(portraits[action.portrait]);
+				portraits[action.portrait].jump();
+			}
 		}
-
-		if (swagDialogue != null)
-			dropText.text = swagDialogue.text;
-
-		if ((dialogueStarted && !isEnding) && FlxG.keys.anyJustPressed([ENTER, SPACE]) /*&& !Recap.inRecap*/)
+		else if (action.portraits != null)
 		{
-			if (@:privateAccess (!swagDialogue._typing || dialogueList[0].length < 1))
-			{	
-				if(!Recap.inRecap)
+			for (i in action.portraits)
+			{
+				setCorrectPortrait({portrait: i});
+
+				if (action.effect != null && action.effect == "jump")
 				{
-					FlxG.sound.play(Paths.sound('clickText'), 0.8);
+					FlxTween.completeTweensOf(portraits[i]);
+					portraits[i].jump();
+				}
+			}
+
+			var prev = portraits[action.portraits[0]];
+			prev.color = 0xFFFFFFFF;
+		}
+
+		if (action.msg != null)
+		{
+			text.resetText(action.msg);
+			text.start(0.04, true);
+
+			@:privateAccess
+			{
+				text.sounds[0].volume = 0.35;
+			}
+		}
+		else if (actions[0] != null)
+			startDialogue();
+	}
+
+	function setCorrectPortrait(action:DialogueAction)
+	{
+		var portrait = portraits[action.portrait];
+		if (curLeft == portrait || curRight == portrait)
+			action.side = curLeft == portrait ? LEFT : RIGHT;
+
+		if (action.side == null)
+			action.side = portrait.character.startsWith("fever") ? RIGHT : LEFT;
+
+		switch (action.side)
+		{
+			case RIGHT:
+				if (curRight != null && curRight != portrait)
+					curRight.visible = false;
+
+				if (curLeft != null)
+					curLeft.color = 0xFF828282;
+				if (curRight != null)
+					curRight.color = 0xFFFFFFFF;
+
+				if (curRight != portrait)
+				{
+					portrait.setPosition(box.x + box.width - portrait.width + 40, -90);
+					FlxTween.tween(portrait, {x: portrait.x - 40}, 0.18);
+					portrait.alpha = 0;
+					FlxTween.tween(portrait, {alpha: 1}, 0.13);
 				}
 
-				if (dialogueList[1] == null)
+				portrait.flipX = !portrait.character.startsWith("fever");
+
+				curRight = portrait;
+				curRight.visible = true;
+			default:
+				if (curLeft != null && curLeft != portrait)
+					curLeft.visible = false;
+
+				if (curRight != null)
+					curRight.color = 0xFF828282;
+				if (curLeft != null)
+					curLeft.color = 0xFFFFFFFF;
+
+				if (curLeft != portrait)
 				{
-					isEnding = true;
-					
-					if (FlxG.sound.music != null)
-						FlxG.sound.music.fadeOut(2.2, 0);
+					portrait.setPosition(box.x - 40, -90);
+					FlxTween.tween(portrait, {x: portrait.x + 40}, 0.18);
+					portrait.alpha = 0;
+					FlxTween.tween(portrait, {alpha: 1}, 0.13);
+				}
 
-					new FlxTimer().start(0.2, function(tmr:FlxTimer)
-					{
-						for(key in portraitMap.keys())
-							portraitMap[key].alpha -= 1 / 5;
-						box.alpha -= 1 / 5;
-						bgFade.alpha -= 1 / 5 * 0.7;
-						swagDialogue.alpha -= 1 / 5;
-						dropText.alpha = swagDialogue.alpha;
-						controls.visible = false;
-					}, 5);
+				portrait.flipX = portrait.character.startsWith("fever");
 
-					new FlxTimer().start(1.2, function(tmr:FlxTimer)
+				curLeft = portrait;
+				curLeft.visible = true;
+				curLeft.setPosition(box.x, -90);
+		}
+
+		if (action.emotion != null)
+			portrait.animation.play(action.emotion);
+	}
+
+	function endDialogue()
+	{
+		dialogueStarted = false;
+
+		for (i in [curLeft, curRight, box, text, bg])
+		{
+			if (i != null)
+			{
+				FlxTween.cancelTweensOf(i);
+				FlxTween.tween(i, {alpha: 0}, 0.2, {
+					onComplete: (t) ->
 					{
-						finishThing();
-						kill();
-					});
+						i.kill();
+						if (i == box)
+						{
+							kill();
+
+							for (i in portraits)
+								i.destroy();
+
+							if (finishCallback != null)
+								finishCallback();
+						}
+					}
+				});
+			}
+		}
+	}
+
+	function parseDialogue(rawDialogue:String)
+	{
+		var xml = Xml.parse(openfl.utils.Assets.getText(rawDialogue));
+		var data:Access = new Access(xml.firstElement());
+		for (a in data.nodes.action)
+		{
+			var action:DialogueAction = {};
+
+			if (a.has.portrait || a.has.portraits)
+			{
+				if (a.has.portraits)
+				{
+					var s = a.att.portraits.split(",");
+					for (i in s)
+						addPortrait(i);
+
+					action.portraits = s;
 				}
 				else
 				{
-					dialogueList.remove(dialogueList[0]);
-					startDialogue();
-				}		
-			}
-			else
-			{
-				swagDialogue.skip();
-			}
-		}
+					var portrait = a.att.portrait;
+					action.portrait = portrait;
+					addPortrait(portrait);
 
-		super.update(elapsed);
-	}
+					if (a.has.side)
+						action.side = a.att.side.toLowerCase().charAt(0) == "r" ? RIGHT : LEFT;
 
-	var isEnding:Bool = false;
-
-	function startDialogue():Void
-	{
-		cleanDialog();
-		
-		var blockedCharacters:Array<String> = ['cutoff', 'fadechatin', 'fadechatout', 'fillbg', 'bg', 'hidebg', 'song', 'fuckoff', 'sfx', 'stfusfx', 'slow', 'normal', 'shake', 'stopitbro', 'inst', 'storyslow', 'fadeout', 'fadein', 'timer', 'startslow', 'normalauto'];
-		if(!blockedCharacters.contains(curCharacter.toLowerCase()))
-		{
-			swagDialogue.resetText(dialogueList[0]);
-			swagDialogue.start(swagDialogue.delay, true);
-			if(theShit)
-			{
-				swagDialogue.completeCallback = function() {			
-					new FlxTimer().start(2, function(tmr:FlxTimer) {
-						dialogueList.remove(dialogueList[0]);
-						startDialogue();
-					});
-				}
-			}
-			if(pleasCutOff)
-			{
-				swagDialogue.completeCallback = function() {			
-					finishThing();
-					kill();
+					if (a.has.emotion)
+						action.emotion = a.att.emotion.toLowerCase();
 				}
 			}
 
+			if (a.has.msg)
+				action.msg = a.att.msg;
 
-			switch (curCharacter)
-			{
-				default:
-					if(curCharacter.startsWith('fever') || curCharacter.startsWith('cas'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Fever-Beep'), 0.6)];
-						hidePortraits('fever'); // hide every portrait except for fever
-						if(!curCharacter.startsWith('cas'))
-						{
-							var fixAnim:String = StringTools.replace(curCharacter, 'fever', '');
-							fixAnim = StringTools.replace(fixAnim, 'jump', '');
-							// makes an animation name from splitting something like 'feversmile' into 'smile'
+			if (a.has.fillBG)
+				action.fillBG = FlxColor.fromString(a.att.fillBG);
+			else if (a.has.setBG)
+				action.setBG = a.att.setBG;
 
-							switch(curCharacter)
-							{
-								// for the special two sprites
-								case 'feversmile':
-									hidePortraits('feverS');
-									feverS.animation.play(fixAnim);
-								case 'feverpointtwo':
-									hidePortraits('feverspritesAGAIN');
-									feverspritesAGAIN.animation.play('point2');
-								default:
-									fever.animation.play(fixAnim);
+			if (a.has.effect)
+				action.effect = a.att.effect.toLowerCase();
 
-									if(curCharacter.endsWith('jump'))
-									{
-										FlxTween.tween(fever, {"scale.y": 1.05, y: fever.y - 18}, 0.05, { onComplete: function(twn:FlxTween){
-											FlxTween.tween(fever, {"scale.y": 1, y: fever.y + 18}, 0.04, { ease: FlxEase.elasticInOut });
-										}});
-									}
-							}
-						}
-						else // if its a casual expression
-						{
-							var char_to_AnimName:Map<String, String> = [
-								'casualPoint' => 'casPoint',
-								'casualconfuse' => 'casConfused',
-								'casualscared' => 'casScared',
-								'casualworry' => 'casWorry',
-								'casualflirt' => 'casFlirt',
-								'casualsilly' => 'casSilly',
-								'casualtired' => 'casTired',
-								'casualfine' => 'casFine',
-								'casualannoyed' => 'casAnnoyed'
-							]; // character name -> animation name
-							fever.animation.play(char_to_AnimName.get(curCharacter));
-						}
-					}
-					else if(curCharacter.startsWith('tea'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Tea-Beep'), 0.6)];
-						var fixAnim:String = StringTools.replace(curCharacter, 'tea', '');
-						fixAnim = StringTools.replace(fixAnim, 'jump', '');
-						// gets rid of tea's name so its just the ending animation name
-						hidePortraits('tea');
-
-						var char_to_AnimName:Map<String, String> = [
-							'teatwo' => 'annoytwo'
-						];
-
-						if(char_to_AnimName.exists(curCharacter))
-							fixAnim = char_to_AnimName.get(curCharacter);
-
-						tea.animation.play(fixAnim);
-
-						if(curCharacter.endsWith('jump'))
-						{
-							FlxTween.tween(tea, {"scale.y": 1.05, y: tea.y - 18}, 0.05, { onComplete: function(twn:FlxTween){
-								FlxTween.tween(tea, {"scale.y": 1, y: tea.y + 18}, 0.04, { ease: FlxEase.elasticInOut });
-							}});
-						}
-					}
-					else if(curCharacter.startsWith('paintingtea'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Tea-Beep'), 0.6)];
-						hidePortraits('paintingtea');
-						paintingtea.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('mako') && !curCharacter.endsWith('corrupt'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Mako-Beep'), 0.6)];
-						hidePortraits('mako');
-						var fixAnim:String = StringTools.replace(curCharacter, 'mako', '');
-						mako.animation.play(fixAnim);
-					}
-					else if(curCharacter.startsWith('nar'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
-						hidePortraits('nar');
-						nar.animation.play('seeme');
-					}
-					else if(curCharacter == 'prisoner')
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Fever-Beep'), 0.6)];
-						hidePortraits('demomFever');
-						demomFever.animation.play('prisoner');
-					}
-					else if(curCharacter == 'NPC')
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
-						hidePortraits('NPC');
-						NPC.animation.play('boo');
-					}
-					else if(curCharacter.startsWith('pea') || StringTools.replace(curCharacter, 'kek', '') != curCharacter)
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Peakek-Beep'), 0.6)];
-						hidePortraits('peakek');
-						peakek.flipX = true;
-						if(curCharacter == 'kekhappy')
-							peakek.animation.play('kekHappy');
-						else
-						{
-							var char_to_AnimName:Map<String, String> = [
-								'keksmile' => 'keksmile',
-								'suskek' => 'suskek',
-								'peaew' => 'peaew',
-								'peafever' => 'peaFever',
-								'peaclown' => 'peaClown',
-								'peacorrupt' => 'peaCorrupt',
-								'peahappy' => 'peaHappy'
-			  				];
-							peakek.animation.play(char_to_AnimName.get(curCharacter));
-						}
-					}
-					else if(curCharacter.startsWith('taki'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Taki-Beep'), 0.6)];
-						hidePortraits('taki');
-						taki.flipX = true;
-						taki.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('wolfie') || curCharacter.startsWith('wee'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('WeenWolfie-Beep'), 0.6)];
-						hidePortraits('wolfie');
-						wolfie.flipX = true;
-						wolfie.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('yukichi'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Yukichi-Beep'), 0.6)];
-						hidePortraits('yukichi');
-						yukichi.flipX = true;
-						yukichi.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('pepperdemon'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Pepper-Beep'), 0.6)];
-						hidePortraits('pepperdemon');
-						pepperdemon.flipX = true;
-						pepperdemon.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('demon'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Fever-Beep'), 0.6)];
-						hidePortraits('demonFever');
-						demonFever.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('de'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Fever-Beep'), 0.6)];
-						hidePortraits('whyFEVER');
-						whyFEVER.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('mega'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Mega-Beep'), 0.6)];
-						hidePortraits('mega');
-						mega.flipX = true;
-						mega.animation.play(curCharacter);
-					}
-					else if(curCharacter == 'makocorrupt')
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Mako-Beep'), 0.6)];
-						hidePortraits('makocorrupt');
-						makocorrupt.animation.play('makocorrupt');
-					}
-					else if(curCharacter.startsWith('hunni'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Hunni-Beep'), 0.6)];
-						hidePortraits('hunni');
-						hunni.flipX = true;
-						hunni.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('flippy'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Flippy-Beep'), 0.6)];
-						hidePortraits('flippy');
-						flippy.flipX = true;
-						flippy.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('impy'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Impy-Beep'), 0.6)];
-						hidePortraits('impy');
-						impy.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('foodieti'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('Food-Beep'), 0.6)];
-						hidePortraits('foodieti');
-						foodieti.animation.play(curCharacter);
-					}
-					else if(curCharacter.startsWith('hallow'))
-					{
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('hallow_beep'), 0.6)];
-						hidePortraits('hallow');
-						hallow.animation.play(curCharacter);
-					}
-
-					@:privateAccess
-					{
-						swagDialogue.sounds[0].volume = 0.35;
-					}
-			}
+			if (Reflect.fields(action).length > 0)
+				actions.push(action);
 		}
-		else
+
+		trace('Pushed ${actions.length} actions');
+	}
+
+	function addPortrait(portrait:String)
+	{
+		if (!portraits.exists(portrait))
 		{
-			switch(curCharacter.toLowerCase())
-			{
-				case 'inst':
-					FlxG.sound.playMusic(Paths.inst(dialogueList[0]));
-				case 'fillbg':
-					bg.visible = true;
-					bg.makeGraphic(1280, 720, FlxColor.fromString(dialogueList[0]));
-				case 'bg':
-					bg.visible = true;
-					bg.loadGraphic(Paths.image('dialogue_backgrounds/' + dialogueList[0]));
-					bg.antialiasing = true;
-					bg.updateHitbox();
-				case 'hidebg':
-					bg.visible = false;
-				case 'song':
-					FlxG.sound.playMusic(Paths.music(dialogueList[0]));
-				case 'fuckoff':
-					FlxG.sound.music.stop();
-				case 'sfx': 
-					FlxG.sound.play(Paths.music(dialogueList[0]));
-				case 'slow':
-					swagDialogue.delay = 0.25;
-				case 'normal': 
-					swagDialogue.delay = 0.04;
-				case 'shake':
-					shake = true;
-				case 'stopitbro':
-					shake = false;
-
-				//storyshit
-
-				case 'cutoff':
-					theShit = false;
-					pleasCutOff = true;
-
-				case 'startslow': 
-					new FlxTimer().start(10, function(tmr:FlxTimer) {
-						dialogueList.remove(dialogueList[0]);
-						startDialogue();
-					});
-				case 'storyslow': 
-					swagDialogue.delay = 0.10;
-					swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
-				case 'fadeout': 
-					FlxTween.tween(bg, {alpha: 0}, 1);
-				case 'fadein': 
-					FlxTween.tween(bg, {alpha: 1}, 1);
-					
-				case 'fadeintext': 
-					FlxTween.tween(swagDialogue, {alpha: 1}, 1);
-				case 'fadeouttext': 
-					new FlxTimer().start(2, function(tmr:FlxTimer) {
-						dialogueList.remove(dialogueList[0]);
-						startDialogue();
-					});
-
-				case 'normalauto':
-					theShit = true;
-
-				case 'fadechatin': 
-					FlxTween.tween(deletethisLATER, {alpha: 0.2}, 1);
-				case 'fadechatout': 
-					FlxTween.tween(deletethisLATER, {alpha: 0}, 1);
-
-			}
-			dialogueList.remove(dialogueList[0]);
-			startDialogue();				
+			var _portrait = new DialoguePortrait(portrait);
+			add(_portrait);
+			_portrait.visible = false;
+			portraits[portrait] = _portrait;
 		}
-	}
-
-	function cleanDialog():Void
-	{
-		var splitName:Array<String> = dialogueList[0].split(":");
-		curCharacter = splitName[1];
-		dialogueList[0] = dialogueList[0].substr(splitName[1].length + 2).trim();
-	}
-
-	function hidePortraits(curPortrait:String)
-	{
-		for(key in portraitMap.keys())
-			if(key != curPortrait)
-				portraitMap[key].visible = false;
-
-		if(portraitMap[curPortrait].visible == false)
-			portraitMap[curPortrait].visible = true;
-	}
-
-	override function add(obj)
-	{
-		if (Reflect.field(obj, "antialiasing") != null)
-		{
-			Reflect.setField(obj, "antialiasing", true);
-		}
-
-		return super.add(obj);
 	}
 }

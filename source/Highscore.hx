@@ -4,47 +4,45 @@ import flixel.FlxG;
 
 class Highscore
 {
-	#if (haxe >= "4.0.0")
 	public static var songScores:Map<String, Int> = new Map();
 	public static var fullCombos:Map<String, Int> = new Map();
-	#else
-	public static var songScores:Map<String, Int> = new Map<String, Int>();
-	#end
 
 	public static function saveScore(song:String, score:Int = 0, ?diff:Int = 0):Void
 	{
+		if (ClientPrefs.botplay)
+		{
+			trace('Botplay is enabled. Score saving is disabled.');
+			return;
+		}
+
 		var daSong:String = formatSong(song, diff);
 
-		if (!FlxG.save.data.botplay)
+		if (songScores.exists(daSong))
 		{
-			if (songScores.exists(daSong))
-			{
-				if (songScores.get(daSong) < score)
-					setScore(daSong, score);
-			}
-			else
+			if (songScores.get(daSong) < score)
 				setScore(daSong, score);
 		}
 		else
-			trace('BotPlay detected. Score saving is disabled.');
+			setScore(daSong, score);
 	}
 
 	public static function saveWeekScore(week:Int = 1, score:Int = 0, ?diff:Int = 0):Void
 	{
-		if (!FlxG.save.data.botplay)
+		if (ClientPrefs.botplay)
 		{
-			var daWeek:String = formatSong('week' + week, diff);
+			trace('Botplay is enabled. Score saving is disabled.');
+			return;
+		}
 
-			if (songScores.exists(daWeek))
-			{
-				if (songScores.get(daWeek) < score)
-					setScore(daWeek, score);
-			}
-			else
+		var daWeek:String = formatSong('week' + week, diff);
+
+		if (songScores.exists(daWeek))
+		{
+			if (songScores.get(daWeek) < score)
 				setScore(daWeek, score);
 		}
 		else
-			trace('BotPlay detected. Score saving is disabled.');
+			setScore(daWeek, score);
 	}
 
 	/**
@@ -52,7 +50,6 @@ class Highscore
 	 */
 	static function setScore(song:String, score:Int):Void
 	{
-		// Reminder that I don't need to format this song, it should come formatted!
 		songScores.set(song, score);
 		FlxG.save.data.songScores = songScores;
 		FlxG.save.data.fullCombos = fullCombos;
@@ -61,15 +58,7 @@ class Highscore
 
 	public static function formatSong(song:String, diff:Int):String
 	{
-		var daSong:String = song;
-
-		if (diff == 0)
-			daSong += '-easy';
-		else if (diff >= 2)
-			daSong += '-hard';
-
-		// trace(daSong);
-		return daSong;
+		return song + (Difficulty.data[diff].chartSuffix == null ? "" : Difficulty.data[diff].chartSuffix);
 	}
 
 	public static function getScore(song:String, diff:Int):Int
