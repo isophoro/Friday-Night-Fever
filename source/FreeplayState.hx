@@ -40,10 +40,9 @@ class FreeplayState extends MusicBeatState
 	{
 		PlayState.deaths = 0;
 
-		if (FlxG.sound.music != null)
+		if (FlxG.sound.music != null && !FlxG.sound.music.playing || FlxG.sound.music == null)
 		{
-			if (!FlxG.sound.music.playing)
-				Main.playFreakyMenu();
+			Main.playFreakyMenu();
 		}
 
 		var initSonglist:Array<String> = CoolUtil.coolTextFile(Paths.txt('normalSonglist'));
@@ -53,8 +52,6 @@ class FreeplayState extends MusicBeatState
 			var data:Array<String> = initSonglist[i].split(':');
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
-
-		// FlxG.random.shuffle(songs);
 
 		#if windows
 		// Updating Discord Rich Presence

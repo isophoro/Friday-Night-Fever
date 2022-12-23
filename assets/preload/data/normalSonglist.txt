@@ -28,6 +28,7 @@ Grando:robo-cesar:7
 Tranquility:scarlet:8
 Princess:scarlet:8
 Bloom:scarlet-final:8
+Crack:scarlet-final:8
 Dead-Mans-Melody:toothpaste:8
 Old-Hallow:hallow:3
 Old-Portrait:hallow:3

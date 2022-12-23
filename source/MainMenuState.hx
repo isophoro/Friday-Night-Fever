@@ -58,7 +58,7 @@ class MainMenuState extends InteractableState
 
 		train.callback = () ->
 		{
-			FlxG.switchState(new StoryMenuState());
+			FlxG.switchState(new states.BrochureMenu());
 		}
 
 		var mainBG:MenuBG = new MenuBG("newMain/subway_bg", 0, -12, 0.7);

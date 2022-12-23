@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="_brochure.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="confirm0000" x="0" y="0" width="554" height="776" pivotX="-123.5" pivotY="-12.65"/>
+	<SubTexture name="confirm0001" x="0" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0002" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0003" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0004" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0005" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0006" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0007" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0008" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0009" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0010" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0011" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0012" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0013" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="confirm0014" x="554" y="0" width="554" height="776"/>
+	<SubTexture name="nselected0000" x="1108" y="0" width="569" height="729" pivotX="-99.2" pivotY="-66.9"/>
+	<SubTexture name="nselected0001" x="1108" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0002" x="1108" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0003" x="1108" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0004" x="1677" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0005" x="1677" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0006" x="1677" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0007" x="1677" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0008" x="2246" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0009" x="2246" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0010" x="2246" y="0" width="569" height="729"/>
+	<SubTexture name="nselected0011" x="2246" y="0" width="569" height="729"/>
+	<SubTexture name="open0000" x="2815" y="0" width="794" height="1264" pivotX="125.8" pivotY="-61.65"/>
+	<SubTexture name="open0001" x="2815" y="0" width="794" height="1264"/>
+	<SubTexture name="open0002" x="0" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0003" x="0" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0004" x="794" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0005" x="794" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0006" x="1588" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0007" x="1588" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0008" x="2382" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0009" x="2382" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0010" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0011" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0012" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0013" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0014" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0015" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0016" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0017" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0018" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0019" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0020" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0021" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0022" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0023" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="open0024" x="3176" y="1264" width="794" height="1264"/>
+	<SubTexture name="selected0000" x="0" y="2528" width="531" height="749" pivotX="-136.65" pivotY="-13.5"/>
+	<SubTexture name="selected0001" x="0" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0002" x="531" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0003" x="531" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0004" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0005" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0006" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0007" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0008" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0009" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0010" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0011" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0012" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0013" x="1062" y="2528" width="531" height="749"/>
+	<SubTexture name="selected0014" x="1062" y="2528" width="531" height="749"/>
+</TextureAtlas>

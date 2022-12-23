@@ -10,6 +10,7 @@ import Discord.DiscordClient;
 class StoryMenuState extends InteractableState
 {
 	public static var weekData(get, never):Array<Array<String>>;
+	public static var isFrenzy:Bool = false;
 
 	public static function get_weekData():Array<Array<String>>
 	{
@@ -24,7 +25,7 @@ class StoryMenuState extends InteractableState
 			['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
 			['Hallow', 'Portrait', 'Soul'],
 			['C354R', 'Loaded', 'Gears'],
-			['Tranquility', 'Princess', 'Banish']
+			['Tranquility', 'Princess', 'Banish', 'Crack']
 		];
 	}
 
