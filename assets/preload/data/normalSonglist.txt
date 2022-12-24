@@ -36,3 +36,4 @@ Old-Soul:hallow:3
 Hallow:hallow:7
 Eclipse:hallow:7
 SOUL:hallow:7
+Cosmic-Swing:rolldog:1

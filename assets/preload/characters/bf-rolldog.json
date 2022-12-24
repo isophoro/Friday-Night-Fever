@@ -1,0 +1,108 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-20,
+				2
+			],
+			"fps": 24,
+			"anim": "Fever right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				-20,
+				-11
+			],
+			"fps": 24,
+			"anim": "Fever down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-6,
+				13
+			],
+			"fps": 24,
+			"anim": "Fever up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				2,
+				0
+			],
+			"fps": 24,
+			"anim": "Fever left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				-12,
+				-1
+			],
+			"fps": 24,
+			"anim": "Fever idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-13,
+				-3
+			],
+			"fps": 24,
+			"anim": "Fever down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-22,
+				1
+			],
+			"fps": 24,
+			"anim": "Fever right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-11,
+				9
+			],
+			"fps": 24,
+			"anim": "Fever phone",
+			"loop": false,
+			"name": "phone"
+		},
+		{
+			"offsets": [
+				-7,
+				1
+			],
+			"fps": 24,
+			"anim": "Fever left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-3,
+				10
+			],
+			"fps": 24,
+			"anim": "Fever up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": true,
+	"file": "fever/fever_rolldog",
+	"color": "C353E3"
+}

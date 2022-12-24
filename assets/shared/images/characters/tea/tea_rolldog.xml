@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="teasuit.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Tea idle0000" x="0" y="0" width="276" height="424" pivotX="26.75" pivotY="3.15"/>
+	<SubTexture name="Tea idle0001" x="0" y="0" width="276" height="424"/>
+	<SubTexture name="Tea idle0002" x="276" y="0" width="276" height="424"/>
+	<SubTexture name="Tea idle0003" x="552" y="0" width="276" height="424"/>
+	<SubTexture name="Tea idle0004" x="828" y="0" width="276" height="424"/>
+	<SubTexture name="Tea idle0005" x="828" y="0" width="276" height="424"/>
+	<SubTexture name="Tea idle0006" x="1104" y="0" width="276" height="424"/>
+	<SubTexture name="Tea idle0007" x="1380" y="0" width="276" height="424"/>
+	<SubTexture name="Tea idle0008" x="1656" y="0" width="276" height="424"/>
+	<SubTexture name="Tea idle0009" x="0" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0010" x="276" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0011" x="276" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0012" x="276" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0013" x="276" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0014" x="552" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0015" x="828" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0016" x="1104" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0017" x="1104" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0018" x="1380" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0019" x="1656" y="424" width="276" height="424"/>
+	<SubTexture name="Tea idle0020" x="0" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0021" x="0" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0022" x="276" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0023" x="552" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0024" x="828" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0025" x="828" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0026" x="1104" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0027" x="1104" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0028" x="1104" y="848" width="276" height="424"/>
+	<SubTexture name="Tea idle0029" x="1380" y="848" width="276" height="424"/>
+</TextureAtlas>

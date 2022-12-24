@@ -28,7 +28,7 @@ class HealthIcon extends FlxSprite
 		{
 			case 'robo-cesar-minus':
 				loadGraphic(Paths.image('icons/icon-robo-cesar'), true, 150, 150);
-			case 'bf' | 'bf-casual' | 'bf-car' | 'bf-roblox' | 'bf-mad':
+			case 'bf' | 'bf-casual' | 'bf-car' | 'bf-roblox' | 'bf-mad' | 'bf-rolldog':
 				loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
 			case 'bf-minus':
 				loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);

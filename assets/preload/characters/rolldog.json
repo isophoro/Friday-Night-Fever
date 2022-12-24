@@ -1,0 +1,109 @@
+{
+	"scale": 0.8,
+	"animations": [
+		{
+			"offsets": [
+				1,
+				-23
+			],
+			"fps": 24,
+			"anim": "Roll dog down craze",
+			"loop": false,
+			"name": "singDOWN-craze"
+		},
+		{
+			"offsets": [
+				-3,
+				-7
+			],
+			"fps": 24,
+			"anim": "Roll dog down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-55,
+				40
+			],
+			"fps": 24,
+			"anim": "Roll dog up crazy",
+			"loop": false,
+			"name": "singUP-craze"
+		},
+		{
+			"offsets": [
+				-9,
+				5
+			],
+			"fps": 24,
+			"anim": "Roll dog up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Roll dog idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-18,
+				14
+			],
+			"fps": 24,
+			"anim": "Roll dog right craze",
+			"loop": false,
+			"name": "singRIGHT-craze"
+		},
+		{
+			"offsets": [
+				-15,
+				0
+			],
+			"fps": 24,
+			"anim": "Roll dog right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-12,
+				3
+			],
+			"fps": 24,
+			"anim": "Roll dog phone",
+			"loop": false,
+			"name": "phone"
+		},
+		{
+			"offsets": [
+				2,
+				-2
+			],
+			"fps": 24,
+			"anim": "Roll dog left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				42,
+				-6
+			],
+			"fps": 24,
+			"anim": "Roll dog left craze",
+			"loop": false,
+			"name": "singLEFT-craze"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "rolldog/rolldog",
+	"color": "AEA28E"
+}

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="roll_dog_buildings.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="buildings0000" x="0" y="0" width="1863" height="729" pivotX="0" pivotY="0"/>
+	<SubTexture name="buildings0001" x="1863" y="0" width="1863" height="729"/>
+	<SubTexture name="buildings0002" x="0" y="729" width="1863" height="729"/>
+</TextureAtlas>

@@ -40,7 +40,7 @@ class Song
 			"hallow", "eclipse", "soul", "hardships", "banish", "bloom", "dead-mans-melody", "grando", "old-portrait", "old-hallow", "old-soul"
 		] => "FPLester",
 		["c354r", "loaded", "gears", "space-demons", "princess", "tranquility"] => "Biddle3",
-		["party-crasher"] => "BirdBonanza"
+		["party-crasher", "cosmic-swing"] => "BirdBonanza"
 	];
 
 	public static function getArtist(_song:String):String

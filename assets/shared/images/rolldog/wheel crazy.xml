@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="wheel crazy.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="wheel crzy0000" x="0" y="0" width="320" height="314" pivotX="-38.25" pivotY="-10.65"/>
+	<SubTexture name="wheel crzy0001" x="320" y="0" width="320" height="314"/>
+	<SubTexture name="wheel crzy0002" x="640" y="0" width="320" height="314"/>
+	<SubTexture name="wheel crzy0003" x="960" y="0" width="320" height="314"/>
+	<SubTexture name="wheel crzy0004" x="1280" y="0" width="320" height="314"/>
+	<SubTexture name="wheel crzy0005" x="1600" y="0" width="320" height="314"/>
+	<SubTexture name="wheel crzy0006" x="0" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0007" x="320" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0008" x="640" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0009" x="960" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0010" x="1280" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0011" x="1600" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0012" x="0" y="628" width="320" height="314"/>
+	<SubTexture name="wheel crzy0013" x="320" y="628" width="320" height="314"/>
+	<SubTexture name="wheel crzy0014" x="640" y="628" width="320" height="314"/>
+	<SubTexture name="wheel crzy0015" x="1600" y="0" width="320" height="314"/>
+	<SubTexture name="wheel crzy0016" x="0" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0017" x="320" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0018" x="640" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0019" x="960" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0020" x="1280" y="314" width="320" height="314"/>
+	<SubTexture name="wheel crzy0021" x="960" y="628" width="320" height="314"/>
+	<SubTexture name="wheel crzy0022" x="1280" y="628" width="320" height="314"/>
+	<SubTexture name="wheel crzy0023" x="1600" y="628" width="320" height="314"/>
+	<SubTexture name="wheel crzy0024" x="0" y="942" width="320" height="314"/>
+	<SubTexture name="wheel crzy0025" x="320" y="942" width="320" height="314"/>
+	<SubTexture name="wheel crzy0026" x="0" y="0" width="320" height="314"/>
+	<SubTexture name="wheel crzy0027" x="0" y="0" width="320" height="314"/>
+</TextureAtlas>

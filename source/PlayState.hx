@@ -2134,8 +2134,9 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
+						if (daNote.type != 2)
+							curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
 						scripts.callFunction("onOpponentNoteHit", [daNote]);
-						curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
 
 						if (curStage == 'schoolEvil')
 						{
@@ -3317,7 +3318,7 @@ class PlayState extends MusicBeatState
 
 		if (!curOpponent.animation.curAnim.name.startsWith('sing'))
 		{
-			var specialAnims:Array<String> = ['dodge', 'hey', 'shoot'];
+			var specialAnims:Array<String> = ['dodge', 'hey', 'shoot', 'phone'];
 			if (!specialAnims.contains(curOpponent.animation.curAnim.name) || curOpponent.animation.finished)
 			{
 				curOpponent.dance();
