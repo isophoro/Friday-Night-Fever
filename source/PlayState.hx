@@ -373,7 +373,7 @@ class PlayState extends MusicBeatState
 				else
 					curStage = SONG.stage;
 
-				var stageScript:HaxeScript = new HaxeScript('assets/stages/$curStage.hx');
+				var stageScript:HaxeScript = new HaxeScript('assets/stages/$curStage.hx', "stage");
 				scripts.add(stageScript);
 				stageScript.callFunction("onCreate");
 			case 'fireplace':
@@ -1139,7 +1139,7 @@ class PlayState extends MusicBeatState
 		if (Assets.exists(cutscenePath))
 		{
 			inCutscene = true;
-			var cutsceneScript:HaxeScript = new HaxeScript(cutscenePath);
+			var cutsceneScript:HaxeScript = new HaxeScript(cutscenePath, "cutscene");
 			scripts.add(cutsceneScript);
 			cutsceneScript.callFunction("onCreate");
 		}
@@ -1169,7 +1169,7 @@ class PlayState extends MusicBeatState
 
 		moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
 
-		songScript = new HaxeScript();
+		songScript = new HaxeScript(null, "modchart");
 		songScript.callFunction("onCreate");
 
 		scripts.callFunction("onCreatePost");

@@ -1,5 +1,4 @@
-setLabel("cutscene");
-import("flixel.FlxG");
+import ("flixel.FlxG");
 import("flixel.util.FlxTimer");
 
 function image(img:String)

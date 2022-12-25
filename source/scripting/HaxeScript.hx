@@ -13,6 +13,8 @@ import hscript.Parser;
 import sys.FileSystem;
 import sys.io.File;
 
+using StringTools;
+
 class HaxeScript extends Interp implements IFlxDestroyable
 {
 	static final AUTOIMPORTS:Array<Class<Dynamic>> = [
@@ -84,13 +86,13 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		}
 	];
 
+	public var parser:Parser;
 	public var label:String = "";
 	public var updatableVars:Array<String> = [];
-	public var valid:Bool = false;
-	public var parentGrp:HScriptGroup = null;
 	public var ownedGlobals:Array<String> = [];
+	public var parentGrp:HScriptGroup = null;
 
-	public function new(?path:String)
+	public function new(?path:String, label:String = "")
 	{
 		super();
 
@@ -102,31 +104,75 @@ class HaxeScript extends Interp implements IFlxDestroyable
 			return;
 		}
 
+		if (label.length > 0)
+		{
+			this.label = label;
+		}
+
 		setupVariables();
 		updateVars();
 
-		var parser = new Parser();
-		parser.allowTypes = true;
-		parser.allowJSON = true;
-		valid = true;
+		parser = new Parser();
+		parser.allowJSON = parser.allowTypes = true;
+
+		var rawCode = handleImports(File.getContent(path));
 		try
 		{
-			execute(parser.parseString(File.getContent(path)));
+			execute(parser.parseString(rawCode));
 		}
 		catch (e)
 		{
 			trace(e);
-			FlxG.stage.application.window.alert('${e.stack}\n${e.message}', "HScript Compile Time Error");
+			FlxG.stage.application.window.alert('${e.stack}\n${e.details}', "HScript Compile Time Error");
 		}
+	}
+
+	function handleImports(rawCode:String)
+	{
+		var code:String = "";
+		var modules:Array<hscript.Expr.ModuleDecl> = [];
+		var s = rawCode.split(";");
+
+		// Checks if there's any lines that start with import and matches the following regex
+		for (i in 0...s.length)
+		{
+			s[i] = s[i].trim();
+			if (s[i].startsWith("import") && ~/[A - Za - z.]/.match(s[i]) && !s[i].contains("("))
+			{
+				code += s[i] + ';';
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		// If no import lines are found, return the original unedited code.
+		if (code.length <= 0)
+			return rawCode;
+
+		// but if import lines are found, parse them through parseModule() and add them.
+		try
+		{
+			modules = parser.parseModule(code);
+		}
+		catch (e)
+		{
+			FlxG.stage.window.alert("Failed parsing modules:\n" + code, "HScript Compile Time Error");
+		}
+
+		for (i in modules)
+		{
+			var pckge = (cast i.getParameters()[0] : Array<String>);
+			variables.set(pckge[pckge.length - 1], Type.resolveClass(pckge.join(".")));
+			s.shift();
+		}
+
+		return s.join(";");
 	}
 
 	function setupVariables()
 	{
-		variables.set("setLabel", (l:String) ->
-		{
-			label = l;
-		});
-
 		variables.set("setGlobalVar", (name:String, obj:Dynamic) ->
 		{
 			trace("Setting global var: " + name);
@@ -196,7 +242,7 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		variables.set("import", (classStr:String) ->
 		{
 			var split:Array<String> = classStr.split('.');
-			trace("Importing class: " + split[split.length - 1]);
+			trace("(Deprecated) Importing class: " + split[split.length - 1]);
 			variables.set(split[split.length - 1], Type.resolveClass(classStr));
 		});
 
@@ -239,9 +285,6 @@ class HaxeScript extends Interp implements IFlxDestroyable
 
 	public function updateVars()
 	{
-		if (!valid)
-			return;
-
 		for (i in updatableVars)
 		{
 			var reflected = Reflect.field(PlayState.instance, i);
@@ -274,7 +317,6 @@ class HaxeScript extends Interp implements IFlxDestroyable
 			variables[k] = null;
 
 		updatableVars = [];
-		valid = false;
 
 		if (parentGrp != null)
 		{

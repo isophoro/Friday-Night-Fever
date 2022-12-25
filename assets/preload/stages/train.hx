@@ -1,5 +1,4 @@
-setLabel("stage");
-import("flixel.addons.display.FlxBackdrop");
+import ("flixel.addons.display.FlxBackdrop");
 
 var buildings1:FlxBackdrop;
 var buildings2:FlxBackdrop;

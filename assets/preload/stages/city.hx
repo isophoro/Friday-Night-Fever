@@ -1,6 +1,5 @@
-setLabel("stage");
-import("flixel.effects.FlxFlicker");
-import("shaders.ColorShader");
+import flixel.effects.FlxFlicker;
+import shaders.ColorShader;
 
 var sky:FlxSprite;
 var mainBG:FlxSprite;
