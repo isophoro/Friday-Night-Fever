@@ -1,4 +1,3 @@
-// the "city" stage from V.S Taki Mod
 setLabel("stage");
 import("flixel.effects.FlxFlicker");
 import("shaders.ColorShader");
@@ -50,12 +49,12 @@ function onCreate()
 	sky.antialiasing = true;
 	add(sky);
 
-	makolicious = new FlxSprite(-1350, -650);
-	makolicious.frames = Paths.getSparrowAtlas("roboStage/C354R/tower");
-	makolicious.animation.addByPrefix("normal", "building0", 24, true);
-	makolicious.animation.addByPrefix("MAKO", "building mako0", 24, false);
-	makolicious.animation.addByPrefix("weewoo", "building mako loop", 24, true);
-	makolicious.animation.play("normal");
+	makolicious = new FlxSprite(460, -640);
+	makolicious.frames = Paths.getSparrowAtlas("roboStage/C354R/mako");
+	makolicious.animation.addByIndices("frozen", "mako jump", [0], "", 0);
+	makolicious.animation.addByPrefix("MAKO", "mako jump", 24, false);
+	makolicious.animation.addByPrefix("weewoo", "mako REEROO", 24, true);
+	makolicious.animation.play("frozen");
 	makolicious.antialiasing = true;
 
 	tower = new FlxSprite(-1350, -650);
@@ -64,6 +63,7 @@ function onCreate()
 	tower.animation.play("normal");
 	tower.antialiasing = true;
 	add(tower);
+	add(makolicious);
 
 	robos = new FlxSprite(-1350, -430);
 	robos.frames = Paths.getSparrowAtlas("roboStage/C354R/robots");
@@ -105,8 +105,7 @@ function onCreate()
 
 	zombie.setPosition(centerSpriteX(mainBG, zombie) - 850, centerSpriteY(mainBG, zombie));
 
-	makolicious.x = centerSpriteX(mainBG, makolicious) + 88;
-	tower.x = centerSpriteX(mainBG, makolicious) + 88;
+	tower.x = 525.5;
 	robos.x = makolicious.x - 250;
 
 	truck = new FlxSprite();
@@ -275,11 +274,10 @@ function onBeatHit(curBeat:Int)
 	{
 		case 281:
 			makolicious.animation.play("MAKO");
-			makolicious.offset.x += 278;
-			makolicious.offset.y += 158;
+			makolicious.offset.set(606, 163);
 			game.disableCamera = true;
 			game.camZooming = true;
-			game.camFollow.setPosition(makolicious.x + (makolicious.width / 2), makolicious.y + (makolicious.height / 2) - 50);
+			game.camFollow.setPosition(tower.x + (tower.width / 2), tower.y + (tower.height / 2) - 50);
 			game.defaultCamZoom = 0.65;
 		case 287:
 			FlxTween.tween(camHUD, {alpha: 0.2}, 0.7);
