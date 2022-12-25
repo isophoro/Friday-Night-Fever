@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Mako_bot.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="mako REEROO0000" x="0" y="0" width="219" height="299" pivotX="-369.05" pivotY="-14.3"/>
+	<SubTexture name="mako REEROO0001" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0002" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0003" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0004" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0005" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0006" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0007" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0008" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0009" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0010" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0011" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0012" x="0" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0013" x="219" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0014" x="438" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0015" x="657" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0016" x="876" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0017" x="1095" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0018" x="1314" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0019" x="1533" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0020" x="1533" y="0" width="219" height="299"/>
+	<SubTexture name="mako REEROO0021" x="1533" y="0" width="219" height="299"/>
+	<SubTexture name="mako jump0000" x="1752" y="0" width="767" height="465" pivotX="0" pivotY="124.7"/>
+	<SubTexture name="mako jump0001" x="2519" y="0" width="767" height="465"/>
+	<SubTexture name="mako jump0002" x="3286" y="0" width="767" height="465"/>
+	<SubTexture name="mako jump0003" x="0" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0004" x="0" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0005" x="767" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0006" x="767" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0007" x="1534" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0008" x="1534" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0009" x="2301" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0010" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0011" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0012" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0013" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0014" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0015" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0016" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0017" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0018" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0019" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0020" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0021" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0022" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0023" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0024" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0025" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0026" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0027" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0028" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0029" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0030" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0031" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0032" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0033" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0034" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0035" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0036" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0037" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0038" x="3068" y="465" width="767" height="465"/>
+	<SubTexture name="mako jump0039" x="0" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0040" x="0" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0041" x="767" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0042" x="767" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0043" x="1534" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0044" x="1534" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0045" x="2301" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0046" x="2301" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0047" x="2301" y="930" width="767" height="465"/>
+	<SubTexture name="mako jump0048" x="2301" y="930" width="767" height="465"/>
+</TextureAtlas>

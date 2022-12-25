@@ -77,6 +77,10 @@ class HaxeScript extends Interp implements IFlxDestroyable
 			}
 			var camFollow = PlayState.instance.camFollow;
 			PlayState.instance.camGame.focusOn(pos == null ? new FlxPoint(camFollow.x, camFollow.y) : pos);
+		},
+		"getSong" => (field:String) ->
+		{
+			return Reflect.field(PlayState.SONG, field);
 		}
 	];
 

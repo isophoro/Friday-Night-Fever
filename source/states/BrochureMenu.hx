@@ -91,7 +91,7 @@ class BrochureMenu extends MusicBeatState
 
 		fscroll.alpha = selectingFrenzy ? 0.2 : 0;
 		cscroll.alpha = !selectingFrenzy ? 0.2 : 0;
-		text.text = selectingFrenzy ? "Contains all of the brand new weeks featured in the Frenzy update" : "Contains the original Friday Night Fever experience featuring Weeks 1 through 6";
+		text.text = selectingFrenzy ? "Contains all of the brand new weeks featured in the Frenzy update" : "The original Friday Night Fever experience featuring Weeks 1 through 6";
 		text.screenCenter(X);
 		textBG.screenCenter(X);
 		textBG.scale.set((text.width / textBG.width) * 1.03, text.height / textBG.height);

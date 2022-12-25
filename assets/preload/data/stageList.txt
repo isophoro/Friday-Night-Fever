@@ -1,7 +1,7 @@
 stage
 halloween
 halloween2
-hallowhalloween
+hallow
 church
 week3stage
 limo

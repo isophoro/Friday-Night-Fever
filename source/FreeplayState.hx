@@ -40,7 +40,7 @@ class FreeplayState extends MusicBeatState
 	{
 		PlayState.deaths = 0;
 
-		if (FlxG.sound.music != null && !FlxG.sound.music.playing || FlxG.sound.music == null)
+		if (FlxG.sound.music == null || FlxG.sound.music != null && !FlxG.sound.music.playing)
 		{
 			Main.playFreakyMenu();
 		}

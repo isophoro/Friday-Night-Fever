@@ -7,7 +7,7 @@
 			],
 			"fps": 24,
 			"anim": "takiidle",
-			"loop": false,
+			"loop": true,
 			"name": "idle"
 		},
 		{

@@ -4,7 +4,7 @@ var wheel:FlxSprite;
 
 function onCreate()
 {
-	game.defaultCamZoom = 0.94;
+	game.defaultCamZoom = 0.93;
 	var buildings:FlxSprite = new FlxSprite(-252, -117);
 	buildings.frames = Paths.getSparrowAtlas("rolldog/roll_dog_buildings");
 	buildings.animation.addByPrefix("loop", "buildings", 24, true);

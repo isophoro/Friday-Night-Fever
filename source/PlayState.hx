@@ -160,7 +160,6 @@ class PlayState extends MusicBeatState
 
 	public var church:FlxSprite; // week 2.5 / bad nun
 
-	var painting:FlxSprite; // portrait / soul
 	var limo:FlxSprite; // week 4
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:FlxSprite;
@@ -415,34 +414,6 @@ class PlayState extends MusicBeatState
 
 					add(city);
 					add(spookyBG);
-				}
-			case 'hallowhalloween':
-				{
-					summonPainting(); // Preload painting
-					curStage = 'spookyHALLOW';
-					defaultCamZoom = 0.6;
-
-					var bg:FlxSprite = new FlxSprite(-200, -100).loadGraphic(Paths.image('week2bghallow'));
-					bg.antialiasing = true;
-					add(bg);
-
-					painting = new FlxSprite(-200, -100).loadGraphic(Paths.image('week2bghallowpainting'));
-					painting.antialiasing = true;
-					add(painting);
-					painting.visible = false;
-					if (SONG.song.toLowerCase() == 'soul')
-					{
-						painting.visible = true;
-
-						if (ClientPrefs.shaders)
-						{
-							camfilters.push(ShadersHandler.chromaticAberration);
-							ShadersHandler.setChrome(FlxG.random.int(2, 2) / 1000);
-
-							camHUD.filtersEnabled = true;
-							camGame.filtersEnabled = true;
-						}
-					}
 				}
 			case 'church':
 				{
@@ -873,7 +844,7 @@ class PlayState extends MusicBeatState
 					characterTrail = new CharacterTrail(dad, null, 15, 8, 0.3, 0.069);
 					add(characterTrail);
 				}
-			case 'spookyHALLOW':
+			case 'hallow':
 				boyfriend.x += 500;
 				boyfriend.y += 155;
 				gf.x += 300;
@@ -2126,16 +2097,19 @@ class PlayState extends MusicBeatState
 							altAnim = '-alt';
 					}
 
-					curOpponent.holdTimer = 0;
 					// Accessing the animation name directly to play it
 					if (curSong == 'Princess' && (curBeat == 303 || curBeat == 367) && daNote.noteData == 2)
 					{
+						curOpponent.holdTimer = 0;
 						curOpponent.playAnim('singLaugh', true);
 					}
 					else
 					{
 						if (daNote.type != 2)
+						{
+							curOpponent.holdTimer = 0;
 							curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
+						}
 						scripts.callFunction("onOpponentNoteHit", [daNote]);
 
 						if (curStage == 'schoolEvil')
@@ -2182,7 +2156,7 @@ class PlayState extends MusicBeatState
 							case 'hallow':
 								if (healthBar.percent > 5)
 								{
-									health -= 0.05;
+									health -= 0.025;
 								}
 						}
 					}
@@ -2376,7 +2350,7 @@ class PlayState extends MusicBeatState
 				case 'church':
 					camFollow.x = boyfriend.getMidpoint().x - 465;
 					camFollow.y = boyfriend.getMidpoint().y - 365;
-				case 'spookyHALLOW':
+				case 'hallow':
 					camFollow.x = boyfriend.getMidpoint().x - 250;
 					camFollow.y = boyfriend.getMidpoint().y - 200;
 				case 'week5' | 'ripdiner' | 'week5othercrowd':
@@ -2489,7 +2463,6 @@ class PlayState extends MusicBeatState
 			if (storyPlaylist.length <= 0)
 			{
 				Main.playFreakyMenu();
-
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
 
@@ -2509,7 +2482,6 @@ class PlayState extends MusicBeatState
 
 				if (storyWeek != StoryMenuState.weekData.length - 1)
 				{
-					Main.playFreakyMenu();
 					FlxG.switchState(new StoryMenuState());
 				}
 				else
@@ -2528,7 +2500,6 @@ class PlayState extends MusicBeatState
 
 						if (break_MainLoop)
 						{
-							Main.playFreakyMenu();
 							FlxG.switchState(new StoryMenuState());
 							break;
 						}
@@ -3098,40 +3069,6 @@ class PlayState extends MusicBeatState
 						boyfriend.useAlternateIdle = true;
 				case 'loaded':
 					roboStage.beatHit(curBeat);
-				case 'soul' | 'portrait':
-					switch (curBeat)
-					{
-						case 32:
-							camHUD.flash(FlxColor.WHITE, 0.5);
-
-							if (ClientPrefs.shaders)
-							{
-								wiggleEffect = new WiggleEffect();
-								wiggleEffect.effectType = WiggleEffectType.WAVY;
-								wiggleEffect.waveAmplitude = 0.05;
-								wiggleEffect.waveFrequency = 3;
-								wiggleEffect.waveSpeed = 1;
-
-								// filters.push(wiggleEffect.shader);
-								// camGame.filtersEnabled = true;
-								painting.shader = wiggleEffect.shader;
-							}
-
-							if (curSong == 'Portrait')
-							{
-								painting.visible = true;
-
-								if (ClientPrefs.shaders)
-								{
-									filters.push(ShadersHandler.chromaticAberration);
-									camfilters.push(ShadersHandler.chromaticAberration);
-									ShadersHandler.setChrome(FlxG.random.int(2, 2) / 1000);
-
-									camHUD.filtersEnabled = true;
-									camGame.filtersEnabled = true;
-								}
-							}
-					}
 				case 'tranquility':
 					switch (curBeat)
 					{
