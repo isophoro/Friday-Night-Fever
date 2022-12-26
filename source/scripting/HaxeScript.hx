@@ -164,7 +164,8 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		for (i in modules)
 		{
 			var pckge = (cast i.getParameters()[0] : Array<String>);
-			variables.set(pckge[pckge.length - 1], Type.resolveClass(pckge.join(".")));
+			var isEnum = Type.resolveEnum(pckge.join("."));
+			variables.set(pckge[pckge.length - 1], isEnum == null ? Type.resolveClass(pckge.join(".")) : isEnum);
 			s.shift();
 		}
 
