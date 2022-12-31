@@ -1,5 +1,5 @@
-import ("Character");
-import("MP4Handler");
+import Character;
+import MP4Handler;
 
 var video:MP4Handler;
 var hallowDum:Character;
@@ -14,6 +14,12 @@ function onCreate()
 	hallowDum = new Character(0, 0, "hallow-dum");
 	add(hallowDum);
 	hallowDum.visible = false;
+
+	trace("ATTEMPTING VIDEO PRELOAD");
+	video.playMP4(Paths.video("soul"), false, null, false, false, true);
+	video.kill();
+	FlxG.camera.fade(FlxColor.BLACK, 0, true);
+	trace("VIDEO PRELOADED");
 }
 
 function onStepHit(curStep:Int)
@@ -25,6 +31,8 @@ function onStepHit(curStep:Int)
 
 	if (curStep == 1952)
 	{
+		game.inCutscene = true;
+
 		trace("PLAY VIDEO");
 		video.playMP4(Paths.video("soul"), false, null, false, false, true);
 		hallowDum.visible = true;
@@ -32,6 +40,7 @@ function onStepHit(curStep:Int)
 		video.finishCallback = function()
 		{
 			trace("VIDEO FINISH");
+			game.inCutscene = false;
 			video.finishCallback = null;
 			video.kill();
 			FlxG.camera.fade(FlxColor.BLACK, 0, true);

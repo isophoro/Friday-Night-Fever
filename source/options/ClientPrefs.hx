@@ -31,20 +31,16 @@ class ClientPrefs
 	public static var fpsCap:Int = 120;
 	public static var antialiasing:Bool = true;
 	public static var shaders:Bool = true;
-	public static var animeIntro:Bool = true;
 
-	public static var flashing:Bool = true;
 	public static var songPosition:Bool = false;
 	public static var subtitles:Bool = true;
 	public static var notesplash = true;
 	public static var brighterNotes:Bool = false;
 	public static var fps:Bool = true;
 
-	public static var hallowDeaths:Int = 0;
-	public static var hallowNoteDeaths:Int = 0;
-	public static var deaths:Int = 0;
-
-	public static var opponent:Bool = false;
+	public static var unlockedTrophies:Array<Int> = [];
+	public static var username:String = "";
+	public static var userToken:String = "";
 
 	public static function get_keybinds():Array<String>
 	{
@@ -53,7 +49,7 @@ class ClientPrefs
 
 	public static function load()
 	{
-		trace("Loading ClientPrefs");
+		trace("Loading ClientPrefs...");
 
 		for (i in Type.getClassFields(ClientPrefs))
 		{
@@ -70,7 +66,6 @@ class ClientPrefs
 			}
 		}
 
-		Achievements.defaultYAYY();
 		PlayerSettings.player1.controls.loadKeyBinds();
 
 		(cast(openfl.Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap);

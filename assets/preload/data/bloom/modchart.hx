@@ -32,7 +32,7 @@ function onCreate()
 	BW = new BWShader();
 	BW.colorFactor = 0;
 	gf.shader = BW;
-	whittyBG.shader = BW;
+	getGlobalVar("whittyBG").shader = BW;
 }
 
 function onMoveCamera(isDad:Bool)
@@ -145,7 +145,7 @@ function onBeatHit(curBeat:Int)
 		game.gfSpeed = 1;
 
 		gf.shader = null;
-		whittyBG.shader = null;
+		getGlobalVar("whittyBG").shader = null;
 
 		for (i in game.curComboSprites)
 		{

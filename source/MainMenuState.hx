@@ -40,7 +40,6 @@ class MainMenuState extends InteractableState
 			train.animation.finishCallback = function(anim)
 			{
 				train.animation.play('idle');
-				allowInput = true;
 				train.animation.finishCallback = null;
 			}
 
@@ -61,6 +60,8 @@ class MainMenuState extends InteractableState
 			FlxG.switchState(new states.BrochureMenu());
 		}
 
+		train.sound = "subway";
+
 		var mainBG:MenuBG = new MenuBG("newMain/subway_bg", 0, -12, 0.7);
 		add(mainBG);
 
@@ -74,6 +75,7 @@ class MainMenuState extends InteractableState
 				FlxG.switchState(new options.OptionsState());
 			});
 		}
+		options.sound = "sewer";
 		addInteractable(options);
 
 		var credits = new Interactable('newMain/credits', -10, 45, 0.7, 'credits notselected', 'credits selected', new InteractHitbox(40, 175, 225, 525),
@@ -87,14 +89,20 @@ class MainMenuState extends InteractableState
 
 		var boombox = new Interactable('newMain/boombox', 779, 433, 0.7, 'boombox not selected', 'boombox selected', new InteractHitbox(779, 433, 165, 135),
 			[0, 5], true, "newMain/boomboxtext", "boombox text", [639, 520]);
+		boombox.sound = "boombox";
 		addInteractable(boombox);
 
 		var costumes = new Interactable('newMain/costumes', 505, 580, 0.7, 'costume notselected', 'costume selected', new InteractHitbox(505, 580, 240, 115),
 			[83, 102]);
+		costumes.sound = "paper";
 		addInteractable(costumes);
 
 		var extras = new Interactable('newMain/extra', 839, 210, 0.7, 'extras notselected', 'extras selected', new InteractHitbox(839, 210, 150, 175),
 			[258, 258], true, "newMain/extratext", "extra text", [990, 190], 0.23);
+		extras.callback = () ->
+		{
+			FlxG.switchState(new states.GamejoltLogin());
+		}
 		addInteractable(extras);
 
 		var versionShit:FlxText = new FlxText(0, 0, 0, 'Friday Night Fever ${FlxG.stage.application.meta.get("version")}', 12);
@@ -117,6 +125,8 @@ class MainMenuState extends InteractableState
 		];
 
 		firstTime = false;
+
+		allowInput = true;
 	}
 
 	override function update(elapsed:Float)

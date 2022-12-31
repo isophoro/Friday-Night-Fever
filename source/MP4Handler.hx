@@ -1,10 +1,10 @@
 #if (cpp && !mobile)
 package;
 
-import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.events.Event;
@@ -12,7 +12,6 @@ import vlc.VlcBitmap;
 
 // THIS IS FOR TESTING
 // DONT STEAL MY CODE >:(
-
 // iso stole this not me
 class MP4Handler
 {
@@ -20,13 +19,15 @@ class MP4Handler
 	public var stateCallback:FlxState;
 
 	public var bitmap:VlcBitmap;
+
 	var skip:FlxText;
 
 	public var sprite:FlxSprite;
-	public var preloading:Bool = false;
 
-	public function new() {}
-	
+	public function new()
+	{
+	}
+
 	public function playMP4(path:String, ?repeat:Bool = false, ?outputTo:FlxSprite = null, ?isWindow:Bool = false, ?isFullscreen:Bool = false,
 			?midSong:Bool = false):Void
 	{
@@ -51,8 +52,6 @@ class MP4Handler
 			bitmap.set_height(FlxG.stage.stageWidth / (16 / 9));
 		}
 
-		
-
 		bitmap.onVideoReady = onVLCVideoReady;
 		bitmap.onComplete = onVLCComplete;
 		bitmap.onError = onVLCError;
@@ -60,7 +59,7 @@ class MP4Handler
 		FlxG.stage.addEventListener(Event.ENTER_FRAME, update);
 
 		if (repeat)
-			bitmap.repeat = -1; 
+			bitmap.repeat = -1;
 		else
 			bitmap.repeat = 0;
 
@@ -69,6 +68,7 @@ class MP4Handler
 
 		FlxG.addChildBelowMouse(bitmap);
 		bitmap.play(checkFile(path));
+		bitmap.pause();
 
 		if (outputTo != null)
 		{
@@ -77,8 +77,6 @@ class MP4Handler
 
 			sprite = outputTo;
 		}
-		
-		
 	}
 
 	function checkFile(fileName:String):String
@@ -112,7 +110,7 @@ class MP4Handler
 
 		FlxG.camera.fade(FlxColor.BLACK, 0, false);
 
-		//trace("Big, Big Chungus, Big Chungus!");
+		// trace("Big, Big Chungus, Big Chungus!");
 
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{
@@ -160,14 +158,6 @@ class MP4Handler
 
 	function update(e:Event)
 	{
-		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.SPACE)
-		{
-			if (bitmap.isPlaying && !preloading)
-			{
-				onVLCComplete();
-			}
-		}
-
 		bitmap.volume = FlxG.sound.volume + 0.3; // shitty volume fix. then make it louder.
 
 		if (FlxG.sound.volume <= 0.05)

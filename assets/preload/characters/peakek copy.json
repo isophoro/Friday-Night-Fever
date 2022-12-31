@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Dad idle dance",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-181,
+				-2
+			],
+			"fps": 24,
+			"anim": "Dad Sing Note RIGHT",
+			"loop": true,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-201,
+				-90
+			],
+			"fps": 24,
+			"anim": "Dad Sing Note DOWN",
+			"loop": true,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-21,
+				18
+			],
+			"fps": 24,
+			"anim": "dad sing note LEFT",
+			"loop": true,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-131,
+				65
+			],
+			"fps": 24,
+			"anim": "Dad Sing note UP",
+			"loop": true,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": null,
+	"file": "peakek/peakek",
+	"color": "99D4F4"
+}

@@ -8,7 +8,6 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
-import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -23,18 +22,14 @@ import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
-import lime.graphics.Image;
 import lime.utils.Assets;
 import openfl.Lib;
-import openfl.display.BitmapData;
-import openfl.display.BlendMode;
 import openfl.events.KeyboardEvent;
 import openfl.filters.BitmapFilter;
 import openfl.system.System;
 import scripting.*;
 import shaders.*;
 import shaders.Shaders.VCRDistortionEffect;
-import shaders.WiggleEffect.WiggleEffectType;
 import sprites.*;
 
 using StringTools;
@@ -135,7 +130,6 @@ class PlayState extends MusicBeatState
 	public static var shits:Int = 0;
 	public static var bads:Int = 0;
 	public static var goods:Int = 0;
-	public static var sicks:Int = 0;
 
 	public static var songPosBG:FlxSprite;
 	public static var songPosBar:FlxBar;
@@ -170,11 +164,6 @@ class PlayState extends MusicBeatState
 	public var roboBackground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var roboForeground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
-	var whittyBG:FlxSprite; // princess week
-	var princessBG:FlxSprite;
-	var princessFloor:FlxSprite;
-	var princessCrystals:FlxSprite;
-
 	public var scoreTxt:FlxText;
 	public var subtitles:Subtitles;
 
@@ -197,11 +186,6 @@ class PlayState extends MusicBeatState
 	var takiBGSprites:Array<FlxSprite> = [];
 
 	public static var deaths:Int = 0;
-
-	public static var hallowDeaths:Int = 0;
-	public static var hallowNoteDeaths:Int = 0;
-
-	public static var diedtoHallowNote:Bool = false;
 
 	public static function setModCamera(bool:Bool)
 	{
@@ -237,7 +221,7 @@ class PlayState extends MusicBeatState
 	{
 		instance = this;
 
-		for (i in ['sicks', 'bads', 'goods', 'shits', 'misses'])
+		for (i in ['bads', 'goods', 'shits', 'misses'])
 			Reflect.setField(PlayState, i, 0);
 
 		if (!isStoryMode || StoryMenuState.get_weekData()[storyWeek][0].toLowerCase() == SONG.song.toLowerCase())
@@ -376,30 +360,6 @@ class PlayState extends MusicBeatState
 				var stageScript:HaxeScript = new HaxeScript('assets/stages/$curStage.hx', "stage");
 				scripts.add(stageScript);
 				stageScript.callFunction("onCreate");
-			case 'fireplace':
-				curStage = 'fireplace';
-				// defaultCamZoom = 0.76;
-
-				var bg = new FlxSprite().loadGraphic(Paths.image('pasteBG'));
-				bg.scale.set(1.5, 1.5);
-				bg.scrollFactor.set(0.9, 0.9);
-				bg.antialiasing = true;
-				add(bg);
-
-				blackScreen = new FlxSprite(-600, -600);
-				blackScreen.makeGraphic(1280 * 2, 720 * 2, FlxColor.BLACK);
-				blackScreen.scrollFactor.set(0.9, 0.9);
-				add(blackScreen);
-
-				if (deaths <= 0)
-				{
-					camHUD.flash(FlxColor.BLACK, 15);
-					defaultCamZoom = 1.2;
-				}
-				else
-				{
-					defaultCamZoom = 0.76;
-				}
 			case 'halloween':
 				{
 					curStage = 'spooky';
@@ -462,30 +422,6 @@ class PlayState extends MusicBeatState
 							i.scale.set(1.145, 1.145);
 						FlxTween.tween(islands, {y: islands.y - 50}, 2.85, {type: PINGPONG});
 					}
-				}
-			case 'week3stage':
-				{
-					curStage = 'week3stage';
-					defaultCamZoom = 0.9;
-
-					var bg:FlxSprite = new FlxSprite(-90, -20).loadGraphic(Paths.image(SONG.song == "Retribution" ? 'skyMoon' : 'sky', 'week3'));
-					bg.antialiasing = true;
-					bg.scrollFactor.set(0.7, 0.7);
-					add(bg);
-
-					var outerBuilding:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('mako_buildings_2', 'week3'));
-					outerBuilding.antialiasing = true;
-					outerBuilding.scrollFactor.set(0.46, 0.7);
-					add(outerBuilding);
-
-					var innerBuilding:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('mako_buildings', 'week3'));
-					innerBuilding.scrollFactor.set(0.7, 0.8);
-					innerBuilding.antialiasing = true;
-					add(innerBuilding);
-
-					var ground:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('mako_ground', 'week3'));
-					ground.antialiasing = true;
-					add(ground);
 				}
 			case 'limo' | 'limonight':
 				{
@@ -642,40 +578,6 @@ class PlayState extends MusicBeatState
 					bg.scrollFactor.set(0.9, 0.9);
 					add(bg);
 				}
-			case 'princess':
-				defaultCamZoom = SONG.song == "Bloom" ? 0.6 : 0.7;
-				curStage = 'princess';
-
-				whittyBG = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/alleywaybroken'));
-				whittyBG.antialiasing = true;
-				whittyBG.scrollFactor.set(0.9, 0.9);
-				whittyBG.scale.set(1.25, 1.25);
-				add(whittyBG);
-
-				if (SONG.song.toLowerCase() == 'princess')
-				{
-					princessBG = new FlxSprite(-446, -611).loadGraphic(Paths.image('roboStage/princessBG'));
-					princessBG.antialiasing = true;
-					princessBG.scrollFactor.set(0.75, 0.8);
-					princessBG.scale.set(1.25, 1.25);
-					add(princessBG);
-					princessBG.visible = false;
-
-					princessFloor = new FlxSprite(-446, -611).loadGraphic(Paths.image('roboStage/princessFloor'));
-					princessFloor.antialiasing = true;
-					princessFloor.scrollFactor.set(0.9, 0.9);
-					princessFloor.scale.set(1.25, 1.25);
-					add(princessFloor);
-					princessFloor.visible = false;
-
-					princessCrystals = new FlxSprite(-446, -591).loadGraphic(Paths.image('roboStage/princessCrystals'));
-					princessCrystals.antialiasing = true;
-					princessCrystals.scrollFactor.set(0.9, 0.9);
-					princessCrystals.scale.set(1.25, 1.25);
-					add(princessCrystals);
-					princessCrystals.visible = false;
-					FlxTween.tween(princessCrystals, {y: princessCrystals.y - 70}, 3.4, {type: PINGPONG});
-				}
 		}
 
 		gf.scrollFactor.set(0.95, 0.95);
@@ -692,7 +594,6 @@ class PlayState extends MusicBeatState
 		switch (SONG.player2)
 		{
 			case 'toothpaste':
-				dad.blend = BlendMode.ADD;
 				dad.scrollFactor.set(0.9, 0.9);
 
 			case 'gf':
@@ -782,7 +683,6 @@ class PlayState extends MusicBeatState
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				boyfriend.x += 300;
 				gf.x += 300;
-
 			case 'limo' | 'limonight':
 				boyfriend.y -= 300;
 				boyfriend.x += 260;
@@ -792,7 +692,6 @@ class PlayState extends MusicBeatState
 				add(fastCar);
 			case 'mall':
 				boyfriend.x += 200;
-
 			case 'mallEvil':
 				boyfriend.x += 320;
 				dad.y -= 80;
@@ -868,7 +767,7 @@ class PlayState extends MusicBeatState
 				gf.x -= 70;
 				gf.y += 200;
 				gf.scrollFactor.set(0.9, 0.9);
-			case 'week3stage':
+			case 'melonpatch':
 				boyfriend.x += 180;
 				boyfriend.y -= 45;
 				gf.x -= 35;
@@ -882,7 +781,7 @@ class PlayState extends MusicBeatState
 				dad.y -= 50;
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				gf.scrollFactor.set(0.9, 0.9);
-			case 'princess':
+			case 'alleyway':
 				boyfriend.x = 1085.2;
 				boyfriend.y = 375;
 				gf.x = 327;
@@ -1050,7 +949,7 @@ class PlayState extends MusicBeatState
 		if (!ClientPrefs.downscroll)
 			healthBarBG.y - 100;
 
-		if (curSong.toLowerCase() == 'tranquility' || curStage == 'church')
+		if (curStage == 'church')
 		{
 			purpleOverlay = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.PURPLE);
 			purpleOverlay.alpha = 0.33;
@@ -1059,33 +958,7 @@ class PlayState extends MusicBeatState
 			purpleOverlay.scale.set(1.5, 1.5);
 			purpleOverlay.scrollFactor.set();
 
-			blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-			blackScreen.alpha = 0;
-			blackScreen.scrollFactor.set();
-			blackScreen.scale.set(5, 5);
-			add(blackScreen);
-
-			if (curSong.toLowerCase() == 'tranquility')
-			{
-				new FlxTimer().start(1.35, (t) ->
-				{
-					FlxTween.tween(purpleOverlay, {alpha: FlxG.random.float(0.235, 0.425)}, 1.15);
-				}, 0);
-
-				if (ClientPrefs.shaders)
-				{
-					wiggleEffect = new WiggleEffect();
-					wiggleEffect.effectType = WiggleEffectType.DREAMY;
-					wiggleEffect.waveAmplitude = 0.0055;
-					wiggleEffect.waveFrequency = 7;
-					wiggleEffect.waveSpeed = 1.15;
-
-					for (i in [iconP1, iconP2, scoreTxt, currentTimingShown, whittyBG])
-						i.shader = wiggleEffect.shader;
-				}
-			}
-			else
-				purpleOverlay.alpha = 0.21;
+			purpleOverlay.alpha = 0.21;
 		}
 
 		lanes.cameras = [camHUD];
@@ -1170,10 +1043,9 @@ class PlayState extends MusicBeatState
 		moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
 
 		songScript = new HaxeScript(null, "modchart");
-		songScript.callFunction("onCreate");
-
-		scripts.callFunction("onCreatePost");
 		scripts.add(songScript);
+		songScript.callFunction("onCreate");
+		scripts.callFunction("onCreatePost");
 
 		System.gc();
 	}
@@ -1435,7 +1307,7 @@ class PlayState extends MusicBeatState
 		songName.y -= songName.height / 2;
 
 		songName.antialiasing = true;
-		songName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		songName.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songName.borderSize = 1.25;
 		songName.screenCenter(X);
 
@@ -1753,11 +1625,6 @@ class PlayState extends MusicBeatState
 	{
 		scripts.updateVars();
 
-		if (FlxG.keys.justPressed.U)
-		{
-			Achievements.getAchievement(15);
-		}
-
 		#if debug
 		if (FlxG.keys.anyJustPressed([TWO, THREE, FOUR]))
 		{
@@ -1868,6 +1735,9 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
+		if (health >= 2)
+			health = 2;
+
 		switch (healthBar.fillDirection)
 		{
 			default:
@@ -1877,9 +1747,6 @@ class PlayState extends MusicBeatState
 				iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01) - 26);
 				iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01)) - (iconP2.width - 26);
 		}
-
-		if (health > 2)
-			health = 2;
 
 		if (health >= 1.75 && hurtTimer <= 0)
 		{
@@ -2194,8 +2061,6 @@ class PlayState extends MusicBeatState
 					{
 						health = -1;
 
-						diedtoHallowNote = true;
-
 						vocals.volume = 0;
 					}
 
@@ -2227,6 +2092,9 @@ class PlayState extends MusicBeatState
 
 	public var DAD_CAM_POS:FlxPoint = new FlxPoint(0, 0);
 	public var BF_CAM_POS:FlxPoint = new FlxPoint(0, 0);
+
+	public var DAD_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
+	public var BF_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
 
 	public function moveCamera(isDad:Bool = false)
 	{
@@ -2319,6 +2187,8 @@ class PlayState extends MusicBeatState
 					camFollow.y = dad.getMidpoint().y + 150;
 			}
 
+			camFollow.x += DAD_CAM_OFFSET.x;
+			camFollow.y += DAD_CAM_OFFSET.y;
 			DAD_CAM_POS.set(camFollow.x, camFollow.y);
 		}
 		else
@@ -2357,10 +2227,10 @@ class PlayState extends MusicBeatState
 					camFollow.x = boyfriend.getMidpoint().x - 350;
 					camFollow.y = boyfriend.getMidpoint().y - 340;
 
-				case 'week3stage':
+				case 'melonpatch':
 					camFollow.x = boyfriend.getMidpoint().x - 380;
 					camFollow.y = boyfriend.getMidpoint().y - 150;
-				case 'princess':
+				case 'alleyway':
 					camFollow.y = boyfriend.getMidpoint().y - 330;
 					camFollow.x = boyfriend.getMidpoint().x - 450;
 				case 'train':
@@ -2402,6 +2272,8 @@ class PlayState extends MusicBeatState
 					camFollow.y = boyfriend.getMidpoint().y - 190;
 			}
 
+			camFollow.x += BF_CAM_OFFSET.x;
+			camFollow.y += BF_CAM_OFFSET.y;
 			BF_CAM_POS.set(camFollow.x, camFollow.y);
 		}
 
@@ -2562,7 +2434,6 @@ class PlayState extends MusicBeatState
 				score = -300;
 				combo = 0;
 				misses++;
-				FlxG.save.data.misses++;
 				health -= 0.2;
 				shits++;
 			case 'bad':
@@ -2572,12 +2443,9 @@ class PlayState extends MusicBeatState
 			case 'good':
 				score = 200;
 				goods++;
-				if (health < 2)
-					health += 0.02;
+				health += 0.02;
 			case 'sick':
-				if (health < 2)
-					health += 0.04;
-				sicks++;
+				health += 0.04;
 
 				if (ClientPrefs.notesplash)
 				{
@@ -2791,9 +2659,8 @@ class PlayState extends MusicBeatState
 		songScore -= 10;
 		combo = 0;
 		misses++;
-		FlxG.save.data.misses++;
 
-		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.67, 0.75));
 		if (boyfriend.animation.curAnim.name != 'shoot')
 		{
 			curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
@@ -2977,20 +2844,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (SONG.song.toLowerCase() == 'princess')
-		{
-			switch (curStep)
-			{
-				case 128:
-					camHUD.flash(FlxColor.WHITE, 0.5);
-					princessBG.visible = true;
-					princessFloor.visible = true;
-					princessCrystals.visible = true;
-					defaultCamZoom = 0.65;
-					gf.y += 60;
-			}
-		}
-
 		if (curSong == 'Milk-Tea')
 		{
 			switch (curStep)
@@ -3069,75 +2922,6 @@ class PlayState extends MusicBeatState
 						boyfriend.useAlternateIdle = true;
 				case 'loaded':
 					roboStage.beatHit(curBeat);
-				case 'tranquility':
-					switch (curBeat)
-					{
-						case 48:
-							disableCamera = true;
-							FlxTween.tween(camFollow, {y: camFollow.y - 550}, 0.64);
-							FlxTween.tween(blackScreen, {alpha: 1}, 0.58, {
-								onComplete: (twn) ->
-								{
-									FlxTween.tween(wiggleEffect, {waveAmplitude: 0}, 0.6);
-									FlxTween.cancelTweensOf(purpleOverlay);
-									FlxTween.tween(purpleOverlay, {alpha: 0}, 0.1);
-									try
-									{
-										@:privateAccess FlxTimer.globalManager._timers[0].cancel();
-									}
-									catch (e)
-									{
-									}
-									disableHUD = true;
-									for (i in strumLineNotes)
-										FlxTween.tween(i, {alpha: 0.6}, 0.6);
-									for (i in [iconP1, iconP2, healthBar, healthBarBG])
-										FlxTween.tween(i, {alpha: 0}, 0.46, {
-											onComplete: (twn) ->
-											{
-												if (i == healthBarBG)
-												{
-													FlxTween.tween(scoreTxt, {y: ClientPrefs.downscroll ? scoreTxt.y - 80 : scoreTxt.y + 80}, 0.38);
-													disableScoreBop = true;
-													FlxTween.tween(scoreTxt.scale, {x: 0.8, y: 0.8}, 0.38, {
-														onComplete: (twn) ->
-														{
-															disableScoreBop = false;
-														}
-													});
-												}
-											}
-										});
-								}
-							});
-						case 146:
-							for (i in [dad, boyfriend, gf])
-							{
-								i.color = FlxColor.WHITE;
-								FlxTween.color(i, 3, FlxColor.WHITE, FlxColor.fromString("#C956FF"));
-							}
-							FlxTween.tween(whittyBG, {alpha: 0.65}, 3);
-						case 176 | 180 | 194:
-							FlxTween.tween(whittyBG, {alpha: 0.9}, (Conductor.crochet / 1000) * 2);
-						case 178 /* | 192 */:
-							FlxTween.tween(whittyBG, {alpha: 0.65}, (Conductor.crochet / 1000) * 2);
-						case 208:
-							for (i in [dad, boyfriend, gf])
-							{
-								FlxTween.color(i, (Conductor.crochet / 1000) * 2, FlxColor.fromString("#C956FF"), FlxColor.WHITE);
-							}
-							FlxTween.tween(whittyBG, {alpha: 1}, (Conductor.crochet / 1000) * 2);
-						case 304:
-							try
-							{
-								@:privateAccess FlxTimer.globalManager._timers[0].cancel();
-							}
-							catch (e)
-							{
-							}
-							FlxTween.tween(purpleOverlay, {alpha: 0}, 2.6);
-							FlxTween.tween(wiggleEffect, {waveAmplitude: 0}, 2.6);
-					}
 				case 'party-crasher':
 					switch (curBeat)
 					{

@@ -9,6 +9,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.mouse.FlxMouseEventManager;
+import flixel.system.FlxSound;
 
 class InteractableState extends MusicBeatState
 {
@@ -106,7 +107,7 @@ class InteractableState extends MusicBeatState
 		if (!allowInput)
 			return;
 
-		if (item.parent.callback != null)
+		if (item.parent.animation.name != 'come' && item.parent.callback != null)
 		{
 			allowInput = false;
 			item.parent.callback();
@@ -124,10 +125,13 @@ class InteractableState extends MusicBeatState
 		if (!allowInput)
 			return;
 
-		if (item.parent.animation.curAnim.name != "selected")
+		if (item.parent.animation.curAnim.name != "selected" && item.parent.animation.curAnim.name == "idle")
 		{
 			item.parent.playAnim("selected");
 			curSelected = item;
+
+			if (item.parent.sound != null)
+				FlxG.sound.play(Paths.sound('menu/${item.parent.sound}-interact'));
 		}
 	}
 
@@ -163,6 +167,7 @@ class Interactable extends FlxSprite
 	public var hitbox:InteractHitbox;
 	public var text:FlxSprite;
 	public var callback:Void->Void;
+	public var sound:String = "general";
 
 	var selectOffset:Array<Float> = [0, 0];
 

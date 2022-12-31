@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="paste_fire.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fire lol0000" x="0" y="0" width="366" height="463" pivotX="156.05" pivotY="269.75" frameX="-25" frameY="-53" frameWidth="415" frameHeight="540"/>
+	<SubTexture name="fire lol0001" x="366" y="0" width="378" height="379" frameX="-19" frameY="-143" frameWidth="415" frameHeight="540"/>
+	<SubTexture name="fire lol0002" x="744" y="0" width="390" height="392" frameX="-13" frameY="-137" frameWidth="415" frameHeight="540"/>
+	<SubTexture name="fire lol0003" x="1134" y="0" width="402" height="422" frameX="-7" frameY="-113" frameWidth="415" frameHeight="540"/>
+	<SubTexture name="fire lol0004" x="1536" y="0" width="415" height="470" frameX="0" frameY="-70" frameWidth="415" frameHeight="540"/>
+	<SubTexture name="fire lol0005" x="0" y="470" width="398" height="520" frameX="-9" frameY="-13" frameWidth="415" frameHeight="540"/>
+	<SubTexture name="fire lol0006" x="398" y="470" width="382" height="524" frameX="-17" frameY="0" frameWidth="415" frameHeight="540"/>
+	<SubTexture name="fire lol0007" x="780" y="470" width="366" height="477" frameX="-25" frameY="-39" frameWidth="415" frameHeight="540"/>
+</TextureAtlas>

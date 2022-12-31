@@ -79,48 +79,14 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		PlayState.deaths += 1;
 
-		ClientPrefs.deaths += 1;
-
-		if (PlayState.diedtoHallowNote == true)
-		{
-			ClientPrefs.hallowNoteDeaths += 1;
-			trace(ClientPrefs.hallowNoteDeaths + " Hallow Note Deaths");
-
-			PlayState.diedtoHallowNote = false;
-		}
-
 		trace(PlayState.deaths + " Deaths");
-
-		if (PlayState.storyWeek == 8)
-		{
-			ClientPrefs.hallowDeaths += 1;
-		}
-
-		trace(ClientPrefs.deaths + " Save Deaths");
-
-		trace(ClientPrefs.hallowDeaths + " Hallow Deaths");
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (ClientPrefs.hallowNoteDeaths == 10)
-		{
-			Achievements.getAchievement(5);
-		}
-
-		if (ClientPrefs.hallowDeaths == 5)
-		{
-			Achievements.getAchievement(1);
-		}
-
-		if (ClientPrefs.deaths >= 5)
-		{
-			Achievements.getAchievement(0);
-		}
-
-		if (controls.ACCEPT #if mobile || FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed #end)
+		if (controls.ACCEPT)
 		{
 			endBullshit();
 		}

@@ -1,1 +1,0 @@
-lime test android -D HXCPP_GC_GENERATIONAL

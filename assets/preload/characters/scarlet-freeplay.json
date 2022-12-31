@@ -1,0 +1,68 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "scarlet idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				2,
+				-41
+			],
+			"fps": 24,
+			"anim": "scarlet right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				9,
+				-15
+			],
+			"fps": 24,
+			"anim": "scarlet down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				36,
+				-8
+			],
+			"fps": 24,
+			"anim": "scarlet left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-4,
+				17
+			],
+			"fps": 24,
+			"anim": "scarlet up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				100
+			],
+			"fps": 24,
+			"anim": "scarlet anim",
+			"loop": false,
+			"name": "arrive"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "scarlet/Scarlet_Freeplay",
+	"color": "E059B1"
+}

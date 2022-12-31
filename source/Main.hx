@@ -1,6 +1,5 @@
 package;
 
-import GameJolt;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
@@ -15,8 +14,6 @@ import openfl.system.System;
 
 class Main extends Sprite
 {
-	public static var gjToastManager:GJToastManager;
-
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = Intro; // The FlxState the game starts with.
@@ -62,9 +59,6 @@ class Main extends Sprite
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
-
-		gjToastManager = new GJToastManager();
-		addChild(gjToastManager);
 
 		if (zoom == -1)
 		{
@@ -182,7 +176,7 @@ class Main extends Sprite
 		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 		Conductor.changeBPM(120);
 
-		FlxG.sound.music.fadeIn(4, 0, 0.7);
+		FlxG.sound.music.fadeIn(4, 0, 0.5);
 	}
 }
 

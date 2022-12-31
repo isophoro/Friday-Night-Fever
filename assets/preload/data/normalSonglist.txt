@@ -37,3 +37,6 @@ Hallow:hallow:7
 Eclipse:hallow:7
 SOUL:hallow:7
 Cosmic-Swing:rolldog:1
+Cell-From-Hell:rolldog:1
+W00F:rolldog:1
+Mechanical:scarlet:8

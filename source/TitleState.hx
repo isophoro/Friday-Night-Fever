@@ -1,7 +1,5 @@
 package;
 
-import GameJolt.GameJoltAPI;
-import GameJolt.GameJoltLogin;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
@@ -44,20 +42,10 @@ class TitleState extends MusicBeatState
 
 	var wackyImage:FlxSprite;
 
-	public static var lastState:Bool;
-
 	override public function create():Void
 	{
 		PlayerSettings.init();
-
-		GameJoltAPI.connect();
-		if (FlxG.save.data.gjUser != null && FlxG.save.data.gjToken != null)
-			GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);
-		/*if(GameJoltAPI.getStatus() == false) // disabling this for rn so i can test without it popping up everytime i build
-			{
-				FlxG.switchState(new GameJoltLogin());
-		}*/
-		lastState = true;
+		AchievementHandler.initGamejolt();
 
 		super.create();
 
@@ -80,8 +68,6 @@ class TitleState extends MusicBeatState
 		FlxG.switchState(new ChartingState());
 		#else
 		startIntro();
-
-		new FlxTimer().start(105, gotoIntro);
 		#end
 	}
 
@@ -179,11 +165,6 @@ class TitleState extends MusicBeatState
 	{
 		if (!transitioning)
 			camera.zoom = FlxMath.lerp(1, camera.zoom, 0.95);
-
-		if (controls.BACK)
-		{
-			gotoIntro();
-		}
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
@@ -321,18 +302,5 @@ class TitleState extends MusicBeatState
 			remove(credGroup);
 			skippedIntro = true;
 		}
-	}
-
-	function gotoIntro(?fuckoffflxtimer)
-	{
-		#if (cpp && !mobile)
-		if (!transitioning #if sys && !Sys.args().contains("-disableIntro") #end && ClientPrefs.animeIntro)
-		{
-			initialized = false;
-			FlxG.sound.music.stop();
-			FlxG.sound.music = null;
-			FlxG.switchState(new Intro());
-		}
-		#end
 	}
 }

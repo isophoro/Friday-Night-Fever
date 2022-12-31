@@ -32,7 +32,6 @@ class OptionsState extends MusicBeatState
             new Option("Botplay", "When enabled, player input will be locked and songs will automatically play themselves.", "botplay", BOOL)
         ]},
         {"name":"Visuals", options:[
-            new Option("Flashing Lights", "When disabled, flashing lights in the menus and in game will no longer happen.", "flashing", BOOL),
             new Option("Show Note Splashes", "When enabled, \"Sick\" ratings will causes the corresponding arrow to sparkle.", "notesplash", BOOL),
 			new Option("Show Note Precision", "When enabled, the precision of hit notes (in milliseconds) will be displayed next to your combo.", "showPrecision", BOOL),
             new Option("Show Subtitles", "When enabled, songs containing lyrics display subtitles on screen.", "subtitles", BOOL),
@@ -42,8 +41,7 @@ class OptionsState extends MusicBeatState
 			new Option("FPS Cap ", 'Caps the in-game framerate.\nDefault: 60 FPS | Refresh Rate: ${FlxG.stage.window.displayMode.refreshRate}hz', "fpsCap", INT, {range:[60, 240], increaseInterval: 20}),
 			new Option("Performance Display", "When enabled, the game's FPS and currently used RAM will be shown in the top left.", "fps", BOOL, {callback: () -> { (cast(openfl.Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap); }}),
             new Option("Anti Aliasing", "When disabled, forces all sprites to not have anti-aliasing. (In-Game Only)", "antialiasing", BOOL),
-            new Option("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL),
-            new Option("Play Intro on Startup", "When disabled, the intro played on startup will no longer be played.", "animeIntro", BOOL)
+            new Option("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL)
         ]}
     ];
 

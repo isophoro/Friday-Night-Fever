@@ -21,6 +21,8 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		Math, Std, FlxG, FlxSprite, FlxPoint, FlxTween, FlxEase, Conductor, Paths, ClientPrefs
 	];
 
+	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGamejolt"];
+
 	static var functions(default, never):Map<String, Dynamic> = [
 		"add" => (item:flixel.FlxBasic, pos:Int = -1, ?camera:flixel.FlxCamera) ->
 		{
@@ -165,6 +167,11 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		{
 			var pckge = (cast i.getParameters()[0] : Array<String>);
 			var isEnum = Type.resolveEnum(pckge.join("."));
+			if (BLOCKED_IMPORTS.contains(pckge[pckge.length - 1]))
+			{
+				FlxG.stage.window.alert("Blocked import: " + pckge[pckge.length - 1], "HScript Blocked Import Warning");
+				continue;
+			}
 			variables.set(pckge[pckge.length - 1], isEnum == null ? Type.resolveClass(pckge.join(".")) : isEnum);
 			s.shift();
 		}
@@ -179,17 +186,23 @@ class HaxeScript extends Interp implements IFlxDestroyable
 			trace("Setting global var: " + name);
 			if (parentGrp != null)
 			{
-				parentGrp.globalVars.set(name, obj);
+				parentGrp.globalVars.set(name.trim(), obj);
 				ownedGlobals.push(name);
 			}
 		});
 
 		variables.set("getGlobalVar", (name:String) ->
 		{
+			name = name.trim();
 			if (parentGrp != null && parentGrp.globalVars.exists(name))
+			{
 				return parentGrp.globalVars.get(name);
-
-			return null;
+			}
+			else
+			{
+				trace("Cannot find global var: " + name);
+				return null;
+			}
 		});
 
 		// Import all non-static fields from PlayState

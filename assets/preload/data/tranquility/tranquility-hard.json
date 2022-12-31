@@ -2,7 +2,6 @@
 	"song": {
 		"player1": "bf-casual",
 		"player2": "scarlet",
-		"stage": "princess",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -5208,7 +5207,7 @@
 		],
 		"player3": "gf",
 		"song": "Tranquility",
-		"stage": "princess",
+		"stage": "alleyway",
 		"needsVoices": true,
 		"validScore": true,
 		"speed": 2.6,

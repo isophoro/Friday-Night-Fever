@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="paste_mad.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="toothpaste mad down0000" x="0" y="0" width="1041" height="863" pivotX="3.9" pivotY="57.1"/>
+	<SubTexture name="toothpaste mad down0001" x="1041" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0002" x="2082" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0003" x="2082" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0004" x="3123" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0005" x="3123" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0006" x="3123" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0007" x="4164" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0008" x="4164" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0009" x="5205" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0010" x="5205" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0011" x="5205" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0012" x="6246" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0013" x="0" y="863" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad down0014" x="2082" y="0" width="1041" height="863"/>
+	<SubTexture name="toothpaste mad idle0000" x="1041" y="863" width="1366" height="1036" pivotX="103.3" pivotY="-77.05"/>
+	<SubTexture name="toothpaste mad idle0001" x="2407" y="863" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0002" x="3773" y="863" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0003" x="3773" y="863" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0004" x="5139" y="863" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0005" x="5139" y="863" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0006" x="6505" y="863" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0007" x="0" y="1899" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0008" x="1366" y="1899" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0009" x="2732" y="1899" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0010" x="4098" y="1899" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0011" x="4098" y="1899" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad idle0012" x="5464" y="1899" width="1366" height="1036"/>
+	<SubTexture name="toothpaste mad left0000" x="6830" y="1899" width="867" height="1077" pivotX="-47.5" pivotY="3.65"/>
+	<SubTexture name="toothpaste mad left0001" x="6830" y="1899" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0002" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0003" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0004" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0005" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0006" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0007" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0008" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0009" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0010" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0011" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0012" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0013" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad left0014" x="0" y="2976" width="867" height="1077"/>
+	<SubTexture name="toothpaste mad right0000" x="867" y="2976" width="1400" height="1006" pivotX="-10.7" pivotY="-112.65"/>
+	<SubTexture name="toothpaste mad right0001" x="2267" y="2976" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0002" x="3667" y="2976" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0003" x="3667" y="2976" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0004" x="5067" y="2976" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0005" x="5067" y="2976" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0006" x="5067" y="2976" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0007" x="6467" y="2976" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0008" x="6467" y="2976" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0009" x="0" y="4053" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0010" x="0" y="4053" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0011" x="0" y="4053" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0012" x="1400" y="4053" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0013" x="2800" y="4053" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad right0014" x="4200" y="4053" width="1400" height="1006"/>
+	<SubTexture name="toothpaste mad up0000" x="5600" y="4053" width="771" height="1353" pivotX="-76.35" pivotY="-13.65"/>
+	<SubTexture name="toothpaste mad up0001" x="5600" y="4053" width="771" height="1353"/>
+	<SubTexture name="toothpaste mad up0002" x="6371" y="4053" width="771" height="1353"/>
+	<SubTexture name="toothpaste mad up0003" x="6371" y="4053" width="771" height="1353"/>
+	<SubTexture name="toothpaste mad up0004" x="7142" y="4053" width="771" height="1353"/>
+	<SubTexture name="toothpaste mad up0005" x="7142" y="4053" width="771" height="1353"/>
+	<SubTexture name="toothpaste mad up0006" x="0" y="5406" width="771" height="1353"/>
+	<SubTexture name="toothpaste mad up0007" x="0" y="5406" width="771" height="1353"/>
+	<SubTexture name="toothpaste smash0000" x="771" y="5406" width="2064" height="1588" pivotX="317.85" pivotY="-83.7"/>
+	<SubTexture name="toothpaste smash0001" x="2835" y="5406" width="2064" height="1588"/>
+	<SubTexture name="toothpaste smash0002" x="2835" y="5406" width="2064" height="1588"/>
+	<SubTexture name="toothpaste smash0003" x="4899" y="5406" width="2064" height="1588"/>
+	<SubTexture name="toothpaste smash0004" x="4899" y="5406" width="2064" height="1588"/>
+</TextureAtlas>

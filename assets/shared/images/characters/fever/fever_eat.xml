@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="roll_dog_eat.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Fever eat0000" x="0" y="0" width="745" height="988" pivotX="17.55" pivotY="93.9"/>
+	<SubTexture name="Fever eat0001" x="745" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0002" x="1490" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0003" x="1490" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0004" x="2235" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0005" x="2980" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0006" x="3725" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0007" x="4470" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0008" x="4470" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0009" x="5215" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0010" x="5960" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0011" x="5960" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0012" x="6705" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0013" x="6705" y="0" width="745" height="988"/>
+	<SubTexture name="Fever eat0014" x="0" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0015" x="0" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0016" x="745" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0017" x="1490" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0018" x="2235" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0019" x="2980" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0020" x="3725" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0021" x="4470" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0022" x="5215" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0023" x="5960" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0024" x="6705" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0025" x="0" y="1976" width="745" height="988"/>
+	<SubTexture name="Fever eat0026" x="745" y="1976" width="745" height="988"/>
+	<SubTexture name="Fever eat0027" x="1490" y="1976" width="745" height="988"/>
+	<SubTexture name="Fever eat0028" x="2235" y="1976" width="745" height="988"/>
+	<SubTexture name="Fever eat0029" x="5960" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0030" x="6705" y="988" width="745" height="988"/>
+	<SubTexture name="Fever eat0031" x="0" y="1976" width="745" height="988"/>
+	<SubTexture name="Fever eat0032" x="745" y="1976" width="745" height="988"/>
+	<SubTexture name="Fever eat0033" x="1490" y="1976" width="745" height="988"/>
+</TextureAtlas>

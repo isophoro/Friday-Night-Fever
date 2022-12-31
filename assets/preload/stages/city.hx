@@ -64,7 +64,7 @@ function onCreate()
 	add(tower);
 	add(makolicious);
 
-	robos = new FlxSprite(-1350, -430);
+	robos = new FlxSprite(-1350, -510);
 	robos.frames = Paths.getSparrowAtlas("roboStage/C354R/robots");
 	robos.animation.addByPrefix("loop", "robot", 24, true);
 	robos.animation.play("loop");
@@ -105,7 +105,7 @@ function onCreate()
 	zombie.setPosition(centerSpriteX(mainBG, zombie) - 850, centerSpriteY(mainBG, zombie));
 
 	tower.x = 525.5;
-	robos.x = makolicious.x - 250;
+	robos.x = tower.x - 250;
 
 	truck = new FlxSprite();
 	truck.frames = Paths.getSparrowAtlas("roboStage/C354R/foodtruck");
@@ -165,8 +165,9 @@ function onCreatePost()
 
 function onUpdate(elapsed:Float)
 {
-	if (!robos.visible && makolicious.animation.curAnim.name == "MAKO" && makolicious.animation.curAnim.curFrame >= 60)
+	if (!robos.visible && makolicious.animation.curAnim.name == "weewoo")
 	{
+		trace("robots visible");
 		robos.visible = true;
 		robos.animation.play("loop", true);
 	}
@@ -183,7 +184,6 @@ function onUpdate(elapsed:Float)
 
 		if (streetlightTimer >= streetlightMaxTime && cars.length < 1)
 		{
-			trace("streetlight stop");
 			streetlightTimer = 0;
 
 			streetlight.animation.play("stop");
@@ -215,7 +215,6 @@ function onUpdate(elapsed:Float)
 
 		if (car.ID == 1 && car.x + car.width > mainBG.x + mainBG.width)
 		{
-			trace("killing car");
 			car.kill();
 			cringeCars.push(car);
 		}
@@ -230,7 +229,6 @@ function onUpdate(elapsed:Float)
 
 function spawnCar()
 {
-	trace("spawning car");
 	var cShader = new ColorShader();
 	cShader.hue = FlxG.random.float(-1, 1);
 	cShader.onUpdate();
@@ -243,7 +241,6 @@ function spawnCar()
 	car.shader = cShader;
 	add(car, getIndexOfMember(truck) + 1);
 	cars.push(car);
-	trace("car added");
 
 	FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.4);
 }
@@ -261,7 +258,6 @@ function onBeatHit(curBeat:Int)
 		case "stop":
 			if (curBeat % 12 == 0 && FlxG.random.bool(20))
 			{
-				trace("streetlight go");
 				streetlight.animation.play("go");
 				streetlight.centerOffsets();
 				streetlight.offset.x += 90;
@@ -310,7 +306,6 @@ function onStepHit(curStep:Int)
 
 function createAd(img:String, x:Int, y:Int, scale:Float, anim:String, bop:Bool = false)
 {
-	trace('creating ad');
 	var ad:FlxSprite = new FlxSprite(sky.x + x, sky.y + y);
 	ad.frames = Paths.getSparrowAtlas("roboStage/C354R/" + img);
 	ad.animation.addByPrefix("animation", anim, 24, !bop);
@@ -321,5 +316,4 @@ function createAd(img:String, x:Int, y:Int, scale:Float, anim:String, bop:Bool =
 	ad.antialiasing = true;
 	add(ad);
 	adsGrp.push(ad);
-	trace("ad create");
 }

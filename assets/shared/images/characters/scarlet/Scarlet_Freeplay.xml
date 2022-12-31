@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="scar_freeplay.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="scarlet anim0000" x="0" y="0" width="537" height="724" pivotX="1.05" pivotY="501.8" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0001" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0002" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0003" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0004" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0005" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0006" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0007" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0008" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0009" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0010" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0011" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0012" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0013" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0014" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0015" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0016" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0017" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0018" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0019" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0020" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0021" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0022" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0023" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0024" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0025" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0026" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0027" x="0" y="0" width="537" height="724" frameX="-20" frameY="0" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0028" x="537" y="0" width="535" height="725" frameX="-25" frameY="-1" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0029" x="537" y="0" width="535" height="725" frameX="-25" frameY="-1" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0030" x="1072" y="0" width="539" height="749" frameX="-31" frameY="-22" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0031" x="1072" y="0" width="539" height="749" frameX="-31" frameY="-22" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0032" x="1611" y="0" width="568" height="817" frameX="-10" frameY="-114" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0033" x="1611" y="0" width="568" height="817" frameX="-10" frameY="-114" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0034" x="2179" y="0" width="570" height="819" frameX="-1" frameY="-109" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0035" x="2179" y="0" width="570" height="819" frameX="-1" frameY="-109" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0036" x="2749" y="0" width="569" height="826" frameX="0" frameY="-101" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0037" x="2749" y="0" width="569" height="826" frameX="0" frameY="-101" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0038" x="3318" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0039" x="3318" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0040" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0041" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0042" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0043" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0044" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0045" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0046" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0047" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0048" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0049" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet anim0050" x="3887" y="0" width="569" height="825" frameX="-1" frameY="-103" frameWidth="578" frameHeight="931"/>
+	<SubTexture name="scarlet down0000" x="4456" y="0" width="568" height="813" pivotX="7.4" pivotY="380.85" frameX="0" frameY="-4" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0001" x="4456" y="0" width="568" height="813" frameX="0" frameY="-4" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0002" x="5024" y="0" width="569" height="807" frameX="-4" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0003" x="5024" y="0" width="569" height="807" frameX="-4" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0004" x="5593" y="0" width="569" height="807" frameX="-7" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0005" x="5593" y="0" width="569" height="807" frameX="-7" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0006" x="6162" y="0" width="568" height="807" frameX="-6" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0007" x="6162" y="0" width="568" height="807" frameX="-6" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0008" x="6162" y="0" width="568" height="807" frameX="-6" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0009" x="6162" y="0" width="568" height="807" frameX="-6" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0010" x="6162" y="0" width="568" height="807" frameX="-6" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0011" x="6162" y="0" width="568" height="807" frameX="-6" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet down0012" x="6162" y="0" width="568" height="807" frameX="-6" frameY="0" frameWidth="576" frameHeight="817"/>
+	<SubTexture name="scarlet idle0000" x="6730" y="0" width="569" height="803" pivotX="-0.1" pivotY="398.55" frameX="-13" frameY="-19" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0001" x="6730" y="0" width="569" height="803" frameX="-13" frameY="-19" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0002" x="7299" y="0" width="569" height="801" frameX="-23" frameY="-22" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0003" x="7299" y="0" width="569" height="801" frameX="-23" frameY="-22" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0004" x="0" y="826" width="568" height="805" frameX="-20" frameY="-18" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0005" x="0" y="826" width="568" height="805" frameX="-20" frameY="-18" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0006" x="568" y="826" width="569" height="821" frameX="-8" frameY="-4" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0007" x="568" y="826" width="569" height="821" frameX="-8" frameY="-4" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0008" x="1137" y="826" width="569" height="825" frameX="0" frameY="0" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0009" x="1137" y="826" width="569" height="825" frameX="0" frameY="0" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0010" x="1706" y="826" width="570" height="825" frameX="-2" frameY="0" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0011" x="1706" y="826" width="570" height="825" frameX="-2" frameY="0" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0012" x="1706" y="826" width="570" height="825" frameX="-2" frameY="0" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0013" x="1706" y="826" width="570" height="825" frameX="-2" frameY="0" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet idle0014" x="1706" y="826" width="570" height="825" frameX="-2" frameY="0" frameWidth="592" frameHeight="825"/>
+	<SubTexture name="scarlet left0000" x="2276" y="826" width="567" height="817" pivotX="43.25" pivotY="391.95" frameX="0" frameY="-1" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0001" x="2276" y="826" width="567" height="817" frameX="0" frameY="-1" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0002" x="2843" y="826" width="567" height="818" frameX="-4" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0003" x="2843" y="826" width="567" height="818" frameX="-4" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0004" x="3410" y="826" width="567" height="818" frameX="-5" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0005" x="3410" y="826" width="567" height="818" frameX="-5" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0006" x="3977" y="826" width="567" height="818" frameX="-4" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0007" x="3977" y="826" width="567" height="818" frameX="-4" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0008" x="3977" y="826" width="567" height="818" frameX="-4" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0009" x="3977" y="826" width="567" height="818" frameX="-4" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0010" x="3977" y="826" width="567" height="818" frameX="-4" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet left0011" x="3977" y="826" width="567" height="818" frameX="-4" frameY="0" frameWidth="572" frameHeight="818"/>
+	<SubTexture name="scarlet right0000" x="4544" y="826" width="565" height="826" pivotX="-35.85" pivotY="399.05" frameX="-13" frameY="0" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0001" x="4544" y="826" width="565" height="826" frameX="-13" frameY="0" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0002" x="5109" y="826" width="566" height="822" frameX="-3" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0003" x="5109" y="826" width="566" height="822" frameX="-3" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0004" x="5675" y="826" width="568" height="822" frameX="0" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0005" x="5675" y="826" width="568" height="822" frameX="0" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0006" x="6243" y="826" width="567" height="822" frameX="-2" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0007" x="6243" y="826" width="567" height="822" frameX="-2" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0008" x="6243" y="826" width="567" height="822" frameX="-2" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0009" x="6243" y="826" width="567" height="822" frameX="-2" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0010" x="6243" y="826" width="567" height="822" frameX="-2" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0011" x="6243" y="826" width="567" height="822" frameX="-2" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet right0012" x="6243" y="826" width="567" height="822" frameX="-2" frameY="-4" frameWidth="578" frameHeight="826"/>
+	<SubTexture name="scarlet up0000" x="6810" y="826" width="569" height="844" pivotX="-1.8" pivotY="417.9" frameX="-6" frameY="0" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0001" x="6810" y="826" width="569" height="844" frameX="-6" frameY="0" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0002" x="7379" y="826" width="569" height="835" frameX="-2" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0003" x="7379" y="826" width="569" height="835" frameX="-2" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0004" x="0" y="1670" width="570" height="835" frameX="0" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0005" x="0" y="1670" width="570" height="835" frameX="0" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0006" x="570" y="1670" width="569" height="835" frameX="-1" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0007" x="570" y="1670" width="569" height="835" frameX="-1" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0008" x="570" y="1670" width="569" height="835" frameX="-1" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0009" x="570" y="1670" width="569" height="835" frameX="-1" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0010" x="570" y="1670" width="569" height="835" frameX="-1" frameY="-9" frameWidth="575" frameHeight="844"/>
+	<SubTexture name="scarlet up0011" x="570" y="1670" width="569" height="835" frameX="-1" frameY="-9" frameWidth="575" frameHeight="844"/>
+</TextureAtlas>

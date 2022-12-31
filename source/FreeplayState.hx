@@ -199,6 +199,12 @@ class FreeplayState extends MusicBeatState
 
 			trace(poop);
 
+			if (poop.toLowerCase().contains("mechanical"))
+			{
+				FlxTransitionableState.skipNextTransOut = true;
+				FlxTransitionableState.skipNextTransIn = true;
+			}
+
 			PlayState.SONG = Song.loadFromJson(poop, StringTools.replace(songs[curSelected].songName, " ", "-").toLowerCase());
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;

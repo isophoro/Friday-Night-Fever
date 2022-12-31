@@ -5,7 +5,12 @@ var wheel:FlxSprite;
 function onCreate()
 {
 	game.defaultCamZoom = 0.93;
-	var buildings:FlxSprite = new FlxSprite(-252, -117);
+	var sky:FlxSprite = new FlxSprite(-660, -70).loadGraphic(Paths.image("roboStage/sky"));
+	sky.antialiasing = true;
+	sky.scale.scale(0.8);
+	add(sky);
+
+	var buildings:FlxSprite = new FlxSprite(-350, -57);
 	buildings.frames = Paths.getSparrowAtlas("rolldog/roll_dog_buildings");
 	buildings.animation.addByPrefix("loop", "buildings", 24, true);
 	buildings.animation.play("loop");
@@ -62,4 +67,19 @@ function onBeatHit(curBeat:Int)
 {
 	if (arm.animation.curAnim.name.charAt(0) != "w" && arm.animation.finished)
 		arm.playAnim("idle");
+
+	if (game.curPlayer != boyfriend && game.curOpponent != boyfriend)
+		boyfriend.dance();
+
+	if (game.curPlayer != dad && game.curOpponent != dad)
+		dad.dance();
+}
+
+function onUpdate(elapsed:Float)
+{
+	if (arm.animation.curAnim.name == "idle" && boyfriend.animation.curAnim.name == "idle")
+	{
+		if (arm.animation.curAnim.curFrame != boyfriend.animation.curAnim.curFrame)
+			arm.animation.curAnim.curFrame = boyfriend.animation.curAnim.curFrame;
+	}
 }

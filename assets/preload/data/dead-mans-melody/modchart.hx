@@ -1,14 +1,16 @@
-import ("Character");
-import("PlayState");
-import("flixel.util.FlxTimer");
+import Character;
+import PlayState;
+import flixel.tweens.FlxEase;
+import flixel.util.FlxTimer;
 
+var pasta:Character;
 var isDad:Bool = false;
 var camTween:FlxTween;
 var rowProperties = [];
 
 function onCreate()
 {
-	pasta = new Character(dad.x - 320, dad.y - 290, "toothpaste-mad", false);
+	pasta = new Character(dad.x - 550, dad.y - 580, "toothpaste-mad", false);
 	add(pasta);
 	pasta.visible = false;
 
@@ -22,17 +24,21 @@ function onCreate()
 		snapCamera(DAD_CAM_POS);
 		FlxG.sound.music.time = 42950;
 		Conductor.songPosition = 42950;
+		gf.visible = false;
+		boyfriend.x -= 50;
 
 		defaultCamZoom = 0.76;
-		boyfriend.visible = false;
-		gf.visible = false;
 		blackScreen.visible = true;
 	}
 	else
 	{
-		gf.visible = false;
-		boyfriend.visible = false;
+		for (i in [getGlobalVar("bg"), getGlobalVar("fire"), boyfriend, gf])
+		{
+			i.color = 0xFF000000;
+			FlxTween.color(i, 10, 0xFF000000, 0xFFFFFFFF);
+		}
 
+		camGame.zoom = 1;
 		camTween = FlxTween.tween(camGame, {zoom: 0.76}, 15, {
 			onComplete: function(twn)
 			{
@@ -42,20 +48,12 @@ function onCreate()
 	}
 }
 
-/*function onUpdate(elapsed:Float)
-	{
-	var currentBeat = (Conductor.songPosition / 1000) * (Conductor.bpm / 60);
-	for (i in 4...8)
-	{
-		setNoteX(defaultStrumPos[i].x + (1 - (elapsed * 3.125)) * (strumLineNotes[i].x - defaultStrumPos[i].x), i);
-		setNoteY(defaultStrumPos[i].y + ((5 * Math.cos(currentBeat * Math.PI)) * (i % 2 == 0 ? -1 : 1)), i);
-	}
+function onUpdate(elapsed:Float)
+{
+	var cB = (Conductor.songPosition / 1000) * (Conductor.bpm / 60);
+	pasta.y = (dad.y - 580) + (11 * Math.cos((cB / 2) * Math.PI));
+}
 
-	// camHUD.angle = (0.35 * Math.cos(currentBeat * Math.PI));
-	// camHUD.x = (6 * Math.cos(currentBeat * Math.PI));
-	// camHUD.y = (6 * Math.cos(currentBeat * Math.PI));
-}*/
-//
 function onMoveCamera(dad:Bool)
 {
 	isDad = dad;
@@ -73,46 +71,21 @@ function onStepHit(curStep:Int)
 		dad.animation.finishCallback = function(a)
 		{
 			setHUDVisibility(true);
+			getGlobalVar("changeBG")();
 
 			camGame.flash(FlxColor.WHITE, 0.85);
+			gf.visible = false;
 			dad.visible = false;
 			pasta.visible = true;
+			boyfriend.setPosition(770, 225);
+			DAD_CAM_OFFSET.y -= 175;
 
 			if (camTween != null)
 				camTween.cancel();
 
-			game.defaultCamZoom = game.defaultCamZoom - 0.25;
-
-			boyfriend.visible = true;
-			gf.visible = true;
-			blackScreen.visible = false;
-
-			boyfriend.playAnim("scared", true);
-			gf.playAnim("scared", true);
+			game.defaultCamZoom = game.defaultCamZoom - 0.37;
 		}
 	}
-}
-
-var beat:Float = 6;
-
-function onBeatHit(curBeat:Int)
-{
-	// iconP2.y = healthBar.y - (iconP2.height / 2) - 25;
-	// FlxTween.tween(iconP2, {y: iconP2.y + 25}, 0.3, {ease: FlxEase.elasticInOut});
-
-	/*if (curBeat % 2 == 0)
-		for (i in 4...8)
-		{
-			var nextX:Float = defaultStrumPos[i].x;
-			nextX += ((4 * beat) * (curBeat % 4 == 0 ? -1 : 1));
-			if (curBeat % 12 == 0)
-			{
-				nextX += (i < 6 ? -15 : 45);
-				strumLineNotes[i].angle = 45;
-				tween(strumLineNotes[i], {angle: 0}, 0.1);
-			}
-			tween(strumLineNotes[i], {x: nextX}, 0.1);
-	}*/
 }
 
 function setHUDVisibility(theBool:Bool)

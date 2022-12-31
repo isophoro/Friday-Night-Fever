@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="scar_hands.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="scarlet hands0000" x="0" y="0" width="736" height="288" pivotX="49" pivotY="54.85" frameX="-28" frameY="-3" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0001" x="736" y="0" width="761" height="289" frameX="-11" frameY="-3" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0002" x="0" y="289" width="789" height="301" frameX="-2" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0003" x="789" y="289" width="803" height="303"/>
+	<SubTexture name="scarlet hands0004" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0005" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0006" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0007" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0008" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0009" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0010" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0011" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0012" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0013" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+	<SubTexture name="scarlet hands0014" x="0" y="592" width="551" height="186" frameX="-107" frameY="0" frameWidth="803" frameHeight="303"/>
+</TextureAtlas>
