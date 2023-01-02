@@ -115,21 +115,19 @@ class PlayState extends MusicBeatState
 	public static var playerStrums:FlxTypedGroup<FlxSprite> = null;
 	public static var cpuStrums:FlxTypedGroup<FlxSprite> = null;
 
-	var songScore:Int = 0;
-
-	public var health:Float = 1; // making public because sethealth doesnt work without it
-
-	private var combo:Int = 0;
-
-	public static var misses:Int = 0;
+	public var health:Float = 1;
+	public var songScore:Int = 0;
+	public var combo:Int = 0;
 
 	private var accuracy:Float = 0.00;
 	private var totalNotesHit:Float = 0;
 	private var totalPlayed:Int = 0;
 
-	public static var shits:Int = 0;
-	public static var bads:Int = 0;
 	public static var goods:Int = 0;
+	public static var bads:Int = 0;
+	public static var shits:Int = 0;
+	public static var misses:Int = 0;
+	public static var deaths:Int = 0;
 
 	public static var songPosBG:FlxSprite;
 	public static var songPosBar:FlxBar;
@@ -182,10 +180,7 @@ class PlayState extends MusicBeatState
 
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
-	var blackScreen:FlxSprite;
 	var takiBGSprites:Array<FlxSprite> = [];
-
-	public static var deaths:Int = 0;
 
 	public static function setModCamera(bool:Bool)
 	{
@@ -210,8 +205,6 @@ class PlayState extends MusicBeatState
 	var meat:Character;
 
 	public static var unlocked:FlxText;
-
-	var curBFY:Float = 0;
 
 	var scripts:HScriptGroup = new HScriptGroup();
 	var songScript:HaxeScript;
@@ -826,10 +819,6 @@ class PlayState extends MusicBeatState
 		add(dad);
 
 		add(boyfriend);
-		curBFY = boyfriend.y;
-
-		trace(boyfriend.y);
-		trace('curbfy position is ' + curBFY);
 
 		boyfriend.setPosition(boyfriend.x, boyfriend.y);
 
@@ -1384,16 +1373,33 @@ class PlayState extends MusicBeatState
 			for (songNotes in section.sectionNotes)
 			{
 				var daStrumTime:Float = songNotes[0] < 0 ? 0 : songNotes[0] + ClientPrefs.offset;
-				var daNoteData:Int = Std.int(songNotes[1] % 4);
-				var noteType:Int = songNotes[3];
 				var gottaHitNote:Bool = songNotes[1] > 3 ? !section.mustHitSection : section.mustHitSection;
+				var noteData:Int = Std.int(songNotes[1] % 4);
+
+				// Checks if this note is three milliseconds apart from another note.
+				// Does the samething as the usual "dumbass note" stuff but instead of being called on key presses it's only done once.
+				if (gottaHitNote)
+				{
+					var dumbNote:Bool = false;
+					for (i in unspawnNotes)
+					{
+						if (i.mustPress && i.noteData == noteData && Math.abs(i.strumTime - daStrumTime) < 3)
+						{
+							dumbNote = true;
+							break;
+						}
+					}
+
+					if (dumbNote)
+						continue;
+				}
 
 				unspawnNotes.push({
 					strumTime: daStrumTime,
-					noteData: daNoteData,
+					noteData: noteData,
 					mustPress: gottaHitNote,
 					sustainLength: songNotes[2],
-					type: noteType
+					type: songNotes[3]
 				});
 			}
 		}
@@ -1590,30 +1596,18 @@ class PlayState extends MusicBeatState
 		super.closeSubState();
 	}
 
-	function resyncVocals():Void
+	function resyncVocals()
 	{
 		if (!vocals.playing && !paused)
 			return;
 
-		vocals.pause();
+		trace('Resyncing vocals and instrumental tracks. (V: ${Math.abs(vocals.time - Conductor.songPosition)} MS) (I: ${Math.abs(FlxG.sound.music.time - Conductor.songPosition)} MS)');
 
+		vocals.pause();
 		FlxG.sound.music.play();
 		Conductor.songPosition = FlxG.sound.music.time;
 		vocals.time = Conductor.songPosition;
 		vocals.play();
-
-		#if windows
-		DiscordClient.changePresence(detailsText
-			+ " "
-			+ if (curSong == "Tranquility" || curSong == "Princess" || curSong == "Banish") "im not leaking" else SONG.song + " (" + storyDifficultyText
-				+ ") " + Ratings.GenerateLetterRank(accuracy),
-			"\nAcc: "
-			+ FlxMath.roundDecimal(accuracy, 2)
-			+ "% | Score: "
-			+ songScore
-			+ " | Misses: "
-			+ misses, iconRPC);
-		#end
 	}
 
 	private var paused:Bool = false;
@@ -2858,7 +2852,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (FlxG.sound.music.time > Conductor.songPosition + 20 || FlxG.sound.music.time < Conductor.songPosition - 20)
+		if (Math.abs(FlxG.sound.music.time - Conductor.songPosition) > 25 || Math.abs(vocals.time - Conductor.songPosition) > 25)
 		{
 			resyncVocals();
 		}
@@ -3142,86 +3136,48 @@ class PlayState extends MusicBeatState
 
 	private function onKeyPress(input:KeyboardEvent)
 	{
-		if (paused || inCutscene)
+		if (ClientPrefs.botplay || paused || inCutscene)
 			return;
 
-		// Stolen from my engine, changed shit to support kade engine
-		var key:Int = -1;
-
-		@:privateAccess
-		key = ClientPrefs.keybinds.indexOf(FlxKey.toStringMap[input.keyCode]);
-
-		if (key == -1)
+		var key:Int = switch (input.keyCode)
 		{
-			switch (input.keyCode) // arrow keys
-			{
-				case 37:
-					key = 0;
-				case 40:
-					key = 1;
-				case 38:
-					key = 2;
-				case 39:
-					key = 3;
-			}
+			case 37: 0; // LEFT ARROW
+			case 40: 1; // DOWN ARROW
+			case 38: 2; // UP ARROW
+			case 39: 3; // RIGHT ARROW
+			default: ClientPrefs.keybinds.indexOf(FlxKey.toStringMap[input.keyCode]); // NOT AN ARROW KEY
 		}
 
-		if (FlxG.save.data.botplay || key == -1 || keysHeld[key])
+		if (key == -1 || keysHeld[key])
 		{
 			return;
 		}
+		else
+			keysHeld[key] = true;
 
-		keysHeld[key] = true;
+		// Temporarily sets songPosition to the song's exact timing. does this do anything? more news at 10.
+		var previousTiming:Float = Conductor.songPosition;
+		Conductor.songPosition = FlxG.sound.music.time;
 
-		var dumbNotes:Array<Note> = []; // notes to kill later
+		// Checks for most on-time / late note.
 		var closestNote:Note = null;
-		var nearbyNote:Note = null;
-
 		notes.forEachAlive((note:Note) ->
 		{
-			if (note.mustPress && !note.isSustainNote)
+			if (note.mustPress && note.noteData == key && !note.isSustainNote && note.timeDiff <= 166)
 			{
-				if (note.noteData == key)
-				{
-					if (closestNote != null)
-					{
-						if (closestNote.noteData == note.noteData && Math.abs(note.strumTime - closestNote.strumTime) < 10)
-						{
-							dumbNotes.push(note);
-						}
-						else if (closestNote.strumTime > note.strumTime)
-						{
-							closestNote = note;
-						}
-					}
-					else if (Math.abs(note.strumTime - Conductor.songPosition) <= 166)
-					{
-						closestNote = note;
-					}
-				}
-				else if (nearbyNote == null)
-				{
-					if (Math.abs(note.strumTime - Conductor.songPosition) < 150)
-					{
-						nearbyNote = note;
-					}
-				}
+				if (closestNote == null || closestNote != null && note.timeDiff < closestNote.timeDiff)
+					closestNote = note;
 			}
 		});
 
-		for (note in dumbNotes)
-		{
-			FlxG.log.add("killing dumb ass note at " + note.strumTime);
-			note.kill();
-			note.exists = false;
-		}
-
+		// Player hits note
 		if (closestNote != null)
 		{
-			playerStrums.members[closestNote.noteData].animation.play('confirm');
-
+			playerStrums.members[key].animation.play('confirm', true);
 			goodNoteHit(closestNote);
 		}
+
+		Conductor.songPosition = previousTiming;
 	}
 
 	private function onKeyRelease(event:KeyboardEvent)

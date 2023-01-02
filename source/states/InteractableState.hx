@@ -137,7 +137,7 @@ class InteractableState extends MusicBeatState
 
 	function onMouseLeave(item:InteractHitbox)
 	{
-		if (item.parent.animation.curAnim.name != "idle" && item.parent.animation.name != 'come')
+		if (item.parent.animation.curAnim.name == "selected")
 		{
 			item.parent.playAnim("idle");
 			curSelected = null;

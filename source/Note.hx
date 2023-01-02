@@ -21,6 +21,7 @@ class Note extends FlxSprite
 	public static final colorSuffix:Array<String> = ['PURPLE', 'BLUE', 'GREEN', 'RED'];
 
 	public var strumTime:Float = 0;
+	public var timeDiff(get, never):Float;
 
 	public var mustPress:Bool = false;
 	public var noteData:Int = 0;
@@ -198,6 +199,11 @@ class Note extends FlxSprite
 			if (strumTime <= Conductor.songPosition)
 				wasGoodHit = true;
 		}
+	}
+
+	private function get_timeDiff():Float
+	{
+		return strumTime - Conductor.songPosition;
 	}
 
 	override public function kill()
