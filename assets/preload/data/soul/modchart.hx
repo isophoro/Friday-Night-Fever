@@ -1,5 +1,5 @@
 import Character;
-import MP4Handler;
+import vlc.MP4Handler;
 
 var video:MP4Handler;
 var hallowDum:Character;
@@ -14,12 +14,6 @@ function onCreate()
 	hallowDum = new Character(0, 0, "hallow-dum");
 	add(hallowDum);
 	hallowDum.visible = false;
-
-	trace("ATTEMPTING VIDEO PRELOAD");
-	video.playMP4(Paths.video("soul"), false, null, false, false, true);
-	video.kill();
-	FlxG.camera.fade(FlxColor.BLACK, 0, true);
-	trace("VIDEO PRELOADED");
 }
 
 function onStepHit(curStep:Int)
@@ -34,7 +28,7 @@ function onStepHit(curStep:Int)
 		game.inCutscene = true;
 
 		trace("PLAY VIDEO");
-		video.playMP4(Paths.video("soul"), false, null, false, false, true);
+		video.playVideo(Paths.video("soul"));
 		hallowDum.visible = true;
 		hallowDum.setPosition(dad.x, dad.y);
 		video.finishCallback = function()
@@ -42,7 +36,7 @@ function onStepHit(curStep:Int)
 			trace("VIDEO FINISH");
 			game.inCutscene = false;
 			video.finishCallback = null;
-			video.kill();
+			video.stop();
 			FlxG.camera.fade(FlxColor.BLACK, 0, true);
 			game.disableCamera = true;
 			game.disableModCamera = true;

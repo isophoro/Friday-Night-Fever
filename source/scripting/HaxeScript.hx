@@ -12,16 +12,17 @@ import hscript.Interp;
 import hscript.Parser;
 import sys.FileSystem;
 import sys.io.File;
+import vlc.MP4Handler;
 
 using StringTools;
 
 class HaxeScript extends Interp implements IFlxDestroyable
 {
 	static final AUTOIMPORTS:Array<Class<Dynamic>> = [
-		Math, Std, FlxG, FlxSprite, FlxPoint, FlxTween, FlxEase, Conductor, Paths, ClientPrefs
+		Math, Std, FlxG, FlxSprite, FlxPoint, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, MP4Handler
 	];
 
-	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGamejolt"];
+	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGameJolt"];
 
 	static var functions(default, never):Map<String, Dynamic> = [
 		"add" => (item:flixel.FlxBasic, pos:Int = -1, ?camera:flixel.FlxCamera) ->
