@@ -12,7 +12,6 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
-import flixel.math.FlxPoint.FlxBasePoint;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxSound;
@@ -35,6 +34,11 @@ import sprites.*;
 
 using StringTools;
 
+#if (flixel < "5.0.0")
+import flixel.math.FlxPoint;
+#else
+import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
+#end
 #if (sys && !mobile)
 import Discord.DiscordClient;
 import sys.FileSystem;
@@ -2085,11 +2089,11 @@ class PlayState extends MusicBeatState
 		scripts.callFunction("onPostUpdate", [elapsed]);
 	}
 
-	public var DAD_CAM_POS:FlxBasePoint = new FlxBasePoint(0, 0);
-	public var BF_CAM_POS:FlxBasePoint = new FlxBasePoint(0, 0);
+	public var DAD_CAM_POS:FlxPoint = new FlxPoint(0, 0);
+	public var BF_CAM_POS:FlxPoint = new FlxPoint(0, 0);
 
-	public var DAD_CAM_OFFSET:FlxBasePoint = new FlxBasePoint(0, 0);
-	public var BF_CAM_OFFSET:FlxBasePoint = new FlxBasePoint(0, 0);
+	public var DAD_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
+	public var BF_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
 
 	public function moveCamera(isDad:Bool = false)
 	{
