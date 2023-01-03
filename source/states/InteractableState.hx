@@ -8,8 +8,11 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
+#if (flixel < "5.0.0")
 import flixel.input.mouse.FlxMouseEventManager;
-import flixel.system.FlxSound;
+#else
+import flixel.input.mouse.FlxMouseEvent as FlxMouseEventManager;
+#end
 
 class InteractableState extends MusicBeatState
 {

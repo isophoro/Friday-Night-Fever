@@ -312,7 +312,7 @@ function createAd(img:String, x:Int, y:Int, scale:Float, anim:String, bop:Bool =
 	ad.ID = bop ? 1 : 0;
 	ad.animation.play("animation");
 	ad.origin.set(0, 0);
-	ad.scale.scale(scale);
+	ad.scale.set(scale, scale);
 	ad.antialiasing = true;
 	add(ad);
 	adsGrp.push(ad);

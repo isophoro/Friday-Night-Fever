@@ -16,7 +16,7 @@ function onCreate()
 	fallBG = new FlxSprite().loadGraphic(Paths.image("roboStage/gears/fallBG"));
 	fallBG.visible = false;
 	fallBG.antialiasing = true;
-	fallBG.scale.scale(1.25);
+	fallBG.scale.set(1.25, 1.25);
 	add(fallBG);
 
 	fallStreaks = new FlxSprite();
@@ -24,7 +24,7 @@ function onCreate()
 	fallStreaks.animation.addByPrefix("idle", "streaks bg", 24);
 	fallStreaks.animation.play("idle");
 	fallStreaks.antialiasing = true;
-	fallStreaks.scale.scale(0.9);
+	fallStreaks.scale.set(0.9, 0.9);
 	add(fallStreaks);
 	fallStreaks.visible = false;
 

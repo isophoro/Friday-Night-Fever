@@ -7,12 +7,12 @@ function onCreate()
 	var sky = new FlxSprite(290, -340).loadGraphic(Paths.image("roboStage/grando/sky"));
 	sky.scrollFactor.set(0.96, 0.96);
 	sky.antialiasing = true;
-	sky.scale.scale(1.65);
+	sky.scale.set(1.65, 1.65);
 	add(sky);
 
 	var bg = new FlxSprite(-370, -100).loadGraphic(Paths.image("roboStage/grando/bg"));
 	bg.antialiasing = true;
-	bg.scale.scale(1.65);
+	bg.scale.set(1.65);
 	add(bg);
 
 	roach = new FlxSprite(bg.x + (614 * 1.65) - 750, bg.y + (886 * 1.65) - 350);

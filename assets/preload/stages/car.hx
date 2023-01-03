@@ -7,7 +7,7 @@ function onCreate()
 	game.defaultCamZoom = 0.93;
 	var sky:FlxSprite = new FlxSprite(-660, -70).loadGraphic(Paths.image("roboStage/sky"));
 	sky.antialiasing = true;
-	sky.scale.scale(0.8);
+	sky.scale.set(0.8, 0.8);
 	add(sky);
 
 	var buildings:FlxSprite = new FlxSprite(-350, -57);

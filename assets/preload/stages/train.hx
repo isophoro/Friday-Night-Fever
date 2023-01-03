@@ -109,7 +109,7 @@ function onCreate()
 	bomb.animation.addByPrefix("idle", "Mako Bomb Normal", 24);
 	bomb.animation.play("idle");
 	bomb.antialiasing = true;
-	bomb.scale.scale(1.5);
+	bomb.scale.set(1.5, 1.5);
 	add(bomb);
 
 	fakeTunnelBG = new FlxSprite(0, -50).loadGraphic(Paths.image("roboStage/gears/tunnel"));

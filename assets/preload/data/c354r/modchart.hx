@@ -11,7 +11,7 @@ function onCreate()
 
 	bgF = new FlxSprite(-750, -120).loadGraphic(Paths.image("roboStage/C354R/perspectiveF"));
 	bgF.antialiasing = true;
-	bgF.scale.scale(1.25);
+	bgF.scale.set(1.25, 1.25);
 	add(bgF);
 	bgF.visible = false;
 
@@ -21,7 +21,7 @@ function onCreate()
 
 	bgR = new FlxSprite(-750, -150).loadGraphic(Paths.image("roboStage/C354R/perspectiveR"));
 	bgR.antialiasing = true;
-	bgR.scale.scale(1.62);
+	bgR.scale.set(1.62, 1.62);
 	add(bgR);
 	bgR.visible = false;
 

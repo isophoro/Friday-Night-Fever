@@ -3,7 +3,6 @@ package scripting;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxBackdrop;
-import flixel.math.FlxPoint;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -16,10 +15,16 @@ import vlc.MP4Handler;
 
 using StringTools;
 
+#if (flixel < "5.0.0")
+import flixel.math.FlxPoint;
+#else
+import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
+#end
+
 class HaxeScript extends Interp implements IFlxDestroyable
 {
 	static final AUTOIMPORTS:Array<Class<Dynamic>> = [
-		Math, Std, FlxG, FlxSprite, FlxPoint, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, MP4Handler
+		Math, Std, FlxG, FlxSprite, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, MP4Handler, Character
 	];
 
 	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGameJolt"];
@@ -243,6 +248,7 @@ class HaxeScript extends Interp implements IFlxDestroyable
 			variables.set(k, v);
 
 		// set up work arounds for abstract classes
+		variables.set("FlxPoint", #if (flixel < "5.0.0") FlxPoint #else flixel.math.FlxPoint.FlxBasePoint #end);
 		variables.set("FlxColor", HScriptColorAccess);
 		var tweenTypes:Dynamic = {
 			PINGPONG: 4,
@@ -321,7 +327,7 @@ class HaxeScript extends Interp implements IFlxDestroyable
 			}
 			catch (e)
 			{
-				trace("SCRIPT ERROR: Failed calling function " + func + ". Error: " + e);
+				trace('Script Error ($label): Failed calling function $func. Error: $e');
 			}
 		}
 	}

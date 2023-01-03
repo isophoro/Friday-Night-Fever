@@ -67,7 +67,7 @@ class FreeplayState extends MusicBeatState
 		peeps.animation.addByPrefix('bop', 'people', 24, false);
 		peeps.animation.play("bop");
 		peeps.origin.set(0, 0);
-		peeps.scale.scale(0.67);
+		peeps.scale.set(0.67, 0.67);
 		peeps.antialiasing = true;
 		add(peeps);
 

@@ -13,7 +13,7 @@ function onCreate()
 	peeps.animation.addByPrefix('bop', 'people', 24, false);
 	peeps.animation.play("bop");
 	peeps.origin.set(0, 0);
-	peeps.scale.scale(0.67);
+	peeps.scale.set(0.67, 0.67);
 	peeps.antialiasing = true;
 	add(peeps);
 
@@ -22,7 +22,7 @@ function onCreate()
 	add(chairs);
 
 	hands = new FlxSprite();
-	hands.scale.scale(0.67);
+	hands.scale.set(0.67, 0.67);
 	hands.frames = Paths.getSparrowAtlas('characters/scarlet/hands');
 	hands.animation.addByPrefix("come", "scarlet", 24, false);
 	hands.animation.play("come");
