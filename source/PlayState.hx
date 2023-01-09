@@ -1274,6 +1274,11 @@ class PlayState extends MusicBeatState
 	{
 		startingSong = false;
 
+		if(SONG.song.toLowerCase() == 'shadow')
+		{
+			dad.playAnim('bye');
+		}
+
 		if (!paused)
 		{
 			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
