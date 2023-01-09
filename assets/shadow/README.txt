@@ -1,0 +1,1 @@
+if u want make shadow song and chart also embed, im just gonna make the game jumpscare u if u try and load it from chart editor

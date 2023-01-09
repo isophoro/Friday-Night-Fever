@@ -101,6 +101,10 @@
 	<assets path="assets/videos"/>
 	
 	<!--<assets path='example_mods' rename='mods' embed='false'/>-->
+
+
+	<assets path='assets/shadow' library="shadow" embed='true' />
+
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<assets path='LICENSE' rename='LICENSE.txt' />
 	<!-- <template path='mods' /> -->

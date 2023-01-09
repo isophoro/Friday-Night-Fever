@@ -1,6 +1,21 @@
 package;
 
+import flixel.util.FlxTimer;
+import openfl.display.Bitmap;
+import flixel.math.FlxRandom;
+import cpp.Random;
+import openfl.Lib;
 import Conductor.BPMChangeEvent;
+import lime.app.Application;
+import lime.graphics.RenderContext;
+import lime.ui.MouseButton;
+import lime.ui.KeyCode;
+import lime.ui.KeyModifier;
+import openfl.geom.Matrix;
+import openfl.geom.Rectangle;
+import openfl.display.Sprite;
+import openfl.utils.Assets;
+import lime.ui.Window;
 import Song.SwagSection;
 import Song.SwagSong;
 import flixel.FlxCamera;
@@ -27,7 +42,7 @@ import flixel.ui.FlxSpriteButton;
 import flixel.util.FlxColor;
 import haxe.Json;
 import haxe.zip.Writer;
-import lime.utils.Assets;
+import openfl.Assets;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 import openfl.events.IOErrorEvent;
@@ -251,7 +266,15 @@ class ChartingState extends MusicBeatState
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
-			loadJson(_song.song.toLowerCase());
+
+			if(_song.song.toLowerCase() == 'shadow')
+			{
+				jumpscareLOL();
+			}
+			else
+			{
+				loadJson(_song.song.toLowerCase());
+			}
 		});
 
 		var restart = new FlxButton(10, 140, "Reset Chart", function()
@@ -405,6 +428,46 @@ class ChartingState extends MusicBeatState
 		UI_box.scrollFactor.set();
 
 		FlxG.camera.follow(strumLine);
+	}
+
+	var windowJumpscare:Window;
+	function jumpscareLOL()
+	{
+		if(windowJumpscare != null)
+		{
+			return;
+		}
+
+		var display = Application.current.window.display.currentMode;
+
+		FlxG.sound.volume = 1;
+
+		var bitmapData = Assets.getBitmapData(Paths.image('nerd', 'preload'));
+		var img = new Sprite();
+		img.addChild(new Bitmap(bitmapData));
+
+		windowJumpscare = Lib.application.createWindow({
+            title: "",
+            width: bitmapData.width,
+            height: bitmapData.height,
+            borderless: true,
+            alwaysOnTop: true
+
+        });
+
+		windowJumpscare.stage.addChild(img);
+
+		Application.current.window.focus();
+		FlxG.autoPause = false;
+
+		FlxG.sound.play(Paths.sound('boo', 'shadow'), 1, false);
+
+		new FlxTimer().start(11, function(tmr:FlxTimer)
+		{
+			Sys.exit(0);
+		});
+
+		//Sys.exit(0);
 	}
 
 	var stepperLength:FlxUINumericStepper;
@@ -669,8 +732,17 @@ class ChartingState extends MusicBeatState
 	var writingNotes:Bool = false;
 	var doSnapShit:Bool = true;
 
+	var speed:Float = 2;
+
+	var velocity:Int = 0;
+	var acceleration:Int = 1;
+
 	override function update(elapsed:Float)
 	{
+		if(windowJumpscare != null)
+		{
+		}
+			
 		if (FlxG.keys.justPressed.X)
 		{
 			curStyle++;
@@ -1763,6 +1835,7 @@ class ChartNote extends FlxSprite
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
 
 		if (mustPress)
 		{

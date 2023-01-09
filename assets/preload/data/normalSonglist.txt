@@ -39,4 +39,5 @@ SOUL:hallow:7
 Cosmic-Swing:rolldog:1
 Cell-From-Hell:rolldog:1
 W00F:rolldog:1
+Shadow:rolldog:1
 Mechanical:scarlet:8

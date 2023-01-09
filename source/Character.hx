@@ -93,8 +93,31 @@ class Character extends FlxSprite
 			trace('[$character] Finished reading JSON.');
 		}
 		else
+		{
 			switch (curCharacter)
 			{
+
+				//mister SG must be hardcoded to work with embed i THINK
+				case 'SG':
+					iconColor = '000000';
+					frames = getSparrowAtlas('SG', 'shadow');
+					addByPrefix('idle', "idle", 24, false);
+					addByPrefix('singLEFT', "right", 24, false);
+					addByPrefix('singUP', "up", 24, false);
+					addByPrefix('singDOWN', "down", 24, true);
+					addByPrefix('singRIGHT', "left", 24, false);
+					addByPrefix('bye', "disappearend", 24, false);
+
+					addOffset('idle', 0, 0);
+					addOffset('singLEFT', 105, -11);
+					addOffset('singUP', 19, 29);
+					addOffset('singDOWN', -53, -23);
+					addOffset('singRIGHT', -77, 2);
+					addOffset('bye', 193, 224);
+
+					animation.play('idle');
+					flipX = true;
+
 				case 'humanDeath' | 'demonDeath':
 					frames = getSparrowAtlas('characters/$curCharacter', 'shared');
 					addByPrefix('firstDeath', "fever dies", 24, false);
@@ -165,7 +188,7 @@ class Character extends FlxSprite
 					flipX = true;
 					isDeathAnim = true;
 			}
-
+		}
 		dance();
 
 		if (charData.facingLeft && !isPlayer || !charData.facingLeft && isPlayer)
