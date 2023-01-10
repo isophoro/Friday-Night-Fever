@@ -26,7 +26,7 @@ class MainMenuState extends InteractableState
 		DiscordClient.changePresence("In the Main Menu", null);
 		#end
 
-		var tunnelBG:MenuBG = new MenuBG("newMain/subway_bg_2", 0, -12, 0.7);
+		var tunnelBG:MenuBG = new MenuBG("newMain/subway_bg_2", 0, -12);
 		add(tunnelBG);
 
 		var train = new Interactable('newMain/trainmenu', 150, 75, 1.32, 'Train notselected', 'Train selected', new InteractHitbox(480, 205, 165, 280),
@@ -62,7 +62,7 @@ class MainMenuState extends InteractableState
 
 		train.sound = "subway";
 
-		var mainBG:MenuBG = new MenuBG("newMain/subway_bg", 0, -12, 0.7);
+		var mainBG:MenuBG = new MenuBG("newMain/subway_bg", 0, -12);
 		add(mainBG);
 
 		var options = new Interactable('newMain/options', 915.5, 580.55, 0.7, 'options notselected', 'options selected',

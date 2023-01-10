@@ -158,8 +158,6 @@ class PlayState extends MusicBeatState
 	public var church:FlxSprite; // week 2.5 / bad nun
 
 	var limo:FlxSprite; // week 4
-	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
-	var fastCar:FlxSprite;
 	var bottomBoppers:Crowd; // week 5
 	var bgGirls:BackgroundGirls; // week 6
 
@@ -440,24 +438,11 @@ class PlayState extends MusicBeatState
 					bgLimo.antialiasing = true;
 					add(bgLimo);
 
-					grpLimoDancers = new FlxTypedGroup<BackgroundDancer>();
-					add(grpLimoDancers);
-
-					for (i in 0...5)
-					{
-						var dancer:BackgroundDancer = new BackgroundDancer((370 * i) + 130, bgLimo.y - (prefix.contains('Night') ? 440 : 620));
-						dancer.scrollFactor.set(0.4, 0.4);
-						grpLimoDancers.add(dancer);
-					}
-
 					limo = new FlxSprite(-120, 550);
 					limo.frames = Paths.getSparrowAtlas('$prefix/limoDrive', 'week4');
 					limo.animation.addByPrefix('drive', "Limo stage", 24);
 					limo.animation.play('drive');
 					limo.antialiasing = true;
-
-					fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('$prefix/fastCarLol', 'week4'));
-					fastCar.antialiasing = true;
 				}
 			case 'ripdiner':
 				{
@@ -686,8 +671,6 @@ class PlayState extends MusicBeatState
 				boyfriend.x += 260;
 				gf.y += 20;
 				gf.x -= 30;
-				resetFastCar();
-				add(fastCar);
 			case 'mall':
 				boyfriend.x += 200;
 			case 'mallEvil':
@@ -1274,7 +1257,7 @@ class PlayState extends MusicBeatState
 	{
 		startingSong = false;
 
-		if(SONG.song.toLowerCase() == 'shadow')
+		if (SONG.song.toLowerCase() == 'shadow')
 		{
 			dad.playAnim('bye');
 		}
@@ -2735,28 +2718,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	var fastCarCanDrive:Bool = true;
-
-	function resetFastCar():Void
-	{
-		fastCar.x = -12600;
-		fastCar.y = FlxG.random.int(140, 250);
-		fastCar.velocity.x = 0;
-		fastCarCanDrive = true;
-	}
-
-	function fastCarDrive()
-	{
-		FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.7);
-
-		fastCar.velocity.x = (FlxG.random.int(170, 220) / FlxG.elapsed) * 3;
-		fastCarCanDrive = false;
-		new FlxTimer().start(2, function(tmr:FlxTimer)
-		{
-			resetFastCar();
-		});
-	}
-
 	var daVal:Float = 0.3;
 	var emitt:FlxTypedGroup<FlxEmitter>;
 	var emitter:FlxEmitter;
@@ -3105,14 +3066,6 @@ class PlayState extends MusicBeatState
 				}
 			case 'week5' | 'week5othercrowd' | 'ripdiner':
 				bottomBoppers.beatHit();
-			case 'limo' | 'limonight':
-				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
-				{
-					dancer.dance();
-				});
-
-				if (FlxG.random.bool(10) && fastCarCanDrive)
-					fastCarDrive();
 		}
 	}
 

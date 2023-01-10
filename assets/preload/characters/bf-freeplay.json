@@ -7,48 +7,48 @@
 			],
 			"fps": 24,
 			"anim": "fever idle",
-			"loop": true,
+			"loop": false,
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				-8,
-				2
-			],
-			"fps": 24,
-			"anim": "fever right",
-			"loop": true,
-			"name": "singRIGHT"
-		},
-		{
-			"offsets": [
-				8,
-				-10
+				4,
+				-5
 			],
 			"fps": 24,
 			"anim": "fever down",
-			"loop": true,
+			"loop": false,
 			"name": "singDOWN"
 		},
 		{
 			"offsets": [
-				7,
-				-9
+				-4,
+				2
 			],
 			"fps": 24,
-			"anim": "fever left",
-			"loop": true,
-			"name": "singLEFT"
+			"anim": "fever right",
+			"loop": false,
+			"name": "singRIGHT"
 		},
 		{
 			"offsets": [
-				-11,
-				9
+				-13,
+				4
 			],
 			"fps": 24,
 			"anim": "fever up",
-			"loop": true,
+			"loop": false,
 			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-1,
+				-7
+			],
+			"fps": 24,
+			"anim": "fever left",
+			"loop": false,
+			"name": "singLEFT"
 		}
 	],
 	"noAntialiasing": false,

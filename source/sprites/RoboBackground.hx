@@ -249,21 +249,13 @@ class RoboBackground
 			bgLimo.animation.play('drive');
 			bgLimo.scrollFactor.set(0.4, 0.4);
 
-			var bunnies:Array<FlxSprite> = [];
-			for (i in 0...5)
-			{
-				var dancer:BackgroundDancer = new BackgroundDancer((400 * i) + 90, bgLimo.y - 625);
-				dancer.scrollFactor.set(0.4, 0.4);
-				bunnies.push(dancer);
-			}
-
 			var limo = new FlxSprite(-120, 550);
 			limo.frames = Paths.getSparrowAtlas('limoNight/limoDrive', 'week4');
 			limo.animation.addByPrefix('drive', "Limo stage", 24);
 			limo.animation.play('drive');
 			limo.antialiasing = true;
 
-			stages['limo'] = new RoboStage([skyBG, bgLimo].concat(bunnies).concat([cherry, limo]), [], ["boyfriend" => [1030, 150], "dad" => [100, 235]],
+			stages['limo'] = new RoboStage([skyBG, bgLimo].concat([cherry, limo]), [], ["boyfriend" => [1030, 150], "dad" => [100, 235]],
 				["boyfriend" => 1, "dad" => 1], 0.9);
 
 			// fixes initial lag spike when switching to the week 4 stage

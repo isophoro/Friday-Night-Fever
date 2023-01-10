@@ -20,6 +20,7 @@ class Intro extends MusicBeatState
 		PlayerSettings.init();
 		ClientPrefs.load();
 		Highscore.load();
+		CostumeHandler.load();
 
 		@:privateAccess
 		FlxG.sound.loadSavedPrefs();

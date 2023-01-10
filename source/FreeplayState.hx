@@ -35,21 +35,20 @@ class FreeplayState extends MusicBeatState
 	var peeps:FlxSprite;
 	var feva:Character;
 	var peppa:Character;
+	var hands:FlxSprite;
 
 	override function create()
 	{
 		PlayState.deaths = 0;
 
-		if (FlxG.sound.music == null || FlxG.sound.music != null && !FlxG.sound.music.playing)
+		if (FlxG.sound.music == null || FlxG.sound.music != null && !FlxG.sound.music.playing || FlxG.sound.music != null && FlxG.sound.music.volume < 0.1)
 		{
 			Main.playFreakyMenu();
 		}
 
-		var initSonglist:Array<String> = CoolUtil.coolTextFile(Paths.txt('normalSonglist'));
-
-		for (i in 0...initSonglist.length)
+		for (i in CoolUtil.coolTextFile(Paths.txt('normalSonglist')))
 		{
-			var data:Array<String> = initSonglist[i].split(':');
+			var data:Array<String> = i.split(':');
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
@@ -71,21 +70,27 @@ class FreeplayState extends MusicBeatState
 		peeps.antialiasing = true;
 		add(peeps);
 
-		var chairs:FlxSprite = new FlxSprite().loadGraphic(Paths.image('freeplay/chairs'));
+		var chairs:FlxSprite = new FlxSprite(319, 134).loadGraphic(Paths.image('freeplay/chairs'));
 		chairs.antialiasing = true;
 		add(chairs);
 
-		feva = new Character(622, -60, "bf-freeplay", true);
-		feva.scale.set(0.67, 0.67);
+		feva = new Character(742, 115, "bf-freeplay", true);
 		add(feva);
 
-		peppa = new Character(74, 176, "pepper-freeplay", false);
-		peppa.scale.set(0.67, 0.67);
+		peppa = new Character(154, 291, "pepper-freeplay", false);
 		add(peppa);
 
-		var table:FlxSprite = new FlxSprite().loadGraphic(Paths.image('freeplay/table'));
+		var table:FlxSprite = new FlxSprite(257, 385).loadGraphic(Paths.image('freeplay/table'));
 		table.antialiasing = true;
 		add(table);
+
+		hands = new FlxSprite(259, 16);
+		hands.frames = Paths.getSparrowAtlas("characters/pepper/hands", "shared");
+		hands.animation.addByPrefix("idle", "pepper", 24, false);
+		hands.animation.play('idle');
+		hands.scale.set(0.67, 0.67);
+		hands.antialiasing = true;
+		add(hands);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -282,6 +287,7 @@ class FreeplayState extends MusicBeatState
 		}
 
 		peeps.animation.play("bop");
+		hands.animation.play("idle");
 		peppa.dance();
 		feva.dance();
 	}

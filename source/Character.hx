@@ -96,8 +96,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-
-				//mister SG must be hardcoded to work with embed i THINK
+				// mister SG must be hardcoded to work with embed i THINK
 				case 'SG':
 					iconColor = '000000';
 					frames = getSparrowAtlas('SG', 'shadow');

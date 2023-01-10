@@ -1,6 +1,7 @@
 var peeps:FlxSprite;
 var bg:FlxSprite;
 var hands:FlxSprite;
+var phands:FlxSprite;
 
 function onCreate()
 {
@@ -17,7 +18,7 @@ function onCreate()
 	peeps.antialiasing = true;
 	add(peeps);
 
-	var chairs:FlxSprite = new FlxSprite().loadGraphic(Paths.image('freeplay/chairs'));
+	var chairs:FlxSprite = new FlxSprite(319, 134).loadGraphic(Paths.image('freeplay/chairs'));
 	chairs.antialiasing = true;
 	add(chairs);
 
@@ -28,30 +29,36 @@ function onCreate()
 	hands.animation.play("come");
 	hands.antialiasing = true;
 	setGlobalVar("hands", hands);
+
+	phands = new FlxSprite(259, 16);
+	phands.frames = Paths.getSparrowAtlas("characters/pepper/hands", "shared");
+	phands.animation.addByPrefix("idle", "pepper", 24, false);
+	phands.animation.play('idle');
+	phands.scale.set(0.67, 0.67);
+	phands.antialiasing = true;
 }
 
 function onCreatePost()
 {
-	boyfriend.setPosition(622, -60);
-	gf.setPosition(74, 176);
+	boyfriend.setPosition(742, 115);
+	gf.setPosition(154, 291);
+
 	dad.x += 250;
 	dad.y -= 110;
 
-	var table:FlxSprite = new FlxSprite().loadGraphic(Paths.image('freeplay/table'));
+	var table:FlxSprite = new FlxSprite(257, 385).loadGraphic(Paths.image('freeplay/table'));
 	table.antialiasing = true;
 	add(table);
 
 	hands.visible = false;
 	add(hands);
-	hands.setPosition(table.x + 255, table.y + 350);
+	add(phands);
+	hands.setPosition(bg.x + 255, bg.y + 350);
 
-	for (i in [dad, boyfriend, gf])
+	dad.scale.set(0.67, 0.67);
+	for (ii in dad.animOffsets.keys())
 	{
-		i.scale.set(0.67, 0.67);
-		for (ii in i.animOffsets.keys())
-		{
-			i.animOffsets[ii] = [i.animOffsets[ii][0] * 0.67, i.animOffsets[ii][1] * 0.67];
-		}
+		dad.animOffsets[ii] = [dad.animOffsets[ii][0] * 0.67, dad.animOffsets[ii][1] * 0.67];
 	}
 
 	game.camZooming = true;
@@ -62,4 +69,5 @@ function onCreatePost()
 function onBeatHit(curBeat)
 {
 	peeps.animation.play("bop");
+	phands.animation.play("idle");
 }

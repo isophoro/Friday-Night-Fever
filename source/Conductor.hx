@@ -1,12 +1,7 @@
 package;
 
 import Song.SwagSong;
-import flixel.FlxG;
 
-/**
- * ...
- * @author
- */
 typedef BPMChangeEvent =
 {
 	var stepTime:Int;
@@ -21,7 +16,6 @@ class Conductor
 	public static var stepCrochet:Float = crochet / 4; // steps in milliseconds
 	public static var songPosition:Float;
 	public static var lastSongPos:Float;
-	public static var offset:Float = 0;
 
 	public static var safeFrames:Int = 10;
 	public static var safeZoneOffset:Float = Math.floor((safeFrames / 60) * 1000); // is calculated in create(), is safeFrames in milliseconds
