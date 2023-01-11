@@ -1,9 +1,6 @@
-# Friday Night Fever
-### VISIT THE GAMEBANANA PAGE FOUND <a href="https://gamebanana.com/mods/310465">HERE</a> FOR CHANGELOGS, DOWNLOADS, AND MORE INFORMATION
-<img src="https://images.gamebanana.com/img/ss/mods/61076ebc1c2d0.jpg" width="550"/>
-
-You're Fever, the mayor of Fever Town!  
-A trip back from space caused you to crash here instead of home, and things began to pile up on your desk ever since. 
-Once an abandoned spot on the map, it's now a hot spot for the worlds rejects, criminals, scumbags and any others shunned from their homes. 
-Your girlfriend is also from space, and you're hiding some dark secrets from her... can you handle a relationship as well as you can handle being a mayor?
-
+# <p align="center"> Friday Night Fever: Frenzy </p>
+### VISIT THE <a href="https://gamebanana.com/mods/310465">GAMEBANANA</a> OR <a href="https://gamejolt.com/games/fridaynightfever/645717">GAMEJOLT</a> PAGE FOR CHANGELOGS, DOWNLOADS, AND MORE INFORMATION
+### ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ      ㅤㅤ    ㅤ   ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ  ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ         ㅤㅤ    ㅤㅤ       ㅤㅤ    ㅤㅤ    ㅤㅤ    ㅤㅤ    ㅤㅤ    <sup><sub>(^ if ur weird ^)</sub></sup>
+<p align="center"><img src="https://github.com/isophoro/Friday-Night-Fever/blob/main/assets/preload/images/story/selecting/fscroll.png?raw=true" width="550"/></p>
+<hr>
+<p align="center"><img src="https://images-ext-2.discordapp.net/external/yJHh2_eH6In0sMfTSfmo0NFY21hPcmTtR89O-Em6Ly4/%3Fitemid%3D27375502/https/media1.tenor.com/images/dfb928b0bc3049a032e34d4875146965/tenor.gif" style="width:648px;height:648px;"/></p>
