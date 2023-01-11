@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="i made this with my hands">
+	<SubTexture name="header classic" x="0" y="0" width="437" height="84"/>
+	<SubTexture name="header frenzy" x="0" y="114" width="437" height="84"/>
+	<SubTexture name="body" x="0" y="85" width="437" height="14"/>
+	<SubTexture name="footer" x="0" y="100" width="437" height="13"/>
+	<SubTexture name="week1" x="1" y="199" width="165" height="177"/>
+	<SubTexture name="week2" x="2" y="378" width="194" height="154"/>
+	<SubTexture name="week2.5" x="197" y="199" width="183" height="189"/>
+	<SubTexture name="week3" x="198" y="390" width="177" height="178"/>
+	<SubTexture name="week4" x="438" y="0" width="199" height="215"/>
+	<SubTexture name="week5" x="381" y="216" width="194" height="186"/>
+	<SubTexture name="week6" x="376" y="420" width="199" height="203"/>
+	<SubTexture name="extras" x="576" y="420" width="199" height="203"/>
+	<SubTexture name="week7" x="594" y="240" width="166" height="179"/>
+	<SubTexture name="week8" x="0" y="533" width="195" height="155"/>
+	<SubTexture name="week9" x="638" y="0" width="177" height="178"/>
+	<SubTexture name="weekminus" x="778" y="372" width="204" height="180"/>
+	<SubTexture name="weekhallow" x="761" y="179" width="183" height="190"/>
+</TextureAtlas>

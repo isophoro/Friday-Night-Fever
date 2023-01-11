@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="RAE ABD CODY FROM SOULSPLIT.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="rae and cody0000" x="0" y="0" width="550" height="523" pivotX="204.6" pivotY="280.3" frameX="-3" frameY="-11" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0001" x="0" y="0" width="550" height="523" frameX="-3" frameY="-8" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0002" x="550" y="0" width="550" height="524" frameX="-3" frameY="-5" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0003" x="550" y="0" width="550" height="524" frameX="-3" frameY="-3" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0004" x="1100" y="0" width="553" height="530" frameX="0" frameY="0" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0005" x="1100" y="0" width="553" height="530" frameX="0" frameY="-3" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0006" x="0" y="530" width="553" height="530" frameX="0" frameY="-5" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0007" x="0" y="530" width="553" height="530" frameX="0" frameY="-8" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0008" x="0" y="0" width="550" height="523" frameX="-3" frameY="-11" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0009" x="0" y="0" width="550" height="523" frameX="-3" frameY="-8" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0010" x="0" y="0" width="550" height="523" frameX="-3" frameY="-6" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0011" x="0" y="0" width="550" height="523" frameX="-3" frameY="-4" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0012" x="0" y="0" width="550" height="523" frameX="-3" frameY="-2" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0013" x="553" y="530" width="550" height="519" frameX="-3" frameY="0" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0014" x="553" y="530" width="550" height="519" frameX="-3" frameY="-3" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0015" x="1103" y="530" width="550" height="519" frameX="-3" frameY="-5" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0016" x="1103" y="530" width="550" height="519" frameX="-3" frameY="-8" frameWidth="553" frameHeight="538"/>
+	<SubTexture name="rae and cody0017" x="0" y="0" width="550" height="523" frameX="-3" frameY="-11" frameWidth="553" frameHeight="538"/>
+</TextureAtlas>

@@ -12,7 +12,7 @@ function onCreate()
 
 	var bg = new FlxSprite(-370, -100).loadGraphic(Paths.image("roboStage/grando/bg"));
 	bg.antialiasing = true;
-	bg.scale.set(1.65);
+	bg.scale.set(1.65, 1.65);
 	add(bg);
 
 	roach = new FlxSprite(bg.x + (614 * 1.65) - 750, bg.y + (886 * 1.65) - 350);
