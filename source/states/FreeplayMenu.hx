@@ -108,6 +108,7 @@ class FreeplayMenu extends MusicBeatSubstate
 				["Hardships", "tea-bat"],
 				["Erm...", "pepper"],
 				["Mechanical", "scarlet"],
+				["Shadow", "bf"],
 				["Old-Hallow", "hallow"],
 				["Old-Portrait", "hallow"],
 				["Old-Soul", "hallow"]

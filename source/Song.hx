@@ -2,7 +2,6 @@ package;
 
 import haxe.Json;
 import lime.utils.Assets;
-import meta.FeverConfig;
 
 using StringTools;
 
@@ -36,9 +35,30 @@ typedef SwagSection =
 
 class Song
 {
+	public static var songArtists:Map<Array<String>, String> = [
+		[
+			"hallow", "eclipse", "soul", "hardships", "banish", "bloom", "dead-mans-melody", "grando", "old-portrait", "old-hallow", "old-soul",
+			"cell-from-hell"
+		] => "FPLester",
+		[
+			"c354r",
+			"loaded",
+			"gears",
+			"space-demons",
+			"princess",
+			"tranquility",
+			"w00f",
+			"mechanical",
+			"shadow"
+		] => "Biddle3",
+		["party-crasher", "cosmic-swing"] => "BirdBonanza"
+	];
+
+	public static var costumeDisabledSongs:Array<String> = ["mechanical", "cosmic-swing", "cell-from-hell", "w00f"];
+
 	public static function getArtist(_song:String):String
 	{
-		for (s => a in FeverConfig.songArtists)
+		for (s => a in songArtists)
 		{
 			if (s.contains(_song.toLowerCase()))
 			{
@@ -53,7 +73,7 @@ class Song
 
 	public static function get_costumesEnabled():Bool
 	{
-		return !FeverConfig.costumeDisabledSongs.contains(PlayState.SONG.song.toLowerCase());
+		return !costumeDisabledSongs.contains(PlayState.SONG.song.toLowerCase());
 	}
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
