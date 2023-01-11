@@ -72,7 +72,7 @@ class MainMenuState extends InteractableState
 			FlxTween.tween(FlxG.camera, {y: -60}, 2);
 			FlxG.camera.fade(FlxColor.BLACK, 0.5, false, () ->
 			{
-				FlxG.switchState(new options.OptionsState());
+				FlxG.switchState(new states.OptionsState());
 			});
 		}
 		options.sound = "sewer";

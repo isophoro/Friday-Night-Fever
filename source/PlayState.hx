@@ -157,7 +157,6 @@ class PlayState extends MusicBeatState
 
 	public var church:FlxSprite; // week 2.5 / bad nun
 
-	var limo:FlxSprite; // week 4
 	var bottomBoppers:Crowd; // week 5
 	var bgGirls:BackgroundGirls; // week 6
 
@@ -419,31 +418,6 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(islands, {y: islands.y - 50}, 2.85, {type: PINGPONG});
 					}
 				}
-			case 'limo' | 'limonight':
-				{
-					curStage = SONG.stage;
-					var prefix:String = curStage == 'limonight' ? 'limoNight' : 'limo';
-					defaultCamZoom = 0.855;
-
-					var skyBG:FlxSprite = new FlxSprite(-200, -145).loadGraphic(Paths.image('$prefix/limoSunset', 'week4'));
-					skyBG.scrollFactor.set(0.25, 0);
-					skyBG.antialiasing = true;
-					add(skyBG);
-
-					var bgLimo:FlxSprite = new FlxSprite(-200, 480);
-					bgLimo.frames = Paths.getSparrowAtlas('$prefix/bgLimo', 'week4');
-					bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
-					bgLimo.animation.play('drive');
-					bgLimo.scrollFactor.set(0.4, 0.4);
-					bgLimo.antialiasing = true;
-					add(bgLimo);
-
-					limo = new FlxSprite(-120, 550);
-					limo.frames = Paths.getSparrowAtlas('$prefix/limoDrive', 'week4');
-					limo.animation.addByPrefix('drive', "Limo stage", 24);
-					limo.animation.play('drive');
-					limo.antialiasing = true;
-				}
 			case 'ripdiner':
 				{
 					curStage = 'ripdiner';
@@ -666,11 +640,6 @@ class PlayState extends MusicBeatState
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				boyfriend.x += 300;
 				gf.x += 300;
-			case 'limo' | 'limonight':
-				boyfriend.y -= 300;
-				boyfriend.x += 260;
-				gf.y += 20;
-				gf.x -= 30;
 			case 'mall':
 				boyfriend.x += 200;
 			case 'mallEvil':
@@ -794,10 +763,6 @@ class PlayState extends MusicBeatState
 		add(gf);
 		if (curStage == 'train')
 			gf.visible = false;
-
-		// Shitty layering but whatev it works LOL
-		if (limo != null)
-			add(limo);
 
 		if (curStage == 'schoolEvil')
 		{
@@ -2136,9 +2101,6 @@ class PlayState extends MusicBeatState
 							case 'tricky':
 								camFollow.y = dad.getMidpoint().y - 100;
 								camFollow.x = dad.getMidpoint().x + 230;
-							case 'limo':
-								camFollow.x = dad.getMidpoint().x + 300;
-								camFollow.y = dad.getMidpoint().y;
 							case 'default' | 'whitty':
 								camFollow.y = dad.getMidpoint().y - 290;
 								camFollow.x = dad.getMidpoint().x - -490;
@@ -2194,8 +2156,6 @@ class PlayState extends MusicBeatState
 				case 'stage':
 					camFollow.x = boyfriend.getMidpoint().x - 350;
 					camFollow.y -= 100;
-				case 'limo' | 'limonight':
-					camFollow.x = boyfriend.getMidpoint().x - 300;
 				case 'mall':
 					camFollow.y = boyfriend.getMidpoint().y - 200;
 				case 'school' | 'schoolEvil':
@@ -2339,36 +2299,7 @@ class PlayState extends MusicBeatState
 
 				endingSong = true;
 
-				if (storyWeek != StoryMenuState.weekData.length - 1)
-				{
-					FlxG.switchState(new StoryMenuState());
-				}
-				else
-				{
-					for (week in 1...StoryMenuState.weekData.length)
-					{
-						var break_MainLoop:Bool = false;
-						for (difficulty in 0...3)
-						{
-							if (Highscore.getWeekScore(week, difficulty) > 0)
-								break;
-
-							if (difficulty == 2) // if this loop never breaks
-								break_MainLoop = true;
-						}
-
-						if (break_MainLoop)
-						{
-							FlxG.switchState(new StoryMenuState());
-							break;
-						}
-
-						if (week == StoryMenuState.weekData.length - 1)
-						{
-							FlxG.switchState(new CreditsState());
-						}
-					}
-				}
+				FlxG.switchState(new StoryMenuState());
 			}
 			else
 			{

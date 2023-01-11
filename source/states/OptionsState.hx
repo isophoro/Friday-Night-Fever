@@ -1,4 +1,4 @@
-package options;
+package states;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -7,6 +7,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxDirection;
+import sprites.Checkbox;
 
 using StringTools;
 

@@ -27,7 +27,6 @@ class PauseSubState extends MusicBeatSubstate
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
-	var scanlines:FlxSprite;
 
 	var offsetChanged:Bool = false;
 	var levelDifficulty:FlxText;
@@ -92,23 +91,9 @@ class PauseSubState extends MusicBeatSubstate
 			grpMenuShit.add(songText);
 		}
 
-		scanlines = new FlxSprite(0, 0).loadGraphic(Paths.image('effectShit/Scanlines'));
-		add(scanlines);
-		scanlines.visible = false;
-
 		changeSelection();
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
-
-		if (PlayState.instance.font)
-		{
-			levelDifficulty.setFormat(Paths.font('Retro Gaming.ttf'), 32);
-			levelInfo.setFormat(Paths.font("Retro Gaming.ttf"), 32);
-			levelDifficulty.screenCenter(X);
-			levelInfo.screenCenter(X);
-
-			scanlines.visible = true;
-		}
 	}
 
 	override function update(elapsed:Float)
@@ -120,11 +105,7 @@ class PauseSubState extends MusicBeatSubstate
 
 		var upP = controls.UP_P;
 		var downP = controls.DOWN_P;
-		var leftP = controls.LEFT_P;
-		var rightP = controls.RIGHT_P;
 		var accepted = controls.ACCEPT;
-		var oldOffset:Float = 0;
-		var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
 
 		if (upP)
 		{
@@ -180,12 +161,6 @@ class PauseSubState extends MusicBeatSubstate
 					menuItems = menuItemsOG;
 					regenMenu();
 			}
-		}
-
-		if (FlxG.keys.justPressed.J)
-		{
-			// for reference later!
-			// PlayerSettings.player1.controls.replaceBinding(Control.LEFT, Keys, FlxKey.J, null);
 		}
 	}
 
