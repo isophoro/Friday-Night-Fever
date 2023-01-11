@@ -84,16 +84,16 @@ class Note extends FlxSprite
 				switch (type)
 				{
 					case 1:
-						frames = Paths.getSparrowAtlas('NOTE_HALLOW');
+						frames = Paths.getSparrowAtlas('notes/hallowNotes');
 					default:
 						switch (PlayState.SONG.song.toLowerCase())
 						{
 							case 'party-crasher':
-								frames = Paths.getSparrowAtlas('customArrows/partyCrasherNotes');
+								frames = Paths.getSparrowAtlas('notes/yukichiNotes');
 							case 'bazinga' | 'crucify':
-								frames = Paths.getSparrowAtlas('customArrows/TakiNotes');
+								frames = Paths.getSparrowAtlas('notes/takiNotes');
 							default:
-								frames = Paths.getSparrowAtlas('NOTE_assets');
+								frames = Paths.getSparrowAtlas('notes/defaultNotes');
 						}
 				}
 

@@ -100,7 +100,8 @@ class TitleState extends MusicBeatState
 
 		add(logoBl);
 
-		tea = new FlxSprite(963, 290);
+		var cool = FlxG.random.bool(50);
+		tea = new FlxSprite(cool ? 698 : 963, cool ? 355 : 290);
 		tea.frames = Paths.getSparrowAtlas('title/tea');
 		tea.animation.addByPrefix('bump', 'tea', 24);
 		tea.animation.play('bump');
@@ -109,7 +110,7 @@ class TitleState extends MusicBeatState
 		tea.antialiasing = true;
 		add(tea);
 
-		feva = new FlxSprite(755, 282);
+		feva = new FlxSprite(cool ? 945 : 755, cool ? 247 : 282);
 		feva.frames = Paths.getSparrowAtlas('title/fever');
 		feva.animation.addByPrefix('bump', 'fever', 24);
 		feva.animation.play('bump');

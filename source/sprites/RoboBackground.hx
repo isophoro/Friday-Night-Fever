@@ -543,7 +543,7 @@ class RoboBackground
 				var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
 				var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
 
-				babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+				babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
 				babyArrow.animation.addByPrefix(dataColor[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);
 
 				var lowerDir:String = dataSuffix[babyArrow.ID].toLowerCase();

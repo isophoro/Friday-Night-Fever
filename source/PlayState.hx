@@ -1083,7 +1083,7 @@ class PlayState extends MusicBeatState
 				var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
 				var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
 
-				babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+				babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
 				babyArrow.animation.addByPrefix(dataColor[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);
 
 				var lowerDir:String = dataSuffix[babyArrow.ID].toLowerCase();
@@ -1408,7 +1408,7 @@ class PlayState extends MusicBeatState
 							babyArrow.animation.add('confirm', [15, 19], 24, false);
 					}
 				default:
-					babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+					babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
 					babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
 					babyArrow.animation.addByPrefix('purple', 'arrowLEFT');

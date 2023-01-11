@@ -1,23 +1,9 @@
 package;
 
-import flixel.util.FlxTimer;
-import openfl.display.Bitmap;
-import flixel.math.FlxRandom;
-import cpp.Random;
-import openfl.Lib;
 import Conductor.BPMChangeEvent;
-import lime.app.Application;
-import lime.graphics.RenderContext;
-import lime.ui.MouseButton;
-import lime.ui.KeyCode;
-import lime.ui.KeyModifier;
-import openfl.geom.Matrix;
-import openfl.geom.Rectangle;
-import openfl.display.Sprite;
-import openfl.utils.Assets;
-import lime.ui.Window;
 import Song.SwagSection;
 import Song.SwagSong;
+import cpp.Random;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -35,21 +21,35 @@ import flixel.addons.ui.FlxUITooltip.FlxUITooltipStyle;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
+import flixel.math.FlxRandom;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 import haxe.Json;
 import haxe.zip.Writer;
+import lime.app.Application;
+import lime.graphics.RenderContext;
+import lime.ui.KeyCode;
+import lime.ui.KeyModifier;
+import lime.ui.MouseButton;
+import lime.ui.Window;
 import openfl.Assets;
+import openfl.Lib;
+import openfl.display.Bitmap;
+import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 import openfl.events.IOErrorEvent;
 import openfl.events.IOErrorEvent;
+import openfl.geom.Matrix;
+import openfl.geom.Rectangle;
 import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.system.System;
+import openfl.utils.Assets;
 import openfl.utils.ByteArray;
 import shaders.ColorShader;
 
@@ -266,8 +266,7 @@ class ChartingState extends MusicBeatState
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
-
-			if(_song.song.toLowerCase() == 'shadow')
+			if (_song.song.toLowerCase() == 'shadow')
 			{
 				jumpscareLOL();
 			}
@@ -431,9 +430,10 @@ class ChartingState extends MusicBeatState
 	}
 
 	var windowJumpscare:Window;
+
 	function jumpscareLOL()
 	{
-		if(windowJumpscare != null)
+		if (windowJumpscare != null)
 		{
 			return;
 		}
@@ -447,13 +447,12 @@ class ChartingState extends MusicBeatState
 		img.addChild(new Bitmap(bitmapData));
 
 		windowJumpscare = Lib.application.createWindow({
-            title: "",
-            width: bitmapData.width,
-            height: bitmapData.height,
-            borderless: true,
-            alwaysOnTop: true
-
-        });
+			title: "",
+			width: bitmapData.width,
+			height: bitmapData.height,
+			borderless: true,
+			alwaysOnTop: true
+		});
 
 		windowJumpscare.stage.addChild(img);
 
@@ -467,7 +466,7 @@ class ChartingState extends MusicBeatState
 			Sys.exit(0);
 		});
 
-		//Sys.exit(0);
+		// Sys.exit(0);
 	}
 
 	var stepperLength:FlxUINumericStepper;
@@ -739,10 +738,10 @@ class ChartingState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if(windowJumpscare != null)
+		if (windowJumpscare != null)
 		{
 		}
-			
+
 		if (FlxG.keys.justPressed.X)
 		{
 			curStyle++;
@@ -1719,11 +1718,11 @@ class ChartNote extends FlxSprite
 					switch (PlayState.SONG.song.toLowerCase())
 					{
 						case 'party-crasher':
-							frames = Paths.getSparrowAtlas('customArrows/partyCrasherNotes');
+							frames = Paths.getSparrowAtlas('notes/yukichiNotes');
 						case 'bazinga' | 'crucify':
-							frames = Paths.getSparrowAtlas('customArrows/TakiNotes');
+							frames = Paths.getSparrowAtlas('notes/takiNotes');
 						default:
-							frames = Paths.getSparrowAtlas('NOTE_assets');
+							frames = Paths.getSparrowAtlas('notes/defaultNotes');
 					}
 				}
 				else
@@ -1731,7 +1730,7 @@ class ChartNote extends FlxSprite
 					switch (noteType)
 					{
 						case 1: // hallow
-							frames = Paths.getSparrowAtlas('NOTE_HALLOW');
+							frames = Paths.getSparrowAtlas('notes/hallowNotes');
 							if (FlxG.save.data.brighterNotes)
 							{
 								var cshader = new ColorShader();
@@ -1741,7 +1740,7 @@ class ChartNote extends FlxSprite
 								shader = cshader;
 							}
 						default:
-							frames = Paths.getSparrowAtlas('NOTE_assets');
+							frames = Paths.getSparrowAtlas('notes/defaultNotes');
 					}
 				}
 
@@ -1835,7 +1834,6 @@ class ChartNote extends FlxSprite
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
 
 		if (mustPress)
 		{
