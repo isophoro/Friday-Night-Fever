@@ -1,0 +1,68 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-40,
+				-112
+			],
+			"fps": 24,
+			"anim": "teafightturntoLEFT",
+			"loop": false,
+			"name": "turnLEFT"
+		},
+		{
+			"offsets": [
+				-72,
+				-113
+			],
+			"fps": 24,
+			"anim": "teafightpunchFLIP",
+			"loop": false,
+			"name": "punch-flip"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "teafightidle instance",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-70,
+				-1
+			],
+			"fps": 24,
+			"anim": "teafightidleFLIP",
+			"loop": false,
+			"name": "idle-flip"
+		},
+		{
+			"offsets": [
+				-14,
+				-113
+			],
+			"fps": 24,
+			"anim": "teafightpunch instance",
+			"loop": false,
+			"name": "punch"
+		},
+		{
+			"offsets": [
+				-42,
+				-112
+			],
+			"fps": 24,
+			"anim": "teafightturnroRIGHT",
+			"loop": false,
+			"name": "turnRIGHT"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "tea/tea_fight",
+	"color": "C6C1F3"
+}
