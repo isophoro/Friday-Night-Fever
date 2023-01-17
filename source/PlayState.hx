@@ -1739,7 +1739,7 @@ class PlayState extends MusicBeatState
 
 		notes.forEachAlive(function(daNote:Note)
 		{
-			if (daNote.type == 1 && !daNote.animPlayed && Conductor.songPosition >= daNote.strumTime - 750 && daNote.mustPress)
+			if (daNote.mustPress && daNote.type == 1 && !daNote.animPlayed && daNote.timeDiff <= 750 * FlxG.sound.music.pitch)
 			{
 				summonPainting();
 				daNote.animPlayed = true;
@@ -1752,9 +1752,9 @@ class PlayState extends MusicBeatState
 			{
 				daNote.x = strum.x;
 				if (ClientPrefs.downscroll)
-					daNote.y = strum.y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2);
+					daNote.y = strum.y + 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed / FlxG.sound.music.pitch, 2);
 				else
-					daNote.y = strum.y - 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed, 2);
+					daNote.y = strum.y - 0.45 * (Conductor.songPosition - daNote.strumTime) * FlxMath.roundDecimal(SONG.speed / FlxG.sound.music.pitch, 2);
 
 				daNote.visible = strum.visible;
 				if (!daNote.isSustainNote)
@@ -1893,7 +1893,7 @@ class PlayState extends MusicBeatState
 			if (daNote.isSustainNote)
 				daNote.x += daNote.width / 2 + (usePixelAssets ? 10 : 17);
 
-			if (daNote.mustPress && (daNote.strumTime - Conductor.songPosition) < -166)
+			if (daNote.mustPress && (daNote.strumTime - Conductor.songPosition) < -166 * FlxG.sound.music.pitch)
 			{
 				if (daNote.type == 0)
 				{
@@ -2816,7 +2816,7 @@ class PlayState extends MusicBeatState
 		var closestNote:Note = null;
 		notes.forEachAlive((note:Note) ->
 		{
-			if (note.mustPress && note.noteData == key && !note.isSustainNote && note.timeDiff <= 166)
+			if (note.mustPress && note.noteData == key && !note.isSustainNote && note.timeDiff <= 166 * FlxG.sound.music.pitch)
 			{
 				if (closestNote == null || closestNote != null && note.timeDiff < closestNote.timeDiff)
 					closestNote = note;
