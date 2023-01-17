@@ -1,6 +1,8 @@
+import ShadersHandler;
 import flixel.util.FlxTimer;
 import openfl.filters.BitmapFilter;
 import openfl.filters.ShaderFilter;
+import shaders.CRTBend;
 import shaders.Scanline;
 
 var pixelDiner;
@@ -31,12 +33,12 @@ function onCreate()
 	pixelDiner.visible = false;
 
 	yukichi_pixel = new Character(0, 0, "yukichi-pixel");
-	tea_pixel = new Character(0, 0, "tea-pixel");
+	tea_pixel = new Character(0, 0, "gf-pepper-pixel");
 	fever_pixel = new Character(0, 0, "bf-pixeldemon", true);
 	tea_pixel.scrollFactor.set(0.9, 0.9);
 	fever_pixel.scrollFactor.set(0.9, 0.9);
 	yukichi_pixel.scrollFactor.set(0.9, 0.9);
-	tea_pixel.setPosition(gf.x + 300, gf.y + 320);
+	tea_pixel.setPosition(gf.x + 300, gf.y + 220);
 	fever_pixel.setPosition(boyfriend.x + 150, boyfriend.y + 37);
 	yukichi_pixel.setPosition(dad.x + 190, dad.y + 190);
 	fever_pixel.visible = false;
@@ -58,10 +60,21 @@ function onBeatHit(curBeat:Int)
 			FlxG.camera.shake(0.09, Conductor.crochet / 1000);
 			camHUD.shake(0.09, Conductor.crochet / 1000);
 		case 96:
+			game.disableScoreBop = true;
+			scoreTxt.font = Paths.font("pixel.otf");
+			game.songName.font = Paths.font("pixel.otf");
+			currentTimingShown.visible = false;
+			game.songName.x = (FlxG.width / 2) - (game.songName.width / 2);
+			scoreTxt.size = 16;
+			game.updateScoring();
+
 			camGame.filtersEnabled = true;
 			var sl = new ShaderFilter(new Scanline());
-			camGame.setFilters([sl]);
-			camHUD.setFilters([sl]);
+			var cb = new ShaderFilter(new CRTBend());
+			camGame.setFilters([ShadersHandler.chromaticAberration, cb, sl]);
+			camHUD.setFilters([ShadersHandler.chromaticAberration, cb, sl]);
+
+			ShadersHandler.setChrome(FlxG.random.int(2, 2) / 1500);
 
 			game.curPlayer = fever_pixel;
 			game.curOpponent = yukichi_pixel;
@@ -82,6 +95,13 @@ function onBeatHit(curBeat:Int)
 			FlxG.camera.shake(0.09, Conductor.crochet / 1000);
 			camHUD.shake(0.09, Conductor.crochet / 1000);
 		case 160:
+			game.disableScoreBop = false;
+			scoreTxt.font = "VCR OSD Mono";
+			game.songName.font = "VCR OSD Mono";
+			currentTimingShown.visible = true;
+			game.songName.x = (FlxG.width / 2) - (game.songName.width / 2);
+			scoreTxt.size = 18;
+
 			fever_pixel.visible = false;
 			tea_pixel.visible = false;
 			pixelDiner.visible = false;

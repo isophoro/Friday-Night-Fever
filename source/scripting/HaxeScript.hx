@@ -300,6 +300,8 @@ class HaxeScript extends Interp implements IFlxDestroyable
 					item.shader = new shaders.BadNun.SolidColorShader();
 				case "Scanline":
 					item.shader = new shaders.Scanline();
+				case "CRTBend":
+					item.shader = new shaders.CRTBend();
 				default:
 					item.shader = null;
 			}
