@@ -42,6 +42,12 @@ class ClientPrefs
 	public static var username:String = "";
 	public static var userToken:String = "";
 
+	public static var boombox:Bool = false;
+	public static var songPitch:Float = 1;
+	public static var randomNotes:Bool = false;
+	public static var swapSides:Bool = false;
+	public static var judgeScale:Float = 1;
+
 	public static function get_keybinds():Array<String>
 	{
 		return [leftBind, downBind, upBind, rightBind];

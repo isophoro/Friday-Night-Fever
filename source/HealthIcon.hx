@@ -22,9 +22,9 @@ class HealthIcon extends FlxSprite
 
 	public function swapCharacter(char:String)
 	{
-		curCharacter = char;
+		curCharacter = char.toLowerCase();
 		// i hate this code and i hate how the characters are named since this makes it twenty times harder than it should
-		switch (char)
+		switch (curCharacter)
 		{
 			case 'scarlet-freeplay':
 				loadGraphic(Paths.image('icons/icon-scarlet'), true, 150, 150);
@@ -49,18 +49,18 @@ class HealthIcon extends FlxSprite
 			case 'taki' | 'monster':
 				loadGraphic(Paths.image('icons/icon-monster'), true, 150, 150);
 			default:
-				loadGraphic(Paths.image('icons/icon-$char'), true, 150, 150);
+				loadGraphic(Paths.image('icons/icon-$curCharacter'), true, 150, 150);
 		}
 
 		var pixel:Array<String> = ['flippy', 'senpai', 'bdbfever'];
-		antialiasing = StringTools.contains(char, 'pixel') || pixel.contains(char) ? false : true;
+		antialiasing = StringTools.contains(curCharacter, 'pixel') || pixel.contains(curCharacter) ? false : true;
 		animation.add('healthy', [0], 0, false, isPlayer);
 		animation.add('hurt', [1], 0, false, isPlayer);
 		animation.add('winning', [2], 0, false, isPlayer);
 
 		animation.play('healthy');
 
-		switch (char)
+		switch (curCharacter)
 		{
 			case 'bf-pixel' | 'senpai' | 'senpai-angry' | 'flippy' | 'tea-pixel':
 				antialiasing = false;

@@ -12,6 +12,36 @@
 		},
 		{
 			"offsets": [
+				341,
+				299
+			],
+			"fps": 24,
+			"anim": "Scar transform",
+			"loop": false,
+			"name": "transform"
+		},
+		{
+			"offsets": [
+				15,
+				5
+			],
+			"fps": 24,
+			"anim": "Scar hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				2,
+				-71
+			],
+			"fps": 24,
+			"anim": "Scar right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
 				0,
 				-170
 			],
@@ -22,28 +52,18 @@
 		},
 		{
 			"offsets": [
-				2,
-				-41
+				30,
+				0
 			],
 			"fps": 24,
-			"anim": "Scar right",
+			"anim": "Scar Laugh",
 			"loop": false,
-			"name": "singRIGHT"
+			"name": "singLaugh"
 		},
 		{
 			"offsets": [
-				11,
-				29
-			],
-			"fps": 24,
-			"anim": "Scar up",
-			"loop": false,
-			"name": "singUP"
-		},
-		{
-			"offsets": [
-				110,
-				-20
+				112,
+				-21
 			],
 			"fps": 24,
 			"anim": "Scar left",
@@ -52,15 +72,16 @@
 		},
 		{
 			"offsets": [
-				30,
-				0
+				31,
+				29
 			],
 			"fps": 24,
-			"anim": "Scar Laugh",
+			"anim": "Scar up",
 			"loop": false,
-			"name": "singLaugh"
+			"name": "singUP"
 		}
 	],
+	"noAntialiasing": false,
 	"facingLeft": null,
 	"file": "scarlet/Scarlet",
 	"color": "E059B1"

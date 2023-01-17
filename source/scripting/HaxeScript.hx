@@ -11,7 +11,6 @@ import hscript.Interp;
 import hscript.Parser;
 import sys.FileSystem;
 import sys.io.File;
-import vlc.MP4Handler;
 
 using StringTools;
 
@@ -24,7 +23,7 @@ import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
 class HaxeScript extends Interp implements IFlxDestroyable
 {
 	static final AUTOIMPORTS:Array<Class<Dynamic>> = [
-		Math, Std, FlxG, FlxSprite, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, MP4Handler, Character
+		Math, Std, FlxG, FlxSprite, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, Character
 	];
 
 	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGameJolt"];
@@ -248,6 +247,7 @@ class HaxeScript extends Interp implements IFlxDestroyable
 			variables.set(k, v);
 
 		// set up work arounds for abstract classes
+		variables.set("MP4Handler", #if (hxCodec >= "2.6.0") VideoHandler #else MP4Handler #end);
 		variables.set("FlxPoint", #if (flixel < "5.0.0") FlxPoint #else flixel.math.FlxPoint.FlxBasePoint #end);
 		variables.set("FlxColor", HScriptColorAccess);
 		var tweenTypes:Dynamic = {
@@ -298,6 +298,8 @@ class HaxeScript extends Interp implements IFlxDestroyable
 					item.shader = new shaders.BWShader();
 				case "SolidColorShader":
 					item.shader = new shaders.BadNun.SolidColorShader();
+				case "Scanline":
+					item.shader = new shaders.Scanline();
 				default:
 					item.shader = null;
 			}

@@ -121,10 +121,18 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	{
 		super.update(elapsed);
 
+		if (!dialogueStarted)
+			return;
+
+		if (FlxG.keys.anyJustPressed([ESCAPE, BACKSPACE]))
+		{
+			return endDialogue();
+		}
+
 		text.delay = FlxG.keys.pressed.SHIFT ? 0.02 : 0.04;
 
 		@:privateAccess
-		if (FlxG.keys.anyJustPressed([ENTER, SPACE]) || dialogueStarted && !text._typing && skip)
+		if (FlxG.keys.anyJustPressed([ENTER, SPACE]) || !text._typing && skip)
 		{
 			@:privateAccess
 			if (!text._typing)

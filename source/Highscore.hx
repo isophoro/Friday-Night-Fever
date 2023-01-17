@@ -56,9 +56,10 @@ class Highscore
 		FlxG.save.flush();
 	}
 
-	public static function formatSong(song:String, diff:Int):String
+	public static function formatSong(song:String, diff:Int = -1):String
 	{
-		return song + (Difficulty.data[diff].chartSuffix == null ? "" : Difficulty.data[diff].chartSuffix);
+		var str = StringTools.replace(song, " ", "");
+		return diff < Difficulty.DIFFICULTY_MIN ? str : str + (Difficulty.data[diff].chartSuffix == null ? "" : Difficulty.data[diff].chartSuffix);
 	}
 
 	public static function getScore(song:String, diff:Int):Int

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Robertfever.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Robo fever0000" x="0" y="0" width="1090" height="773" pivotX="-303.2" pivotY="28.25"/>
+	<SubTexture name="Robo fever0001" x="1090" y="0" width="1090" height="773"/>
+	<SubTexture name="Robo fever0002" x="2180" y="0" width="1090" height="773"/>
+	<SubTexture name="Robo fever0003" x="3270" y="0" width="1090" height="773"/>
+	<SubTexture name="Robo fever0004" x="4360" y="0" width="1090" height="773"/>
+	<SubTexture name="Robo fever0005" x="5450" y="0" width="1090" height="773"/>
+	<SubTexture name="Robo fever0006" x="6540" y="0" width="1090" height="773"/>
+	<SubTexture name="Robo fever0007" x="0" y="773" width="1090" height="773"/>
+	<SubTexture name="Robo fever0008" x="1090" y="773" width="1090" height="773"/>
+	<SubTexture name="Robo fever0009" x="2180" y="773" width="1090" height="773"/>
+	<SubTexture name="Robo fever0010" x="3270" y="773" width="1090" height="773"/>
+	<SubTexture name="Robo fever0011" x="1090" y="773" width="1090" height="773"/>
+	<SubTexture name="Robo fever0012" x="2180" y="773" width="1090" height="773"/>
+	<SubTexture name="Robo fever0013" x="3270" y="773" width="1090" height="773"/>
+	<SubTexture name="Robo fever0014" x="1090" y="773" width="1090" height="773"/>
+	<SubTexture name="Robo fever down0000" x="4360" y="773" width="1089" height="773" pivotX="-300.95" pivotY="28.25"/>
+	<SubTexture name="Robo fever down0001" x="5449" y="773" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0002" x="6538" y="773" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0003" x="0" y="1546" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0004" x="1089" y="1546" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0005" x="6538" y="773" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0006" x="0" y="1546" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0007" x="1089" y="1546" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0008" x="6538" y="773" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0009" x="0" y="1546" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0010" x="1089" y="1546" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0011" x="6538" y="773" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0012" x="0" y="1546" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0013" x="1089" y="1546" width="1089" height="773"/>
+	<SubTexture name="Robo fever down0014" x="6538" y="773" width="1089" height="773"/>
+	<SubTexture name="Robo fever left0000" x="2178" y="1546" width="1082" height="773" pivotX="-299.85" pivotY="28.25"/>
+	<SubTexture name="Robo fever left0001" x="3260" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0002" x="4342" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0003" x="5424" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0004" x="6506" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0005" x="4342" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0006" x="5424" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0007" x="6506" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0008" x="4342" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0009" x="5424" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0010" x="6506" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0011" x="4342" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0012" x="5424" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0013" x="6506" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever left0014" x="4342" y="1546" width="1082" height="773"/>
+	<SubTexture name="Robo fever right0000" x="0" y="2319" width="1113" height="773" pivotX="-305.75" pivotY="28.25"/>
+	<SubTexture name="Robo fever right0001" x="1113" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0002" x="2226" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0003" x="3339" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0004" x="4452" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0005" x="2226" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0006" x="3339" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0007" x="4452" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0008" x="2226" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0009" x="3339" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0010" x="4452" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0011" x="2226" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0012" x="3339" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0013" x="4452" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever right0014" x="2226" y="2319" width="1113" height="773"/>
+	<SubTexture name="Robo fever up0000" x="5565" y="2319" width="1090" height="773" pivotX="-303.75" pivotY="28.25"/>
+	<SubTexture name="Robo fever up0001" x="6655" y="2319" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0002" x="0" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0003" x="1090" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0004" x="2180" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0005" x="0" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0006" x="1090" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0007" x="2180" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0008" x="0" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0009" x="1090" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0010" x="2180" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0011" x="0" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0012" x="1090" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0013" x="2180" y="3092" width="1090" height="773"/>
+	<SubTexture name="Robo fever up0014" x="0" y="3092" width="1090" height="773"/>
+</TextureAtlas>

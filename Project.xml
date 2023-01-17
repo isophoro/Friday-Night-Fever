@@ -113,9 +113,11 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
+	<haxelib name="flxanimate" />
 	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="hxCodec" if="desktop" />
 	<haxelib name="linc_luajit" unless="html"/>
+	<haxelib name="Flixel-TextureAtlas"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -127,6 +129,8 @@
 
 	<!-- Show debug traces for hxCodec -->
 	<haxedef name="HXC_DEBUG_TRACE" if="debug" />
+
+	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
 
 	<!-- _________________________________ Custom _______________________________ -->
 

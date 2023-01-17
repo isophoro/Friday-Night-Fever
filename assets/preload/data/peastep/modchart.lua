@@ -83,6 +83,9 @@ if curStep >= 156 and curStep < 158 or curStep >= 220 and curStep < 222 or curSt
 	camHudAngle = camHudAngle + 0.2
 end
 
+if curStep == 161 or curStep == 224 or curStep == 545 or curStep == 608 then
+	camHudAngle = 0
+end
 
 if curStep == 136 or curStep == 138 or curStep == 140 or curStep == 142 or curStep == 148 or curStep == 150 or curStep == 152 or curStep == 154 or curStep == 168 or curStep == 170 or curStep == 172 or curStep == 174 or curStep == 200 or curStep == 202 or curStep == 204 or curStep == 206 or curStep == 212 or curStep == 214 or curStep == 216 or curStep == 218 or curStep == 232 or curStep == 234 or curStep == 236 or curStep == 238 or curStep == 520 or curStep == 522 or curStep == 524 or curStep == 526 or curStep == 532 or curStep == 534 or curStep == 536 or curStep == 538 or curStep == 552 or curStep == 554 or curStep == 556 or curStep == 558 or curStep == 584 or curStep == 586 or curStep == 588 or curStep == 590 or curStep == 596 or curStep == 598 or curStep == 600 or curStep == 602 or curStep == 616 or curStep == 618 or curStep == 620 or curStep == 622 or curStep == 1032 or curStep == 1034 or curStep == 1036 or curStep == 1038 or curStep == 1044 or curStep == 1046 or curStep == 1047 or curStep == 1048 or curStep == 1050 or curStep == 1064 or curStep == 1066 or curStep == 1068 or curStep == 1069 or curStep == 1070 then
 	setCamZoom(1)

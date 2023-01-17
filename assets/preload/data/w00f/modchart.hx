@@ -1,6 +1,18 @@
+import flixel.FlxSprite;
 import flixel.math.FlxMath;
 
+var eat:FlxSprite;
 var hudAngle:Float = 0;
+
+function onCreate()
+{
+	eat = new FlxSprite(645, -110);
+	eat.frames = Paths.getSparrowAtlas("characters/fever/fever_eat");
+	eat.animation.addByPrefix("eat", "Fever eat", 24, false);
+	eat.antialiasing = true;
+	add(eat, getIndexOfMember(boyfriend) - 2);
+	eat.visible = false;
+}
 
 function onBeatHit(curBeat:Int)
 {
@@ -139,9 +151,11 @@ function onStepHit(curStep:Int)
 		game.curPlayer = dad;
 	}
 
-	if (curStep == 2141)
+	if (curStep == 2152)
 	{
-		boyfriend.playAnim("burger", true);
+		eat.visible = true;
+		boyfriend.visible = false;
+		eat.animation.play("eat", true);
 	}
 }
 

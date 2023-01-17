@@ -1,5 +1,5 @@
-import ("Boyfriend");
-import("Character");
+import Boyfriend;
+import flixel.util.FlxTimer;
 
 // this truly was a friday night fever
 
@@ -10,6 +10,32 @@ var roboFalling:Character;
 var roboFallingCool:Character;
 var feverTunnel:Boyfriend;
 var roboTunnel:Character;
+var ogBF:FlxPoint = new FlxPoint(0, 0);
+var ogDad:FlxPoint = new FlxPoint(0, 0);
+
+function createCharacter(char:String, x:Float, y:Float)
+{
+	var _char = new Character(x, y, char, false);
+	_char.visible = false;
+	return _char;
+}
+
+function createBoyfriend(char:String, x:Float, y:Float)
+{
+	var _char = new Boyfriend(x, y, char);
+	_char.visible = false;
+	return _char;
+}
+
+function setHUDVisible(visible:Bool)
+{
+	for (i in [iconP1, iconP2, healthBar, healthBarBG, scoreTxt])
+		i.visible = visible;
+
+	notes.visible = visible;
+	for (i in 0...strumLineNotes.length)
+		strumLineNotes[i].visible = visible;
+}
 
 function onCreate()
 {
@@ -28,32 +54,35 @@ function onCreate()
 	add(fallStreaks);
 	fallStreaks.visible = false;
 
-	feverTunnel = new Boyfriend(boyfriend.x, boyfriend.y, "bf-mad-glow");
-	feverTunnel.scrollFactor.copyFrom(boyfriend.scrollFactor);
+	feverTunnel = createBoyfriend("bf-mad-glow", boyfriend.x, boyfriend.y);
+	feverTunnel.scrollFactor.set(boyfriend.scrollFactor.x, boyfriend.scrollFactor.y);
 	add(feverTunnel);
-	feverTunnel.visible = false;
 
-	roboTunnel = new Character(dad.x, dad.y, "robo-final-glow", false);
-	roboTunnel.scrollFactor.copyFrom(dad.scrollFactor);
+	roboTunnel = createCharacter("robo-final-glow", dad.x, dad.y);
+	roboTunnel.scrollFactor.set(dad.scrollFactor.x, dad.scrollFactor.y);
 	add(roboTunnel);
-	roboTunnel.visible = false;
 
-	feverFalling = new Boyfriend(boyfriend.x, boyfriend.y + 145, "bf-fall");
+	feverFalling = createBoyfriend("bf-fall", 3350, 1295);
 	add(feverFalling);
-	feverFalling.visible = false;
 
-	roboFalling = new Character(boyfriend.x - 1100, boyfriend.y - 175, "robo-fall", false);
+	roboFalling = createCharacter("robo-fall", 2200, 1030);
 	add(roboFalling);
-	roboFalling.visible = false;
 
-	roboFallingCool = new Character(boyfriend.x - 1100, boyfriend.y - 175, "robo-fall-cool", false);
+	roboFallingCool = createCharacter("robo-fall-cool", 2200, 1030);
 	add(roboFallingCool);
-	roboFallingCool.visible = false;
+
+	trace("Finish creating assets");
+	snapCamera();
+
+	dad.scale.set(1.14, 1.14);
+	dad.y -= 50;
+	roboTunnel.scale.set(1.14, 1.14);
+	setHUDVisible(false);
 }
 
 function onUpdate(elapsed:Float)
 {
-	if (curBeat >= 463 && curBeat < 496)
+	if (curBeat >= 528)
 	{
 		roboFallingCool.visible = roboFallingCool.animation.curAnim.name != "idle";
 		roboFalling.visible = !roboFallingCool.visible;
@@ -63,12 +92,22 @@ function onUpdate(elapsed:Float)
 		roboFalling.visible = true;
 		roboFallingCool.visible = false;
 	}
-}
 
-function onPostUpdate(elapsed:Float)
-{
-	if (scoreTxt.alpha == 0.7)
-		scoreTxt.scale.set(1, 1);
+	if (FlxG.keys.justPressed.SHIFT)
+	{
+		shootTrain();
+	}
+
+	if (boyfriend.animation.curAnim.name == "fall" && boyfriend.animation.curAnim.curFrame >= 15)
+	{
+		boyfriend.y += elapsed * 2660;
+		boyfriend.x += elapsed * 960;
+	}
+
+	if (dad.animation.curAnim.name == "fall" && dad.animation.finished)
+	{
+		dad.y += elapsed * 3660;
+	}
 }
 
 var introBumps:Array<Int> = [40, 50, 57, 59, 60, 61, 62, 63];
@@ -83,14 +122,10 @@ function onStepHit(curStep:Int)
 
 function onBeatHit(curBeat:Int)
 {
+	handleNonEvents(curBeat);
+
 	switch (curBeat)
 	{
-		case 1:
-			camGame.zoom += 0.02;
-		case 4:
-			camGame.zoom += 0.02;
-		case 8:
-			camGame.zoom += 0.02;
 		case 205:
 			getGlobalVar("enterTunnel")();
 		case 206:
@@ -113,7 +148,12 @@ function onBeatHit(curBeat:Int)
 
 			game.curPlayer = boyfriend;
 			game.curOpponent = dad;
+		case 428:
+			shootTrain();
 		case 432:
+			boyfriend.setPosition(ogBF.x, ogBF.y);
+			dad.setPosition(ogDad.x, ogDad.y);
+
 			camGame.flash(FlxColor.WHITE, 0.45);
 			forceComboPos = new FlxPoint(FlxG.width * (ClientPrefs.downscroll ? 0.78 : 0.05), 30);
 
@@ -134,11 +174,11 @@ function onBeatHit(curBeat:Int)
 				i.visible = false;
 
 			game.disableCamera = true;
-			snapCamera(new FlxPoint(BF_CAM_POS.x - 240, BF_CAM_POS.y + 370));
+			snapCamera(new FlxPoint(BF_CAM_POS.x - 140, BF_CAM_POS.y + 260));
 			game.curPlayer = feverFalling;
 			game.curOpponent = roboFalling;
 
-			FlxTween.tween(fallBG, {"scale.x": 1.9, "scale.y": 1.9}, 19);
+			FlxTween.tween(fallBG, {"scale.x": 2.5, "scale.y": 2.5}, 29);
 			fallBG.visible = true;
 			fallBG.setPosition(camFollow.x - 800, camFollow.y - 550);
 			fallStreaks.visible = true;
@@ -149,25 +189,65 @@ function onBeatHit(curBeat:Int)
 
 			game.defaultCamZoom += 0.635;
 			camGame.zoom = game.defaultCamZoom + 0.15;
-			bfAltSuffix = '-cool';
 
 			for (i in 0...4)
 				strumLineNotes[i].visible = false;
-		case 464:
-			game.curOpponent = roboFallingCool;
-		case 496:
-			game.curOpponent = roboFalling;
 		case 495:
+			bfAltSuffix = '-cool';
+		case 528:
+			game.curOpponent = roboFallingCool;
 			bfAltSuffix = '';
-	}
-
-	if (curBeat >= 80 && curBeat < 432 && curBeat % 4 == 0)
-	{
-		camGame.zoom += 0.005;
 	}
 
 	if (curBeat >= 464 && curBeat < 496)
 	{
 		roboFalling.playAnim("idle");
 	}
+}
+
+function handleNonEvents(curBeat:Int)
+{
+	switch (curBeat)
+	{
+		case 1:
+			camGame.zoom += 0.02;
+		case 4:
+			camGame.zoom += 0.02;
+		case 8:
+			camGame.zoom += 0.02;
+		case 16:
+			setHUDVisible(true);
+	}
+
+	if (curBeat >= 80 && curBeat < 432 && curBeat % 4 == 0)
+	{
+		camGame.zoom += 0.005;
+	}
+}
+
+function shootTrain()
+{
+	trace("SHOOT");
+	ogDad.set(dad.x, dad.y);
+	ogBF.set(boyfriend.x, boyfriend.y);
+	var td = getGlobalVar("trainDeath");
+	getGlobalVar("train").visible = false;
+	td.visible = true;
+	td.animation.play("death", true);
+	dad.playAnim("shoot", true);
+	new FlxTimer().start(0.26, function(t)
+	{
+		FlxTween.tween(boyfriend, {x: boyfriend.x + 200}, 0.3, {ease: FlxEase.cubeInOut});
+	});
+	boyfriend.playAnim("fall");
+	camGame.shake(0.09, 0.2);
+	dad.animation.finishCallback = function(a)
+	{
+		trace("finish");
+		dad.animation.finishCallback = null;
+		dad.playAnim("fall", true);
+	}
+
+	game.curOpponent = roboFalling;
+	game.curPlayer = feverFalling;
 }

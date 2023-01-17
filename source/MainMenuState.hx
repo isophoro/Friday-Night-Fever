@@ -90,6 +90,7 @@ class MainMenuState extends InteractableState
 		var boombox = new Interactable('newMain/boombox', 779, 433, 0.7, 'boombox not selected', 'boombox selected', new InteractHitbox(779, 433, 165, 135),
 			[0, 5], true, "newMain/boomboxtext", "boombox text", [639, 520]);
 		boombox.sound = "boombox";
+		boombox.callback = FlxG.switchState.bind(new states.BoomboxState());
 		addInteractable(boombox);
 
 		var costumes = new Interactable('newMain/costumes', 505, 580, 0.7, 'costume notselected', 'costume selected', new InteractHitbox(505, 580, 240, 115),

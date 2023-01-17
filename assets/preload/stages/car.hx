@@ -35,6 +35,8 @@ function onCreate()
 	wheel.antialiasing = true;
 	wheel.visible = false;
 	setGlobalVar("wheel", wheel);
+
+	forceComboPos = new FlxPoint(FlxG.width * 0.15, 140);
 }
 
 function onCreatePost()

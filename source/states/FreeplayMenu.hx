@@ -82,7 +82,7 @@ class FreeplayMenu extends MusicBeatSubstate
 				["Tranquility", "scarlet"],
 				["Princess", "scarlet"],
 				["Bloom", "scarlet-final"],
-				["Crack", "scarlet-final"]
+				["Crack", "scarlet"]
 			]
 		},
 		{
@@ -100,7 +100,12 @@ class FreeplayMenu extends MusicBeatSubstate
 		},
 		{
 			"image": "week9",
-			"songs": [["Cosmic-Swing", "rolldog"], ["Cell-From-Hell", "rolldog"], ["W00F", "rolldog"]]
+			"songs": [
+				["DUI", "rolldog"],
+				["Cosmic-Swing", "rolldog"],
+				["Cell-From-Hell", "rolldog"],
+				["W00F", "rolldog"]
+			]
 		},
 		{
 			"image": "extras",
@@ -218,7 +223,7 @@ class FreeplayMenu extends MusicBeatSubstate
 		if (controls.ACCEPT)
 		{
 			var txt = textGrp.members[curSelected].text.replace("\n", "").trim().replace(" ", "-").replace("[OLD]", "Old").toLowerCase();
-			var poop:String = Highscore.formatSong(txt, Difficulty.HARD);
+			var poop:String = Highscore.formatSong(txt, Difficulty.NORMAL);
 
 			if (poop.toLowerCase().contains("mechanical"))
 			{

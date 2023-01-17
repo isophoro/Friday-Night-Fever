@@ -1,5 +1,4 @@
 import Character;
-import vlc.MP4Handler;
 
 var video:MP4Handler;
 var hallowDum:Character;

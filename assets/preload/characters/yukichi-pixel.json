@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-90,
+				-60
+			],
+			"loop": false,
+			"fps": 24,
+			"name": "idle",
+			"anim": "YukichiIDLE"
+		},
+		{
+			"offsets": [
+				-142,
+				-64
+			],
+			"loop": false,
+			"fps": 24,
+			"name": "singDOWN",
+			"anim": "YukichiDOWN"
+		},
+		{
+			"offsets": [
+				-64,
+				-64
+			],
+			"loop": false,
+			"fps": 24,
+			"name": "singLEFT",
+			"anim": "YukichiLEFT"
+		},
+		{
+			"offsets": [
+				-86,
+				-60
+			],
+			"loop": false,
+			"fps": 24,
+			"name": "singUP",
+			"anim": "YukichiUP"
+		},
+		{
+			"offsets": [
+				-125,
+				-64
+			],
+			"loop": false,
+			"fps": 24,
+			"name": "singRIGHT",
+			"anim": "YukichiRIGHT"
+		}
+	],
+	"noAntialiasing": true,
+	"file": "yukichi/yukichiPixel",
+	"facingLeft": false,
+	"scale": 6
+}

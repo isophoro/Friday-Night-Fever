@@ -103,9 +103,6 @@ class ChartingState extends MusicBeatState
 	var gridBlackLine:FlxSprite;
 	var vocals:FlxSound;
 
-	var player2:Character = new Character(0, 0, "dad");
-	var player1:Boyfriend = new Boyfriend(0, 0, "bf");
-
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
 	var styles:Array<String> = ['normal', 'painting'];
@@ -1147,11 +1144,6 @@ class ChartingState extends MusicBeatState
 		trace('beat');
 
 		super.beatHit();
-		if (!player2.animation.curAnim.name.startsWith("sing"))
-		{
-			player2.playAnim('idle');
-		}
-		player1.dance();
 	}
 
 	function recalculateSteps():Int

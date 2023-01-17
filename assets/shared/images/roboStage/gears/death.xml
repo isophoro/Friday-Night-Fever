@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Train go like.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Train be like0000" x="0" y="0" width="3213" height="691" pivotX="0" pivotY="130.9"/>
+	<SubTexture name="Train be like0001" x="3213" y="0" width="3213" height="691"/>
+	<SubTexture name="Train be like0002" x="0" y="691" width="3213" height="691"/>
+	<SubTexture name="Train be like0003" x="3213" y="691" width="3213" height="691"/>
+	<SubTexture name="Train be like0004" x="0" y="1382" width="3213" height="691"/>
+	<SubTexture name="Train be like0005" x="3213" y="1382" width="3213" height="691"/>
+	<SubTexture name="Train be like0006" x="0" y="2073" width="3213" height="691"/>
+	<SubTexture name="Train be like0007" x="3213" y="2073" width="3213" height="691"/>
+	<SubTexture name="Train be like0008" x="0" y="2764" width="3213" height="691"/>
+	<SubTexture name="Train be like0009" x="3213" y="2764" width="3213" height="691"/>
+	<SubTexture name="Train be like0010" x="0" y="3455" width="3213" height="691"/>
+	<SubTexture name="Train be like0011" x="3213" y="3455" width="3213" height="691"/>
+	<SubTexture name="Train be like0012" x="3213" y="3455" width="3213" height="691"/>
+	<SubTexture name="Train be like0013" x="0" y="4146" width="3213" height="691"/>
+	<SubTexture name="Train be like0014" x="3213" y="4146" width="3213" height="691"/>
+	<SubTexture name="Train be like0015" x="0" y="4837" width="3213" height="691"/>
+	<SubTexture name="Train be like0016" x="3213" y="4837" width="3213" height="691"/>
+	<SubTexture name="Train be like0017" x="0" y="5528" width="3213" height="691"/>
+	<SubTexture name="Train be like0018" x="3213" y="5528" width="3213" height="691"/>
+	<SubTexture name="Train be like0019" x="0" y="6219" width="3213" height="691"/>
+	<SubTexture name="Train be like0020" x="3213" y="6219" width="3213" height="691"/>
+	<SubTexture name="Train be like0021" x="0" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0022" x="0" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0023" x="3213" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0024" x="3213" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0025" x="3213" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0026" x="3213" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0027" x="3213" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0028" x="3213" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0029" x="3213" y="6910" width="3213" height="691"/>
+	<SubTexture name="Train be like0030" x="0" y="0" width="3213" height="691"/>
+	<SubTexture name="Train be like0031" x="3213" y="0" width="3213" height="691"/>
+	<SubTexture name="Train be like0032" x="0" y="691" width="3213" height="691"/>
+	<SubTexture name="Train be like0033" x="3213" y="691" width="3213" height="691"/>
+	<SubTexture name="Train be like0034" x="0" y="1382" width="3213" height="691"/>
+	<SubTexture name="Train be like0035" x="3213" y="1382" width="3213" height="691"/>
+	<SubTexture name="Train be like0036" x="0" y="2073" width="3213" height="691"/>
+	<SubTexture name="Train be like0037" x="3213" y="2073" width="3213" height="691"/>
+	<SubTexture name="Train be like0038" x="0" y="2764" width="3213" height="691"/>
+	<SubTexture name="Train be like0039" x="3213" y="2764" width="3213" height="691"/>
+	<SubTexture name="Train be like0040" x="0" y="3455" width="3213" height="691"/>
+	<SubTexture name="Train be like0041" x="3213" y="3455" width="3213" height="691"/>
+	<SubTexture name="Train be like0042" x="3213" y="3455" width="3213" height="691"/>
+	<SubTexture name="Train be like0043" x="0" y="4146" width="3213" height="691"/>
+	<SubTexture name="Train be like0044" x="3213" y="4146" width="3213" height="691"/>
+	<SubTexture name="Train be like0045" x="0" y="4837" width="3213" height="691"/>
+	<SubTexture name="Train be like0046" x="3213" y="4837" width="3213" height="691"/>
+	<SubTexture name="Train be like0047" x="0" y="5528" width="3213" height="691"/>
+	<SubTexture name="Train be like0048" x="3213" y="5528" width="3213" height="691"/>
+	<SubTexture name="Train be like0049" x="0" y="6219" width="3213" height="691"/>
+</TextureAtlas>

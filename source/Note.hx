@@ -150,6 +150,11 @@ class Note extends FlxSprite
 			if (strumTime >= Conductor.crochet * 320 && strumTime < Conductor.crochet * 336)
 				noteStyle = 'pixel';
 		}
+		else if (PlayState.SONG.song == 'Party-Crasher')
+		{
+			if (strumTime >= Conductor.crochet * 96 && strumTime < Conductor.crochet * 160)
+				noteStyle = 'pixel';
+		}
 
 		loadNote(noteStyle);
 

@@ -95,7 +95,7 @@ class Ratings
 
 	public static function CalculateRating(noteDiff:Float, ?customSafeZone:Float):String // Generate a judgement through some timing shit
 	{
-		var customTimeScale = Conductor.timeScale;
+		var customTimeScale = FlxG.sound.music.pitch;
 
 		if (customSafeZone != null)
 			customTimeScale = customSafeZone / 166;

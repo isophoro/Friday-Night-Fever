@@ -14,6 +14,7 @@ var lights:FlxBackdrop;
 var fakeTunnelBG:FlxSprite;
 var outerBuilding:FlxSprite;
 var bomb:FlxSprite;
+var trainDeath:FlxSprite;
 
 function onCreate()
 {
@@ -80,6 +81,19 @@ function onCreate()
 	train.setGraphicSize(Std.int(train.width * 1.75));
 	train.updateHitbox();
 	add(train);
+	setGlobalVar("train", train);
+
+	trainDeath = new FlxSprite(-7, 453);
+	trainDeath.frames = Paths.getSparrowAtlas('roboStage/gears/death');
+	trainDeath.animation.addByPrefix('death', "Train be like", 24, false);
+	// trainDeath.animation.play('death');
+	trainDeath.antialiasing = true;
+	trainDeath.scrollFactor.set(0.9, 0.9);
+	trainDeath.setGraphicSize(Std.int(trainDeath.width * 1.75));
+	trainDeath.updateHitbox();
+	trainDeath.visible = false;
+	add(trainDeath);
+	setGlobalVar("trainDeath", trainDeath);
 
 	poles = new FlxSprite(2900, 600).loadGraphic(Paths.image("roboStage/gears/poles"));
 	poles.antialiasing = true;
@@ -103,7 +117,7 @@ function onCreate()
 	add(trainGlow);
 	trainGlow.visible = false;
 
-	bomb = new FlxSprite();
+	bomb = new FlxSprite(2350, 103.442);
 	bomb.frames = Paths.getSparrowAtlas('roboStage/gears/regular_bomb');
 	bomb.scrollFactor.set(0.9, 0.9);
 	bomb.animation.addByPrefix("idle", "Mako Bomb Normal", 24);
@@ -111,6 +125,7 @@ function onCreate()
 	bomb.antialiasing = true;
 	bomb.scale.set(1.5, 1.5);
 	add(bomb);
+	setGlobalVar("bomb", bomb);
 
 	fakeTunnelBG = new FlxSprite(0, -50).loadGraphic(Paths.image("roboStage/gears/tunnel"));
 	fakeTunnelBG.antialiasing = true;
@@ -122,11 +137,6 @@ function onCreate()
 	tunnelEnterance.antialiasing = true;
 	tunnelEnterance.x = FlxG.width;
 	add(tunnelEnterance, 1, camHUD);
-}
-
-function onCreatePost()
-{
-	bomb.setPosition(dad.x + 400, dad.y + 350);
 }
 
 var p_elapsedT:Float = 0;
@@ -180,7 +190,7 @@ function exitTunnel()
 function onUpdate(elapsed:Float)
 {
 	var currentBeat = (Conductor.songPosition / 1000) * (Conductor.bpm / 60);
-	bomb.y = dad.y + 350 + (5 * Math.sin(currentBeat * Math.PI));
+	bomb.y = -50 + (5 * Math.sin(currentBeat * Math.PI));
 
 	if (FlxG.keys.justPressed.V && !inTunnel)
 		enterTunnel();

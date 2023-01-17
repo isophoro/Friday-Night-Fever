@@ -20,17 +20,11 @@ class GameOverSubstate extends MusicBeatSubstate
 	var bf:Boyfriend;
 	var camFollow:FlxObject;
 
-	public var camHUD:FlxCamera;
-
 	var stageSuffix:String = "";
 
 	public function new(x:Float, y:Float)
 	{
 		super();
-
-		camHUD = new FlxCamera();
-		camHUD.bgColor.alpha = 0;
-		FlxG.cameras.add(camHUD);
 
 		var daBf:String = PlayState.SONG.player1;
 

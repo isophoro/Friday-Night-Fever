@@ -9,23 +9,13 @@ import flixel.graphics.FlxGraphic;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import lime.app.Application;
 import openfl.Assets;
-import openfl.net.URLLoader;
 import shaders.ColorShader;
 
 using StringTools;
-
-#if cpp
-import cpp.vm.Gc;
-#end
-#if windows
-import Discord.DiscordClient;
-#end
 
 class TitleState extends MusicBeatState
 {
@@ -130,7 +120,7 @@ class TitleState extends MusicBeatState
 		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		credGroup.add(blackScreen);
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('teamfever'));
 		add(ngSpr);
 		ngSpr.visible = false;
 		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
@@ -262,28 +252,29 @@ class TitleState extends MusicBeatState
 				case 4:
 					deleteCoolText();
 				case 5:
-					createCoolText(['we should', 'probably']);
+					createCoolText(['In collaboration', 'with']);
 				case 6:
-					addMoreText('replace this');
 					ngSpr.visible = true;
 				case 7:
 					deleteCoolText();
 					ngSpr.visible = false;
-				case 8:
+				case 8 | 12 | 15 | 18 | 21 | 24:
 					createCoolText([curWacky[0]]);
-				case 10:
+				case 10 | 13 | 16 | 19 | 22 | 25:
 					addMoreText(curWacky[1]);
-				case 11:
+				case 11 | 14 | 17 | 20 | 23 | 26:
+					curWacky = FlxG.random.getObject(getIntroTextShit());
 					deleteCoolText();
-				case 12:
-					addMoreText('Friday');
-				case 13:
+				case 28:
+					deleteCoolText();
+					createCoolText(['Friday']);
+				case 29:
 					addMoreText('Night');
-				case 14:
+				case 30:
 					addMoreText('Fever');
-				case 15:
+				case 31:
 					addMoreText("Frenzy");
-				case 16:
+				case 32:
 					skipIntro();
 			}
 		}

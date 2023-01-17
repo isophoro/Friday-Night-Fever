@@ -2,8 +2,8 @@
 	"animations": [
 		{
 			"offsets": [
-				-31,
-				54
+				-24,
+				42
 			],
 			"fps": 24,
 			"anim": "fever down0",
@@ -12,13 +12,43 @@
 		},
 		{
 			"offsets": [
-				-40,
-				130
+				-50,
+				68
+			],
+			"fps": 24,
+			"anim": "fever right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				36,
+				83
+			],
+			"fps": 24,
+			"anim": "fever left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				-41,
+				113
 			],
 			"fps": 24,
 			"anim": "fever up0",
 			"loop": false,
 			"name": "singUP"
+		},
+		{
+			"offsets": [
+				2,
+				99
+			],
+			"fps": 24,
+			"anim": "fever fall",
+			"loop": false,
+			"name": "fall"
 		},
 		{
 			"offsets": [
@@ -42,38 +72,8 @@
 		},
 		{
 			"offsets": [
-				33,
-				93
-			],
-			"fps": 24,
-			"anim": "fever left0",
-			"loop": false,
-			"name": "singLEFT"
-		},
-		{
-			"offsets": [
-				-47,
-				68
-			],
-			"fps": 24,
-			"anim": "fever right miss",
-			"loop": false,
-			"name": "singRIGHTmiss"
-		},
-		{
-			"offsets": [
-				40,
-				93
-			],
-			"fps": 24,
-			"anim": "fever left miss",
-			"loop": false,
-			"name": "singLEFTmiss"
-		},
-		{
-			"offsets": [
 				-31,
-				54
+				39
 			],
 			"fps": 24,
 			"anim": "fever down miss",
@@ -82,8 +82,18 @@
 		},
 		{
 			"offsets": [
+				32,
+				83
+			],
+			"fps": 24,
+			"anim": "fever left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
 				-43,
-				129
+				114
 			],
 			"fps": 24,
 			"anim": "fever up miss",
@@ -93,6 +103,6 @@
 	],
 	"noAntialiasing": false,
 	"facingLeft": true,
-	"file": "fever_mad",
+	"file": "fever/fever_mad",
 	"color": "C353E3"
 }

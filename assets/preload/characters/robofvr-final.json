@@ -12,6 +12,16 @@
 		},
 		{
 			"offsets": [
+				-114,
+				-64
+			],
+			"fps": 24,
+			"anim": "Robo right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
 				-39,
 				-259
 			],
@@ -22,13 +32,13 @@
 		},
 		{
 			"offsets": [
-				-114,
-				-64
+				356,
+				49
 			],
 			"fps": 24,
-			"anim": "Robo right",
+			"anim": "Robo left",
 			"loop": false,
-			"name": "singRIGHT"
+			"name": "singLEFT"
 		},
 		{
 			"offsets": [
@@ -42,13 +52,13 @@
 		},
 		{
 			"offsets": [
-				356,
-				49
+				170,
+				35
 			],
 			"fps": 24,
-			"anim": "Robo left",
+			"anim": "Robo Shoot",
 			"loop": false,
-			"name": "singLEFT"
+			"name": "shoot"
 		},
 		{
 			"offsets": [
@@ -63,6 +73,6 @@
 	],
 	"noAntialiasing": false,
 	"facingLeft": false,
-	"file": "robo_final",
+	"file": "robo-fever/final",
 	"color": "504BA6"
 }

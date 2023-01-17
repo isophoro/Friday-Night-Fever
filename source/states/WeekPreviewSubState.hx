@@ -2,8 +2,11 @@ package states;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.math.FlxPoint;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
+import flxanimate.FlxAnimate;
 
 class WeekPreviewSubState extends MusicBeatSubstate
 {
@@ -13,7 +16,7 @@ class WeekPreviewSubState extends MusicBeatSubstate
 	var side:FlxSprite;
 	var bg:FlxSprite;
 	var weekSpr:FlxSprite;
-	var characters:Array<FlxSprite> = [];
+	var characters:Array<FlxAnimate> = [];
 
 	var curDifficulty:FlxSprite;
 	var leftArrow:FlxSprite = new FlxSprite();
@@ -56,20 +59,17 @@ class WeekPreviewSubState extends MusicBeatSubstate
 			case 11: "weekbone";
 		}
 
-		bg = new FlxSprite(513, -29);
-		bg.frames = Paths.getSparrowAtlas("story/characterBGS");
-		bg.animation.addByPrefix("bg", characterStr == "tea" ? "peakek" : characterStr, 24, true);
-		bg.animation.play("bg");
+		bg = new FlxSprite(513, -29).loadGraphic(Paths.image("story/characterBGS/" + (characterStr == "tea" ? "peakek" : characterStr)));
 		bg.antialiasing = true;
 		bg.origin.set(0, 0);
-		bg.scale.scale(0.75);
+		bg.setGraphicSize(Std.int(bg.width * 1.2));
 		bg.x += bg.width;
 		add(bg);
 
 		if (characterStr == "wee")
 		{
 			createCharacter("taki", 125, 0);
-			createCharacter(characterStr, -50, 100);
+			createCharacter(characterStr);
 		}
 		else
 			createCharacter(characterStr);
@@ -77,8 +77,6 @@ class WeekPreviewSubState extends MusicBeatSubstate
 		side = new FlxSprite(-70, -28).loadGraphic(Paths.image("story/selectBG"));
 		side.x -= side.width;
 		side.antialiasing = true;
-		side.origin.set(0, 0);
-		side.scale.scale(0.75);
 		add(side);
 
 		weekSpr = new FlxSprite(0, 120);
@@ -86,17 +84,17 @@ class WeekPreviewSubState extends MusicBeatSubstate
 		weekSpr.animation.addByPrefix("week", weekAnim, 24, true);
 		weekSpr.animation.play("week");
 		weekSpr.antialiasing = true;
-		weekSpr.x = -70 + (side.width * 0.75 / 2) - (weekSpr.width * 0.75 / 2) - 225;
+		weekSpr.x = (side.width / 2) - (weekSpr.width / 2) - 168;
 		weekSpr.scale.set(0, 0);
 		add(weekSpr);
 
 		curDifficulty = new FlxSprite();
 		curDifficulty.frames = Paths.getSparrowAtlas("story/difficulties");
-		for (i in 0...CoolUtil.difficultyArray.length)
+		for (i in Difficulty.DIFFICULTY_MIN...Difficulty.DIFFICULTY_MAX + 1)
 		{
-			curDifficulty.animation.addByPrefix('$i', CoolUtil.difficultyArray[i].toLowerCase(), 24, false);
+			curDifficulty.animation.addByPrefix('$i', Difficulty.data[i].name.toLowerCase(), 24, false);
 		}
-		curDifficulty.ID = 1;
+		curDifficulty.ID = 2;
 		curDifficulty.scale.scale(0.4);
 		curDifficulty.antialiasing = true;
 		add(curDifficulty);
@@ -139,45 +137,55 @@ class WeekPreviewSubState extends MusicBeatSubstate
 
 	function createCharacter(characterStr:String, offsetX:Float = 0, offsetY:Float = 0)
 	{
-		var char:FlxSprite = new FlxSprite();
-		char.frames = Paths.getSparrowAtlas("story/characters/" + characterStr);
-		char.animation.addByPrefix("idle", characterStr + "art0", 24, true);
-		char.animation.addByPrefix("confirm", characterStr + "art flare", 24, false);
-		char.animation.play("idle");
-		char.updateHitbox();
+		var char:FlxAnimate = new FlxAnimate(0, 0, "assets/images/story/characters/" + characterStr, {Antialiasing: true, ShowPivot: false});
+		char.anim.addBySymbol("idle", characterStr + " idle", 24, true);
+		char.anim.addBySymbol("confirm", characterStr + " flare", 24, false);
+		char.anim.play("idle");
+		char.origin.set(0, 0);
 		char.screenCenter(Y);
-		char.setPosition(FlxG.width, char.y + 100);
+		char.setPosition(FlxG.width);
 		char.antialiasing = true;
 		add(char);
 
-		var charDest = FlxG.width * 0.8 - (char.width / 2);
+		var charDest:FlxPoint = new FlxPoint(0, 0);
 		switch (characterStr)
 		{
+			case "hallow":
+				charDest.set(700, -150);
+			case "scarlet":
+				charDest.set(710, 0);
+			case "rolldog":
+				charDest.set(815, 150);
+			case "robo":
+				charDest.set(755, 45);
+			case "tea":
+				charDest.set(750, 75);
+			case "wee":
+				charDest.set(773, 338);
+			case "peakek":
+				charDest.set(729, -29.5);
+			case "hunni":
+				charDest.set(740.5, -54.5);
 			case "taki":
-				charDest += 50;
+				charDest.set(652, -39);
 				char.scale.set(0.9, 0.9);
 			case "pepper":
-				char.y -= 100;
+				charDest.set(746.5, -101.5);
 			case "mako":
-				charDest -= 50;
+				charDest.set(649.5, 146.5);
 			case "mega":
-				char.y += 30;
+				charDest.set(743, 30);
 		}
 
-		char.y += offsetY;
-		FlxTween.tween(char, {x: charDest + offsetX}, 1.55, {ease: FlxEase.elasticOut});
+		char.y = charDest.y + offsetY;
+		FlxTween.tween(char, {x: charDest.x + offsetX}, 1.55, {ease: FlxEase.elasticOut});
 
 		characters.push(char);
 	}
 
 	function updateDifficulty(change:Int = 0)
 	{
-		curDifficulty.ID += change;
-
-		if (curDifficulty.ID < 0)
-			curDifficulty.ID = CoolUtil.difficultyArray.length - 1;
-		else if (curDifficulty.ID >= CoolUtil.difficultyArray.length)
-			curDifficulty.ID = 0;
+		curDifficulty.ID = Difficulty.bound(curDifficulty.ID + change);
 
 		curDifficulty.animation.play('${curDifficulty.ID}');
 		curDifficulty.updateHitbox();
@@ -213,7 +221,8 @@ class WeekPreviewSubState extends MusicBeatSubstate
 			for (i in [leftArrow, rightArrow, curDifficulty])
 				i.visible = false;
 
-			for (i in [bg].concat(characters))
+			var chars:Array<FlxSprite> = [for (i in characters) (cast i : FlxSprite)];
+			for (i in [bg].concat(chars))
 			{
 				FlxTween.tween(i, {x: FlxG.width}, 0.3);
 			}
@@ -226,7 +235,12 @@ class WeekPreviewSubState extends MusicBeatSubstate
 					onComplete: (t) ->
 					{
 						if (i == side)
+						{
+							bg.destroy();
+							for (ii in chars)
+								ii.destroy();
 							close();
+						}
 					}
 				});
 			}
@@ -242,34 +256,21 @@ class WeekPreviewSubState extends MusicBeatSubstate
 			FlxG.sound.play(Paths.sound("select"));
 			for (i in characters)
 			{
-				i.animation.play("confirm");
+				i.anim.play("confirm");
 				i.centerOffsets();
-				i.animation.finishCallback = (a) ->
+				new FlxTimer().start(0.7, (t) ->
 				{
-					if (i != characters[0])
-						return;
-
-					var diffic = "";
-
-					switch (curDifficulty.ID)
-					{
-						case 0 | 1:
-							diffic = '-easy';
-						case 2 | 3:
-							diffic = '-hard';
-					}
-
 					PlayState.storyDifficulty = curDifficulty.ID;
 					PlayState.storyPlaylist = StoryMenuState.weekData[week];
 					PlayState.isStoryMode = true;
 
-					PlayState.SONG = Song.loadFromJson(StringTools.replace(PlayState.storyPlaylist[0], " ", "-").toLowerCase() + diffic,
-						StringTools.replace(PlayState.storyPlaylist[0], " ", "-").toLowerCase());
+					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(StoryMenuState.weekData[week][0], curDifficulty.ID),
+						Highscore.formatSong(StoryMenuState.weekData[week][0]));
 					PlayState.storyWeek = week;
 					PlayState.campaignScore = 0;
 
 					LoadingState.loadAndSwitchState(new PlayState(), true);
-				}
+				});
 			}
 		}
 	}

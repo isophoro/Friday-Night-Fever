@@ -16,16 +16,17 @@ class StoryMenuState extends InteractableState
 	{
 		return [
 			['Milk-Tea'],
-			['Metamorphosis', 'Void', 'Down-bad'],
+			['Metamorphosis', 'Void', 'Down-Bad'],
 			['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
 			['Prayer', 'Bad-Nun'],
 			['Mako', 'VIM', "Retribution"],
-			['Honey', "Bunnii", "Throw-it-back"],
+			['Honey', "Bunnii", "Throw-It-Back"],
 			['Mild', 'Spice', 'Party-Crasher'],
-			['Ur-girl', 'Chicken-sandwich', 'Funkin-god'],
-			['Hallow', 'Portrait', 'Soul'],
+			['Ur-Girl', 'Chicken-Sandwich', 'Funkin-God'],
+			['Hallow', 'Eclipse', 'SOUL'],
 			['C354R', 'Loaded', 'Gears'],
-			['Tranquility', 'Princess', 'Banish', 'Crack']
+			['Tranquility', 'Princess', 'Bloom', 'Crack'],
+			['Cosmic-Swing', 'Cell-From-Hell', 'W00F']
 		];
 	}
 
@@ -53,7 +54,45 @@ class StoryMenuState extends InteractableState
 			Main.playFreakyMenu();
 		}
 
-		var bg:MenuBG = new MenuBG("story/bg_og", -84, -30, 0.75);
+		if (!isFrenzy)
+			loadClassic();
+		else
+			loadFrenzy();
+
+		add(hand);
+	}
+
+	function loadFrenzy()
+	{
+		var bg:MenuBG = new MenuBG("story/bg_frenzy", -84, -30, 1);
+		add(bg);
+
+		var hallow = new Interactable('story/buildings/weekhallow', -71, 280, 0.75, 'week ?nselected', 'week ?selected',
+			new InteractHitbox(40, 357, 479, 363), [0, 24], true);
+
+		var robo = new Interactable('story/buildings/week7', 538, -2, 0.75, 'week 7nselected', 'week 7selected', new InteractHitbox(538, -2, 161, 524),
+			[148, 0], true);
+
+		var scarlet = new Interactable('story/buildings/week8', 768, 292, 0.75, 'week 8nselected', 'week 8selected', new InteractHitbox(768, 292, 486, 524),
+			[0, 76], true);
+
+		var roll = new Interactable('story/buildings/weekroll', 620, 575, 0.75, 'week arnselected', 'week arselected', new InteractHitbox(631, 582, 149, 134),
+			[64, 116], true);
+
+		addInteractable(robo);
+		addInteractable(hallow);
+		addInteractable(scarlet);
+		addInteractable(roll);
+
+		var frontBG:MenuBG = new MenuBG("story/bg_frenzy_front", -84, -30, 1);
+		add(frontBG);
+
+		order = [hallow.hitbox, robo.hitbox, scarlet.hitbox, roll.hitbox];
+	}
+
+	function loadClassic()
+	{
+		var bg:MenuBG = new MenuBG("story/bg_og", -84, -30, 1);
 		add(bg);
 
 		// roll swapped the animation names by accident gkldfjklxnvkl mvrme oimvcmcx;vmxcv lmcxklfvdgmdklm gkldfmgklmfsdkgl mksfdg
@@ -89,8 +128,6 @@ class StoryMenuState extends InteractableState
 			[69, 68], true);
 		addInteractable(week6);
 
-		add(hand);
-
 		order = [
 			tutorial.hitbox,
 			week1.hitbox,
@@ -109,7 +146,7 @@ class StoryMenuState extends InteractableState
 
 		if (allowInput && controls.BACK)
 		{
-			FlxG.switchState(new MainMenuState());
+			FlxG.switchState(new states.BrochureMenu());
 		}
 	}
 
@@ -118,7 +155,7 @@ class StoryMenuState extends InteractableState
 		super.addInteractable(i);
 		i.callback = () ->
 		{
-			openSubState(new states.WeekPreviewSubState(order.indexOf(i.hitbox)));
+			openSubState(new states.WeekPreviewSubState((isFrenzy ? 8 : 0) + order.indexOf(i.hitbox)));
 		}
 	}
 
