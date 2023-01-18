@@ -1,0 +1,28 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "idle sad",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				13,
+				-2
+			],
+			"fps": 24,
+			"anim": "cheerpep instance",
+			"loop": false,
+			"name": "hey"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "pepper/worried",
+	"color": "504BA6"
+}

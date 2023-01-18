@@ -9,16 +9,19 @@ var pixelDiner;
 var yukichi_pixel;
 var tea_pixel;
 var fever_pixel;
+var pepper;
 
 function onCreate()
 {
+	dad.x -= 70;
+	boyfriend.x += 70;
 	game.defaultCamZoom = 0.6;
 
 	FlxTimer.globalManager.clear();
 	game.startSong();
 	FlxG.sound.music.time = 0;
 	Conductor.songPosition = 0;
-	getGlobalVar("bop").y += 90;
+	getGlobalVar("bop").y += 30;
 	getGlobalVar("bop").x += 50;
 	setHUDVisibility(false);
 	snapCamera();
@@ -31,6 +34,10 @@ function onCreate()
 	pixelDiner.origin.set(0, 0);
 	pixelDiner.scale.set(6, 6);
 	pixelDiner.visible = false;
+
+	pepper = new Character(gf.x - 90, gf.y - 25, "pepper-worried");
+	pepper.scrollFactor.set(gf.scrollFactor.x, gf.scrollFactor.y);
+	add(pepper, getIndexOfMember(dad));
 
 	yukichi_pixel = new Character(0, 0, "yukichi-pixel");
 	tea_pixel = new Character(0, 0, "gf-pepper-pixel");
@@ -48,6 +55,8 @@ function onCreate()
 	add(tea_pixel);
 	add(yukichi_pixel);
 	add(fever_pixel);
+
+	getGlobalVar("bop").scale.set(1.2, 1.2);
 }
 
 function onBeatHit(curBeat:Int)
@@ -128,6 +137,7 @@ function onBeatHit(curBeat:Int)
 	}
 
 	tea_pixel.dance();
+	pepper.dance();
 }
 
 function setHUDVisibility(theBool:Bool)

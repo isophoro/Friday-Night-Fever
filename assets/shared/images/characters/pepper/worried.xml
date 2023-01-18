@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pepperpartycrasher.png">
+	<!-- Created with Adobe Animate version 20.0.1.19255 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cheerpep instance 10000" x="10" y="10" width="406" height="781" frameX="-103" frameY="0" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10001" x="426" y="10" width="406" height="781" frameX="-103" frameY="0" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10002" x="842" y="10" width="433" height="721" frameX="-84" frameY="-60" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10003" x="1285" y="10" width="433" height="721" frameX="-84" frameY="-60" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10004" x="1728" y="10" width="425" height="767" frameX="-91" frameY="-14" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10005" x="2163" y="10" width="425" height="767" frameX="-91" frameY="-14" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10006" x="2598" y="10" width="444" height="754" frameX="-72" frameY="-27" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10007" x="3052" y="10" width="444" height="754" frameX="-72" frameY="-27" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10008" x="3506" y="10" width="457" height="760" frameX="-59" frameY="-21" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10009" x="3973" y="10" width="457" height="760" frameX="-59" frameY="-21" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10010" x="4440" y="10" width="475" height="761" frameX="-41" frameY="-20" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10011" x="4925" y="10" width="475" height="761" frameX="-41" frameY="-20" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10012" x="5410" y="10" width="494" height="763" frameX="-22" frameY="-18" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10013" x="5914" y="10" width="494" height="763" frameX="-22" frameY="-18" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10014" x="6418" y="10" width="516" height="765" frameX="0" frameY="-16" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10015" x="6944" y="10" width="516" height="765" frameX="0" frameY="-16" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10016" x="7470" y="10" width="424" height="767" frameX="-92" frameY="-14" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10017" x="10" y="801" width="424" height="767" frameX="-92" frameY="-14" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10018" x="444" y="801" width="429" height="770" frameX="-87" frameY="-11" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10019" x="883" y="801" width="429" height="769" frameX="-87" frameY="-12" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="cheerpep instance 10020" x="1322" y="801" width="432" height="770" frameX="-84" frameY="-11" frameWidth="517" frameHeight="781"/>
+	<SubTexture name="idle sad instance 10000" x="1764" y="801" width="374" height="717" frameX="0" frameY="-43" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10001" x="2148" y="801" width="374" height="717" frameX="0" frameY="-43" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10002" x="2532" y="801" width="373" height="748" frameX="-2" frameY="-12" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10003" x="2915" y="801" width="373" height="748" frameX="-2" frameY="-12" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10004" x="3298" y="801" width="371" height="754" frameX="-7" frameY="-6" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10005" x="3679" y="801" width="371" height="754" frameX="-7" frameY="-6" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10006" x="4060" y="801" width="373" height="757" frameX="-7" frameY="-3" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10007" x="4443" y="801" width="373" height="757" frameX="-7" frameY="-3" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10008" x="4826" y="801" width="375" height="760" frameX="-6" frameY="0" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10009" x="5211" y="801" width="375" height="760" frameX="-6" frameY="0" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10010" x="5596" y="801" width="375" height="760" frameX="-6" frameY="0" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10011" x="5981" y="801" width="375" height="760" frameX="-6" frameY="0" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10012" x="6366" y="801" width="375" height="760" frameX="-6" frameY="0" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10013" x="6751" y="801" width="375" height="760" frameX="-6" frameY="0" frameWidth="381" frameHeight="760"/>
+	<SubTexture name="idle sad instance 10014" x="6366" y="801" width="375" height="760" frameX="-6" frameY="0" frameWidth="381" frameHeight="760"/>
+</TextureAtlas>
