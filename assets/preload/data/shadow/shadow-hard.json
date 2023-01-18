@@ -1,6 +1,6 @@
 {
 	"song": {
-		"player1": "bf",
+		"player1": "bf-coat",
 		"notes": [
 			{
 				"typeOfSection": 0,
@@ -9350,7 +9350,7 @@
 		"sectionLengths": [],
 		"events": [],
 		"gfVersion": "gf",
-		"stage": "princess",
+		"stage": "cave",
 		"uiType": "normal",
 		"needsVoices": true,
 		"sections": 0,

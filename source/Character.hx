@@ -56,6 +56,8 @@ class Character extends FlxSprite
 	public var useAlternateIdle:Bool = false;
 	public var holdTimer:Float = 0;
 
+	public var loopedIdle:Bool = false;
+
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
@@ -87,6 +89,7 @@ class Character extends FlxSprite
 					addByPrefix(i.name, i.anim, i.fps, i.loop);
 
 				addOffset(i.name, i.offsets[0], i.offsets[1]);
+
 			}
 
 			dance();
@@ -96,11 +99,12 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
+
 				// mister SG must be hardcoded to work with embed i THINK
 				case 'SG':
 					iconColor = '000000';
 					frames = getSparrowAtlas('SG', 'shadow');
-					addByPrefix('idle', "idle", 24, false);
+					addByPrefix('idle', "idle", 24, true);
 					addByPrefix('singLEFT', "right", 24, false);
 					addByPrefix('singUP', "up", 24, false);
 					addByPrefix('singDOWN', "down", 24, true);
@@ -112,8 +116,9 @@ class Character extends FlxSprite
 					addOffset('singUP', 19, 29);
 					addOffset('singDOWN', -53, -23);
 					addOffset('singRIGHT', -77, 2);
-					addOffset('bye', 193, 224);
+					addOffset('bye', 514, 245);
 
+					loopedIdle = true;
 					animation.play('idle');
 					flipX = true;
 
@@ -266,6 +271,7 @@ class Character extends FlxSprite
 
 	public function dance()
 	{
+
 		if (!canIdle())
 			return;
 

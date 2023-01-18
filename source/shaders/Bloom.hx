@@ -22,7 +22,7 @@ class Bloom extends FlxShader
     uniform sampler2D tInput;
     float kernel = .005;
     uniform float actualScale;
-    float scale = actualScale;
+    float scale = 0.3;
     float thresh = 1.;
     vec2 vUv =openfl_TextureCoordv;
     
