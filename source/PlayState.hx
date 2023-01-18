@@ -1,7 +1,5 @@
 package;
 
-import openfl.display.BlendMode;
-import openfl.filters.ShaderFilter;
 import Note.QueuedNote;
 import Song.SwagSong;
 import flixel.FlxBasic;
@@ -24,8 +22,10 @@ import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import lime.utils.Assets;
 import openfl.Lib;
+import openfl.display.BlendMode;
 import openfl.events.KeyboardEvent;
 import openfl.filters.BitmapFilter;
+import openfl.filters.ShaderFilter;
 import openfl.system.System;
 import scripting.*;
 import shaders.*;
@@ -189,7 +189,6 @@ class PlayState extends MusicBeatState
 	var songScript:HaxeScript;
 	var curSection:Int = 0;
 
-
 	var snowOn:Bool = false;
 	var snowShader:ShaderFilter;
 
@@ -309,7 +308,7 @@ class PlayState extends MusicBeatState
 
 		gf = new Character(400, 130, SONG.gfVersion == null ? 'gf' : SONG.gfVersion);
 		boyfriend = new Boyfriend(770, 450, curBoyfriend);
-		boyfriendReflection = new Boyfriend(770, 450, "bf-CoatReflection"); //this is for shadow fever reflection
+		boyfriendReflection = new Boyfriend(770, 450, "bf-CoatReflection"); // this is for shadow fever reflection
 		dad = new Character(100, 100, SONG.player2);
 
 		switch (SONG.stage)
@@ -382,31 +381,30 @@ class PlayState extends MusicBeatState
 					}
 				}
 			case 'cave':
-			{
-				curStage = 'cave';
-				defaultCamZoom = 0.5;
+				{
+					curStage = 'cave';
+					defaultCamZoom = 0.5;
 
-				var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer', 'shadow'));
-				bg.antialiasing = true;
-				bg.scrollFactor.set(0.85, 0.85);
-				bg.setGraphicSize(Std.int(bg.width * 1.5));
-				bg.updateHitbox();
-				add(bg);
+					var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer', 'shadow'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.85, 0.85);
+					bg.setGraphicSize(Std.int(bg.width * 1.5));
+					bg.updateHitbox();
+					add(bg);
 
-				var layer1:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer1', 'shadow'));
-				layer1.antialiasing = true;
-				layer1.scrollFactor.set(0.9, 0.9);
-				layer1.setGraphicSize(Std.int(layer1.width * 1.5));
-				layer1.updateHitbox();
-				add(layer1);
+					var layer1:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer1', 'shadow'));
+					layer1.antialiasing = true;
+					layer1.scrollFactor.set(0.9, 0.9);
+					layer1.setGraphicSize(Std.int(layer1.width * 1.5));
+					layer1.updateHitbox();
+					add(layer1);
 
-				var layer2:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer2', 'shadow'));
-				layer2.antialiasing = true;
-				layer2.setGraphicSize(Std.int(layer2.width * 1.5));
-				layer2.updateHitbox();
-				add(layer2);
-
-			}
+					var layer2:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer2', 'shadow'));
+					layer2.antialiasing = true;
+					layer2.setGraphicSize(Std.int(layer2.width * 1.5));
+					layer2.updateHitbox();
+					add(layer2);
+				}
 			case 'robocesbg':
 				{
 					curStage = 'robocesbg';
@@ -585,7 +583,6 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'cave':
-
 				gf.visible = false;
 
 				boyfriend.x = 2535.35;
@@ -598,11 +595,10 @@ class PlayState extends MusicBeatState
 				boyfriendReflection.alpha = 0.5;
 				boyfriendReflection.blend = BlendMode.ADD;
 
-				
 				var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
 				add(evilTrail);
 
-				dad.x  =1000.3;
+				dad.x = 1000.3;
 				dad.y = 1310;
 			case 'fireplace':
 				boyfriend.scrollFactor.set(0.9, 0.9);
@@ -724,11 +720,10 @@ class PlayState extends MusicBeatState
 		}
 		add(dad);
 
-		if(curStage == 'cave')
+		if (curStage == 'cave')
 			add(boyfriendReflection);
 
 		add(boyfriend);
-
 
 		boyfriend.setPosition(boyfriend.x, boyfriend.y);
 
@@ -781,14 +776,14 @@ class PlayState extends MusicBeatState
 
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
 
-		if(SONG.song.toLowerCase() == 'shadow') //so its underhud
+		if (SONG.song.toLowerCase() == 'shadow') // so its underhud
 		{
 			var snow:Snow = new Snow();
 			var bloom:Bloom = new Bloom();
 
 			var bloomShader = new ShaderFilter(bloom);
 			snowShader = new ShaderFilter(snow);
-			
+
 			camGame.setFilters([snowShader, bloomShader]);
 			snowOn = true;
 
@@ -805,7 +800,7 @@ class PlayState extends MusicBeatState
 			vig.alpha = 0.2;
 			add(vig);
 
-			FlxTween.tween(vig, {alpha: 0.7}, 3, {type:PINGPONG});
+			FlxTween.tween(vig, {alpha: 0.7}, 3, {type: PINGPONG});
 		}
 
 		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).makeGraphic(601, 19, FlxColor.BLACK);
@@ -1106,7 +1101,7 @@ class PlayState extends MusicBeatState
 			gf.dance();
 			boyfriend.dance();
 
-			if(boyfriendReflection != null)
+			if (boyfriendReflection != null)
 				boyfriendReflection.dance();
 
 			var altSuffix:String = "";
@@ -1547,7 +1542,7 @@ class PlayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (snowOn) //snow stuff ig idk stealing from hypno
+		if (snowOn) // snow stuff ig idk stealing from hypno
 			snowShader.shader.data.time.value = [Conductor.songPosition / (Conductor.stepCrochet * 8)];
 
 		// Using 180 here since that's the framerate I test with
@@ -1613,12 +1608,11 @@ class PlayState extends MusicBeatState
 				if (boyfriend.animation.curAnim.name.startsWith("idle"))
 					boyfriend.playAnim('hey');
 
-				if(boyfriendReflection != null)
+				if (boyfriendReflection != null)
 				{
 					if (boyfriendReflection.animation.curAnim.name.startsWith("idle"))
 						boyfriendReflection.playAnim('hey');
 				}
-
 
 				if (!gf.animation.paused && gf.animation.curAnim.name.startsWith("dance"))
 					gf.playAnim('cheer');
@@ -1749,11 +1743,8 @@ class PlayState extends MusicBeatState
 			vocals.stop();
 			FlxG.sound.music.stop();
 
-			if(SONG.song.toLowerCase() == 'shadow') //so its underhud
+			if (SONG.song.toLowerCase() == 'shadow') // so its underhud
 				camGame.filtersEnabled = false;
-
-
-			
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -1783,7 +1774,7 @@ class PlayState extends MusicBeatState
 			vocals.stop();
 			FlxG.sound.music.stop();
 
-			if(SONG.song.toLowerCase() == 'shadow') //so its underhud
+			if (SONG.song.toLowerCase() == 'shadow') // so its underhud
 				camGame.filtersEnabled = false;
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
@@ -2375,7 +2366,7 @@ class PlayState extends MusicBeatState
 
 		songScore += score;
 
-		if(SONG.song.toLowerCase() == 'shadow')
+		if (SONG.song.toLowerCase() == 'shadow')
 		{
 			return;
 		}
@@ -2588,7 +2579,7 @@ class PlayState extends MusicBeatState
 		{
 			curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
 
-			if(boyfriendReflection != null)
+			if (boyfriendReflection != null)
 				boyfriendReflection.playAnim('sing' + dataSuffix[direction] + 'miss', true);
 		}
 
@@ -2613,8 +2604,8 @@ class PlayState extends MusicBeatState
 			{
 				combo += 1;
 
-				//if(SONG.song.toLowerCase() != 'shadow')
-					popUpScore(note);
+				// if(SONG.song.toLowerCase() != 'shadow')
+				popUpScore(note);
 			}
 			else
 				totalNotesHit += 1;
@@ -2631,7 +2622,7 @@ class PlayState extends MusicBeatState
 				curPlayer.holdTimer = 0;
 				curPlayer.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
 
-				if(boyfriendReflection != null)
+				if (boyfriendReflection != null)
 				{
 					boyfriendReflection.holdTimer = 0;
 					boyfriendReflection.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
@@ -2781,9 +2772,10 @@ class PlayState extends MusicBeatState
 				case 'shadow':
 					if (curBeat == 512)
 						dad.playAnim('bye', true);
-						dad.animation.finishCallback = function(anim){
-							dad.alpha = 0;
-						}
+					dad.animation.finishCallback = function(anim)
+					{
+						dad.alpha = 0;
+					}
 				case 'hardships':
 					if (curBeat == 158)
 						boyfriend.useAlternateIdle = true;
@@ -2844,7 +2836,6 @@ class PlayState extends MusicBeatState
 			if (!specialAnims.contains(curOpponent.animation.curAnim.name) || curOpponent.animation.finished)
 			{
 				curOpponent.dance();
-				
 			}
 		}
 
@@ -2884,7 +2875,7 @@ class PlayState extends MusicBeatState
 			{
 				curPlayer.dance();
 
-				if(boyfriendReflection != null)
+				if (boyfriendReflection != null)
 					boyfriendReflection.dance();
 			}
 		}

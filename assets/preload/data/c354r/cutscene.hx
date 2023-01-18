@@ -1,5 +1,6 @@
-import ("flixel.FlxG");
-import("flixel.util.FlxTimer");
+import PlayState;
+import flixel.FlxG;
+import flixel.util.FlxTimer;
 
 function image(img:String)
 {
@@ -13,6 +14,15 @@ var zombie:FlxSprite;
 
 function onCreate()
 {
+	if (PlayState.deaths >= 0 || game.skipDialogue)
+	{
+		onCreatePost = null;
+		snapCamera(BF_CAM_POS);
+		getGlobalVar("zombie").visible = false;
+		game.startCountdown();
+		return;
+	}
+
 	camHUD.visible = false;
 	camGame.zoom += 0.12;
 	camGame.flash(FlxColor.BLACK, 1.3);

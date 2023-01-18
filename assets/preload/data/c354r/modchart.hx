@@ -2,8 +2,10 @@ import ("Character");
 
 var bgF:FlxSprite;
 var bgR:FlxSprite;
+var bgRCar:FlxSprite;
 var charF:Character;
 var charR:Character;
+var blackBars = [];
 
 function onCreate()
 {
@@ -25,9 +27,24 @@ function onCreate()
 	add(bgR);
 	bgR.visible = false;
 
-	charR = new Character(-300, -400, "robo-fever-perspective", false);
+	charR = new Character(-300, -250, "robo-fever-perspective", false);
 	add(charR);
 	charR.visible = false;
+
+	bgRCar = new FlxSprite(-750, -150).loadGraphic(Paths.image("roboStage/C354R/perspectiveRCar"));
+	bgRCar.antialiasing = true;
+	bgRCar.scale.set(1.62, 1.62);
+	add(bgRCar);
+	bgRCar.visible = false;
+
+	for (i in 0...2)
+	{
+		var b = new FlxSprite(0, i == 1 ? FlxG.height - 150 : 0).makeGraphic(1280, 150, FlxColor.BLACK);
+		b.visible = false;
+		b.ID = i;
+		blackBars.push(b);
+		add(b, 0, camHUD);
+	}
 
 	for (i in [charR, charF, bgR, bgF])
 		i.color = 0xFFC681C6;
@@ -54,9 +71,12 @@ function onBeatHit(curBeat:Int)
 			FlxTween.tween(camGame.scroll, {y: camGame.scroll.y - 80}, 0.8, {ease: FlxEase.quartInOut});
 		}
 
+		for (i in blackBars)
+			i.visible = true;
+
 		game.camGame.zoom = 0.6;
 		game.curOpponent = charR;
-		charR.visible = bgR.visible = true;
+		bgRCar.visible = charR.visible = bgR.visible = true;
 	}
 	else if (curBeat == 40 || curBeat == 56)
 	{
@@ -67,11 +87,14 @@ function onBeatHit(curBeat:Int)
 			FlxTween.tween(camGame.scroll, {x: camGame.scroll.x + 80}, 0.8, {ease: FlxEase.quartInOut});
 		}
 		game.curPlayer = charF;
-		charR.visible = bgR.visible = false;
+		bgRCar.visible = charR.visible = bgR.visible = false;
 		bgF.visible = charF.visible = true;
 	}
 	else if (curBeat == 64)
 	{
+		for (i in blackBars)
+			i.visible = false;
+
 		forceComboPos = null;
 		camGame.flash(FlxColor.WHITE, 0.45);
 		bgF.visible = charF.visible = false;
