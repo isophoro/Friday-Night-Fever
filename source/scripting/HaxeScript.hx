@@ -7,6 +7,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxDestroyUtil.IFlxDestroyable;
+import flxanimate.FlxAnimate;
 import hscript.Interp;
 import hscript.Parser;
 import sys.FileSystem;
@@ -23,7 +24,7 @@ import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
 class HaxeScript extends Interp implements IFlxDestroyable
 {
 	static final AUTOIMPORTS:Array<Class<Dynamic>> = [
-		Math, Std, FlxG, FlxSprite, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, Character
+		Math, Std, FlxG, FlxSprite, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, Character, FlxAnimate
 	];
 
 	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGameJolt"];

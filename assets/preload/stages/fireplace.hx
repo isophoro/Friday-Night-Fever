@@ -63,8 +63,8 @@ function changeBG()
 
 function onStepHit(curStep)
 {
-	if (curStep == 708)
-		FlxTween.tween(hallowSCARY, {alpha: 1}, 100);
+	if (curStep == 1472)
+		FlxTween.tween(hallowSCARY, {alpha: 1}, 70);
 }
 
 function onCreatePost()

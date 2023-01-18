@@ -73,9 +73,9 @@ function onUpdate(elapsed:Float)
 	for (i in ghosts)
 	{
 		if (i.animation.curAnim.name == "idle"
-			&& i.x >= tea.x - 160
+			&& i.x >= tea.x - 160 - i.health
 			|| i.animation.curAnim.name == "idle-flip"
-			&& i.x <= tea.x + tea.width)
+			&& i.x <= tea.x + tea.width + i.health)
 		{
 			teaPunch(i);
 		}
@@ -93,7 +93,9 @@ function onBeatHit(curBeat:Int)
 	if (tea.animation.curAnim.name != idleAnim && tea.animation.finished || tea.animation.curAnim.name == idleAnim)
 		tea.playAnim(idleAnim);
 
-	if (curBeat >= 146 && curBeat % 3 == 0 && FlxG.random.bool(40))
+	if (curBeat >= 146 && curBeat % 5 == 0 && FlxG.random.bool(60))
+		spawnGhost();
+	else if (game.curStep >= 1472 && curBeat % 3 == 0 && FlxG.random.bool(72))
 		spawnGhost();
 }
 
@@ -190,6 +192,8 @@ function spawnGhost()
 	ghost.animation.play("idle" + (ghost.ID == 1 ? "-flip" : ""));
 	ghost.setPosition(ghost.ID == 0 ? tea.x - 900 : tea.x + tea.width + 700, tea.y + 90);
 	ghost.scale.y = ghost.scale.x = FlxG.random.float(0.69, 1);
+	ghost.health = FlxG.random.int(-30, 30);
+	ghost.color = FlxG.random.int();
 
 	// idk why its like this but the first ghost will ALWAYS be invisible no matter when spawned
 	// adding the position parameter seemed to fix it.

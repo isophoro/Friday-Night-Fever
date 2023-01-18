@@ -26,7 +26,7 @@ class StoryMenuState extends InteractableState
 			['Hallow', 'Eclipse', 'SOUL'],
 			['C354R', 'Loaded', 'Gears'],
 			['Tranquility', 'Princess', 'Bloom', 'Crack'],
-			['Cosmic-Swing', 'Cell-From-Hell', 'W00F']
+			['DUI', 'Cosmic-Swing', 'Cell-From-Hell', 'W00F']
 		];
 	}
 
