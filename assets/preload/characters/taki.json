@@ -6,53 +6,53 @@
 				0
 			],
 			"fps": 24,
-			"anim": "takiidle",
+			"anim": "taki idle",
 			"loop": true,
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				21,
-				-164
+				-306,
+				-30
 			],
 			"fps": 24,
-			"anim": "takidown",
-			"loop": false,
-			"name": "singDOWN"
-		},
-		{
-			"offsets": [
-				-17,
-				-5
-			],
-			"fps": 24,
-			"anim": "takiright",
+			"anim": "taki right",
 			"loop": false,
 			"name": "singRIGHT"
 		},
 		{
 			"offsets": [
-				-6,
-				8
+				82,
+				-113
 			],
 			"fps": 24,
-			"anim": "takiup",
+			"anim": "taki down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-117,
+				79
+			],
+			"fps": 24,
+			"anim": "taki up",
 			"loop": false,
 			"name": "singUP"
 		},
 		{
 			"offsets": [
-				13,
-				-18
+				143,
+				-22
 			],
 			"fps": 24,
-			"anim": "takileft",
+			"anim": "taki left",
 			"loop": false,
 			"name": "singLEFT"
 		}
 	],
 	"noAntialiasing": false,
 	"facingLeft": false,
-	"file": "taki_assets",
+	"file": "taki/taki",
 	"color": "D34470"
 }

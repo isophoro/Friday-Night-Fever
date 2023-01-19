@@ -79,8 +79,6 @@ class PlayState extends MusicBeatState
 	public var gf:Character;
 	public var boyfriend:Boyfriend;
 
-	var characterTrail:CharacterTrail;
-
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
 
@@ -653,11 +651,6 @@ class PlayState extends MusicBeatState
 				gf.x = 524;
 				gf.y = 245;
 				gf.scrollFactor.set(1.0, 1.0);
-				if (SONG.song != 'Crucify')
-				{
-					characterTrail = new CharacterTrail(dad, null, 15, 8, 0.3, 0.069);
-					add(characterTrail);
-				}
 			case 'hallow':
 				boyfriend.x += 500;
 				boyfriend.y += 155;
@@ -2691,11 +2684,8 @@ class PlayState extends MusicBeatState
 				case 121:
 					health += 0.32;
 				case 1476 | 1508:
-					characterTrail.visible = false;
 					defaultCamZoom = 0.95;
 				case 1500 | 1522:
-					if (curStep == 1522)
-						characterTrail.visible = true;
 					defaultCamZoom = 0.6;
 				case 1524:
 					health += 0.40;

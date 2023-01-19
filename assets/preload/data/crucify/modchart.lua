@@ -188,17 +188,17 @@ setHudZoom(1.1)
 
 
 if curStep == 646 or curStep == 652 or curStep == 658 or curStep == 660 or curStep == 666 or curStep == 672 or curStep == 678 or curStep == 684 or curStep == 690 or curStep == 692 or curStep == 698 or curStep == 704 or curStep == 710 or curStep == 716 or curStep == 722 or curStep == 724 or curStep == 730 or curStep == 736 or curStep == 742 or curStep == 748 or curStep == 754 or curStep == 756 or curStep == 762 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 if curStep == 648 or curStep == 664 or curStep == 680 or curStep == 696 or curStep == 712 or curStep == 728 or curStep == 744 or curStep == 760 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 if curStep == 768 or curStep == 774 or curStep == 780 or curStep == 786 or curStep == 788 or curStep == 794 or curStep == 800 or curStep == 806 or curStep == 812 or curStep == 818 or curStep == 820 or curStep == 826 or curStep == 832 or curStep == 838 or curStep == 844 or curStep == 850 or curStep == 852 or curStep == 858 or curStep == 864 or curStep == 870 or curStep == 876 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
@@ -209,21 +209,21 @@ setHudZoom(1.1)
 
 
 if curStep == 328 or curStep == 344 or curStep == 360 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 
 if curStep == 640 or curStep == 1664 then
 setHudZoom(1.1)
-setCamZoom(0.65)
+setCamZoom(0.47 + 0.05)
 showOnlyStrums = true
 
 	end
 
 if curStep == 896 or curStep == 2176 then
 setHudZoom(1.1)
-setCamZoom(0.65)
+setCamZoom(0.47 + 0.05)
 showOnlyStrums = false
 
 	end
@@ -374,23 +374,23 @@ setHudZoom(1.1)
 
 
 if curStep == 1664 or curStep == 1670 or curStep == 1676 or curStep == 1682 or curStep == 1684 or curStep == 1690 or curStep == 1696 or curStep == 1702 or curStep == 1708 or curStep == 1714 or curStep == 1716 or curStep == 1722 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 if curStep == 1728 or curStep == 1734 or curStep == 1740 or curStep == 1746 or curStep == 1748 or curStep == 1754 or curStep == 1760 or curStep == 1766 or curStep == 1772 or curStep == 1778 or curStep == 1780 or curStep == 1786 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 
 if curStep == 1792 or curStep == 1804 or curStep == 1810 or curStep == 1812 or curStep == 1818 or curStep == 1824 or curStep == 1830 or curStep == 1836 or curStep == 1842 or curStep == 1844 or curStep == 1850 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 if curStep == 1856 or curStep == 1862 or curStep == 1868 or curStep == 1874 or curStep == 1876 or curStep == 1882 or curStep == 1888 or curStep == 1894 or curStep == 1900 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
@@ -398,23 +398,23 @@ setCamZoom(0.62)
 
 
 if curStep == 1920 or curStep == 1926 or curStep == 1932 or curStep == 1938 or curStep == 1940 or curStep == 1946 or curStep == 1952 or curStep == 1958 or curStep == 1964 or curStep == 1970 or curStep == 1972 or curStep == 1978 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 if curStep == 1984 or curStep == 1990 or curStep == 1996 or curStep == 2002 or curStep == 2004 or curStep == 2010 or curStep == 2016 or curStep == 2022 or curStep == 2028 or curStep == 2034 or curStep == 2036 or curStep == 2042 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 
 if curStep == 2048 or curStep == 2054 or curStep == 2060 or curStep == 2066 or curStep == 2068 or curStep == 2074 or curStep == 2080 or curStep == 2086 or curStep == 2092 or curStep == 2098 or curStep == 2100 or curStep == 2106 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
 if curStep == 2112 or curStep == 2118 or curStep == 2124 or curStep == 2130 or curStep == 2132 or curStep == 2138 or curStep == 2144 or curStep == 2150 or curStep == 2156 or curStep == 2162 or curStep == 2164 or curStep == 2170 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 
@@ -554,7 +554,7 @@ local currentBeat = (songPos / 1000)*(bpm/60)
 
 function beatHit(beat)
 if curStep >= 512 and curStep < 624 or curStep >= 1024 and curStep < 1152 or curStep >= 1536 and curStep < 1648 then
-setCamZoom(0.62)
+setCamZoom(0.47 + 0.02)
 
 	end
 	end

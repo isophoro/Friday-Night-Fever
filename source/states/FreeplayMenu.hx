@@ -222,6 +222,7 @@ class FreeplayMenu extends MusicBeatSubstate
 
 		if (controls.ACCEPT)
 		{
+			allowInput = false;
 			var txt = textGrp.members[curSelected].text.replace("\n", "").trim().replace(" ", "-").replace("[OLD]", "Old").toLowerCase();
 			var poop:String = Highscore.formatSong(txt, Difficulty.NORMAL);
 

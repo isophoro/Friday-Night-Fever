@@ -38,10 +38,9 @@ class ClientPrefs
 	public static var brighterNotes:Bool = false;
 	public static var fps:Bool = true;
 
-	public static var unlockedTrophies:Array<Int> = [];
+	public static var curTrophies:Map<Int, Bool> = []; // using array breaks with flxsave
 	public static var username:String = "";
 	public static var userToken:String = "";
-
 	public static var boombox:Bool = false;
 	public static var songPitch:Float = 1;
 	public static var randomNotes:Bool = false;
@@ -86,7 +85,7 @@ class ClientPrefs
 				var rf = Reflect.field(ClientPrefs, i);
 				if (rf != null)
 				{
-					trace('Saving $i ($rf)');
+					// trace('Saving $i ($rf)');
 					Reflect.setField(FlxG.save.data, i, rf);
 				}
 			}

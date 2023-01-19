@@ -80,6 +80,7 @@ class MainMenuState extends InteractableState
 
 		var credits = new Interactable('newMain/credits', -10, 45, 0.7, 'credits notselected', 'credits selected', new InteractHitbox(40, 175, 225, 525),
 			[216, 172], true, "newMain/creditstext", "credits text", [300, 140]);
+		credits.callback = AchievementHandler.unlockTrophy.bind(TEST_TROPHY);
 		addInteractable(credits);
 
 		var freeplay = new Interactable('newMain/freeplay', 1100, 160, 0.7, 'Freeplay not selected', 'Freeplay selected',
@@ -102,11 +103,12 @@ class MainMenuState extends InteractableState
 			[258, 258], true, "newMain/extratext", "extra text", [990, 190], 0.23);
 		extras.callback = () ->
 		{
-			FlxG.switchState(new states.GamejoltLogin());
+			FlxG.switchState(new states.AchievementState());
 		}
 		addInteractable(extras);
 
 		var versionShit:FlxText = new FlxText(0, 0, 0, 'Friday Night Fever ${FlxG.stage.application.meta.get("version")}', 12);
+		versionShit.text += AchievementHandler.getUsername() != null ? ' - Signed in as ${AchievementHandler.getUsername()}' : '';
 		versionShit.setFormat("Plunge", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		versionShit.setPosition(FlxG.width - versionShit.width - 10, FlxG.height - versionShit.height - 10);
 		versionShit.antialiasing = true;

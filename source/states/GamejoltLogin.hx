@@ -21,13 +21,14 @@ class GamejoltLogin extends MusicBeatState
 	var curBox:Array<FlxSprite> = [];
 	var curSelected:Int = 0;
 	var maxCharLength:Int = 18; // idk if 18 is the max length... might be throwing here LMAO
+	var warningText:FlxText;
 
 	override function create()
 	{
 		super.create();
 
 		// FlxG.sound.muteKeys = null;
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
+		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -64,13 +65,10 @@ class GamejoltLogin extends MusicBeatState
 		add(coolerText);
 		coolerText.screenCenter(X);
 
-		var warningText:FlxText = new FlxText(0, coolTokenBox.x + coolTokenBox.height + 20, 0,
+		warningText = new FlxText(0, coolTokenBox.x + coolTokenBox.height + 20, 0,
 			"Your game token is NOT your password! Do not give any mod or game your gamejolt password.\n\nUse the arrow keys to switch selections\nPress ESCAPE to leave | Press ENTER to login.",
 			28);
 		warningText.setFormat("VCR OSD Mono", 20, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
-		if (FlxGameJolt.username.toLowerCase() != 'no user')
-			warningText.text += '\n\n\n\n\nCurrently logged in as ' + FlxGameJolt.username;
-		warningText.screenCenter(X);
 
 		var ugh:FlxSprite = new FlxSprite(0, warningText.y - 9).makeGraphic(1280, 800, FlxColor.BLACK);
 		ugh.alpha = 0.55;
@@ -172,6 +170,17 @@ class GamejoltLogin extends MusicBeatState
 		{
 			FlxG.switchState(new MainMenuState());
 		}
+	}
+
+	override function closeSubState()
+	{
+		super.closeSubState();
+
+		warningText.text = "Keep Friday Night Fever achievements synced with Gamejolt by logging in!\nYour game token is NOT your password! Do not give any mod or game your gamejolt password.\nUse the arrow keys to switch selections\nPress ESCAPE to leave | Press ENTER to login.";
+		if (FlxGameJolt.username.toLowerCase() != 'no user')
+			warningText.text += '\n\n\n\n\nCurrently logged in as ' + FlxGameJolt.username;
+
+		warningText.screenCenter(X);
 	}
 
 	function changeSelection(change:Int = 0)
