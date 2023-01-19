@@ -803,11 +803,13 @@ class PlayState extends MusicBeatState
 			camHUD.alpha = 0;
 			camZooming = true;
 
-			zoomTwn = FlxTween.tween(camGame, {zoom: 1.0}, 19, {ease: FlxEase.sineInOut, onComplete: (twn) -> {
-				defaultCamZoom = camGame.zoom;
-			}});
-
-
+			zoomTwn = FlxTween.tween(camGame, {zoom: 1.0}, 19, {
+				ease: FlxEase.sineInOut,
+				onComplete: (twn) ->
+				{
+					defaultCamZoom = camGame.zoom;
+				}
+			});
 		}
 
 		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).makeGraphic(601, 19, FlxColor.BLACK);
@@ -2051,182 +2053,182 @@ class PlayState extends MusicBeatState
 	var camLocked:Bool = false;
 
 	public function moveCamera(isDad:Bool = false)
-	{	
-		if(!camLocked)
+	{
+		if (!camLocked)
 		{
 			if (isDad)
+			{
+				camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
+
+				switch (dad.curCharacter)
 				{
-					camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-		
-					switch (dad.curCharacter)
-					{
-						case 'SG':
-							camFollow.y = dad.getMidpoint().y - 300;
-							camFollow.x = dad.getMidpoint().x - 220;
-						case 'mom' | 'mom-carnight' | 'mom-car':
-							camFollow.y = dad.getMidpoint().y + 90;
-						case 'senpai' | 'senpai-angry':
-							camFollow.y = dad.getMidpoint().y - 130;
-							camFollow.x = dad.getMidpoint().x + 175;
-						case 'peakek' | 'peasus':
-							camFollow.x = dad.getMidpoint().x - -400;
-						case 'spooky' | 'feralspooky':
-							camFollow.x = dad.getMidpoint().x + 190;
-							camFollow.y = dad.getMidpoint().y - 30;
-						case 'taki':
-							camFollow.x = dad.getMidpoint().x + 155;
-							camFollow.y = dad.getMidpoint().y - 50;
-						case 'monster':
-							if (SONG.song.toLowerCase() == 'prayer')
-							{
-								camFollow.x = dad.getMidpoint().x - -560;
-								camFollow.y = dad.getMidpoint().y - -100;
-							}
-							else
-							{
-								camFollow.x = dad.getMidpoint().x - -400;
-								camFollow.y = dad.getMidpoint().y - -100;
-							}
-						case 'pepper':
-							camFollow.y = dad.getMidpoint().y + 65;
-							camFollow.x = dad.getMidpoint().x + 290;
-						case 'hallow':
-							camFollow.x = dad.getMidpoint().x - -500;
+					case 'SG':
+						camFollow.y = dad.getMidpoint().y - 300;
+						camFollow.x = dad.getMidpoint().x - 220;
+					case 'mom' | 'mom-carnight' | 'mom-car':
+						camFollow.y = dad.getMidpoint().y + 90;
+					case 'senpai' | 'senpai-angry':
+						camFollow.y = dad.getMidpoint().y - 130;
+						camFollow.x = dad.getMidpoint().x + 175;
+					case 'peakek' | 'peasus':
+						camFollow.x = dad.getMidpoint().x - -400;
+					case 'spooky' | 'feralspooky':
+						camFollow.x = dad.getMidpoint().x + 190;
+						camFollow.y = dad.getMidpoint().y - 30;
+					case 'taki':
+						camFollow.x = dad.getMidpoint().x + 155;
+						camFollow.y = dad.getMidpoint().y - 50;
+					case 'monster':
+						if (SONG.song.toLowerCase() == 'prayer')
+						{
+							camFollow.x = dad.getMidpoint().x - -560;
 							camFollow.y = dad.getMidpoint().y - -100;
-						case 'robo-cesar':
-							if (roboStage != null)
-							{
-								switch (roboStage.curStage)
-								{
-									default:
-										camFollow.y = dad.getMidpoint().y - 130;
-										camFollow.x = dad.getMidpoint().x + 475;
-									case 'c354r-default':
-										camFollow.x = dad.getMidpoint().x + 110;
-										camFollow.y = dad.getMidpoint().y - 280;
-									case 'tricky':
-										camFollow.y = dad.getMidpoint().y - 100;
-										camFollow.x = dad.getMidpoint().x + 230;
-									case 'default' | 'whitty':
-										camFollow.y = dad.getMidpoint().y - 290;
-										camFollow.x = dad.getMidpoint().x - -490;
-								}
-							}
-							else
-							{
-								camFollow.y = dad.getMidpoint().y - 150;
-								camFollow.x = dad.getMidpoint().x + 490;
-							}
-						case 'scarlet-final':
-							camFollow.x = dad.getMidpoint().x + 275;
-							camFollow.y = dad.getMidpoint().y + 50;
-						case 'tea-bat':
-							camFollow.x = dad.getMidpoint().x - -600;
-							camFollow.y = dad.getMidpoint().y - -150;
-						case 'yukichi':
-							camFollow.x = dad.getMidpoint().x + 240;
-							camFollow.y = dad.getMidpoint().y - 150;
-						case 'mako' | 'mako-demon':
-							camFollow.x = dad.getMidpoint().x - -350;
-							camFollow.y = dad.getMidpoint().y - (dad.curCharacter == "mako" ? 185 : 60);
-						case 'bdbfever':
-							camFollow.x = dad.getMidpoint().x + 200;
-							camFollow.y = dad.getMidpoint().y - 80;
-						case 'gf':
-							camFollow.y = dad.getMidpoint().y - 50;
-						case 'flippy':
-							camFollow.x = dad.getMidpoint().x + 90;
-							camFollow.y = dad.getMidpoint().y + 40;
-						case 'robofvr-final':
-							camFollow.x = dad.getMidpoint().x - 450;
-							camFollow.y = dad.getMidpoint().y + 150;
-					}
-		
-					camFollow.x += DAD_CAM_OFFSET.x;
-					camFollow.y += DAD_CAM_OFFSET.y;
-					DAD_CAM_POS.set(camFollow.x, camFollow.y);
-				}
-				else
-				{
-					camFollow.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
-		
-					switch (curStage)
-					{
-						case 'cave':
-							camFollow.x = boyfriend.getMidpoint().x - 350;
-							camFollow.y = boyfriend.getMidpoint().y - 265;
-						case 'stage':
-							camFollow.x = boyfriend.getMidpoint().x - 350;
-							camFollow.y -= 100;
-						case 'mall':
-							camFollow.y = boyfriend.getMidpoint().y - 200;
-						case 'school' | 'schoolEvil':
-							camFollow.x = boyfriend.getMidpoint().x - 330;
-							camFollow.y = boyfriend.getMidpoint().y - 15;
-						case 'spooky' | 'spookyBOO':
-							camFollow.x = boyfriend.getMidpoint().x - 355;
-							camFollow.y = boyfriend.getMidpoint().y - 250;
-						case 'church':
-							camFollow.x = boyfriend.getMidpoint().x - 465;
-							camFollow.y = boyfriend.getMidpoint().y - 365;
-						case 'hallow':
-							camFollow.x = boyfriend.getMidpoint().x - 250;
-							camFollow.y = boyfriend.getMidpoint().y - 200;
-						case 'diner':
-							camFollow.x = boyfriend.getMidpoint().x - 350;
-							camFollow.y = boyfriend.getMidpoint().y - 180;
-		
-						case 'melonpatch':
-							camFollow.x = boyfriend.getMidpoint().x - 380;
-							camFollow.y = boyfriend.getMidpoint().y - 150;
-						case 'alleyway':
-							camFollow.y = boyfriend.getMidpoint().y - 330;
-							camFollow.x = boyfriend.getMidpoint().x - 450;
-						case 'train':
-							camFollow.y = boyfriend.getMidpoint().y - 300;
-							camFollow.x = boyfriend.getMidpoint().x - 250;
-						case 'robocesbg':
+						}
+						else
+						{
+							camFollow.x = dad.getMidpoint().x - -400;
+							camFollow.y = dad.getMidpoint().y - -100;
+						}
+					case 'pepper':
+						camFollow.y = dad.getMidpoint().y + 65;
+						camFollow.x = dad.getMidpoint().x + 290;
+					case 'hallow':
+						camFollow.x = dad.getMidpoint().x - -500;
+						camFollow.y = dad.getMidpoint().y - -100;
+					case 'robo-cesar':
+						if (roboStage != null)
+						{
 							switch (roboStage.curStage)
 							{
-								case 'default' | 'whitty':
-									camFollow.y = boyfriend.getMidpoint().y - 430;
-									camFollow.x = boyfriend.getMidpoint().x - 600;
-								case 'limo':
-									camFollow.x = boyfriend.getMidpoint().x - 300;
-									camFollow.y = boyfriend.getMidpoint().y - 230;
-								case 'matt':
-									camFollow.x = boyfriend.getMidpoint().x - 650;
-									camFollow.y = boyfriend.getMidpoint().y - 330;
-								case 'tricky':
-									camFollow.x = boyfriend.getMidpoint().x - 320;
-									camFollow.y = boyfriend.getMidpoint().y - 300;
-								case 'c354r-default':
-									camFollow.x = boyfriend.getMidpoint().x - 210;
-									camFollow.y = boyfriend.getMidpoint().y - 410;
-		
-									if (SONG.song == "Grando")
-									{
-										camFollow.x -= 110;
-										camFollow.y += 110;
-									}
 								default:
-									camFollow.x = boyfriend.getMidpoint().x - 490;
-									camFollow.y = boyfriend.getMidpoint().y - 280;
+									camFollow.y = dad.getMidpoint().y - 130;
+									camFollow.x = dad.getMidpoint().x + 475;
+								case 'c354r-default':
+									camFollow.x = dad.getMidpoint().x + 110;
+									camFollow.y = dad.getMidpoint().y - 280;
+								case 'tricky':
+									camFollow.y = dad.getMidpoint().y - 100;
+									camFollow.x = dad.getMidpoint().x + 230;
+								case 'default' | 'whitty':
+									camFollow.y = dad.getMidpoint().y - 290;
+									camFollow.x = dad.getMidpoint().x - -490;
 							}
-						case 'city':
-							camFollow.x = boyfriend.getMidpoint().x - 330;
-							camFollow.y = boyfriend.getMidpoint().y - 385;
-						case 'city-minus':
-							camFollow.x = boyfriend.getMidpoint().x - 600;
-							camFollow.y = boyfriend.getMidpoint().y - 190;
-					}
-		
-					camFollow.x += BF_CAM_OFFSET.x;
-					camFollow.y += BF_CAM_OFFSET.y;
-					BF_CAM_POS.set(camFollow.x, camFollow.y);
+						}
+						else
+						{
+							camFollow.y = dad.getMidpoint().y - 150;
+							camFollow.x = dad.getMidpoint().x + 490;
+						}
+					case 'scarlet-final':
+						camFollow.x = dad.getMidpoint().x + 275;
+						camFollow.y = dad.getMidpoint().y + 50;
+					case 'tea-bat':
+						camFollow.x = dad.getMidpoint().x - -600;
+						camFollow.y = dad.getMidpoint().y - -150;
+					case 'yukichi':
+						camFollow.x = dad.getMidpoint().x + 240;
+						camFollow.y = dad.getMidpoint().y - 150;
+					case 'mako' | 'mako-demon':
+						camFollow.x = dad.getMidpoint().x - -350;
+						camFollow.y = dad.getMidpoint().y - (dad.curCharacter == "mako" ? 185 : 60);
+					case 'bdbfever':
+						camFollow.x = dad.getMidpoint().x + 200;
+						camFollow.y = dad.getMidpoint().y - 80;
+					case 'gf':
+						camFollow.y = dad.getMidpoint().y - 50;
+					case 'flippy':
+						camFollow.x = dad.getMidpoint().x + 90;
+						camFollow.y = dad.getMidpoint().y + 40;
+					case 'robofvr-final':
+						camFollow.x = dad.getMidpoint().x - 450;
+						camFollow.y = dad.getMidpoint().y + 150;
 				}
-		
-				scripts.callFunction("onMoveCamera", [isDad]);
+
+				camFollow.x += DAD_CAM_OFFSET.x;
+				camFollow.y += DAD_CAM_OFFSET.y;
+				DAD_CAM_POS.set(camFollow.x, camFollow.y);
+			}
+			else
+			{
+				camFollow.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
+
+				switch (curStage)
+				{
+					case 'cave':
+						camFollow.x = boyfriend.getMidpoint().x - 350;
+						camFollow.y = boyfriend.getMidpoint().y - 265;
+					case 'stage':
+						camFollow.x = boyfriend.getMidpoint().x - 350;
+						camFollow.y -= 100;
+					case 'mall':
+						camFollow.y = boyfriend.getMidpoint().y - 200;
+					case 'school' | 'schoolEvil':
+						camFollow.x = boyfriend.getMidpoint().x - 330;
+						camFollow.y = boyfriend.getMidpoint().y - 15;
+					case 'spooky' | 'spookyBOO':
+						camFollow.x = boyfriend.getMidpoint().x - 355;
+						camFollow.y = boyfriend.getMidpoint().y - 250;
+					case 'church':
+						camFollow.x = boyfriend.getMidpoint().x - 465;
+						camFollow.y = boyfriend.getMidpoint().y - 365;
+					case 'hallow':
+						camFollow.x = boyfriend.getMidpoint().x - 250;
+						camFollow.y = boyfriend.getMidpoint().y - 200;
+					case 'diner':
+						camFollow.x = boyfriend.getMidpoint().x - 350;
+						camFollow.y = boyfriend.getMidpoint().y - 180;
+
+					case 'melonpatch':
+						camFollow.x = boyfriend.getMidpoint().x - 380;
+						camFollow.y = boyfriend.getMidpoint().y - 150;
+					case 'alleyway':
+						camFollow.y = boyfriend.getMidpoint().y - 330;
+						camFollow.x = boyfriend.getMidpoint().x - 450;
+					case 'train':
+						camFollow.y = boyfriend.getMidpoint().y - 300;
+						camFollow.x = boyfriend.getMidpoint().x - 250;
+					case 'robocesbg':
+						switch (roboStage.curStage)
+						{
+							case 'default' | 'whitty':
+								camFollow.y = boyfriend.getMidpoint().y - 430;
+								camFollow.x = boyfriend.getMidpoint().x - 600;
+							case 'limo':
+								camFollow.x = boyfriend.getMidpoint().x - 300;
+								camFollow.y = boyfriend.getMidpoint().y - 230;
+							case 'matt':
+								camFollow.x = boyfriend.getMidpoint().x - 650;
+								camFollow.y = boyfriend.getMidpoint().y - 330;
+							case 'tricky':
+								camFollow.x = boyfriend.getMidpoint().x - 320;
+								camFollow.y = boyfriend.getMidpoint().y - 300;
+							case 'c354r-default':
+								camFollow.x = boyfriend.getMidpoint().x - 210;
+								camFollow.y = boyfriend.getMidpoint().y - 410;
+
+								if (SONG.song == "Grando")
+								{
+									camFollow.x -= 110;
+									camFollow.y += 110;
+								}
+							default:
+								camFollow.x = boyfriend.getMidpoint().x - 490;
+								camFollow.y = boyfriend.getMidpoint().y - 280;
+						}
+					case 'city':
+						camFollow.x = boyfriend.getMidpoint().x - 330;
+						camFollow.y = boyfriend.getMidpoint().y - 385;
+					case 'city-minus':
+						camFollow.x = boyfriend.getMidpoint().x - 600;
+						camFollow.y = boyfriend.getMidpoint().y - 190;
+				}
+
+				camFollow.x += BF_CAM_OFFSET.x;
+				camFollow.y += BF_CAM_OFFSET.y;
+				BF_CAM_POS.set(camFollow.x, camFollow.y);
+			}
+
+			scripts.callFunction("onMoveCamera", [isDad]);
 		}
 	}
 
@@ -2692,7 +2694,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if(curSong == 'Shadow')
+		if (curSong == 'Shadow')
 		{
 			if (curStep == 255)
 				camLocked = false;
@@ -2786,20 +2788,23 @@ class PlayState extends MusicBeatState
 			{
 				case 'shadow':
 					if (curBeat == 64)
-						FlxTween.tween(camHUD, {alpha: 1}, 0.5);		
+						FlxTween.tween(camHUD, {alpha: 1}, 0.5);
 					if (curBeat == 96)
 						defaultCamZoom = 0.5;
 					if (curBeat == 511)
 					{
 						moveCamera(true);
 						camLocked = true;
-			
-						zoomTwn = FlxTween.tween(camGame, {zoom: 0.7}, 19, {ease: FlxEase.sineInOut, onComplete: (twn) -> {
-							defaultCamZoom = camGame.zoom;
-						}});
-			
+
+						zoomTwn = FlxTween.tween(camGame, {zoom: 0.7}, 19, {
+							ease: FlxEase.sineInOut,
+							onComplete: (twn) ->
+							{
+								defaultCamZoom = camGame.zoom;
+							}
+						});
 					}
-						
+
 					if (curBeat == 512)
 					{
 						dad.playAnim('bye', true);
