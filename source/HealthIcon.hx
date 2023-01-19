@@ -26,6 +26,8 @@ class HealthIcon extends FlxSprite
 		// i hate this code and i hate how the characters are named since this makes it twenty times harder than it should
 		switch (curCharacter)
 		{
+			case 'bf-cedar':
+				loadGraphic(Paths.image('icons/icon-cedarhd'), true, 150, 150);
 			case 'sg':
 				loadGraphic(Paths.image('icon-sg', 'shadow'), true, 150, 150); //embed
 			case 'scarlet-freeplay':
