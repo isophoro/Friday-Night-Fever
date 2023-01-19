@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:1f0e90710135934921df1a82a5afb4ca:b4b107625ba344ca225f754bc7b5d59e:ad14ee1597a4ad62128dcad5c231da88$ -->
+<TextureAtlas imagePath="flippy.png" width="1300" height="600">
+    <SubTexture name="flippy neutral" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="flippy ugh" x="650" y="0" width="650" height="600"/>
+</TextureAtlas>

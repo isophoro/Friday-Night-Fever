@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="fever.png">
-	<!-- Created with Adobe Animate version 20.5.0.29329 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="fever cocky" x="5" y="5" width="650" height="600"/>
-	<SubTexture name="fever confused" x="674" y="5" width="650" height="600"/>
-	<SubTexture name="fever confused2" x="1343" y="5" width="650" height="600"/>
-	<SubTexture name="fever facepalm" x="2012" y="5" width="650" height="600"/>
-	<SubTexture name="fever facepalm2" x="2681" y="5" width="650" height="600"/>
-	<SubTexture name="fever facepalm3" x="3350" y="5" width="650" height="600"/>
-	<SubTexture name="fever neutral" x="5" y="624" width="650" height="600"/>
-	<SubTexture name="fever neutral2" x="674" y="624" width="650" height="600"/>
-	<SubTexture name="fever ohhey" x="1343" y="624" width="650" height="600"/>
-	<SubTexture name="fever point" x="2012" y="624" width="650" height="600"/>
-	<SubTexture name="fever point2" x="2681" y="624" width="650" height="600"/>
-	<SubTexture name="fever ugh" x="3350" y="624" width="650" height="600"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:7dddc31ba33e12a16692bbc5c94890e8:98b08c60a5053df0ce8a2ca16e9a3b7d:764903a4088b5ad9515317f9c27e8717$ -->
+<TextureAtlas imagePath="fever.png" width="3900" height="1200">
+    <SubTexture name="fever chill" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="fever cocky" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="fever embarrassed" x="1300" y="0" width="650" height="600"/>
+    <SubTexture name="fever facepalm-blush" x="1950" y="0" width="650" height="600"/>
+    <SubTexture name="fever facepalm-stare" x="2600" y="0" width="650" height="600"/>
+    <SubTexture name="fever facepalm" x="3250" y="0" width="650" height="600"/>
+    <SubTexture name="fever hey" x="0" y="600" width="650" height="600"/>
+    <SubTexture name="fever neutral" x="650" y="600" width="650" height="600"/>
+    <SubTexture name="fever point-forward" x="1300" y="600" width="650" height="600"/>
+    <SubTexture name="fever point" x="1950" y="600" width="650" height="600"/>
+    <SubTexture name="fever shocked" x="2600" y="600" width="650" height="600"/>
+    <SubTexture name="fever ugh" x="3250" y="600" width="650" height="600"/>
 </TextureAtlas>

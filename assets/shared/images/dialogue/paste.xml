@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:2b91c45e79c30a3c4745c4b0c182b1b1:dbfd33e2cc435346f34c78a48bb70da8:bb875d2d0d0f9c8b476bd3942f03641a$ -->
+<TextureAtlas imagePath="paste.png" width="1950" height="600">
+    <SubTexture name="paste angry" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="paste laugh" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="paste neutral" x="1300" y="0" width="650" height="600"/>
+</TextureAtlas>

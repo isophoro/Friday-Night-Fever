@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:a101fbf2039d4cbe46ef37fdc26137a7:b4dd1c696d23582b3c2cf0e12afb4738:8f447985a70d33078dee767e8256ee0d$ -->
+<TextureAtlas imagePath="wee.png" width="1950" height="600">
+    <SubTexture name="wee chill" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="wee neutral" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="wee wtf" x="1300" y="0" width="650" height="600"/>
+</TextureAtlas>

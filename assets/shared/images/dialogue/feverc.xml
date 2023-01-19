@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:3e063ee58515c33fbff035d39149f6d0:e8245e5dceb71d96d3187b7452cf2935:78c645525c4391206b41822ce555ce3e$ -->
+<TextureAtlas imagePath="feverc.png" width="3900" height="1200">
+    <SubTexture name="feverc chill" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="feverc cocky" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="feverc embarrased" x="1300" y="0" width="650" height="600"/>
+    <SubTexture name="feverc facepalm-blush" x="1950" y="0" width="650" height="600"/>
+    <SubTexture name="feverc facepalm-stare" x="2600" y="0" width="650" height="600"/>
+    <SubTexture name="feverc facepalm" x="3250" y="0" width="650" height="600"/>
+    <SubTexture name="feverc hey" x="0" y="600" width="650" height="600"/>
+    <SubTexture name="feverc neutral" x="650" y="600" width="650" height="600"/>
+    <SubTexture name="feverc point" x="1300" y="600" width="650" height="600"/>
+    <SubTexture name="feverc shocked" x="1950" y="600" width="650" height="600"/>
+    <SubTexture name="feverc ugh" x="2600" y="600" width="650" height="600"/>
+</TextureAtlas>

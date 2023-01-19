@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:f30334b7219c5a32232c39009538fb67:1a6be4a552b390b078d5252f1772547e:0c61317981a26de2a8bedf10959d7a6d$ -->
+<TextureAtlas imagePath="peakek.png" width="3900" height="600">
+    <SubTexture name="peakek combined" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="peakek happy" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="peakek neutral" x="1300" y="0" width="650" height="600"/>
+    <SubTexture name="peakek sus" x="1950" y="0" width="650" height="600"/>
+    <SubTexture name="peakek sus2" x="2600" y="0" width="650" height="600"/>
+    <SubTexture name="peakek wtf" x="3250" y="0" width="650" height="600"/>
+</TextureAtlas>

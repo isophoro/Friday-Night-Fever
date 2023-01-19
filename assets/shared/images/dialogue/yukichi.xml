@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="yukichi.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="yukichi happy" x="0" y="0" width="650" height="600"/>
+	<SubTexture name="yukichi neutral" x="652" y="0" width="650" height="600"/>
+</TextureAtlas>

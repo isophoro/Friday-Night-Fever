@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="cherrygf.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cherry0000" x="4" y="4" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0001" x="412" y="4" width="411" height="464" frameX="0" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0002" x="827" y="4" width="407" height="464" frameX="0" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0003" x="1238" y="4" width="400" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0004" x="4" y="472" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0005" x="4" y="472" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0006" x="412" y="472" width="407" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0007" x="412" y="472" width="407" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0008" x="823" y="472" width="407" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0009" x="823" y="472" width="407" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0010" x="1234" y="472" width="407" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0011" x="1234" y="472" width="407" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0012" x="1234" y="472" width="407" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0013" x="1234" y="472" width="407" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0014" x="4" y="940" width="406" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0015" x="414" y="940" width="413" height="464" frameX="0" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0016" x="831" y="940" width="408" height="462" frameX="0" frameY="-2" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0017" x="1243" y="940" width="401" height="462" frameX="-7" frameY="-2" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0018" x="4" y="1408" width="403" height="463" frameX="-7" frameY="-1" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0019" x="4" y="1408" width="403" height="463" frameX="-7" frameY="-1" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0020" x="411" y="1408" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0021" x="411" y="1408" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0022" x="819" y="1408" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0023" x="819" y="1408" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0024" x="1227" y="1408" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0025" x="1227" y="1408" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0026" x="1227" y="1408" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+	<SubTexture name="cherry0027" x="1227" y="1408" width="404" height="464" frameX="-7" frameY="0" frameWidth="414" frameHeight="464"/>
+</TextureAtlas>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="limoBG.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="limobg0000" x="4" y="4" width="1993" height="805"/>
+	<SubTexture name="limobg0001" x="4" y="813" width="1993" height="805"/>
+	<SubTexture name="limobg0002" x="4" y="4" width="1993" height="805"/>
+	<SubTexture name="limobg0003" x="4" y="813" width="1993" height="805"/>
+	<SubTexture name="limobg0004" x="4" y="4" width="1993" height="805"/>
+	<SubTexture name="limobg0005" x="4" y="813" width="1993" height="805"/>
+	<SubTexture name="limobg0006" x="4" y="4" width="1993" height="805"/>
+	<SubTexture name="limobg0007" x="4" y="813" width="1993" height="805"/>
+</TextureAtlas>

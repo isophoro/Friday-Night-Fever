@@ -4,7 +4,7 @@
     <action msg="Buzz off, kid. I already told you, dis' tickets got MY NAME on it, so it belongs ta' me." portrait="robo-fever-minus"/>
     <action msg="With all due respect sir, I highly suggest you re-read the name on that ticket, for its rightful owner is without a doubt-" portrait="fever-minus" emotion="neutral" proceedImmediately="true"/>
     <action msg="ME, FEVER!" portraits="robo-fever-minus,fever-minus" effect="jump"/>
-    <action msg="..."/>
+    <action narrate="..."/>
     <action msg="Woof." portrait="tea-minus"/>
     <action msg="Well, that's highly unfortunate..." portrait="fever-minus"/>
     <action msg="Guess dere's enough people in the galaxy for two to have the same name, and be doing da' same thing at da' same time." portrait="robo-fever-minus"/>

@@ -27,6 +27,7 @@ typedef DialogueAction =
 	?fillBG:Null<FlxColor>,
 	?setBG:String,
 	?effect:String,
+	?narrate:Bool,
 	?proceedImmediately:Bool
 }
 
@@ -39,6 +40,13 @@ class DialoguePortrait extends FlxSprite
 		super(0, -90);
 		antialiasing = true;
 		this.character = character;
+
+		if (character == "mega")
+		{
+			origin.set(0, 0);
+			scale.set(2.3, 2.3);
+			antialiasing = false;
+		}
 
 		frames = Paths.getSparrowAtlas('dialogue/${character.toLowerCase()}', 'shared');
 		for (i in frames.frames)
@@ -171,7 +179,16 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			}
 		}
 
-		if (action.portrait != null && portraits[action.portrait] != null)
+		if (action.narrate)
+		{
+			text.sounds = null;
+
+			if (curLeft != null)
+				curLeft.color = 0xFF828282;
+			if (curRight != null)
+				curRight.color = 0xFF828282;
+		}
+		else if (action.portrait != null && portraits[action.portrait] != null)
 		{
 			setCorrectPortrait(action);
 
@@ -207,7 +224,8 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 			@:privateAccess
 			{
-				text.sounds[0].volume = 0.35;
+				if (text.sounds != null && text.sounds[0] != null)
+					text.sounds[0].volume = 0.35;
 			}
 		}
 		else if (actions[0] != null)
@@ -309,7 +327,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 	function parseDialogue(rawDialogue:String)
 	{
-		var xml = Xml.parse(openfl.utils.Assets.getText(rawDialogue));
+		var xml = Xml.parse(sys.io.File.getContent(rawDialogue));
 		var data:Access = new Access(xml.firstElement());
 		for (a in data.nodes.action)
 		{
@@ -341,6 +359,11 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 			if (a.has.msg)
 				action.msg = a.att.msg;
+			else if (a.has.narrate)
+			{
+				action.msg = a.att.narrate;
+				action.narrate = true;
+			}
 
 			if (a.has.fillBG)
 				action.fillBG = FlxColor.fromString(a.att.fillBG);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:60b0bb5d727db0bf1b2ef597028ea50d:076016f165ce2455837422653957dbc9:c29ac8879a708f426c0ae22c4e938e61$ -->
+<TextureAtlas imagePath="mega.png" width="3102" height="243">
+    <SubTexture name="mega cocky-angry" x="0" y="0" width="282" height="243"/>
+    <SubTexture name="mega cocky" x="282" y="0" width="282" height="243"/>
+    <SubTexture name="mega embarrassed" x="564" y="0" width="282" height="243"/>
+    <SubTexture name="mega embarrassed2" x="846" y="0" width="282" height="243"/>
+    <SubTexture name="mega embarrassed3" x="1128" y="0" width="282" height="243"/>
+    <SubTexture name="mega god" x="1410" y="0" width="282" height="243"/>
+    <SubTexture name="mega huh" x="1692" y="0" width="282" height="243"/>
+    <SubTexture name="mega insane" x="1974" y="0" width="282" height="243"/>
+    <SubTexture name="mega neutral" x="2256" y="0" width="282" height="243"/>
+    <SubTexture name="mega swag" x="2538" y="0" width="282" height="243"/>
+    <SubTexture name="mega wtf" x="2820" y="0" width="282" height="243"/>
+</TextureAtlas>

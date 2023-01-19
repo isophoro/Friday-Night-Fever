@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:0a0374760733da92f33acf5c3efe39b9:d9e46ff08f676a309819ced19ca78a37:635ee4b8e2ffd01bdabaadc5219b0318$ -->
+<TextureAtlas imagePath="feverd-casual.png" width="1950" height="1200">
+    <SubTexture name="feverd-casual frown" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="feverd-casual fuckboy" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="feverd-casual neutral" x="1300" y="0" width="650" height="600"/>
+    <SubTexture name="feverd-casual point" x="0" y="600" width="650" height="600"/>
+    <SubTexture name="feverd-casual sweat" x="650" y="600" width="650" height="600"/>
+    <SubTexture name="feverd-casual wtf" x="1300" y="600" width="650" height="600"/>
+</TextureAtlas>

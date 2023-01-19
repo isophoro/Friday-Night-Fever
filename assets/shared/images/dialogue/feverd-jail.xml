@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:84fc9659beb98072c1d542acfc17c16b:e2433a0c0a8a6430d0b1f2e65a8e8643:ca406cbb9ca1d5ee9ce970fb5bc681e1$ -->
+<TextureAtlas imagePath="feverd-jail.png" width="1300" height="1200">
+    <SubTexture name="feverd-jail frown" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="feverd-jail fuckboy" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="feverd-jail neutral" x="0" y="600" width="650" height="600"/>
+    <SubTexture name="feverd-jail sweat" x="650" y="600" width="650" height="600"/>
+</TextureAtlas>

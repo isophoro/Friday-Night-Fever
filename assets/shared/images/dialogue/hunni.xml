@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:1dac90edee11c6eb4c8c13f578baaae3:f1f1f2f38f4c4fea14ba790504db8235:33342a6a86eadfa6b3850df7af2eaf0b$ -->
+<TextureAtlas imagePath="hunni.png" width="1300" height="600">
+    <SubTexture name="hunni angry" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="hunni neutral" x="650" y="0" width="650" height="600"/>
+</TextureAtlas>

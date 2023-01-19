@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:364f935092bea86aec626f0020b471ec:acc10b8c8a1deec7373ab6b69f3b125e:f89b1886f72e10ab7d53fe47a2995330$ -->
+<TextureAtlas imagePath="food.png" width="2748" height="400">
+    <SubTexture name="food angry" x="0" y="0" width="916" height="400"/>
+    <SubTexture name="food ill" x="916" y="0" width="916" height="400"/>
+    <SubTexture name="food neutral" x="1832" y="0" width="916" height="400"/>
+</TextureAtlas>

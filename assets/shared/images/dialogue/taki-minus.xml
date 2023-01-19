@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:8978cb931370945627374580e50d5b47:b11f40d3d812f4b2d61e3c1ba857d602:a6de86d4636abe31a47c7dae75c7007f$ -->
+<TextureAtlas imagePath="taki-minus.png" width="650" height="600">
+    <SubTexture name="taki-minus neutral" x="0" y="0" width="650" height="600"/>
+</TextureAtlas>

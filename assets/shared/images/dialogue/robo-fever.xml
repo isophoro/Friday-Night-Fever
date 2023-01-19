@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:a2876a97cc6b23c97cc7c052db4bed70:99e0742783be93ea69fd5f93ba6c4a24:469f48ad7ae02dcebee556090e09c94d$ -->
+<TextureAtlas imagePath="robo-fever.png" width="1300" height="600">
+    <SubTexture name="robo-fever angry" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="robo-fever neutral" x="650" y="0" width="650" height="600"/>
+</TextureAtlas>

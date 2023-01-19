@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bunnyboppers.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bunnicus0000" x="4" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0001" x="4" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0002" x="314" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0003" x="314" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0004" x="624" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0005" x="624" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0006" x="934" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0007" x="934" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0008" x="1244" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0009" x="1244" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0010" x="1554" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0011" x="1554" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0012" x="1554" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0013" x="1554" y="4" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0014" x="4" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0015" x="4" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0016" x="314" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0017" x="314" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0018" x="624" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0019" x="624" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0020" x="934" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0021" x="934" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0022" x="1244" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0023" x="1244" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0024" x="1554" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0025" x="1554" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0026" x="1554" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+	<SubTexture name="bunnicus0027" x="1554" y="484" width="306" height="476" frameX="0" frameY="0" frameWidth="308" frameHeight="476"/>
+</TextureAtlas>

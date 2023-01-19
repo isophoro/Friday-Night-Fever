@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mako.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="mako angry" x="0" y="0" width="650" height="600"/>
+	<SubTexture name="mako confused" x="652" y="0" width="650" height="600"/>
+	<SubTexture name="mako corrupt" x="0" y="602" width="650" height="600"/>
+	<SubTexture name="mako embarrased" x="652" y="602" width="650" height="600"/>
+	<SubTexture name="mako neutral" x="0" y="1204" width="650" height="600"/>
+</TextureAtlas>

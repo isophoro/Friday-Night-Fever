@@ -882,7 +882,7 @@ class PlayState extends MusicBeatState
 			botPlayState.setFormat(Paths.font("vcr.ttf"), 34, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			botPlayState.cameras = [camHUD];
 			FlxTween.tween(botPlayState, {alpha: 0}, 1, {type: PINGPONG});
-			add(botPlayState);
+			// add(botPlayState);
 		}
 
 		if (!ClientPrefs.downscroll)
@@ -1007,7 +1007,7 @@ class PlayState extends MusicBeatState
 	function openDialogue():Void
 	{
 		var dialoguePath = 'assets/data/${SONG.song.toLowerCase()}/dialogue.xml';
-		if (!Assets.exists(dialoguePath))
+		if (!sys.FileSystem.exists(dialoguePath))
 		{
 			startCountdown();
 			return;

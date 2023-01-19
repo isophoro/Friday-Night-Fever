@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="cherry.png">
-	<!-- Created with Adobe Animate version 20.5.0.29329 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="cherry neutral" x="5" y="5" width="650" height="600"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:89d7b37cb47fa69b67a402a266d918e3:1dcb82d242eadc4a174efa94f6c5c175:4e1fb8433f37e502c363822f17d92f6b$ -->
+<TextureAtlas imagePath="cherry.png" width="650" height="600">
+    <SubTexture name="cherry neutral" x="0" y="0" width="650" height="600"/>
 </TextureAtlas>
