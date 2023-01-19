@@ -19,13 +19,14 @@ class ComboRating extends FlxSprite
 		var pixel = PlayState.instance.usePixelAssets;
 		antialiasing = !pixel;
 
+		var animName:String = animation.curAnim != null ? animation.curAnim.name : "sick";
 		frames = Paths.getSparrowAtlas("combo/ratings" + (pixel ? "-pixel" : ""), "shared");
 		for (i in ["sick", "good", "bad", "shit"])
 		{
 			animation.addByPrefix(i, i, 0, false);
 		}
 
-		animation.play(animation.curAnim != null ? animation.curAnim.name : "sick");
+		animation.play(animName);
 		if (pixel)
 		{
 			setGraphicSize(Std.int(frameWidth * PlayState.daPixelZoom * 0.7));

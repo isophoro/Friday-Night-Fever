@@ -19,13 +19,14 @@ class ComboNumber extends FlxSprite
 		var pixel = PlayState.instance.usePixelAssets;
 		antialiasing = !pixel;
 
+		var animName:String = animation.curAnim != null ? animation.curAnim.name : "0";
 		frames = Paths.getSparrowAtlas("combo/numbers" + (pixel ? "-pixel" : ""), "shared");
 		for (i in 0...10)
 		{
 			animation.addByPrefix('$i', 'num$i', 0, false);
 		}
 
-		animation.play(animation.curAnim != null ? animation.curAnim.name : "0");
+		animation.play(animName);
 		if (pixel)
 		{
 			setGraphicSize(Std.int(frameWidth * PlayState.daPixelZoom));

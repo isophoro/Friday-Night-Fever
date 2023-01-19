@@ -2,6 +2,7 @@ var peeps:FlxSprite;
 var bg:FlxSprite;
 var hands:FlxSprite;
 var phands:FlxSprite;
+var seats:FlxSprite;
 
 function onCreate()
 {
@@ -21,6 +22,12 @@ function onCreate()
 	var chairs:FlxSprite = new FlxSprite(319, 134).loadGraphic(Paths.image('freeplay/chairs'));
 	chairs.antialiasing = true;
 	add(chairs);
+
+	add(dad);
+
+	seats = new FlxSprite().loadGraphic(Paths.image('freeplay/frontChairs'));
+	seats.antialiasing = true;
+	add(seats);
 
 	hands = new FlxSprite();
 	hands.scale.set(0.67, 0.67);
