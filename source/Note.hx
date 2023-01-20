@@ -93,7 +93,10 @@ class Note extends FlxSprite
 							case 'bazinga' | 'crucify':
 								frames = Paths.getSparrowAtlas('notes/takiNotes');
 							default:
-								frames = Paths.getSparrowAtlas('notes/defaultNotes');
+								if(isPlayer == 1)
+									frames = Paths.getSparrowAtlas('NOTE_sg', 'shadow');
+								else
+									frames = Paths.getSparrowAtlas('notes/defaultNotes');
 						}
 				}
 
@@ -120,10 +123,13 @@ class Note extends FlxSprite
 		}
 	}
 
-	public function create(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, noteType:Int = 0)
+	var isPlayer:Int = 0;
+
+	public function create(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, noteType:Int = 0, isPlayer:Int = 0)
 	{
 		this.strumTime = strumTime < 0 ? 0 : strumTime;
 		this.noteData = noteData;
+		this.isPlayer = isPlayer;
 		this.isSustainNote = sustainNote;
 		this.prevNote = prevNote == null ? this : prevNote;
 

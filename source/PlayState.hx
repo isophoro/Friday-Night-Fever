@@ -341,7 +341,8 @@ class PlayState extends MusicBeatState
 
 		gf = new Character(400, 130, SONG.gfVersion == null ? 'gf' : SONG.gfVersion);
 		boyfriend = new Boyfriend(770, 450, curBoyfriend);
-		boyfriendReflection = new Boyfriend(770, 450, "bf-CoatReflection"); // this is for shadow fever reflection
+		if(SONG.song.toLowerCase() == 'shadow')
+			boyfriendReflection = new Boyfriend(770, 450, "bf-CoatReflection"); // this is for shadow fever reflection
 		dad = new Character(100, 100, SONG.player2);
 
 		switch (SONG.stage)
@@ -1097,8 +1098,8 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 
 
-		generateStaticArrows(cpuStrums, FlxG.width * 0.25);
-		generateStaticArrows(playerStrums, FlxG.width * 0.75);
+		generateStaticArrows(cpuStrums, FlxG.width * 0.25, false);
+		generateStaticArrows(playerStrums, FlxG.width * 0.75, true);
 
 		#if windows
 		if (executeModchart)
@@ -1382,12 +1383,15 @@ class PlayState extends MusicBeatState
 		});
 	}
 
-	private function generateStaticArrows(grp:FlxTypedGroup<FlxSprite>, centerPoint:Float):Void
+
+	private function generateStaticArrows(grp:FlxTypedGroup<FlxSprite>, centerPoint:Float, isPlayer:Bool = true):Void
 	{
 		var square:FlxSprite = new FlxSprite();
 		for (i in 0...4)
 		{
 			var babyArrow:FlxSprite = new FlxSprite(0, strumLine.y);
+
+
 
 			switch (SONG.noteStyle)
 			{
@@ -1420,7 +1424,14 @@ class PlayState extends MusicBeatState
 							babyArrow.animation.add('confirm', [15, 19], 24, false);
 					}
 				default:
-					babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
+					
+					if(dad.curCharacter == 'SG' && !isPlayer)
+						babyArrow.frames = Paths.getSparrowAtlas('NOTE_sg', 'shadow');			
+					else
+						babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
+				
+					
+
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
 					babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
 					babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
@@ -1862,9 +1873,16 @@ class PlayState extends MusicBeatState
 		{
 			if (unspawnNotes[0].strumTime - Conductor.songPosition < 3500)
 			{
+				
+
 				var data:QueuedNote = unspawnNotes[0];
 				var note = notes.recycle(Note);
-				note.create(data.strumTime, data.noteData, null, false, data.type);
+				
+				if(!data.mustPress && dad.curCharacter == 'SG')
+					note.create(data.strumTime, data.noteData, null, false, data.type, 1);
+				else
+					note.create(data.strumTime, data.noteData, null, false, data.type, 0);
+
 				note.mustPress = data.mustPress;
 				notes.add(note);
 
@@ -1876,8 +1894,18 @@ class PlayState extends MusicBeatState
 					for (susNote in 0...Math.floor(susLength))
 					{
 						var sustainNote:Note = notes.recycle(Note);
-						sustainNote.create(data.strumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, data.noteData,
-							prevSus == null ? note : prevSus, true);
+
+						if(!data.mustPress && dad.curCharacter == 'SG')
+						{
+								sustainNote.create(data.strumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, data.noteData,
+							prevSus == null ? note : prevSus, true, data.type, 1);
+						}
+						else
+						{
+								sustainNote.create(data.strumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, data.noteData,
+							prevSus == null ? note : prevSus, true, data.type, 0);
+						}
+
 						sustainNote.mustPress = data.mustPress;
 
 						notes.add(sustainNote);

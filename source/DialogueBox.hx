@@ -338,8 +338,10 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	{
 		dialogueStarted = false;
 
-		if(FlxG.sound.music != null)
-			FlxG.sound.music.fadeOut(1, 0);
+		if(FlxG.sound.music.volume >= 0.1)
+		{
+			FlxG.sound.music.stop();
+		}
 
 		for (i in [curLeft, curRight, box, text, bg])
 		{
