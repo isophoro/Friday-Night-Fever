@@ -23,12 +23,12 @@
     <action narrate="As lame as it sounds… I haven't really been able to bring out my demon form as well as I want it to be."/>
     <action narrate="Sucks, but I'm not going to cry over it. Gives me a chance to be more prepared the next time I'm caught offguard."/>
     <action msg="Of course." portrait="fever" emotion="talk"/>
-    <action narrate="It got colder… the snow from outside is reaching inside the cave? It's getting pretty harsh."/>
+    <action narrate="It got colder... the snow from outside is reaching inside the cave? It's getting pretty harsh."/>
     <action narrate="."/>
     <action narrate="!"/>
     <action narrate="Shit."/>
     <action narrate="There's someone here."/>
-    <action narrate="Even as I am now, I can sense their strength…"/>
+    <action narrate="Even as I am now, I can sense their strength..."/>
     <action msg="Hey! Who the fuck's there? Come out alre-"/>
     <action portrait="fever" emotion="distressed"/>
     <action narrate="!"/>
