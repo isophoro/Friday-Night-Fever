@@ -101,7 +101,7 @@
 			"name": "singUPmiss"
 		}
 	],
-	"facingLeft": false,
-	"file": "teasar",
+	"facingLeft": true,
+	"file": "costumes/teasar",
 	"color": "C353E3"
 }

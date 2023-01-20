@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="dfeverpixeldeath.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="DemonFeverDies0000" x="0" y="0" width="100" height="125" pivotX="50" pivotY="63"/>
+	<SubTexture name="DemonFeverDies0001" x="100" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0002" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0003" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0004" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0005" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0006" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0007" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0008" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0009" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0010" x="200" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0011" x="300" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0012" x="300" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0013" x="300" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0014" x="400" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0015" x="400" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0016" x="400" y="0" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0017" x="0" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0018" x="0" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0019" x="100" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0020" x="200" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0021" x="200" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0022" x="200" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0023" x="200" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0024" x="200" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0025" x="300" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0026" x="300" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0027" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0028" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0029" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0030" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0031" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0032" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0033" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0034" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0035" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0036" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0037" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0038" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0039" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0040" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0041" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0042" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0043" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0044" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0045" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0046" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0047" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0048" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0049" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0050" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0051" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0052" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0053" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0054" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="DemonFeverDies0055" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0000" x="0" y="250" width="100" height="125" pivotX="50" pivotY="63"/>
+	<SubTexture name="RETRY CONFIRM0001" x="100" y="250" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0002" x="100" y="250" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0003" x="100" y="250" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0004" x="200" y="250" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0005" x="200" y="250" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0006" x="200" y="250" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0007" x="300" y="250" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0008" x="300" y="250" width="100" height="125"/>
+	<SubTexture name="RETRY CONFIRM0009" x="300" y="250" width="100" height="125"/>
+	<SubTexture name="Retry Loop0000" x="400" y="250" width="100" height="125" pivotX="50" pivotY="63"/>
+	<SubTexture name="Retry Loop0001" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0002" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0003" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0004" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0005" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0006" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0007" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0008" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0009" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0010" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0011" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0012" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0013" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0014" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0015" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0016" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0017" x="400" y="250" width="100" height="125"/>
+	<SubTexture name="Retry Loop0018" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0019" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0020" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0021" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0022" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0023" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0024" x="400" y="125" width="100" height="125"/>
+	<SubTexture name="Retry Loop0025" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0026" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0027" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0028" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0029" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0030" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0031" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0032" x="0" y="375" width="100" height="125"/>
+	<SubTexture name="Retry Loop0033" x="0" y="375" width="100" height="125"/>
+</TextureAtlas>

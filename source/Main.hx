@@ -101,9 +101,9 @@ class Main extends Sprite
 		Assets.cache.clear("week");
 	}
 
-	public static function clearMemory()
+	public static function clearMemory(destroyMusic:Bool = true)
 	{
-		if (FlxG.sound.music != null)
+		if (FlxG.sound.music != null && destroyMusic)
 			FlxG.sound.music.destroy();
 
 		for (i in FlxG.sound.list)

@@ -28,25 +28,23 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
+	private var _clearMemory:Bool = false;
+
+	public function new(clearMemory:Bool = false)
+	{
+		super();
+		_clearMemory = clearMemory;
+	}
+
 	override function create()
 	{
-		(cast(Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap);
+		if (_clearMemory)
+			Main.clearMemory(false);
 
-		if (transIn != null)
-			trace('reg ' + transIn.region);
+		(cast(Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap);
 
 		super.create();
 	}
-
-	var array:Array<FlxColor> = [
-		FlxColor.fromRGB(148, 0, 211),
-		FlxColor.fromRGB(75, 0, 130),
-		FlxColor.fromRGB(0, 0, 255),
-		FlxColor.fromRGB(0, 255, 0),
-		FlxColor.fromRGB(255, 255, 0),
-		FlxColor.fromRGB(255, 127, 0),
-		FlxColor.fromRGB(255, 0, 0)
-	];
 
 	override function update(elapsed:Float)
 	{
@@ -67,8 +65,6 @@ class MusicBeatState extends FlxUIState
 		lastBeat = curStep;
 		curBeat = Math.floor(curStep / 4);
 	}
-
-	public static var currentColor = 0;
 
 	private function updateCurStep():Void
 	{

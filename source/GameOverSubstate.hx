@@ -28,30 +28,35 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		var daBf:String = PlayState.SONG.player1;
 
-		if (!daBf.contains('pixel'))
+		switch (PlayState.SONG.song.toLowerCase())
 		{
-			if (daBf.contains('demon') || daBf == 'bf-carnight' || daBf == 'bf-mad')
-			{
-				// For demon fever
-				switch (PlayState.SONG.song.toLowerCase())
+			case 'hallow' | 'old-portrait' | 'soul' | 'eclipse' | 'old-hallow' | 'old-soul':
+				daBf = 'bf-hallow-dead';
+			case 'gears':
+				daBf = 'madDeath';
+			default:
+				switch (daBf)
 				{
-					case 'hallow' | 'portrait' | 'soul':
-						daBf = 'bf-hallow-dead';
-					case 'gears':
-						daBf = 'madDeath';
+					case 'bf-demon':
+						if (PlayState.instance.usePixelAssets)
+						{
+							stageSuffix = '-pixel';
+							daBf = 'bf-demon-pixel-dead';
+						}
+						else daBf = 'demonDeath';
+					//
+					case 'bf-pixeldemon':
+						stageSuffix = '-pixel';
+						daBf = 'bf-demon-pixel-dead';
+					//
 					default:
-						daBf = 'demonDeath';
+						if (PlayState.instance.usePixelAssets)
+						{
+							stageSuffix = '-pixel';
+							daBf = 'bf-pixel-dead';
+						}
+						else daBf = 'humanDeath';
 				}
-			}
-			else
-			{
-				daBf = 'humanDeath';
-			}
-		}
-		else
-		{
-			stageSuffix = '-pixel';
-			daBf = 'bf-pixel-dead';
 		}
 
 		bf = new Boyfriend(x, y, daBf);
@@ -72,8 +77,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.camera.shake(0.0095, 0.3);
 
 		PlayState.deaths += 1;
-
-		trace(PlayState.deaths + " Deaths");
 	}
 
 	override function update(elapsed:Float)

@@ -31,8 +31,7 @@ yukichi
 pepper
 bf-pixel
 bf-pixeldemon
-senpai
-senpai-angry
+mega
 flippy
 robo-cesar
 robo-cesar-pixel

@@ -97,6 +97,7 @@ class MainMenuState extends InteractableState
 		var costumes = new Interactable('newMain/costumes', 505, 580, 0.7, 'costume notselected', 'costume selected', new InteractHitbox(505, 580, 240, 115),
 			[83, 102]);
 		costumes.sound = "paper";
+		costumes.callback = FlxG.switchState.bind(new states.CostumeState());
 		addInteractable(costumes);
 
 		var extras = new Interactable('newMain/extra', 839, 210, 0.7, 'extras notselected', 'extras selected', new InteractHitbox(839, 210, 150, 175),
