@@ -18,6 +18,7 @@ class Intro extends MusicBeatState
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 		PlayerSettings.init();
+		AchievementHandler.initGamejolt();
 		ClientPrefs.load();
 		Highscore.load();
 		CostumeHandler.load();
@@ -39,6 +40,17 @@ class Intro extends MusicBeatState
 		#end
 
 		super.create();
+
+		//SHADOW EXE STUFF
+
+		/*var txt = 'shadow';
+		var poop:String = Highscore.formatSong(txt, Difficulty.NORMAL);
+		FlxG.mouse.visible = false;
+		PlayState.SONG = Song.loadFromJson(poop, txt);
+		PlayState.isStoryMode = false;
+		PlayState.storyDifficulty = 2;
+		PlayState.storyWeek = 0;
+		LoadingState.loadAndSwitchState(new PlayState());*/
 
 		FlxG.switchState(new TitleState());
 	}
