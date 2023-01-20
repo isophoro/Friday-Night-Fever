@@ -14,10 +14,10 @@
     <action narrate="A cave? I don't remember anyone ever mentioning something like this."/>
     <action narrate="Sharp crystals line all around the area. It'd be dangerously stupid for anyone to go into something as dark as this."/>
     <action msg="Might as well have a look around." portrait="fever" emotion="smile"/>
-    <action fadeOutMus=""/>
-    <action fadeInMus="caveloopfinal"/>
+    <action fadeOutMus="a"/>
     <action setBG="iceCaveInide"/>
     <action narrate="Woah… this cave is MASSIVE."/>
+    <action fadeInMus="caveloopfinal"/>
     <action narrate="How can something this… BEAUTIFUL live near us? "/>
     <action msg="Pretty, but I should probably get going." portrait="fever" emotion="sigh"/>
     <action narrate="As lame as it sounds… I haven't really been able to bring out my demon form as well as I want it to be."/>
@@ -36,5 +36,4 @@
     <action narrate="No."/>
     <action fillBG="#000000"/>
     <action narrate="You're not supposed to be here."/>
-    <action fadeOutMus=""/>
 </file>
