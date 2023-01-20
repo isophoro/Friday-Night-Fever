@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="dfeverpixel.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="DemonFeverDOWN0000" x="0" y="0" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverDOWN0001" x="0" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0002" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0003" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0004" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0005" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0006" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0007" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0008" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0009" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0010" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0011" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0012" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDOWN0013" x="175" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0000" x="350" y="0" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverDownMISS0001" x="350" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0002" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0003" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0004" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0005" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0006" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0007" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0008" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0009" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0010" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0011" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverDownMISS0012" x="525" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0000" x="700" y="0" width="175" height="134" pivotX="50" pivotY="50"/>
+	<SubTexture name="DemonFeverFROWNIDLE0001" x="700" y="0" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0002" x="0" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0003" x="0" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0004" x="175" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0005" x="175" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0006" x="350" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0007" x="350" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0008" x="525" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0009" x="525" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0010" x="525" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0011" x="525" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0012" x="525" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverFROWNIDLE0013" x="525" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0000" x="700" y="134" width="175" height="134" pivotX="50" pivotY="50"/>
+	<SubTexture name="DemonFeverHEY0001" x="700" y="134" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0002" x="0" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0003" x="0" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0004" x="175" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0005" x="175" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0006" x="350" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0007" x="350" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0008" x="525" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0009" x="525" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0010" x="700" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0011" x="700" y="268" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0012" x="0" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverHEY0013" x="0" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0000" x="175" y="402" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverIDLE0001" x="175" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0002" x="350" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0003" x="350" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0004" x="525" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0005" x="525" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0006" x="700" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0007" x="700" y="402" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0008" x="0" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0009" x="0" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0010" x="0" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0011" x="0" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0012" x="0" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverIDLE0013" x="0" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0000" x="175" y="536" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverLEFT0001" x="175" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0002" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0003" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0004" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0005" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0006" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0007" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0008" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0009" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0010" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0011" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLEFT0012" x="350" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0000" x="525" y="536" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverLeftMISS0001" x="525" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0002" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0003" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0004" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0005" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0006" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0007" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0008" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0009" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0010" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0011" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverLeftMISS0012" x="700" y="536" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0000" x="0" y="670" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverRIGHT0001" x="0" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0002" x="175" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0003" x="175" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0004" x="350" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0005" x="350" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0006" x="525" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0007" x="525" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0008" x="525" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0009" x="525" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0010" x="525" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0011" x="525" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0012" x="525" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRIGHT0013" x="525" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0000" x="700" y="670" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverRightMISS0001" x="700" y="670" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0002" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0003" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0004" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0005" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0006" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0007" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0008" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0009" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0010" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0011" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverRightMISS0012" x="0" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0000" x="175" y="804" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverUP0001" x="175" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0002" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0003" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0004" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0005" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0006" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0007" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0008" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0009" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0010" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0011" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUP0012" x="350" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0000" x="525" y="804" width="175" height="134" pivotX="87" pivotY="67"/>
+	<SubTexture name="DemonFeverUpMISS0001" x="525" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0002" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0003" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0004" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0005" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0006" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0007" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0008" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0009" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0010" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0011" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0012" x="700" y="804" width="175" height="134"/>
+	<SubTexture name="DemonFeverUpMISS0013" x="700" y="804" width="175" height="134"/>
+</TextureAtlas>

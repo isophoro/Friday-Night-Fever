@@ -6,6 +6,10 @@ enum CostumeName
 {
 	FEVER;
 	FEVER_CASUAL;
+	FEVER_MINUS;
+	FEVER_NUN;
+	FEVER_COAT;
+	TEASAR;
 }
 
 typedef CostumeInfo =
@@ -21,13 +25,17 @@ typedef CostumeInfo =
 class CostumeHandler
 {
 	// Using maps because im scared of the save file killing itself from an array
-	public static var unlockedCostumes:Map<String, Int> = new Map();
+	public static var unlockedCostumes:Map<CostumeName, Int> = [FEVER => 0];
+	public static var curCostume:CostumeName = FEVER;
 
 	public static function load()
 	{
 		if (FlxG.save.data.unlockedCostumes != null)
 		{
 			unlockedCostumes = FlxG.save.data.unlockedCostumes;
+
+			if (!unlockedCostumes.exists(FEVER))
+				unlockedCostumes[FEVER] = 0;
 		}
 	}
 
@@ -37,32 +45,47 @@ class CostumeHandler
 		FlxG.save.flush();
 	}
 
-	public static final costumes:Map<CostumeName, CostumeInfo> = [
+	public static final data:Map<CostumeName, CostumeInfo> = [
 		FEVER => {
 			displayName: "Fever",
 			description: "Mayor of Fever Town",
 			character: "bf",
 			creator: "Kip"
 		},
+		FEVER_NUN => {
+			displayName: "Fever (Nun Outfit)",
+			description: "Full combo Week 2.5 in Story Mode",
+			character: "bf-nun",
+			creator: "MegaFreedom1274",
+			characterOffset: [0, -55]
+		},
 		FEVER_CASUAL => {
-			displayName: "Fever (Casual)",
-			description: "On Hard difficulty, full combo Week 3. (Story Mode)",
+			displayName: "Fever (Casual Outfit)",
+			description: "Full combo Week 3 in Story Mode",
 			character: "bf-casual",
-			creator: "Kip"
+			creator: "Kip",
+			characterOffset: [1, -9]
+		},
+		FEVER_MINUS => {
+			displayName: "Fever (Minus Outfit)",
+			description: "Full combo \"Minus Taki\" and \"Grando\"",
+			character: "bf-minus",
+			creator: "EMG",
+			characterOffset: [-20, -70]
+		},
+		FEVER_COAT => {
+			displayName: "Fever (Coat Outfit)",
+			description: "Complete all achievements",
+			character: "bf-coat",
+			creator: "Circle",
+			characterOffset: [-7, -59]
+		},
+		TEASAR => {
+			displayName: "Teasar",
+			description: "FC Tutorial",
+			character: "bf-teasar",
+			creator: "Circle",
+			characterOffset: [-80, -40]
 		}
 	];
-
-	public static final FEVER_LIST:Array<CostumeName> = [FEVER, FEVER_CASUAL]; // Organized list for costume menu
-
-	public static function getFormattedCharacter()
-	{
-		var variant:String = "";
-
-		variant += switch (PlayState.SONG.song.toLowerCase())
-		{
-			case 'down-bad' | 'bazinga' | 'crucify' | 'retribution' | 'farmed' | 'throw-it-back' | 'party-crasher': "demon";
-			case 'ur-girl' | 'chicken-sandwich' | 'space-demons' | 'funkin-god': "pixel";
-			default: "";
-		}
-	}
 }

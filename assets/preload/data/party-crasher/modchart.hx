@@ -69,6 +69,8 @@ function onBeatHit(curBeat:Int)
 			FlxG.camera.shake(0.09, Conductor.crochet / 1000);
 			camHUD.shake(0.09, Conductor.crochet / 1000);
 		case 96:
+			ratingsGrp.maxSize = 1;
+			numbersGrp.maxSize = 3;
 			game.disableScoreBop = true;
 			scoreTxt.font = Paths.font("pixel.otf");
 			game.songName.font = Paths.font("pixel.otf");
@@ -104,6 +106,8 @@ function onBeatHit(curBeat:Int)
 			FlxG.camera.shake(0.09, Conductor.crochet / 1000);
 			camHUD.shake(0.09, Conductor.crochet / 1000);
 		case 160:
+			ratingsGrp.maxSize = 15;
+			numbersGrp.maxSize = 30;
 			game.disableScoreBop = false;
 			scoreTxt.font = "VCR OSD Mono";
 			game.songName.font = "VCR OSD Mono";

@@ -89,7 +89,6 @@ class Character extends FlxSprite
 					addByPrefix(i.name, i.anim, i.fps, i.loop);
 
 				addOffset(i.name, i.offsets[0], i.offsets[1]);
-
 			}
 
 			dance();
@@ -99,7 +98,6 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-
 				// mister SG must be hardcoded to work with embed i THINK
 				case 'SG':
 					iconColor = '000000';
@@ -145,16 +143,31 @@ class Character extends FlxSprite
 					isDeathAnim = true;
 				case 'bf-pixel-dead':
 					iconColor = 'E353C8';
-					frames = getSparrowAtlas('characters/bfPixelsDEAD');
-					addByPrefix('singUP', "BF Dies pixel", 24, false);
+					frames = getSparrowAtlas('characters/fever/pixel-death');
 					addByPrefix('firstDeath', "BF Dies pixel", 24, false);
 					addByPrefix('deathLoop', "Retry Loop", 24, true);
 					addByPrefix('deathConfirm', "RETRY CONFIRM", 24, false);
-					animation.play('firstDeath');
 
-					addOffset('firstDeath');
-					addOffset('deathLoop', -37);
-					addOffset('deathConfirm', -37);
+					addOffset('firstDeath', -37, -25);
+					addOffset('deathLoop', -37, -25);
+					addOffset('deathConfirm', -37, -25);
+					playAnim('firstDeath');
+
+					setGraphicSize(Std.int(width * 6));
+					updateHitbox();
+					antialiasing = false;
+					flipX = true;
+					isDeathAnim = true;
+				case 'bf-demon-pixel-dead':
+					iconColor = 'E353C8';
+					frames = getSparrowAtlas('characters/fever/pixel-demon-death');
+					addByPrefix('firstDeath', "DemonFeverDies", 24, false);
+					addByPrefix('deathLoop', "Retry Loop", 24, true);
+					addByPrefix('deathConfirm', "RETRY CONFIRM", 24, false);
+
+					addOffset('firstDeath', -37, -25);
+					addOffset('deathLoop', -37, -25);
+					addOffset('deathConfirm', -37, -25);
 					playAnim('firstDeath');
 
 					setGraphicSize(Std.int(width * 6));
@@ -271,7 +284,6 @@ class Character extends FlxSprite
 
 	public function dance()
 	{
-
 		if (!canIdle())
 			return;
 

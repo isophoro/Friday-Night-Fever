@@ -578,17 +578,17 @@ class PlayState extends MusicBeatState
 				dad.x += 80;
 				dad.y += 560;
 				dad.scrollFactor.set(0.9, 0.9);
-			case 'senpai':
+			case 'mega':
 				dad.x += 150;
 				dad.y += 320;
 				dad.scrollFactor.set(0.9, 0.9);
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
-			case 'senpai-angry':
+			case 'mega-angry':
 				dad.x += 150;
 				dad.y += 350;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'flippy':
-				dad.y += 200;
+				dad.y += 300;
 				dad.x += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'mako-demon': // 275 350
@@ -2148,7 +2148,7 @@ class PlayState extends MusicBeatState
 						camFollow.x = dad.getMidpoint().x - 220;
 					case 'mom' | 'mom-carnight' | 'mom-car':
 						camFollow.y = dad.getMidpoint().y + 90;
-					case 'senpai' | 'senpai-angry':
+					case 'mega' | 'mega-angry':
 						camFollow.y = dad.getMidpoint().y - 130;
 						camFollow.x = dad.getMidpoint().x + 175;
 					case 'peakek' | 'peasus':
@@ -2219,7 +2219,7 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y - 50;
 					case 'flippy':
 						camFollow.x = dad.getMidpoint().x + 90;
-						camFollow.y = dad.getMidpoint().y + 40;
+						camFollow.y = dad.getMidpoint().y - 40;
 					case 'robofvr-final':
 						camFollow.x = dad.getMidpoint().x - 450;
 						camFollow.y = dad.getMidpoint().y + 150;

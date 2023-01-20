@@ -29,7 +29,7 @@ class HealthIcon extends FlxSprite
 			case 'bf-cedar':
 				loadGraphic(Paths.image('icons/icon-cedarhd'), true, 150, 150);
 			case 'sg':
-				loadGraphic(Paths.image('icon-sg', 'shadow'), true, 150, 150); //embed
+				loadGraphic(Paths.image('icon-sg', 'shadow'), true, 150, 150); // embed
 			case 'scarlet-freeplay':
 				loadGraphic(Paths.image('icons/icon-scarlet'), true, 150, 150);
 			case 'robo-cesar-minus':
@@ -46,8 +46,8 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
 			case 'gf' | 'gf-painting' | 'gf-christmas' | 'tea-pixel':
 				loadGraphic(Paths.image('icons/icon-gf'), true, 150, 150);
-			case 'senpai' | 'senpai-angry':
-				loadGraphic(Paths.image('icons/icon-senpai'), true, 150, 150);
+			case 'mega' | 'mega-angry':
+				loadGraphic(Paths.image('icons/icon-mega'), true, 150, 150);
 			case 'mom' | 'mom-car' | 'mom-carnight':
 				loadGraphic(Paths.image('icons/icon-mom'), true, 150, 150);
 			case 'taki' | 'monster':
@@ -56,7 +56,7 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-$curCharacter'), true, 150, 150);
 		}
 
-		var pixel:Array<String> = ['flippy', 'senpai', 'bdbfever'];
+		var pixel:Array<String> = ['flippy', 'mega', 'bdbfever'];
 		antialiasing = StringTools.contains(curCharacter, 'pixel') || pixel.contains(curCharacter) ? false : true;
 		animation.add('healthy', [0], 0, false, isPlayer);
 		animation.add('hurt', [1], 0, false, isPlayer);
@@ -66,7 +66,7 @@ class HealthIcon extends FlxSprite
 
 		switch (curCharacter)
 		{
-			case 'bf-pixel' | 'senpai' | 'senpai-angry' | 'flippy' | 'tea-pixel':
+			case 'bf-pixel' | 'mega' | 'mega-angry' | 'flippy' | 'tea-pixel':
 				antialiasing = false;
 		}
 	}

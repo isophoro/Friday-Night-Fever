@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:9ad02f939a025efe27cbdf963740b934:c0924b9af5284cdb6c9ced593df56a9c:f7c7b936501276459db1f01b9ec27933$ -->
+<TextureAtlas imagePath="fevercoat.png" width="1300" height="1200">
+    <SubTexture name="fevercoat breath" x="0" y="0" width="650" height="600"/>
+    <SubTexture name="fevercoat cold" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="fevercoat neutral" x="0" y="600" width="650" height="600"/>
+    <SubTexture name="fevercoat serious" x="650" y="600" width="650" height="600"/>
+</TextureAtlas>

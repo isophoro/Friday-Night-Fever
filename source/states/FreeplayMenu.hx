@@ -57,7 +57,7 @@ class FreeplayMenu extends MusicBeatSubstate
 		},
 		{
 			"image": "week6",
-			"songs": [["Ur-Girl", "senpai"], ["Chicken-Sandwich", "senpai"], ["Funkin-God", "flippy"]]
+			"songs": [["Ur-Girl", "mega"], ["Chicken-Sandwich", "mega"], ["Funkin-God", "flippy"]]
 		},
 		{
 			"image": "extras",
