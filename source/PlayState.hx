@@ -829,21 +829,6 @@ class PlayState extends MusicBeatState
 			add(vig);
 
 			FlxTween.tween(vig, {alpha: 0.7}, 3, {type: PINGPONG});
-
-			camLocked = true;
-			camFollow.setPosition(boyfriend.getMidpoint().x - 90, boyfriend.getMidpoint().y - 150);
-
-			camGame.flash(FlxColor.BLACK, 10);
-			camHUD.alpha = 0;
-			camZooming = true;
-
-			zoomTwn = FlxTween.tween(camGame, {zoom: 1.0}, 19, {
-				ease: FlxEase.sineInOut,
-				onComplete: (twn) ->
-				{
-					defaultCamZoom = camGame.zoom;
-				}
-			});
 		}
 
 		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).makeGraphic(601, 19, FlxColor.BLACK);
@@ -932,6 +917,8 @@ class PlayState extends MusicBeatState
 				vignette.alpha = 0;
 			case 'bad-nun':
 				beatClass = shaders.BadNun;
+
+				
 		}
 
 		iconP1.cameras = [camHUD];
@@ -939,6 +926,14 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		startingSong = true;
 
+		if (SONG.song.toLowerCase() == 'shadow') // hide hud without removing it plus dialogue stuff
+		{
+
+			dark = new FlxSprite(0, 0).makeGraphic(1280, 720, FlxColor.BLACK);
+			dark.cameras = [camHUD];
+			add(dark);
+		}
+		
 		var cutscenePath:String = 'assets/data/${SONG.song.toLowerCase()}/cutscene.hx';
 		if (Assets.exists(cutscenePath))
 		{
@@ -947,7 +942,7 @@ class PlayState extends MusicBeatState
 			scripts.add(cutsceneScript);
 			cutsceneScript.callFunction("onCreate");
 		}
-		else if (isStoryMode || curSong == "Grando")
+		else if (isStoryMode || curSong == "Grando" || curSong == "Shadow")
 		{
 			switch (curSong.toLowerCase())
 			{
@@ -1014,7 +1009,13 @@ class PlayState extends MusicBeatState
 		}
 
 		inCutscene = true;
-		camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
+		if(SONG.song.toLowerCase() == 'shadow')
+		{
+			camFollow.setPosition(boyfriend.getMidpoint().x - 90, boyfriend.getMidpoint().y - 150);
+			camLocked = true;
+		}
+		else
+			camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 
 		var doof:DialogueBox = new DialogueBox(dialoguePath);
 		doof.cameras = [camHUD];
@@ -1095,6 +1096,7 @@ class PlayState extends MusicBeatState
 		skipDialogue = true;
 		inCutscene = false;
 
+
 		generateStaticArrows(cpuStrums, FlxG.width * 0.25);
 		generateStaticArrows(playerStrums, FlxG.width * 0.75);
 
@@ -1161,7 +1163,7 @@ class PlayState extends MusicBeatState
 			}
 
 			FlxG.sound.play(Paths.sound('intro' + (swagCounter == 3 ? 'Go' : '${3 - swagCounter}') + altSuffix), 0.6);
-			if (swagCounter > 0)
+			if (swagCounter > 0 && SONG.song.toLowerCase() != 'shadow')
 			{
 				var sprite:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[swagCounter - 1], introAlts[3]));
 				sprite.updateHitbox();
@@ -1213,6 +1215,23 @@ class PlayState extends MusicBeatState
 	function startSong():Void
 	{
 		startingSong = false;
+
+		if (SONG.song.toLowerCase() == 'shadow') // so its underhud
+		{
+
+			dark.alpha = 0;
+			camGame.flash(FlxColor.BLACK, 10);
+			camHUD.alpha = 0;
+			camZooming = true;
+
+			zoomTwn = FlxTween.tween(camGame, {zoom: 1.0}, 19, {
+				ease: FlxEase.sineInOut,
+				onComplete: (twn) ->
+				{
+					defaultCamZoom = camGame.zoom;
+				}
+			});
+		}
 
 		if (!paused)
 		{
@@ -1694,7 +1713,7 @@ class PlayState extends MusicBeatState
 			openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		}
 
-		if (FlxG.keys.justPressed.SEVEN)
+		if (FlxG.keys.justPressed.SEVEN && SONG.song.toLowerCase() != 'shadow')
 		{
 			#if windows
 			DiscordClient.changePresence("Chart Editor", null, null, true);
@@ -1739,7 +1758,7 @@ class PlayState extends MusicBeatState
 		}
 
 		#if debug
-		if (FlxG.keys.justPressed.EIGHT)
+		if (FlxG.keys.justPressed.EIGHT && SONG.song.toLowerCase() != 'shadow')
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player2));
 			#if windows
@@ -2307,6 +2326,11 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
 
+		if(SONG.song.toLowerCase() == 'shadow')
+		{
+			Sys.exit(0);
+		}
+
 		if (!ClientPrefs.botplay && misses == 0 && !Highscore.fullCombos.exists(SONG.song))
 			Highscore.fullCombos.set(SONG.song, 0);
 
@@ -2687,8 +2711,11 @@ class PlayState extends MusicBeatState
 
 		if (curSong == 'Shadow')
 		{
-			if (curStep == 255)
-				camLocked = false;
+			switch(curStep)
+			{
+				case 255:
+					camLocked = false;
+			}
 		}
 
 		if (curSong == 'Prayer')
@@ -2754,6 +2781,8 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	static public var beatSpeed:Int = 4;
+
 	override function beatHit()
 	{
 		super.beatHit();
@@ -2777,32 +2806,51 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
-				case 'shadow':
-					if (curBeat == 64)
-						FlxTween.tween(camHUD, {alpha: 1}, 0.5);
-					if (curBeat == 96)
-						defaultCamZoom = 0.5;
-					if (curBeat == 511)
+				case 'shadow': 
+					switch(curBeat)
 					{
-						moveCamera(true);
-						camLocked = true;
-
-						zoomTwn = FlxTween.tween(camGame, {zoom: 0.7}, 19, {
-							ease: FlxEase.sineInOut,
-							onComplete: (twn) ->
+						case 64:
+							FlxTween.tween(camHUD, {alpha: 1}, 0.5);
+						case 96:
+							defaultCamZoom = 0.5;
+						case 128:
+							beatSpeed = 1;
+						case 256:
+							beatSpeed = 2;
+							defaultCamZoom += 0.05;
+						case 320:
+							defaultCamZoom -= 0.05;
+							beatSpeed = 1;
+						case 448:
+							beatSpeed = 6;
+						case 511: 
+							moveCamera(true);
+							camLocked = true;
+	
+							zoomTwn = FlxTween.tween(camGame, {zoom: 0.7}, 10, {
+								ease: FlxEase.sineInOut,
+								onComplete: (twn) ->
+								{
+									defaultCamZoom = camGame.zoom;
+								}
+							});
+						case 512:
+							FlxTween.tween(camHUD, {alpha: 0}, 1);
+							dad.playAnim('bye', true);
+							dad.animation.finishCallback = function(anim)
 							{
-								defaultCamZoom = camGame.zoom;
+								dad.alpha = 0;
 							}
-						});
 					}
 
-					if (curBeat == 512)
+					if (curBeat >= 64 && curBeat <= 511)
 					{
-						dad.playAnim('bye', true);
-						dad.animation.finishCallback = function(anim)
+						if ((FlxG.camera.zoom < 1.35 && curBeat % beatSpeed == 0))
 						{
-							dad.alpha = 0;
+							FlxG.camera.zoom += 0.015;
+							camHUD.zoom += 0.05;
 						}
+
 					}
 
 				case 'hardships':

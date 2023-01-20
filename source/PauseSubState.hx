@@ -38,6 +38,11 @@ class PauseSubState extends MusicBeatSubstate
 		super();
 		menuItems = menuItemsOG;
 
+		if(PlayState.SONG.song.toLowerCase() == 'shadow')
+		{
+			menuItems.splice(menuItems.length - 2, 2); //removes change difficulty and exit to menu from shadow
+		}
+
 		for (i in 0...CoolUtil.difficultyArray.length)
 		{
 			var diff:String = '' + CoolUtil.difficultyArray[i];

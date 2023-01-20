@@ -1,0 +1,40 @@
+<file>
+    <action library="shadow"/>
+    <action fadeInMus="snowloop"/>
+    <action setBG="fvrTown"/>
+    <action narrate="It's been about a year since the robo-invasion."/>
+    <action narrate="Things slowly began healing thanks to everyones efforts."/>
+    <action narrate="Some people from Scarlets dimension even dropped by to apologize for the mix-up, and since then technologies have been advancing at CRAZY speeds!"/>
+    <action narrate="Now Fever Town feels a little crowded, so it's time to expand!"/>
+    <action msg="It's too fucking cold for this." portrait="fever" emotion="sigh" side ="right"/>
+    <action narrate="Fever Towns estimated to grow FOUR times in size, which means some of us need to scout out the area around us and figure out the best spots to put buildings or somethin'."/>
+    <action msg="I don't really get the big deal of sending me out here. I mean, what place ISN'T good for a plaza or somethin'" emotion="talk"/>
+    <action setBG="icecacve"/>
+    <action narrate="?"/>
+    <action narrate="A cave? I don't remember anyone ever mentioning something like this."/>
+    <action narrate="Sharp crystals line all around the area. It'd be dangerously stupid for anyone to go into something as dark as this."/>
+    <action msg="Might as well have a look around." portrait="fever" emotion="smile"/>
+    <action fadeOutMus=""/>
+    <action fadeInMus="caveloopfinal"/>
+    <action setBG="iceCaveInide"/>
+    <action narrate="Woah… this cave is MASSIVE."/>
+    <action narrate="How can something this… BEAUTIFUL live near us? "/>
+    <action msg="Pretty, but I should probably get going." portrait="fever" emotion="sigh"/>
+    <action narrate="As lame as it sounds… I haven't really been able to bring out my demon form as well as I want it to be."/>
+    <action narrate="Sucks, but I'm not going to cry over it. Gives me a chance to be more prepared the next time I'm caught offguard."/>
+    <action msg="Of course." portrait="fever" emotion="talk"/>
+    <action narrate="It got colder… the snow from outside is reaching inside the cave? It's getting pretty harsh."/>
+    <action narrate="."/>
+    <action narrate="!"/>
+    <action narrate="Shit."/>
+    <action narrate="There's someone here."/>
+    <action narrate="Even as I am now, I can sense their strength…"/>
+    <action msg="Hey! Who the fuck's there? Come out alre-"/>
+    <action portrait="fever" emotion="distressed"/>
+    <action narrate="!"/>
+    <action narrate="No."/>
+    <action narrate="No."/>
+    <action fillBG="#000000"/>
+    <action narrate="You're not supposed to be here."/>
+    <action fadeOutMus=""/>
+</file>

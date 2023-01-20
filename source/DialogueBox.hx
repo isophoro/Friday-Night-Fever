@@ -23,6 +23,13 @@ typedef DialogueAction =
 	?portrait:String,
 	?portraits:Array<String>,
 	?emotion:String,
+	?library:String,
+
+	?playSound:String,
+
+	?fadeInMus:String, 
+	?fadeOutMus:String, 
+
 	?side:Null<FlxDirection>,
 	?fillBG:Null<FlxColor>,
 	?setBG:String,
@@ -35,7 +42,7 @@ class DialoguePortrait extends FlxSprite
 {
 	public var character:String = "";
 
-	public function new(character:String)
+	public function new(character:String, library:String)
 	{
 		super(0, -90);
 		antialiasing = true;
@@ -48,7 +55,7 @@ class DialoguePortrait extends FlxSprite
 			antialiasing = false;
 		}
 
-		frames = Paths.getSparrowAtlas('dialogue/${character.toLowerCase()}', 'shared');
+		frames = Paths.getSparrowAtlas('dialogue/${character.toLowerCase()}', library);
 		for (i in frames.frames)
 		{
 			var name = i.name.replace('${character.toLowerCase()} ', '');
@@ -113,6 +120,11 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		text.delay = 0.04;
 		text.setTypingVariation(0.5, true);
 		add(text);
+		
+		var skipDia = new FlxText(50, FlxG.height - 40, FlxG.width, "PRESS ESCAPE/BACKSPACE TO SKIP", 32);
+		skipDia.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+		add(skipDia);
+		FlxTween.tween(skipDia, {alpha: 0}, 3, {startDelay: 3});
 
 		box.y = FlxG.height;
 		FlxTween.tween(box, {y: 460}, 0.5, {
@@ -160,6 +172,34 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		var action = actions[0];
 		actions.shift();
 
+		if(PlayState.SONG.song.toLowerCase() == 'shadow')
+		{
+			action.library = 'shadow';
+			trace(action.library);
+		}
+		else
+		{
+			action.library = 'shared';
+			trace(action.library);
+		}
+
+		if (action.playSound != null)
+		{
+			FlxG.sound.play(Paths.sound(action.playSound, action.library), 1);
+		}
+
+		if (action.fadeInMus != null)
+		{
+			FlxG.sound.playMusic(Paths.music(action.fadeInMus, action.library), 0);
+			FlxG.sound.music.fadeIn(1,0,1);
+		}
+
+		if (action.fadeOutMus != null)
+		{
+			if(FlxG.sound.music != null)
+				FlxG.sound.music.fadeOut(1,0);
+		}
+
 		if (action.fillBG != null)
 		{
 			bg.makeGraphic(1280, 720, action.fillBG);
@@ -169,7 +209,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		{
 			if (action.setBG.length > 0)
 			{
-				bg.loadGraphic(Paths.image(action.setBG, "shared"));
+				bg.loadGraphic(Paths.image(action.setBG, action.library));
 				bg.alpha = 1;
 			}
 			else
@@ -333,13 +373,24 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		{
 			var action:DialogueAction = {};
 
+			if(PlayState.SONG.song.toLowerCase() == 'shadow') //i gave up im just doing this
+				{
+					action.library = 'shadow';
+					trace(action.library);
+				}
+				else
+				{
+					action.library = 'shared';
+					trace(action.library);
+				}
+
 			if (a.has.portrait || a.has.portraits)
 			{
 				if (a.has.portraits)
 				{
 					var s = a.att.portraits.split(",");
 					for (i in s)
-						addPortrait(i);
+						addPortrait(i, action.library);
 
 					action.portraits = s;
 				}
@@ -347,7 +398,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				{
 					var portrait = a.att.portrait;
 					action.portrait = portrait;
-					addPortrait(portrait);
+					addPortrait(portrait, action.library);
 
 					if (a.has.side)
 						action.side = a.att.side.toLowerCase().charAt(0) == "r" ? RIGHT : LEFT;
@@ -382,11 +433,11 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		trace('Pushed ${actions.length} actions');
 	}
 
-	function addPortrait(portrait:String)
+	function addPortrait(portrait:String, library:String)
 	{
 		if (!portraits.exists(portrait))
 		{
-			var _portrait = new DialoguePortrait(portrait);
+			var _portrait = new DialoguePortrait(portrait, library);
 			add(_portrait);
 			_portrait.visible = false;
 			portraits[portrait] = _portrait;

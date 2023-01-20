@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fever.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fever distressed" x="5" y="5" width="628" height="580"/>
+	<SubTexture name="fever sigh" x="638" y="5" width="628" height="580"/>
+	<SubTexture name="fever smile" x="1271" y="5" width="628" height="580"/>
+	<SubTexture name="fever talk" x="5" y="590" width="628" height="580"/>
+</TextureAtlas>
