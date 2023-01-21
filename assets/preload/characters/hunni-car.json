@@ -1,0 +1,74 @@
+{
+	"scale": 0.8,
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "hunni idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-75,
+				-24
+			],
+			"fps": 24,
+			"anim": "hunni right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-30,
+				-103
+			],
+			"fps": 24,
+			"anim": "hunni down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"indices": [
+				11,
+				12,
+				13
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "hunni idle",
+			"loop": true,
+			"name": "idle-loop"
+		},
+		{
+			"offsets": [
+				22,
+				-21
+			],
+			"fps": 24,
+			"anim": "hunni left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-3,
+				26
+			],
+			"fps": 24,
+			"anim": "hunni up",
+			"loop": false,
+			"name": "singUP"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "hunni/perspective",
+	"color": "FF517E"
+}

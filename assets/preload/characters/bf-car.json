@@ -2,96 +2,107 @@
 	"animations": [
 		{
 			"offsets": [
-				-32,
-				15
+				12,
+				53
 			],
 			"fps": 24,
-			"anim": "BF NOTE RIGHT MISS",
-			"loop": false,
-			"name": "singRIGHTmiss"
-		},
-		{
-			"offsets": [
-				-4,
-				-60
-			],
-			"fps": 24,
-			"anim": "BF NOTE DOWN0",
+			"anim": "fever down0",
 			"loop": false,
 			"name": "singDOWN"
 		},
 		{
 			"offsets": [
-				27,
-				-3
+				-40,
+				91
 			],
 			"fps": 24,
-			"anim": "BF NOTE LEFT MISS",
+			"anim": "fever right MISS",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				40,
+				93
+			],
+			"fps": 24,
+			"anim": "fever left miss",
 			"loop": false,
 			"name": "singLEFTmiss"
 		},
 		{
 			"offsets": [
-				-23,
-				15
+				-5,
+				106
 			],
 			"fps": 24,
-			"anim": "BF NOTE UP0",
+			"anim": "fever up0",
 			"loop": false,
 			"name": "singUP"
 		},
 		{
 			"offsets": [
-				-5,
-				0
+				23,
+				96
 			],
 			"fps": 24,
-			"anim": "BF idle dance",
+			"anim": "fever HEY",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "fever idle0",
 			"loop": false,
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				-21,
-				-65
+				11,
+				46
 			],
 			"fps": 24,
-			"anim": "BF NOTE DOWN MISS",
+			"anim": "fever down MISS",
 			"loop": false,
 			"name": "singDOWNmiss"
 		},
 		{
 			"offsets": [
-				-38,
-				-7
+				-19,
+				92
 			],
 			"fps": 24,
-			"anim": "BF NOTE RIGHT0",
+			"anim": "fever right0",
 			"loop": false,
 			"name": "singRIGHT"
 		},
 		{
 			"offsets": [
-				27,
-				-3
+				-6,
+				104
 			],
 			"fps": 24,
-			"anim": "BF NOTE LEFT0",
+			"anim": "fever up miss",
 			"loop": false,
-			"name": "singLEFT"
+			"name": "singUPmiss"
 		},
 		{
 			"offsets": [
-				-21,
-				11
+				36,
+				93
 			],
 			"fps": 24,
-			"anim": "BF NOTE UP MISS",
+			"anim": "fever left0",
 			"loop": false,
-			"name": "singUPmiss"
+			"name": "singLEFT"
 		}
 	],
+	"noAntialiasing": false,
 	"facingLeft": true,
-	"file": "bfCar",
+	"file": "fever/car",
 	"color": "C353E3"
 }
