@@ -257,7 +257,7 @@ class PlayState extends MusicBeatState
 
 		#if windows
 		// Discord Rich Presence
-		storyDifficultyText = CoolUtil.capitalizeFirstLetters(CoolUtil.difficultyArray[storyDifficulty]);
+		storyDifficultyText = Difficulty.data[storyDifficulty].name;
 
 		iconRPC = switch (SONG.player2)
 		{

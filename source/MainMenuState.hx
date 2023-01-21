@@ -32,15 +32,16 @@ class MainMenuState extends InteractableState
 		var train = new Interactable('newMain/trainmenu', 150, 75, 1.32, 'Train notselected', 'Train selected', new InteractHitbox(480, 205, 165, 280),
 			[0, 42]);
 		train.animation.addByPrefix('come', 'Train come', 24, false);
-		addInteractable(train);
 
 		if (firstTime)
 		{
+			add(train);
 			train.visible = false;
 			train.animation.finishCallback = function(anim)
 			{
 				train.animation.play('idle');
 				train.animation.finishCallback = null;
+				addInteractable(train);
 			}
 
 			new FlxTimer().start(0.5, (t) ->
@@ -53,6 +54,8 @@ class MainMenuState extends InteractableState
 		{
 			allowInput = true;
 			train.animation.play('idle');
+			order.insert(1, train.hitbox);
+			addInteractable(train);
 		}
 
 		train.callback = () ->

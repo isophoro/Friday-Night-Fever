@@ -309,6 +309,8 @@ class Character extends FlxSprite
 						playAnim('idle' + ((PlayState.instance != null
 							&& PlayState.SONG.player2 == 'robo-cesar'
 							|| useAlternateIdle) ? '-frown' : ''));
+					case 'scarlet':
+						playAnim('idle' + (useAlternateIdle ? '-mad' : ''));
 					default:
 						playAnim('idle');
 				}

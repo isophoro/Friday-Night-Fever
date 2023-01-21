@@ -7,7 +7,7 @@ using StringTools;
 
 class CoolUtil
 {
-	public static var difficultyArray:Array<String> = ['EASY', "NORMAL", "HARD"];
+	public static var difficultyArray:Array<String> = ["EASY", "NORMAL"];
 
 	// GITHUB CO-PILOT IS GOATED
 	public static function capitalizeFirstLetters(str:String):String
