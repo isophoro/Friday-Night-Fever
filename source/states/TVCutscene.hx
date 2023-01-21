@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
+import shaders.ColorShader;
 
 class TVCutscene extends MusicBeatState
 {
@@ -49,10 +50,14 @@ class TVCutscene extends MusicBeatState
 		bg.antialiasing = true;
 		add(bg);
 
+		var hue:ColorShader = new ColorShader();
+		hue.data._hue.value = [FlxG.random.float(-1, 1)];
+
 		reporter = new FlxSprite(740, 40);
 		reporter.frames = Paths.getSparrowAtlas("tv/funnyWoman");
 		reporter.animation.addByPrefix("idle", "reporter", 24);
 		reporter.animation.play("idle");
+		reporter.shader = hue;
 		add(reporter);
 
 		box = new FlxSprite(-50, FlxG.height * 0.7).makeGraphic(20, 20, 0xFF000000);
@@ -66,7 +71,6 @@ class TVCutscene extends MusicBeatState
 		add(text);
 
 		lines.insert(0, FlxG.random.getObject(randomLines));
-
 		loadLine();
 	}
 
