@@ -10,7 +10,7 @@ import Discord.DiscordClient;
 class StoryMenuState extends InteractableState
 {
 	public static var weekData(get, never):Array<Array<String>>;
-	public static var minusWeekData(get, never):Map<String, Array<String>>;
+	public static var minusWeekData(get, never):Map<Int, Array<String>>;
 	public static var isFrenzy:Bool = false;
 
 	public static function get_weekData():Array<Array<String>>
@@ -31,9 +31,9 @@ class StoryMenuState extends InteractableState
 		];
 	}
 
-	public static function get_minusWeekData():Map<String, Array<String>>
+	public static function get_minusWeekData():Map<Int, Array<String>>
 	{
-		return ["week2" => ["Minus Taki"], "week7" => ["Grando"]];
+		return [2 => ["Feel-The-Rage"], 9 => ["Grando"]];
 	}
 
 	override function create()

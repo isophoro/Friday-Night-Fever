@@ -14,7 +14,7 @@ var zombie:FlxSprite;
 
 function onCreate()
 {
-	if (PlayState.deaths >= 0 || game.skipDialogue)
+	if (PlayState.deaths > 0 || game.skipDialogue || !PlayState.isStoryMode)
 	{
 		onCreatePost = null;
 		snapCamera(BF_CAM_POS);
@@ -23,14 +23,8 @@ function onCreate()
 		return;
 	}
 
-	camHUD.visible = false;
 	camGame.zoom += 0.12;
 	camGame.flash(FlxColor.BLACK, 1.3);
-
-	new FlxTimer().start(0.08, function(tmr:FlxTimer)
-	{
-		FlxG.sound.play(Paths.sound('robertCutscene'));
-	});
 
 	dad.visible = false;
 	boyfriend.visible = false;
@@ -40,6 +34,7 @@ function onCreate()
 	tea.frames = Paths.getSparrowAtlas("roboStage/C354R/tea_anim");
 	tea.animation.addByPrefix("anim", "tea_anim", 24, false);
 	tea.animation.play("anim");
+	tea.animation.pause();
 	tea.scrollFactor.set(1, 1);
 	tea.antialiasing = true;
 	add(tea);
@@ -54,6 +49,7 @@ function onCreate()
 	robo.frames = Paths.getSparrowAtlas("roboStage/C354R/robo_anim");
 	robo.animation.addByPrefix("anim", "robo animation", 24, false);
 	robo.animation.play("anim");
+	robo.animation.pause();
 	robo.scrollFactor.set(1, 1);
 	robo.antialiasing = true;
 	add(robo);
@@ -73,6 +69,7 @@ function onCreate()
 	fever.frames = Paths.getSparrowAtlas("roboStage/C354R/fever_anim");
 	fever.animation.addByPrefix("anim", "fever_anim", 24, false);
 	fever.animation.play("anim");
+	fever.animation.pause();
 	fever.scrollFactor.set(1, 1);
 	fever.antialiasing = true;
 	add(fever);
@@ -85,6 +82,18 @@ function onCreate()
 
 	for (i in [fever, tea, robo])
 		i.color = 0xFFC681C6;
+
+	game.openDialogue(function()
+	{
+		camHUD.visible = false;
+		fever.animation.resume();
+		robo.animation.resume();
+		tea.animation.resume();
+		new FlxTimer().start(0.08, function(tmr:FlxTimer)
+		{
+			FlxG.sound.play(Paths.sound('robertCutscene'));
+		});
+	});
 }
 
 function onCreatePost()

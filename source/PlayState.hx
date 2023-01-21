@@ -179,7 +179,6 @@ class PlayState extends MusicBeatState
 
 	public var ratingsGrp:FlxTypedGroup<ComboRating> = new FlxTypedGroup<ComboRating>(ComboRating.MAX_RENDERED);
 	public var numbersGrp:FlxTypedGroup<ComboNumber> = new FlxTypedGroup<ComboNumber>(ComboNumber.MAX_RENDERED);
-	public var curComboSprites:Array<FlxSprite> = [];
 
 	public var usePixelAssets(default, set):Bool = false;
 
@@ -943,7 +942,7 @@ class PlayState extends MusicBeatState
 			scripts.add(cutsceneScript);
 			cutsceneScript.callFunction("onCreate");
 		}
-		else if (isStoryMode || curSong == "Grando" || curSong == "Shadow")
+		else if (isStoryMode || curSong == "Shadow")
 		{
 			switch (curSong.toLowerCase())
 			{
@@ -1000,7 +999,7 @@ class PlayState extends MusicBeatState
 		});
 	}
 
-	function openDialogue():Void
+	function openDialogue(?callback:Void->Void):Void
 	{
 		var dialoguePath = 'assets/data/${SONG.song.toLowerCase()}/dialogue.xml';
 		if (!sys.FileSystem.exists(dialoguePath))
@@ -1020,7 +1019,7 @@ class PlayState extends MusicBeatState
 
 		var doof:DialogueBox = new DialogueBox(dialoguePath);
 		doof.cameras = [camHUD];
-		doof.finishCallback = startCountdown;
+		doof.finishCallback = callback == null ? startCountdown : callback;
 		add(doof);
 	}
 
@@ -1206,10 +1205,11 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		FlxG.sound.music.stop();
 
-		var peSUS:DialogueBox = new DialogueBox('assets/data/${SONG.song.toLowerCase()}/dialogue-end.xml');
-		peSUS.finishCallback = endSong;
-		peSUS.cameras = [camHUD];
-		add(peSUS);
+		var dialoguePath = 'assets/data/${SONG.song.toLowerCase()}/dialogue-end.xml';
+		var doof:DialogueBox = new DialogueBox(dialoguePath);
+		doof.cameras = [camHUD];
+		doof.finishCallback = endSong;
+		add(doof);
 	}
 
 	function startSong():Void
@@ -1223,11 +1223,10 @@ class PlayState extends MusicBeatState
 			camHUD.alpha = 0;
 			camZooming = true;
 
-			for(i in 0...cpuStrums.length)
+			for (i in 0...cpuStrums.length)
 			{
 				FlxTween.tween(cpuStrums.members[i], {alpha: 0.6}, 2, {type: PINGPONG, startDelay: 0.5 + (0.2 * i)});
 			}
-
 
 			zoomTwn = FlxTween.tween(camGame, {zoom: 1.0}, 19, {
 				ease: FlxEase.sineInOut,
@@ -1243,7 +1242,8 @@ class PlayState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
 		}
 
-		if (isStoryMode && Assets.exists(Paths.txt(SONG.song.toLowerCase() + '/endDia')))
+		var dialoguePath = 'assets/data/${SONG.song.toLowerCase()}/dialogue-end.xml';
+		if (isStoryMode && sys.FileSystem.exists(dialoguePath))
 		{
 			FlxG.sound.music.onComplete = endingDialogue;
 		}
@@ -1626,19 +1626,18 @@ class PlayState extends MusicBeatState
 		FlxG.camera.followLerp = elapsed * cameraSpeed * (180 / FlxG.drawFramerate);
 		iconHurtTimer -= elapsed;
 
-		if(SONG.song.toLowerCase() == 'shadow')
+		if (SONG.song.toLowerCase() == 'shadow')
 		{
-			if(health >= 2) //for sum reason, the health goes above 2, then its like a timer for the thing to work so i did this to fix it
+			if (health >= 2) // for sum reason, the health goes above 2, then its like a timer for the thing to work so i did this to fix it
 			{
 				health = 2;
 			}
 
-			if(health == 2 || healthBar.percent == 100)
+			if (health == 2 || healthBar.percent == 100)
 			{
 				healthTween(-1);
 			}
 		}
-			
 
 		if (ClientPrefs.shaders)
 		{
@@ -2059,8 +2058,8 @@ class PlayState extends MusicBeatState
 							}
 
 							gf.playAnim('scared');
-						case 'SG': 
-							if(healthBar.percent > 5 && !hpTweening)
+						case 'SG':
+							if (healthBar.percent > 5 && !hpTweening)
 								health -= (daNote.isSustainNote ? 0.03 : 0.02);
 						case 'hallow':
 							if (healthBar.percent > 5)
@@ -2144,11 +2143,12 @@ class PlayState extends MusicBeatState
 
 	function healthTween(amt:Float)
 	{
-		if(healthTweenOBJ != null)
+		if (healthTweenOBJ != null)
 			healthTweenOBJ.cancel();
 
 		hpTweening = true;
-		healthTweenOBJ = FlxTween.num(health, health + amt, 0.5, {ease: FlxEase.cubeInOut}, function(v:Float){
+		healthTweenOBJ = FlxTween.num(health, health + amt, 0.5, {ease: FlxEase.cubeInOut}, function(v:Float)
+		{
 			health = v;
 			hpTweening = false;
 		});
@@ -2502,7 +2502,6 @@ class PlayState extends MusicBeatState
 			rating.create(daRating);
 			rating.cameras = [camHUD];
 			rating.setPosition((FlxG.width * 0.55) - 125, (FlxG.height * 0.5) - (rating.height / 2) - 50);
-			curComboSprites.push(rating);
 
 			if (songScript.variables["forceComboPos"] != null
 				&& (songScript.variables["forceComboPos"].x != 0 || songScript.variables["forceComboPos"].y != 0))
@@ -2529,12 +2528,14 @@ class PlayState extends MusicBeatState
 
 				currentTimingShown.color = switch (daRating)
 				{
-					case 'shit' | 'bad':
-						0xFFC4012D;
+					case 'shit':
+						0xFF6E627B;
+					case 'bad':
+						0xFF9B55B5;
 					case 'good':
-						0xFFE398DD;
+						0xFF9B55B5;
 					default: // sick
-						0xFF7A55BB;
+						0xFFEC46B1;
 				}
 			}
 
@@ -2561,12 +2562,9 @@ class PlayState extends MusicBeatState
 						{
 							numScore.kill();
 							numScore.exists = false;
-							curComboSprites.remove(numScore);
 						},
 						startDelay: 0.3
 					});
-
-					curComboSprites.push(numScore);
 				}
 			}
 
@@ -2575,7 +2573,6 @@ class PlayState extends MusicBeatState
 				{
 					rating.kill();
 					rating.exists = false;
-					curComboSprites.remove(rating);
 				},
 				startDelay: 0.27
 			});
@@ -2620,7 +2617,7 @@ class PlayState extends MusicBeatState
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
-				if (daNote.mustPress && daNote.strumTime - Conductor.songPosition <= 40)
+				if (daNote.mustPress && daNote.timeDiff <= 15)
 				{
 					goodNoteHit(daNote);
 				}

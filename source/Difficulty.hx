@@ -20,8 +20,8 @@ typedef DifficutlyData =
 	var NORMAL = 2;
 	var MINUS = 3;
 
-	public static function bound(diff:Int):Int
+	public static function bound(diff:Int, offset:Int = 0):Int
 	{
-		return diff < DIFFICULTY_MIN ? DIFFICULTY_MAX : diff > DIFFICULTY_MAX ? DIFFICULTY_MIN : diff;
+		return diff < DIFFICULTY_MIN ? DIFFICULTY_MAX + offset : diff > DIFFICULTY_MAX + offset ? DIFFICULTY_MIN : diff;
 	}
 }

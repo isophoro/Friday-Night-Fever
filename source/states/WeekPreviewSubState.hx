@@ -90,7 +90,7 @@ class WeekPreviewSubState extends MusicBeatSubstate
 
 		curDifficulty = new FlxSprite();
 		curDifficulty.frames = Paths.getSparrowAtlas("story/difficulties");
-		for (i in Difficulty.DIFFICULTY_MIN...Difficulty.DIFFICULTY_MAX + 1)
+		for (i in Difficulty.DIFFICULTY_MIN...Difficulty.DIFFICULTY_MAX + 2)
 		{
 			curDifficulty.animation.addByPrefix('$i', Difficulty.data[i].name.toLowerCase(), 24, false);
 		}
@@ -185,7 +185,7 @@ class WeekPreviewSubState extends MusicBeatSubstate
 
 	function updateDifficulty(change:Int = 0)
 	{
-		curDifficulty.ID = Difficulty.bound(curDifficulty.ID + change);
+		curDifficulty.ID = Difficulty.bound(curDifficulty.ID + change, (week == 2 || week == 9) ? 1 : 0);
 
 		curDifficulty.animation.play('${curDifficulty.ID}');
 		curDifficulty.updateHitbox();
@@ -261,15 +261,23 @@ class WeekPreviewSubState extends MusicBeatSubstate
 				new FlxTimer().start(0.7, (t) ->
 				{
 					PlayState.storyDifficulty = curDifficulty.ID;
-					PlayState.storyPlaylist = StoryMenuState.weekData[week];
+					if (curDifficulty.ID == 3)
+						PlayState.storyPlaylist = StoryMenuState.minusWeekData[week];
+					else
+						PlayState.storyPlaylist = StoryMenuState.weekData[week];
+
 					PlayState.isStoryMode = true;
 
-					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(StoryMenuState.weekData[week][0], curDifficulty.ID),
-						Highscore.formatSong(StoryMenuState.weekData[week][0]));
+					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(PlayState.storyPlaylist[0], curDifficulty.ID),
+						Highscore.formatSong(PlayState.storyPlaylist[0]));
 					PlayState.storyWeek = week;
 					PlayState.campaignScore = 0;
 
-					LoadingState.loadAndSwitchState(new PlayState(), true);
+					LoadingState.loadAndSwitchState(switch (week)
+					{
+						case 9: if (curDifficulty.ID != 3) new states.TVCutscene(); else new PlayState();
+						default: new PlayState();
+					}, true);
 				});
 			}
 		}

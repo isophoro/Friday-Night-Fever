@@ -4,6 +4,9 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
 import shaders.ColorShader;
 
 class TVCutscene extends MusicBeatState
@@ -37,6 +40,8 @@ class TVCutscene extends MusicBeatState
 		// ["I need some coffee.", "anger", 2]
 	];
 
+	var robo:FlxSprite;
+
 	var curLine:FlxSound;
 	var text:FlxText;
 	var box:FlxSprite;
@@ -49,6 +54,12 @@ class TVCutscene extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image("tv/bg"));
 		bg.antialiasing = true;
 		add(bg);
+
+		robo = new FlxSprite(25, 30).loadGraphic(Paths.image("tv/robert"));
+		robo.antialiasing = true;
+		add(robo);
+		robo.alpha = 0;
+		FlxTween.tween(robo, {alpha: 1}, 2);
 
 		var hue:ColorShader = new ColorShader();
 		hue.data._hue.value = [FlxG.random.float(-1, 1)];
@@ -97,6 +108,44 @@ class TVCutscene extends MusicBeatState
 			curLine.destroy();
 			if (lines.length > 0)
 				loadLine();
+			else
+			{
+				reporter.animation.pause();
+				reporter.animation.curAnim.curFrame = 0;
+				new FlxTimer().start(0.5, (t) ->
+				{
+					FlxTween.tween(robo, {alpha: 0}, 0.5, {
+						onComplete: (t) ->
+						{
+							camera.fade(0xFF000000, 0.5);
+							new FlxTimer().start(0.7, (t) ->
+							{
+								camera.fade(0xFF000000, 0, true);
+								var black:FlxSprite = new FlxSprite().makeGraphic(1280, 720, 0xFF000000);
+								add(black);
+
+								var tv:FlxSprite = new FlxSprite().loadGraphic(Paths.image("tv/tv"));
+								tv.alpha = 0;
+								add(tv);
+								tv.scale.set(3, 3);
+								FlxTween.tween(tv, {alpha: 1, "scale.x": 1, "scale.y": 1}, 2, {
+									startDelay: 0.35,
+									ease: FlxEase.quartInOut,
+									onComplete: (t) ->
+									{
+										var dialogue = new DialogueBox("assets/data/c354r/tv.xml");
+										dialogue.finishCallback = () ->
+										{
+											FlxG.switchState(new PlayState());
+										}
+										add(dialogue);
+									}
+								});
+							});
+						}
+					});
+				});
+			}
 		}
 		lines.shift();
 	}

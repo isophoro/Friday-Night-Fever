@@ -4,6 +4,6 @@
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="easy0000" x="0" y="0" width="752" height="315" pivotX="11.8" pivotY="8.6"/>
 	<SubTexture name="hard0000" x="752" y="0" width="767" height="312" pivotX="26.2" pivotY="-19.85"/>
-	<SubTexture name="mius0000" x="0" y="315" width="899" height="311" pivotX="25.65" pivotY="-368.25"/>
+	<SubTexture name="minus0000" x="0" y="315" width="899" height="311" pivotX="25.65" pivotY="-368.25"/>
 	<SubTexture name="normal0000" x="899" y="315" width="912" height="280" pivotX="92.35" pivotY="-23.8"/>
 </TextureAtlas>
