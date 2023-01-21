@@ -1,6 +1,9 @@
-import ("flixel.effects.FlxFlicker");
-import("flixel.text.FlxText");
-import("shaders.BWShader");
+import PlayState;
+import flixel.effects.FlxFlicker;
+import flixel.text.FlxText;
+import openfl.filters.ShaderFilter;
+import shaders.BWShader;
+import shaders.ScreenMultiply;
 
 var BLACK_BAR_HEIGHT:Int = 115;
 var spr:FlxSprite;
@@ -11,9 +14,12 @@ var prevHealth:Float = 1;
 var prevTime:Float = 0;
 var BW:BWShader;
 var help:FlxText;
+var clocks:FlxSprite;
+var screen:ScreenMultiply;
 
 function onCreate()
 {
+	gf.visible = false;
 	clap = new FlxSprite(dad.x - 270, dad.y - 50);
 	clap.frames = Paths.getSparrowAtlas("characters/scarlet/Scarlet_Final_Clap");
 	clap.animation.addByPrefix("clap", "Final scarlet slap", 24, false);
@@ -31,27 +37,36 @@ function onCreate()
 
 	BW = new BWShader();
 	BW.colorFactor = 0;
-	gf.shader = BW;
 	getGlobalVar("whittyBG").shader = BW;
+
+	screen = new ScreenMultiply();
+	screen.value = 1;
+	camGame.filtersEnabled = true;
+	camHUD.filtersEnabled = true;
+	var sc = new ShaderFilter(screen);
+	camGame.setFilters([sc]);
+	camHUD.setFilters([sc]);
 }
+
+var prevDad:Bool = true;
 
 function onMoveCamera(isDad:Bool)
 {
 	if (curBeat >= 191 && curBeat < 256)
 	{
 		dad.visible = true;
-		for (i in game.curComboSprites)
-		{
-			if (curBeat < 255)
-				i.visible = !isDad;
-		}
 
 		if (isDad)
 		{
+			prevDad = true;
 			snapCamera(new FlxPoint(DAD_CAM_POS.x - 70, DAD_CAM_POS.y - 70));
 		}
 		else
 		{
+			if (prevDad)
+				screen.value += 1;
+
+			prevDad = false;
 			snapCamera(new FlxPoint(BF_CAM_POS.x + 70, BF_CAM_POS.y + 165));
 			dad.visible = false;
 		}
@@ -64,7 +79,7 @@ function onPostUpdate(elapsed:Float)
 {
 	if (curBeat >= 192 && curBeat <= 255)
 	{
-		game.songPositionBar = prevTime;
+		PlayState.songPosBar = prevTime;
 		iconP1.scale.set(1, 1);
 		iconP2.scale.set(1, 1);
 		scoreTxt.scale.set(1, 1);
@@ -91,14 +106,10 @@ function onBeatHit(curBeat:Int)
 
 	if (curBeat == 191)
 	{
-		game.gfSpeed = 9999999999;
-		FlxTween.tween(gf.animation.curAnim, {frameRate: 0}, Conductor.crochet / 1000, {
-			onComplete: function(t)
-			{
-				gf.animation.curAnim.frameRate = 24;
-				gf.animation.curAnim.pause();
-			}
-		});
+		for (i in getGlobalVar("bgElements"))
+		{
+			i.shader = BW;
+		}
 
 		FlxTween.tween(BW, {colorFactor: 1}, Conductor.crochet / 1000);
 	}
@@ -122,49 +133,31 @@ function onBeatHit(curBeat:Int)
 
 		prevScore = scoreTxt.text;
 		prevHealth = game.health;
-		prevTime = game.songPositionBar;
+		prevTime = PlayState.songPosBar;
 
 		currentTimingShown.alpha = 0;
 		forceComboPos = new FlxPoint(FlxG.width * 1.5, 0);
-		for (i in game.curComboSprites)
-		{
-			FlxTween.cancelTweensOf(i);
-			i.velocity.set(0, 0);
-			i.acceleration.set(0, 0);
-			i.ID = -420;
-			i.visible = false;
-		}
 	}
 	else if (curBeat == 256)
 	{
+		screen.value = 1;
 		snapCamera(DAD_CAM_POS);
 		forceComboPos.set(0, 0);
 		FlxTween.tween(spr, {y: -BLACK_BAR_HEIGHT}, 0.24);
 		FlxTween.tween(spr2, {y: FlxG.height}, 0.24);
 		game.defaultCamZoom -= 0.35;
-		game.gfSpeed = 1;
 
-		gf.shader = null;
 		getGlobalVar("whittyBG").shader = null;
-
-		for (i in game.curComboSprites)
-		{
-			if (i.ID == -420)
-			{
-				FlxTween.tween(i, {alpha: 0, y: i.y + FlxG.random.int(15, 36)}, 0.3 + FlxG.random.float(0.1, 0.25), {
-					onComplete: function(tween)
-					{
-						i.kill();
-						i.exists = false;
-					}
-				});
-			}
-		}
-
-		curComboSprites = [];
 
 		for (i in 0...4)
 			strumLineNotes[i].alpha = 1;
+
+		for (i in getGlobalVar("bgElements"))
+		{
+			i.shader = null;
+		}
+
+		getGlobalVar("bgElements")[0].shader = getGlobalVar("shader");
 	}
 }
 
@@ -180,4 +173,10 @@ function onStepHit(curStep:Int)
 
 		clap.animation.play("clap");
 	}
+}
+
+function onPlayerNoteHit(note)
+{
+	if (curBeat >= 192 && curBeat <= 255)
+		game.health = prevHealth;
 }

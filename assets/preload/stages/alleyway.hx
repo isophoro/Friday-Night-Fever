@@ -1,13 +1,19 @@
 import PlayState;
+import openfl.filters.ShaderFilter;
+import shaders.WiggleEffect;
 
 var whittyBG:FlxSprite;
 var princessBG:FlxSprite;
 var princessFloor:FlxSprite;
 var princessCrystals:FlxSprite;
+var clocks:FlxSprite;
+var clockScar:FlxSprite;
+var clockFever:FlxSprite;
+var wiggleEffect:WiggleEffect;
 
 function onCreate()
 {
-	game.defaultCamZoom = PlayState.SONG.song == "Bloom" ? 0.6 : 0.7;
+	game.defaultCamZoom = PlayState.SONG.song == "Bloom" ? 0.53 : 0.7;
 
 	whittyBG = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/alleywaybroken'));
 	whittyBG.antialiasing = true;
@@ -40,6 +46,45 @@ function onCreate()
 		princessCrystals.visible = false;
 		FlxTween.tween(princessCrystals, {y: princessCrystals.y - 70}, 3.4, {type: FlxTweenType.PINGPONG});
 	}
+	else if (PlayState.SONG.song == "Bloom")
+	{
+		clocks = new FlxSprite(200, 80).loadGraphic(Paths.image("roboStage/princessClocks"));
+		clocks.scale.set(2.55, 2.55);
+		clocks.antialiasing = true;
+		add(clocks);
+
+		clockScar = new FlxSprite(-190, 680).loadGraphic(Paths.image("roboStage/princessClock"));
+		clockScar.scale.set(1.65, 1.65);
+		clockScar.antialiasing = true;
+		add(clockScar);
+
+		clockFever = new FlxSprite(990, 680).loadGraphic(Paths.image("roboStage/princessClock"));
+		clockFever.scale.set(1.25, 1.25);
+		clockFever.antialiasing = true;
+		add(clockFever);
+
+		wiggleEffect = new WiggleEffect();
+		wiggleEffect.shader.effectType.value = [4]; // non h-scriptphobic version
+		wiggleEffect.waveAmplitude = 0.02;
+		wiggleEffect.waveFrequency = 3;
+		wiggleEffect.waveSpeed = 0.71;
+
+		clocks.shader = wiggleEffect.shader;
+		setGlobalVar("shader", wiggleEffect.shader);
+		setGlobalVar("bgElements", [clocks, clockScar, clockFever]);
+	}
+}
+
+function onUpdate(elapsed:Float)
+{
+	if (wiggleEffect != null)
+		wiggleEffect.update(elapsed);
+}
+
+function onCreatePost()
+{
+	clockScar.scrollFactor.set(dad.scrollFactor.x, dad.scrollFactor.y);
+	clockFever.scrollFactor.set(boyfriend.scrollFactor.x, boyfriend.scrollFactor.y);
 }
 
 function onStepHit(curStep)

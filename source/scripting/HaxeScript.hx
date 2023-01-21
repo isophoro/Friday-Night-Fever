@@ -10,6 +10,7 @@ import flixel.util.FlxDestroyUtil.IFlxDestroyable;
 import flxanimate.FlxAnimate;
 import hscript.Interp;
 import hscript.Parser;
+import shaders.ScreenMultiply;
 import sys.FileSystem;
 import sys.io.File;
 
@@ -303,6 +304,8 @@ class HaxeScript extends Interp implements IFlxDestroyable
 					item.shader = new shaders.Scanline();
 				case "CRTBend":
 					item.shader = new shaders.CRTBend();
+				case "ScreenMultiply":
+					item.shader = new shaders.ScreenMultiply();
 				default:
 					item.shader = null;
 			}

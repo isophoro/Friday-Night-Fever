@@ -7,7 +7,7 @@ class ChromaticAberration extends FlxShader
 	public var redOffset(default, set):Float = 0;
 	public var blueOffset(default, set):Float = 0;
 	public var greenOffset(default, set):Float = 0;
-	
+
 	function set_redOffset(v:Float):Float
 	{
 		redOffset = v;

@@ -326,7 +326,6 @@ class SolidColorShader extends FlxShader
             gl_FragColor = _color;
         }
     ')
-	
 	public function new()
 	{
 		super();
@@ -337,7 +336,7 @@ class SolidColorShader extends FlxShader
 
 class InvertShader extends FlxShader
 {
-    @:glFragmentSource('
+	@:glFragmentSource('
         void main()
         {
             vec4 _color = flixel_texture2D(bitmap, openfl_TextureCoordv);
