@@ -1,6 +1,5 @@
 package shaders;
 
-
 import flixel.system.FlxAssets.FlxShader;
 
 /*
@@ -47,7 +46,7 @@ class ColorShader extends FlxShader
 	public function new()
 	{
 		super();
-		//flixel.FlxG.stage.addEventListener(openfl.events.Event.ENTER_FRAME, onUpdate);
+		// flixel.FlxG.stage.addEventListener(openfl.events.Event.ENTER_FRAME, onUpdate);
 	}
 
 	public function onUpdate(?_):Void
@@ -58,6 +57,6 @@ class ColorShader extends FlxShader
 
 	public function destroy()
 	{
-		//flixel.FlxG.stage.removeEventListener(openfl.events.Event.ENTER_FRAME, onUpdate);
+		// flixel.FlxG.stage.removeEventListener(openfl.events.Event.ENTER_FRAME, onUpdate);
 	}
 }

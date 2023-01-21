@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="numbers.png">
-	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="num0" x="0" y="0" width="91" height="111"/>
-	<SubTexture name="num1" x="96" y="0" width="92" height="111"/>
-	<SubTexture name="num2" x="193" y="0" width="91" height="111"/>
-	<SubTexture name="num3" x="289" y="0" width="91" height="111"/>
-	<SubTexture name="num4" x="385" y="0" width="91" height="111"/>
-	<SubTexture name="num5" x="0" y="116" width="90" height="111"/>
-	<SubTexture name="num6" x="95" y="116" width="90" height="111"/>
-	<SubTexture name="num7" x="190" y="116" width="91" height="111"/>
-	<SubTexture name="num8" x="286" y="116" width="90" height="111"/>
-	<SubTexture name="num9" x="381" y="116" width="91" height="112"/>
+	<SubTexture name="num0" x="0" y="0" width="66" height="98" pivotX="0" pivotY="0"/>
+	<SubTexture name="num1" x="66" y="0" width="71" height="97" pivotX="0" pivotY="0"/>
+	<SubTexture name="num2" x="137" y="0" width="66" height="97" pivotX="0.9" pivotY="0.9"/>
+	<SubTexture name="num3" x="203" y="0" width="71" height="97" pivotX="0" pivotY="0"/>
+	<SubTexture name="num4" x="274" y="0" width="66" height="98" pivotX="0" pivotY="0"/>
+	<SubTexture name="num5" x="340" y="0" width="71" height="103" pivotX="0" pivotY="0"/>
+	<SubTexture name="num6" x="411" y="0" width="64" height="104" pivotX="0" pivotY="0"/>
+	<SubTexture name="num7" x="0" y="104" width="69" height="98" pivotX="0" pivotY="0"/>
+	<SubTexture name="num8" x="69" y="104" width="68" height="95" pivotX="0" pivotY="0"/>
+	<SubTexture name="num9" x="137" y="104" width="66" height="98" pivotX="0" pivotY="0"/>
 </TextureAtlas>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="devil reporter.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="reporter0000" x="0" y="0" width="396" height="633" pivotX="0" pivotY="9.05"/>
+	<SubTexture name="reporter0001" x="0" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0002" x="396" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0003" x="792" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0004" x="792" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0005" x="1188" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0006" x="1584" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0007" x="1584" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0008" x="1980" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0009" x="2376" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0010" x="2376" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0011" x="2772" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0012" x="3168" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0013" x="3564" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0014" x="0" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0015" x="396" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0016" x="792" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0017" x="1188" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0018" x="1584" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0019" x="1584" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0020" x="1980" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0021" x="792" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0022" x="792" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0023" x="1188" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0024" x="1584" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0025" x="1584" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0026" x="1980" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0027" x="792" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0028" x="792" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0029" x="1188" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0030" x="1584" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0031" x="1584" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0032" x="1980" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0033" x="2376" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0034" x="2772" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0035" x="3168" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0036" x="3564" y="633" width="396" height="633"/>
+	<SubTexture name="reporter0037" x="0" y="1266" width="396" height="633"/>
+	<SubTexture name="reporter0038" x="396" y="1266" width="396" height="633"/>
+	<SubTexture name="reporter0039" x="2376" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0040" x="2376" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0041" x="792" y="1266" width="396" height="633"/>
+	<SubTexture name="reporter0042" x="1188" y="1266" width="396" height="633"/>
+	<SubTexture name="reporter0043" x="1584" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0044" x="1980" y="0" width="396" height="633"/>
+	<SubTexture name="reporter0045" x="1584" y="1266" width="396" height="633"/>
+	<SubTexture name="reporter0046" x="792" y="0" width="396" height="633"/>
+</TextureAtlas>
