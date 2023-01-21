@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="candles2.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="candles2 instance 10000" x="4" y="4" width="128" height="227"/>
+	<SubTexture name="candles2 instance 10001" x="4" y="4" width="128" height="227"/>
+	<SubTexture name="candles2 instance 10002" x="136" y="4" width="128" height="227"/>
+	<SubTexture name="candles2 instance 10003" x="136" y="4" width="128" height="227"/>
+	<SubTexture name="candles2 instance 10004" x="268" y="4" width="128" height="227"/>
+	<SubTexture name="candles2 instance 10005" x="268" y="4" width="128" height="227"/>
+</TextureAtlas>

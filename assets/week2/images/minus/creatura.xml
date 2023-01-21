@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="creatura.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="craetura instance 10000" x="4" y="4" width="111" height="307" frameX="0" frameY="-31" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10001" x="4" y="4" width="111" height="307" frameX="0" frameY="-31" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10002" x="119" y="4" width="113" height="309" frameX="0" frameY="-27" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10003" x="119" y="4" width="113" height="309" frameX="0" frameY="-27" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10004" x="236" y="4" width="185" height="338" frameX="0" frameY="0" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10005" x="236" y="4" width="185" height="338" frameX="0" frameY="0" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10006" x="425" y="4" width="111" height="298" frameX="0" frameY="-49" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10007" x="425" y="4" width="111" height="298" frameX="0" frameY="-49" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10008" x="540" y="4" width="113" height="311" frameX="0" frameY="-47" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10009" x="540" y="4" width="113" height="311" frameX="0" frameY="-47" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10010" x="657" y="4" width="185" height="361" frameX="0" frameY="0" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10011" x="657" y="4" width="185" height="361" frameX="0" frameY="0" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10012" x="846" y="4" width="111" height="317" frameX="0" frameY="-49" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10013" x="846" y="4" width="111" height="317" frameX="0" frameY="-49" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10014" x="4" y="369" width="113" height="295" frameX="0" frameY="-41" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10015" x="4" y="369" width="113" height="295" frameX="0" frameY="-41" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10016" x="121" y="369" width="185" height="338" frameX="0" frameY="0" frameWidth="185" frameHeight="366"/>
+	<SubTexture name="craetura instance 10017" x="121" y="369" width="185" height="338" frameX="0" frameY="0" frameWidth="185" frameHeight="366"/>
+</TextureAtlas>

@@ -724,6 +724,11 @@ class PlayState extends MusicBeatState
 				dad.x -= 150;
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				gf.scrollFactor.set(0.9, 0.9);
+			case 'lab':
+				gf.scrollFactor.set(1, 1);
+				dad.setPosition(100, -400);
+				gf.setPosition(800, 0);
+				boyfriend.setPosition(1500, 270);
 		}
 
 		if (SONG.song.toLowerCase() == 'bazinga' || SONG.song.toLowerCase() == 'crucify')
@@ -2201,6 +2206,9 @@ class PlayState extends MusicBeatState
 					case 'robofvr-final':
 						camFollow.x = dad.getMidpoint().x - 450;
 						camFollow.y = dad.getMidpoint().y + 150;
+					case 'taki-minus':
+						camFollow.x = dad.getMidpoint().x + 30;
+						camFollow.y = dad.getMidpoint().y - 10;
 				}
 
 				camFollow.x += DAD_CAM_OFFSET.x;
@@ -2279,6 +2287,9 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 385;
 					case 'city-minus':
 						camFollow.x = boyfriend.getMidpoint().x - 600;
+						camFollow.y = boyfriend.getMidpoint().y - 190;
+					case 'lab':
+						camFollow.x = boyfriend.getMidpoint().x - 950;
 						camFollow.y = boyfriend.getMidpoint().y - 190;
 				}
 
@@ -2655,7 +2666,10 @@ class PlayState extends MusicBeatState
 			{
 				scripts.callFunction("onPlayerNoteHit", [note]);
 				curPlayer.holdTimer = 0;
-				curPlayer.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
+				if (note.properties.singAnim == null)
+					curPlayer.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
+				else
+					curPlayer.playAnim(note.properties.singAnim, true);
 
 				if (boyfriendReflection != null)
 				{
