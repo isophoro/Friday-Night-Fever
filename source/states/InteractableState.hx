@@ -96,7 +96,8 @@ class InteractableState extends MusicBeatState
 
 	function addInteractable(item:Interactable)
 	{
-		add(item);
+		if (!members.contains(item))
+			add(item);
 
 		if (item.text != null)
 			add(item.text);
