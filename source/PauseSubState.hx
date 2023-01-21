@@ -38,9 +38,9 @@ class PauseSubState extends MusicBeatSubstate
 		super();
 		menuItems = menuItemsOG;
 
-		if(PlayState.SONG.song.toLowerCase() == 'shadow')
+		if (PlayState.SONG.song.toLowerCase() == 'shadow')
 		{
-			menuItems.splice(menuItems.length - 2, 2); //removes change difficulty and exit to menu from shadow
+			menuItems.splice(menuItems.length - 2, 2); // removes change difficulty and exit to menu from shadow
 		}
 
 		for (i in 0...CoolUtil.difficultyArray.length)
@@ -69,7 +69,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(levelInfo);
 
 		levelDifficulty = new FlxText(20, 15 + 32, 0, "", 32);
-		levelDifficulty.text += CoolUtil.difficultyString();
+		levelDifficulty.text += Difficulty.data[PlayState.storyDifficulty].name;
 		levelDifficulty.scrollFactor.set();
 		levelDifficulty.setFormat(Paths.font('vcr.ttf'), 32);
 		levelDifficulty.updateHitbox();
@@ -129,7 +129,7 @@ class PauseSubState extends MusicBeatSubstate
 				if (difficultyChoices[i] == daSelected)
 				{
 					var name:String = PlayState.SONG.song.toLowerCase();
-					var poop = Highscore.formatSong(name, curSelected);
+					var poop = Highscore.formatSong(name, curSelected + 1);
 					PlayState.SONG = Song.loadFromJson(poop, name);
 					PlayState.storyDifficulty = curSelected;
 					// CustomFadeTransition.nextCamera = transCamera;

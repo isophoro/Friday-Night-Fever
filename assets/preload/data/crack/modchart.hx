@@ -1,4 +1,3 @@
-import Character;
 import ShadersHandler;
 
 var scarlet:Character;
@@ -8,6 +7,8 @@ function onCreate()
 	iconP2.swapCharacter("scarlet");
 	scarlet = new Character(dad.x + 375, dad.y + 475, "scarlet");
 	scarlet.scrollFactor.set(0.95, 0.95);
+	scarlet.playAnim("idle-mad");
+	scarlet.useAlternateIdle = true;
 	add(scarlet);
 	dad.visible = false;
 	game.curOpponent = scarlet;

@@ -79,6 +79,16 @@
 			"anim": "Scar up",
 			"loop": false,
 			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Scar Idle MAD",
+			"loop": false,
+			"name": "idle-mad"
 		}
 	],
 	"noAntialiasing": false,

@@ -54,6 +54,7 @@ class MainMenuState extends InteractableState
 		{
 			allowInput = true;
 			train.animation.play('idle');
+			order.insert(1, train.hitbox);
 			addInteractable(train);
 		}
 
