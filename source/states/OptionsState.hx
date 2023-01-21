@@ -49,7 +49,7 @@ class OptionsState extends MusicBeatState
 						}}),
 			new Option("Performance Display", "When enabled, the game's FPS and currently used RAM will be shown in the top left.", "fps", BOOL, {callback: () -> { (cast(openfl.Lib.current.getChildAt(0), Main)).toggleFPS(ClientPrefs.fps); }}),
             new Option("Anti Aliasing", "When disabled, forces all sprites to not have anti-aliasing. (In-Game Only)", "antialiasing", BOOL),
-            new Option("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL)
+            //new Option("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL)
         ]}
     ];
 

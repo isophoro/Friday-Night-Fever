@@ -26,6 +26,10 @@ class CostumeState extends MusicBeatState
 	var loadingProgress:FlxBar;
 	var _loadingProgress:Int = 0;
 
+	var boxEnd:FlxSprite;
+	var box:FlxSprite;
+	var desc:FlxText;
+
 	var name:FlxText;
 
 	override function create()
@@ -36,19 +40,19 @@ class CostumeState extends MusicBeatState
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.setDefaultDrawTarget(cam, true);
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('locker'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('costumeMenu/locker'));
 		bg.antialiasing = true;
 		bg.alpha = 0.7;
 		bg.screenCenter();
 		add(bg);
 
-		lock = new FlxSprite().loadGraphic(Paths.image('lock'));
+		lock = new FlxSprite().loadGraphic(Paths.image('costumeMenu/lock'));
 		lock.cameras = [camHUD];
 		lock.screenCenter();
 		add(lock);
 		lock.visible = false;
 
-		var border:FlxSprite = new FlxSprite().loadGraphic(Paths.image('lockerBorder'));
+		var border:FlxSprite = new FlxSprite().loadGraphic(Paths.image('costumeMenu/lockerBorder'));
 		border.antialiasing = true;
 		border.cameras = [camHUD];
 		add(border);
@@ -58,12 +62,40 @@ class CostumeState extends MusicBeatState
 		name.cameras = [camHUD];
 		add(name);
 
+		boxEnd = new FlxSprite(-50, FlxG.height * 0.9).loadGraphic(Paths.image("costumeMenu/lockerArrow"));
+		boxEnd.antialiasing = true;
+		boxEnd.cameras = [camHUD];
+		add(boxEnd);
+
+		box = new FlxSprite(-50, FlxG.height * 0.9).makeGraphic(20, cast boxEnd.height, 0xFF000000);
+		box.origin.x = 0;
+		box.antialiasing = true;
+		box.cameras = [camHUD];
+		add(box);
+
+		desc = new FlxText(FlxG.width, FlxG.height * 0.9, 0, "", 24);
+		desc.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 24, 0xFFFFFFFF);
+		desc.cameras = [camHUD];
+		add(desc);
+
+		for (i in 0...2)
+		{
+			var a = new FlxSprite().loadGraphic(Paths.image("costumeMenu/arrow"));
+			a.setPosition((i == 0 ? FlxG.width * 0.25 : FlxG.width * 0.75) - (a.width / 2), (FlxG.height * 0.5) - (a.height / 2));
+			if (i == 0)
+			{
+				a.flipX = a.flipY = true;
+			}
+			a.antialiasing = true;
+			add(a);
+		}
+
 		add(loadingGrp);
-		var blackScreen = new FlxSprite().loadGraphic(Paths.image("lockerLoading"));
+		var blackScreen = new FlxSprite().loadGraphic(Paths.image("costumeMenu/lockerLoading"));
 		blackScreen.screenCenter();
 		loadingGrp.add(blackScreen);
 
-		loadingProgress = new FlxBar(0, FlxG.height * 0.83, HORIZONTAL_INSIDE_OUT, 800, 15, this, '_loadingProgress', 0, 100);
+		loadingProgress = new FlxBar(0, FlxG.height * 0.83, LEFT_TO_RIGHT, 800, 15, this, '_loadingProgress', 0, 100);
 		loadingProgress.createFilledBar(FlxColor.GRAY, 0xFF00FF00, true, 0xFF000000);
 		loadingGrp.add(loadingProgress);
 		loadingGrp.cameras = [camHUD];
@@ -170,6 +202,22 @@ class CostumeState extends MusicBeatState
 		var charData = CostumeHandler.data[CharacterList[curSelected]];
 		name.text = CostumeHandler.unlockedCostumes[CharacterList[curSelected]] != null ? charData.displayName : "???";
 		lock.visible = !CostumeHandler.unlockedCostumes.exists(CharacterList[curSelected]);
+
+		updateText();
+	}
+
+	function updateText()
+	{
+		var charData = CostumeHandler.data[CharacterList[curSelected]];
+		desc.text = charData.description;
+		if (CostumeHandler.unlockedCostumes[CharacterList[curSelected]] != null)
+		{
+			desc.text = CharacterList[curSelected] == CostumeHandler.curCostume ? "Currently Equipped" : "Not Equipped";
+		}
+		desc.x = FlxG.width - 14 - desc.width;
+		box.x = desc.x;
+		box.scale.x = (desc.width + 2) / box.width;
+		boxEnd.x = box.x - boxEnd.width;
 	}
 
 	function addCharacter()

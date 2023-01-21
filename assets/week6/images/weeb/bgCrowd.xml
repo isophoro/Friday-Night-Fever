@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bgCrowd.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="FTRS - Chicken Sandwich0000" x="0" y="0" width="620" height="252" pivotX="370" pivotY="125"/>
+	<SubTexture name="FTRS - Chicken Sandwich0001" x="0" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0002" x="620" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0003" x="620" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0004" x="620" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0005" x="620" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0006" x="1240" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0007" x="1240" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0008" x="1240" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0009" x="0" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0010" x="0" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0011" x="1240" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0012" x="1240" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0013" x="620" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0014" x="620" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0015" x="0" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0016" x="0" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0017" x="0" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0018" x="0" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Chicken Sandwich0019" x="0" y="0" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0000" x="1240" y="252" width="620" height="252" pivotX="370" pivotY="165"/>
+	<SubTexture name="FTRS - Ur Girl 0001" x="1240" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0002" x="0" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0003" x="0" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0004" x="0" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0005" x="0" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0006" x="620" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0007" x="620" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0008" x="620" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0009" x="1240" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0010" x="1240" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0011" x="620" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0012" x="620" y="504" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0013" x="0" y="756" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0014" x="0" y="756" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0015" x="1240" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0016" x="1240" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0017" x="1240" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0018" x="1240" y="252" width="620" height="252"/>
+	<SubTexture name="FTRS - Ur Girl 0019" x="1240" y="252" width="620" height="252"/>
+</TextureAtlas>

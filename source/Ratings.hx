@@ -100,8 +100,8 @@ class Ratings
 		if (customSafeZone != null)
 			customTimeScale = customSafeZone / 166;
 
-		/*if (FlxG.save.data.botplay)
-			return "good"; // i hate who did this */
+		if (ClientPrefs.botplay)
+			return "sick";
 
 		if (noteDiff > 166 * customTimeScale) // so god damn early its a miss
 			return "miss";
@@ -122,12 +122,12 @@ class Ratings
 		return "sick";
 	}
 
-	public static function CalculateRanking(score:Int, scoreDef:Int, accuracy:Float):String
+	public static function CalculateRanking(score:Int, accuracy:Float):String
 	{
 		if (PlayState.SONG.song == 'Bad-Nun' && BadNun.translate)
 		{
 			return new UnicodeString((!FlxG.save.data.botplay ? "スコア: "
-				+ (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score)
+				+ score
 				+ // Score
 				" | 見逃した: "
 				+ PlayState.misses
@@ -143,7 +143,7 @@ class Ratings
 			BadNun.translate = false;
 
 			return (!FlxG.save.data.botplay ? "Score: "
-				+ (Conductor.safeFrames != 10 ? score + " (" + scoreDef + ")" : "" + score)
+				+ score
 				+ // Score
 				" | Misses: "
 				+ PlayState.misses
@@ -197,5 +197,17 @@ class Ratings
 		var y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
 
 		return sign * y;
+	}
+
+	static var totalNotes:Int = 0;
+	public static var scorePerNote:Float = 350;
+
+	public static function init(_totalNotes:Int)
+	{
+		for (i in ['bads', 'goods', 'shits', 'misses'])
+			Reflect.setField(PlayState, i, 0);
+
+		totalNotes = _totalNotes;
+		scorePerNote = 100000 / _totalNotes;
 	}
 }

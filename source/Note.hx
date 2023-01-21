@@ -92,11 +92,10 @@ class Note extends FlxSprite
 								frames = Paths.getSparrowAtlas('notes/yukichiNotes');
 							case 'bazinga' | 'crucify':
 								frames = Paths.getSparrowAtlas('notes/takiNotes');
+							case 'shadow':
+								if (!mustPress) frames = Paths.getSparrowAtlas('NOTE_sg', 'shadow'); else frames = Paths.getSparrowAtlas('notes/defaultNotes');
 							default:
-								if(isPlayer == 1)
-									frames = Paths.getSparrowAtlas('NOTE_sg', 'shadow');
-								else
-									frames = Paths.getSparrowAtlas('notes/defaultNotes');
+								frames = Paths.getSparrowAtlas('notes/defaultNotes');
 						}
 				}
 
@@ -105,7 +104,7 @@ class Note extends FlxSprite
 				animation.addByPrefix('blueScroll', 'blue0');
 				animation.addByPrefix('purpleScroll', 'purple0');
 
-				if (type == 0)
+				if (type != 1) // no hallow sustains
 				{
 					animation.addByPrefix('purpleholdend', 'pruple end hold');
 					animation.addByPrefix('greenholdend', 'green hold end');
@@ -123,22 +122,19 @@ class Note extends FlxSprite
 		}
 	}
 
-	var isPlayer:Int = 0;
-
-	public function create(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, noteType:Int = 0, isPlayer:Int = 0)
+	public function create(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, noteType:Int = 0, mustPress:Bool = false)
 	{
 		this.strumTime = strumTime < 0 ? 0 : strumTime;
 		this.noteData = noteData;
-		this.isPlayer = isPlayer;
 		this.isSustainNote = sustainNote;
 		this.prevNote = prevNote == null ? this : prevNote;
+		this.mustPress = mustPress;
 
 		// As notes are recycled, reset all usual changed properties to their defaults
 		// clipRects are a must if sustain notes are involved!! this shit was broken for like two years till i realized
 		alive = true;
 		exists = true;
 		nextNote = null;
-		mustPress = false;
 		wasGoodHit = false;
 		canBeHit = false;
 		animPlayed = false;

@@ -96,7 +96,7 @@ class FreeplayMenu extends MusicBeatSubstate
 		},
 		{
 			"image": "weekminus",
-			"songs": [["Grando", "robo-cesar"], ["Minus Tacky", "taki"]]
+			"songs": [["Grando", "robo-cesar"], ["Feel-The-Rage", "taki"]]
 		},
 		{
 			"image": "week9",

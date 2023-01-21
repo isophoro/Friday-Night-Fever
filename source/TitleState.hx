@@ -40,6 +40,11 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
+		if (FlxG.random.bool(0.2))
+		{
+			FlxG.stage.window.title = "Friday Night Fever: The Winkel Build";
+		}
+
 		hueShader = new ColorShader();
 
 		logoBl = new FlxSprite(55, 40).loadGraphic(Paths.image('title/logo'));

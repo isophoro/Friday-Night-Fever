@@ -57,7 +57,7 @@ class CostumeHandler
 			description: "Full combo Week 2.5 in Story Mode",
 			character: "bf-nun",
 			creator: "MegaFreedom1274",
-			characterOffset: [0, -55]
+			characterOffset: [-5, -55]
 		},
 		FEVER_CASUAL => {
 			displayName: "Fever (Casual Outfit)",
@@ -82,10 +82,10 @@ class CostumeHandler
 		},
 		TEASAR => {
 			displayName: "Teasar",
-			description: "FC Tutorial",
+			description: "Full combo Tutorial in Story Mode",
 			character: "bf-teasar",
 			creator: "Circle",
-			characterOffset: [-80, -40]
+			characterOffset: [-70, -50]
 		}
 	];
 }
