@@ -10,10 +10,9 @@ import flixel.util.FlxColor;
 import openfl.display.BitmapData;
 
 /*
-	Code for all of the events including camera zooming and background switching in Loaded.
-	this should probably be extending a flxgroup with the background stuff being inside of it and not
-	some random ass object that uses PlayState.instance left and right. I dont feel like rewriting it 
-	as im lazy and it would be my third time doing, but alas, here we are :( - rf
+	Contains all of the code for the background switching in Loaded.
+	This code is almost a year old so please ignore any weird quirks in the code im BEGGING YOU.
+	If any major bugs pop up im rewriting this entire thing lmao
 
 	To add a stage all you have to do is create the sprite variables contained inside the stage and create an instance in the stages map
 		stages['stage name'] = new RoboStage([background_sprites], [foreground_sprites], [positioning], [character scrollfactors], cameraZoom);
@@ -78,7 +77,7 @@ class RoboBackground
 			robofever = new Character(0, 0, "robo-cesar-pixel");
 			tea_pixel = new Character(0, 0, "tea-pixel");
 			fever_pixel = new Character(0, 0, "bf-pixel", true);
-			cherry = new Character(400, 130, "gf-cherry", false);
+			cherry = new Character(360, 70, "gf-cherry", false);
 			tea_pixel.scrollFactor.set(0.9, 0.9);
 			fever_pixel.scrollFactor.set(0.9, 0.9);
 			robofever.scrollFactor.set(0.9, 0.9);
@@ -190,12 +189,11 @@ class RoboBackground
 				[], 0.757);
 
 			// WEEK 5
-			var w5bg:FlxSprite = new FlxSprite(-820, -400).loadGraphic(Paths.image('christmas/lastsongyukichi', 'week5'));
+			var w5bg:FlxSprite = new FlxSprite(-820, -400).loadGraphic(Paths.image('yukichi', 'week5'));
 			w5bg.antialiasing = true;
 			w5bg.scrollFactor.set(0.9, 0.9);
-			var bottomBoppers = new Crowd();
 
-			stages['week5'] = new RoboStage([w5bg], [bottomBoppers], [], [], 0.55);
+			stages['week5'] = new RoboStage([w5bg], [], [], [], 0.55);
 
 			// WEEK 2.5
 			var church = new FlxSprite(-948, -779).loadGraphic(Paths.image('bg_taki'));
@@ -239,27 +237,21 @@ class RoboBackground
 
 			stages['school'] = new RoboStage([bgSky, bgSchool, bgStreet, bgFront, bgOverlay], [], [], ["gf" => 1], 0.98);
 
-			// Limo
-			var skyBG:FlxSprite = new FlxSprite(-120, -70).loadGraphic(Paths.image('limoNight/limoSunset', 'week4'));
-			skyBG.scrollFactor.set(0.1, 0.1);
+			// Week 4
+			var week4Assets:Array<FlxSprite> = [];
+			for (i in ["sky", "city", "water", "boardwalk"])
+			{
+				var spr = new FlxSprite(-300, -300).loadGraphic(Paths.image(i, 'week4'));
+				spr.scale.set(1.4, 1.4);
+				spr.antialiasing = true;
+				week4Assets.push(spr);
+			}
 
-			var bgLimo = new FlxSprite(-200, 480);
-			bgLimo.frames = Paths.getSparrowAtlas('limoNight/bgLimo', 'week4');
-			bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
-			bgLimo.animation.play('drive');
-			bgLimo.scrollFactor.set(0.4, 0.4);
-
-			var limo = new FlxSprite(-120, 550);
-			limo.frames = Paths.getSparrowAtlas('limoNight/limoDrive', 'week4');
-			limo.animation.addByPrefix('drive', "Limo stage", 24);
-			limo.animation.play('drive');
-			limo.antialiasing = true;
-
-			stages['limo'] = new RoboStage([skyBG, bgLimo].concat([cherry, limo]), [], ["boyfriend" => [1030, 150], "dad" => [100, 235]],
+			stages['boardwalk'] = new RoboStage(week4Assets.concat([cherry]), [], ["boyfriend" => [850, 395], "dad" => [180, 245]],
 				["boyfriend" => 1, "dad" => 1], 0.9);
 
 			// fixes initial lag spike when switching to the week 4 stage
-			addSprites(stages['limo'].backgroundSprites, instance.roboBackground);
+			addSprites(stages['boardwalk'].backgroundSprites, instance.roboBackground);
 			instance.gf.visible = false;
 		}
 	}
@@ -301,13 +293,13 @@ class RoboBackground
 				instance.gf.color = instance.boyfriend.color = instance.dad.color = FlxColor.fromString("#FFE6D8");
 			case 'church':
 				replaceGf('taki');
-			case 'limo' | 'matt':
+			case 'boardwalk' | 'matt':
 				replaceGf('die');
 			default:
 				replaceGf('gf');
 		}
 
-		var curGF:Character = stage == 'church' ? taki : stage == 'limo' ? cherry : stage == 'school' ? tea_pixel : instance.gf;
+		var curGF:Character = stage == 'church' ? taki : stage == 'boardwalk' ? cherry : stage == 'school' ? tea_pixel : instance.gf;
 		instance.camFollow.setPosition(curGF.getGraphicMidpoint().x - 460, curGF.getGraphicMidpoint().y + 250);
 
 		curStage = stage;
@@ -370,7 +362,7 @@ class RoboBackground
 				case 128:
 					switchStage('whitty');
 				case 144 | 288:
-					switchStage('limo');
+					switchStage('boardwalk');
 				case 160 | 592:
 					switchStage(/* 'default' */ 'c354r-default');
 				case 224 | 560:
