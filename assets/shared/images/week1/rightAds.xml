@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="week1ads2.png">
-	<!-- Created with Adobe Animate version 21.0.3.38773 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="ad0000" x="0" y="0" width="181" height="205" pivotX="4.05" pivotY="11.2"/>
-	<SubTexture name="ad0001" x="181" y="0" width="180" height="205" pivotX="18.15" pivotY="13.35"/>
-	<SubTexture name="ad0002" x="0" y="205" width="179" height="205" pivotX="0" pivotY="0"/>
-	<SubTexture name="ad0003" x="179" y="205" width="178" height="204" pivotX="4.8" pivotY="14.4"/>
-</TextureAtlas>

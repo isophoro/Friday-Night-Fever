@@ -1,4 +1,4 @@
-import ("flixel.addons.display.FlxBackdrop");
+import flixel.addons.display.FlxBackdrop;
 
 var buildings1:FlxBackdrop;
 var buildings2:FlxBackdrop;
@@ -33,27 +33,30 @@ function onCreate()
 	buildings1 = createBackdrop(Paths.image('roboStage/gears/furthestBuildings'), 0, 0);
 	buildings1.antialiasing = true;
 	buildings1.scrollFactor.set(0.9, 0.9);
-	buildings1.setGraphicSize(Std.int(buildings1.width * 1.25));
+	buildings1.origin.set(0, 0);
+	buildings1.setGraphicSize(Std.int(buildings1.width * 1.75));
 	buildings1.updateHitbox();
-	buildings1.y -= 300;
+	buildings1.y -= 150;
 	buildings1.x -= 600;
 	add(buildings1);
 
 	buildings2 = createBackdrop(Paths.image('roboStage/gears/middleBuildings'), 0, 0);
 	buildings2.antialiasing = true;
 	buildings2.scrollFactor.set(0.9, 0.9);
-	buildings2.setGraphicSize(Std.int(buildings2.width * 1.25));
+	buildings2.origin.set(0, 0);
+	buildings2.setGraphicSize(Std.int(buildings2.width * 1.75));
 	buildings2.updateHitbox();
-	buildings2.y -= 700;
+	buildings2.y -= 350;
 	buildings2.x -= 600;
 	add(buildings2);
 
 	buildings3 = createBackdrop(Paths.image('roboStage/gears/frontBuildings'), 0, 0);
 	buildings3.antialiasing = true;
 	buildings3.scrollFactor.set(0.9, 0.9);
-	buildings3.setGraphicSize(Std.int(buildings3.width * 1.25));
+	buildings3.origin.set(0, 0);
+	buildings3.setGraphicSize(Std.int(buildings3.width * 1.75));
 	buildings3.updateHitbox();
-	buildings3.y -= 1100;
+	buildings3.y -= 750;
 	buildings3.x -= 600;
 	add(buildings3);
 

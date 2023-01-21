@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="poop.png">
+	<SubTexture name="leftAds0000" x="0" y="0" width="191" height="207"/>
+	<SubTexture name="leftAds0001" x="191" y="0" width="191" height="207"/>
+	<SubTexture name="leftAds0002" x="0" y="207" width="191" height="207"/>
+	<SubTexture name="leftAds0003" x="191" y="207" width="191" height="207"/>
+	<SubTexture name="rightAds0000" x="0" y="414" width="181" height="205"/>
+	<SubTexture name="rightAds0001" x="181" y="414" width="181" height="205"/>
+	<SubTexture name="rightAds0002" x="0" y="619" width="181" height="205"/>
+	<SubTexture name="rightAds0003" x="181" y="619" width="181" height="205"/>
+</TextureAtlas>

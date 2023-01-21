@@ -35,9 +35,9 @@ function onCreate()
 	stageCurtains.scrollFactor.set(0.9, 0.9);
 	add(stageCurtains);
 
-	leftAd = new FlxSprite(stageCurtains.x + (235 * 0.9), stageCurtains.y + (427 * 0.9));
-	leftAd.frames = Paths.getSparrowAtlas("week1/leftAds");
-	leftAd.animation.addByPrefix("a", "ad", 0);
+	leftAd = new FlxSprite(stageCurtains.x + (244 * 0.9), stageCurtains.y + (428 * 0.9));
+	leftAd.frames = Paths.getSparrowAtlas("week1/ads");
+	leftAd.animation.addByPrefix("a", "leftAds0", 0);
 	leftAd.animation.play("a");
 	leftAd.setGraphicSize(Std.int(leftAd.width * 0.9));
 	leftAd.updateHitbox();
@@ -45,11 +45,12 @@ function onCreate()
 	leftAd.antialiasing = true;
 	add(leftAd);
 
-	rightAd = new FlxSprite(stageCurtains.x + (1586 * 0.9), stageCurtains.y + (430 * 0.9));
-	rightAd.frames = Paths.getSparrowAtlas("week1/rightAds");
-	rightAd.animation.addByPrefix("a", "ad", 0);
+	rightAd = new FlxSprite(stageCurtains.x + (1585 * 0.9), stageCurtains.y + (429 * 0.9));
+	rightAd.frames = Paths.getSparrowAtlas("week1/ads");
+	rightAd.animation.addByPrefix("a", "rightAds0", 0);
 	rightAd.animation.play("a");
-	rightAd.setGraphicSize(Std.int(rightAd.width * 0.9));
+	rightAd.origin.set(0, 0);
+	rightAd.setGraphicSize(Std.int(rightAd.width * 0.86));
 	rightAd.updateHitbox();
 	rightAd.scrollFactor.set(0.9, 0.9);
 	rightAd.antialiasing = true;
@@ -76,7 +77,7 @@ function onBeatHit(curBeat:Int)
 	{
 		for (i in [rightAd, leftAd])
 		{
-			if (i.animation.curAnim.curFrame > 3)
+			if (i.animation.curAnim.curFrame > 2)
 				i.animation.curAnim.curFrame = 0;
 			else
 				i.animation.curAnim.curFrame++;
