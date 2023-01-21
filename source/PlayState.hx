@@ -1223,6 +1223,12 @@ class PlayState extends MusicBeatState
 			camHUD.alpha = 0;
 			camZooming = true;
 
+			for(i in 0...cpuStrums.length)
+			{
+				FlxTween.tween(cpuStrums.members[i], {alpha: 0.6}, 2, {type: PINGPONG, startDelay: 0.5 + (0.2 * i)});
+			}
+
+
 			zoomTwn = FlxTween.tween(camGame, {zoom: 1.0}, 19, {
 				ease: FlxEase.sineInOut,
 				onComplete: (twn) ->
@@ -1619,6 +1625,20 @@ class PlayState extends MusicBeatState
 		// Using 180 here since that's the framerate I test with
 		FlxG.camera.followLerp = elapsed * cameraSpeed * (180 / FlxG.drawFramerate);
 		iconHurtTimer -= elapsed;
+
+		if(SONG.song.toLowerCase() == 'shadow')
+		{
+			if(health >= 2) //for sum reason, the health goes above 2, then its like a timer for the thing to work so i did this to fix it
+			{
+				health = 2;
+			}
+
+			if(health == 2 || healthBar.percent == 100)
+			{
+				healthTween(-1);
+			}
+		}
+			
 
 		if (ClientPrefs.shaders)
 		{
@@ -2039,6 +2059,9 @@ class PlayState extends MusicBeatState
 							}
 
 							gf.playAnim('scared');
+						case 'SG': 
+							if(healthBar.percent > 5 && !hpTweening)
+								health -= (daNote.isSustainNote ? 0.03 : 0.02);
 						case 'hallow':
 							if (healthBar.percent > 5)
 							{
@@ -2115,6 +2138,21 @@ class PlayState extends MusicBeatState
 	public var BF_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
 
 	var camLocked:Bool = false;
+
+	var hpTweening:Bool = false;
+	var healthTweenOBJ:FlxTween;
+
+	function healthTween(amt:Float)
+	{
+		if(healthTweenOBJ != null)
+			healthTweenOBJ.cancel();
+
+		hpTweening = true;
+		healthTweenOBJ = FlxTween.num(health, health + amt, 0.5, {ease: FlxEase.cubeInOut}, function(v:Float){
+			health = v;
+			hpTweening = false;
+		});
+	}
 
 	public function moveCamera(isDad:Bool = false)
 	{
@@ -2436,9 +2474,11 @@ class PlayState extends MusicBeatState
 			case 'good':
 				score /= 2;
 				goods++;
-				health += 0.02;
+				if (!hpTweening)
+					health += 0.02;
 			case 'sick':
-				health += 0.04;
+				if (!hpTweening)
+					health += 0.04;
 
 				if (ClientPrefs.notesplash)
 				{
