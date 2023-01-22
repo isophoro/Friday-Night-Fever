@@ -31,6 +31,7 @@ enum abstract Action(String) to String from String
 	var BACK = "back";
 	var PAUSE = "pause";
 	var RESET = "reset";
+	var DODGE = "dodge";
 	var CHEAT = "cheat";
 }
 #else
@@ -53,6 +54,7 @@ abstract Action(String) to String from String
 	var BACK = "back";
 	var PAUSE = "pause";
 	var RESET = "reset";
+	var DODGE = "dodge";
 	var CHEAT = "cheat";
 }
 #end
@@ -78,6 +80,7 @@ enum Control
 	ACCEPT;
 	BACK;
 	PAUSE;
+	DODGE;
 	CHEAT;
 }
 
@@ -111,6 +114,7 @@ class Controls extends FlxActionSet
 	var _back = new FlxActionDigital(Action.BACK);
 	var _pause = new FlxActionDigital(Action.PAUSE);
 	var _reset = new FlxActionDigital(Action.RESET);
+	var _dodge = new FlxActionDigital(Action.DODGE);
 	var _cheat = new FlxActionDigital(Action.CHEAT);
 
 	#if (haxe >= "4.0.0")
@@ -202,6 +206,11 @@ class Controls extends FlxActionSet
 	inline function get_RESET()
 		return _reset.check();
 
+	public var DODGE(get, never):Bool;
+
+	inline function get_DODGE()
+		return _dodge.check();
+
 	public var CHEAT(get, never):Bool;
 
 	inline function get_CHEAT()
@@ -228,6 +237,7 @@ class Controls extends FlxActionSet
 		add(_back);
 		add(_pause);
 		add(_reset);
+		add(_dodge);
 		add(_cheat);
 
 		for (action in digitalActions)
@@ -256,6 +266,7 @@ class Controls extends FlxActionSet
 		add(_back);
 		add(_pause);
 		add(_reset);
+		add(_dodge);
 		add(_cheat);
 
 		for (action in digitalActions)
@@ -309,6 +320,7 @@ class Controls extends FlxActionSet
 			case ACCEPT: _accept;
 			case BACK: _back;
 			case PAUSE: _pause;
+			case DODGE: _dodge;
 			case RESET: _reset;
 			case CHEAT: _cheat;
 		}
@@ -354,6 +366,8 @@ class Controls extends FlxActionSet
 				func(_pause, JUST_PRESSED);
 			case RESET:
 				func(_reset, JUST_PRESSED);
+			case DODGE:
+				func(_dodge, JUST_PRESSED);
 			case CHEAT:
 				func(_cheat, JUST_PRESSED);
 		}
@@ -579,6 +593,7 @@ class Controls extends FlxActionSet
 		inline bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);
 		inline bindKeys(Control.PAUSE, [P, ENTER, ESCAPE]);
 		inline bindKeys(Control.RESET, [FlxKey.fromString(ClientPrefs.killBind)]);
+		inline bindKeys(Control.DODGE, [FlxKey.fromString(ClientPrefs.dodgeBind)]);
 	}
 
 	function removeKeyboard()
@@ -648,7 +663,8 @@ class Controls extends FlxActionSet
 			Control.LEFT => [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT],
 			Control.RIGHT => [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT],
 			Control.PAUSE => [START],
-			Control.RESET => [Y]
+			Control.RESET => [Y],
+			Control.DODGE => [X]
 		]);
 		#else
 		addGamepadLiteral(id, [
@@ -662,7 +678,7 @@ class Controls extends FlxActionSet
 			Control.PAUSE => [START],
 			// Swap Y and X for switch
 			Control.RESET => [Y],
-			Control.CHEAT => [X]
+			Control.DODGE => [X]
 		]);
 		#end
 	}

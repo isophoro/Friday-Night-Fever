@@ -48,6 +48,8 @@ class PlayState extends MusicBeatState
 	public static var SONG:SwagSong;
 	public static var instance:PlayState = null;
 
+	public var canHey:Bool = true;
+
 	public static var isStoryMode:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
@@ -210,6 +212,9 @@ class PlayState extends MusicBeatState
 
 	var boyfriendReflection:Boyfriend;
 	var zoomTwn:FlxTween;
+
+	var keybindTxt:FlxText;
+	public var spacePressed:Bool = false;
 
 	override public function create()
 	{
@@ -915,6 +920,15 @@ class PlayState extends MusicBeatState
 				vignette.cameras = [camHUD];
 				add(vignette);
 				vignette.alpha = 0;
+			case 'dead-mans-melody':
+				keybindTxt = new FlxText(0, 0, FlxG.width, "YOUR DODGE/PARRY KEY IS " + ClientPrefs.dodgeBind, 20);
+				keybindTxt.setFormat(Paths.font("vcr.ttf"), 34, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				keybindTxt.cameras = [camHUD];
+				keybindTxt.screenCenter();
+				keybindTxt.antialiasing = true;
+				keybindTxt.y = FlxG.height - 100;
+				add(keybindTxt);
+				keybindTxt.alpha = 0;
 			case 'bad-nun':
 				beatClass = shaders.BadNun;
 		}
@@ -1618,6 +1632,12 @@ class PlayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
+		if(controls.DODGE)
+		{
+			trace("GAY");
+			spacePressed = true;
+		}
+
 		if (snowOn) // snow stuff ig idk stealing from hypno
 			snowShader.shader.data.time.value = [Conductor.songPosition / (Conductor.stepCrochet * 8)];
 
@@ -1692,7 +1712,7 @@ class PlayState extends MusicBeatState
 
 		if (!inCutscene)
 		{
-			if (FlxG.keys.justPressed.SPACE)
+			if (FlxG.keys.justPressed.SPACE && canHey)
 			{
 				if (boyfriend.animation.curAnim.name.startsWith("idle"))
 					boyfriend.playAnim('hey');
@@ -2657,7 +2677,7 @@ class PlayState extends MusicBeatState
 		misses++;
 
 		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.67, 0.75));
-		if (boyfriend.animation.curAnim.name != 'shoot')
+		if (boyfriend.animation.curAnim.name != 'dodge')
 		{
 			curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
 
@@ -2911,6 +2931,14 @@ class PlayState extends MusicBeatState
 				case 'hardships':
 					if (curBeat == 158)
 						boyfriend.useAlternateIdle = true;
+				case 'dead-mans-melody':
+					switch(curBeat)
+					{
+						case 148:
+							FlxTween.tween(keybindTxt, {alpha: 1, y: keybindTxt.y - 15}, 1, {ease: FlxEase.circOut});
+						case 176: 
+							FlxTween.tween(keybindTxt, {alpha: 0, y: keybindTxt.y + 15}, 1, {ease: FlxEase.circIn});
+					}
 				case 'loaded':
 					roboStage.beatHit(curBeat);
 				case 'star-baby':

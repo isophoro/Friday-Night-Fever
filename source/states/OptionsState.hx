@@ -23,6 +23,7 @@ class OptionsState extends MusicBeatState
             new Option("Up", "", "upBind", KEYBIND),
             new Option("Right", "", "rightBind", KEYBIND),
             new Option("Reset", "", "killBind", KEYBIND),
+            new Option("Parry/Dodge", "", "dodgeBind", KEYBIND),
             new Option("Enable Reset Keybind", "When enabled, pressing the RESET keybind will automatically cause a game over.", "resetButton", BOOL)
         ]},
         {"name":"Gameplay", options: [
@@ -108,7 +109,7 @@ class OptionsState extends MusicBeatState
             else if (FlxG.keys.justPressed.ANY)
             {
                 var key = FlxG.keys.getIsDown()[0].ID.toString();
-                if (["ESCAPE", "ENTER", "BACKSPACE", "SPACE", "LEFT", "DOWN", "UP", "RIGHT"].contains(key))
+                if (["ESCAPE", "ENTER", "BACKSPACE", "LEFT", "DOWN", "UP", "RIGHT"].contains(key))
                     return;
 
                 for (i in 0...categories[curCategory].options.length)

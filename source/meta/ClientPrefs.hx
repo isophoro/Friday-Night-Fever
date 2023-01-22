@@ -14,6 +14,7 @@ class ClientPrefs
 	public static var upBind = "W";
 	public static var rightBind = "D";
 	public static var killBind = "R";
+	public static var dodgeBind = "SPACE";
 	public static var resetButton:Bool = false;
 
 	public static var downscroll:Bool = false;

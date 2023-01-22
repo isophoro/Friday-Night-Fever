@@ -3,6 +3,8 @@ import PlayState;
 import flixel.effects.FlxFlicker;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
+import flixel.text.FlxTextAlign;
+import flixel.text.FlxTextBorderStyle;
 
 // TEA FLIPPED = LOOKING RIGHT
 var platform:FlxSprite;
@@ -19,10 +21,8 @@ var rowProperties = [];
 var pasteSlam:FlxSprite;
 var feverParry:FlxSprite;
 
-var spacePressed:Bool = false;
 var inMechanic:Bool = false;
 var parried:Bool = false;
-
 function onCreate()
 {
 	forceComboPos = new FlxPoint(5, 5);
@@ -57,7 +57,6 @@ function onCreate()
 	pasteSlam.animation.play("smash");
 	add(pasteSlam);
 	pasteSlam.alpha = 0.0000000000000000000009;
-	
 
 	setHUDVisibility(false);
 	// if the player has died before, skip the countdown and intro part of the song
@@ -112,25 +111,29 @@ function onUpdate(elapsed:Float)
 	if(inMechanic == true)
 	{
 		trace("SPACE BITCH");
+		trace(PlayState.instance.canHey);
 
-		if(FlxG.keys.justPressed.SPACE)
-		{
-			spacePressed = true;
-		}
-
-		if(spacePressed == true)
+		if(PlayState.instance.spacePressed == true)
 		{
 			if(pasteSlam.animation.curAnim.curFrame <= 10)
 			{
 				trace("dodge");
 				boyfriend.playAnim('dodge', true);
-				PlayState.instance.health += 0.05;
-				spacePressed = false;
+
+				new FlxTimer().start(0.2, function(tmr:FlxTimer)
+				{
+					boyfriend.playAnim('idle', true);
+					
+				});
+
 				inMechanic = false;
+				PlayState.instance.health += 0.05;
 				pasteSlam.animation.finishCallback = function(anim)
 				{
+					PlayState.instance.spacePressed = false;
 					pasta.alpha = 1;
 					pasteSlam.alpha = 0.0000000000000000000009;
+					PlayState.instance.canHey = true;
 				};
 			}
 			else if (pasteSlam.animation.curAnim.curFrame >= 11 && pasteSlam.animation.curAnim.curFrame <= 15)
@@ -143,10 +146,11 @@ function onUpdate(elapsed:Float)
 			}
 		}
 
-		if (pasteSlam.animation.curAnim.curFrame >= 17 && spacePressed == false)
+		if (pasteSlam.animation.curAnim.curFrame >= 17 && PlayState.instance.spacePressed == false)
 		{
 			trace("dead");
 			inMechanic = false;
+			PlayState.instance.canHey = true;
 			PlayState.instance.health -= 2;
 		}
 	}
@@ -154,7 +158,7 @@ function onUpdate(elapsed:Float)
 	//so it does it at the right time, its like 3 am so this code probably sucks okay LOL
 	if(pasteSlam.animation.curAnim.curFrame >= 14 && parried == true)
 	{
-			spacePressed = false;
+			PlayState.instance.spacePressed = false;
 			boyfriend.alpha = 0.0000000000000000000009;
 			feverParry.alpha = 1;
 			feverParry.animation.play('parry', true);
@@ -163,11 +167,12 @@ function onUpdate(elapsed:Float)
 			PlayState.instance.health += 0.1;
 			inMechanic = false;
 			parried = false;
-			pasteSlam.animation.finishCallback = function(anim)
+			feverParry.animation.finishCallback = function(anim)
 			{
 				boyfriend.alpha = 1;
 				boyfriend.playAnim('idle', true);
 				pasta.alpha = 1;
+				PlayState.instance.canHey = true;
 
 				feverParry.alpha = 0.0000000000000000000009;
 				pasteSlam.alpha = 0.0000000000000000000009;
@@ -190,8 +195,9 @@ function onMoveCamera(dad:Bool)
 }
 
 function onBeatHit(curBeat:Int)
-{
-	if(curBeat == 155)
+{ 
+
+	if (curBeat >= 146 && curBeat % 5 == 0 && FlxG.random.bool(10))
 	{
 		trace("WORK");
 		smashMechanic();
@@ -233,6 +239,7 @@ function onStepHit(curStep:Int)
 			DAD_CAM_OFFSET.y -= 175;
 			tea.setPosition(boyfriend.x + 690, boyfriend.y - 500);
 			platform.setPosition(tea.x - 28, tea.y + tea.height - 125);
+
 
 			if (camTween != null)
 				camTween.cancel();
@@ -324,11 +331,14 @@ function spawnGhost()
 function smashMechanic()
 {
 
+	PlayState.instance.canHey = false;
+	FlxG.sound.play(Paths.sound('smash', 'preload'), 1);
+
 	pasta.alpha = 0.0000000000000000000009;
 	pasteSlam.alpha = 1;
 	pasteSlam.animation.play('smash', true);
 
-	spacePressed = false;
+	PlayState.instance.spacePressed = false;
 	inMechanic = true;
 
 }
