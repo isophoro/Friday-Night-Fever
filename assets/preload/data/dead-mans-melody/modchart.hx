@@ -115,7 +115,14 @@ function onUpdate(elapsed:Float)
 		trace("SPACE BITCH");
 		trace(PlayState.instance.canHey);
 
-		if(PlayState.instance.spacePressed == true)
+		if (ClientPrefs.botplay)
+		{
+			trace("BOTPLAY PARRY");
+			parried = true;
+			spacePressed = true;
+		}
+
+		if(PlayState.instance.spacePressed == true && !ClientPrefs.botplay)
 		{
 			if(pasteSlam.animation.curAnim.curFrame <= 10)
 			{
