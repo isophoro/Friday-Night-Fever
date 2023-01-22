@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="paste_anims.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="toothpaste parry0000" x="0" y="0" width="1233" height="1062" pivotX="-138.85" pivotY="-289.75" frameX="0" frameY="0" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste parry0001" x="0" y="0" width="1233" height="1062" frameX="0" frameY="0" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste parry0002" x="1239" y="0" width="1244" height="1062" frameX="0" frameY="0" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste parry0003" x="1239" y="0" width="1244" height="1062" frameX="0" frameY="0" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste parry0004" x="1239" y="0" width="1244" height="1062" frameX="0" frameY="0" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste parry0005" x="1239" y="0" width="1244" height="1062" frameX="0" frameY="0" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste parry0006" x="1239" y="0" width="1244" height="1062" frameX="0" frameY="0" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste parry0007" x="2489" y="0" width="1233" height="1064" frameX="-4" frameY="-6" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste parry0008" x="2489" y="0" width="1233" height="1064" frameX="-4" frameY="-6" frameWidth="1244" frameHeight="1070"/>
+	<SubTexture name="toothpaste smash0000" x="3728" y="0" width="676" height="1229" pivotX="317.85" pivotY="-83.7" frameX="-406" frameY="-43" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0001" x="4410" y="0" width="677" height="1258" frameX="-403" frameY="-14" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0002" x="4410" y="0" width="677" height="1258" frameX="-403" frameY="-14" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0003" x="5093" y="0" width="682" height="1268" frameX="-395" frameY="-3" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0004" x="5093" y="0" width="682" height="1268" frameX="-395" frameY="-3" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0005" x="5781" y="0" width="686" height="1270" frameX="-390" frameY="-1" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0006" x="5781" y="0" width="686" height="1270" frameX="-390" frameY="-1" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0007" x="6473" y="0" width="687" height="1271" frameX="-389" frameY="0" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0008" x="6473" y="0" width="687" height="1271" frameX="-389" frameY="0" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0009" x="6473" y="0" width="687" height="1271" frameX="-389" frameY="0" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0010" x="7166" y="0" width="681" height="1264" frameX="-389" frameY="-4" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0011" x="0" y="1277" width="681" height="1264" frameX="-389" frameY="-4" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0012" x="687" y="1277" width="639" height="1198" frameX="-431" frameY="-70" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0013" x="1332" y="1277" width="1187" height="1092" frameX="-455" frameY="-176" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0014" x="2525" y="1277" width="1915" height="875" frameX="0" frameY="-522" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0015" x="4446" y="1277" width="1915" height="875" frameX="0" frameY="-522" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0016" x="0" y="2547" width="1955" height="1042" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0017" x="1961" y="2547" width="1974" height="1067" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0018" x="3941" y="2547" width="1988" height="1074" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0019" x="5935" y="2547" width="1995" height="1096" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0020" x="0" y="3649" width="1821" height="910" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0021" x="1827" y="3649" width="1821" height="910" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0022" x="1827" y="3649" width="1821" height="910" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0023" x="3654" y="3649" width="1821" height="910" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+	<SubTexture name="toothpaste smash0024" x="3654" y="3649" width="1821" height="910" frameX="-69" frameY="-492" frameWidth="2064" frameHeight="1588"/>
+</TextureAtlas>

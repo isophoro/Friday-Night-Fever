@@ -94,6 +94,8 @@ class Note extends FlxSprite
 								frames = Paths.getSparrowAtlas('notes/takiNotes');
 							case 'shadow':
 								if (!mustPress) frames = Paths.getSparrowAtlas('NOTE_sg', 'shadow'); else frames = Paths.getSparrowAtlas('notes/defaultNotes');
+							case 'c354r' | 'loaded' | 'gears' | 'tranquility' | 'princess' | 'bloom' | 'crack' | 'grando' | 'mechanical':
+								if (!mustPress) frames = Paths.getSparrowAtlas('notes/ROBO-NOTE_assets'); else frames = Paths.getSparrowAtlas('notes/defaultNotes');
 							default:
 								frames = Paths.getSparrowAtlas('notes/defaultNotes');
 						}

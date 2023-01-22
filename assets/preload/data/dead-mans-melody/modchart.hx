@@ -16,8 +16,17 @@ var isDad:Bool = false;
 var camTween:FlxTween;
 var rowProperties = [];
 
+var pasteSlam:FlxSprite;
+var feverParry:FlxSprite;
+
+var spacePressed:Bool = false;
+var inMechanic:Bool = false;
+var parried:Bool = false;
+
 function onCreate()
 {
+	forceComboPos = new FlxPoint(5, 5);
+	
 	platform = new FlxSprite().loadGraphic(Paths.image("paste/platform"));
 	platform.antialiasing = true;
 	platform.visible = false;
@@ -30,6 +39,25 @@ function onCreate()
 	pasta = new Character(dad.x - 550, dad.y - 580, "toothpaste-mad", false);
 	add(pasta);
 	pasta.visible = false;
+
+	
+	feverParry = new FlxSprite(570, -10);
+	feverParry.antialiasing = true;
+	feverParry.frames = Paths.getSparrowAtlas('characters/fever/Fever_paste_anims');
+	feverParry.animation.addByPrefix("parry", "fever parry", 24, false);
+	feverParry.animation.play("parry");
+	add(feverParry);
+	feverParry.alpha = 0.0000000000000000000009;
+
+	pasteSlam = new FlxSprite(pasta.x - 200, pasta.y - 165);
+	pasteSlam.antialiasing = true;
+	pasteSlam.frames = Paths.getSparrowAtlas('characters/paste/paste_anims');
+	pasteSlam.animation.addByPrefix("smash", "toothpaste smash", 24, false);
+	pasteSlam.animation.addByPrefix("parry", "toothpaste parry", 24, false);
+	pasteSlam.animation.play("smash");
+	add(pasteSlam);
+	pasteSlam.alpha = 0.0000000000000000000009;
+	
 
 	setHUDVisibility(false);
 	// if the player has died before, skip the countdown and intro part of the song
@@ -80,6 +108,80 @@ function onUpdate(elapsed:Float)
 			teaPunch(i);
 		}
 	}
+
+	if(inMechanic == true)
+	{
+		trace("SPACE BITCH");
+
+		if(FlxG.keys.justPressed.SPACE)
+		{
+			spacePressed = true;
+		}
+
+		if(spacePressed == true)
+		{
+			if(pasteSlam.animation.curAnim.curFrame <= 9)
+			{
+				trace("dodge");
+				boyfriend.playAnim('dodge', true);
+				PlayState.instance.health += 0.05;
+				spacePressed = false;
+				inMechanic = false;
+				pasteSlam.animation.finishCallback = function(anim)
+				{
+					pasta.alpha = 1;
+					pasteSlam.alpha = 0.0000000000000000000009;
+				};
+			}
+			else if (pasteSlam.animation.curAnim.curFrame >= 10 && pasteSlam.animation.curAnim.curFrame <= 15)
+			{
+				trace("parry");
+				parried = true;
+				boyfriend.playAnim('idle');
+			
+				
+			}
+		}
+
+		if (pasteSlam.animation.curAnim.curFrame >= 17 && spacePressed == false)
+		{
+			trace("dead");
+			inMechanic = false;
+			PlayState.instance.health -= 2;
+		}
+	}
+
+	//so it does it at the right time, its like 3 am so this code probably sucks okay LOL
+	if(pasteSlam.animation.curAnim.curFrame >= 14 && parried == true)
+	{
+			spacePressed = false;
+			boyfriend.alpha = 0.0000000000000000000009;
+			feverParry.alpha = 1;
+			feverParry.animation.play('parry', true);
+			pasteSlam.animation.play('parry', true);
+			FlxG.sound.play(Paths.sound('parry', 'preload'), 1);
+			PlayState.instance.health += 0.1;
+			inMechanic = false;
+			parried = false;
+			pasteSlam.animation.finishCallback = function(anim)
+			{
+				boyfriend.alpha = 1;
+				boyfriend.playAnim('idle', true);
+				pasta.alpha = 1;
+
+				feverParry.alpha = 0.0000000000000000000009;
+				pasteSlam.alpha = 0.0000000000000000000009;
+			};
+	}
+
+	if(pasteSlam.animation.curAnim.name == 'parry')
+	{
+		pasteSlam.offset.set(-511, -200);
+	}
+	else
+	{
+		pasteSlam.offset.set(-50,-25);
+	}
 }
 
 function onMoveCamera(dad:Bool)
@@ -89,6 +191,12 @@ function onMoveCamera(dad:Bool)
 
 function onBeatHit(curBeat:Int)
 {
+	if(curBeat == 155)
+	{
+		trace("WORK");
+		smashMechanic();
+	}
+
 	var idleAnim = getTeaIdle();
 	if (tea.animation.curAnim.name != idleAnim && tea.animation.finished || tea.animation.curAnim.name == idleAnim)
 		tea.playAnim(idleAnim);
@@ -211,4 +319,16 @@ function spawnGhost()
 	FlxTween.tween(ghost, {alpha: FlxG.random.float(0.8, 0.94)}, FlxG.random.float(0.3, 0.6));
 
 	trace("ghost create " + ghost);
+}
+
+function smashMechanic()
+{
+
+	pasta.alpha = 0.0000000000000000000009;
+	pasteSlam.alpha = 1;
+	pasteSlam.animation.play('smash', true);
+
+	spacePressed = false;
+	inMechanic = true;
+
 }

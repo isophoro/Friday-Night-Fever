@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<TextureAtlas imagePath="hallow.png" width="1956" height="602">
+    <SubTexture name="hallow neutral" x="0" y="0" width="652" height="602"/>
+    <SubTexture name="hallow rage" x="652" y="0" width="652" height="602"/>
+    <SubTexture name="hallow angry" x="1304" y="0" width="652" height="602"/>
+</TextureAtlas>

@@ -730,6 +730,7 @@ class PlayState extends MusicBeatState
 				boyfriend.setPosition(1500, 270);
 		}
 
+
 		if (SONG.song.toLowerCase() == 'bazinga' || SONG.song.toLowerCase() == 'crucify')
 		{
 			gf.y -= 15;
@@ -863,6 +864,7 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 		add(scoreTxt);
+
 
 		if (ClientPrefs.botplay)
 		{
@@ -1433,6 +1435,8 @@ class PlayState extends MusicBeatState
 				default:
 					if (dad.curCharacter == 'SG' && !isPlayer)
 						babyArrow.frames = Paths.getSparrowAtlas('NOTE_sg', 'shadow');
+					else if (dad.curCharacter.startsWith('scarlet') && !isPlayer || dad.curCharacter.startsWith('robo') && !isPlayer)
+						babyArrow.frames = Paths.getSparrowAtlas('notes/ROBO-NOTE_assets');
 					else
 						babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
 

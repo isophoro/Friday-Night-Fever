@@ -530,10 +530,35 @@ class RoboBackground
 		}
 		else
 		{
-			PlayState.strumLineNotes.forEach(function(babyArrow:FlxSprite)
+
+			//SWITCHING BACK TO ITS NOTESKIN
+			PlayState.cpuStrums.forEach(function(babyArrow:FlxSprite)
 			{
 				var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
 				var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
+
+				babyArrow.frames = Paths.getSparrowAtlas('notes/ROBO-NOTE_assets');
+				babyArrow.animation.addByPrefix(dataColor[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);
+
+				var lowerDir:String = dataSuffix[babyArrow.ID].toLowerCase();
+
+				babyArrow.animation.addByPrefix('static', 'arrow' + dataSuffix[babyArrow.ID]);
+				babyArrow.animation.addByPrefix('pressed', lowerDir + ' press', 24, false);
+				babyArrow.animation.addByPrefix('confirm', lowerDir + ' confirm', 24, false);
+
+				babyArrow.antialiasing = true;
+				babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
+				babyArrow.updateHitbox();
+				babyArrow.animation.play('static');
+			});
+			
+			PlayState.playerStrums.forEach(function(babyArrow:FlxSprite)
+			{
+				var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
+				var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
+
+
+			
 
 				babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
 				babyArrow.animation.addByPrefix(dataColor[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);
