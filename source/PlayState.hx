@@ -1630,7 +1630,7 @@ class PlayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if(controls.DODGE)
+		if(controls.DODGE && SONG.song.toLowerCase() == 'dead-mans-melody')
 		{
 			trace("GAY");
 			spacePressed = true;
