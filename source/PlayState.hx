@@ -337,7 +337,7 @@ class PlayState extends MusicBeatState
 		}
 
 		gf = new Character(400, 130, SONG.gfVersion == null ? 'gf' : SONG.gfVersion);
-		boyfriend = new Boyfriend(770, 450, curBoyfriend);
+		boyfriend = new Boyfriend(770, curBoyfriend == "bf" ? 400 : 450, curBoyfriend);
 		if (SONG.song.toLowerCase() == 'shadow')
 			boyfriendReflection = new Boyfriend(770, 450, "bf-CoatReflection"); // this is for shadow fever reflection
 		dad = new Character(100, 100, SONG.player2);
@@ -635,11 +635,6 @@ class PlayState extends MusicBeatState
 				boyfriend.scrollFactor.set(0.9, 0.9);
 				boyfriend.x += 300;
 				gf.x += 300;
-			case 'mall':
-				boyfriend.x += 200;
-			case 'mallEvil':
-				boyfriend.x += 320;
-				dad.y -= 80;
 			case 'school':
 				boyfriend.x += 200;
 				boyfriend.y += 150;

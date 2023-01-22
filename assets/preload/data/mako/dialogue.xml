@@ -1,0 +1,66 @@
+<file>
+	<action setBG="dialogue_backgrounds/week3bg"/>
+	<action msg="So." portrait="tea" emotion="neutral"/>
+	<action msg="What?" portrait="feverc" emotion="ugh"/>
+	<action msg="Is there any reason why we're in the melon patch, of all places?" portrait="tea" emotion="neutral"/>
+	<action msg="Oh y'know, I'm just hungry." portrait="feverc" emotion="chill"/>
+	<action msg="That's a lie." portrait="tea" emotion="pointing"/>
+	<action msg="Huh? I've not one to lie! I mean-" portrait="feverc" emotion="chill"/>
+	<action msg="We've been walking through this melon patch for like, ten minutes." portrait="tea" emotion="pointing"/>
+	<action msg="You could've easily picked the first few we've seen." portrait="tea" emotion="pointing"/>
+	<action msg="But you decided to keep walking, and continuously change discussion topics. So lemme ask again-" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="What's the reason for bringing us here, Fever?" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="..." portrait="feverc" emotion="ugh"/>
+	<action msg="Okay, so maybe I'm a bit tired." portrait="feverc" emotion="ugh"/>
+	<action msg="How does that make any-" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="I just, needed to go somewhere we wouldn't be harassed, or attacked by loud-mouthed nuns." portrait="feverc" emotion="ugh"/>
+	<action msg="Aww. I get it, babe." portrait="tea" emotion="flushed"/>
+	<action msg="Bruh like- you wouldn't imagine the fucking week I had." portrait="feverc" emotion="chill"/>
+	<action msg="Two weeks, actually." portrait="tea" emotion="neutral"/>
+	<action msg="Oh yeah, right. You were there. Looking all cute and shit." portrait="feverc" emotion="hey"/>
+	<action msg="Bruh. Here comes the compliments." portrait="tea" emotion="pointing"/>
+	<action msg="It's true! You're super cute! Hot, even!" portrait="feverc" emotion="cocky"/>
+	<action msg="Ugh, no you~." portrait="tea" emotion="pointing-flushed"/>
+	<action msg="Okayyy, we're not doing this." portrait="feverc" emotion="ugh"/>
+	<action narrate=". . ."/>
+	<action msg="Though, now that we're pretty far from town, there IS something that we could do..." portrait="feverc" emotion="hey"/>
+	<action msg="Oh yeah?" portrait="tea" emotion="pointing-flushed"/>
+	<action msg="No one's here to bother us..." portrait="feverc" emotion="cocky"/>
+	<action msg="Pendejos..." portrait="feverc" emotion="chill"/>
+	<action msg="Now~." portrait="feverc" emotion="hey"/>
+	<action msg="How about we-" portrait="feverc" emotion="hey"/>
+	<action playSound="oHShIT"/>
+	<action msg="AH?" portrait="feverc" emotion="shocked"/>
+	<action narrate="(Fever trips on a melon.)"/>
+	<action msg="BRUH, you okay?" portrait="tea" emotion="worried"/>
+	<action msg="Fucking- yeah I'm fine. Stupid ass melon..." portrait="feverc" emotion="facepalm-stare"/>
+	<action msg="Yo!" portrait="mako" emotion="angry"/>
+	<action msg="Huh? Was that you?" portrait="feverc" emotion="ugh"/>
+	<action msg="What? I thought that was you." portrait="tea" emotion="worried"/>
+	<action msg="Do I look BRITISH?" portrait="feverc" emotion="ugh"/>
+	<action msg="British?" portrait="tea" emotion="thinking"/>
+	<action setBG=""/>
+	<action setBG="dialogue_backgrounds/ripmako"/>
+	<action fadeInMus="mako"/>
+	<action msg="Yo! Down here!" portrait="mako" emotion="angry"/>
+	<action msg="Also I'm AUSTRALIAN, not bri'ish!" portrait="mako" emotion="angry"/>
+	<action msg="Is that a fucking talking melon?" portrait="feverc" emotion="shocked"/>
+	<action msg="British? Australian??" portrait="tea" emotion="pointing"/>
+	<action msg="Yeah! This is where I live. The hell were you guys about to do in front of me and my mates?" portrait="mako" emotion="neutral"/>
+	<action msg="Probably make out. I dunno, depends on how long we were gonna go." portrait="feverc" emotion="hey"/>
+	<action msg="Is no one gonna tell me what British is-" portrait="tea" emotion="pointing"/>
+	<action msg="Ya'll are really doin that kinda shit in a melon patch?" portrait="mako" emotion="confused"/>
+	<action msg="Where we do that is NONE of your business!" portrait="feverc" emotion="ugh"/>
+	<action msg="Wait this is stupid- WHY THE FUCK IS THERE A TALKING MELON?" portrait="feverc" emotion="facepalm-stare"/>
+	<action msg="(They also look... weird...)" portrait="feverc" emotion="facepalm-stare"/>
+	<action msg="Wouldn't be the weirdest thing that happened to us." portrait="tea" emotion="neutral"/>
+	<action msg="Dudes, this is MY melon patch." portrait="mako" emotion="confused"/>
+	<action setBG=""/>
+	<action msg="Anyways, I see you have a microphone. Wanna sing with me?" portrait="mako" emotion="neutral"/>
+	<action msg="Why DID you bring that here?..." portrait="tea" emotion="thinking"/>
+	<action msg="You sing?" portrait="feverc" emotion="ugh"/>
+	<action msg="Yeah. It can get boring here sometimes, so I decided to pick up a hobby." portrait="mako" emotion="neutral"/>
+	<action msg="Well then, fine. Just one song- after that, I'm getting back to HER!" portrait="feverc" emotion="ugh"/>
+	<action fadeOutMus=""/>
+	<action msg="So no one's gonna answer my-" portrait="tea" emotion="tea-pointing-wtf"/>
+</file>

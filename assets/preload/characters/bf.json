@@ -2,26 +2,6 @@
 	"animations": [
 		{
 			"offsets": [
-				-20,
-				91
-			],
-			"fps": 24,
-			"anim": "fever right miss",
-			"loop": false,
-			"name": "singRIGHTmiss"
-		},
-		{
-			"offsets": [
-				12,
-				10
-			],
-			"fps": 24,
-			"anim": "fever down0",
-			"loop": false,
-			"name": "singDOWN"
-		},
-		{
-			"offsets": [
 				6,
 				93
 			],
@@ -32,23 +12,43 @@
 		},
 		{
 			"offsets": [
-				40,
-				93
+				8,
+				16
 			],
 			"fps": 24,
-			"anim": "fever left miss",
+			"anim": "fever down0",
 			"loop": false,
-			"name": "singLEFTmiss"
+			"name": "singDOWN"
 		},
 		{
 			"offsets": [
-				-25,
-				106
+				-22,
+				93
+			],
+			"fps": 24,
+			"anim": "fever right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				-27,
+				83
 			],
 			"fps": 24,
 			"anim": "fever up0",
 			"loop": false,
 			"name": "singUP"
+		},
+		{
+			"offsets": [
+				40,
+				91
+			],
+			"fps": 24,
+			"anim": "fever left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
 		},
 		{
 			"offsets": [
@@ -72,16 +72,6 @@
 		},
 		{
 			"offsets": [
-				11,
-				14
-			],
-			"fps": 24,
-			"anim": "fever down miss",
-			"loop": false,
-			"name": "singDOWNmiss"
-		},
-		{
-			"offsets": [
 				-19,
 				92
 			],
@@ -92,18 +82,18 @@
 		},
 		{
 			"offsets": [
-				43,
-				95
+				11,
+				18
 			],
 			"fps": 24,
-			"anim": "fever left0",
+			"anim": "fever down miss",
 			"loop": false,
-			"name": "singLEFT"
+			"name": "singDOWNmiss"
 		},
 		{
 			"offsets": [
-				-14,
-				103
+				-19,
+				82
 			],
 			"fps": 24,
 			"anim": "fever up miss",
@@ -112,13 +102,13 @@
 		},
 		{
 			"offsets": [
-				52,
-				101
+				40,
+				91
 			],
 			"fps": 24,
-			"anim": "fever shoot",
+			"anim": "fever left0",
 			"loop": false,
-			"name": "shoot"
+			"name": "singLEFT"
 		},
 		{
 			"offsets": [
@@ -131,7 +121,8 @@
 			"name": "dodge"
 		}
 	],
+	"noAntialiasing": false,
 	"facingLeft": true,
-	"file": "human_fvr",
+	"file": "fever/fever",
 	"color": "C353E3"
 }
