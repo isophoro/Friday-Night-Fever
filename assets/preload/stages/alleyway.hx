@@ -13,7 +13,7 @@ var wiggleEffect:WiggleEffect;
 
 function onCreate()
 {
-	game.defaultCamZoom = PlayState.SONG.song == "Bloom" ? 0.53 : 0.7;
+	game.defaultCamZoom = PlayState.SONG.song == "Bloom" ? 0.6 : 0.7;
 
 	whittyBG = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/alleywaybroken'));
 	whittyBG.antialiasing = true;
@@ -52,16 +52,19 @@ function onCreate()
 		clocks.scale.set(2.55, 2.55);
 		clocks.antialiasing = true;
 		add(clocks);
+		clocks.visible = false;
 
 		clockScar = new FlxSprite(-190, 680).loadGraphic(Paths.image("roboStage/princessClock"));
 		clockScar.scale.set(1.65, 1.65);
 		clockScar.antialiasing = true;
 		add(clockScar);
+		clockScar.visible = false;
 
 		clockFever = new FlxSprite(990, 680).loadGraphic(Paths.image("roboStage/princessClock"));
 		clockFever.scale.set(1.25, 1.25);
 		clockFever.antialiasing = true;
 		add(clockFever);
+		clockFever.visible = false;
 
 		wiggleEffect = new WiggleEffect();
 		wiggleEffect.shader.effectType.value = [4]; // non h-scriptphobic version
@@ -89,17 +92,26 @@ function onCreatePost()
 
 function onStepHit(curStep)
 {
-	if (PlayState.SONG.song.toLowerCase() == 'princess')
+	switch (PlayState.SONG.song.toLowerCase())
 	{
-		switch (curStep)
-		{
-			case 128:
+		case 'princess':
+			if (curStep == 128)
+			{
 				camHUD.flash(FlxColor.WHITE, 0.5);
 				princessBG.visible = true;
 				princessFloor.visible = true;
 				princessCrystals.visible = true;
 				game.defaultCamZoom = 0.65;
 				gf.y += 60;
-		}
+			}
+		case 'bloom':
+			if (curStep == 256)
+			{
+				game.defaultCamZoom = 0.53;
+				camHUD.flash(FlxColor.WHITE, 0.5);
+				clocks.visible = true;
+				clockScar.visible = true;
+				clockFever.visible = true;
+			}
 	}
 }

@@ -26,10 +26,8 @@ typedef DialogueAction =
 	?library:String,
 
 	?playSound:String,
-
-	?fadeInMus:String, 
-	?fadeOutMus:String, 
-
+	?fadeInMus:String,
+	?fadeOutMus:String,
 	?side:Null<FlxDirection>,
 	?fillBG:Null<FlxColor>,
 	?setBG:String,
@@ -61,7 +59,7 @@ class DialoguePortrait extends FlxSprite
 			var name = i.name.replace('${character.toLowerCase()} ', '');
 			if (!animation.exists(name))
 			{
-				animation.addByPrefix(name, i.name, 0);
+				animation.addByNames(name, [i.name], 0);
 			}
 		}
 
@@ -120,7 +118,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		text.delay = 0.04;
 		text.setTypingVariation(0.5, true);
 		add(text);
-		
+
 		var skipDia = new FlxText(50, FlxG.height - 40, FlxG.width, "PRESS ESCAPE/BACKSPACE TO SKIP", 32);
 		skipDia.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
 		add(skipDia);
@@ -181,21 +179,24 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			FlxG.sound.play(Paths.sound(action.playSound, daLibrary), 1);
 		}
 
-		if(daLibrary == null)
+		if (daLibrary == null)
 		{
 			daLibrary = 'shared';
 		}
 
 		if (action.fadeInMus != null)
 		{
-			FlxG.sound.playMusic(Paths.music(action.fadeInMus, daLibrary), 0);
-			FlxG.sound.music.fadeIn(1,0,1);
+			if (lime.utils.Assets.exists(Paths.inst(action.fadeInMus)))
+				FlxG.sound.playMusic(Paths.inst(action.fadeInMus), 0);
+			else
+				FlxG.sound.playMusic(Paths.music(action.fadeInMus, daLibrary), 0);
+			FlxG.sound.music.fadeIn(1, 0, 1);
 		}
 
 		if (action.fadeOutMus != null)
 		{
-			if(FlxG.sound.music != null)
-				FlxG.sound.music.fadeOut(1,0);
+			if (FlxG.sound.music != null)
+				FlxG.sound.music.fadeOut(1, 0);
 		}
 
 		if (action.fillBG != null)
@@ -338,7 +339,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	{
 		dialogueStarted = false;
 
-		if(FlxG.sound.music.volume >= 0.1)
+		if (FlxG.sound.music.volume >= 0.1)
 		{
 			FlxG.sound.music.stop();
 		}
@@ -418,7 +419,6 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				action.library = a.att.library;
 				daLibrary = a.att.library;
 			}
-				
 
 			if (a.has.playSound)
 				action.playSound = a.att.playSound;
