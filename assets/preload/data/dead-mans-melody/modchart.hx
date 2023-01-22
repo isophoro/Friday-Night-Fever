@@ -120,7 +120,7 @@ function onUpdate(elapsed:Float)
 
 		if(spacePressed == true)
 		{
-			if(pasteSlam.animation.curAnim.curFrame <= 9)
+			if(pasteSlam.animation.curAnim.curFrame <= 10)
 			{
 				trace("dodge");
 				boyfriend.playAnim('dodge', true);
@@ -133,7 +133,7 @@ function onUpdate(elapsed:Float)
 					pasteSlam.alpha = 0.0000000000000000000009;
 				};
 			}
-			else if (pasteSlam.animation.curAnim.curFrame >= 10 && pasteSlam.animation.curAnim.curFrame <= 15)
+			else if (pasteSlam.animation.curAnim.curFrame >= 11 && pasteSlam.animation.curAnim.curFrame <= 15)
 			{
 				trace("parry");
 				parried = true;
