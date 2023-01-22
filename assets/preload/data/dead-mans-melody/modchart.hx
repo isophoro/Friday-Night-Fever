@@ -204,6 +204,7 @@ function onMoveCamera(dad:Bool)
 	isDad = dad;
 }
 
+
 function onBeatHit(curBeat:Int)
 { 
 

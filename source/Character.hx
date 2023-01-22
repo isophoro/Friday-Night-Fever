@@ -178,7 +178,7 @@ class Character extends FlxSprite
 				case 'bf-smushed':
 					iconColor = 'E353C8';
 					frames = getSparrowAtlas('characters/fever/Fever_paste_anims');
-					addByPrefix('firstDeath', "fever squish0", 24, false);
+					addByIndices('firstDeath', "fever squish0", [2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64], "", 24, false);
 					addByPrefix('deathLoop', "fever squish loop0", 24, true);
 					addByPrefix('deathConfirm', "fever squish confirm0", 24, false);
 

@@ -55,7 +55,17 @@ class Note extends FlxSprite
 		{
 			case 'pixel':
 				antialiasing = false;
-				loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
+				if(PlayState.SONG.song.toLowerCase() == 'loaded')
+				{
+					if (!mustPress)
+						loadGraphic(Paths.image('notes/ROBO-NOTES-PIXEL', 'shared'), true, 17, 17);
+					else
+						loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
+				}
+				else
+					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
+				
+				
 
 				animation.add('greenScroll', [6]);
 				animation.add('redScroll', [7]);
@@ -64,7 +74,16 @@ class Note extends FlxSprite
 
 				if (isSustainNote)
 				{
-					loadGraphic(Paths.image('weeb/pixelUI/arrowEnds', 'week6'), true, 7, 6);
+					if(PlayState.SONG.song.toLowerCase() == 'loaded')
+					{
+						if (!mustPress)
+							loadGraphic(Paths.image('notes/ROBO-NOTES-PIXELENDS', 'shared'), true, 7, 6);
+						else
+							loadGraphic(Paths.image('weeb/pixelUI/arrowEnds', 'week6'), true, 7, 6);
+					}
+					else
+						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds', 'week6'), true, 7, 6);
+				
 
 					animation.add('purpleholdend', [4]);
 					animation.add('greenholdend', [6]);

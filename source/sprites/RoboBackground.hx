@@ -495,7 +495,41 @@ class RoboBackground
 	{
 		if (pixel)
 		{
-			PlayState.strumLineNotes.forEach(function(babyArrow:FlxSprite)
+			PlayState.cpuStrums.forEach(function(babyArrow:FlxSprite)
+			{
+				babyArrow.loadGraphic(Paths.image('notes/ROBO-NOTES-PIXEL', 'shared'), true, 17, 17);
+				babyArrow.animation.add('green', [6]);
+				babyArrow.animation.add('red', [7]);
+				babyArrow.animation.add('blue', [5]);
+				babyArrow.animation.add('purplel', [4]);
+
+				babyArrow.setGraphicSize(Std.int(babyArrow.width * 6));
+				babyArrow.updateHitbox();
+				babyArrow.antialiasing = false;
+				switch (babyArrow.ID)
+				{
+					case 2:
+						babyArrow.animation.add('static', [2]);
+						babyArrow.animation.add('pressed', [6, 10], 12, false);
+						babyArrow.animation.add('confirm', [14, 18], 12, false);
+					case 3:
+						babyArrow.animation.add('static', [3]);
+						babyArrow.animation.add('pressed', [7, 11], 12, false);
+						babyArrow.animation.add('confirm', [15, 19], 24, false);
+					case 1:
+						babyArrow.animation.add('static', [1]);
+						babyArrow.animation.add('pressed', [5, 9], 12, false);
+						babyArrow.animation.add('confirm', [13, 17], 24, false);
+					case 0:
+						babyArrow.animation.add('static', [0]);
+						babyArrow.animation.add('pressed', [4, 8], 12, false);
+						babyArrow.animation.add('confirm', [12, 16], 24, false);
+				}
+				babyArrow.animation.play('static');
+			});
+
+
+			PlayState.playerStrums.forEach(function(babyArrow:FlxSprite)
 			{
 				babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
 				babyArrow.animation.add('green', [6]);

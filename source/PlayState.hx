@@ -30,6 +30,8 @@ import openfl.system.System;
 import scripting.*;
 import shaders.*;
 import sprites.*;
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
 
 using StringTools;
 
@@ -216,6 +218,8 @@ class PlayState extends MusicBeatState
 	var keybindTxt:FlxText;
 	public var spacePressed:Bool = false;
 	public var gotSmushed:Bool = false; //death stuff
+
+	var emitter:FlxEmitter; //health tween shred effect
 
 	override public function create()
 	{
@@ -856,6 +860,21 @@ class PlayState extends MusicBeatState
 		scoreTxt.borderSize = 1.25;
 		FlxG.signals.gameResized.add(onGameResize);
 
+		
+		emitter = new FlxEmitter(50, 75, 200);
+		emitter.makeParticles(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor), 200);
+
+		/*var particles = new FlxParticle();
+		particles.makeGraphic(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor));
+		emitter.add(particles);*/
+
+		emitter.launchMode = FlxEmitterMode.CIRCLE;
+		emitter.launchAngle.set(-45, 45);
+		emitter.lifespan.set(0.1, 1);
+		emitter.alpha.set(1, 1, 0, 0);
+		emitter.acceleration.set(0, 0, 0, 0, 200, 200, 400, 400);
+		add(emitter);
+
 		iconP1 = new HealthIcon(boyfriend.curCharacter, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
@@ -894,6 +913,7 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		emitter.cameras = [camHUD];
 
 		if (subtitles != null)
 		{
@@ -1637,6 +1657,11 @@ class PlayState extends MusicBeatState
 			spacePressed = true;
 		}
 
+		if(FlxG.keys.justPressed.E)
+		{
+			healthTween(-0.02);
+		}
+
 		if (snowOn) // snow stuff ig idk stealing from hypno
 			snowShader.shader.data.time.value = [Conductor.songPosition / (Conductor.stepCrochet * 8)];
 
@@ -1786,6 +1811,8 @@ class PlayState extends MusicBeatState
 				iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01) - 26);
 				iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01)) - (iconP2.width - 26);
 		}
+
+		emitter.x = iconP2.x + 60;
 
 		if (health >= 1.75 && iconHurtTimer <= 0)
 		{
@@ -2161,18 +2188,31 @@ class PlayState extends MusicBeatState
 
 	var hpTweening:Bool = false;
 	var healthTweenOBJ:FlxTween;
+	var startShredding:Bool = false;
 
-	function healthTween(amt:Float)
+	public function healthTween(amt:Float)
 	{
 		if (healthTweenOBJ != null)
 			healthTweenOBJ.cancel();
+
+		
+		emitter.start(false, 0.01, 0);
+
 
 		hpTweening = true;
 		healthTweenOBJ = FlxTween.num(health, health + amt, 0.5, {ease: FlxEase.cubeInOut}, function(v:Float)
 		{
 			health = v;
 			hpTweening = false;
+			
+			new FlxTimer().start(1, function(tmr:FlxTimer)
+			{
+				emitter.kill();
+				
+			});
 		});
+
+		scripts.callFunction("onHealthTween", [amt]);
 	}
 
 	public function moveCamera(isDad:Bool = false)
