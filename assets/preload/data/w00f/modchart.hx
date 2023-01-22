@@ -50,6 +50,16 @@ function onBeatHit(curBeat:Int)
 function onStepHit(curStep:Int)
 {
 	game.camZooming = true;
+	if (curStep == 1)
+	{
+		getGlobalVar("showBubble")("robo-fever");
+	}
+
+	if (curStep == 1073)
+	{
+		getGlobalVar("showBubble")("scarlet");
+	}
+
 	if (curStep == 10)
 	{
 		var arm = getGlobalVar("arm");

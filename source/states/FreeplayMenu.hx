@@ -49,7 +49,7 @@ class FreeplayMenu extends MusicBeatSubstate
 		},
 		{
 			"image": "week4",
-			"songs": [["Honey", "mom"], ["Bunnii", "mom"], ["Throw-It-Back", "mom"]]
+			"songs": [["Honey", "hunni"], ["Bunnii", "hunni"], ["Throw-It-Back", "hunni"]]
 		},
 		{
 			"image": "week5",

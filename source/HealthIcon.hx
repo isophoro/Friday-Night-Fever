@@ -48,8 +48,8 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-gf'), true, 150, 150);
 			case 'mega' | 'mega-angry':
 				loadGraphic(Paths.image('icons/icon-mega'), true, 150, 150);
-			case 'mom-car' | 'hunni-car' | 'mom-carnight':
-				loadGraphic(Paths.image('icons/icon-mom'), true, 150, 150);
+			case 'mom-car' | 'hunni-car' | 'hunni' | 'mom-carnight':
+				loadGraphic(Paths.image('icons/icon-hunni'), true, 150, 150);
 			case 'taki' | 'monster' | 'taki-minus':
 				loadGraphic(Paths.image('icons/icon-taki'), true, 150, 150);
 			default:

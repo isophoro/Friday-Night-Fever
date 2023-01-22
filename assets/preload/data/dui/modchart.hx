@@ -8,6 +8,7 @@ function onCreatePost()
 	game.camZooming = true;
 
 	swapIcon("peakek", 0xFF808080);
+	getGlobalVar("showBubble")("peakek");
 }
 
 function onUpdate(elapsed:Float)
@@ -70,28 +71,46 @@ function onStepHit(curStep:Int)
 {
 	switch (curStep)
 	{
+		case 249:
+			getGlobalVar("showBubble")("wee");
 		case 256:
 			swapIcon("spooky", 0xFF565656);
 			game.gfSpeed = 2;
+		case 499:
+			getGlobalVar("showBubble")("taki");
 		case 512:
 			swapIcon("taki", 0xFFD34470);
 			game.gfSpeed = 1;
+		case 752:
+			getGlobalVar("showBubble")("mako");
 		case 768:
 			swapIcon("mako", 0xFF60FF61);
 			game.gfSpeed = 2;
+		case 1014:
+			getGlobalVar("showBubble")("hunni");
 		case 1024:
-			swapIcon("mom", 0xFFFF728A);
+			swapIcon("hunni", 0xFFFF728A);
 			game.gfSpeed = 1;
+		case 1266:
+			getGlobalVar("showBubble")("pepper");
 		case 1280:
 			swapIcon("pepper", 0xFF7F64DA);
 			game.gfSpeed = 2;
+		case 1522:
+			getGlobalVar("showBubble")("mega");
 		case 1538:
 			swapIcon("mega-real", 0xFFC90011);
 			game.gfSpeed = 1;
+		case 1786:
+			getGlobalVar("showBubble")("flippy");
 		case 1794:
 			swapIcon("flippy-real", 0xFFF2E416);
+		case 2045:
+			getGlobalVar("showBubble")("food");
 		case 2052:
 			swapIcon("food", 0xFFFF9EBF);
+		case 2290:
+			getGlobalVar("showBubble")("blluu");
 		case 2316:
 			swapIcon("blluu", 0xFF84CCC6);
 	}

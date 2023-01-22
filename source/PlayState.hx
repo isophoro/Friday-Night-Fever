@@ -2611,7 +2611,7 @@ class PlayState extends MusicBeatState
 				{
 					var numScore:ComboNumber = numbersGrp.recycle(ComboNumber);
 					numScore.create(seperatedScore[i]);
-					numScore.x = rating.x + (43 * i) - 50;
+					numScore.x = rating.x + (36 * i) - 50;
 					numScore.y = rating.y + 100 + (usePixelAssets ? 30 : 0);
 					numScore.cameras = [camHUD];
 

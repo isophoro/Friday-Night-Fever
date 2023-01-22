@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bubble icons week 6.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="mega0000" x="0" y="55" width="72" height="56" pivotX="36" pivotY="28"/>
+	<SubTexture name="mega0001" x="0" y="55" width="72" height="56"/>
+	<SubTexture name="mega0002" x="72" y="55" width="72" height="56"/>
+	<SubTexture name="mega0003" x="72" y="55" width="72" height="56"/>
+	<SubTexture name="mega0004" x="144" y="55" width="72" height="56"/>
+	<SubTexture name="mega0005" x="144" y="55" width="72" height="56"/>
+	<SubTexture name="mega0006" x="0" y="111" width="72" height="56"/>
+	<SubTexture name="mega0007" x="0" y="111" width="72" height="56"/>
+	<SubTexture name="mega0008" x="72" y="111" width="72" height="56"/>
+	<SubTexture name="mega0009" x="72" y="111" width="72" height="56"/>
+	<SubTexture name="mega0010" x="0" y="55" width="72" height="56"/>
+	<SubTexture name="mega0011" x="0" y="55" width="72" height="56"/>
+	<SubTexture name="mega0012" x="0" y="55" width="72" height="56"/>
+	<SubTexture name="mega0013" x="0" y="55" width="72" height="56"/>
+</TextureAtlas>

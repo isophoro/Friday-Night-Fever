@@ -17,6 +17,9 @@ function onStepHit(curStep:Int)
 		}
 	}
 
+	if (curStep == 248)
+		getGlobalVar("showBubble")("yukichi");
+
 	if (game.curStep == 800)
 	{
 		iconP2.swapCharacter("rolldog");
