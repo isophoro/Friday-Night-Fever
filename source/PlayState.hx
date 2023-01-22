@@ -725,7 +725,6 @@ class PlayState extends MusicBeatState
 				boyfriend.setPosition(1500, 270);
 		}
 
-
 		if (SONG.song.toLowerCase() == 'bazinga' || SONG.song.toLowerCase() == 'crucify')
 		{
 			gf.y -= 15;
@@ -859,7 +858,6 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 		add(scoreTxt);
-
 
 		if (ClientPrefs.botplay)
 		{
@@ -2004,7 +2002,10 @@ class PlayState extends MusicBeatState
 					if (daNote.type != 2)
 					{
 						curOpponent.holdTimer = 0;
-						curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
+						if (daNote.properties.singAnim != null)
+							curOpponent.playAnim(daNote.properties.singAnim, true);
+						else
+							curOpponent.playAnim('sing' + dataSuffix[daNote.noteData] + altAnim, true);
 
 						if (curOpponent.loopedIdle)
 						{
@@ -2991,7 +2992,7 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(iconP1.scale, {x: 1, y: 1}, (Conductor.crochet / 1000) / 2);
 		FlxTween.tween(iconP2.scale, {x: 1, y: 1}, (Conductor.crochet / 1000) / 2);
 
-		if (boyfriend.animation.curAnim.name != 'hey')
+		if (boyfriend.animation.curAnim.name != 'hey' && !gf.animation.curAnim.name.startsWith('sing'))
 		{
 			if (curBeat % gfSpeed == 0)
 			{

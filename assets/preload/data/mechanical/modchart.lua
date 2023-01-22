@@ -1,5 +1,5 @@
 function start (song)
-setCamZoom(1)
+--setCamZoom(1)
 
 end
 
@@ -49,12 +49,12 @@ local currentBeat = (songPos / 1000)*(bpm/30)
 
 function beatHit(beat)
 if curStep >= 48 and curStep < 384 or curStep >= 510 and curStep < 635 or curStep >= 766 and curStep < 894 or curStep >= 926 and curStep < 1278 or curStep >= 1282 and curStep < 1646 then
-	setCamZoom(0.73)
+	--setCamZoom(0.73)
 	setHudZoom(1.03)
 end
 
 if curStep >= 384 and curStep < 506 or curStep >= 638 and curStep < 762 or curStep >= 1646 and curStep < 1656 then
-	setCamZoom(0.71)
+	--setCamZoom(0.71)
 	setHudZoom(1.01)
 end
 

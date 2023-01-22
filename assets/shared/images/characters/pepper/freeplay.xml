@@ -1,80 +1,200 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="pepperfreeplay.png">
-  <!-- Created with Adobe Animate version 21.0.3.38773 -->
+<TextureAtlas imagePath="freeplay.png">
+  <!-- Created with Adobe Animate version 20.5.0.29329 -->
   <!-- http://www.adobe.com/products/animate.html -->
-  <SubTexture name="pepper down0000" x="0" y="0" width="258.62" height="435.5" pivotX="58.85" pivotY="210.15" />
-  <SubTexture name="pepper down0001" x="0" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0002" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0003" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0004" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0005" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0006" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0007" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0008" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0009" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0010" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0011" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0012" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0013" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper down0014" x="258.62" y="0" width="258.62" height="435.5" />
-  <SubTexture name="pepper idle0000" x="517.24" y="0" width="260.63" height="442.87" pivotX="69.9" pivotY="221.3" />
-  <SubTexture name="pepper idle0001" x="517.24" y="0" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0002" x="777.87" y="0" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0003" x="777.87" y="0" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0004" x="1038.5" y="0" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0005" x="1038.5" y="0" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0006" x="0" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0007" x="0" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0008" x="260.63" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0009" x="260.63" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0010" x="260.63" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0011" x="260.63" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0012" x="260.63" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0013" x="260.63" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper idle0014" x="260.63" y="442.87" width="260.63" height="442.87" />
-  <SubTexture name="pepper left0000" x="521.26" y="442.87" width="278.05" height="438.85" pivotX="110.05" pivotY="215.1" />
-  <SubTexture name="pepper left0001" x="521.26" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0002" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0003" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0004" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0005" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0006" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0007" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0008" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0009" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0010" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0011" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0012" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0013" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper left0014" x="799.31" y="442.87" width="278.05" height="438.85" />
-  <SubTexture name="pepper right0000" x="1077.36" y="442.87" width="258.62" height="442.87" pivotX="41.55" pivotY="221.1" />
-  <SubTexture name="pepper right0001" x="1077.36" y="442.87" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0002" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0003" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0004" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0005" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0006" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0007" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0008" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0009" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0010" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0011" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0012" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0013" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper right0014" x="0" y="885.7401" width="258.62" height="442.87" />
-  <SubTexture name="pepper up0000" x="258.62" y="885.7401" width="258.62" height="458.95" pivotX="72.3" pivotY="245.1" />
-  <SubTexture name="pepper up0001" x="258.62" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0002" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0003" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0004" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0005" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0006" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0007" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0008" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0009" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0010" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0011" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0012" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0013" x="517.24" y="885.7401" width="258.62" height="458.95" />
-  <SubTexture name="pepper up0014" x="517.24" y="885.7401" width="258.62" height="458.95" />
+  <SubTexture name="pepper down0000" x="2.68" y="2.68" width="257.95" height="430.14" frameX="-0.67" frameY="-5.36" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0001" x="2.68" y="2.68" width="257.95" height="430.14" frameX="-0.67" frameY="-5.36" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0002" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0003" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0004" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0005" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0006" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0007" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0008" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0009" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0010" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0011" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0012" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0013" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down0014" x="263.31" y="2.68" width="256.61" height="435.5" frameX="0" frameY="0" frameWidth="258.62" frameHeight="435.5" />
+  <SubTexture name="pepper down TRUMPET0000" x="522.6" y="2.68" width="428.13" height="430.14" frameX="-0.67" frameY="-5.36" frameWidth="430.81" frameHeight="435.5" />
+  <SubTexture name="pepper down TRUMPET0001" x="522.6" y="2.68" width="428.13" height="430.14" frameX="-0.67" frameY="-5.36" frameWidth="430.81" frameHeight="435.5" />
+  <SubTexture name="pepper down TRUMPET0002" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0003" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0004" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0005" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0006" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0007" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0008" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0009" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0010" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0011" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0012" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0013" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper down TRUMPET0014" x="953.41" y="2.68" width="430.81" height="435.5" />
+  <SubTexture name="pepper idle0000" x="1386.9" y="2.68" width="258.62" height="442.87" frameX="-1.34" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0001" x="1386.9" y="2.68" width="258.62" height="442.87" frameX="-1.34" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0002" x="1648.2" y="2.68" width="257.95" height="438.85" frameX="-2.68" frameY="-4.02" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0003" x="1648.2" y="2.68" width="257.95" height="438.85" frameX="-2.68" frameY="-4.02" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0004" x="1908.83" y="2.68" width="257.95" height="439.52" frameX="-2.01" frameY="-3.35" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0005" x="1908.83" y="2.68" width="257.95" height="439.52" frameX="-2.01" frameY="-3.35" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0006" x="2169.46" y="2.68" width="258.62" height="442.2" frameX="0" frameY="-0.67" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0007" x="2169.46" y="2.68" width="258.62" height="442.2" frameX="0" frameY="-0.67" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0008" x="2430.76" y="2.68" width="257.28" height="442.87" frameX="0" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0009" x="2430.76" y="2.68" width="257.28" height="442.87" frameX="0" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0010" x="2430.76" y="2.68" width="257.28" height="442.87" frameX="0" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0011" x="2430.76" y="2.68" width="257.28" height="442.87" frameX="0" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0012" x="2430.76" y="2.68" width="257.28" height="442.87" frameX="0" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0013" x="2430.76" y="2.68" width="257.28" height="442.87" frameX="0" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle0014" x="2430.76" y="2.68" width="257.28" height="442.87" frameX="0" frameY="0" frameWidth="260.63" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0000" x="2690.72" y="2.68" width="442.2" height="442.87" frameX="-1.34" frameY="0" frameWidth="443.54" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0001" x="2690.72" y="2.68" width="442.2" height="442.87" frameX="-1.34" frameY="0" frameWidth="443.54" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0002" x="3135.6" y="2.68" width="440.86" height="438.85" frameX="-2.68" frameY="-4.02" frameWidth="443.54" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0003" x="3135.6" y="2.68" width="440.86" height="438.85" frameX="-2.68" frameY="-4.02" frameWidth="443.54" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0004" x="3579.14" y="2.68" width="441.53" height="439.52" frameX="-2.01" frameY="-3.35" frameWidth="443.54" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0005" x="3579.14" y="2.68" width="441.53" height="439.52" frameX="-2.01" frameY="-3.35" frameWidth="443.54" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0006" x="4023.35" y="2.68" width="443.54" height="442.2" frameX="0" frameY="-0.67" frameWidth="443.54" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0007" x="4023.35" y="2.68" width="443.54" height="442.2" frameX="0" frameY="-0.67" frameWidth="443.54" frameHeight="442.87" />
+  <SubTexture name="pepper idle TRUMPET0008" x="4469.57" y="2.68" width="443.54" height="442.87" />
+  <SubTexture name="pepper idle TRUMPET0009" x="4469.57" y="2.68" width="443.54" height="442.87" />
+  <SubTexture name="pepper idle TRUMPET0010" x="4469.57" y="2.68" width="443.54" height="442.87" />
+  <SubTexture name="pepper idle TRUMPET0011" x="4469.57" y="2.68" width="443.54" height="442.87" />
+  <SubTexture name="pepper idle TRUMPET0012" x="4469.57" y="2.68" width="443.54" height="442.87" />
+  <SubTexture name="pepper idle TRUMPET0013" x="4469.57" y="2.68" width="443.54" height="442.87" />
+  <SubTexture name="pepper idle TRUMPET0014" x="4469.57" y="2.68" width="443.54" height="442.87" />
+  <SubTexture name="pepper left0000" x="4915.79" y="2.68" width="278.05" height="436.84" frameX="0" frameY="-2.01" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0001" x="4915.79" y="2.68" width="278.05" height="436.84" frameX="0" frameY="-2.01" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0002" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0003" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0004" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0005" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0006" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0007" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0008" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0009" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0010" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0011" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0012" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0013" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper left0014" x="5196.52" y="2.68" width="274.7" height="438.85" frameX="-3.35" frameY="0" frameWidth="278.05" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0000" x="2.68" y="448.23" width="410.04" height="436.84" frameX="0" frameY="-2.01" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0001" x="2.68" y="448.23" width="410.04" height="436.84" frameX="0" frameY="-2.01" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0002" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0003" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0004" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0005" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0006" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0007" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0008" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0009" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0010" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0011" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0012" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0013" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper leftTRUMPET0014" x="415.4" y="448.23" width="410.04" height="438.85" frameX="-3.35" frameY="0" frameWidth="413.39" frameHeight="438.85" />
+  <SubTexture name="pepper pull trumpet0000" x="828.12" y="448.23" width="432.15" height="445.55" frameX="-8.71" frameY="-89.11" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0001" x="828.12" y="448.23" width="432.15" height="445.55" frameX="-8.71" frameY="-89.11" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0002" x="828.12" y="448.23" width="432.15" height="445.55" frameX="-8.71" frameY="-89.11" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0003" x="1262.95" y="448.23" width="432.15" height="447.56" frameX="-8.71" frameY="-87.1" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0004" x="1262.95" y="448.23" width="432.15" height="447.56" frameX="-8.71" frameY="-87.1" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0005" x="1697.78" y="448.23" width="432.15" height="439.52" frameX="-8.71" frameY="-89.11" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0006" x="1697.78" y="448.23" width="432.15" height="439.52" frameX="-8.71" frameY="-89.11" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0007" x="2132.61" y="448.23" width="432.15" height="441.53" frameX="-8.71" frameY="-42.88" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0008" x="2132.61" y="448.23" width="432.15" height="441.53" frameX="-8.71" frameY="-42.88" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0009" x="2567.44" y="448.23" width="432.15" height="444.21" frameX="-8.71" frameY="-40.2" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0010" x="2567.44" y="448.23" width="432.15" height="444.21" frameX="-8.71" frameY="-40.2" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0011" x="3002.27" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0012" x="3002.27" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0013" x="3437.1" y="448.23" width="432.15" height="440.86" frameX="-8.71" frameY="-43.55" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0014" x="3437.1" y="448.23" width="432.15" height="440.86" frameX="-8.71" frameY="-43.55" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0015" x="2567.44" y="448.23" width="432.15" height="444.21" frameX="-8.71" frameY="-40.2" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0016" x="2567.44" y="448.23" width="432.15" height="444.21" frameX="-8.71" frameY="-40.2" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0017" x="3002.27" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0018" x="3002.27" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0019" x="3002.27" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0020" x="3002.27" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0021" x="3002.27" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0022" x="3871.93" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0023" x="3871.93" y="448.23" width="432.15" height="444.88" frameX="-8.71" frameY="-39.53" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0024" x="4306.76" y="448.23" width="432.15" height="498.48" frameX="-8.71" frameY="-30.15" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0025" x="4306.76" y="448.23" width="432.15" height="498.48" frameX="-8.71" frameY="-30.15" frameWidth="440.86" frameHeight="542.7" />
+  <SubTexture name="pepper pull trumpet0026" x="4741.59" y="448.23" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0027" x="4741.59" y="448.23" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0028" x="2.68" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0029" x="2.68" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0030" x="446.22" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0031" x="446.22" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0032" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0033" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0034" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0035" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0036" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0037" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0038" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0039" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0040" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0041" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0042" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0043" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper pull trumpet0044" x="889.76" y="993.61" width="440.86" height="542.7" />
+  <SubTexture name="pepper right0000" x="1333.3" y="993.61" width="250.58" height="442.87" frameX="-8.04" frameY="0" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0001" x="1333.3" y="993.61" width="250.58" height="442.87" frameX="-8.04" frameY="0" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0002" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0003" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0004" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0005" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0006" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0007" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0008" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0009" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0010" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0011" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0012" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0013" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right0014" x="1586.56" y="993.61" width="251.92" height="439.52" frameX="0" frameY="-3.35" frameWidth="258.62" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0000" x="1841.16" y="993.61" width="444.21" height="442.87" frameX="-8.04" frameY="0" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0001" x="1841.16" y="993.61" width="444.21" height="442.87" frameX="-8.04" frameY="0" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0002" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0003" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0004" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0005" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0006" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0007" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0008" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0009" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0010" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0011" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0012" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0013" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper right TRUMPET0014" x="2288.05" y="993.61" width="448.23" height="439.52" frameX="0" frameY="-3.35" frameWidth="452.25" frameHeight="442.87" />
+  <SubTexture name="pepper up0000" x="2738.96" y="993.61" width="257.28" height="458.95" frameX="0" frameY="0" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0001" x="2738.96" y="993.61" width="257.28" height="458.95" frameX="0" frameY="0" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0002" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0003" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0004" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0005" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0006" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0007" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0008" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0009" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0010" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0011" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0012" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0013" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up0014" x="2998.92" y="993.61" width="257.95" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="258.62" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0000" x="3259.55" y="993.61" width="415.4" height="458.95" frameX="0" frameY="0" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0001" x="3259.55" y="993.61" width="415.4" height="458.95" frameX="0" frameY="0" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0002" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0003" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0004" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0005" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0006" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0007" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0008" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0009" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0010" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0011" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0012" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0013" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
+  <SubTexture name="pepper up TRUMPET0014" x="3677.63" y="993.61" width="416.07" height="452.92" frameX="-0.67" frameY="-6.03" frameWidth="416.74" frameHeight="458.95" />
 </TextureAtlas>

@@ -105,7 +105,7 @@ class ChartingState extends MusicBeatState
 
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
-	var styles:Array<String> = ['normal', 'painting'];
+	var styles:Array<String> = ['normal', 'painting', 'special'];
 	var curStyle:Int = 0;
 	var styleText:FlxText;
 

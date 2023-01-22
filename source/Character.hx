@@ -312,7 +312,7 @@ class Character extends FlxSprite
 					case 'scarlet':
 						playAnim('idle' + (useAlternateIdle ? '-mad' : ''));
 					default:
-						playAnim('idle');
+						playAnim('idle' + (useAlternateIdle ? '-alt' : ''));
 				}
 			}
 		}
@@ -368,6 +368,8 @@ class Character extends FlxSprite
 
 		switch (curCharacter)
 		{
+			case 'pepper-freeplay':
+				return animation.curAnim.name != 'pull' || animation.curAnim.name == 'pull' && animation.finished;
 			case 'gf':
 				return animation.curAnim.name != 'sad' || animation.curAnim.name == 'sad' && animation.finished;
 			default:
