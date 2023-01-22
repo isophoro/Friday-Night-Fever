@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="ratings-pixel.png">
+<TextureAtlas imagePath="ratingspixel.png">
 	<!-- Created with Adobe Animate version 21.0.0.35450 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="sick" x="0" y="0" width="75" height="25" pivotX="0" pivotY="0"/>
-	<SubTexture name="bad" x="75" y="0" width="75" height="25" pivotX="0" pivotY="0"/>
+	<SubTexture name="shit" x="75" y="0" width="75" height="25" pivotX="0" pivotY="0"/>
 	<SubTexture name="good" x="0" y="25" width="75" height="25" pivotX="0" pivotY="0"/>
-	<SubTexture name="shit" x="75" y="25" width="75" height="25" pivotX="0" pivotY="0"/>
+	<SubTexture name="bad" x="75" y="25" width="75" height="25" pivotX="0" pivotY="0"/>
 </TextureAtlas>

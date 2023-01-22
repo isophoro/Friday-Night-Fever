@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="peakek.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="peakek0000" x="572" y="224" width="283" height="220" frameX="-3" frameY="-13" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0001" x="285" y="226" width="282" height="217" frameX="-10" frameY="-22" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0002" x="285" y="226" width="282" height="217" frameX="-10" frameY="-22" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0003" x="0" y="226" width="283" height="217" frameX="-8" frameY="-21" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0004" x="0" y="226" width="283" height="217" frameX="-8" frameY="-21" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0005" x="572" y="0" width="284" height="222" frameX="-2" frameY="-13" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0006" x="572" y="0" width="284" height="222" frameX="-2" frameY="-13" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0007" x="0" y="0" width="284" height="224" frameX="0" frameY="-9" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0008" x="0" y="0" width="284" height="224" frameX="0" frameY="-9" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0009" x="286" y="0" width="284" height="224" frameX="0" frameY="-9" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0010" x="0" y="445" width="277" height="214" frameX="-6" frameY="-18" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0011" x="0" y="445" width="277" height="214" frameX="-6" frameY="-18" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0012" x="227" y="900" width="266" height="178" frameX="-23" frameY="-49" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0013" x="495" y="900" width="266" height="178" frameX="-23" frameY="-49" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0014" x="730" y="446" width="194" height="232" frameX="-45" frameY="-2" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0015" x="279" y="445" width="225" height="226" frameX="-26" frameY="-1" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0016" x="0" y="661" width="225" height="225" frameX="-36" frameY="-9" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0017" x="0" y="661" width="225" height="225" frameX="-36" frameY="-9" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0018" x="506" y="446" width="222" height="225" frameX="-35" frameY="-7" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0019" x="506" y="446" width="222" height="225" frameX="-35" frameY="-7" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0020" x="227" y="673" width="221" height="225" frameX="-32" frameY="-2" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0021" x="227" y="673" width="221" height="225" frameX="-32" frameY="-2" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0022" x="450" y="673" width="221" height="225" frameX="-30" frameY="0" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0023" x="450" y="673" width="221" height="225" frameX="-30" frameY="0" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0024" x="0" y="888" width="225" height="225" frameX="-26" frameY="0" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0025" x="730" y="446" width="194" height="232" frameX="-45" frameY="-2" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0026" x="730" y="446" width="194" height="232" frameX="-45" frameY="-2" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0027" x="495" y="900" width="266" height="178" frameX="-23" frameY="-49" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0028" x="227" y="900" width="266" height="178" frameX="-23" frameY="-49" frameWidth="292" frameHeight="239"/>
+	<SubTexture name="peakek0029" x="0" y="445" width="277" height="214" frameX="-6" frameY="-18" frameWidth="292" frameHeight="239"/>
+</TextureAtlas>

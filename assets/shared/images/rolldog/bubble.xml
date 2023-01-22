@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bubble.png">
+	<!-- Created with Adobe Animate version 20.0.1.19255 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bubble0000" x="10" y="10" width="395" height="403"/>
+	<SubTexture name="bubble0001" x="10" y="10" width="395" height="403"/>
+	<SubTexture name="bubble0002" x="415" y="10" width="395" height="403"/>
+	<SubTexture name="bubble0003" x="415" y="10" width="395" height="403"/>
+	<SubTexture name="bubble0004" x="820" y="10" width="395" height="403"/>
+	<SubTexture name="bubble0005" x="820" y="10" width="395" height="403"/>
+	<SubTexture name="bubble pop out0000" x="1225" y="10" width="395" height="404" frameX="0" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop out0001" x="1225" y="10" width="395" height="404" frameX="0" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop out0002" x="1630" y="10" width="376" height="395" frameX="-26" frameY="-11" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop out0003" x="1630" y="10" width="376" height="395" frameX="-26" frameY="-11" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop out0004" x="10" y="424" width="362" height="407" frameX="-23" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop out0005" x="10" y="424" width="362" height="407" frameX="-23" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop out0006" x="382" y="424" width="171" height="237" frameX="-174" frameY="-171" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop out0007" x="563" y="424" width="141" height="145" frameX="-203" frameY="-270" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop out0008" x="563" y="424" width="141" height="145" frameX="-203" frameY="-270" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0000" x="563" y="424" width="141" height="145" frameX="-203" frameY="-270" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0001" x="382" y="424" width="171" height="237" frameX="-174" frameY="-171" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0002" x="10" y="424" width="362" height="407" frameX="-23" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0003" x="10" y="424" width="362" height="407" frameX="-23" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0004" x="1630" y="10" width="376" height="395" frameX="-26" frameY="-11" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0005" x="1630" y="10" width="376" height="395" frameX="-26" frameY="-11" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0006" x="1225" y="10" width="395" height="404" frameX="0" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0007" x="1225" y="10" width="395" height="404" frameX="0" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0008" x="1225" y="10" width="395" height="404" frameX="0" frameY="0" frameWidth="402" frameHeight="415"/>
+	<SubTexture name="bubble pop up0009" x="1225" y="10" width="395" height="404" frameX="0" frameY="0" frameWidth="402" frameHeight="415"/>
+</TextureAtlas>

@@ -1,6 +1,10 @@
+import flixel.util.FlxTimer;
+
 var seats:FlxSprite;
 var arm:Character;
 var wheel:FlxSprite;
+var bubble:FlxSprite;
+var bubbleIcon:FlxSprite;
 
 function onCreate()
 {
@@ -9,6 +13,7 @@ function onCreate()
 	sky.antialiasing = true;
 	sky.scale.set(0.8, 0.8);
 	add(sky);
+	setGlobalVar("sky", sky);
 
 	var buildings:FlxSprite = new FlxSprite(-350, -57);
 	buildings.frames = Paths.getSparrowAtlas("rolldog/roll_dog_buildings");
@@ -55,6 +60,38 @@ function onCreatePost()
 	remove(boyfriend);
 	add(boyfriend, getIndexOfMember(arm));
 	arm.playAnim("wheel");
+
+	bubble = new FlxSprite(350, -51);
+	bubble.frames = Paths.getSparrowAtlas('rolldog/bubble');
+	bubble.animation.addByPrefix("appear", "bubble pop up", 33, false); // i need the animation to be faster lol
+	bubble.animation.addByPrefix("idle", "bubble0", 24, true);
+	bubble.animation.addByPrefix("disappear", "bubble pop out", 24, false);
+	bubble.animation.finishCallback = function(anim)
+	{
+		if (anim == "appear")
+		{
+			bubble.animation.play("idle");
+			if (bubbleIcon != null)
+				bubbleIcon.visible = true;
+
+			new FlxTimer().start(1.1, function(t)
+			{
+				bubble.animation.play("disappear");
+				bubbleIcon.visible = false;
+				bubbleIcon.destroy();
+				remove(bubbleIcon);
+			});
+		}
+		else if (anim == "disappear")
+		{
+			bubble.visible = false;
+		}
+	}
+	bubble.antialiasing = true;
+	bubble.visible = false;
+	add(bubble);
+
+	setGlobalVar("showBubble", showBubble);
 }
 
 function onOpponentNoteHit(note:Note)
@@ -84,4 +121,25 @@ function onUpdate(elapsed:Float)
 		if (arm.animation.curAnim.curFrame != boyfriend.animation.curAnim.curFrame)
 			arm.animation.curAnim.curFrame = boyfriend.animation.curAnim.curFrame;
 	}
+}
+
+function showBubble(icon:String)
+{
+	bubble.visible = true;
+	bubble.animation.play("appear");
+
+	bubbleIcon = new FlxSprite(bubble.x + (bubble.width / 2), bubble.y + ((bubble.height - 90) / 2));
+	bubbleIcon.frames = Paths.getSparrowAtlas("rolldog/icons/" + icon);
+	bubbleIcon.animation.addByPrefix("idle", icon, 24, true);
+	bubbleIcon.animation.play("idle");
+	bubbleIcon.antialiasing = true;
+	bubbleIcon.visible = false;
+	bubbleIcon.x -= bubbleIcon.width / 2;
+	bubbleIcon.y -= bubbleIcon.height / 2;
+	if (icon == "mega" || icon == "flippy")
+	{
+		bubbleIcon.antialiasing = false;
+		bubbleIcon.scale.set(4.9, 4.9);
+	}
+	add(bubbleIcon);
 }

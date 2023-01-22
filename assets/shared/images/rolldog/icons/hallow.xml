@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hallow.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="hallow0000" x="0" y="0" width="372" height="258" frameX="-5" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0001" x="0" y="0" width="372" height="258" frameX="-5" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0002" x="374" y="0" width="369" height="271" frameX="-16" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0003" x="374" y="0" width="369" height="271" frameX="-16" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0004" x="0" y="273" width="369" height="267" frameX="-12" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0005" x="0" y="273" width="369" height="267" frameX="-12" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0006" x="371" y="273" width="371" height="257" frameX="-4" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0007" x="371" y="273" width="371" height="257" frameX="-4" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0008" x="0" y="542" width="375" height="257" frameX="0" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0009" x="0" y="542" width="375" height="257" frameX="0" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0010" x="377" y="542" width="375" height="257" frameX="0" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0011" x="377" y="542" width="375" height="257" frameX="0" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0012" x="0" y="801" width="375" height="257" frameX="0" frameY="0" frameWidth="385" frameHeight="271"/>
+	<SubTexture name="hallow0013" x="0" y="801" width="375" height="257" frameX="0" frameY="0" frameWidth="385" frameHeight="271"/>
+</TextureAtlas>

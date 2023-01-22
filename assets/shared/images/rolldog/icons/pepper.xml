@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pepper.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="pepper0000" x="0" y="349" width="209" height="171" frameX="-3" frameY="-4" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0001" x="0" y="349" width="209" height="171" frameX="-3" frameY="-4" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0002" x="0" y="0" width="209" height="173" frameX="-12" frameY="-12" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0003" x="0" y="0" width="209" height="173" frameX="-12" frameY="-12" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0004" x="0" y="175" width="209" height="172" frameX="-8" frameY="-10" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0005" x="0" y="175" width="209" height="172" frameX="-8" frameY="-10" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0006" x="0" y="522" width="209" height="171" frameX="-1" frameY="-2" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0007" x="0" y="522" width="209" height="171" frameX="-1" frameY="-2" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0008" x="0" y="695" width="209" height="171" frameX="0" frameY="0" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0009" x="0" y="695" width="209" height="171" frameX="0" frameY="0" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0010" x="0" y="695" width="209" height="171" frameX="0" frameY="0" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0011" x="0" y="695" width="209" height="171" frameX="0" frameY="0" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0012" x="0" y="695" width="209" height="171" frameX="0" frameY="0" frameWidth="221" frameHeight="185"/>
+	<SubTexture name="pepper0013" x="0" y="695" width="209" height="171" frameX="0" frameY="0" frameWidth="221" frameHeight="185"/>
+</TextureAtlas>

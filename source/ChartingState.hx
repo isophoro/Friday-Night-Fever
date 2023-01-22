@@ -1274,7 +1274,7 @@ class ChartingState extends MusicBeatState
 	{
 		remove(gridBG);
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8,
-			GRID_SIZE * (_song.notes[curSection].sectionBeats > 0 ? _song.notes[curSection].sectionBeats * 4 : _song.notes[curSection].lengthInSteps));
+			GRID_SIZE * (_song.notes[curSection].sectionBeats > 0 ? _song.notes[curSection].sectionBeats * 4 : (_song.notes[curSection].lengthInSteps > 0 ? _song.notes[curSection].lengthInSteps : 16)));
 		add(gridBG);
 
 		remove(gridBlackLine);
