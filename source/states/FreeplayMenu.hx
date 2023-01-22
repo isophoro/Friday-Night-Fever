@@ -57,7 +57,11 @@ class FreeplayMenu extends MusicBeatSubstate
 		},
 		{
 			"image": "week6",
-			"songs": [["Ur-Girl", "mega"], ["Chicken-Sandwich", "mega"], ["Funkin-God", "flippy"]]
+			"songs": [
+				["Ur-Girl", "mega-real"],
+				["Chicken-Sandwich", "mega-real"],
+				["Funkin-God", "flippy-real"]
+			]
 		},
 		{
 			"image": "extras",
@@ -65,7 +69,7 @@ class FreeplayMenu extends MusicBeatSubstate
 				["Metamorphosis", "peakek"],
 				["Void", "peakek"],
 				["Farmed", "mako-demon"],
-				["Space-Demons", "bdbfever"],
+				["Space-Demons", "bf-old"],
 				["Old-Hardships", "tea-bat"]
 			]
 		}
