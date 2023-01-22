@@ -23,9 +23,11 @@ var feverParry:FlxSprite;
 
 var inMechanic:Bool = false;
 var parried:Bool = false;
+
 function onCreate()
 {
 	forceComboPos = new FlxPoint(5, 5);
+	PlayState.instance.gotSmushed = false;
 	
 	platform = new FlxSprite().loadGraphic(Paths.image("paste/platform"));
 	platform.antialiasing = true;
@@ -150,6 +152,7 @@ function onUpdate(elapsed:Float)
 		{
 			trace("dead");
 			inMechanic = false;
+			PlayState.instance.gotSmushed = true;
 			PlayState.instance.canHey = true;
 			PlayState.instance.health -= 2;
 		}

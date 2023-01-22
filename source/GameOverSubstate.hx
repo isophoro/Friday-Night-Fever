@@ -59,13 +59,26 @@ class GameOverSubstate extends MusicBeatSubstate
 				}
 		}
 
+		if(PlayState.instance.gotSmushed == true)
+		{
+			daBf = 'bf-smushed';
+		}
+
 		bf = new Boyfriend(x, y, daBf);
 		add(bf);
 
 		bf.playAnim('firstDeath');
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x - bf.offset.x, bf.getGraphicMidpoint().y - bf.offset.y, 1, 1);
+
+		if(daBf == 'bf-smushed')
+		{
+			camFollow.x += 350;
+			camFollow.y += 220;
+		}
+
 		add(camFollow);
+
 
 		if (daBf != 'madDeath')
 			FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));

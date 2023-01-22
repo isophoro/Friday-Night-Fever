@@ -215,6 +215,7 @@ class PlayState extends MusicBeatState
 
 	var keybindTxt:FlxText;
 	public var spacePressed:Bool = false;
+	public var gotSmushed:Bool = false; //death stuff
 
 	override public function create()
 	{

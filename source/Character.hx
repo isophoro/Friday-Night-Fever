@@ -175,6 +175,21 @@ class Character extends FlxSprite
 					antialiasing = false;
 					flipX = true;
 					isDeathAnim = true;
+				case 'bf-smushed':
+					iconColor = 'E353C8';
+					frames = getSparrowAtlas('characters/fever/Fever_paste_anims');
+					addByPrefix('firstDeath', "fever squish0", 24, false);
+					addByPrefix('deathLoop', "fever squish loop0", 24, true);
+					addByPrefix('deathConfirm', "fever squish confirm0", 24, false);
+
+					addOffset('firstDeath', 326, 323);
+					addOffset('deathLoop',-404, -383);
+					addOffset('deathConfirm', -417, -58);
+					playAnim('firstDeath');
+
+					updateHitbox();
+					flipX = true;
+					isDeathAnim = true;
 				case 'bf-hallow-dead':
 					frames = getSparrowAtlas('characters/Hallow_Death');
 					addByPrefix('singUP', "BF dies", 24, false);
