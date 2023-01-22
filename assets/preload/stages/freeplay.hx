@@ -43,6 +43,7 @@ function onCreate()
 	phands.animation.play('idle');
 	phands.scale.set(0.67, 0.67);
 	phands.antialiasing = true;
+	setGlobalVar("phands", phands);
 }
 
 function onCreatePost()

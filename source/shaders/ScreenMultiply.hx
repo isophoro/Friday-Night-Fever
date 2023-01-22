@@ -10,7 +10,7 @@ class ScreenMultiply extends FlxShader
         #pragma header
 
         const vec2 res = vec2(1280, 720);
-        uniform float screens = 1.0;
+        uniform float screens;
 
         void main()
         {

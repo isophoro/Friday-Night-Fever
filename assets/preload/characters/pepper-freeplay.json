@@ -2,13 +2,23 @@
 	"animations": [
 		{
 			"offsets": [
-				0,
-				0
+				-10,
+				8
 			],
 			"fps": 24,
-			"anim": "pepper idle",
+			"anim": "pepper idle TRUMPET",
 			"loop": false,
-			"name": "idle"
+			"name": "idle-alt"
+		},
+		{
+			"offsets": [
+				-29,
+				8
+			],
+			"fps": 24,
+			"anim": "pepper right TRUMPET",
+			"loop": false,
+			"name": "singRIGHT-alt"
 		},
 		{
 			"offsets": [
@@ -16,19 +26,19 @@
 				-5
 			],
 			"fps": 24,
-			"anim": "pepper down",
+			"anim": "pepper down0",
 			"loop": false,
 			"name": "singDOWN"
 		},
 		{
 			"offsets": [
-				-14,
-				0
+				16,
+				4
 			],
 			"fps": 24,
-			"anim": "pepper right",
+			"anim": "pepper leftTRUMPET",
 			"loop": false,
-			"name": "singRIGHT"
+			"name": "singLEFT-alt"
 		},
 		{
 			"offsets": [
@@ -36,9 +46,59 @@
 				15
 			],
 			"fps": 24,
-			"anim": "pepper up",
+			"anim": "pepper up0",
 			"loop": false,
 			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "pepper idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				9,
+				100
+			],
+			"fps": 24,
+			"anim": "pepper pull trumpet",
+			"loop": false,
+			"name": "pull"
+		},
+		{
+			"offsets": [
+				-14,
+				0
+			],
+			"fps": 24,
+			"anim": "pepper right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-15,
+				1
+			],
+			"fps": 24,
+			"anim": "pepper down TRUMPET",
+			"loop": false,
+			"name": "singDOWN-alt"
+		},
+		{
+			"offsets": [
+				-8,
+				24
+			],
+			"fps": 24,
+			"anim": "pepper up TRUMPET",
+			"loop": false,
+			"name": "singUP-alt"
 		},
 		{
 			"offsets": [
@@ -46,7 +106,7 @@
 				-2
 			],
 			"fps": 24,
-			"anim": "pepper left",
+			"anim": "pepper left0",
 			"loop": false,
 			"name": "singLEFT"
 		}
