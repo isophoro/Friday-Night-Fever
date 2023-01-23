@@ -1,0 +1,88 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				6,
+				113
+			],
+			"fps": 24,
+			"anim": "fever idle frown",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				8,
+				36
+			],
+			"fps": 24,
+			"anim": "fever down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-27,
+				103
+			],
+			"fps": 24,
+			"anim": "fever up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-3,
+				113
+			],
+			"fps": 24,
+			"anim": "fever hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				113
+			],
+			"fps": 24,
+			"anim": "fever idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-22,
+				116
+			],
+			"fps": 24,
+			"anim": "fever right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				44,
+				111
+			],
+			"fps": 24,
+			"anim": "fever left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				21,
+				112
+			],
+			"fps": 24,
+			"anim": "fever dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": true,
+	"file": "costumes/feveriso",
+	"color": "C353E3"
+}

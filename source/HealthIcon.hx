@@ -28,6 +28,8 @@ class HealthIcon extends FlxSprite
 		{
 			case 'bf-cedar':
 				loadGraphic(Paths.image('icons/icon-cedarhd'), true, 150, 150);
+			case 'bf-iso':
+				loadGraphic(Paths.image('icons/icon-dawg'), true, 150, 150);
 			case 'sg':
 				loadGraphic(Paths.image('icon-sg', 'shadow'), true, 150, 150); // embed
 			case 'scarlet-freeplay':

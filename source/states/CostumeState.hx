@@ -12,7 +12,7 @@ import sys.thread.Thread;
 
 class CostumeState extends MusicBeatState
 {
-	var CharacterList:Array<CostumeName> = [FEVER, TEASAR, FEVER_NUN, FEVER_CASUAL, FEVER_MINUS, FEVER_COAT];
+	var CharacterList:Array<CostumeName> = [FEVER, TEASAR, FEVER_NUN, FEVER_CASUAL, FEVER_MINUS, FEVER_COAT, FEVER_ISO];
 
 	var character:Character;
 	var cam:FlxCamera = new FlxCamera();

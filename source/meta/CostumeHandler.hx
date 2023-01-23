@@ -9,6 +9,7 @@ enum CostumeName
 	FEVER_MINUS;
 	FEVER_NUN;
 	FEVER_COAT;
+	FEVER_ISO;
 	TEASAR;
 }
 
@@ -64,6 +65,13 @@ class CostumeHandler
 			description: "Full combo Week 3 in Story Mode",
 			character: "bf-casual",
 			creator: "Kip",
+			characterOffset: [1, -9]
+		},
+		FEVER_ISO => {
+			displayName: "Fever (isophoro Outfit)",
+			description: "???",
+			character: "bf-iso",
+			creator: "isophoro",
 			characterOffset: [1, -9]
 		},
 		FEVER_MINUS => {
