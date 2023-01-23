@@ -1,4 +1,5 @@
 import Boyfriend;
+import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxTimer;
 
 // this truly was a friday night fever
@@ -10,8 +11,14 @@ var roboFalling:Character;
 var roboFallingCool:Character;
 var feverTunnel:Boyfriend;
 var roboTunnel:Character;
+var teaFalling:FlxSprite;
+var roboFlying:Character;
+var feverFlying:Character;
+var teaFlying:Character;
 var ogBF:FlxPoint = new FlxPoint(0, 0);
 var ogDad:FlxPoint = new FlxPoint(0, 0);
+var backBuildings:FlxBackdrop;
+var buildings:FlxBackdrop;
 
 function createCharacter(char:String, x:Float, y:Float)
 {
@@ -62,14 +69,30 @@ function onCreate()
 	roboTunnel.scrollFactor.set(dad.scrollFactor.x, dad.scrollFactor.y);
 	add(roboTunnel);
 
-	feverFalling = createBoyfriend("bf-fall", 3350, 1295);
+	feverFalling = createBoyfriend("bf-fall", 2794.5, 409);
 	add(feverFalling);
 
-	roboFalling = createCharacter("robo-fall", 2200, 1030);
+	roboFalling = createCharacter("robo-fall", 1769.5, 184);
 	add(roboFalling);
 
-	roboFallingCool = createCharacter("robo-fall-cool", 2200, 1030);
+	roboFallingCool = createCharacter("robo-fall-cool", 1769.5, 184);
 	add(roboFallingCool);
+
+	teaFalling = new FlxSprite(2794.5 - 813, 409 - 642);
+	teaFalling.frames = Paths.getSparrowAtlas("roboStage/gears/fever_woosh");
+	teaFalling.animation.addByPrefix("grab", "fever woosh", 24, false);
+	teaFalling.alpha = 0.00000000009;
+	teaFalling.antialiasing = true;
+	add(teaFalling);
+	setGlobalVar("tea", teaFalling);
+
+	roboGuh = new FlxSprite(1769.5 - 1130, 184 - 372);
+	roboGuh.frames = Paths.getSparrowAtlas("roboStage/gears/robo_guh");
+	roboGuh.animation.addByPrefix("guh", "Robo", 24, false);
+	roboGuh.alpha = 0.00000000009;
+	roboGuh.antialiasing = true;
+	add(roboGuh);
+	setGlobalVar("rf", roboGuh);
 
 	trace("Finish creating assets");
 	snapCamera();
@@ -77,12 +100,49 @@ function onCreate()
 	dad.scale.set(1.14, 1.14);
 	dad.y -= 50;
 	roboTunnel.scale.set(1.14, 1.14);
-	setHUDVisible(false);
+
+	backBuildings = createBackdrop(Paths.image('roboStage/gears/flyBGBehind'), 0, 0);
+	backBuildings.antialiasing = true;
+	backBuildings.scrollFactor.set(0.9, 0.9);
+	backBuildings.origin.set(0, 0);
+	backBuildings.scale.set(2.5, 2.5);
+	backBuildings.y -= 1200;
+	backBuildings.x -= 600;
+	add(backBuildings);
+	backBuildings.alpha = 0.0000000009;
+
+	buildings = createBackdrop(Paths.image('roboStage/gears/flyBG'), 0, 0);
+	buildings.antialiasing = true;
+	buildings.scrollFactor.set(0.9, 0.9);
+	buildings.origin.set(0, 0);
+	buildings.scale.set(2.5, 2.5);
+	buildings.y -= 1200;
+	buildings.x -= 600;
+	add(buildings);
+	buildings.alpha = 0.0000000009;
+
+	roboFlying = new Character(dad.x - 900, dad.y - 80, "robo-fever-flying");
+	roboFlying.scale.set(1.14, 1.14);
+	add(roboFlying);
+	roboFlying.alpha = 0.0000000009;
+
+	feverFlying = new Character(dad.x + 1500, dad.y + 100, "bf-flying", true);
+	feverFlying.alpha = 0.0000000009;
+
+	teaFlying = new FlxSprite(feverFlying.x - 100, feverFlying.y - 390);
+	teaFlying.frames = Paths.getSparrowAtlas("roboStage/gears/teafly");
+	teaFlying.animation.addByPrefix("idle", "teamoment", 24, false);
+	teaFlying.animation.play("idle");
+	teaFlying.antialiasing = true;
+	teaFlying.alpha = 0.0000000009;
+
+	add(teaFlying);
+	add(feverFlying);
 }
 
 function onUpdate(elapsed:Float)
 {
-	if (curBeat >= 528)
+	if (curBeat >= 528 && curBeat < 558)
 	{
 		roboFallingCool.visible = roboFallingCool.animation.curAnim.name != "idle";
 		roboFalling.visible = !roboFallingCool.visible;
@@ -92,6 +152,9 @@ function onUpdate(elapsed:Float)
 		roboFalling.visible = true;
 		roboFallingCool.visible = false;
 	}
+
+	backBuildings.x -= 2100 * elapsed;
+	buildings.x -= 4600 * elapsed;
 
 	if (FlxG.keys.justPressed.SHIFT)
 	{
@@ -122,6 +185,7 @@ function onStepHit(curStep:Int)
 
 function onBeatHit(curBeat:Int)
 {
+	teaFlying.animation.play("idle");
 	handleNonEvents(curBeat);
 
 	switch (curBeat)
@@ -150,6 +214,34 @@ function onBeatHit(curBeat:Int)
 			game.curOpponent = dad;
 		case 428:
 			shootTrain();
+		case 555:
+			feverFalling.visible = false;
+
+			teaFalling.animation.play("grab");
+			teaFalling.alpha = 1;
+		case 558:
+			roboFallingCool.visible = roboFalling.visible = false;
+			roboGuh.animation.play("guh");
+			roboGuh.animation.finishCallback = function(a)
+			{
+				camGame.fade(FlxColor.BLACK, 0.17, false, function()
+				{
+					getGlobalVar("sky").y -= 500;
+					game.defaultCamZoom = 0.31;
+					FlxTween.tween(camGame, {zoom: 0.31}, 0.45);
+					game.curOpponent = roboFlying;
+					game.curPlayer = feverFlying;
+					game.disableCamera = true;
+					snapCamera(new FlxPoint(feverFlying.x - 800, feverFlying.y + 300));
+					teaFlying.alpha = 1;
+					roboFlying.alpha = 1;
+					feverFlying.alpha = 1;
+					buildings.alpha = 1;
+					backBuildings.alpha = 1;
+					camGame.fade(FlxColor.BLACK, 0.17, true);
+				});
+			}
+			roboGuh.alpha = 1;
 		case 432:
 			boyfriend.setPosition(ogBF.x, ogBF.y);
 			dad.setPosition(ogDad.x, ogDad.y);
@@ -174,7 +266,7 @@ function onBeatHit(curBeat:Int)
 				i.visible = false;
 
 			game.disableCamera = true;
-			snapCamera(new FlxPoint(BF_CAM_POS.x - 140, BF_CAM_POS.y + 260));
+			snapCamera(new FlxPoint(2669.5, 609));
 			game.curPlayer = feverFalling;
 			game.curOpponent = roboFalling;
 
@@ -197,6 +289,8 @@ function onBeatHit(curBeat:Int)
 		case 528:
 			game.curOpponent = roboFallingCool;
 			bfAltSuffix = '';
+		case 684:
+			FlxTween.tween(roboFlying, {x: roboFlying.x - 4500}, 0.98);
 	}
 
 	if (curBeat >= 464 && curBeat < 496)

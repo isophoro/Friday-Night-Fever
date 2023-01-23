@@ -29,6 +29,7 @@ function onCreate()
 	sky.setGraphicSize(Std.int(sky.width * 1.75));
 	sky.updateHitbox();
 	add(sky);
+	setGlobalVar("sky", sky);
 
 	buildings1 = createBackdrop(Paths.image('roboStage/gears/furthestBuildings'), 0, 0);
 	buildings1.antialiasing = true;

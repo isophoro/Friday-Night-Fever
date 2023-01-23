@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="teafly.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="teamoment0000" x="0" y="0" width="921" height="574" pivotX="-0.75" pivotY="-6.25"/>
+	<SubTexture name="teamoment0001" x="921" y="0" width="921" height="574"/>
+	<SubTexture name="teamoment0002" x="1842" y="0" width="921" height="574"/>
+	<SubTexture name="teamoment0003" x="2763" y="0" width="921" height="574"/>
+	<SubTexture name="teamoment0004" x="0" y="574" width="921" height="574"/>
+	<SubTexture name="teamoment0005" x="921" y="574" width="921" height="574"/>
+	<SubTexture name="teamoment0006" x="1842" y="574" width="921" height="574"/>
+	<SubTexture name="teamoment0007" x="2763" y="574" width="921" height="574"/>
+	<SubTexture name="teamoment0008" x="0" y="1148" width="921" height="574"/>
+	<SubTexture name="teamoment0009" x="921" y="1148" width="921" height="574"/>
+</TextureAtlas>

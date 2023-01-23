@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Fever woosh.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fever woosh0000" x="0" y="0" width="1284" height="1534" pivotX="797.4" pivotY="629.75"/>
+	<SubTexture name="fever woosh0001" x="1284" y="0" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0002" x="2568" y="0" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0003" x="3852" y="0" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0004" x="5136" y="0" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0005" x="6420" y="0" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0006" x="0" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0007" x="1284" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0008" x="2568" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0009" x="0" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0010" x="1284" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0011" x="2568" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0012" x="0" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0013" x="1284" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0014" x="2568" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0015" x="3852" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0016" x="5136" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0017" x="6420" y="1534" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0018" x="0" y="3068" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0019" x="1284" y="3068" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0020" x="2568" y="3068" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0021" x="3852" y="3068" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0022" x="5136" y="3068" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0023" x="2568" y="3068" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0024" x="3852" y="3068" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0025" x="6420" y="3068" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0026" x="0" y="4602" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0027" x="1284" y="4602" width="1284" height="1534"/>
+	<SubTexture name="fever woosh0028" x="2568" y="4602" width="1284" height="1534"/>
+</TextureAtlas>

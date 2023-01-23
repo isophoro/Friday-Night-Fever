@@ -1,0 +1,58 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "Robo fever0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				3,
+				2
+			],
+			"fps": 24,
+			"anim": "Robo fever down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				4,
+				-3
+			],
+			"fps": 24,
+			"anim": "Robo fever right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				3,
+				-4
+			],
+			"fps": 24,
+			"anim": "Robo fever up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-1,
+				2
+			],
+			"fps": 24,
+			"anim": "Robo fever left",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+	"file": "robo-fever/flying",
+	"color": "504BA6"
+}

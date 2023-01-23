@@ -1,0 +1,98 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				21,
+				133
+			],
+			"fps": 24,
+			"anim": "Fever rmiss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				13,
+				-4
+			],
+			"fps": 24,
+			"anim": "Fever down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				31,
+				33
+			],
+			"fps": 24,
+			"anim": "Fever up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-10,
+				23
+			],
+			"fps": 24,
+			"anim": "Fever lmiss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "Fever idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-19,
+				33
+			],
+			"fps": 24,
+			"anim": "Fever right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				11,
+				-2
+			],
+			"fps": 24,
+			"anim": "Fever dmiss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				0,
+				27
+			],
+			"fps": 24,
+			"anim": "Fever left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				27,
+				46
+			],
+			"fps": 24,
+			"anim": "Fever umiss",
+			"loop": false,
+			"name": "singUPmiss"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": true,
+	"file": "fever/flying",
+	"color": "C353E3"
+}
