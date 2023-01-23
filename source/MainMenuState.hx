@@ -42,6 +42,7 @@ class MainMenuState extends InteractableState
 				train.animation.play('idle');
 				train.animation.finishCallback = null;
 				addInteractable(train);
+				order.insert(1, order.pop());
 			}
 
 			new FlxTimer().start(0.5, (t) ->
@@ -54,7 +55,6 @@ class MainMenuState extends InteractableState
 		{
 			allowInput = true;
 			train.animation.play('idle');
-			order.insert(1, train.hitbox);
 			addInteractable(train);
 		}
 
@@ -68,7 +68,7 @@ class MainMenuState extends InteractableState
 		var mainBG:MenuBG = new MenuBG("newMain/subway_bg", 0, -12);
 		add(mainBG);
 
-		var options = new Interactable('newMain/options', 915.5, 580.55, 0.7, 'options notselected', 'options selected',
+		var options = new Interactable('newMain/options', 915.5, 580.55, 1, 'options notselected', 'options selected',
 			new InteractHitbox(915.5, 580.55, 365, 105), [0, 34]);
 		options.callback = function()
 		{
@@ -81,29 +81,29 @@ class MainMenuState extends InteractableState
 		options.sound = "sewer";
 		addInteractable(options);
 
-		var credits = new Interactable('newMain/credits', -10, 45, 0.7, 'credits notselected', 'credits selected', new InteractHitbox(40, 175, 225, 525),
+		var credits = new Interactable('newMain/credits', -10, 45, 1, 'credits notselected', 'credits selected', new InteractHitbox(40, 175, 225, 525),
 			[216, 172], true, "newMain/creditstext", "credits text", [300, 140]);
 		credits.callback = AchievementHandler.unlockTrophy.bind(TEST_TROPHY);
 		addInteractable(credits);
 
-		var freeplay = new Interactable('newMain/freeplay', 1100, 160, 0.7, 'Freeplay not selected', 'Freeplay selected',
+		var freeplay = new Interactable('newMain/freeplay', 1100, 160, 1, 'Freeplay not selected', 'Freeplay selected',
 			new InteractHitbox(1100, 160, 145, 225), [256, 170]);
 		freeplay.callback = FlxG.switchState.bind(new FreeplayState());
 		addInteractable(freeplay);
 
-		var boombox = new Interactable('newMain/boombox', 779, 433, 0.7, 'boombox not selected', 'boombox selected', new InteractHitbox(779, 433, 165, 135),
+		var boombox = new Interactable('newMain/boombox', 779, 433, 1, 'boombox not selected', 'boombox selected', new InteractHitbox(779, 433, 165, 135),
 			[0, 5], true, "newMain/boomboxtext", "boombox text", [639, 520]);
 		boombox.sound = "boombox";
 		boombox.callback = FlxG.switchState.bind(new states.BoomboxState());
 		addInteractable(boombox);
 
-		var costumes = new Interactable('newMain/costumes', 505, 580, 0.7, 'costume notselected', 'costume selected', new InteractHitbox(505, 580, 240, 115),
+		var costumes = new Interactable('newMain/costumes', 505, 580, 1, 'costume notselected', 'costume selected', new InteractHitbox(505, 580, 240, 115),
 			[83, 102]);
 		costumes.sound = "paper";
 		costumes.callback = FlxG.switchState.bind(new states.CostumeState());
 		addInteractable(costumes);
 
-		var extras = new Interactable('newMain/extra', 839, 210, 0.7, 'extras notselected', 'extras selected', new InteractHitbox(839, 210, 150, 175),
+		var extras = new Interactable('newMain/extra', 839, 210, 1, 'extras notselected', 'extras selected', new InteractHitbox(839, 210, 150, 175),
 			[258, 258], true, "newMain/extratext", "extra text", [990, 190], 0.23);
 		extras.callback = () ->
 		{
@@ -123,13 +123,18 @@ class MainMenuState extends InteractableState
 
 		order = [
 			credits.hitbox,
-			train.hitbox,
+			// train.hitbox,
 			costumes.hitbox,
 			boombox.hitbox,
 			extras.hitbox,
 			options.hitbox,
 			freeplay.hitbox
 		];
+
+		if (!firstTime)
+		{
+			order.insert(1, train.hitbox);
+		}
 
 		firstTime = false;
 

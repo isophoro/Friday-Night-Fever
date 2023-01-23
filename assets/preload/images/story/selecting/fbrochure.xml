@@ -55,18 +55,6 @@
 	<SubTexture name="open0010" x="3208" y="1290" width="802" height="1290"/>
 	<SubTexture name="open0011" x="3208" y="1290" width="802" height="1290"/>
 	<SubTexture name="open0012" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0013" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0014" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0015" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0016" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0017" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0018" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0019" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0020" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0021" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0022" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0023" x="3208" y="1290" width="802" height="1290"/>
-	<SubTexture name="open0024" x="3208" y="1290" width="802" height="1290"/>
 	<SubTexture name="selected0000" x="0" y="2580" width="508" height="749" pivotX="106.35" pivotY="-19.4"/>
 	<SubTexture name="selected0001" x="0" y="2580" width="508" height="749"/>
 	<SubTexture name="selected0002" x="508" y="2580" width="508" height="749"/>

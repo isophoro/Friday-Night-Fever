@@ -28,11 +28,11 @@ class BrochureMenu extends MusicBeatState
 		cscroll = new FlxBackdrop(Paths.image("story/selecting/cscroll"), X);
 		cscroll.origin.set(0, 0);
 		cscroll.scale.scale(1.55);
-		cscroll.alpha = 0;
+		cscroll.alpha = 0.000000009;
 		fscroll = new FlxBackdrop(Paths.image("story/selecting/fscroll"), X);
 		fscroll.origin.set(0, 0);
 		fscroll.scale.scale(1.55);
-		fscroll.alpha = 0;
+		fscroll.alpha = 0.000000009;
 		add(cscroll);
 		add(fscroll);
 

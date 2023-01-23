@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="extratext.png">
-	<!-- Created with Adobe Animate version 21.0.3.38773 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="extra text0000" x="0" y="0" width="188" height="917" pivotX="-153" pivotY="-141.1"/>
-	<SubTexture name="extra text0001" x="0" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0002" x="188" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0003" x="188" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0004" x="376" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0005" x="376" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0006" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0007" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0008" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0009" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0010" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0011" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0012" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0013" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0014" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0015" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0016" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0017" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0018" x="564" y="0" width="188" height="917"/>
-	<SubTexture name="extra text0019" x="564" y="0" width="188" height="917"/>
+  <!-- Created with Adobe Animate version 21.0.3.38773 -->
+  <!-- http://www.adobe.com/products/animate.html -->
+  <SubTexture name="extra text0000" x="0" y="0" width="131.6" height="641.9" pivotX="-153" pivotY="-141.1" />
+  <SubTexture name="extra text0001" x="0" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0002" x="131.6" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0003" x="131.6" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0004" x="263.2" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0005" x="263.2" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0006" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0007" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0008" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0009" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0010" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0011" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0012" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0013" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0014" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0015" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0016" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0017" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0018" x="394.8" y="0" width="131.6" height="641.9" />
+  <SubTexture name="extra text0019" x="394.8" y="0" width="131.6" height="641.9" />
 </TextureAtlas>

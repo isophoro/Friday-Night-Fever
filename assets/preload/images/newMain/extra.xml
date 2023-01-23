@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="extra.png">
-	<!-- Created with Adobe Animate version 21.0.3.38773 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="extras confirm0000" x="0" y="0" width="297" height="295" pivotX="0" pivotY="-59.75"/>
-	<SubTexture name="extras confirm0001" x="0" y="0" width="297" height="295"/>
-	<SubTexture name="extras confirm0002" x="297" y="0" width="297" height="295"/>
-	<SubTexture name="extras confirm0003" x="297" y="0" width="297" height="295"/>
-	<SubTexture name="extras notselected0000" x="594" y="0" width="218" height="260" pivotX="0.05" pivotY="-77.8"/>
-	<SubTexture name="extras notselected0001" x="594" y="0" width="218" height="260"/>
-	<SubTexture name="extras notselected0002" x="594" y="0" width="218" height="260"/>
-	<SubTexture name="extras notselected0003" x="812" y="0" width="218" height="260"/>
-	<SubTexture name="extras notselected0004" x="812" y="0" width="218" height="260"/>
-	<SubTexture name="extras notselected0005" x="812" y="0" width="218" height="260"/>
-	<SubTexture name="extras notselected0006" x="594" y="0" width="218" height="260"/>
-	<SubTexture name="extras notselected0007" x="594" y="0" width="218" height="260"/>
-	<SubTexture name="extras notselected0008" x="594" y="0" width="218" height="260"/>
-	<SubTexture name="extras selected0000" x="1030" y="0" width="933" height="989" pivotX="369.15" pivotY="291.85"/>
-	<SubTexture name="extras selected0001" x="1030" y="0" width="933" height="989"/>
-	<SubTexture name="extras selected0002" x="0" y="989" width="933" height="989"/>
-	<SubTexture name="extras selected0003" x="0" y="989" width="933" height="989"/>
-	<SubTexture name="extras selected0004" x="933" y="989" width="933" height="989"/>
-	<SubTexture name="extras selected0005" x="933" y="989" width="933" height="989"/>
-	<SubTexture name="extras selected0006" x="1030" y="0" width="933" height="989"/>
-	<SubTexture name="extras selected0007" x="1030" y="0" width="933" height="989"/>
-	<SubTexture name="extras selected0008" x="1030" y="0" width="933" height="989"/>
-	<SubTexture name="extras selected0009" x="1030" y="0" width="933" height="989"/>
-	<SubTexture name="extras selected0010" x="933" y="989" width="933" height="989"/>
-	<SubTexture name="extras selected0011" x="933" y="989" width="933" height="989"/>
-	<SubTexture name="extras selected0012" x="1030" y="0" width="933" height="989"/>
-	<SubTexture name="extras selected0013" x="1030" y="0" width="933" height="989"/>
-	<SubTexture name="extras selected0014" x="0" y="989" width="933" height="989"/>
-	<SubTexture name="extras selected0015" x="933" y="989" width="933" height="989"/>
+  <!-- Created with Adobe Animate version 21.0.3.38773 -->
+  <!-- http://www.adobe.com/products/animate.html -->
+  <SubTexture name="extras confirm0000" x="0" y="0" width="207.9" height="206.5" pivotX="0" pivotY="-59.75" />
+  <SubTexture name="extras confirm0001" x="0" y="0" width="207.9" height="206.5" />
+  <SubTexture name="extras confirm0002" x="207.9" y="0" width="207.9" height="206.5" />
+  <SubTexture name="extras confirm0003" x="207.9" y="0" width="207.9" height="206.5" />
+  <SubTexture name="extras notselected0000" x="415.8" y="0" width="152.6" height="182" pivotX="0.05" pivotY="-77.8" />
+  <SubTexture name="extras notselected0001" x="415.8" y="0" width="152.6" height="182" />
+  <SubTexture name="extras notselected0002" x="415.8" y="0" width="152.6" height="182" />
+  <SubTexture name="extras notselected0003" x="568.4" y="0" width="152.6" height="182" />
+  <SubTexture name="extras notselected0004" x="568.4" y="0" width="152.6" height="182" />
+  <SubTexture name="extras notselected0005" x="568.4" y="0" width="152.6" height="182" />
+  <SubTexture name="extras notselected0006" x="415.8" y="0" width="152.6" height="182" />
+  <SubTexture name="extras notselected0007" x="415.8" y="0" width="152.6" height="182" />
+  <SubTexture name="extras notselected0008" x="415.8" y="0" width="152.6" height="182" />
+  <SubTexture name="extras selected0000" x="721" y="0" width="653.1" height="692.3" pivotX="369.15" pivotY="291.85" />
+  <SubTexture name="extras selected0001" x="721" y="0" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0002" x="0" y="692.3" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0003" x="0" y="692.3" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0004" x="653.1" y="692.3" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0005" x="653.1" y="692.3" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0006" x="721" y="0" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0007" x="721" y="0" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0008" x="721" y="0" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0009" x="721" y="0" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0010" x="653.1" y="692.3" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0011" x="653.1" y="692.3" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0012" x="721" y="0" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0013" x="721" y="0" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0014" x="0" y="692.3" width="653.1" height="692.3" />
+  <SubTexture name="extras selected0015" x="653.1" y="692.3" width="653.1" height="692.3" />
 </TextureAtlas>
