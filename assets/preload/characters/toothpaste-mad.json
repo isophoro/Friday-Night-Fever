@@ -49,6 +49,16 @@
 			"anim": "toothpaste mad up",
 			"loop": false,
 			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-144,
+				-2
+			],
+			"fps": 24,
+			"anim": "toothpaste mad scream",
+			"loop": false,
+			"name": "scream"
 		}
 	],
 	"flipX": false,

@@ -24,6 +24,7 @@ var feverParry:FlxSprite;
 var inMechanic:Bool = false;
 var parried:Bool = false;
 
+
 function onCreate()
 {
 	forceComboPos = new FlxPoint(5, 5);
@@ -220,8 +221,9 @@ function onBeatHit(curBeat:Int)
 	if(curBeat == 363)
 	{
 		game.healthTween(0.1, false, 1);
-		camGame.shake(0.05, 1);
-		camHUD.shake(0.07, 1);
+		camGame.shake(0.005, 1);
+		camHUD.shake(0.007, 1);
+		pasta.playAnim('scream', true);
 	}
 
 	if (curBeat >= 146 && curBeat % 5 == 0 && FlxG.random.bool(10))
@@ -234,6 +236,7 @@ function onBeatHit(curBeat:Int)
 		trace("WORK");
 		smashMechanic();
 	}
+
 
 	var idleAnim = getTeaIdle();
 	if (tea.animation.curAnim.name != idleAnim && tea.animation.finished || tea.animation.curAnim.name == idleAnim)
@@ -289,6 +292,7 @@ function setHUDVisibility(theBool:Bool)
 	for (i in [iconP1, iconP2, healthBar, healthBarBG, scoreTxt])
 		i.visible = theBool;
 }
+
 
 function teaTurn(flip)
 {
@@ -362,16 +366,36 @@ function spawnGhost()
 
 function smashMechanic()
 {
+	var swagCounter:Int = 0;
+	new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
+	{
+		var warning = new FlxSprite(768, 164.5);
+		warning.loadGraphic(Paths.image('mechanicShit/warning', 'shared'));
+		warning.cameras = [camHUD];
+		add(warning);
 
-	PlayState.instance.canHey = false;
-	FlxG.sound.play(Paths.sound('smash', 'preload'), 1);
+		FlxG.sound.play(Paths.sound('alert', 'shared'), 1);
+		FlxTween.tween(warning, {alpha: 0}, Conductor.crochet / 1000, {onComplete: (twn) -> {
+			remove(warning);
+			warning.destroy();
+		}});
+		
+		swagCounter++;
+		trace(swagCounter);
 
-	pasta.alpha = 0.0000000000000000000009;
-	pasteSlam.alpha = 1;
-	pasteSlam.animation.play('smash', true);
-
-	PlayState.instance.spacePressed = false;
-	PlayState.canPressSpace = true;
-	inMechanic = true;
-
+		if(swagCounter == 2)
+		{
+			PlayState.instance.canHey = false;
+			FlxG.sound.play(Paths.sound('smash', 'preload'), 1);
+		
+			pasta.alpha = 0.0000000000000000000009;
+			pasteSlam.alpha = 1;
+			pasteSlam.animation.play('smash', true);
+		
+			PlayState.instance.spacePressed = false;
+			PlayState.canPressSpace = true;
+			inMechanic = true;		
+		}
+	}, 3);
 }
+
