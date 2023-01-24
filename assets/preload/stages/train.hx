@@ -76,6 +76,13 @@ function onCreate()
 	add(lights);
 	lights.visible = false;
 
+	outerBuilding = new FlxSprite(32900, -490).loadGraphic(Paths.image("roboStage/gears/randomBuilding"));
+	outerBuilding.antialiasing = true;
+	// outerBuilding.velocity.x = (FlxG.random.int(120, 170) / FlxG.elapsed) * -0.95;
+	add(outerBuilding);
+	outerBuilding.visible = false;
+	setGlobalVar("outerBuilding", outerBuilding);
+
 	train = new FlxSprite(0, 666);
 	train.frames = Paths.getSparrowAtlas('roboStage/train');
 	train.animation.addByPrefix('drive', "all train", 24, false);
@@ -103,12 +110,6 @@ function onCreate()
 	poles.antialiasing = true;
 	poles.velocity.x = (FlxG.random.int(120, 170) / FlxG.elapsed) * -0.95;
 	add(poles);
-
-	outerBuilding = new FlxSprite(32900, 490).loadGraphic(Paths.image("roboStage/gears/randomBuilding"));
-	outerBuilding.antialiasing = true;
-	outerBuilding.velocity.x = (FlxG.random.int(120, 170) / FlxG.elapsed) * -0.95;
-	add(outerBuilding);
-	outerBuilding.visible = false;
 
 	trainGlow = new FlxSprite(-60, 600);
 	trainGlow.frames = Paths.getSparrowAtlas('roboStage/trainGlow');

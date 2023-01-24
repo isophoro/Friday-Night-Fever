@@ -1183,7 +1183,7 @@ class PlayState extends MusicBeatState
 				sprite.updateHitbox();
 
 				if (introAssets[0].endsWith("-pixel"))
-					sprite.setGraphicSize(Std.int(sprite.width * daPixelZoom));
+					sprite.setGraphicSize(Std.int(sprite.width * 4.8));
 				else if (camHUD.zoom != 1)
 					sprite.scale.set(sprite.scale.x * (1 / camHUD.zoom), sprite.scale.y * (1 / camHUD.zoom));
 
@@ -2186,8 +2186,7 @@ class PlayState extends MusicBeatState
 
 		hpTweening = true;
 
-
-		if(adding)
+		if (adding)
 		{
 			healthTweenOBJ = FlxTween.num(health, health + amt, time, {ease: FlxEase.cubeInOut}, function(v:Float)
 			{
@@ -2762,7 +2761,9 @@ class PlayState extends MusicBeatState
 				altSuffix = songScript.variables.get("bfAltSuffix");
 			}
 
-			if (curPlayer.animation.curAnim.name != 'shoot' || curPlayer.animation.curAnim.name != 'dodge' || curPlayer.animation.curAnim.name != 'hey')
+			if (curPlayer.animation.curAnim.name != 'shoot'
+				|| curPlayer.animation.curAnim.name != 'dodge'
+				|| curPlayer.animation.curAnim.name != 'hey')
 			{
 				scripts.callFunction("onPlayerNoteHit", [note]);
 				curPlayer.holdTimer = 0;
