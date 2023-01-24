@@ -161,10 +161,10 @@ function onUpdate(elapsed:Float)
 		shootTrain();
 	}
 
-	if (boyfriend.animation.curAnim.name == "fall" && boyfriend.animation.curAnim.curFrame >= 15)
+	if (boyfriend.animation.curAnim.name == "fall" && boyfriend.animation.curAnim.curFrame > 7)
 	{
-		boyfriend.y += elapsed * 2660;
-		boyfriend.x += elapsed * 960;
+		boyfriend.y += elapsed * 2060;
+		// boyfriend.x += elapsed * 960;
 	}
 
 	if (dad.animation.curAnim.name == "fall" && dad.animation.finished)
@@ -322,6 +322,10 @@ function handleNonEvents(curBeat:Int)
 function shootTrain()
 {
 	trace("SHOOT");
+	getGlobalVar("outerBuilding").x = boyfriend.x + 1500;
+	getGlobalVar("outerBuilding").visible = true;
+	FlxTween.tween(getGlobalVar("outerBuilding"), {x: boyfriend.x - 2150}, 0.5);
+
 	ogDad.set(dad.x, dad.y);
 	ogBF.set(boyfriend.x, boyfriend.y);
 	var td = getGlobalVar("trainDeath");
@@ -329,9 +333,10 @@ function shootTrain()
 	td.visible = true;
 	td.animation.play("death", true);
 	dad.playAnim("shoot", true);
-	new FlxTimer().start(0.26, function(t)
+	new FlxTimer().start(0.245, function(t)
 	{
-		FlxTween.tween(boyfriend, {x: boyfriend.x + 200}, 0.3, {ease: FlxEase.cubeInOut});
+		FlxTween.tween(boyfriend, {y: boyfriend.y - 190}, 0.25, {startDelay: 0.1});
+		FlxTween.tween(boyfriend, {x: boyfriend.x + 800}, 0.71, {ease: FlxEase.cubeInOut});
 	});
 	boyfriend.playAnim("fall");
 	camGame.shake(0.09, 0.2);

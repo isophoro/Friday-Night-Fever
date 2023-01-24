@@ -66,17 +66,6 @@
 	<SubTexture name="Robo fall0021" x="4302" y="4893" width="331" height="522" frameX="-441" frameY="-808" frameWidth="879" frameHeight="1840"/>
 	<SubTexture name="Robo fall0022" x="4643" y="4893" width="334" height="504" frameX="-537" frameY="-1050" frameWidth="879" frameHeight="1840"/>
 	<SubTexture name="Robo fall0023" x="4987" y="4893" width="292" height="521" frameX="-473" frameY="-1319" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0024" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0025" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0026" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0027" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0028" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0029" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0030" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0031" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0032" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0033" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
-	<SubTexture name="Robo fall0034" x="5289" y="4893" width="0" height="0" frameX="-27" frameY="19" frameWidth="879" frameHeight="1840"/>
 	<SubTexture name="Robo idle0000" x="5299" y="4893" width="622" height="1034" frameX="-1" frameY="-13" frameWidth="626" frameHeight="1050"/>
 	<SubTexture name="Robo idle0001" x="5931" y="4893" width="622" height="1034" frameX="-1" frameY="-13" frameWidth="626" frameHeight="1050"/>
 	<SubTexture name="Robo idle0002" x="6563" y="4893" width="612" height="1022" frameX="-1" frameY="-28" frameWidth="626" frameHeight="1050"/>
