@@ -59,7 +59,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				}
 		}
 
-		if(PlayState.instance.gotSmushed == true)
+		if(PlayState.instance.gotSmushed == true && PlayState.instance.boyfriend.curCharacter == 'bf-demon')
 		{
 			daBf = 'bf-smushed';
 		}

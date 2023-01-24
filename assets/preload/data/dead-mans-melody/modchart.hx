@@ -112,19 +112,21 @@ function onUpdate(elapsed:Float)
 
 	if(inMechanic == true)
 	{
-		trace("SPACE BITCH");
-		trace(PlayState.instance.canHey);
+		//trace("SPACE BITCH");
+		//trace(PlayState.instance.canHey);
+
+		trace(pasteSlam.animation.curAnim.curFrame);
 
 		if (ClientPrefs.botplay)
 		{
-			trace("BOTPLAY PARRY");
 			parried = true;
-			spacePressed = true;
+			PlayState.instance.spacePressed = true;
 		}
 
 		if(PlayState.instance.spacePressed == true && !ClientPrefs.botplay)
 		{
-			if(pasteSlam.animation.curAnim.curFrame <= 10)
+			PlayState.canPressSpace = false;
+			if(pasteSlam.animation.curAnim.curFrame <= 11)
 			{
 				trace("dodge");
 				boyfriend.playAnim('dodge', true);
@@ -145,7 +147,7 @@ function onUpdate(elapsed:Float)
 					PlayState.instance.canHey = true;
 				};
 			}
-			else if (pasteSlam.animation.curAnim.curFrame >= 11 && pasteSlam.animation.curAnim.curFrame <= 15)
+			else if (pasteSlam.animation.curAnim.curFrame >= 12 && pasteSlam.animation.curAnim.curFrame <= 15)
 			{
 				trace("parry");
 				parried = true;
@@ -155,10 +157,11 @@ function onUpdate(elapsed:Float)
 			}
 		}
 
-		if (pasteSlam.animation.curAnim.curFrame >= 17 && PlayState.instance.spacePressed == false)
+		if (pasteSlam.animation.curAnim.curFrame >= 15 && PlayState.instance.spacePressed == false)
 		{
 			trace("dead");
 			inMechanic = false;
+			PlayState.canPressSpace = false;
 			PlayState.instance.gotSmushed = true;
 			PlayState.instance.canHey = true;
 			PlayState.instance.health -= 2;
@@ -169,18 +172,24 @@ function onUpdate(elapsed:Float)
 	if(pasteSlam.animation.curAnim.curFrame >= 14 && parried == true)
 	{
 			PlayState.instance.spacePressed = false;
-			boyfriend.alpha = 0.0000000000000000000009;
-			feverParry.alpha = 1;
-			feverParry.animation.play('parry', true);
+
+			if(boyfriend.curCharacter == 'bf-demon')
+			{
+				boyfriend.alpha = 0.0000000000000000000009;
+				feverParry.alpha = 1;
+				feverParry.animation.play('parry', true);
+			}
+			else
+				boyfriend.playAnim('hey', true);
+
 			pasteSlam.animation.play('parry', true);
 			FlxG.sound.play(Paths.sound('parry', 'preload'), 1);
 			PlayState.instance.health += 0.1;
 			inMechanic = false;
 			parried = false;
-			feverParry.animation.finishCallback = function(anim)
+			pasteSlam.animation.finishCallback = function(anim)
 			{
 				boyfriend.alpha = 1;
-				boyfriend.playAnim('idle', true);
 				pasta.alpha = 1;
 				PlayState.instance.canHey = true;
 
@@ -208,7 +217,19 @@ function onMoveCamera(dad:Bool)
 function onBeatHit(curBeat:Int)
 { 
 
+	if(curBeat == 363)
+	{
+		game.healthTween(0.1, false, 1);
+		camGame.shake(0.05, 1);
+		camHUD.shake(0.07, 1);
+	}
+
 	if (curBeat >= 146 && curBeat % 5 == 0 && FlxG.random.bool(10))
+	{
+		trace("WORK");
+		smashMechanic();
+	}
+	else if (game.curStep >= 1472 && curBeat % 5 == 0 && FlxG.random.bool(25))
 	{
 		trace("WORK");
 		smashMechanic();
@@ -350,6 +371,7 @@ function smashMechanic()
 	pasteSlam.animation.play('smash', true);
 
 	PlayState.instance.spacePressed = false;
+	PlayState.canPressSpace = true;
 	inMechanic = true;
 
 }

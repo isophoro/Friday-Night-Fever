@@ -12,7 +12,7 @@ function onStepHit(curStep:Int)
 				getGlobalVar("wheel").visible = true;
 				iconP2.swapCharacter("yukichi");
 				healthBar.createFilledBar(0xFFFF97F0, FlxColor.fromString('#FF' + game.curPlayer.iconColor));
-				game.health = 1;
+				game.healthTween(1, false);
 			}
 		}
 	}

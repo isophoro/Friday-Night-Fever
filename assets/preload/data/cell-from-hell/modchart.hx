@@ -25,7 +25,8 @@ function onStepHit(curStep:Int)
 			healthBar.createFilledBar(0xFFE4E7FC, FlxColor.fromString('#FF' + game.curPlayer.iconColor));
 			healthBar.updateBar();
 		case 288:
-			game.health = 1;
+			//game.health = 1;
+			game.healthTween(1, false);
 			FlxTween.color(getGlobalVar("sky"), 0.8, FlxColor.WHITE, FlxColor.RED);
 			iconP2.swapCharacter("toothpaste");
 			healthBar.createFilledBar(0xFF93F1EB, FlxColor.fromString('#FF' + game.curPlayer.iconColor));

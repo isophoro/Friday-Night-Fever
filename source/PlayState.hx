@@ -1632,11 +1632,13 @@ class PlayState extends MusicBeatState
 
 	public var cameraSpeed:Float = 1.3;
 
+	static public var canPressSpace:Bool = false;
+
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (controls.DODGE && !ClientPrefs.botplay && SONG.song.toLowerCase() == 'dead-mans-melody')
+		if (controls.DODGE && canPressSpace && !ClientPrefs.botplay && SONG.song.toLowerCase() == 'dead-mans-melody')
 		{
 			trace("GAY");
 			spacePressed = true;
@@ -2175,7 +2177,7 @@ class PlayState extends MusicBeatState
 	var healthTweenOBJ:FlxTween;
 	var startShredding:Bool = false;
 
-	public function healthTween(amt:Float)
+	public function healthTween(amt:Float, ?adding:Bool = true, ?time:Float = 0.5)
 	{
 		if (healthTweenOBJ != null)
 			healthTweenOBJ.cancel();
@@ -2183,16 +2185,34 @@ class PlayState extends MusicBeatState
 		emitter.start(false, 0.01, 0);
 
 		hpTweening = true;
-		healthTweenOBJ = FlxTween.num(health, health + amt, 0.5, {ease: FlxEase.cubeInOut}, function(v:Float)
-		{
-			health = v;
-			hpTweening = false;
 
-			new FlxTimer().start(1, function(tmr:FlxTimer)
+
+		if(adding)
+		{
+			healthTweenOBJ = FlxTween.num(health, health + amt, time, {ease: FlxEase.cubeInOut}, function(v:Float)
 			{
-				emitter.kill();
+				health = v;
+				hpTweening = false;
+
+				new FlxTimer().start(1, function(tmr:FlxTimer)
+				{
+					emitter.kill();
+				});
 			});
-		});
+		}
+		else
+		{
+			healthTweenOBJ = FlxTween.num(health, amt, time, {ease: FlxEase.cubeInOut}, function(v:Float)
+			{
+				health = v;
+				hpTweening = false;
+
+				new FlxTimer().start(1, function(tmr:FlxTimer)
+				{
+					emitter.kill();
+				});
+			});
+		}
 
 		scripts.callFunction("onHealthTween", [amt]);
 	}
@@ -2701,7 +2721,7 @@ class PlayState extends MusicBeatState
 		misses++;
 
 		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.67, 0.75));
-		if (boyfriend.animation.curAnim.name != 'dodge')
+		if (curPlayer.animation.curAnim.name != 'dodge' || curPlayer.animation.curAnim.name != 'hey')
 		{
 			curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
 
@@ -2742,7 +2762,7 @@ class PlayState extends MusicBeatState
 				altSuffix = songScript.variables.get("bfAltSuffix");
 			}
 
-			if (boyfriend.animation.curAnim.name != 'shoot')
+			if (curPlayer.animation.curAnim.name != 'shoot' || curPlayer.animation.curAnim.name != 'dodge' || curPlayer.animation.curAnim.name != 'hey')
 			{
 				scripts.callFunction("onPlayerNoteHit", [note]);
 				curPlayer.holdTimer = 0;

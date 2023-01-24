@@ -101,7 +101,7 @@ function onStepHit(curStep:Int)
 
 	if (curStep == 1064)
 	{
-		game.health = 1;
+		game.healthTween(1, false);
 		iconP2.swapCharacter("rolldog");
 		healthBar.createFilledBar(FlxColor.fromString('#FF' + game.curOpponent.iconColor), FlxColor.fromString('#FF' + game.curPlayer.iconColor));
 		boyfriend.playAnim("phone", true, true);
@@ -137,7 +137,7 @@ function onStepHit(curStep:Int)
 
 		if (curStep == 1881)
 		{
-			game.health = 1;
+			game.healthTween(1, false);
 			iconP2.swapCharacter("rolldog");
 			healthBar.createFilledBar(FlxColor.fromString('#FF' + game.curOpponent.iconColor), FlxColor.fromString('#FF' + game.curPlayer.iconColor));
 
