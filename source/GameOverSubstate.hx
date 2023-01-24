@@ -59,7 +59,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				}
 		}
 
-		if(PlayState.instance.gotSmushed == true && PlayState.instance.boyfriend.curCharacter == 'bf-demon')
+		if (PlayState.instance.gotSmushed == true && PlayState.instance.boyfriend.curCharacter == 'bf-demon')
 		{
 			daBf = 'bf-smushed';
 		}
@@ -71,14 +71,13 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x - bf.offset.x, bf.getGraphicMidpoint().y - bf.offset.y, 1, 1);
 
-		if(daBf == 'bf-smushed')
+		if (daBf == 'bf-smushed')
 		{
 			camFollow.x += 350;
 			camFollow.y += 220;
 		}
 
 		add(camFollow);
-
 
 		if (daBf != 'madDeath')
 			FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
@@ -106,9 +105,9 @@ class GameOverSubstate extends MusicBeatSubstate
 			FlxG.sound.music.stop();
 
 			if (PlayState.isStoryMode)
-				FlxG.switchState(new StoryMenuState());
+				FlxG.switchState(new StoryMenuState(true));
 			else
-				FlxG.switchState(new FreeplayState());
+				FlxG.switchState(new FreeplayState(true));
 		}
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)

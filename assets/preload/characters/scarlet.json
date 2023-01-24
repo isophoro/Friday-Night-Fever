@@ -6,7 +6,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "Scar Idle",
+			"anim": "Scar Idle0",
 			"loop": false,
 			"name": "idle"
 		},

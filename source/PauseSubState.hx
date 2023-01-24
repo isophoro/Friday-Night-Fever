@@ -158,9 +158,9 @@ class PauseSubState extends MusicBeatSubstate
 					#end
 
 					if (PlayState.isStoryMode)
-						FlxG.switchState(new StoryMenuState());
+						FlxG.switchState(new StoryMenuState(true));
 					else
-						FlxG.switchState(new FreeplayState());
+						FlxG.switchState(new FreeplayState(true));
 
 				case 'BACK':
 					menuItems = menuItemsOG;

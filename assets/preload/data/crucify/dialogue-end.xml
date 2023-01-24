@@ -1,0 +1,22 @@
+<file>
+	<action msg="..." portrait="taki" emotion="angry"/>
+	<action msg="What the FUCK is wrong with people on this planet??" portrait="tea" emotion="worried"/>
+	<action msg="Hey, listen to me! I kind of get the feeling that you're some crazy religious nut-" portrait="feverd" emotion="wtf"/>
+	<action msg="Okay, MAYBE we got off on the wrong hand..." portrait="feverd" emotion="frown"/>
+	<action msg="Yeah I don't think they can understand you, FEVER." portrait="tea" emotion="pointing"/>
+	<action msg="I mean, seems you're pretty adamant on... bringing me to heaven?" portrait="feverd" emotion="frown"/>
+	<action msg="But, before you do anything you might regret..." portrait="feverd" emotion="frown"/>
+	<action msg="How about..." portrait="feverd" emotion="frown"/>
+	<action msg="I take you..." portrait="feverd" emotion="frown"/>
+	<action msg="To meet... God with me?" portrait="feverd" emotion="frown"/>
+	<action msg="..." portrait="taki" emotion="angry" narrate="..."/>
+	<action msg="..." portrait="taki" emotion="angry"/>
+	<action msg="..." portrait="taki" emotion="happy"/>
+	<action msg="D-did she stop?" portrait="tea" emotion="worried"/>
+	<action msg="I can't believe that worked." portrait="feverd" emotion="frown"/>
+	<action msg="Looks like my big brain saved our asses again." portrait="feverd" emotion="neutral"/>
+	<action msg="Okay, but what the fuck are you going to do now?" portrait="tea" emotion="pointing"/>
+	<action msg="They're just staring... it's creepy..." portrait="tea" emotion="worried"/>
+	<action msg="Well, they just want to meet God, right?" portrait="feverd" emotion="neutral"/>
+	<action msg="I've got... some kind of idea." portrait="feverd" emotion="neutral"/>
+</file>

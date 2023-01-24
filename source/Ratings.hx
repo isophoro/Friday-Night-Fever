@@ -7,9 +7,6 @@ class Ratings
 	{
 		var ranking:String = "N/A";
 
-		if (FlxG.save.data.botplay)
-			return "BotPlay";
-
 		if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods == 0) // Marvelous (SICK) Full Combo
 			ranking = "(SFC)";
 		else if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods >= 1) // Good Full Combo (Nothing but Goods & Sicks)
@@ -126,7 +123,7 @@ class Ratings
 	{
 		if (PlayState.SONG.song == 'Bad-Nun' && BadNun.translate)
 		{
-			return new UnicodeString((!FlxG.save.data.botplay ? "スコア: "
+			return new UnicodeString("スコア: "
 				+ score
 				+ // Score
 				" | 見逃した: "
@@ -136,13 +133,13 @@ class Ratings
 				+ (FlxG.save.data.botplay ? "N/A" : (Math.isNaN(accuracy) ? 100 : FlxMath.roundDecimal(accuracy, 2)) + "%")
 				+ // Accuracy
 				" • "
-				+ GenerateLetterRank(accuracy) : ""));
+				+ GenerateLetterRank(accuracy));
 		}
 		else
 		{
 			BadNun.translate = false;
 
-			return (!FlxG.save.data.botplay ? "Score: "
+			return ("Score: "
 				+ score
 				+ // Score
 				" | Misses: "
@@ -152,7 +149,7 @@ class Ratings
 				+ (FlxG.save.data.botplay ? "N/A" : (Math.isNaN(accuracy) ? 100 : FlxMath.roundDecimal(accuracy, 2)) + "%")
 				+ // Accuracy
 				" • "
-				+ GenerateLetterRank(accuracy) : ""); // Letter Rank
+				+ GenerateLetterRank(accuracy)); // Letter Rank
 		}
 	}
 

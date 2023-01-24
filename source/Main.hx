@@ -116,13 +116,16 @@ class Main extends Sprite
 
 		@:privateAccess
 		{
-			for (k => v in FlxG.bitmap._cache)
+			for (k in FlxG.bitmap._cache.keys())
 			{
-				if (v != null)
-				{
-					FlxG.bitmap._cache.remove(k);
-					v.destroy();
-				}
+				var bmp = FlxG.bitmap._cache.get(k);
+				if (k == null)
+					continue;
+
+				bmp.destroy();
+				openfl.Assets.cache.removeBitmapData(k);
+				FlxG.bitmap._cache.remove(k);
+				openfl.Assets.cache.clear(k);
 			}
 		}
 

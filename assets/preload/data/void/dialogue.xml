@@ -1,0 +1,30 @@
+<file>
+	<action msg="Hey, hey! You're a lotta fun to play with than I thought you'd be! But..." portrait="peakek" emotion="sus2" setBG="dialogue_backgrounds/room" fadeInMus="void"/>
+	<action msg="I think it's time to get a bit more serious. . ." portrait="peakek" emotion="combined"/>
+	<action msg="Would be a nice change of pace!" portrait="fever" emotion="point"/>
+	<action msg="Gotta say, I'm more happy harmonizing with you than other people." portrait="peakek" emotion="combined"/>
+	<action msg="Most people would've threatened me instantly. That or curse me out-" portrait="peakek" emotion="combined"/>
+	<action msg="Though, your whole work vibe is still SUPER boring." portrait="peakek" emotion="combined"/>
+	<action msg="Can’t agree. I’d say I've been having a lot of fun~." portrait="fever" emotion="cocky"/>
+	<action msg="Pffft, you're lame." portrait="tea" emotion="pointing-flushed"/>
+	<action msg="Oh, I know. I’ve watched you two." portrait="peakek" emotion="neutral"/>
+	<action msg="?!" portrait="tea" emotion="worried" effect="jump" playSound="recordscratch" fadeOutMus=""/>
+	<action msg="HUH?" portrait="tea" emotion="worried"/>
+	<action msg="Well, obviously I needed some pics for my smear campaign." portrait="peakek" emotion="sus2"/>
+	<action msg="Remember? The peep hole?" portrait="peakek" emotion="sus2"/>
+	<action msg="That’s an invasion of privacy!" portrait="fever" emotion="point"/>
+	<action msg="You guys didn't seem to hate it too much." portrait="peakek" emotion="neutral"/>
+	<action msg="BRUH." portrait="tea" emotion="pointing"/>
+	<action msg="I'm gonna beat your ass if you don't shut up and start singing." portrait="fever" emotion="point"/>
+	<action msg="You guys don't know how much I'm loving your expressions right now." portrait="peakek" emotion="sus2"/>
+	<action msg="You can’t embarrass us anymore than how you’ve humiliated yourself today!" portrait="fever" emotion="point" fadeInMus="void"/>
+	<action msg="I don’t see this as humiliating!" portrait="peakek" emotion="sus2"/>
+	<action msg="Yeah? Well, how about fall off a cliff, you stupid fu-" portrait="feverd" emotion="neutral"/>
+	<action msg="Ow. Ow, shouldn’t do that too fast" portrait="fever" emotion="facepalm-blush"/>
+	<action msg="Was wondering when that’d show up." portrait="tea" emotion="thinking"/>
+	<action msg="Huh? What was that?" portrait="peakek" emotion="wtf"/>
+	<action msg="Do you really care? I’m just gonna beat you and kick you out." portrait="fever" emotion="facepalm"/>
+	<action msg="Just start the next song, Tea!" portrait="fever" emotion="point"/>
+	<action msg="Bet." portrait="tea" emotion="neutral"/>
+	<action msg="Interesting . . ." portrait="peakek" emotion="neutral" fadeOutMus=""/>
+</file>

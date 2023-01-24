@@ -1,0 +1,34 @@
+<file>
+	<action msg="Is everyone alright?" portrait="tea" emotion="worried" setBG="dialogue_backgrounds/week5" fadeInMus="party-crasher"/>
+	<action msg="Goddammit... It's always the third song, is this some sort of curse?" portrait="fever" emotion="embarrased"/>
+	<action msg="Huh, so it happens to you guys too." portrait="pepper" emotion="sad"/>
+	<action msg="Hey, I think I recognize those colors on that spaceship!" portrait="tea" emotion="worried"/>
+	<action msg="Oh." portrait="fever" emotion="embarrased"/>
+	<action msg="Fucking goddamnit." portrait="fever" emotion="embarrased"/>
+	<action msg="Alright everyone!" portrait="yukichi" emotion="happy" fadeInMus="notfound"/>
+	<action msg="Which of you are evading your taxes?" portrait="yukichi" emotion="happy"/>
+	<action msg="What?" portrait="tea" emotion="worried"/>
+	<action msg="What?" portrait="yukichi" emotion="neutral"/>
+	<action msg="Fucking goddamnit. Fucking hell. They're looking for me." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="Babe, what are you on about? Who is that?" portrait="tea" emotion="worried"/>
+	<action msg="The names Yukichi! And I'm here for the space criminal behind you!" portrait="yukichi" emotion="happy"/>
+	<action msg="Space criminal? What are you-" portrait="tea" emotion="worried"/>
+	<action msg="" portrait="tea" emotion="worried"/>
+	<action msg="Hold on, what." portrait="tea" emotion="pointing"/>
+	<action msg="Ugh." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="Guess I can't hide anymore." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="Hide?" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="You're Fever, aren't you? You may have the others fooled, but not me." portrait="yukichi" emotion="neutral"/>
+	<action msg="You use another form to hide and have others think you're human." portrait="yukichi" emotion="happy"/>
+	<action msg="But in reality, you're just another criminal scumbag avoiding jailtime!" portrait="yukichi" emotion="happy"/>
+	<action msg="And when the FUCK were you going to tell me this?" portrait="tea" emotion="angry"/>
+	<action msg="I wasn't planning on going back to space for a while..." portrait="feverd" emotion="frown"/>
+	<action msg="But it seems that I can't get away from you guys for even a short while. Fucking annoying." portrait="feverd" emotion="wtf"/>
+	<action msg="Enough! Fever, you're wanted on account of several crimes, and I'm taking you back in!" portrait="yukichi" emotion="happy"/>
+	<action msg="There's no way I'm going back." portrait="feverd" emotion="frown"/>
+	<action msg="You're not even aware of what they do to people, are you?" portrait="feverd" emotion="frown" setBG=""/>
+	<action msg="That's none of my business. You probably deserve it, anyways." portrait="yukichi" emotion="neutral"/>
+	<action msg="Fucking. Fuck. Fuck you. FUCK." portrait="feverd" emotion="wtf"/>
+	<action msg="We're not dropping this." portrait="tea" emotion="pointing"/>
+	<action msg="Yeah yeah, let's just do this first." portrait="feverd" emotion="frown" fadeOutMus=""/>
+</file>

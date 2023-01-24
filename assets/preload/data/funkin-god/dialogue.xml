@@ -1,0 +1,39 @@
+<file>
+	<action msg="" portrait="mega" emotion="cocky-angry" setBG="dialogue_backgrounds/plainblacklol"/>
+	<action msg="You made the song about food?!" portrait="mega" emotion="cocky-angry"/>
+	<action msg="I did it to throw you off, and it worked!" portrait="fever" emotion="point"/>
+	<action msg="I thought you did it cause you're hungry." portrait="tea" emotion="neutral"/>
+	<action msg="Okay, maybe that's half of the reason!" portrait="fever" emotion="point"/>
+	<action msg="EUDHG-" portrait="mega" emotion="huh"/>
+	<action msg="YOU KNOW WHAT??? IM DONE WITH YALL-" portrait="mega" emotion="insane"/>
+	<action msg="DUMB FRICKS-" portrait="mega" emotion="insane"/>
+	<action msg="The only dumb one here is you!" portrait="fever" emotion="point"/>
+	<action msg="You knew what you were getting into, and you lost!" portrait="fever" emotion="point"/>
+	<action msg="STOP." portrait="mega" emotion="cocky-angry"/>
+	<action msg="I'm so tired of the both of you NOT taking me SERIOUSLY!" portrait="mega" emotion="cocky-angry"/>
+	<action msg="Y'ALL LITERALLY NEED JESUS! LITERALLY!" portrait="mega" emotion="cocky-angry"/>
+	<action msg="IM SUMMONING GOD FOR THIS, AHAHA!" portrait="mega" emotion="cocky-angry"/>
+	<action msg="I think they've lost it." portrait="fever" emotion="ugh"/>
+	<action msg="Sorry- did they say they're summoning God?" portrait="tea" emotion="thinking"/>
+	<action msg="This is the second time we've ran into some crazy religious nut." portrait="fever" emotion="ugh"/>
+	<action msg="Wait, what are you doi-" portrait="tea" emotion="worried"/>
+	<action msg="Hey, don't do anything stu-" portrait="fever" emotion="point"/>
+	<action msg="G-God?" portrait="fever" emotion="shocked" setBG="" narrate="" playSound="heavenlychoir"/>
+	<action msg="..." portrait="flippy" emotion="ugh"/>
+	<action msg="Hello, my children." portrait="flippy" emotion="neutral"/>
+	<action msg="Woah. Nice." portrait="fever" emotion="neutral"/>
+	<action msg="God's kinda good looking." portrait="tea" emotion="neutral"/>
+	<action msg="Wait, GOD?" portrait="tea" emotion="worried"/>
+	<action msg="Indeed. I have been freed from the host of that, annoying flirt." portrait="flippy" emotion="neutral"/>
+	<action msg="And before I ascend back to the realm from whence I came." portrait="flippy" emotion="neutral"/>
+	<action msg="You must prove yourself in battle, Fever. It's the only way for the both of you to return back to your planet..." portrait="flippy" emotion="neutral"/>
+	<action msg="He even knows my name, too..." portrait="fever" emotion="shocked"/>
+	<action msg="Actually, I overheard it while-" portrait="flippy" emotion="neutral"/>
+	<action msg="Guess I gotta fight God!" portrait="fever" emotion="point"/>
+	<action msg="A god." portrait="tea" emotion="pointing-flushed"/>
+	<action msg="Huh?" portrait="fever" emotion="ugh"/>
+	<action msg="This is probably a God. Not God." portrait="tea" emotion="neutral"/>
+	<action msg="Oh, I gotcha!" portrait="fever" emotion="ugh"/>
+	<action msg="Well then, Not God! I'll prove myself to you and then take my girl to a buffet!" portrait="fever" emotion="point"/>
+	<action msg="..." portrait="flippy" emotion="ugh" fadeOutMus=""/>
+</file>

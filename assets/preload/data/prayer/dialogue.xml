@@ -1,0 +1,39 @@
+<file>
+	<action msg="Well, this is it." portrait="feverd" emotion="frown"/>
+	<action msg="..." portrait="taki" emotion="neutral" narrate="This... is Fever Town Church." setBG="dialogue_backgrounds/prayerBG"/>
+	<action msg="Hey, I never said it would be pretty." portrait="feverd" emotion="frown"/>
+	<action msg="This place is creeping me out." portrait="tea" emotion="worried"/>
+	<action msg="I feel like someone's watching us..." portrait="tea" emotion="worried"/>
+	<action msg="Well, we ARE in the presence of God." portrait="feverd" emotion="neutral"/>
+	<action msg="Speaking of, aren't you a demon? Shouldn't this place be burning you alive or something?" portrait="tea" emotion="pointing"/>
+	<action msg="You'd be surprised how many demons choose to have God as who they follow." portrait="feverd" emotion="neutral"/>
+	<action msg="I don't really understand it, but I guess I'm in no place to really judge." portrait="feverd" emotion="frown"/>
+	<action msg="?..." portrait="taki" emotion="neutral"/>
+	<action msg="This place has been run-down for a LONG time." portrait="feverd" emotion="frown"/>
+	<action msg="When I first came to Fever Town, it was... empty. Abandoned buildings everywhere, a ghost town. Hell, I have no idea why I stayed." portrait="feverd" emotion="frown"/>
+	<action msg="But I did, and after some cleaning up, more and more people came. And let me say, back then, it was barely as pretty as it is now." portrait="feverd" emotion="neutral"/>
+	<action msg="I kinda miss those days." portrait="feverd" emotion="neutral"/>
+	<action msg="So, what WAS the reason for you coming to some random spot in the middle of nowhere?" portrait="tea" emotion="thinking"/>
+	<action msg="..." portrait="feverd" emotion="frown"/>
+	<action msg="It's a long story. Weird, too." portrait="feverd" emotion="frown"/>
+	<action msg="Yeah, I'm beginning to realize that's common here huh?" portrait="tea" emotion="neutral"/>
+	<action msg="..." portrait="taki" emotion="neutral"/>
+	<action msg="~" portrait="taki" emotion="happy"/>
+	<action msg="See? I knew she'd like the place." portrait="feverd" emotion="neutral"/>
+	<action msg="Oh sure, what isn't there to like? She'll have plenty of company, too." portrait="tea" emotion="neutral"/>
+	<action msg="Like that roach over there. And that one. And that bird carcass." portrait="tea" emotion="neutral"/>
+	<action msg="..." portrait="tea" emotion="neutral"/>
+	<action msg="Y'know, when she isn't yelling about sending us to the front gates, she's kind of cute, in a way." portrait="tea" emotion="neutral"/>
+	<action msg="" portrait="taki" emotion="angry"/>
+	<action msg="HEY, OKAY I TAKE IT BACK-" portrait="tea" emotion="worried"/>
+	<action msg="" portrait="taki" emotion="angry"/>
+	<action msg="Oh, he just wants to sing some more." portrait="feverd" emotion="frown"/>
+	<action msg="You got that just from her expression? And why are you so calm about all of this?" portrait="tea" emotion="worried"/>
+	<action msg="I mean, I had the feeling he wasn't all that bad from when we sang earlier." portrait="feverd" emotion="neutral"/>
+	<action msg="She... tried to slice you in half." portrait="tea" emotion="pointing"/>
+	<action msg="Babe, I'm a demon. Stuff like that is super normal for us. People hunting us down, I mean." portrait="feverd" emotion="neutral"/>
+	<action msg="..." portrait="tea" emotion="pointing"/>
+	<action msg="Yeah okay, whatever." portrait="tea" emotion="neutral"/>
+	<action msg="I'll pick something nice." portrait="tea" emotion="neutral"/>
+	<action msg="Kay." portrait="feverd" emotion="neutral"/>
+</file>

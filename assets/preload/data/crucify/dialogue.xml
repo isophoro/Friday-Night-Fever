@@ -1,0 +1,6 @@
+<file>
+	<action msg=". . . ." portrait="tea" emotion="worried"/>
+	<action msg=". . ." portrait="taki" emotion="neutral"/>
+	<action msg="Ha... well, that wasn't bad at all. Seems you're all bark, and no bite-" portrait="feverd" emotion="neutral"/>
+	<action msg="You will meet God." portrait="taki" emotion="angry"/>
+</file>

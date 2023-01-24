@@ -1220,9 +1220,13 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		FlxG.sound.music.stop();
 
+		camPause = new FlxCamera();
+		camPause.bgColor.alpha = 0;
+		FlxG.cameras.add(camPause, false);
+
 		var dialoguePath = 'assets/data/${SONG.song.toLowerCase()}/dialogue-end.xml';
 		var doof:DialogueBox = new DialogueBox(dialoguePath);
-		doof.cameras = [camHUD];
+		doof.cameras = [camPause];
 		doof.finishCallback = endSong;
 		add(doof);
 	}
@@ -2159,7 +2163,7 @@ class PlayState extends MusicBeatState
 
 		#if debug
 		if (FlxG.keys.justPressed.ONE)
-			endSong();
+			FlxG.sound.music.onComplete();
 		#end
 
 		scripts.callFunction("onPostUpdate", [elapsed]);
@@ -2479,7 +2483,7 @@ class PlayState extends MusicBeatState
 
 				endingSong = true;
 
-				FlxG.switchState(new StoryMenuState());
+				FlxG.switchState(new StoryMenuState(true));
 			}
 			else
 			{
@@ -2507,7 +2511,7 @@ class PlayState extends MusicBeatState
 		{
 			trace('WENT BACK TO FREEPLAY??');
 			Main.playFreakyMenu();
-			FlxG.switchState(new FreeplayState());
+			FlxG.switchState(new FreeplayState(true));
 		}
 	}
 

@@ -528,7 +528,6 @@ class RoboBackground
 				babyArrow.animation.play('static');
 			});
 
-
 			PlayState.playerStrums.forEach(function(babyArrow:FlxSprite)
 			{
 				babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
@@ -564,8 +563,7 @@ class RoboBackground
 		}
 		else
 		{
-
-			//SWITCHING BACK TO ITS NOTESKIN
+			// SWITCHING BACK TO ITS NOTESKIN
 			PlayState.cpuStrums.forEach(function(babyArrow:FlxSprite)
 			{
 				var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
@@ -585,14 +583,11 @@ class RoboBackground
 				babyArrow.updateHitbox();
 				babyArrow.animation.play('static');
 			});
-			
+
 			PlayState.playerStrums.forEach(function(babyArrow:FlxSprite)
 			{
 				var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
 				var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
-
-
-			
 
 				babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
 				babyArrow.animation.addByPrefix(dataColor[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);
@@ -639,10 +634,9 @@ class RoboStage
 			}
 		}
 
-		if (PlayState.instance.dad.curCharacter == "robo-cesar-minus")
+		if (PlayState.instance.boyfriend.curCharacter == "bf" && cameraZoom != 0.98)
 		{
-			positioning["dad"][0] -= 70;
-			positioning["dad"][1] -= 90;
+			positioning["boyfriend"][1] -= 50;
 		}
 
 		this.positioning = positioning;

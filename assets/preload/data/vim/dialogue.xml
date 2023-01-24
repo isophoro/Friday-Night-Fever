@@ -1,6 +1,5 @@
 <file>
-	<action fadeInMus="vim"/>
-	<action msg="Aight, I see you. You're pretty okay." portrait="mako" emotion="neutral"/>
+	<action msg="Aight, I see you. You're pretty okay." portrait="mako" emotion="neutral" fadeInMus="vim"/>
 	<action msg="For a melon, that wasn't too bad!" portrait="feverc" emotion="hey"/>
 	<action msg="Huh?" portrait="mako" emotion="confused"/>
 	<action msg="Oh, uh- y'know, cause I wasn't aware that... you guys could talk and all." portrait="feverc" emotion="ugh"/>
@@ -27,6 +26,5 @@
 	<action msg="Hungry..." portrait="feverc" emotion="facepalm-blush"/>
 	<action msg="..." portrait="tea" emotion="thinking"/>
 	<action msg="Yo! Snap the fuck out of it!" portrait="mako" emotion="angry"/>
-	<action fadeOutMus=""/>
-	<action msg="What's up with you today?" portrait="tea" emotion="worried"/>
+	<action msg="What's up with you today?" portrait="tea" emotion="worried" fadeOutMus=""/>
 </file>

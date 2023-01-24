@@ -327,8 +327,9 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				curLeft.setPosition(box.x, -90);
 		}
 
+		var char = portrait.character.split("-")[0];
 		text.sounds = [
-			FlxG.sound.load(Paths.sound("dialogue/" + portrait.character.split("-")[0]), 0.6)
+			FlxG.sound.load(Paths.sound("dialogue/" + (char.startsWith("fever") ? "fever" : char)), 0.6)
 		];
 
 		if (action.emotion != null)

@@ -1,0 +1,16 @@
+<file>
+	<action msg="Hey, dad!" portrait="pepper" emotion="neutral" fadeInMus="mild"/>
+	<action msg="Oh, it's this kid again." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="Aww. What was their name?" portrait="tea" emotion="neutral"/>
+	<action msg="I can't remember... I just wish they'd stop calling me dad." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="Hey! I'm right here." portrait="pepper" emotion="sad"/>
+	<action msg="Besides, I'm not a kid! I'm at least. Uh." portrait="pepper" emotion="neutral"/>
+	<action msg="" portrait="pepper" emotion="neutral"/>
+	<action msg="This many." portrait="pepper" emotion="neutral"/>
+	<action msg="That isn't a lot." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="I think it's a lot." portrait="tea" emotion="neutral"/>
+	<action msg="She thinks it's a lot." portrait="pepper" emotion="neutral"/>
+	<action msg="Fineeee, I guess I'll sing with you some more. Only if it'll get you to stop following us." portrait="fever" emotion="facepalm-blush"/>
+	<action msg="Yay! I've been practicing a ton since our last one!" portrait="pepper" emotion="neutral"/>
+	<action msg="Try to keep up!" portrait="pepper" emotion="neutral" fadeOutMus=""/>
+</file>

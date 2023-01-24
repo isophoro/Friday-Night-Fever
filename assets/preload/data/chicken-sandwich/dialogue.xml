@@ -1,0 +1,38 @@
+<file>
+	<action msg="Give up yet?" portrait="mega" emotion="swag" fadeInMus="chicken-sandwich"/>
+	<action msg="Tea, was it? Are you yet charmed by my stunning words?" portrait="mega" emotion="swag"/>
+	<action msg="My... sparkling eyes?" portrait="mega" emotion="swag"/>
+	<action msg="My confident demenour?" portrait="mega" emotion="swag"/>
+	<action msg="The angelic singing voice maybe?" portrait="mega" emotion="swag"/>
+	<action msg="I have yet to have been &quot;charmed&quot; by any of your words." portrait="tea" emotion="neutral"/>
+	<action msg="!" portrait="mega" emotion="cocky-angry"/>
+	<action msg="A-ah, I see-!" portrait="mega" emotion="embarassed2"/>
+	<action msg="You ever even *been* in a relationship before?" portrait="fever" emotion="ugh"/>
+	<action msg="Have you?" portrait="tea" emotion="neutral"/>
+	<action msg="Uhh-" portrait="fever" emotion="embarrased"/>
+	<action msg="Anyways-" portrait="fever" emotion="ugh"/>
+	<action msg="You sure you're up for this?" portrait="fever" emotion="point"/>
+	<action msg="HEY- I MEAN" portrait="mega" emotion="embarassed3"/>
+	<action msg="SORTA YEAH." portrait="mega" emotion="huh"/>
+	<action msg="The fuck does sorta mean?..." portrait="fever" emotion="point"/>
+	<action msg="WELL I MEAN LIKE-" portrait="mega" emotion="cocky-angry"/>
+	<action msg="I AIN'T TRYNA DO ANYTHING WITH HER, Y'KNOW-" portrait="mega" emotion="huh"/>
+	<action msg="I just... want her for myself!" portrait="mega" emotion="swag"/>
+	<action msg="Uhuh." portrait="tea" emotion="thinking"/>
+	<action msg="And just what are you gonna do after you steal me away in your &quot;loving&quot; embrace?" portrait="tea" emotion="neutral"/>
+	<action msg="Uh- well-?" portrait="mega" emotion="embarassed3"/>
+	<action msg="Maybe we could ... go get chicken sandwiches... y'know, as amigos?" portrait="mega" emotion="embarassed3"/>
+	<action msg="Y'know, usually after going through entire rap battles to fight over a woman, I expect to do a little more than a platonic coffee date." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="UH-" portrait="mega" emotion="cocky-angry"/>
+	<action msg="THAT'S-" portrait="mega" emotion="cocky-angry"/>
+	<action msg="Yeah." portrait="fever" emotion="hey"/>
+	<action msg="You gotta pay a little extra." portrait="fever" emotion="hey"/>
+	<action msg="Like take her to a buffet!" portrait="fever" emotion="point"/>
+	<action msg="" portrait="tea" emotion="neutral"/>
+	<action msg="Holy shit, a buffet sounds so fucking good." portrait="tea" emotion="pointing-flushed"/>
+	<action msg="Have you ever had carrot cake?" portrait="fever" emotion="cocky"/>
+	<action msg="That's a thing?" portrait="tea" emotion="pointing-flushed"/>
+	<action msg="Wow." portrait="fever" emotion="hey"/>
+	<action msg="We need to hurry this up!" portrait="fever" emotion="hey"/>
+	<action msg="CAN WE JUST START THE NEXT SONG ALREADY?" portrait="mega" emotion="huh" fadeOutMus=""/>
+</file>

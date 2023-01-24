@@ -1,0 +1,32 @@
+<file>
+	<action msg="I thought I asked you 'kind' folks to stop bothering me. I can hardly understand a lick of what you guys are saying." portrait="feverd-jail" emotion="frown" narrate="How long have I been here?" fadeInMus="heartbeat" setBG="dialogue_backgrounds/plainblacklol"/>
+	<action msg="Doesn't help either that everytime I think about escaping, the chains around my wrists send a very painful electric shock." portrait="feverd-jail" emotion="frown"/>
+	<action msg="You guys sure know how to keep prisoners from having an opinion." portrait="feverd-jail" emotion="frown"/>
+	<action msg="Bahaha!" portrait="npc" emotion="neutral"/>
+	<action msg="You forgot the part where those handcuffs of yours are ready to administer a very strong sedative if you so much as TRY to take them off." portrait="npc" emotion="neutral"/>
+	<action msg="We wouldn’t want you to get hurt struggling to get free. That’ll look bad for us on the news." portrait="npc" emotion="neutral"/>
+	<action msg="Speaking of, tomorrow’s your trial. And I gotta say, it’ll be quite the interesting case." portrait="npc" emotion="neutral"/>
+	<action msg="I mean, we’ve never had a trial where we don’t even know the NAME of the defendant! Honestly, I thought we’d torture that out of you quickly." portrait="npc" emotion="neutral"/>
+	<action msg="Come on, how about you just tell me? I won't bite." portrait="npc" emotion="neutral"/>
+	<action msg="There's a special place for you. Hell is too much of a paradise for your kind." portrait="feverd-jail" emotion="frown"/>
+	<action msg="You demons are a nasty folk, aren’t you?" portrait="npc" emotion="neutral"/>
+	<action msg="..." portrait="feverd-jail" emotion="frown"/>
+	<action msg="I hurt your feelings didn’t I? Don’t worry, I'm sure what they'll do to you tomorrow will make me seem like a slap on the wrist." portrait="npc" emotion="neutral"/>
+	<action msg="Hey, wake up!" portrait="tea" emotion="flushed" fadeInMus="milk-tea" setBG="" fadeOutMus="" narrate=". . ."/>
+	<action msg="Huh? What?-" portrait="fever" emotion="shocked" effect="jump"/>
+	<action msg="You were having a nightmare. These have been ramping up, haven't they?" portrait="tea" emotion="flushed"/>
+	<action msg="Oh. Right." portrait="fever" emotion="ugh"/>
+	<action msg="Thanks for waking me up, Tea." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="Uh, where was I?" portrait="fever" emotion="facepalm-stare"/>
+	<action msg="We were heading to bed?" portrait="tea" emotion="flushed"/>
+	<action msg="No no, I should finish this work. Keeping this shit piled up will annoy me." portrait="fever" emotion="neutral"/>
+	<action msg="What, so you can drool on those papers some more? I can barely read whos name this is. You drowned them." portrait="tea" emotion="pointing"/>
+	<action msg="Uh, oops..." portrait="fever" emotion="embarrased"/>
+	<action msg="Ugh." portrait="tea" emotion="flushed"/>
+	<action msg="There’s no need to rush things, you know." portrait="tea" emotion="flushed"/>
+	<action msg="Yeah, yeah, I know. I wish I could sleep without jolting awake a few minutes in." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="And I still wish you’d tell me more." portrait="tea" emotion="thinking"/>
+	<action msg="I will, soon. Sorry, it’s just annoying." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="Well, I can think of a way we can help you relax." portrait="tea" emotion="neutral"/>
+	<action msg="Oh yeah? It's been a while since we've done this, huh?" portrait="fever" emotion="hey" fadeOutMus=""/>
+</file>

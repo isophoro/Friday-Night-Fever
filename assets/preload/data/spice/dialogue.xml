@@ -1,0 +1,16 @@
+<file>
+	<action msg="The kids pretty good." portrait="tea" emotion="flushed" fadeInMus="spice"/>
+	<action msg="I have to agree. I wonder if they've been doing this for a while..." portrait="fever" emotion="ugh"/>
+	<action msg="Aw, all by themself?" portrait="tea" emotion="flushed"/>
+	<action msg="It makes me wonder who this kids parents are." portrait="fever" emotion="ugh"/>
+	<action msg="Poor thing must be all alone. Can I ask, where'd you get that balloon?" portrait="tea" emotion="flushed"/>
+	<action msg="..." portrait="pepper" emotion="neutral"/>
+	<action msg="..." portrait="pepper" emotion="neutral"/>
+	<action msg="I don't remember." portrait="pepper" emotion="sad"/>
+	<action msg="You really may just be his dad." portrait="tea" emotion="pointing-flushed"/>
+	<action msg="Hey! I remember a LOT of things! My head is not empty, it is full of a LOT of knowledge that most people would pay for!" portrait="fever" emotion="point"/>
+	<action msg="What'd you have for breakfast yesterday?" portrait="tea" emotion="pointing"/>
+	<action msg="" portrait="fever" emotion="neutral"/>
+	<action msg="Hey kid, let's go another round!" portrait="fever" emotion="point"/>
+	<action msg="Kay!" portrait="pepper" emotion="neutral" fadeOutMus=""/>
+</file>

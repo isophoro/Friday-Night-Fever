@@ -83,7 +83,7 @@ class MainMenuState extends InteractableState
 
 		var credits = new Interactable('newMain/credits', -10, 45, 1, 'credits notselected', 'credits selected', new InteractHitbox(40, 175, 225, 525),
 			[216, 172], true, "newMain/creditstext", "credits text", [300, 140]);
-		credits.callback = AchievementHandler.unlockTrophy.bind(TEST_TROPHY);
+		credits.callback = FlxG.switchState.bind(new states.CreditsMenu());
 		addInteractable(credits);
 
 		var freeplay = new Interactable('newMain/freeplay', 1100, 160, 1, 'Freeplay not selected', 'Freeplay selected',
@@ -123,7 +123,6 @@ class MainMenuState extends InteractableState
 
 		order = [
 			credits.hitbox,
-			// train.hitbox,
 			costumes.hitbox,
 			boombox.hitbox,
 			extras.hitbox,

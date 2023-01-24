@@ -1,0 +1,25 @@
+<file>
+	<action msg="Kids really good." portrait="fever" emotion="neutral" fadeOutMus="" setBG="dialogue_backgrounds/week5"/>
+	<action msg="Maybe they are my son." portrait="fever" emotion="hey"/>
+	<action msg="" portrait="pepper" emotion="neutral"/>
+	<action msg="Aww, what's your name little guy?" portrait="tea" emotion="neutral"/>
+	<action msg="Everyone calls me..." portrait="pepper" emotion="neutral"/>
+	<action msg="Uhm..." portrait="pepper" emotion="neutral"/>
+	<action msg="Monster. Pepper Monster." portrait="pepper" emotion="sad"/>
+	<action msg="" portrait="fever" emotion="neutral"/>
+	<action msg="That's a dumb name." portrait="fever" emotion="neutral"/>
+	<action msg="Huh?" portrait="pepper" emotion="sad"/>
+	<action msg="Now, Pepper Demon, THAT'S a name that'll strike something in peoples minds." portrait="fever" emotion="hey"/>
+	<action msg="You're incredibly biased." portrait="tea" emotion="pointing"/>
+	<action msg="A little bit." portrait="fever" emotion="cocky"/>
+	<action msg="..." portrait="fever" emotion="embarrased"/>
+	<action msg="Okay, Pepper, how about you-" portrait="fever" emotion="neutral"/>
+	<action msg="" portrait="fever" emotion="ugh"/>
+	<action msg="Do you hear that?" portrait="fever" emotion="shocked"/>
+	<action msg="I've been hearing it for a bit, but it's getting louder. I thought it was just me." portrait="tea" emotion="thinking"/>
+	<action msg="" portrait="fever" emotion="shocked"/>
+	<action msg="Why does it sound familiar?" portrait="fever" emotion="shocked"/>
+	<action msg="Is that a spaceship?" portrait="tea" emotion="thinking"/>
+	<action msg="" portrait="tea" emotion="thinking"/>
+	<action msg="OH FUCK" portrait="fever" emotion="shocked"/>
+</file>

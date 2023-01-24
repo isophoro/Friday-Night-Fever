@@ -1,0 +1,21 @@
+<file>
+	<action msg="MAN, I really dig your flow. How do you manage to keep such a steady voice while holding a chainsaw?" portrait="feverd" emotion="neutral"/>
+	<action msg="..." portrait="taki" emotion="neutral"/>
+	<action msg="Yeah, I figured that." portrait="feverd" emotion="neutral"/>
+	<action msg="So... you're just... gonna leave her here?" portrait="tea" emotion="worried"/>
+	<action msg="Why not? It's obvious that she'll do a lot more good here than terrifying random people in some far off building." portrait="feverd" emotion="neutral"/>
+	<action msg="What do you say, uh- did I ever get your name?" portrait="feverd" emotion="neutral"/>
+	<action msg="..." portrait="taki" emotion="neutral"/>
+	<action msg="Taki. My name is Taki." portrait="taki" emotion="neutral"/>
+	<action msg="!" portrait="feverd" emotion="wtf"/>
+	<action msg="!" portrait="tea" emotion="worried"/>
+	<action msg="Oh, I wasn't expecting that." portrait="feverd" emotion="frown"/>
+	<action msg="Well anyways. You want this church?" portrait="feverd" emotion="neutral"/>
+	<action msg="Wait, you're just gonna give her the WHOLE church?" portrait="tea" emotion="pointing"/>
+	<action msg="Yeah, why not." portrait="feverd" emotion="neutral"/>
+	<action msg="If she can take it from me." portrait="feverd" emotion="point"/>
+	<action msg="..." portrait="taki" emotion="angry"/>
+	<action msg="~" portrait="taki" emotion="happy"/>
+	<action msg="I still don't like the feel of this." portrait="tea" emotion="worried"/>
+	<action msg="Things should be okay. You know Taki, you aren't that bad honestly." portrait="feverd" emotion="neutral" setBG="dialogue_backgrounds/takiaanime"/>
+</file>

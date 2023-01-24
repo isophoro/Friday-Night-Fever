@@ -1,0 +1,32 @@
+<file>
+	<action msg="You types are always so resilient." portrait="yukichi" emotion="happy" fadeOutMus=""/>
+	<action msg="You &quot;types?&quot; What's that supposed to mean?" portrait="feverd" emotion="frown"/>
+	<action msg="Shut up, scumbag! If I have to use some more power to achieve my goal, then I will! After that, things will get a lot more peaceful!" portrait="yukichi" emotion="happy"/>
+	<action msg="Here we go." portrait="feverd" emotion="frown"/>
+	<action msg="Hey dad, what's going on?" portrait="pepper" emotion="sad"/>
+	<action msg="Huh? Pepper, you need to leave." portrait="feverd" emotion="frown"/>
+	<action msg="..." portrait="pepper" emotion="sad"/>
+	<action msg="Did that pepper just call you dad?" portrait="yukichi" emotion="neutral"/>
+	<action msg="It's a long story." portrait="tea" emotion="neutral"/>
+	<action msg="Huh? No it isn-" portrait="feverd" emotion="frown"/>
+	<action msg="No, it is, isn't it Fever? A long, tragic story." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="One where if you were to leave, that'd make Pepper here an orphan again." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="..." portrait="feverd" emotion="frown"/>
+	<action msg="Oh, yeah. I mean, I suppose if you have to take me in, you might as well do it now." portrait="feverd" emotion="frown"/>
+	<action msg="..." portrait="yukichi" emotion="neutral"/>
+	<action msg="Of course, we'll miss you as you go back to space jail... but I guess we'll just have to live on without you..." portrait="tea" emotion="thinking"/>
+	<action msg="It's a shame, but I guess such is the fate of the cruel, mean space police." portrait="feverd" emotion="neutral"/>
+	<action msg="You guys think you're so funny, don't you..." portrait="yukichi" emotion="neutral"/>
+	<action msg="..." portrait="yukichi" emotion="neutral"/>
+	<action msg="Ugh, fine. I'll let you go for now. Only cause I don't wanna make a scene." portrait="yukichi" emotion="happy"/>
+	<action msg="But watch yourself Fever, your days of being free are almost up." portrait="yukichi" emotion="happy"/>
+	<action msg="Ugh." portrait="feverd" emotion="frown" narrate="..."/>
+	<action msg="That was super uncomfortable." portrait="feverd" emotion="frown"/>
+	<action msg="You know what else is going to be uncomfortable in just a second?" portrait="tea" emotion="pointing"/>
+	<action msg="Okay, okay- I get it, I didn't tell you enough, I'm sorry." portrait="feverd" emotion="frown"/>
+	<action msg="But for now, let's just enjoy the night before it leaves." portrait="feverd" emotion="neutral"/>
+	<action msg="Hey pepper, stick around with us for a bit. We'll buy you a burger or something." portrait="feverd" emotion="neutral"/>
+	<action msg="Oh really? Thank you, dad!" portrait="pepper" emotion="neutral"/>
+	<action msg="" portrait="pepper" emotion="neutral"/>
+	<action msg="What's a burger?" portrait="pepper" emotion="neutral"/>
+</file>
