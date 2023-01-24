@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="options_gameplay.png">
+  <!-- Created with Adobe Animate version 21.0.3.38773 -->
+  <!-- http://www.adobe.com/products/animate.html -->
+  <SubTexture name="gameplaynselected0000" x="0" y="0" width="298.82" height="184.92" pivotX="-52.95" pivotY="-28.75" />
+  <SubTexture name="gameplaynselected0001" x="0" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0002" x="0" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0003" x="0" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0004" x="298.82" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0005" x="298.82" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0006" x="298.82" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0007" x="298.82" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0008" x="597.64" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0009" x="597.64" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0010" x="597.64" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplaynselected0011" x="597.64" y="0" width="298.82" height="184.92" />
+  <SubTexture name="gameplayselected0000" x="896.46" y="0" width="369.84" height="215.74" pivotX="3" pivotY="-11.45" />
+  <SubTexture name="gameplayselected0001" x="0" y="215.74" width="369.84" height="215.74" />
+  <SubTexture name="gameplayselected0002" x="369.84" y="215.74" width="369.84" height="215.74" />
+  <SubTexture name="gameplayselected0003" x="896.46" y="0" width="369.84" height="215.74" />
+  <SubTexture name="gameplayselected0004" x="0" y="215.74" width="369.84" height="215.74" />
+  <SubTexture name="gameplayselected0005" x="369.84" y="215.74" width="369.84" height="215.74" />
+</TextureAtlas>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="options_performance.png">
+  <!-- Created with Adobe Animate version 21.0.3.38773 -->
+  <!-- http://www.adobe.com/products/animate.html -->
+  <SubTexture name="performancenselected0000" x="0" y="0" width="326.29" height="133.33" pivotX="-54.85" pivotY="-21.6" />
+  <SubTexture name="performancenselected0001" x="0" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0002" x="0" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0003" x="0" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0004" x="326.29" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0005" x="326.29" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0006" x="326.29" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0007" x="326.29" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0008" x="652.58" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0009" x="652.58" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0010" x="652.58" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performancenselected0011" x="652.58" y="0" width="326.29" height="133.33" />
+  <SubTexture name="performanceselected0000" x="0" y="133.33" width="418.08" height="166.16" pivotX="8.7" pivotY="5.95" />
+  <SubTexture name="performanceselected0001" x="418.08" y="133.33" width="418.08" height="166.16" />
+  <SubTexture name="performanceselected0002" x="836.16" y="133.33" width="418.08" height="166.16" />
+  <SubTexture name="performanceselected0003" x="0" y="133.33" width="418.08" height="166.16" />
+  <SubTexture name="performanceselected0004" x="418.08" y="133.33" width="418.08" height="166.16" />
+  <SubTexture name="performanceselected0005" x="836.16" y="133.33" width="418.08" height="166.16" />
+</TextureAtlas>

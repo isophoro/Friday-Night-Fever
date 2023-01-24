@@ -9,6 +9,8 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxRect;
@@ -30,8 +32,6 @@ import openfl.system.System;
 import scripting.*;
 import shaders.*;
 import sprites.*;
-import flixel.effects.particles.FlxEmitter;
-import flixel.effects.particles.FlxParticle;
 
 using StringTools;
 
@@ -216,10 +216,11 @@ class PlayState extends MusicBeatState
 	var zoomTwn:FlxTween;
 
 	var keybindTxt:FlxText;
-	public var spacePressed:Bool = false;
-	public var gotSmushed:Bool = false; //death stuff
 
-	var emitter:FlxEmitter; //health tween shred effect
+	public var spacePressed:Bool = false;
+	public var gotSmushed:Bool = false; // death stuff
+
+	var emitter:FlxEmitter; // health tween shred effect
 
 	override public function create()
 	{
@@ -860,13 +861,12 @@ class PlayState extends MusicBeatState
 		scoreTxt.borderSize = 1.25;
 		FlxG.signals.gameResized.add(onGameResize);
 
-		
 		emitter = new FlxEmitter(50, 75, 200);
 		emitter.makeParticles(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor), 200);
 
 		/*var particles = new FlxParticle();
-		particles.makeGraphic(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor));
-		emitter.add(particles);*/
+			particles.makeGraphic(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor));
+			emitter.add(particles); */
 
 		emitter.launchMode = FlxEmitterMode.CIRCLE;
 		emitter.launchAngle.set(-45, 45);
@@ -1144,25 +1144,11 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		var introAssets:Map<String, Array<String>> = [
-			'default' => ['ready', "set", "go", "shared", ""],
-			'school' => [
-				'weeb/pixelUI/ready-pixel',
-				'weeb/pixelUI/set-pixel',
-				'weeb/pixelUI/date-pixel',
-				'week6',
-				"-pixel"
-			],
-			'schoolEvil' => [
-				'weeb/pixelUI/ready-pixel',
-				'weeb/pixelUI/set-pixel',
-				'weeb/pixelUI/date-pixel',
-				'week6',
-				"-pixel"
-			],
-		];
+		var introAssets:Array<String> = ["3", "2", "1", "go"];
+		if (curStage.startsWith("school") || usePixelAssets)
+			for (i in 0...introAssets.length)
+				introAssets[i] += "-pixel";
 
-		var introAlts:Array<String> = introAssets.get('default');
 		var swagCounter:Int = 0;
 
 		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
@@ -1180,10 +1166,9 @@ class PlayState extends MusicBeatState
 
 			var altSuffix:String = "";
 
-			if (introAssets.exists(curStage))
+			if (introAssets[0].endsWith("-pixel"))
 			{
-				introAlts = introAssets[curStage];
-				altSuffix = introAlts[4];
+				altSuffix = "-pixel";
 			}
 			else
 			{
@@ -1192,12 +1177,12 @@ class PlayState extends MusicBeatState
 			}
 
 			FlxG.sound.play(Paths.sound('intro' + (swagCounter == 3 ? 'Go' : '${3 - swagCounter}') + altSuffix), 0.6);
-			if (swagCounter > 0 && SONG.song.toLowerCase() != 'shadow')
+			if (SONG.song.toLowerCase() != 'shadow')
 			{
-				var sprite:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[swagCounter - 1], introAlts[3]));
+				var sprite:FlxSprite = new FlxSprite().loadGraphic(Paths.image("countdown/" + introAssets[swagCounter]));
 				sprite.updateHitbox();
 
-				if (curStage.startsWith('school'))
+				if (introAssets[0].endsWith("-pixel"))
 					sprite.setGraphicSize(Std.int(sprite.width * daPixelZoom));
 				else if (camHUD.zoom != 1)
 					sprite.scale.set(sprite.scale.x * (1 / camHUD.zoom), sprite.scale.y * (1 / camHUD.zoom));
@@ -1651,13 +1636,13 @@ class PlayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if(controls.DODGE && !ClientPrefs.botplay && SONG.song.toLowerCase() == 'dead-mans-melody')
+		if (controls.DODGE && !ClientPrefs.botplay && SONG.song.toLowerCase() == 'dead-mans-melody')
 		{
 			trace("GAY");
 			spacePressed = true;
 		}
 
-		if(FlxG.keys.justPressed.E)
+		if (FlxG.keys.justPressed.E)
 		{
 			healthTween(-0.02);
 		}
@@ -2195,20 +2180,17 @@ class PlayState extends MusicBeatState
 		if (healthTweenOBJ != null)
 			healthTweenOBJ.cancel();
 
-		
 		emitter.start(false, 0.01, 0);
-
 
 		hpTweening = true;
 		healthTweenOBJ = FlxTween.num(health, health + amt, 0.5, {ease: FlxEase.cubeInOut}, function(v:Float)
 		{
 			health = v;
 			hpTweening = false;
-			
+
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				emitter.kill();
-				
 			});
 		});
 
@@ -2974,11 +2956,11 @@ class PlayState extends MusicBeatState
 					if (curBeat == 158)
 						boyfriend.useAlternateIdle = true;
 				case 'dead-mans-melody':
-					switch(curBeat)
+					switch (curBeat)
 					{
 						case 148:
 							FlxTween.tween(keybindTxt, {alpha: 1, y: keybindTxt.y - 15}, 1, {ease: FlxEase.circOut});
-						case 176: 
+						case 176:
 							FlxTween.tween(keybindTxt, {alpha: 0, y: keybindTxt.y + 15}, 1, {ease: FlxEase.circIn});
 					}
 				case 'loaded':

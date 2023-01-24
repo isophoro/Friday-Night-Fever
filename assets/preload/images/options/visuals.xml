@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="options_visuals.png">
+  <!-- Created with Adobe Animate version 21.0.3.38773 -->
+  <!-- http://www.adobe.com/products/animate.html -->
+  <SubTexture name="visualsnselected0000" x="0" y="0" width="277.38" height="115.24" pivotX="-54" pivotY="0" />
+  <SubTexture name="visualsnselected0001" x="0" y="0" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0002" x="0" y="0" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0003" x="0" y="0" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0004" x="277.38" y="0" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0005" x="277.38" y="0" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0006" x="277.38" y="0" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0007" x="277.38" y="0" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0008" x="0" y="115.24" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0009" x="0" y="115.24" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0010" x="0" y="115.24" width="277.38" height="115.24" />
+  <SubTexture name="visualsnselected0011" x="0" y="115.24" width="277.38" height="115.24" />
+  <SubTexture name="visualsselected0000" x="277.38" y="115.24" width="353.76" height="154.1" pivotX="21.4" pivotY="28.1" />
+  <SubTexture name="visualsselected0001" x="0" y="269.34" width="353.76" height="154.1" />
+  <SubTexture name="visualsselected0002" x="0" y="423.44" width="353.76" height="154.1" />
+  <SubTexture name="visualsselected0003" x="277.38" y="115.24" width="353.76" height="154.1" />
+  <SubTexture name="visualsselected0004" x="0" y="269.34" width="353.76" height="154.1" />
+  <SubTexture name="visualsselected0005" x="0" y="423.44" width="353.76" height="154.1" />
+</TextureAtlas>

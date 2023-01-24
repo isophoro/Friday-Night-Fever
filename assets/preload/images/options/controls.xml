@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="options_controls.png">
+  <!-- Created with Adobe Animate version 21.0.3.38773 -->
+  <!-- http://www.adobe.com/products/animate.html -->
+  <SubTexture name="controlsnselected0000" x="0" y="0" width="263.31" height="135.34" pivotX="-58.6" pivotY="63" />
+  <SubTexture name="controlsnselected0001" x="0" y="0" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0002" x="0" y="0" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0003" x="0" y="0" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0004" x="263.31" y="0" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0005" x="263.31" y="0" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0006" x="263.31" y="0" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0007" x="263.31" y="0" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0008" x="0" y="135.34" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0009" x="0" y="135.34" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0010" x="0" y="135.34" width="263.31" height="135.34" />
+  <SubTexture name="controlsnselected0011" x="0" y="135.34" width="263.31" height="135.34" />
+  <SubTexture name="controlsselected0000" x="263.31" y="135.34" width="336.34" height="183.58" pivotX="4.1" pivotY="82.75" />
+  <SubTexture name="controlsselected0001" x="0" y="318.92" width="336.34" height="183.58" />
+  <SubTexture name="controlsselected0002" x="336.34" y="318.92" width="336.34" height="183.58" />
+  <SubTexture name="controlsselected0003" x="263.31" y="135.34" width="336.34" height="183.58" />
+  <SubTexture name="controlsselected0004" x="0" y="318.92" width="336.34" height="183.58" />
+  <SubTexture name="controlsselected0005" x="336.34" y="318.92" width="336.34" height="183.58" />
+</TextureAtlas>
