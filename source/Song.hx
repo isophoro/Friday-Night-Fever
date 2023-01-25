@@ -54,7 +54,9 @@ class Song
 		["party-crasher", "cosmic-swing"] => "BirdBonanza"
 	];
 
-	public static var costumeDisabledSongs:Array<String> = ["mechanical", "cosmic-swing", "cell-from-hell", "w00f"];
+	public static var costumeDisabledSongs:Array<String> = [
+		"mechanical", "erm", "cosmic-swing", "cell-from-hell", "w00f", "gears", "space-demons", "ur-girl", "funkin-god", "chicken-sandwich"
+	];
 
 	public static function getArtist(_song:String):String
 	{
@@ -70,10 +72,16 @@ class Song
 	}
 
 	public static var costumesEnabled(get, never):Bool;
+	public static var isChildCostume(get, never):Bool;
 
 	public static function get_costumesEnabled():Bool
 	{
 		return !costumeDisabledSongs.contains(PlayState.SONG.song.toLowerCase());
+	}
+
+	public static function get_isChildCostume():Bool
+	{
+		return !PlayState.isStoryMode && costumesEnabled && (CostumeHandler.curCostume == TEASAR || CostumeHandler.curCostume == CEABUN);
 	}
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong

@@ -1,10 +1,10 @@
 import Character;
 import PlayState;
 import flixel.effects.FlxFlicker;
-import flixel.tweens.FlxEase;
-import flixel.util.FlxTimer;
 import flixel.text.FlxTextAlign;
 import flixel.text.FlxTextBorderStyle;
+import flixel.tweens.FlxEase;
+import flixel.util.FlxTimer;
 
 // TEA FLIPPED = LOOKING RIGHT
 var platform:FlxSprite;
@@ -17,19 +17,16 @@ var pasta:Character;
 var isDad:Bool = false;
 var camTween:FlxTween;
 var rowProperties = [];
-
 var pasteSlam:FlxSprite;
 var feverParry:FlxSprite;
-
 var inMechanic:Bool = false;
 var parried:Bool = false;
-
 
 function onCreate()
 {
 	forceComboPos = new FlxPoint(5, 5);
 	PlayState.instance.gotSmushed = false;
-	
+
 	platform = new FlxSprite().loadGraphic(Paths.image("paste/platform"));
 	platform.antialiasing = true;
 	platform.visible = false;
@@ -43,7 +40,6 @@ function onCreate()
 	add(pasta);
 	pasta.visible = false;
 
-	
 	feverParry = new FlxSprite(570, -10);
 	feverParry.antialiasing = true;
 	feverParry.frames = Paths.getSparrowAtlas('characters/fever/Fever_paste_anims');
@@ -111,10 +107,10 @@ function onUpdate(elapsed:Float)
 		}
 	}
 
-	if(inMechanic == true)
+	if (inMechanic == true)
 	{
-		//trace("SPACE BITCH");
-		//trace(PlayState.instance.canHey);
+		// trace("SPACE BITCH");
+		// trace(PlayState.instance.canHey);
 
 		trace(pasteSlam.animation.curAnim.curFrame);
 
@@ -124,10 +120,10 @@ function onUpdate(elapsed:Float)
 			PlayState.instance.spacePressed = true;
 		}
 
-		if(PlayState.instance.spacePressed == true && !ClientPrefs.botplay)
+		if (PlayState.instance.spacePressed == true && !ClientPrefs.botplay)
 		{
 			PlayState.canPressSpace = false;
-			if(pasteSlam.animation.curAnim.curFrame <= 11)
+			if (pasteSlam.animation.curAnim.curFrame <= 11)
 			{
 				trace("dodge");
 				boyfriend.playAnim('dodge', true);
@@ -135,7 +131,6 @@ function onUpdate(elapsed:Float)
 				new FlxTimer().start(0.2, function(tmr:FlxTimer)
 				{
 					boyfriend.playAnim('idle', true);
-					
 				});
 
 				inMechanic = false;
@@ -153,8 +148,6 @@ function onUpdate(elapsed:Float)
 				trace("parry");
 				parried = true;
 				boyfriend.playAnim('idle');
-			
-				
 			}
 		}
 
@@ -169,43 +162,43 @@ function onUpdate(elapsed:Float)
 		}
 	}
 
-	//so it does it at the right time, its like 3 am so this code probably sucks okay LOL
-	if(pasteSlam.animation.curAnim.curFrame >= 14 && parried == true)
+	// so it does it at the right time, its like 3 am so this code probably sucks okay LOL
+	if (pasteSlam.animation.curAnim.curFrame >= 14 && parried == true)
 	{
-			PlayState.instance.spacePressed = false;
+		PlayState.instance.spacePressed = false;
 
-			if(boyfriend.curCharacter == 'bf-demon')
-			{
-				boyfriend.alpha = 0.0000000000000000000009;
-				feverParry.alpha = 1;
-				feverParry.animation.play('parry', true);
-			}
-			else
-				boyfriend.playAnim('hey', true);
+		if (boyfriend.curCharacter == 'bf-demon')
+		{
+			boyfriend.alpha = 0.0000000000000000000009;
+			feverParry.alpha = 1;
+			feverParry.animation.play('parry', true);
+		}
+		else
+			boyfriend.playAnim('hey', true);
 
-			pasteSlam.animation.play('parry', true);
-			FlxG.sound.play(Paths.sound('parry', 'preload'), 1);
-			PlayState.instance.health += 0.1;
-			inMechanic = false;
-			parried = false;
-			pasteSlam.animation.finishCallback = function(anim)
-			{
-				boyfriend.alpha = 1;
-				pasta.alpha = 1;
-				PlayState.instance.canHey = true;
+		pasteSlam.animation.play('parry', true);
+		FlxG.sound.play(Paths.sound('parry', 'preload'), 1);
+		PlayState.instance.health += 0.1;
+		inMechanic = false;
+		parried = false;
+		pasteSlam.animation.finishCallback = function(anim)
+		{
+			boyfriend.alpha = 1;
+			pasta.alpha = 1;
+			PlayState.instance.canHey = true;
 
-				feverParry.alpha = 0.0000000000000000000009;
-				pasteSlam.alpha = 0.0000000000000000000009;
-			};
+			feverParry.alpha = 0.0000000000000000000009;
+			pasteSlam.alpha = 0.0000000000000000000009;
+		};
 	}
 
-	if(pasteSlam.animation.curAnim.name == 'parry')
+	if (pasteSlam.animation.curAnim.name == 'parry')
 	{
 		pasteSlam.offset.set(-511, -200);
 	}
 	else
 	{
-		pasteSlam.offset.set(-50,-25);
+		pasteSlam.offset.set(-50, -25);
 	}
 }
 
@@ -214,11 +207,9 @@ function onMoveCamera(dad:Bool)
 	isDad = dad;
 }
 
-
 function onBeatHit(curBeat:Int)
-{ 
-
-	if(curBeat == 363)
+{
+	if (curBeat == 363)
 	{
 		game.healthTween(0.1, false, 1);
 		camGame.shake(0.005, 1);
@@ -226,17 +217,19 @@ function onBeatHit(curBeat:Int)
 		pasta.playAnim('scream', true);
 	}
 
-	if (curBeat >= 146 && curBeat % 5 == 0 && FlxG.random.bool(10))
+	if (pasta.animation.curAnim.name != "scream")
 	{
-		trace("WORK");
-		smashMechanic();
+		if (curBeat >= 146 && curBeat % 5 == 0 && FlxG.random.bool(10))
+		{
+			trace("WORK");
+			smashMechanic();
+		}
+		else if (game.curStep >= 1472 && curBeat % 5 == 0 && FlxG.random.bool(25))
+		{
+			trace("WORK");
+			smashMechanic();
+		}
 	}
-	else if (game.curStep >= 1472 && curBeat % 5 == 0 && FlxG.random.bool(25))
-	{
-		trace("WORK");
-		smashMechanic();
-	}
-
 
 	var idleAnim = getTeaIdle();
 	if (tea.animation.curAnim.name != idleAnim && tea.animation.finished || tea.animation.curAnim.name == idleAnim)
@@ -275,7 +268,6 @@ function onStepHit(curStep:Int)
 			tea.setPosition(boyfriend.x + 690, boyfriend.y - 500);
 			platform.setPosition(tea.x - 28, tea.y + tea.height - 125);
 
-
 			if (camTween != null)
 				camTween.cancel();
 
@@ -292,7 +284,6 @@ function setHUDVisibility(theBool:Bool)
 	for (i in [iconP1, iconP2, healthBar, healthBarBG, scoreTxt])
 		i.visible = theBool;
 }
-
 
 function teaTurn(flip)
 {
@@ -375,27 +366,29 @@ function smashMechanic()
 		add(warning);
 
 		FlxG.sound.play(Paths.sound('alert', 'shared'), 1);
-		FlxTween.tween(warning, {alpha: 0}, Conductor.crochet / 1000, {onComplete: (twn) -> {
-			remove(warning);
-			warning.destroy();
-		}});
-		
+		FlxTween.tween(warning, {alpha: 0}, Conductor.crochet / 1000, {
+			onComplete: (twn) ->
+			{
+				remove(warning);
+				warning.destroy();
+			}
+		});
+
 		swagCounter++;
 		trace(swagCounter);
 
-		if(swagCounter == 2)
+		if (swagCounter == 2)
 		{
 			PlayState.instance.canHey = false;
 			FlxG.sound.play(Paths.sound('smash', 'preload'), 1);
-		
+
 			pasta.alpha = 0.0000000000000000000009;
 			pasteSlam.alpha = 1;
 			pasteSlam.animation.play('smash', true);
-		
+
 			PlayState.instance.spacePressed = false;
 			PlayState.canPressSpace = true;
-			inMechanic = true;		
+			inMechanic = true;
 		}
 	}, 3);
 }
-

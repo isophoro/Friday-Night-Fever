@@ -34,6 +34,8 @@ class GameOverSubstate extends MusicBeatSubstate
 				daBf = 'bf-hallow-dead';
 			case 'gears':
 				daBf = 'madDeath';
+			case 'cosmic-swing' | 'w00f' | 'dui' | 'cell-from-hell':
+				daBf = 'rolldogDeathAnim';
 			default:
 				switch (daBf)
 				{
@@ -71,16 +73,26 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x - bf.offset.x, bf.getGraphicMidpoint().y - bf.offset.y, 1, 1);
 
-		if (daBf == 'bf-smushed')
+		switch (daBf)
 		{
-			camFollow.x += 350;
-			camFollow.y += 220;
+			case 'bf-smushed':
+				camFollow.x += 350;
+				camFollow.y += 220;
+			case 'rolldogDeathAnim':
+				camFollow.x += 500;
+				FlxG.camera.snapToTarget();
 		}
 
 		add(camFollow);
 
-		if (daBf != 'madDeath')
-			FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+		switch (daBf)
+		{
+			case 'rolldogDeathAnim':
+				FlxG.sound.play(Paths.sound('car_death'));
+			case 'madDeath':
+			default:
+				FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+		}
 		Conductor.changeBPM(100);
 
 		FlxG.camera.scroll.set();

@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxSprite;
+import openfl.Assets;
 
 class HealthIcon extends FlxSprite
 {
@@ -23,48 +24,63 @@ class HealthIcon extends FlxSprite
 	public function swapCharacter(char:String)
 	{
 		curCharacter = char.toLowerCase();
-		// i hate this code and i hate how the characters are named since this makes it twenty times harder than it should
-		switch (curCharacter)
+
+		if (!Assets.exists(Paths.image('icons/icon-$char'))
+			&& (PlayState.instance != null && PlayState.instance.boyfriend.curCharacter.toLowerCase() == char))
 		{
-			case 'bf-cedar':
-				loadGraphic(Paths.image('icons/icon-cedarhd'), true, 150, 150);
-			case 'bf-iso':
-				loadGraphic(Paths.image('icons/icon-dawg'), true, 150, 150);
-			case 'sg':
-				loadGraphic(Paths.image('icon-sg', 'shadow'), true, 150, 150); // embed
-			case 'scarlet-freeplay':
-				loadGraphic(Paths.image('icons/icon-scarlet'), true, 150, 150);
-			case 'robo-cesar-minus':
-				loadGraphic(Paths.image('icons/icon-robo-cesar'), true, 150, 150);
-			case 'bf' | 'bf-casual' | 'bf-car' | 'bf-roblox' | 'bf-mad' | 'bf-rolldog' | 'bf-freeplay' | 'bf-coat':
-				loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
-			case 'bf-minus':
-				loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
-			case "robofvr-final":
-				loadGraphic(Paths.image('icons/icon-roboff'), true, 150, 150);
-			case 'bf-teasar':
-				loadGraphic(Paths.image('icons/icon-teasar'), true, 150, 150);
-			case 'bf-carnight' | 'bf-demon' | 'bf-casualdemon':
-				loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
-			case 'gf' | 'gf-painting' | 'gf-christmas' | 'tea-pixel':
-				loadGraphic(Paths.image('icons/icon-gf'), true, 150, 150);
-			case 'mega' | 'mega-angry':
-				loadGraphic(Paths.image('icons/icon-mega'), true, 150, 150);
-			case 'mom-car' | 'hunni-car' | 'hunni' | 'mom-carnight':
-				loadGraphic(Paths.image('icons/icon-hunni'), true, 150, 150);
-			case 'taki' | 'monster' | 'taki-minus':
-				loadGraphic(Paths.image('icons/icon-taki'), true, 150, 150);
-			case 'pepper-freeplay':
-				loadGraphic(Paths.image('icons/icon-pepper'), true, 150, 150);
-			default:
-				loadGraphic(Paths.image('icons/icon-$curCharacter'), true, 150, 150);
+			loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
+		}
+		else // i hate this code and i hate how the characters are named since this makes it twenty times harder than it should
+		{
+			switch (curCharacter)
+			{
+				case 'bf-cedar':
+					loadGraphic(Paths.image('icons/icon-cedarhd'), true, 150, 150);
+				case 'sg':
+					loadGraphic(Paths.image('icon-sg', 'shadow'), true, 150, 150); // embed
+				case 'scarlet-freeplay':
+					loadGraphic(Paths.image('icons/icon-scarlet'), true, 150, 150);
+				case 'robo-cesar-minus':
+					loadGraphic(Paths.image('icons/icon-robo-cesar'), true, 150, 150);
+				case 'bf' | 'bf-casual' | 'bf-car' | 'bf-roblox' | 'bf-mad' | 'bf-rolldog' | 'bf-freeplay' | 'bf-coat' | 'doodle':
+					loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
+				case 'bf-minus':
+					loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
+				case "robofvr-final":
+					loadGraphic(Paths.image('icons/icon-roboff'), true, 150, 150);
+				case 'bf-teasar':
+					loadGraphic(Paths.image('icons/icon-teasar'), true, 150, 150);
+				case 'bf-carnight' | 'bf-demon' | 'bf-casualdemon':
+					loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
+				case 'gf' | 'gf-painting' | 'gf-christmas' | 'tea-pixel':
+					loadGraphic(Paths.image('icons/icon-gf'), true, 150, 150);
+				case 'mega' | 'mega-angry':
+					loadGraphic(Paths.image('icons/icon-mega'), true, 150, 150);
+				case 'mom-car' | 'hunni-car' | 'hunni' | 'mom-carnight':
+					loadGraphic(Paths.image('icons/icon-hunni'), true, 150, 150);
+				case 'taki' | 'monster' | 'taki-minus':
+					loadGraphic(Paths.image('icons/icon-taki'), true, 150, 150);
+				case 'pepper-freeplay':
+					loadGraphic(Paths.image('icons/icon-pepper'), true, 150, 150);
+				default:
+					loadGraphic(Paths.image('icons/icon-$curCharacter'), true, 150, 150);
+			}
 		}
 
 		var pixel:Array<String> = ['flippy', 'mega', 'bdbfever'];
 		antialiasing = StringTools.contains(curCharacter, 'pixel') || pixel.contains(curCharacter) ? false : true;
 		animation.add('healthy', [0], 0, false, isPlayer);
-		animation.add('hurt', [1], 0, false, isPlayer);
-		animation.add('winning', [2], 0, false, isPlayer);
+
+		if (curCharacter == "peasus" && Song.isChildCostume)
+		{
+			animation.add('hurt', [0], 0, false, isPlayer);
+			animation.add('winning', [0], 0, false, isPlayer);
+		}
+		else
+		{
+			animation.add('hurt', [1], 0, false, isPlayer);
+			animation.add('winning', [2], 0, false, isPlayer);
+		}
 
 		animation.play('healthy');
 

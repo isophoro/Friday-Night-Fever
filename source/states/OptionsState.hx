@@ -27,7 +27,7 @@ class OptionsState extends MusicBeatState
 				new Option("Up", "", "upBind", KEYBIND),
 				new Option("Right", "", "rightBind", KEYBIND),
 				new Option("Reset", "", "killBind", KEYBIND),
-				new Option("Parry/Dodge", "", "dodgeBind", KEYBIND),
+				new Option("Dodge/Parry", "", "dodgeBind", KEYBIND),
 				new Option("Enable Reset Keybind", "When enabled, pressing the RESET keybind will automatically cause a game over.", "resetButton", BOOL)
 			]
 		},
@@ -79,6 +79,15 @@ class OptionsState extends MusicBeatState
 				// new Option("Use Shaders", "When disabled, shaders will not be used and causes certain songs to lose special effects.", "shaders", BOOL)
 			]
 		}
+		#if debug
+		, {
+			"name": "Visuals",
+			options: [
+				for (k => i in CostumeHandler.data)
+					new Option('Unlock ${i.displayName}', 'Unlocks the costume', "", COSTUME, {costume: k})
+			]
+		}
+		#end
 	];
 
 	var curCategory:Int = 0;
@@ -310,6 +319,10 @@ class OptionsState extends MusicBeatState
 	{
 		switch (categories[curCategory].options[curSelected].type)
 		{
+			#if debug
+			case COSTUME:
+				CostumeHandler.unlockCostume(categories[curCategory].options[curSelected].costume);
+			#end
 			case BOOL:
 				for (i in checkboxes.members)
 				{
@@ -319,14 +332,14 @@ class OptionsState extends MusicBeatState
 
 						if (i.animation.curAnim.name == "selected")
 						{
-							FlxG.sound.play(Paths.sound('cancelMenu'));
+							FlxG.sound.play(Paths.sound('return'));
 							i.animation.play("unselected", true);
 							i.centerOffsets();
 							i.centerOrigin();
 						}
 						else
 						{
-							FlxG.sound.play(Paths.sound('confirmMenu'));
+							FlxG.sound.play(Paths.sound('select'));
 							i.animation.play("selecting", true);
 							// offsets are so cringe
 							i.offset.x += 14;
@@ -336,7 +349,7 @@ class OptionsState extends MusicBeatState
 				}
 			case KEYBIND:
 				awaitingInput = true;
-				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.sound.play(Paths.sound('select'));
 				FlxFlicker.flicker(items.members[curSelected], 0, 0.06, true);
 				items.members[curSelected].text = "Awaiting input...";
 			default:
@@ -422,6 +435,7 @@ enum OptionType
 	INT;
 	STATE;
 	KEYBIND;
+	COSTUME;
 }
 
 class Option
@@ -474,6 +488,8 @@ class Option
 					{
 						callback = values.callback;
 					}
+				case COSTUME:
+					costume = values.costume;
 				default:
 					// do nothing
 			}
@@ -536,6 +552,7 @@ class Option
 	public var shiftInterval:Int = 1;
 	public var increaseInterval:Int = 1;
 	public var state:Class<flixel.FlxState>;
+	public var costume:CostumeName;
 
 	public var range:Array<Float> = [0, 100];
 }

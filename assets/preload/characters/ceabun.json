@@ -1,0 +1,118 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-15,
+				113
+			],
+			"fps": 24,
+			"anim": "miss right",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				41,
+				86
+			],
+			"fps": 24,
+			"anim": "down",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "alt idle",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				71,
+				101
+			],
+			"fps": 24,
+			"anim": "miss left",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				9,
+				102
+			],
+			"fps": 24,
+			"anim": "up",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				41,
+				128
+			],
+			"fps": 24,
+			"anim": "miss down",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-9,
+				104
+			],
+			"fps": 24,
+			"anim": "right",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				95,
+				97
+			],
+			"fps": 24,
+			"anim": "left",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				53,
+				111
+			],
+			"fps": 24,
+			"anim": "miss up",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				21,
+				122
+			],
+			"fps": 24,
+			"anim": "dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": true,
+	"file": "costumes/ceabun",
+	"color": "FF394F"
+}

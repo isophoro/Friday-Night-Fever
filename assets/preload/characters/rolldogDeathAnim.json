@@ -1,0 +1,39 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-73,
+				-148
+			],
+			"fps": 24,
+			"anim": "death confirm",
+			"loop": false,
+			"name": "deathConfirm"
+		},
+		{
+			"offsets": [
+				-1114,
+				-385
+			],
+			"fps": 24,
+			"anim": "death loop",
+			"loop": true,
+			"name": "deathLoop"
+		},
+		{
+			"offsets": [
+				1,
+				-23
+			],
+			"fps": 24,
+			"anim": "death0",
+			"loop": false,
+			"name": "firstDeath"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": false,
+    "isDeathAnim": true,
+	"file": "deathAnims/rolldog",
+	"color": "AEA28E"
+}

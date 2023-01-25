@@ -10,7 +10,6 @@ import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.particles.FlxEmitter;
-import flixel.effects.particles.FlxParticle;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxRect;
@@ -351,7 +350,12 @@ class PlayState extends MusicBeatState
 		boyfriend = new Boyfriend(770, curBoyfriend == "bf" ? 400 : 450, curBoyfriend);
 		if (SONG.song.toLowerCase() == 'shadow')
 			boyfriendReflection = new Boyfriend(770, 450, "bf-CoatReflection"); // this is for shadow fever reflection
-		dad = new Character(100, 100, SONG.player2);
+
+		var dadCharacter = SONG.player2;
+		if (SONG.player2 == "peasus" && Song.isChildCostume)
+			dadCharacter = "peakek"; // no weird stuff
+
+		dad = new Character(100, 100, dadCharacter);
 
 		switch (SONG.stage)
 		{
@@ -879,7 +883,7 @@ class PlayState extends MusicBeatState
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
 
-		iconP2 = new HealthIcon(SONG.player2, false);
+		iconP2 = new HealthIcon(dad.curCharacter, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 		add(scoreTxt);
@@ -1003,6 +1007,7 @@ class PlayState extends MusicBeatState
 		songScript.callFunction("onCreate");
 		scripts.callFunction("onCreatePost");
 
+		boyfriend.setPosition(boyfriend.x + boyfriend.positionOffset.x, boyfriend.y + boyfriend.positionOffset.y);
 		System.gc();
 	}
 
@@ -2397,8 +2402,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 190;
 				}
 
-				camFollow.x += BF_CAM_OFFSET.x;
-				camFollow.y += BF_CAM_OFFSET.y;
+				camFollow.x += BF_CAM_OFFSET.x + boyfriend.cameraOffset.x;
+				camFollow.y += BF_CAM_OFFSET.y + boyfriend.cameraOffset.y;
 				BF_CAM_POS.set(camFollow.x, camFollow.y);
 			}
 
@@ -2452,10 +2457,16 @@ class PlayState extends MusicBeatState
 			Sys.exit(0);
 		}
 
-		if (!ClientPrefs.botplay && misses == 0 && !Highscore.fullCombos.exists(SONG.song))
-			Highscore.fullCombos.set(SONG.song, 0);
+		if (!ClientPrefs.botplay)
+		{
+			if (accuracy <= 41)
+				CostumeHandler.unlockCostume(FLU);
 
-		Highscore.saveScore(SONG.song, displayedScore, storyDifficulty);
+			if (misses == 0 && !Highscore.fullCombos.exists(SONG.song.toLowerCase()))
+				Highscore.fullCombos.set(SONG.song.toLowerCase(), 0);
+
+			Highscore.saveScore(SONG.song, displayedScore, storyDifficulty);
+		}
 
 		if (isStoryMode)
 		{

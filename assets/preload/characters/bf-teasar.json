@@ -2,18 +2,18 @@
 	"animations": [
 		{
 			"offsets": [
-				-50,
-				80
+				10,
+				79
 			],
 			"fps": 24,
-			"anim": "right miss",
+			"anim": "miss right",
 			"loop": false,
 			"name": "singRIGHTmiss"
 		},
 		{
 			"offsets": [
-				20,
-				30
+				55,
+				5
 			],
 			"fps": 24,
 			"anim": "down0",
@@ -22,18 +22,18 @@
 		},
 		{
 			"offsets": [
-				0,
-				70
+				-43,
+				119
 			],
 			"fps": 24,
-			"anim": "left miss",
+			"anim": "miss left",
 			"loop": false,
 			"name": "singLEFTmiss"
 		},
 		{
 			"offsets": [
-				-90,
-				110
+				-11,
+				102
 			],
 			"fps": 24,
 			"anim": "up0",
@@ -42,7 +42,7 @@
 		},
 		{
 			"offsets": [
-				-40,
+				-18,
 				80
 			],
 			"fps": 24,
@@ -62,18 +62,18 @@
 		},
 		{
 			"offsets": [
-				20,
-				30
+				57,
+				0
 			],
 			"fps": 24,
-			"anim": "down miss",
+			"anim": "miss down",
 			"loop": false,
 			"name": "singDOWNmiss"
 		},
 		{
 			"offsets": [
-				-52,
-				80
+				-22,
+				70
 			],
 			"fps": 24,
 			"anim": "right0",
@@ -86,21 +86,22 @@
 				69
 			],
 			"fps": 24,
-			"anim": "left0",
+			"anim": "miss up",
 			"loop": false,
-			"name": "singLEFT"
+			"name": "singUPmiss"
 		},
 		{
 			"offsets": [
-				-40,
-				100
+				-50,
+				119
 			],
 			"fps": 24,
-			"anim": "up miss",
+			"anim": "left0",
 			"loop": false,
-			"name": "singUPmiss"
+			"name": "singLEFT"
 		}
 	],
+	"noAntialiasing": false,
 	"facingLeft": true,
 	"file": "costumes/teasar",
 	"color": "C353E3"

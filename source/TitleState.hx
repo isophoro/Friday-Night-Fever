@@ -193,7 +193,7 @@ class TitleState extends MusicBeatState
 				transitioning = true;
 
 				FlxG.camera.flash(FlxColor.WHITE, 1);
-				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+				FlxG.sound.play(Paths.sound('select'), 0.7);
 
 				new FlxTimer().start(0.4, function(tmr:FlxTimer)
 				{

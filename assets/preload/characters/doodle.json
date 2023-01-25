@@ -1,0 +1,158 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-19,
+				-183
+			],
+			"fps": 24,
+			"anim": "sketch fever death LOOP",
+			"loop": true,
+			"name": "deathLoop"
+		},
+		{
+			"offsets": [
+				13,
+				83
+			],
+			"fps": 24,
+			"anim": "sketch fever RIGHT miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				24,
+				165
+			],
+			"fps": 24,
+			"anim": "sketch fever DOWN0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "sketch fever idle mad",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				60,
+				91
+			],
+			"fps": 24,
+			"anim": "sketch fever LEFT miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				41,
+				109
+			],
+			"fps": 24,
+			"anim": "sketch fever UP0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-20,
+				-180
+			],
+			"fps": 24,
+			"anim": "sketch fever DEATH0",
+			"loop": true,
+			"name": "firstDeath"
+		},
+		{
+			"offsets": [
+				-20,
+				-180
+			],
+			"fps": 24,
+			"anim": "sketch fever death CONFIRM",
+			"loop": true,
+			"name": "deathConfirm"
+		},
+		{
+			"offsets": [
+				-3,
+				93
+			],
+			"fps": 24,
+			"anim": "sketch fever hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "sketch fever idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				11,
+				167
+			],
+			"fps": 24,
+			"anim": "sketch fever DOWN miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				15,
+				87
+			],
+			"fps": 24,
+			"anim": "sketch fever RIGHT0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				65,
+				88
+			],
+			"fps": 24,
+			"anim": "sketch fever LEFT0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				36,
+				103
+			],
+			"fps": 24,
+			"anim": "sketch fever UP miss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				11,
+				68
+			],
+			"fps": 24,
+			"anim": "fever dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": false,
+	"facingLeft": true,
+	"file": "costumes/doodle",
+	"color": "C353E3"
+}

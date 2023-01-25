@@ -12,7 +12,17 @@ import sys.thread.Thread;
 
 class CostumeState extends MusicBeatState
 {
-	var CharacterList:Array<CostumeName> = [FEVER, TEASAR, FEVER_NUN, FEVER_CASUAL, FEVER_MINUS, FEVER_COAT, FEVER_ISO];
+	var CharacterList:Array<CostumeName> = [
+		FEVER,
+		TEASAR,
+		FEVER_NUN,
+		FEVER_CASUAL,
+		FEVER_MINUS,
+		DOODLE,
+		CEABUN,
+		FLU,
+		FEVER_COAT
+	];
 
 	var character:Character;
 	var cam:FlxCamera = new FlxCamera();
@@ -23,8 +33,7 @@ class CostumeState extends MusicBeatState
 
 	var loadingGrp:FlxGroup = new FlxGroup();
 	var loadedCharacters:Array<Character> = [];
-	var loadingProgress:FlxBar;
-	var _loadingProgress:Int = 0;
+	var loaded:Bool = false;
 
 	var boxEnd:FlxSprite;
 	var box:FlxSprite;
@@ -35,6 +44,9 @@ class CostumeState extends MusicBeatState
 	override function create()
 	{
 		super.create();
+
+		CostumeHandler.checkRequisites();
+
 		FlxG.cameras.reset(cam);
 		camHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(camHUD, false);
@@ -95,48 +107,37 @@ class CostumeState extends MusicBeatState
 		blackScreen.screenCenter();
 		loadingGrp.add(blackScreen);
 
-		loadingProgress = new FlxBar(0, FlxG.height * 0.83, LEFT_TO_RIGHT, 800, 15, this, '_loadingProgress', 0, 100);
-		loadingProgress.createFilledBar(FlxColor.GRAY, 0xFF00FF00, true, 0xFF000000);
-		loadingGrp.add(loadingProgress);
-		loadingGrp.cameras = [camHUD];
-		loadingProgress.screenCenter(X);
-
-		var text:FlxText = new FlxText(0, loadingProgress.y - 40, 0, "Preparing Costumes... (0%)", 18);
+		var text:FlxText = new FlxText(0, FlxG.height * 0.83 - 40, 0, "Preparing Costumes...", 18);
 		text.borderStyle = OUTLINE;
 		text.borderSize = 1.4;
 		text.alignment = CENTER;
 		loadingGrp.add(text);
 		text.screenCenter(X);
 
-		new FlxTimer().start(0.25, (t) ->
+		new FlxTimer().start(0.7, (t) ->
 		{
-			Thread.create(() ->
+			for (i in CharacterList)
 			{
-				for (i in CharacterList)
+				var char = new Character(150, 150, CostumeHandler.data[i].character, true);
+				add(char);
+				remove(char);
+				loadedCharacters.push(char);
+
+				if (!CostumeHandler.unlockedCostumes.exists(i))
+					char.color = FlxColor.BLACK;
+
+				if (i == CharacterList[CharacterList.length - 1])
 				{
-					var char = new Character(150, 150, CostumeHandler.data[i].character, true);
-					add(char);
-					remove(char);
-					loadedCharacters.push(char);
+					loadingGrp.remove(text);
+					remove(loadingGrp);
+					loaded = true;
 
-					if (!CostumeHandler.unlockedCostumes.exists(i))
-						char.color = FlxColor.BLACK;
-
-					_loadingProgress = Math.ceil((loadedCharacters.length / CharacterList.length) * 100);
-					text.text = 'Preparing Costumes... ($_loadingProgress%)';
-
-					if (_loadingProgress >= 100)
-					{
-						loadingGrp.remove(text);
-						remove(loadingGrp);
-
-						FlxG.camera.flash(0xFFA93C9F, 0.69);
-						FlxG.camera.zoom = 0.75;
-						changeSelection();
-						trace("Finished loading.");
-					}
+					FlxG.camera.flash(0xFFA93C9F, 0.69);
+					FlxG.camera.zoom = 0.75;
+					changeSelection();
+					trace("Finished loading.");
 				}
-			});
+			}
 		});
 	}
 
@@ -145,7 +146,7 @@ class CostumeState extends MusicBeatState
 		super.update(elapsed);
 		Conductor.songPosition = FlxG.sound.music.time;
 
-		if (_loadingProgress >= 100)
+		if (loaded)
 		{
 			if (controls.LEFT_P)
 			{
@@ -160,14 +161,15 @@ class CostumeState extends MusicBeatState
 			{
 				if (!lock.visible && CharacterList[curSelected] != CostumeHandler.curCostume)
 				{
-					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxG.sound.play(Paths.sound('select'));
 					CostumeHandler.curCostume = CharacterList[curSelected];
 					character.playAnim('hey', true);
+					updateText();
 				}
 			}
 			else if (controls.BACK)
 			{
-				FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.sound.play(Paths.sound('return'));
 				FlxG.switchState(new MainMenuState(true));
 			}
 		}
@@ -229,6 +231,6 @@ class CostumeState extends MusicBeatState
 		if (CostumeHandler.data[CharacterList[curSelected]].characterOffset != null)
 			offsets = CostumeHandler.data[CharacterList[curSelected]].characterOffset;
 
-		character.setPosition(450 + offsets[0], 240 + offsets[1]);
+		character.setPosition(450 + offsets[0], 190 + offsets[1]);
 	}
 }

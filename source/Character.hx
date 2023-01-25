@@ -19,7 +19,8 @@ typedef CharacterData =
 	?icon:String,
 	?scale:Float,
 	?facingLeft:Bool,
-	?noAntialiasing:Bool
+	?noAntialiasing:Bool,
+	?isDeathAnim:Bool
 }
 
 typedef JsonAnimation =
@@ -91,7 +92,12 @@ class Character extends FlxSprite
 				addOffset(i.name, i.offsets[0], i.offsets[1]);
 			}
 
-			dance();
+			isDeathAnim = charData.isDeathAnim;
+			if (isDeathAnim)
+				playAnim("firstDeath");
+			else
+				dance();
+
 			trace('[$character] Finished reading JSON.');
 		}
 		else
@@ -178,12 +184,15 @@ class Character extends FlxSprite
 				case 'bf-smushed':
 					iconColor = 'E353C8';
 					frames = getSparrowAtlas('characters/fever/Fever_paste_anims');
-					addByIndices('firstDeath', "fever squish0", [2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64], "", 24, false);
+					addByIndices('firstDeath', "fever squish0", [
+						2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+						37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64
+					], "", 24, false);
 					addByPrefix('deathLoop', "fever squish loop0", 24, true);
 					addByPrefix('deathConfirm', "fever squish confirm0", 24, false);
 
 					addOffset('firstDeath', 326, 323);
-					addOffset('deathLoop',-404, -383);
+					addOffset('deathLoop', -404, -383);
 					addOffset('deathConfirm', -417, -58);
 					playAnim('firstDeath');
 
@@ -221,7 +230,9 @@ class Character extends FlxSprite
 					isDeathAnim = true;
 			}
 		}
-		dance();
+
+		if (animation.curAnim == null)
+			dance();
 
 		if (charData.facingLeft && !isPlayer || !charData.facingLeft && isPlayer)
 		{
