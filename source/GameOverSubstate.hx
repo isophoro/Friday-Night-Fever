@@ -120,6 +120,8 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			switch (PlayState.SONG.song.toLowerCase())
 			{
+				case 'c354r' | 'loaded' | 'gears' | 'grando' | 'tranquility' | 'princess' | 'bloom' | 'crack' | 'w00f':
+					FlxG.sound.playMusic(Paths.music('gameOver-Robo'));
 				case 'hallow' | 'portrait' | 'soul':
 					FlxG.sound.playMusic(Paths.music('gameOverHallow'));
 				default:

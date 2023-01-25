@@ -135,6 +135,8 @@ class FreeplayMenu extends MusicBeatSubstate
 	var icons:FlxTypedGroup<HealthIcon> = new FlxTypedGroup<HealthIcon>();
 	var body:MenuSprite;
 	var allowInput:Bool = false;
+	var diffText:FlxText;
+	var curDifficulty:Int = 2;
 
 	public function new(isFrenzy:Bool = false)
 	{
@@ -207,6 +209,12 @@ class FreeplayMenu extends MusicBeatSubstate
 		footer.y = body.y + body.height - 1;
 		add(footer);
 
+		diffText = new FlxText(0, 0, 0, "< Normal >", 24);
+		diffText.setFormat(Paths.font("Funkin.otf"), 24, FlxColor.WHITE, CENTER);
+		diffText.antialiasing = true;
+		add(diffText);
+		diffText.visible = false;
+
 		changeSelection();
 		FlxG.camera.scroll.y = -500;
 		FlxTween.tween(FlxG.camera.scroll, {y: 0}, 0.92, {
@@ -228,11 +236,12 @@ class FreeplayMenu extends MusicBeatSubstate
 		if (controls.ACCEPT)
 		{
 			allowInput = false;
+
 			// i am so sorry
 			var txt = textGrp.members[curSelected].text.replace("\n", "").trim().replace(" ", "-").replace("[OLD]", "Old").replace("...", "").toLowerCase();
-			var poop:String = Highscore.formatSong(txt, Difficulty.NORMAL);
+			var poop:String = Highscore.formatSong(txt, curDifficulty);
 
-			if (poop.toLowerCase().contains("mechanical"))
+			if (poop.toLowerCase().contains("mechanical") || poop.toLowerCase().contains("erm"))
 			{
 				FlxTransitionableState.skipNextTransOut = true;
 				FlxTransitionableState.skipNextTransIn = true;
@@ -240,7 +249,7 @@ class FreeplayMenu extends MusicBeatSubstate
 
 			PlayState.SONG = Song.loadFromJson(poop, txt);
 			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = 2;
+			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = 0;
 			FreeplayState.loading = true;
 			@:privateAccess
@@ -264,6 +273,24 @@ class FreeplayMenu extends MusicBeatSubstate
 			changeSelection(1);
 		else if (controls.BACK)
 			close();
+
+		if (controls.LEFT_P)
+			changeDifficulty(-1);
+		else if (controls.RIGHT_P)
+			changeDifficulty(1);
+	}
+
+	function changeDifficulty(change:Int = 0)
+	{
+		curDifficulty = Difficulty.bound(curDifficulty + change);
+
+		var text = textGrp.members[curSelected].text.replace("\n", "").trim().replace(" ", "-").replace("[OLD]", "Old").replace("...", "").toLowerCase();
+		if (!lime.utils.Assets.exists(Paths.json('$text/$text')) && curDifficulty == 1)
+		{
+			curDifficulty = 2;
+		}
+
+		diffText.text = '< ${Difficulty.data[curDifficulty].name} >';
 	}
 
 	function changeSelection(change:Int = 0)
@@ -275,6 +302,7 @@ class FreeplayMenu extends MusicBeatSubstate
 		else if (curSelected < 0)
 			curSelected = textGrp.length - 1;
 
+		changeDifficulty(); // check incase difficutly is missing
 		textGrp.forEach((text) ->
 		{
 			text.color = curSelected == text.ID ? FlxColor.WHITE : FlxColor.GRAY;
@@ -283,6 +311,8 @@ class FreeplayMenu extends MusicBeatSubstate
 			{
 				FlxTween.cancelTweensOf(FlxG.camera.scroll);
 				FlxTween.tween(FlxG.camera.scroll, {y: text.y - 400 < 0 ? 0 : text.y - 400}, 0.3, {ease: FlxEase.smootherStepInOut});
+				diffText.setPosition(text.x + (text.width / 2) - (diffText.width / 2), text.y + text.height - 27);
+				diffText.visible = true;
 			}
 		});
 	}
