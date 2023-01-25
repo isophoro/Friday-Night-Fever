@@ -17,7 +17,7 @@ class StoryMenuState extends InteractableState
 	{
 		return [
 			['Milk-Tea'],
-			['Metamorphosis', 'Void', 'Down-Bad'],
+			['Peastep', 'Eros', 'Down-Horrendous'],
 			['Star-Baby', 'Last-Meow', 'Bazinga', 'Crucify'],
 			['Prayer', 'Bad-Nun'],
 			['Mako', 'VIM', "Retribution"],

@@ -63,10 +63,13 @@ function onCreatePost()
 	add(phands);
 	hands.setPosition(bg.x + 255, bg.y + 350);
 
-	dad.scale.set(0.67, 0.67);
-	for (ii in dad.animOffsets.keys())
+	if (dad.curCharacter == "scarlet-freeplay")
 	{
-		dad.animOffsets[ii] = [dad.animOffsets[ii][0] * 0.67, dad.animOffsets[ii][1] * 0.67];
+		dad.scale.set(0.67, 0.67);
+		for (ii in dad.animOffsets.keys())
+		{
+			dad.animOffsets[ii] = [dad.animOffsets[ii][0] * 0.67, dad.animOffsets[ii][1] * 0.67];
+		}
 	}
 
 	game.camZooming = true;

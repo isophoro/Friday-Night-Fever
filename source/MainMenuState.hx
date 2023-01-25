@@ -39,10 +39,11 @@ class MainMenuState extends InteractableState
 			train.visible = false;
 			train.animation.finishCallback = function(anim)
 			{
-				train.animation.play('idle');
+				train.animation.play('idle', true);
 				train.animation.finishCallback = null;
 				addInteractable(train);
-				order.insert(1, order.pop());
+				order.remove(train.hitbox);
+				order.insert(1, train.hitbox);
 			}
 
 			new FlxTimer().start(0.5, (t) ->

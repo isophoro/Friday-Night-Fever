@@ -54,6 +54,8 @@ class HealthIcon extends FlxSprite
 				loadGraphic(Paths.image('icons/icon-hunni'), true, 150, 150);
 			case 'taki' | 'monster' | 'taki-minus':
 				loadGraphic(Paths.image('icons/icon-taki'), true, 150, 150);
+			case 'pepper-freeplay':
+				loadGraphic(Paths.image('icons/icon-pepper'), true, 150, 150);
 			default:
 				loadGraphic(Paths.image('icons/icon-$curCharacter'), true, 150, 150);
 		}

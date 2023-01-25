@@ -27,7 +27,7 @@ class FreeplayMenu extends MusicBeatSubstate
 				["Milk-Tea", "gf"],
 				["Peastep", "peakek"],
 				["Eros", "peakek"],
-				["Down-Bad", "peasus"]
+				["Down-Horrendous", "peasus"]
 			]
 		},
 		{
@@ -68,6 +68,7 @@ class FreeplayMenu extends MusicBeatSubstate
 			"songs": [
 				["Metamorphosis", "peakek"],
 				["Void", "peakek"],
+				["Down Bad", "peakek"],
 				["Farmed", "mako-demon"],
 				["Space-Demons", "bf-old"],
 				["Old-Hardships", "tea-bat"]
@@ -227,7 +228,8 @@ class FreeplayMenu extends MusicBeatSubstate
 		if (controls.ACCEPT)
 		{
 			allowInput = false;
-			var txt = textGrp.members[curSelected].text.replace("\n", "").trim().replace(" ", "-").replace("[OLD]", "Old").toLowerCase();
+			// i am so sorry
+			var txt = textGrp.members[curSelected].text.replace("\n", "").trim().replace(" ", "-").replace("[OLD]", "Old").replace("...", "").toLowerCase();
 			var poop:String = Highscore.formatSong(txt, Difficulty.NORMAL);
 
 			if (poop.toLowerCase().contains("mechanical"))
