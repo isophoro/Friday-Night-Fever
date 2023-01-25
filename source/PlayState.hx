@@ -3041,7 +3041,7 @@ class PlayState extends MusicBeatState
 
 		if (!curOpponent.animation.curAnim.name.startsWith('sing'))
 		{
-			var specialAnims:Array<String> = ['dodge', 'hey', 'shoot', 'phone', 'slam', 'transform', 'bye'];
+			var specialAnims:Array<String> = ['dodge', 'hey', 'shoot', 'phone', 'slam', 'transform', 'bye', 'scream'];
 			if (!specialAnims.contains(curOpponent.animation.curAnim.name) || curOpponent.animation.finished)
 			{
 				curOpponent.dance();
