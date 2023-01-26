@@ -1,11 +1,20 @@
+import PlayState;
+
 var peeps:FlxSprite;
 var bg:FlxSprite;
 var hands:FlxSprite;
 var phands:FlxSprite;
 var seats:FlxSprite;
+var classic:FlxSprite;
+var frenzy:FlxSprite;
 
 function onCreate()
 {
+	game.defaultCamZoom = 1;
+	camGame.zoom = 1;
+	camHUD.alpha = 0;
+	FlxTween.tween(camHUD, {alpha: 1}, 0.76, {ease: FlxEase.quadInOut});
+
 	bg = new FlxSprite().loadGraphic(Paths.image('freeplay/bg'));
 	bg.antialiasing = true;
 	add(bg);
@@ -29,13 +38,16 @@ function onCreate()
 	seats.antialiasing = true;
 	add(seats);
 
-	hands = new FlxSprite();
-	hands.scale.set(0.67, 0.67);
-	hands.frames = Paths.getSparrowAtlas('characters/scarlet/hands');
-	hands.animation.addByPrefix("come", "scarlet", 24, false);
-	hands.animation.play("come");
-	hands.antialiasing = true;
-	setGlobalVar("hands", hands);
+	if (PlayState.SONG.song == "Mechanical")
+	{
+		hands = new FlxSprite();
+		hands.scale.set(0.67, 0.67);
+		hands.frames = Paths.getSparrowAtlas('characters/scarlet/hands');
+		hands.animation.addByPrefix("come", "scarlet", 24, false);
+		hands.animation.play("come");
+		hands.antialiasing = true;
+		setGlobalVar("hands", hands);
+	}
 
 	phands = new FlxSprite(259, 16);
 	phands.frames = Paths.getSparrowAtlas("characters/pepper/hands", "shared");
@@ -44,6 +56,22 @@ function onCreate()
 	phands.scale.set(0.67, 0.67);
 	phands.antialiasing = true;
 	setGlobalVar("phands", phands);
+
+	classic = new FlxSprite(609, 456);
+	classic.frames = Paths.getSparrowAtlas("freeplay/classicm");
+	classic.animation.addByPrefix("n", "Classicn", 0);
+	classic.animation.addByPrefix("s", "Classics", 0);
+	classic.animation.play(hands == null ? 's' : 'n');
+	classic.scale.set(0.67, 0.67);
+	classic.antialiasing = true;
+
+	frenzy = new FlxSprite(374, 456);
+	frenzy.frames = Paths.getSparrowAtlas("freeplay/frenzym");
+	frenzy.animation.addByPrefix("n", "Frenzyn", 0);
+	frenzy.animation.addByPrefix("s", "Frenzys", 0);
+	frenzy.animation.play(hands == null ? 'n' : 's');
+	frenzy.scale.set(0.67, 0.67);
+	frenzy.antialiasing = true;
 }
 
 function onCreatePost()
@@ -57,11 +85,16 @@ function onCreatePost()
 	var table:FlxSprite = new FlxSprite(257, 385).loadGraphic(Paths.image('freeplay/table'));
 	table.antialiasing = true;
 	add(table);
+	add(classic);
+	add(frenzy);
 
-	hands.visible = false;
-	add(hands);
+	if (hands != null)
+	{
+		hands.visible = false;
+		add(hands);
+		hands.setPosition(bg.x + 255, bg.y + 350);
+	}
 	add(phands);
-	hands.setPosition(bg.x + 255, bg.y + 350);
 
 	if (dad.curCharacter == "scarlet-freeplay")
 	{
@@ -74,7 +107,8 @@ function onCreatePost()
 
 	game.camZooming = true;
 	game.disableCamera = true;
-	snapCamera(new FlxPoint(bg.width / 2, bg.height / 2));
+	camGame.target = null;
+	camGame.scroll.set(0, 0);
 }
 
 function onBeatHit(curBeat)

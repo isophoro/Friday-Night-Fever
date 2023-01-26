@@ -99,8 +99,8 @@ function onBeatHit(curBeat)
 
 					FlxTween.tween(wiggleEffect, {waveAmplitude: 0}, 0.6, {startDelay: 0.46});
 
-					for (i in strumLineNotes)
-						FlxTween.tween(i, {alpha: 0.6}, 0.6);
+					for (i in 0...strumLineNotes.length)
+						FlxTween.tween(strumLineNotes[i], {alpha: i > 3 ? 0.6 : 0}, 0.6);
 				}
 			});
 		case 50:
@@ -122,7 +122,9 @@ function onBeatHit(curBeat)
 			FlxTween.tween(t4, {alpha: 0}, 0.7);
 		case 96:
 			FlxTween.tween(t4, {alpha: 0}, 0.7);
-			FlxTween.tween(blackScreen, {alpha: 0}, 0.7);
+			FlxTween.tween(blackScreen, {alpha: 0}, 1.5);
+			FlxTween.tween(purpleOverlay, {alpha: 0.33}, 0.7);
+			FlxTween.tween(wiggleEffect, {waveAmplitude: 0.0055}, 0.6, {startDelay: 0.46});
 			game.disableCamera = false;
 			game.moveCamera(true);
 		case 97:
@@ -134,6 +136,9 @@ function onBeatHit(curBeat)
 					game.disableScoreBop = false;
 					for (i in [iconP1, iconP2, healthBar, healthBarBG])
 						FlxTween.tween(i, {alpha: 1}, 0.46);
+
+					for (i in strumLineNotes)
+						FlxTween.tween(i, {alpha: 1}, 0.6);
 				}
 			});
 	}

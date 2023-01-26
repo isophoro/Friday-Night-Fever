@@ -55,7 +55,7 @@ class Song
 	];
 
 	public static var costumeDisabledSongs:Array<String> = [
-		"mechanical", "erm", "cosmic-swing", "cell-from-hell", "w00f", "gears", "space-demons", "ur-girl", "funkin-god", "chicken-sandwich"
+		"mechanical", "erm", "cosmic-swing", "cell-from-hell", "w00f", "gears", "space-demons", "ur-girl", "funkin-god", "chicken-sandwich", "dui"
 	];
 
 	public static function getArtist(_song:String):String
@@ -81,7 +81,10 @@ class Song
 
 	public static function get_isChildCostume():Bool
 	{
-		return !PlayState.isStoryMode && costumesEnabled && (CostumeHandler.curCostume == TEASAR || CostumeHandler.curCostume == CEABUN);
+		return flixel.FlxG.state is PlayState
+			&& !PlayState.isStoryMode
+			&& costumesEnabled
+			&& (CostumeHandler.curCostume == TEASAR || CostumeHandler.curCostume == CEABUN);
 	}
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong

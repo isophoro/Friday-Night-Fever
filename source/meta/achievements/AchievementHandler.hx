@@ -43,7 +43,7 @@ import flixel.addons.api.FlxGameJolt;
 		FC_ALL_OG_WEEKS => "Classic: 100%",
 		FC_WEEK_HALLOW => "No More Ghosts!",
 		FC_WEEK7 => "Robots Invade!",
-		FC_WEEK8 => "Time Travel Mishap!",
+		FC_WEEK8 => "Time Travel Trouble!",
 		FC_WEEK_ROLLDOG => "Safe Driving!",
 		FC_ALL_FRENZY_WEEKS => "Frenzy: 100%",
 		ALL_ACHIEVEMENTS => "Mayor of the Town",

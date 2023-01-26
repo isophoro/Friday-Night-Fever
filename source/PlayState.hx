@@ -1144,7 +1144,7 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -Conductor.crochet * 5;
 
-		if (SONG.song.toLowerCase() == 'dead-mans-melody' || SONG.song.toLowerCase() == 'c354r')
+		if (SONG.song.toLowerCase() == 'dead-mans-melody' || SONG.song.toLowerCase() == 'c354r' || SONG.song.toLowerCase() == "gears")
 		{
 			return;
 		}
@@ -1896,7 +1896,7 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		if (ClientPrefs.resetButton && FlxG.keys.justPressed.R)
+		if (!inCutscene && ClientPrefs.resetButton && FlxG.keys.justPressed.R)
 		{
 			persistentUpdate = false;
 			persistentDraw = false;

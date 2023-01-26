@@ -17,7 +17,8 @@ class FreeplayState extends MusicBeatState
 	@:allow(states.FreeplayMenu)
 	public static var loading:Bool = false;
 
-	var selectingFrenzy:Bool = false;
+	public var selectingFrenzy:Bool = false;
+
 	var allowInput:Bool = true;
 
 	var classic:FlxSprite;
@@ -33,6 +34,7 @@ class FreeplayState extends MusicBeatState
 	var rc:FlxSprite;
 
 	var enter:FlxSprite;
+	var waitTimer:Float = 0;
 
 	override function create()
 	{
@@ -128,6 +130,7 @@ class FreeplayState extends MusicBeatState
 		if (controls.LEFT_P || controls.RIGHT_P)
 		{
 			changeSelection();
+			waitTimer = 0;
 		}
 
 		if (controls.BACK)
@@ -138,8 +141,16 @@ class FreeplayState extends MusicBeatState
 		if (controls.ACCEPT)
 		{
 			allowInput = false;
+			waitTimer = 0;
 			openSubState(new states.FreeplayMenu(selectingFrenzy));
 		}
+
+		if (waitTimer >= 20 && allowInput)
+		{
+			states.FreeplayMenu.loadSong(selectingFrenzy ? "Mechanical" : "Erm", 2);
+		}
+		else if (allowInput)
+			waitTimer += elapsed;
 
 		/*if (controls.ACCEPT)
 			{
@@ -173,7 +184,7 @@ class FreeplayState extends MusicBeatState
 		{
 			loading = false;
 
-			if (PlayState.SONG.song.toLowerCase() == "mechanical")
+			if (PlayState.SONG.song.toLowerCase() == "mechanical" || PlayState.SONG.song.toLowerCase() == "erm")
 			{
 				LoadingState.loadAndSwitchState(new PlayState());
 				return;

@@ -71,7 +71,7 @@ class HealthIcon extends FlxSprite
 		antialiasing = StringTools.contains(curCharacter, 'pixel') || pixel.contains(curCharacter) ? false : true;
 		animation.add('healthy', [0], 0, false, isPlayer);
 
-		if (curCharacter == "peasus" && Song.isChildCostume)
+		if ((curCharacter == "peasus" || curCharacter == "peakek") && Song.isChildCostume)
 		{
 			animation.add('hurt', [0], 0, false, isPlayer);
 			animation.add('winning', [0], 0, false, isPlayer);

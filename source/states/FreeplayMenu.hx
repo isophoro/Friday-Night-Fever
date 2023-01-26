@@ -237,34 +237,7 @@ class FreeplayMenu extends MusicBeatSubstate
 		{
 			allowInput = false;
 
-			// i am so sorry
-			var txt = textGrp.members[curSelected].text.replace("\n", "").trim().replace(" ", "-").replace("[OLD]", "Old").replace("...", "").toLowerCase();
-			var poop:String = Highscore.formatSong(txt, curDifficulty);
-
-			if (poop.toLowerCase().contains("mechanical") || poop.toLowerCase().contains("erm"))
-			{
-				FlxTransitionableState.skipNextTransOut = true;
-				FlxTransitionableState.skipNextTransIn = true;
-			}
-
-			PlayState.SONG = Song.loadFromJson(poop, txt);
-			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
-			PlayState.storyWeek = 0;
-			FreeplayState.loading = true;
-			@:privateAccess
-			{
-				var instance = cast(FlxG.state, FreeplayState);
-				instance.frenzy.visible = false;
-				instance.classic.visible = false;
-			}
-			FlxTween.tween(FlxG.camera.scroll, {y: -950}, 0.65, {
-				onComplete: (t) ->
-				{
-					close();
-				},
-				ease: FlxEase.cubeInOut
-			});
+			loadSong(textGrp.members[curSelected].text, curDifficulty);
 		}
 
 		if (controls.UP_P)
@@ -315,6 +288,48 @@ class FreeplayMenu extends MusicBeatSubstate
 				diffText.visible = true;
 			}
 		});
+	}
+
+	public static function loadSong(song:String, curDifficulty:Int)
+	{
+		// i am so sorry
+		var txt = song.replace("\n", "").trim().replace(" ", "-").replace("[OLD]", "Old").replace("...", "").toLowerCase();
+		var poop:String = Highscore.formatSong(txt, curDifficulty);
+
+		if (poop.toLowerCase().contains("mechanical") || poop.toLowerCase().contains("erm"))
+		{
+			FlxTransitionableState.skipNextTransOut = true;
+			FlxTransitionableState.skipNextTransIn = true;
+		}
+
+		PlayState.SONG = Song.loadFromJson(poop, txt);
+		PlayState.isStoryMode = false;
+		PlayState.storyDifficulty = curDifficulty;
+		PlayState.storyWeek = 0;
+		FreeplayState.loading = true;
+		if (!FlxTransitionableState.skipNextTransOut)
+		{
+			@:privateAccess
+			{
+				var instance = cast(FlxG.state, FreeplayState);
+				instance.frenzy.visible = false;
+				instance.classic.visible = false;
+			}
+		}
+
+		if (FlxG.state.subState != null)
+		{
+			FlxTween.tween(FlxG.camera.scroll, {y: -950}, 0.65, {
+				onComplete: (t) ->
+				{
+					if (FlxG.state.subState != null)
+						FlxG.state.subState.close();
+				},
+				ease: FlxEase.cubeInOut
+			});
+		}
+		else
+			FlxG.state.closeSubState();
 	}
 }
 
