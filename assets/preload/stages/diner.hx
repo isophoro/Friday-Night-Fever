@@ -1,4 +1,5 @@
 var bop:FlxSprite;
+var leo:FlxSprite;
 
 function onCreate()
 {
@@ -9,6 +10,14 @@ function onCreate()
 	bg.antialiasing = true;
 	bg.scrollFactor.set(0.9, 0.9);
 	add(bg);
+
+	leo = new FlxSprite(bg.x + 2087, bg.y + 171).loadGraphic(Paths.image('leo', 'week5'));
+	leo.origin.set(leo.width / 2, leo.height);
+	leo.antialiasing = true;
+	leo.scrollFactor.set(0.9, 0.9);
+	leo.scale.set(0.9, 0.9);
+	add(leo);
+	setGlobalVar("leo", leo);
 
 	bop = new FlxSprite(-420, 730);
 	bop.frames = Paths.getSparrowAtlas('crowd', 'week5');
@@ -27,4 +36,8 @@ function onCreatePost()
 function onBeatHit()
 {
 	bop.animation.play("bop");
+
+	FlxTween.cancelTweensOf(leo);
+	leo.scale.set(0.88, 0.9);
+	FlxTween.tween(leo, {"scale.y": 0.86, "scale.x": 0.9}, Conductor.crochet / 1000);
 }

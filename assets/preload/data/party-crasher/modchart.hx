@@ -11,6 +11,7 @@ var tea_pixel;
 var fever_pixel;
 var pepper;
 var pixelCrowd;
+var leoPixel;
 
 function onCreate()
 {
@@ -35,6 +36,15 @@ function onCreate()
 	pixelDiner.origin.set(0, 0);
 	pixelDiner.scale.set(6, 6);
 	pixelDiner.visible = false;
+
+	var leo = getGlobalVar("leo");
+	leoPixel = new FlxSprite(leo.x + 170, leo.y + 150);
+	leoPixel.frames = Paths.getSparrowAtlas('leo-pixel', 'week5');
+	leoPixel.animation.addByPrefix("bop", "borger", 24, false);
+	leoPixel.scrollFactor.set(0.9, 0.9);
+	leoPixel.scale.set(6, 6);
+	leoPixel.visible = false;
+	add(leoPixel);
 
 	pepper = new Character(gf.x - 90, gf.y - 25, "pepper-worried");
 	pepper.scrollFactor.set(gf.scrollFactor.x, gf.scrollFactor.y);
@@ -104,6 +114,7 @@ function onBeatHit(curBeat:Int)
 			yukichi_pixel.visible = true;
 			pixelDiner.visible = true;
 			pixelCrowd.visible = true;
+			leoPixel.visible = true;
 
 			iconP1.swapCharacter('bf-pixeldemon');
 			iconP2.swapCharacter('yukichi-pixel');
@@ -129,6 +140,8 @@ function onBeatHit(curBeat:Int)
 			tea_pixel.visible = false;
 			pixelDiner.visible = false;
 			yukichi_pixel.visible = false;
+			pixelCrowd.visible = false;
+			leoPixel.visible = false;
 
 			camGame.setFilters([]);
 			camHUD.setFilters([]);
@@ -153,6 +166,7 @@ function onBeatHit(curBeat:Int)
 	tea_pixel.dance();
 	pepper.dance();
 	pixelCrowd.animation.play("bop");
+	leoPixel.animation.play("bop");
 }
 
 function setHUDVisibility(theBool:Bool)
