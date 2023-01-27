@@ -8,19 +8,19 @@ enum CostumeName
 	FEVER_CASUAL; // DONE
 	FEVER_MINUS; // DONE
 	FEVER_NUN; // DONE
-	FEVER_COAT;
+	FEVER_COAT; // DONE
 	FEVER_ISO;
 	TEASAR; // DONE
 	CEABUN; // DONE
 	FLU; // DONE
 	DOODLE; // DONE
-	CLASSIC;
+	CLASSIC; // DONE
 	BIRTHDAY_BUILD;
 	TANNER;
-	CEDAR;
-	MCDIETIS;
-	SKELLY;
-	SHELTON;
+	CEDAR; // NOT ADDED AS COSTUME
+	MCDIETIS; // DONE
+	SKELLY; // DONE
+	SHELTON; // DONE
 	MTALE;
 	SOULSPLIT;
 }
@@ -51,6 +51,13 @@ class CostumeHandler
 			if (!unlockedCostumes.exists(FEVER))
 				unlockedCostumes[FEVER] = 0;
 		}
+
+		if (FlxG.save.data.curCostume != null)
+			curCostume = FlxG.save.data.curCostume;
+
+		for (k => v in data) // Unlock all costumes with "unlocked" field set to true
+			if (v.unlocked && unlockedCostumes[k] == null)
+				unlockedCostumes[k] = 0;
 	}
 
 	public static function unlockCostume(costume:CostumeName)
@@ -63,6 +70,7 @@ class CostumeHandler
 	public static function save()
 	{
 		FlxG.save.data.unlockedCostumes = unlockedCostumes;
+		FlxG.save.data.curCostume = curCostume;
 		FlxG.save.flush();
 	}
 
@@ -196,5 +204,13 @@ class CostumeHandler
 			characterOffset: [5, 27],
 			camOffset: [-50, -5]
 		},
+		MCDIETIS => {
+			displayName: "Fever (McDietis Outfit)",
+			description: "",
+			character: "mcdietis",
+			creator: "???",
+			unlocked: true,
+			characterOffset: [-10, -5]
+		}
 	];
 }

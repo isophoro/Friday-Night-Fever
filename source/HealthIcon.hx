@@ -25,46 +25,45 @@ class HealthIcon extends FlxSprite
 	{
 		curCharacter = char.toLowerCase();
 
-		if (!Assets.exists(Paths.image('icons/icon-$char'))
-			&& (PlayState.instance != null && PlayState.instance.boyfriend.curCharacter.toLowerCase() == char))
+		// i hate this code and i hate how the characters are named since this makes it twenty times harder than it should
+		switch (curCharacter)
 		{
-			loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
-		}
-		else // i hate this code and i hate how the characters are named since this makes it twenty times harder than it should
-		{
-			switch (curCharacter)
-			{
-				case 'bf-cedar':
-					loadGraphic(Paths.image('icons/icon-cedarhd'), true, 150, 150);
-				case 'sg':
-					loadGraphic(Paths.image('icon-sg', 'shadow'), true, 150, 150); // embed
-				case 'scarlet-freeplay':
-					loadGraphic(Paths.image('icons/icon-scarlet'), true, 150, 150);
-				case 'robo-cesar-minus':
-					loadGraphic(Paths.image('icons/icon-robo-cesar'), true, 150, 150);
-				case 'bf' | 'bf-casual' | 'bf-tutorial' | 'bf-car' | 'bf-roblox' | 'bf-mad' | 'bf-rolldog' | 'bf-freeplay' | 'bf-coat' | 'doodle':
+			case 'bf-cedar':
+				loadGraphic(Paths.image('icons/icon-cedarhd'), true, 150, 150);
+			case 'sg':
+				loadGraphic(Paths.image('icon-sg', 'shadow'), true, 150, 150); // embed
+			case 'scarlet-freeplay':
+				loadGraphic(Paths.image('icons/icon-scarlet'), true, 150, 150);
+			case 'robo-cesar-minus':
+				loadGraphic(Paths.image('icons/icon-robo-cesar'), true, 150, 150);
+			case 'bf' | 'bf-casual' | 'bf-car' | 'bf-roblox' | 'bf-mad' | 'bf-rolldog' | 'bf-freeplay' | 'bf-coat' | 'doodle':
+				loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
+			case 'bf-minus':
+				loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
+			case "robofvr-final":
+				loadGraphic(Paths.image('icons/icon-roboff'), true, 150, 150);
+			case 'bf-teasar':
+				loadGraphic(Paths.image('icons/icon-teasar'), true, 150, 150);
+			case 'bf-carnight' | 'bf-demon' | 'bf-casualdemon':
+				loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
+			case 'gf' | 'gf-painting' | 'gf-christmas' | 'tea-pixel':
+				loadGraphic(Paths.image('icons/icon-gf'), true, 150, 150);
+			case 'mega' | 'mega-angry':
+				loadGraphic(Paths.image('icons/icon-mega'), true, 150, 150);
+			case 'mom-car' | 'hunni-car' | 'hunni' | 'mom-carnight':
+				loadGraphic(Paths.image('icons/icon-hunni'), true, 150, 150);
+			case 'taki' | 'monster' | 'taki-minus':
+				loadGraphic(Paths.image('icons/icon-taki'), true, 150, 150);
+			case 'pepper-freeplay':
+				loadGraphic(Paths.image('icons/icon-pepper'), true, 150, 150);
+			default:
+				if (!Assets.exists(Paths.image('icons/icon-$char'))
+					&& (PlayState.instance != null && PlayState.instance.boyfriend.curCharacter.toLowerCase() == char))
+				{
 					loadGraphic(Paths.image('icons/icon-bf'), true, 150, 150);
-				case 'bf-minus':
-					loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
-				case "robofvr-final":
-					loadGraphic(Paths.image('icons/icon-roboff'), true, 150, 150);
-				case 'bf-teasar':
-					loadGraphic(Paths.image('icons/icon-teasar'), true, 150, 150);
-				case 'bf-carnight' | 'bf-demon' | 'bf-casualdemon':
-					loadGraphic(Paths.image('icons/icon-bf-demon'), true, 150, 150);
-				case 'gf' | 'gf-painting' | 'gf-christmas' | 'tea-pixel':
-					loadGraphic(Paths.image('icons/icon-gf'), true, 150, 150);
-				case 'mega' | 'mega-angry':
-					loadGraphic(Paths.image('icons/icon-mega'), true, 150, 150);
-				case 'mom-car' | 'hunni-car' | 'hunni' | 'mom-carnight':
-					loadGraphic(Paths.image('icons/icon-hunni'), true, 150, 150);
-				case 'taki' | 'monster' | 'taki-minus':
-					loadGraphic(Paths.image('icons/icon-taki'), true, 150, 150);
-				case 'pepper-freeplay':
-					loadGraphic(Paths.image('icons/icon-pepper'), true, 150, 150);
-				default:
+				}
+				else
 					loadGraphic(Paths.image('icons/icon-$curCharacter'), true, 150, 150);
-			}
 		}
 
 		var pixel:Array<String> = ['flippy', 'mega', 'bdbfever'];

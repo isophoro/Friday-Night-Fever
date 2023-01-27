@@ -62,6 +62,7 @@ class PlayState extends MusicBeatState
 
 	private var curSong:String = "";
 	private var vocals:FlxSound;
+
 	public var startingSong:Bool = false;
 	public var inCutscene:Bool = false;
 
@@ -1240,7 +1241,7 @@ class PlayState extends MusicBeatState
 	{
 		startingSong = false;
 
-		if(curSong == 'Loaded')
+		if (curSong == 'Loaded')
 		{
 			var video = new VideoHandler();
 			canPause = false;
@@ -1655,7 +1656,9 @@ class PlayState extends MusicBeatState
 
 	private var paused:Bool = false;
 	var startedCountdown:Bool = false;
+
 	public var canPause:Bool = true;
+
 	var iconHurtTimer:Float = 0;
 
 	public var cameraSpeed:Float = 1.3;
@@ -2417,8 +2420,8 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 600;
 						camFollow.y = boyfriend.getMidpoint().y - 190;
 					case 'lab':
-						camFollow.x = boyfriend.getMidpoint().x - 950;
-						camFollow.y = boyfriend.getMidpoint().y - 190;
+						camFollow.x = (boyfriend.curCharacter == "bf-minus" ? boyfriend.getMidpoint().x - 950 : boyfriend.getMidpoint().x - 650);
+						camFollow.y = (boyfriend.curCharacter == "bf-minus" ? boyfriend.getMidpoint().y - 190 : boyfriend.getMidpoint().y - 230);
 				}
 
 				camFollow.x += BF_CAM_OFFSET.x + boyfriend.cameraOffset.x;

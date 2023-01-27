@@ -39,6 +39,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			default:
 				switch (daBf)
 				{
+					case 'mcdietis':
+						daBf = 'deathAnims/mcdietis';
 					case 'bf-demon':
 						if (PlayState.instance.usePixelAssets)
 						{

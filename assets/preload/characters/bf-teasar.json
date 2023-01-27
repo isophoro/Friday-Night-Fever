@@ -2,13 +2,13 @@
 	"animations": [
 		{
 			"offsets": [
-				10,
-				79
+				0,
+				70
 			],
 			"fps": 24,
-			"anim": "miss right",
+			"anim": "alt idle",
 			"loop": false,
-			"name": "singRIGHTmiss"
+			"name": "idle-frown"
 		},
 		{
 			"offsets": [
@@ -22,11 +22,21 @@
 		},
 		{
 			"offsets": [
+				10,
+				79
+			],
+			"fps": 24,
+			"anim": "right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
 				-43,
 				119
 			],
 			"fps": 24,
-			"anim": "miss left",
+			"anim": "left miss",
 			"loop": false,
 			"name": "singLEFTmiss"
 		},
@@ -62,16 +72,6 @@
 		},
 		{
 			"offsets": [
-				57,
-				0
-			],
-			"fps": 24,
-			"anim": "miss down",
-			"loop": false,
-			"name": "singDOWNmiss"
-		},
-		{
-			"offsets": [
 				-22,
 				70
 			],
@@ -82,13 +82,13 @@
 		},
 		{
 			"offsets": [
-				-10,
-				69
+				57,
+				0
 			],
 			"fps": 24,
-			"anim": "miss up",
+			"anim": "down miss",
 			"loop": false,
-			"name": "singUPmiss"
+			"name": "singDOWNmiss"
 		},
 		{
 			"offsets": [
@@ -99,9 +99,30 @@
 			"anim": "left0",
 			"loop": false,
 			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-10,
+				69
+			],
+			"fps": 24,
+			"anim": "up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				-51,
+				129
+			],
+			"fps": 24,
+			"anim": "dodge",
+			"loop": false,
+			"name": "dodge"
 		}
 	],
 	"noAntialiasing": false,
+	"isDeathAnim": false,
 	"facingLeft": true,
 	"file": "costumes/teasar",
 	"color": "C353E3"

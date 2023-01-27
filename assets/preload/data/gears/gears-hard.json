@@ -2,7 +2,7 @@
 	"song": {
 		"player1": "bf-mad",
 		"events": [],
-		"gfVersion": "gf",
+		"gfVersion": "none",
 		"stage":"train",
 		"notes": [
 			{

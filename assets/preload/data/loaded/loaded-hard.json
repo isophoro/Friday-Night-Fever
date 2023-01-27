@@ -10036,7 +10036,7 @@
 			}
 		],
 		"player2": "robo-cesar",
-		"gfVersion": "gf",
+		"gfVersion": "none",
 		"events": [],
 		"player3": null,
 		"song": "Loaded",

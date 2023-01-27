@@ -13,7 +13,7 @@ import sys.thread.Thread;
 class CostumeState extends MusicBeatState
 {
 	var CharacterList:Array<CostumeName> = [
-		FEVER, TEASAR, FEVER_NUN, FEVER_CASUAL, FEVER_MINUS, DOODLE, CEABUN, FLU, CLASSIC, SKELLY, SHELTON, FEVER_ISO, FEVER_COAT
+		FEVER, TEASAR, FEVER_NUN, FEVER_CASUAL, FEVER_MINUS, DOODLE, CEABUN, FLU, CLASSIC, MCDIETIS, SKELLY, SHELTON, FEVER_ISO, FEVER_COAT
 	];
 
 	var character:Character;
@@ -161,6 +161,7 @@ class CostumeState extends MusicBeatState
 			}
 			else if (controls.BACK)
 			{
+				CostumeHandler.save();
 				FlxG.sound.play(Paths.sound('return'));
 				FlxG.switchState(new MainMenuState(true));
 			}

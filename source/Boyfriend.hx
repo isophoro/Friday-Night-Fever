@@ -15,7 +15,10 @@ class Boyfriend extends Character
 
 	public function new(x:Float, y:Float, ?char:String = 'bf')
 	{
-		if (!PlayState.isStoryMode && CostumeHandler.curCostume != FEVER && Song.costumesEnabled)
+		if (!PlayState.isStoryMode
+			&& CostumeHandler.curCostume != FEVER
+			&& Song.costumesEnabled
+			&& PlayState.SONG.player1 != CostumeHandler.data[CostumeHandler.curCostume].character)
 		{
 			var data = CostumeHandler.data[CostumeHandler.curCostume];
 			char = data.character;

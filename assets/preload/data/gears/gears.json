@@ -9592,7 +9592,7 @@
 				"mustHitSection": true
 			}
 		],
-		"gfVersion": "gf",
+		"gfVersion": "none",
 		"events": [],
 		"player3": null,
 		"song": "Gears",

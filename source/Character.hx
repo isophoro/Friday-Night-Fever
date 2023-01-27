@@ -3,11 +3,13 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
+import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import lime.math.Vector2;
 import openfl.Assets;
+import openfl.display.BitmapData;
 
 using StringTools;
 
@@ -126,7 +128,7 @@ class Character extends FlxSprite
 					animation.play('idle');
 					flipX = true;
 
-				case 'humanDeath' | 'demonDeath':
+				case 'humanDeath' | 'demonDeath' | 'deathAnims/mcdietis':
 					frames = getSparrowAtlas('characters/$curCharacter', 'shared');
 					addByPrefix('firstDeath', "fever dies", 24, false);
 					addByPrefix('deathLoop', "fever dead loop", 24, true);
@@ -215,7 +217,7 @@ class Character extends FlxSprite
 					flipX = true;
 					isDeathAnim = true;
 				case 'madDeath':
-					frames = getSparrowAtlas('characters/fever_mad');
+					frames = getSparrowAtlas('characters/deathAnims/madDeath');
 					addByPrefix('firstDeath', "fever dies", 24, false);
 					addByPrefix('deathLoop', "fever dead loop", 24, true);
 					addByPrefix('deathConfirm', "fever dead confirm", 24, false);
@@ -228,6 +230,10 @@ class Character extends FlxSprite
 
 					flipX = true;
 					isDeathAnim = true;
+				case 'none': // peak character design. im not recoding kade engine to support no gf lmao
+					loadGraphic(new BitmapData(2, 2, true, 0x0), true, 1, 1);
+					animation.add('idle', [0], 0, false);
+					animation.play('idle');
 			}
 		}
 
