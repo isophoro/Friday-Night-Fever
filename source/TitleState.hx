@@ -58,6 +58,35 @@ class TitleState extends MusicBeatState
 			Main.playFreakyMenu();
 		}
 
+		var bg:FlxSprite = new FlxSprite(-20, -1).loadGraphic(Paths.image('title/bg'));
+		bg.antialiasing = true;
+		add(bg);
+
+		add(logoBl);
+
+		var cool = FlxG.random.bool(50);
+		tea = new FlxSprite(cool ? 698 : 963, cool ? 355 : 290);
+		tea.frames = Paths.getSparrowAtlas('title/tea');
+		tea.animation.addByPrefix('bump', 'tea', 24);
+		tea.animation.play('bump');
+		tea.origin.set(0, 0);
+		tea.scale.scale(0.66);
+		tea.antialiasing = true;
+		add(tea);
+
+		feva = new FlxSprite(cool ? 945 : 755, cool ? 247 : 282);
+		feva.frames = Paths.getSparrowAtlas('title/fever');
+		feva.animation.addByPrefix('bump', 'fever', 24);
+		feva.animation.play('bump');
+		feva.origin.set(0, 0);
+		feva.scale.scale(0.66);
+		feva.antialiasing = true;
+		add(feva);
+
+		var front = new FlxSprite(544, 616).loadGraphic(Paths.image('title/front'));
+		front.antialiasing = true;
+		add(front);
+
 		#if FREEPLAY
 		FlxG.switchState(new FreeplayState());
 		#elseif CHARTING
@@ -90,35 +119,6 @@ class TitleState extends MusicBeatState
 
 		persistentUpdate = true;
 
-		var bg:FlxSprite = new FlxSprite(-20, -1).loadGraphic(Paths.image('title/bg'));
-		bg.antialiasing = true;
-		add(bg);
-
-		add(logoBl);
-
-		var cool = FlxG.random.bool(50);
-		tea = new FlxSprite(cool ? 698 : 963, cool ? 355 : 290);
-		tea.frames = Paths.getSparrowAtlas('title/tea');
-		tea.animation.addByPrefix('bump', 'tea', 24);
-		tea.animation.play('bump');
-		tea.origin.set(0, 0);
-		tea.scale.scale(0.66);
-		tea.antialiasing = true;
-		add(tea);
-
-		feva = new FlxSprite(cool ? 945 : 755, cool ? 247 : 282);
-		feva.frames = Paths.getSparrowAtlas('title/fever');
-		feva.animation.addByPrefix('bump', 'fever', 24);
-		feva.animation.play('bump');
-		feva.origin.set(0, 0);
-		feva.scale.scale(0.66);
-		feva.antialiasing = true;
-		add(feva);
-
-		var front = new FlxSprite(544, 616).loadGraphic(Paths.image('title/front'));
-		front.antialiasing = true;
-		add(front);
-
 		credGroup = new FlxGroup();
 		add(credGroup);
 		textGroup = new FlxGroup();
@@ -129,7 +129,7 @@ class TitleState extends MusicBeatState
 		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('teamfever'));
 		add(ngSpr);
 		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.9));
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;

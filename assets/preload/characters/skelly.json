@@ -1,0 +1,129 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "FSkell idle frown",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				-12,
+				36
+			],
+			"fps": 24,
+			"anim": "FSkell down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-32,
+				75
+			],
+			"fps": 24,
+			"anim": "FSkell right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				-9,
+				93
+			],
+			"fps": 24,
+			"anim": "FSkell up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				34,
+				75
+			],
+			"fps": 24,
+			"anim": "FSkell left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				179,
+				92
+			],
+			"fps": 24,
+			"anim": "FSkell hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "FSkell idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-20,
+				70
+			],
+			"fps": 24,
+			"anim": "FSkell right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				11,
+				20
+			],
+			"fps": 24,
+			"anim": "FSkell down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-7,
+				92
+			],
+			"fps": 24,
+			"anim": "FSkell up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				42,
+				75
+			],
+			"fps": 24,
+			"anim": "FSkell left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				242,
+				114
+			],
+			"fps": 24,
+			"anim": "FSkell dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": false,
+	"isDeathAnim": false,
+	"facingLeft": true,
+	"file": "costumes/skelly",
+	"color": "FE527E"
+}

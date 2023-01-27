@@ -14,6 +14,15 @@ enum CostumeName
 	CEABUN; // DONE
 	FLU; // DONE
 	DOODLE; // DONE
+	CLASSIC;
+	BIRTHDAY_BUILD;
+	TANNER;
+	CEDAR;
+	MCDIETIS;
+	SKELLY;
+	SHELTON;
+	MTALE;
+	SOULSPLIT;
 }
 
 typedef CostumeInfo =
@@ -23,7 +32,8 @@ typedef CostumeInfo =
 	description:String,
 	creator:String,
 	?camOffset:Array<Float>,
-	?characterOffset:Array<Float>
+	?characterOffset:Array<Float>,
+	?unlocked:Bool
 }
 
 class CostumeHandler
@@ -160,6 +170,31 @@ class CostumeHandler
 			description: "Achieve an accuracy of 41% or less in any song.",
 			character: "flu",
 			creator: "Pancho"
-		}
+		},
+		CLASSIC => {
+			displayName: "Fever (Classic)",
+			description: "Full combo Weeks 1 - 6",
+			character: "bf-classic",
+			creator: "Kip",
+			characterOffset: [0, 30]
+		},
+		SKELLY => {
+			displayName: "Skelly (FNFever)",
+			description: "",
+			character: "skelly",
+			creator: "Skelly",
+			unlocked: true,
+			characterOffset: [-10, -10],
+			camOffset: [-50, -10]
+		},
+		SHELTON => {
+			displayName: "Fever (Shelton Outfit)",
+			description: "",
+			character: "shelton",
+			creator: "???",
+			unlocked: true,
+			characterOffset: [5, 27],
+			camOffset: [-50, -5]
+		},
 	];
 }

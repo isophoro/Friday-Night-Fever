@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mm borger pixel.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="borger0000" x="0" y="0" width="64" height="72" pivotX="32" pivotY="36"/>
+	<SubTexture name="borger0001" x="0" y="0" width="64" height="72"/>
+	<SubTexture name="borger0002" x="64" y="0" width="64" height="72"/>
+	<SubTexture name="borger0003" x="64" y="0" width="64" height="72"/>
+	<SubTexture name="borger0004" x="128" y="0" width="64" height="72"/>
+	<SubTexture name="borger0005" x="128" y="0" width="64" height="72"/>
+	<SubTexture name="borger0006" x="128" y="0" width="64" height="72"/>
+	<SubTexture name="borger0007" x="128" y="0" width="64" height="72"/>
+	<SubTexture name="borger0008" x="128" y="0" width="64" height="72"/>
+	<SubTexture name="borger0009" x="128" y="0" width="64" height="72"/>
+	<SubTexture name="borger0010" x="128" y="0" width="64" height="72"/>
+	<SubTexture name="borger0011" x="128" y="0" width="64" height="72"/>
+	<SubTexture name="borger0012" x="128" y="0" width="64" height="72"/>
+</TextureAtlas>

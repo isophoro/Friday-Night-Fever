@@ -86,8 +86,8 @@ class FreeplayMenu extends MusicBeatSubstate
 			"songs": [
 				["Tranquility", "scarlet"],
 				["Princess", "scarlet"],
+				["Crack", "scarlet"],
 				["Bloom", "scarlet-final"],
-				["Crack", "scarlet"]
 			]
 		},
 		{

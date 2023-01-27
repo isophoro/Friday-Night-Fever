@@ -26,7 +26,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		super();
 
-		var daBf:String = PlayState.SONG.player1;
+		var daBf:String = PlayState.instance.boyfriend.curCharacter;
 
 		switch (PlayState.SONG.song.toLowerCase())
 		{

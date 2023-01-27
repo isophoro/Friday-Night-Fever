@@ -7,7 +7,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF DOWN NOTE",
+			"anim": "BDBDown",
 			"loop": false,
 			"name": "singDOWN"
 		},
@@ -17,7 +17,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF RIGHT MISS",
+			"anim": "BDBMissRight",
 			"loop": false,
 			"name": "singRIGHTmiss"
 		},
@@ -27,7 +27,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF LEFT MISS",
+			"anim": "BDBMISSLeft",
 			"loop": false,
 			"name": "singLEFTmiss"
 		},
@@ -37,7 +37,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF UP NOTE",
+			"anim": "BDBUp",
 			"loop": false,
 			"name": "singUP"
 		},
@@ -47,7 +47,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF IDLE",
+			"anim": "BDBIdle",
 			"loop": false,
 			"name": "idle"
 		},
@@ -57,7 +57,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF DOWN MISS",
+			"anim": "BDBMISSDown",
 			"loop": false,
 			"name": "singDOWNmiss"
 		},
@@ -67,7 +67,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF LEFT NOTE",
+			"anim": "BDBRight",
 			"loop": false,
 			"name": "singRIGHT"
 		},
@@ -77,7 +77,7 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF UP MISS",
+			"anim": "BDBMISSUp",
 			"loop": false,
 			"name": "singUPmiss"
 		},
@@ -87,13 +87,13 @@
 				0
 			],
 			"fps": 24,
-			"anim": "BF RIGHT NOTE",
+			"anim": "BDBLeft",
 			"loop": false,
 			"name": "singLEFT"
 		}
 	],
 	"noAntialiasing": true,
 	"facingLeft": true,
-	"file": "bdbFever",
+	"file": "fever/BDBFever",
 	"color": "7E32B1"
 }

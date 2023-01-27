@@ -10,6 +10,7 @@ var yukichi_pixel;
 var tea_pixel;
 var fever_pixel;
 var pepper;
+var pixelCrowd;
 
 function onCreate()
 {
@@ -56,7 +57,15 @@ function onCreate()
 	add(yukichi_pixel);
 	add(fever_pixel);
 
-	getGlobalVar("bop").scale.set(1.2, 1.2);
+	var bop = getGlobalVar("bop");
+	pixelCrowd = new FlxSprite(bop.x + 900, bop.y + 400);
+	pixelCrowd.frames = Paths.getSparrowAtlas('crowd-pixel', 'week5');
+	pixelCrowd.animation.addByPrefix("bop", "people", 24, false);
+	pixelCrowd.scale.set(6, 6);
+	pixelCrowd.visible = false;
+	add(pixelCrowd);
+
+	bop.scale.set(1.2, 1.2);
 }
 
 function onBeatHit(curBeat:Int)
@@ -94,6 +103,7 @@ function onBeatHit(curBeat:Int)
 			tea_pixel.visible = true;
 			yukichi_pixel.visible = true;
 			pixelDiner.visible = true;
+			pixelCrowd.visible = true;
 
 			iconP1.swapCharacter('bf-pixeldemon');
 			iconP2.swapCharacter('yukichi-pixel');
@@ -142,6 +152,7 @@ function onBeatHit(curBeat:Int)
 
 	tea_pixel.dance();
 	pepper.dance();
+	pixelCrowd.animation.play("bop");
 }
 
 function setHUDVisibility(theBool:Bool)

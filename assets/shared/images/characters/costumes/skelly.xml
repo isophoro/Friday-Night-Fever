@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="skelly fnfever thingy.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="FSkell dodge0000" x="0" y="0" width="567" height="600" frameX="-53" frameY="-26" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0001" x="0" y="0" width="567" height="600" frameX="-53" frameY="-26" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0002" x="567" y="0" width="622" height="626"/>
+	<SubTexture name="FSkell dodge0003" x="567" y="0" width="622" height="626"/>
+	<SubTexture name="FSkell dodge0004" x="1189" y="0" width="568" height="600" frameX="-53" frameY="-26" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0005" x="1189" y="0" width="568" height="600" frameX="-53" frameY="-26" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0006" x="1757" y="0" width="621" height="626" frameX="0" frameY="0" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0007" x="1757" y="0" width="621" height="626" frameX="0" frameY="0" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0008" x="2378" y="0" width="621" height="626" frameX="0" frameY="0" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0009" x="2378" y="0" width="621" height="626" frameX="0" frameY="0" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0010" x="2999" y="0" width="621" height="626" frameX="0" frameY="0" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell dodge0011" x="2999" y="0" width="621" height="626" frameX="0" frameY="0" frameWidth="622" frameHeight="626"/>
+	<SubTexture name="FSkell down0000" x="3620" y="0" width="392" height="532" frameX="0" frameY="-12" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0001" x="3620" y="0" width="392" height="532" frameX="0" frameY="-12" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0002" x="0" y="626" width="392" height="544" frameX="-4" frameY="-1" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0003" x="0" y="626" width="392" height="544" frameX="-4" frameY="-1" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0004" x="392" y="626" width="392" height="545" frameX="-5" frameY="0" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0005" x="392" y="626" width="392" height="545" frameX="-5" frameY="0" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0006" x="392" y="626" width="392" height="545" frameX="-5" frameY="0" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0007" x="392" y="626" width="392" height="545" frameX="-5" frameY="0" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0008" x="392" y="626" width="392" height="545" frameX="-5" frameY="0" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0009" x="392" y="626" width="392" height="545" frameX="-5" frameY="0" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0010" x="392" y="626" width="392" height="545" frameX="-5" frameY="0" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down0011" x="392" y="626" width="392" height="545" frameX="-5" frameY="0" frameWidth="397" frameHeight="545"/>
+	<SubTexture name="FSkell down miss0000" x="784" y="626" width="393" height="533" frameX="-6" frameY="0" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0001" x="784" y="626" width="393" height="533" frameX="-6" frameY="0" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0002" x="1177" y="626" width="401" height="516" frameX="0" frameY="-17" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0003" x="1177" y="626" width="401" height="516" frameX="0" frameY="-17" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0004" x="1578" y="626" width="389" height="532" frameX="-5" frameY="-1" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0005" x="1578" y="626" width="389" height="532" frameX="-5" frameY="-1" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0006" x="1578" y="626" width="389" height="532" frameX="-5" frameY="-1" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0007" x="1578" y="626" width="389" height="532" frameX="-5" frameY="-1" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0008" x="1578" y="626" width="389" height="532" frameX="-5" frameY="-1" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0009" x="1578" y="626" width="389" height="532" frameX="-5" frameY="-1" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0010" x="1578" y="626" width="389" height="532" frameX="-5" frameY="-1" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell down miss0011" x="1578" y="626" width="389" height="532" frameX="-5" frameY="-1" frameWidth="401" frameHeight="533"/>
+	<SubTexture name="FSkell hey0000" x="1967" y="626" width="468" height="597" frameX="-114" frameY="-4" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0001" x="1967" y="626" width="468" height="597" frameX="-114" frameY="-4" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0002" x="2435" y="626" width="494" height="598" frameX="-90" frameY="-3" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0003" x="2435" y="626" width="494" height="598" frameX="-90" frameY="-3" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0004" x="2929" y="626" width="517" height="601" frameX="-65" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0005" x="2929" y="626" width="517" height="601" frameX="-65" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0006" x="3446" y="626" width="555" height="601" frameX="-27" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0007" x="3446" y="626" width="555" height="601" frameX="-27" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0008" x="0" y="1227" width="582" height="601" frameX="0" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0009" x="0" y="1227" width="582" height="601" frameX="0" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0010" x="582" y="1227" width="398" height="601" frameX="-184" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0011" x="582" y="1227" width="398" height="601" frameX="-184" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0012" x="582" y="1227" width="398" height="601" frameX="-184" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell hey0013" x="582" y="1227" width="398" height="601" frameX="-184" frameY="0" frameWidth="584" frameHeight="601"/>
+	<SubTexture name="FSkell idle0000" x="980" y="1227" width="403" height="599" frameX="0" frameY="-3" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0001" x="980" y="1227" width="403" height="599" frameX="0" frameY="-3" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0002" x="1383" y="1227" width="404" height="601" frameX="-1" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0003" x="1383" y="1227" width="404" height="601" frameX="-1" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0004" x="1787" y="1227" width="397" height="602" frameX="-8" frameY="0" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0005" x="1787" y="1227" width="397" height="602" frameX="-8" frameY="0" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0006" x="2184" y="1227" width="398" height="601" frameX="-11" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0007" x="2184" y="1227" width="398" height="601" frameX="-11" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0008" x="2582" y="1227" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0009" x="2582" y="1227" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0010" x="2981" y="1227" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0011" x="2981" y="1227" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0012" x="2981" y="1227" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle0013" x="2981" y="1227" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0000" x="3380" y="1227" width="403" height="599" frameX="0" frameY="-3" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0001" x="3380" y="1227" width="403" height="599" frameX="0" frameY="-3" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0002" x="0" y="1829" width="404" height="601" frameX="-1" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0003" x="0" y="1829" width="404" height="601" frameX="-1" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0004" x="404" y="1829" width="397" height="602" frameX="-8" frameY="0" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0005" x="404" y="1829" width="397" height="602" frameX="-8" frameY="0" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0006" x="801" y="1829" width="398" height="601" frameX="-11" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0007" x="801" y="1829" width="398" height="601" frameX="-11" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0008" x="1199" y="1829" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0009" x="1199" y="1829" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0010" x="1598" y="1829" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0011" x="1598" y="1829" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0012" x="1598" y="1829" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell idle frown0013" x="1598" y="1829" width="399" height="601" frameX="-12" frameY="-1" frameWidth="411" frameHeight="602"/>
+	<SubTexture name="FSkell left0000" x="1997" y="1829" width="401" height="587" frameX="0" frameY="-1" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0001" x="1997" y="1829" width="401" height="587" frameX="0" frameY="-1" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0002" x="2398" y="1829" width="401" height="588" frameX="-3" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0003" x="2398" y="1829" width="401" height="588" frameX="-3" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0004" x="2799" y="1829" width="401" height="588" frameX="-4" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0005" x="2799" y="1829" width="401" height="588" frameX="-4" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0006" x="2799" y="1829" width="401" height="588" frameX="-4" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0007" x="2799" y="1829" width="401" height="588" frameX="-4" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0008" x="2799" y="1829" width="401" height="588" frameX="-4" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0009" x="2799" y="1829" width="401" height="588" frameX="-4" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0010" x="2799" y="1829" width="401" height="588" frameX="-4" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left0011" x="2799" y="1829" width="401" height="588" frameX="-4" frameY="0" frameWidth="405" frameHeight="588"/>
+	<SubTexture name="FSkell left miss0000" x="3200" y="1829" width="401" height="587" frameX="-6" frameY="-2" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0001" x="3200" y="1829" width="401" height="587" frameX="-6" frameY="-2" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0002" x="3601" y="1829" width="420" height="587" frameX="0" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0003" x="3601" y="1829" width="420" height="587" frameX="0" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0004" x="0" y="2431" width="420" height="587" frameX="-6" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0005" x="0" y="2431" width="420" height="587" frameX="-6" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0006" x="0" y="2431" width="420" height="587" frameX="-6" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0007" x="0" y="2431" width="420" height="587" frameX="-6" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0008" x="0" y="2431" width="420" height="587" frameX="-6" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0009" x="0" y="2431" width="420" height="587" frameX="-6" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0010" x="0" y="2431" width="420" height="587" frameX="-6" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell left miss0011" x="0" y="2431" width="420" height="587" frameX="-6" frameY="0" frameWidth="426" frameHeight="589"/>
+	<SubTexture name="FSkell right0000" x="420" y="2431" width="393" height="585" frameX="-3" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0001" x="420" y="2431" width="393" height="585" frameX="-3" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0002" x="813" y="2431" width="391" height="586" frameX="-1" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0003" x="813" y="2431" width="391" height="586" frameX="-1" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0004" x="1204" y="2431" width="391" height="586" frameX="0" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0005" x="1204" y="2431" width="391" height="586" frameX="0" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0006" x="1204" y="2431" width="391" height="586" frameX="0" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0007" x="1204" y="2431" width="391" height="586" frameX="0" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0008" x="1204" y="2431" width="391" height="586" frameX="0" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0009" x="1204" y="2431" width="391" height="586" frameX="0" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0010" x="1204" y="2431" width="391" height="586" frameX="0" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right0011" x="1204" y="2431" width="391" height="586" frameX="0" frameY="0" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right miss0000" x="420" y="2431" width="393" height="585" frameX="-2" frameY="-2" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right miss0001" x="420" y="2431" width="393" height="585" frameX="-2" frameY="-2" frameWidth="396" frameHeight="586"/>
+	<SubTexture name="FSkell right miss0002" x="1595" y="2431" width="381" height="587" frameX="-4" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0003" x="1595" y="2431" width="381" height="587" frameX="-4" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0004" x="1976" y="2431" width="381" height="587" frameX="0" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0005" x="1976" y="2431" width="381" height="587" frameX="0" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0006" x="1976" y="2431" width="381" height="587" frameX="0" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0007" x="1976" y="2431" width="381" height="587" frameX="0" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0008" x="1976" y="2431" width="381" height="587" frameX="0" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0009" x="1976" y="2431" width="381" height="587" frameX="0" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0010" x="1976" y="2431" width="381" height="587" frameX="0" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell right miss0011" x="1976" y="2431" width="381" height="587" frameX="0" frameY="0" frameWidth="395" frameHeight="587"/>
+	<SubTexture name="FSkell scared0000" x="2357" y="2431" width="391" height="596" frameX="-1" frameY="0" frameWidth="394" frameHeight="596"/>
+	<SubTexture name="FSkell scared0001" x="2748" y="2431" width="391" height="595" frameX="-3" frameY="-1" frameWidth="394" frameHeight="596"/>
+	<SubTexture name="FSkell scared0002" x="3139" y="2431" width="391" height="596" frameX="-1" frameY="0" frameWidth="394" frameHeight="596"/>
+	<SubTexture name="FSkell scared0003" x="3530" y="2431" width="391" height="594" frameX="0" frameY="-2" frameWidth="394" frameHeight="596"/>
+	<SubTexture name="FSkell up0000" x="0" y="3027" width="395" height="604" frameX="0" frameY="0" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0001" x="0" y="3027" width="395" height="604" frameX="0" frameY="0" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0002" x="395" y="3027" width="394" height="602" frameX="-1" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0003" x="395" y="3027" width="394" height="602" frameX="-1" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0004" x="789" y="3027" width="392" height="602" frameX="-3" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0005" x="789" y="3027" width="392" height="602" frameX="-3" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0006" x="789" y="3027" width="392" height="602" frameX="-3" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0007" x="789" y="3027" width="392" height="602" frameX="-3" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0008" x="789" y="3027" width="392" height="602" frameX="-3" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0009" x="789" y="3027" width="392" height="602" frameX="-3" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0010" x="789" y="3027" width="392" height="602" frameX="-3" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up0011" x="789" y="3027" width="392" height="602" frameX="-3" frameY="-3" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up miss0000" x="0" y="3027" width="395" height="604" frameX="-4" frameY="0" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up miss0001" x="0" y="3027" width="395" height="604" frameX="-4" frameY="0" frameWidth="395" frameHeight="605"/>
+	<SubTexture name="FSkell up miss0002" x="1181" y="3027" width="393" height="604" frameX="-4" frameY="-1" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0003" x="1181" y="3027" width="393" height="604" frameX="-4" frameY="-1" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0004" x="1574" y="3027" width="401" height="597" frameX="0" frameY="-8" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0005" x="1574" y="3027" width="401" height="597" frameX="0" frameY="-8" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0006" x="1574" y="3027" width="401" height="597" frameX="0" frameY="-8" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0007" x="1574" y="3027" width="401" height="597" frameX="0" frameY="-8" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0008" x="1574" y="3027" width="401" height="597" frameX="0" frameY="-8" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0009" x="1574" y="3027" width="401" height="597" frameX="0" frameY="-8" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0010" x="1574" y="3027" width="401" height="597" frameX="0" frameY="-8" frameWidth="401" frameHeight="606"/>
+	<SubTexture name="FSkell up miss0011" x="1574" y="3027" width="401" height="597" frameX="0" frameY="-8" frameWidth="401" frameHeight="606"/>
+</TextureAtlas>

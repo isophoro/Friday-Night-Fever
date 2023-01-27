@@ -1,0 +1,129 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				18,
+				75
+			],
+			"fps": 24,
+			"anim": "right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				-12,
+				28
+			],
+			"fps": 24,
+			"anim": "down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "idle frown",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				62,
+				92
+			],
+			"fps": 24,
+			"anim": "left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				7,
+				123
+			],
+			"fps": 24,
+			"anim": "up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-7,
+				152
+			],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				11,
+				20
+			],
+			"fps": 24,
+			"anim": "down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-10,
+				70
+			],
+			"fps": 24,
+			"anim": "right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				62,
+				93
+			],
+			"fps": 24,
+			"anim": "left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-7,
+				122
+			],
+			"fps": 24,
+			"anim": "up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				112,
+				95
+			],
+			"fps": 24,
+			"anim": "dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": false,
+	"isDeathAnim": false,
+	"facingLeft": true,
+	"file": "costumes/shelter",
+	"color": "A82446"
+}

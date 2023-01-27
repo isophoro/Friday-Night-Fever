@@ -1,0 +1,139 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				37,
+				5
+			],
+			"fps": 24,
+			"anim": "BF Dead Loop",
+			"loop": true,
+			"name": "deathLoop"
+		},
+		{
+			"offsets": [
+				-6,
+				-12
+			],
+			"fps": 24,
+			"anim": "BF idle shaking",
+			"loop": true,
+			"name": "scared"
+		},
+		{
+			"offsets": [
+				1,
+				-68
+			],
+			"fps": 24,
+			"anim": "BF NOTE DOWN0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-28,
+				-15
+			],
+			"fps": 24,
+			"anim": "BF NOTE RIGHT MISS",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				-24,
+				13
+			],
+			"fps": 24,
+			"anim": "BF NOTE UP0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				32,
+				-4
+			],
+			"fps": 24,
+			"anim": "BF NOTE LEFT MISS",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				-5,
+				0
+			],
+			"fps": 24,
+			"anim": "BF idle dance",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				37,
+				20
+			],
+			"fps": 24,
+			"anim": "BF Dead confirm",
+			"loop": false,
+			"name": "deathConfirm"
+		},
+		{
+			"offsets": [
+				37,
+				11
+			],
+			"fps": 24,
+			"anim": "BF dies",
+			"loop": false,
+			"name": "firstDeath"
+		},
+		{
+			"offsets": [
+				-30,
+				-11
+			],
+			"fps": 24,
+			"anim": "BF NOTE RIGHT0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				-3,
+				-65
+			],
+			"fps": 24,
+			"anim": "BF NOTE DOWN MISS",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-23,
+				7
+			],
+			"fps": 24,
+			"anim": "BF NOTE UP MISS",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				29,
+				-4
+			],
+			"fps": 24,
+			"anim": "BF NOTE LEFT0",
+			"loop": false,
+			"name": "singLEFT"
+		}
+	],
+	"noAntialiasing": false,
+	"isDeathAnim": false,
+	"facingLeft": true,
+	"file": "costumes/old",
+	"color": "E353C8"
+}
