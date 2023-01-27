@@ -5,15 +5,13 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
-import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import sys.thread.Thread;
 
 class CostumeState extends MusicBeatState
 {
 	var CharacterList:Array<CostumeName> = [
-		FEVER, TEASAR, FEVER_NUN, FEVER_CASUAL, FEVER_MINUS, DOODLE, CEABUN, FLU, CLASSIC, MCDIETIS, SKELLY, SHELTON, FEVER_ISO, FEVER_COAT
+		FEVER, TEASAR, FEVER_NUN, FEVER_CASUAL, FEVER_MINUS, DOODLE, CEABUN, FLU, CLASSIC, MCDIETIS, SKELLY, SHELTON, CEDAR, FEVER_ISO, FEVER_COAT
 	];
 
 	var character:Character;

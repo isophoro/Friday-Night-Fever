@@ -11,6 +11,9 @@ import flixel.util.FlxColor;
 import lime.app.Application;
 import sprites.CharacterTrail;
 
+/**
+ * This was made before I added HScript support so dont look at me like that
+ */
 class BadNun
 {
 	public static var failed:Bool = false;
@@ -21,6 +24,11 @@ class BadNun
 	public static var movieBars:FlxTypedGroup<FlxSprite>;
 	public static var darken:FlxSprite;
 	public static var translate:Bool = false;
+
+	public static var ogBG:Array<Float> = [];
+	public static var ogBF:Array<Float> = [];
+	public static var ogTaki:Array<Float> = [];
+	public static var ogGF:Array<Float> = [];
 
 	public static function beatHit(curBeat:Int)
 	{
@@ -42,6 +50,10 @@ class BadNun
 				return;
 
 			instance = PlayState.instance;
+			ogBF = [instance.boyfriend.x, instance.boyfriend.y];
+			ogTaki = [instance.dad.x, instance.dad.y];
+			ogGF = [instance.gf.x, instance.gf.y];
+			ogBG = [instance.church.x, instance.church.y];
 			instance.dad.shader = colorShader;
 			instance.gf.shader = colorShader;
 			instance.boyfriend.shader = colorShader;
@@ -112,10 +124,8 @@ class BadNun
 				instance.gf.visible = false;
 				instance.camFollow.setPosition(instance.dad.getMidpoint().x + 120, instance.dad.getMidpoint().y - 50);
 				FlxTween.tween(instance.camGame, {zoom: instance.camGame.zoom + 0.2}, 6);
-				FlxTween.tween(instance.dad, {angle: 10}, 7);
 			case 175:
 				FlxTween.cancelTweensOf(instance.dad);
-				instance.dad.angle = 0;
 				bgColorShader.color.value = [1, 1, 1];
 				colorShader.color.value = [0, 0, 0];
 				instance.boyfriend.visible = true;
@@ -140,7 +150,7 @@ class BadNun
 				instance.dad.x += 850;
 				instance.boyfriend.x -= 1060;
 
-				focusCamera(instance.dad.getMidpoint().x + 40, instance.dad.getMidpoint().y - 50);
+				focusCamera(instance.dad.getMidpoint().x + 40, instance.dad.getMidpoint().y - 200);
 				FlxTween.tween(instance.camGame, {zoom: 0.8}, 1.15);
 			case 207:
 				instance.gf.x = 948;
@@ -154,10 +164,10 @@ class BadNun
 				FlxTween.tween(instance.church, {alpha: 1}, Conductor.crochet / 1000);
 				instance.disableCamera = false;
 				PlayState.setModCamera(false);
+				resetPos();
+
 				if (curBeat == 224)
 				{
-					instance.dad.x -= 850;
-					instance.boyfriend.x += 1060;
 					instance.add(darken);
 					darken.scale.set(6, 6); // just to be safe?
 				}
@@ -165,10 +175,7 @@ class BadNun
 				{
 					instance.dad.alpha = 1;
 					instance.boyfriend.alpha = 1;
-					instance.boyfriend.x = 1828;
-					instance.boyfriend.y = 1148;
-					instance.dad.y = 620;
-					instance.dad.x = 388;
+					resetPos();
 				}
 
 				instance.purpleOverlay.visible = true;
@@ -208,6 +215,7 @@ class BadNun
 				translate = true;
 				PlayState.instance.scoreTxt.font = Paths.font("unifont.otf");
 				PlayState.instance.scoreTxt.size = 18;
+				instance.updateScoring();
 
 				instance.camZooming = true;
 
@@ -242,7 +250,7 @@ class BadNun
 				instance.boyfriend.x += 500;
 				focusCamera(instance.boyfriend.x + 120, instance.boyfriend.y + 150);
 				FlxTween.tween(instance.camFollow,
-					{x: instance.boyfriend.x + instance.boyfriend.width - 50, y: instance.boyfriend.y + 90 + (instance.boyfriend.height / 4)}, 9.5);
+					{x: instance.boyfriend.x + instance.boyfriend.width - 220, y: instance.boyfriend.y + 90 + (instance.boyfriend.height / 4)}, 9.5);
 			case 384:
 				FlxTween.cancelTweensOf(instance.camFollow);
 				instance.camGame.zoom = 1.1;
@@ -264,7 +272,8 @@ class BadNun
 				m2.y += 145;
 				FlxTween.tween(m1, {y: m1.y + 145}, 0.35);
 				FlxTween.tween(m2, {y: m2.y - 145}, 0.35);
-				FlxTween.tween(instance.dad, {x: instance.dad.x + 140}, 7);
+				instance.dad.setPosition(491.5, 60);
+				FlxTween.tween(instance.dad, {x: instance.dad.x - 200}, 7);
 			case 400:
 				FlxTween.cancelTweensOf(instance.dad);
 				instance.dad.visible = false;
@@ -276,7 +285,7 @@ class BadNun
 			case 416:
 				instance.dad.alpha = 0.45;
 				instance.dad.visible = true;
-				instance.dad.setPosition(instance.boyfriend.x + 600, instance.boyfriend.x - 450);
+				instance.dad.setPosition(2104.61, 898);
 			case 432:
 				instance.dad.visible = false;
 			case 446:
@@ -287,10 +296,21 @@ class BadNun
 						PlayState.instance.scoreTxt.font = Paths.font("vcr.ttf");
 						PlayState.instance.scoreTxt.size = 18;
 						translate = false;
+						instance.updateScoring();
+						resetPos();
 					}
 				});
 				instance.remove(movieBars);
 		}
+	}
+
+	public static function resetPos()
+	{
+		instance.dad.setPosition(ogTaki[0], ogTaki[1]);
+		instance.boyfriend.setPosition(ogBF[0], ogBF[1]);
+		instance.gf.setPosition(ogGF[0], ogGF[1]);
+		instance.church.setPosition(ogBG[0], ogBG[1]);
+		instance.moveCamera(true);
 	}
 
 	public static function focusCamera(x:Float, y:Float)

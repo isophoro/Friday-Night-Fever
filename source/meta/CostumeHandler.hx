@@ -9,7 +9,7 @@ enum CostumeName
 	FEVER_MINUS; // DONE
 	FEVER_NUN; // DONE
 	FEVER_COAT; // DONE
-	FEVER_ISO;
+	FEVER_ISO; // DONE
 	TEASAR; // DONE
 	CEABUN; // DONE
 	FLU; // DONE
@@ -17,12 +17,13 @@ enum CostumeName
 	CLASSIC; // DONE
 	BIRTHDAY_BUILD;
 	TANNER;
-	CEDAR; // NOT ADDED AS COSTUME
+	CEDAR; // DONE
 	MCDIETIS; // DONE
 	SKELLY; // DONE
 	SHELTON; // DONE
 	MTALE;
 	SOULSPLIT;
+	MONGUS;
 }
 
 typedef CostumeInfo =
@@ -211,6 +212,13 @@ class CostumeHandler
 			creator: "???",
 			unlocked: true,
 			characterOffset: [-10, -5]
+		},
+		CEDAR => {
+			displayName: "Cedar",
+			description: "",
+			character: "bf-cedar",
+			creator: "IDK",
+			characterOffset: [0, -100]
 		}
 	];
 }

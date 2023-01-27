@@ -136,7 +136,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				case 'c354r' | 'loaded' | 'gears' | 'grando' | 'tranquility' | 'princess' | 'bloom' | 'crack' | 'w00f':
 					FlxG.sound.playMusic(Paths.music('gameOver-Robo'));
-				case 'hallow' | 'portrait' | 'soul':
+				case 'hallow' | 'old-portrait' | 'soul' | 'eclipse' | 'old-hallow' | 'old-soul':
 					FlxG.sound.playMusic(Paths.music('gameOverHallow'));
 				default:
 					FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));

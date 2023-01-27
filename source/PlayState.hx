@@ -167,7 +167,6 @@ class PlayState extends MusicBeatState
 	public var disableScoreBop:Bool = false;
 	public var subtitles:Subtitles;
 
-	var botPlayState:FlxText; // BotPlay text
 	var currentTimingShown:TimingText;
 	var songName:FlxText;
 
@@ -305,7 +304,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
-		FlxG.cameras.setDefaultDrawTarget(camGame, true);
+		// FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		currentTimingShown = new TimingText();
 		currentTimingShown.cameras = [camHUD];
@@ -799,24 +798,10 @@ class PlayState extends MusicBeatState
 		generateSong(SONG.song);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
-
-		camPos.set(instance.dad.getGraphicMidpoint().x, instance.dad.getGraphicMidpoint().y + 130);
-		camFollow.setPosition(camPos.x, camPos.y);
-
-		if (prevCamFollow != null)
-		{
-			camFollow = prevCamFollow;
-			prevCamFollow = null;
-		}
-
 		add(camFollow);
 
-		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
-
+		FlxG.camera.follow(camFollow, LOCKON, 0.04);
 		FlxG.camera.zoom = defaultCamZoom;
-		FlxG.camera.focusOn(camFollow.getPosition());
-
-		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
 
 		if (SONG.song.toLowerCase() == 'shadow') // so its underhud
 		{
@@ -868,11 +853,6 @@ class PlayState extends MusicBeatState
 
 		emitter = new FlxEmitter(50, 75, 200);
 		emitter.makeParticles(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor), 200);
-
-		/*var particles = new FlxParticle();
-			particles.makeGraphic(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor));
-			emitter.add(particles); */
-
 		emitter.launchMode = FlxEmitterMode.CIRCLE;
 		emitter.launchAngle.set(-45, 45);
 		emitter.lifespan.set(0.1, 1);
@@ -888,18 +868,6 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 		add(scoreTxt);
-
-		if (ClientPrefs.botplay)
-		{
-			botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (ClientPrefs.downscroll ? 60 : -60), 0, "BOTPLAY", 20);
-			botPlayState.setFormat(Paths.font("vcr.ttf"), 34, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			botPlayState.cameras = [camHUD];
-			FlxTween.tween(botPlayState, {alpha: 0}, 1, {type: PINGPONG});
-			// add(botPlayState);
-		}
-
-		if (!ClientPrefs.downscroll)
-			healthBarBG.y - 100;
 
 		if (curStage == 'church')
 		{
@@ -998,17 +966,22 @@ class PlayState extends MusicBeatState
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		onGameResize(FlxG.stage.window.width, FlxG.stage.window.height);
 
-		for (i in [false, true]) // call both of these so BF_CAM_POS and DAD_CAM_POS are set
-			moveCamera(i);
-
-		moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
-
 		songScript = new HaxeScript(null, "modchart");
 		scripts.add(songScript);
 		songScript.callFunction("onCreate");
 		scripts.callFunction("onCreatePost");
 
 		boyfriend.setPosition(boyfriend.x + boyfriend.positionOffset.x, boyfriend.y + boyfriend.positionOffset.y);
+
+		for (i in [false, true]) // call both of these so BF_CAM_POS and DAD_CAM_POS are set
+			moveCamera(i);
+
+		moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
+		FlxG.camera.focusOn((prevCamFollow != null ? prevCamFollow : camFollow).getPosition());
+
+		if (prevCamFollow != null)
+			prevCamFollow = null;
+
 		System.gc();
 	}
 
@@ -2271,19 +2244,8 @@ class PlayState extends MusicBeatState
 						camFollow.x = dad.getMidpoint().x + 190;
 						camFollow.y = dad.getMidpoint().y - 30;
 					case 'taki':
-						camFollow.x = dad.getMidpoint().x + 155;
+						camFollow.x = dad.getMidpoint().x + 155 + (curStage == "church" ? 175 : 0);
 						camFollow.y = dad.getMidpoint().y - 50;
-					case 'monster':
-						if (SONG.song.toLowerCase() == 'prayer')
-						{
-							camFollow.x = dad.getMidpoint().x - -560;
-							camFollow.y = dad.getMidpoint().y - -100;
-						}
-						else
-						{
-							camFollow.x = dad.getMidpoint().x - -400;
-							camFollow.y = dad.getMidpoint().y - -100;
-						}
 					case 'pepper':
 						camFollow.y = dad.getMidpoint().y + 65;
 						camFollow.x = dad.getMidpoint().x + 290;
@@ -2433,7 +2395,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function updateScoring(bop:Bool = false)
+	public function updateScoring(bop:Bool = false)
 	{
 		accuracy = Math.max(0, totalNotesHit / totalPlayed * 100);
 

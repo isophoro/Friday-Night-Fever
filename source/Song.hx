@@ -84,7 +84,7 @@ class Song
 		return flixel.FlxG.state is PlayState
 			&& !PlayState.isStoryMode
 			&& costumesEnabled
-			&& (CostumeHandler.curCostume == TEASAR || CostumeHandler.curCostume == CEABUN);
+			&& (CostumeHandler.curCostume == TEASAR || CostumeHandler.curCostume == CEABUN || CostumeHandler.curCostume == SKELLY);
 	}
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong

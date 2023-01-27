@@ -2,26 +2,6 @@
 	"animations": [
 		{
 			"offsets": [
-				2,
-				92
-			],
-			"fps": 24,
-			"anim": "FROWN",
-			"loop": false,
-			"name": "idle-frown"
-		},
-		{
-			"offsets": [
-				32,
-				40
-			],
-			"fps": 24,
-			"anim": "CEDAR DOWN",
-			"loop": false,
-			"name": "singDOWN"
-		},
-		{
-			"offsets": [
 				210,
 				31
 			],
@@ -32,13 +12,23 @@
 		},
 		{
 			"offsets": [
-				15,
-				106
+				32,
+				43
 			],
 			"fps": 24,
-			"anim": "CEDAR UP",
+			"anim": "CEDAR DOWN",
 			"loop": false,
-			"name": "singUP"
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				2,
+				92
+			],
+			"fps": 24,
+			"anim": "FROWN",
+			"loop": false,
+			"name": "idle-frown"
 		},
 		{
 			"offsets": [
@@ -52,7 +42,17 @@
 		},
 		{
 			"offsets": [
-				83,
+				15,
+				107
+			],
+			"fps": 24,
+			"anim": "CEDAR UP",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				63,
 				101
 			],
 			"fps": 24,
@@ -72,8 +72,18 @@
 		},
 		{
 			"offsets": [
-				-19,
-				82
+				52,
+				-270
+			],
+			"fps": 24,
+			"anim": "DOWN MISS",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-20,
+				102
 			],
 			"fps": 24,
 			"anim": "CEDAR RIGHT",
@@ -82,13 +92,13 @@
 		},
 		{
 			"offsets": [
-				52,
-				-300
+				93,
+				78
 			],
 			"fps": 24,
-			"anim": "DOWN MISS",
+			"anim": "CEDAR LEFT",
 			"loop": false,
-			"name": "singDOWNmiss"
+			"name": "singLEFT"
 		},
 		{
 			"offsets": [
@@ -102,16 +112,6 @@
 		},
 		{
 			"offsets": [
-				113,
-				78
-			],
-			"fps": 24,
-			"anim": "CEDAR LEFT",
-			"loop": false,
-			"name": "singLEFT"
-		},
-		{
-			"offsets": [
 				31,
 				110
 			],
@@ -122,6 +122,7 @@
 		}
 	],
 	"noAntialiasing": false,
+	"isDeathAnim": false,
 	"facingLeft": true,
 	"file": "fever/CedarHD",
 	"color": "C353E3"
