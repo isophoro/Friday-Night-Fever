@@ -1,5 +1,6 @@
 bf
 bf-coat
+bf-tutorial
 bf-iso
 bf-cedar
 rf
@@ -10,8 +11,6 @@ number-one
 toothpaste
 toothpaste-mad
 bf-teasar
-bf-roblox
-bf-pixeliso
 bdbfever
 bf-demon
 gf

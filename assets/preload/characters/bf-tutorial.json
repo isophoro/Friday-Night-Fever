@@ -1,0 +1,119 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				8,
+				96
+			],
+			"fps": 24,
+			"anim": "fever right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				6,
+				75
+			],
+			"fps": 24,
+			"anim": "fever down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				75,
+				88
+			],
+			"fps": 24,
+			"anim": "fever left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				-6,
+				81
+			],
+			"fps": 24,
+			"anim": "fever up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-3,
+				93
+			],
+			"fps": 24,
+			"anim": "fever hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "fever idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				44,
+				74
+			],
+			"fps": 24,
+			"anim": "fever down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				8,
+				97
+			],
+			"fps": 24,
+			"anim": "fever right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				83,
+				92
+			],
+			"fps": 24,
+			"anim": "fever left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				1,
+				76
+			],
+			"fps": 24,
+			"anim": "fever up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				31,
+				92
+			],
+			"fps": 24,
+			"anim": "fever dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": false,
+	"isDeathAnim": false,
+	"facingLeft": true,
+	"file": "fever/tutorial_fevr",
+	"color": "C353E3"
+}

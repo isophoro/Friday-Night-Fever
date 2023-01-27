@@ -31,7 +31,7 @@ function onStepHit(curStep:Int)
 			iconP2.swapCharacter("toothpaste");
 			healthBar.createFilledBar(0xFF93F1EB, FlxColor.fromString('#FF' + game.curPlayer.iconColor));
 			healthBar.updateBar();
-		case 352:
+		case 350:
 			game.curPlayer = dad;
 		case 547:
 			game.curOpponent = getGlobalVar("arm");
@@ -50,6 +50,16 @@ function onStepHit(curStep:Int)
 			getGlobalVar("wheel").visible = false;
 	}
 }
+
+function onGoodNoteHit(note:Note)
+{
+	if (game.curStep >= 352 && game.curStep < 547)
+	{
+		dad.playAnim("sing" + game.dataSuffix[note.noteData] + "-craze", true);
+		game.defaultCamZoom += 0.01;
+	}
+}
+
 
 function onUpdate(elapsed:Float)
 {

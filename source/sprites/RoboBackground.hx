@@ -256,6 +256,7 @@ class RoboBackground
 		}
 	}
 
+
 	public function switchStage(stage:String)
 	{
 		trace('Switching stage to $stage');
@@ -345,6 +346,7 @@ class RoboBackground
 			{
 				case 0 | 1:
 					instance.camHUD.visible = false;
+
 				case 32:
 					instance.camHUD.visible = true;
 					switchStage('zardy');
@@ -402,6 +404,9 @@ class RoboBackground
 					instance.curPlayer = instance.boyfriend;
 				case 400:
 					switchStage('church');
+				case 494:
+					PlayState.instance.moveCamera(true);
+					PlayState.instance.dad.playAnim('hey', true);
 				case 496:
 					switchStage('matt');
 				case 355 | 359 | 387 | 391:

@@ -1,7 +1,10 @@
 package states;
 
 import flixel.FlxG;
+import flixel.input.keyboard.FlxKey;
 import flixel.FlxSprite;
+
+using StringTools;
 
 typedef CreditData =
 {
@@ -10,10 +13,27 @@ typedef CreditData =
 	funny:String
 }
 
+/*
+
+	if you wanna rewrite ur keycombo shit go ahead
+*/
+
 class CreditsMenu extends MusicBeatState
 {
 	var credits:Array<CreditData> = [];
 	var rows:Array<Array<FlxSprite>> = [];
+
+	var passwords(get, never):Array<KeyCombo>;
+	var userInput:String = '';
+
+	inline function get_passwords():Array<KeyCombo>
+	{
+		return [
+			new KeyCombo('isophoro', () -> {
+				CostumeHandler.unlockCostume(FEVER_ISO);
+			})
+		];
+	}
 
 	override function create()
 	{
@@ -70,7 +90,46 @@ class CreditsMenu extends MusicBeatState
 	{
 		super.update(elapsed);
 
+		if (FlxG.keys.justPressed.ANY) 
+		{
+			var keyPressed = FlxKey.toStringMap.get(FlxG.keys.firstJustPressed()).toLowerCase();
+
+			userInput += keyPressed;
+			trace(userInput);
+
+			var matching:Bool = false;
+			for(i in 0...passwords.length)
+			{
+				if(passwords[i].combo.startsWith(userInput))
+				{
+					matching = true;
+
+					if(passwords[i].combo == userInput)
+					{
+						passwords[i].callback();
+						userInput = '';
+						matching = false;
+					}
+				}
+			}
+
+			if(!matching)
+				userInput = '';
+		}
+
 		if (controls.BACK)
 			FlxG.switchState(new MainMenuState(true));
+	}
+}
+
+class KeyCombo
+{
+	public var combo:String = '';
+	public var callback:Void->Void;
+
+	public function new(password:String, callback:Void->Void)
+	{
+		combo = password.toLowerCase();
+		this.callback = callback;
 	}
 }

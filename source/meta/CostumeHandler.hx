@@ -123,7 +123,7 @@ class CostumeHandler
 		},
 		FEVER_ISO => {
 			displayName: "Fever (isophoro Outfit)",
-			description: "???",
+			description: "",
 			character: "bf-iso",
 			creator: "isophoro",
 			characterOffset: [1, 21]

@@ -62,8 +62,8 @@ class PlayState extends MusicBeatState
 
 	private var curSong:String = "";
 	private var vocals:FlxSound;
-	private var startingSong:Bool = false;
-	var inCutscene:Bool = false;
+	public var startingSong:Bool = false;
+	public var inCutscene:Bool = false;
 
 	public var gfSpeed:Int = 1;
 
@@ -1236,9 +1236,26 @@ class PlayState extends MusicBeatState
 		add(doof);
 	}
 
-	function startSong():Void
+	public function startSong():Void
 	{
 		startingSong = false;
+
+		if(curSong == 'Loaded')
+		{
+			var video = new VideoHandler();
+			canPause = false;
+			inCutscene = true;
+			video.playVideo(Paths.video("loaded"));
+			video.finishCallback = function()
+			{
+				canPause = true;
+				inCutscene = false;
+				trace("VIDEO FINISH!");
+				video.finishCallback = null;
+				video.stop();
+				camGame.fade(FlxColor.BLACK, 0.3, true);
+			}
+		}
 
 		if (SONG.song.toLowerCase() == 'shadow') // so its underhud
 		{
@@ -1335,6 +1352,8 @@ class PlayState extends MusicBeatState
 				}
 			});
 		}
+
+		scripts.callFunction("onSongStart");
 
 		#if windows
 		// Updating Discord Rich Presence (with Time Left)
@@ -1636,7 +1655,7 @@ class PlayState extends MusicBeatState
 
 	private var paused:Bool = false;
 	var startedCountdown:Bool = false;
-	var canPause:Bool = true;
+	public var canPause:Bool = true;
 	var iconHurtTimer:Float = 0;
 
 	public var cameraSpeed:Float = 1.3;
@@ -2813,6 +2832,8 @@ class PlayState extends MusicBeatState
 
 			note.kill();
 			note.exists = false;
+
+			scripts.callFunction("onGoodNoteHit", [note]);
 
 			totalPlayed++;
 			updateScoring(!note.isSustainNote);
