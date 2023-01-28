@@ -166,9 +166,6 @@ function onUpdate(elapsed:Float)
 	{
 		dad.y += elapsed * 3660;
 	}
-
-	if (FlxG.keys.justPressed.SHIFT)
-		shootTrain();
 }
 
 var introBumps:Array<Int> = [40, 50, 57, 59, 60, 61, 62, 63];
