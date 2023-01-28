@@ -12,7 +12,8 @@
 	<action msg="I'll kill them and take their identity, just like I did with the last person I made the mistake of trusting." portrait="peakek" emotion="combined"/>
 	<action msg="Get out already." portrait="fever" emotion="facepalm-stare"/>
 	<action msg="Fineeee, I bid you adieu. Until next time, Fever. . ." portrait="peakek" emotion="neutral"/>
-	<action msg="Seriously. Is everyone on Earth an idiot?" portrait="tea" emotion="pointing" narrate=". . ."/>
+	<action msg="Seriously. Is everyone on Earth an idiot?" portrait="tea" emotion="pointing"/>
+	<action narrate=". . ."/>
 	<action msg="I know, right? It's a good thing I'm not like that." portrait="fever" emotion="neutral"/>
 	<action msg="..." portrait="tea" emotion="neutral"/>
 	<action msg="...I said, right babe?" portrait="fever" emotion="neutral"/>

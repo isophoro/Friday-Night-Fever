@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="front_bgpeople.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bg charcters front0000" x="0" y="0" width="1621" height="490" frameX="-18" frameY="-13" frameWidth="1652" frameHeight="503"/>
+	<SubTexture name="bg charcters front0001" x="0" y="0" width="1621" height="490" frameX="-18" frameY="-13" frameWidth="1652" frameHeight="503"/>
+	<SubTexture name="bg charcters front0002" x="0" y="490" width="1626" height="498" frameX="-18" frameY="-5" frameWidth="1652" frameHeight="503"/>
+	<SubTexture name="bg charcters front0003" x="0" y="490" width="1626" height="498" frameX="-18" frameY="-5" frameWidth="1652" frameHeight="503"/>
+	<SubTexture name="bg charcters front0004" x="0" y="988" width="1642" height="500" frameX="-9" frameY="-3" frameWidth="1652" frameHeight="503"/>
+	<SubTexture name="bg charcters front0005" x="0" y="988" width="1642" height="500" frameX="-9" frameY="-3" frameWidth="1652" frameHeight="503"/>
+	<SubTexture name="bg charcters front0006" x="0" y="1488" width="1652" height="503"/>
+	<SubTexture name="bg charcters front0007" x="0" y="1488" width="1652" height="503"/>
+	<SubTexture name="bg charcters front0008" x="0" y="1488" width="1652" height="503"/>
+	<SubTexture name="bg charcters front0009" x="0" y="1488" width="1652" height="503"/>
+	<SubTexture name="bg charcters front0010" x="0" y="1488" width="1652" height="503"/>
+	<SubTexture name="bg charcters front0011" x="0" y="1488" width="1652" height="503"/>
+	<SubTexture name="bg charcters front0012" x="0" y="1488" width="1652" height="503"/>
+	<SubTexture name="bg charcters front0013" x="0" y="1488" width="1652" height="503"/>
+	<SubTexture name="bg charcters front0014" x="0" y="1488" width="1652" height="503"/>
+</TextureAtlas>

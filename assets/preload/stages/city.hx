@@ -191,7 +191,7 @@ function onUpdate(elapsed:Float)
 			streetlight.offset.x = 0;
 		}
 
-		if (streetlightTimer != 0 && streetlightTimer < streetlightMaxTime)
+		if (streetlightTimer != 0 && streetlightTimer < streetlightMaxTime && curBeat < 281)
 		{
 			if (elapsedTimer >= randomWait)
 			{

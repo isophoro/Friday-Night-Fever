@@ -9,7 +9,7 @@
 	<action msg="How about..." portrait="feverd" emotion="frown"/>
 	<action msg="I take you..." portrait="feverd" emotion="frown"/>
 	<action msg="To meet... God with me?" portrait="feverd" emotion="frown"/>
-	<action msg="..." portrait="taki" emotion="angry" narrate="..."/>
+	<action msg="..." portrait="taki" emotion="angry"/>
 	<action msg="..." portrait="taki" emotion="angry"/>
 	<action msg="..." portrait="taki" emotion="happy"/>
 	<action msg="D-did she stop?" portrait="tea" emotion="worried"/>

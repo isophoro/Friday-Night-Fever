@@ -1,303 +1,177 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="coat_fvr.png">
+<TextureAtlas imagePath="COAT_FEVER.png">
 	<!-- Created with Adobe Animate version 20.0.1.19255 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="fever dead confirm0000" x="10" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0001" x="421" y="10" width="417" height="589" frameX="-50" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0002" x="848" y="10" width="417" height="589" frameX="-50" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0003" x="1275" y="10" width="424" height="589" frameX="-43" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0004" x="1709" y="10" width="424" height="589" frameX="-43" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0005" x="2143" y="10" width="433" height="589" frameX="-34" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0006" x="2143" y="10" width="433" height="589" frameX="-34" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0007" x="2586" y="10" width="456" height="600" frameX="-11" frameY="0" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0008" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0009" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0010" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0011" x="3463" y="10" width="489" height="589" frameX="-6" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0012" x="3463" y="10" width="489" height="589" frameX="-6" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0013" x="3962" y="10" width="492" height="589" frameX="-3" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0014" x="3962" y="10" width="492" height="589" frameX="-3" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0015" x="4464" y="10" width="495" height="590" frameX="0" frameY="-10" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0016" x="4464" y="10" width="495" height="590" frameX="0" frameY="-10" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0017" x="4969" y="10" width="497" height="590" frameX="0" frameY="-10" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0018" x="4969" y="10" width="497" height="590" frameX="0" frameY="-10" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0019" x="5476" y="10" width="434" height="594" frameX="-66" frameY="-6" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0020" x="5476" y="10" width="434" height="594" frameX="-66" frameY="-6" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0021" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0022" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0023" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0024" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0025" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0026" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0027" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0028" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0029" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0030" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0031" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0032" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead confirm0033" x="3052" y="10" width="401" height="589" frameX="-66" frameY="-11" frameWidth="500" frameHeight="600"/>
-	<SubTexture name="fever dead loop0000" x="5920" y="10" width="401" height="589"/>
-	<SubTexture name="fever dead loop0001" x="6331" y="10" width="401" height="589"/>
-	<SubTexture name="fever dead loop0002" x="6742" y="10" width="401" height="589"/>
-	<SubTexture name="fever dead loop0003" x="7153" y="10" width="401" height="589"/>
-	<SubTexture name="fever dead loop0004" x="7564" y="10" width="401" height="589"/>
-	<SubTexture name="fever dead loop0005" x="10" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0006" x="421" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0007" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0008" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0009" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0010" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0011" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0012" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0013" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0014" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0015" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0016" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0017" x="5920" y="10" width="401" height="589"/>
-	<SubTexture name="fever dead loop0018" x="6331" y="10" width="401" height="589"/>
-	<SubTexture name="fever dead loop0019" x="6331" y="10" width="401" height="589"/>
-	<SubTexture name="fever dead loop0020" x="1243" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0021" x="1243" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0022" x="1654" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0023" x="1654" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0024" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0025" x="2065" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0026" x="2065" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0027" x="2476" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0028" x="2476" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0029" x="2887" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0030" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0031" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0032" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dead loop0033" x="832" y="620" width="401" height="589"/>
-	<SubTexture name="fever dies0000" x="3298" y="620" width="437" height="578" frameX="-12" frameY="-2" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0001" x="3745" y="620" width="447" height="578" frameX="-6" frameY="-2" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0002" x="4202" y="620" width="447" height="579" frameX="-6" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0003" x="4659" y="620" width="463" height="579" frameX="-3" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0004" x="4659" y="620" width="463" height="579" frameX="-3" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0005" x="5132" y="620" width="464" height="579" frameX="0" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0006" x="5606" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0007" x="5606" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0008" x="5606" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0009" x="5606" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0010" x="5606" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0011" x="5606" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0012" x="5606" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0013" x="5606" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0014" x="6017" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0015" x="6017" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0016" x="6017" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0017" x="6428" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0018" x="6428" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0019" x="6839" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0020" x="6839" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0021" x="7250" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0022" x="7250" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0023" x="7661" y="620" width="401" height="579" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0024" x="10" y="1219" width="401" height="595" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0025" x="10" y="1219" width="401" height="595" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0026" x="421" y="1219" width="401" height="588" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0027" x="421" y="1219" width="401" height="588" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0028" x="832" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0029" x="832" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0030" x="1243" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0031" x="1243" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0032" x="1243" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0033" x="1243" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0034" x="1243" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0035" x="832" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0036" x="832" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0037" x="832" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0038" x="832" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0039" x="1243" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0040" x="1243" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0041" x="1654" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0042" x="1654" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0043" x="1654" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0044" x="1654" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0045" x="1654" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0046" x="1654" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0047" x="1654" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0048" x="2065" y="1219" width="401" height="589" frameX="-21" frameY="0" frameWidth="466" frameHeight="595"/>
-	<SubTexture name="fever dies0049" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dies0050" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dies0051" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dies0052" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dies0053" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dies0054" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dies0055" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dies0056" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dies0057" x="832" y="620" width="401" height="589" frameX="-21" frameY="0" frameWidth="401" frameHeight="589"/>
-	<SubTexture name="fever dodge0000" x="2476" y="1219" width="424" height="603" frameX="-1" frameY="0" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0001" x="2476" y="1219" width="424" height="603" frameX="-1" frameY="0" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0002" x="2910" y="1219" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0003" x="2910" y="1219" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0004" x="3343" y="1219" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0005" x="3343" y="1219" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0006" x="3778" y="1219" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0007" x="3778" y="1219" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0008" x="3343" y="1219" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0009" x="3343" y="1219" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0010" x="3778" y="1219" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0011" x="3778" y="1219" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0012" x="3343" y="1219" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever dodge0013" x="3343" y="1219" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
-	<SubTexture name="fever down0000" x="4211" y="1219" width="396" height="544" frameX="0" frameY="-4" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0001" x="4211" y="1219" width="396" height="544" frameX="0" frameY="-4" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0002" x="4617" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0003" x="4617" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0004" x="5023" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0005" x="5023" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0006" x="5429" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0007" x="5429" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0008" x="5429" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0009" x="5429" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0010" x="5429" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0011" x="5429" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0012" x="5429" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down0013" x="5429" y="1219" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
-	<SubTexture name="fever down miss0000" x="5835" y="1219" width="396" height="544" frameX="-13" frameY="0" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0001" x="6241" y="1219" width="434" height="530" frameX="0" frameY="-15" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0002" x="6241" y="1219" width="434" height="530" frameX="0" frameY="-15" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0003" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0004" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0005" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0006" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0007" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0008" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0009" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0010" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0011" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0012" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever down miss0013" x="6685" y="1219" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
-	<SubTexture name="fever fear0000" x="7112" y="1219" width="412" height="617" frameX="-3" frameY="-1" frameWidth="422" frameHeight="618"/>
-	<SubTexture name="fever fear0001" x="7534" y="1219" width="411" height="618" frameX="-4" frameY="0" frameWidth="422" frameHeight="618"/>
-	<SubTexture name="fever fear0002" x="10" y="1847" width="404" height="617" frameX="-11" frameY="-1" frameWidth="422" frameHeight="618"/>
-	<SubTexture name="fever fear0003" x="424" y="1847" width="422" height="617" frameX="0" frameY="-1" frameWidth="422" frameHeight="618"/>
-	<SubTexture name="fever hey0000" x="856" y="1847" width="395" height="617" frameX="-25" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0001" x="856" y="1847" width="395" height="617" frameX="-25" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0002" x="1261" y="1847" width="401" height="616" frameX="-22" frameY="-1" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0003" x="1672" y="1847" width="405" height="616" frameX="-22" frameY="-1" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0004" x="2087" y="1847" width="420" height="617" frameX="-10" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0005" x="2517" y="1847" width="431" height="617"/>
-	<SubTexture name="fever hey0006" x="2958" y="1847" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0007" x="3377" y="1847" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0008" x="3796" y="1847" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0009" x="3377" y="1847" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0010" x="3796" y="1847" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0011" x="3377" y="1847" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0012" x="3796" y="1847" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever hey0013" x="3377" y="1847" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
-	<SubTexture name="fever idle0000" x="4215" y="1847" width="395" height="601" frameX="0" frameY="-16" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0001" x="4215" y="1847" width="395" height="601" frameX="0" frameY="-16" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0002" x="4620" y="1847" width="392" height="600" frameX="-1" frameY="-17" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0003" x="4620" y="1847" width="392" height="600" frameX="-1" frameY="-17" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0004" x="5022" y="1847" width="396" height="607" frameX="-5" frameY="-10" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0005" x="5022" y="1847" width="396" height="607" frameX="-5" frameY="-10" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0006" x="5428" y="1847" width="395" height="616" frameX="-9" frameY="-1" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0007" x="5428" y="1847" width="395" height="616" frameX="-9" frameY="-1" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0008" x="5833" y="1847" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0009" x="5833" y="1847" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0010" x="5833" y="1847" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0011" x="5833" y="1847" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0012" x="5833" y="1847" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle0013" x="5833" y="1847" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0000" x="6238" y="1847" width="395" height="601" frameX="0" frameY="-16" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0001" x="6238" y="1847" width="395" height="601" frameX="0" frameY="-16" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0002" x="6643" y="1847" width="392" height="600" frameX="-1" frameY="-17" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0003" x="6643" y="1847" width="392" height="600" frameX="-1" frameY="-17" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0004" x="7045" y="1847" width="396" height="607" frameX="-5" frameY="-10" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0005" x="7045" y="1847" width="396" height="607" frameX="-5" frameY="-10" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0006" x="7451" y="1847" width="395" height="616" frameX="-9" frameY="-1" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0007" x="7451" y="1847" width="395" height="616" frameX="-9" frameY="-1" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0008" x="10" y="2474" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0009" x="10" y="2474" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0010" x="10" y="2474" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0011" x="10" y="2474" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0012" x="10" y="2474" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever idle frown0013" x="10" y="2474" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
-	<SubTexture name="fever left0000" x="415" y="2474" width="403" height="619" frameX="0" frameY="0" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0001" x="415" y="2474" width="403" height="619" frameX="0" frameY="0" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0002" x="828" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0003" x="828" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0004" x="1244" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0005" x="1244" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0006" x="1244" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0007" x="1244" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0008" x="1660" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0009" x="1660" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0010" x="1660" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0011" x="1660" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0012" x="1660" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left0013" x="1660" y="2474" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
-	<SubTexture name="fever left miss0000" x="2076" y="2474" width="403" height="618" frameX="0" frameY="0" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0001" x="2489" y="2474" width="411" height="610" frameX="-5" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0002" x="2489" y="2474" width="411" height="610" frameX="-5" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0003" x="2910" y="2474" width="414" height="610" frameX="-10" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0004" x="2910" y="2474" width="414" height="610" frameX="-10" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0005" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0006" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0007" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0008" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0009" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0010" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0011" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0012" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever left miss0013" x="3334" y="2474" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
-	<SubTexture name="fever right0000" x="3757" y="2474" width="398" height="609" frameX="-3" frameY="-3" frameWidth="402" frameHeight="612"/>
-	<SubTexture name="fever right0001" x="3757" y="2474" width="398" height="609" frameX="-3" frameY="-3" frameWidth="402" frameHeight="612"/>
-	<SubTexture name="fever right0002" x="4165" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0003" x="4165" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0004" x="4577" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0005" x="4577" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0006" x="4577" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0007" x="4577" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0008" x="4989" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0009" x="4989" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0010" x="4989" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0011" x="4989" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0012" x="4989" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right0013" x="4989" y="2474" width="402" height="612"/>
-	<SubTexture name="fever right miss0000" x="5401" y="2474" width="397" height="609" frameX="-6" frameY="0" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0001" x="5808" y="2474" width="403" height="608" frameX="-4" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0002" x="5808" y="2474" width="403" height="608" frameX="-4" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0003" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0004" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0005" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0006" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0007" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0008" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0009" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0010" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0011" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0012" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever right miss0013" x="6221" y="2474" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
-	<SubTexture name="fever up0000" x="6631" y="2474" width="391" height="622" frameX="-3" frameY="0" frameWidth="395" frameHeight="622"/>
-	<SubTexture name="fever up0001" x="6631" y="2474" width="391" height="622" frameX="-3" frameY="0" frameWidth="395" frameHeight="622"/>
-	<SubTexture name="fever up0002" x="7032" y="2474" width="395" height="622"/>
-	<SubTexture name="fever up0003" x="7032" y="2474" width="395" height="622"/>
-	<SubTexture name="fever up0004" x="7437" y="2474" width="395" height="622"/>
-	<SubTexture name="fever up0005" x="7437" y="2474" width="395" height="622"/>
-	<SubTexture name="fever up0006" x="10" y="3106" width="395" height="622"/>
-	<SubTexture name="fever up0007" x="10" y="3106" width="395" height="622"/>
-	<SubTexture name="fever up0008" x="10" y="3106" width="395" height="622"/>
-	<SubTexture name="fever up0009" x="10" y="3106" width="395" height="622"/>
-	<SubTexture name="fever up0010" x="10" y="3106" width="395" height="622"/>
-	<SubTexture name="fever up0011" x="10" y="3106" width="395" height="622"/>
-	<SubTexture name="fever up0012" x="10" y="3106" width="395" height="622"/>
-	<SubTexture name="fever up0013" x="10" y="3106" width="395" height="622"/>
-	<SubTexture name="fever up miss0000" x="415" y="3106" width="391" height="622" frameX="0" frameY="-8" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0001" x="816" y="3106" width="396" height="627" frameX="0" frameY="-8" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0002" x="816" y="3106" width="396" height="627" frameX="0" frameY="-8" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0003" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0004" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0005" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0006" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0007" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0008" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0009" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0010" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0011" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0012" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
-	<SubTexture name="fever up miss0013" x="1222" y="3106" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever dodge0000" x="10" y="10" width="424" height="603" frameX="-1" frameY="0" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0001" x="10" y="10" width="424" height="603" frameX="-1" frameY="0" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0002" x="444" y="10" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0003" x="444" y="10" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0004" x="877" y="10" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0005" x="877" y="10" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0006" x="1312" y="10" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0007" x="1312" y="10" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0008" x="877" y="10" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0009" x="877" y="10" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0010" x="1312" y="10" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0011" x="1312" y="10" width="423" height="602" frameX="-2" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0012" x="877" y="10" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever dodge0013" x="877" y="10" width="425" height="602" frameX="0" frameY="-1" frameWidth="425" frameHeight="603"/>
+	<SubTexture name="fever down0000" x="1745" y="10" width="396" height="544" frameX="0" frameY="-4" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0001" x="1745" y="10" width="396" height="544" frameX="0" frameY="-4" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0002" x="2151" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0003" x="2151" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0004" x="2557" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0005" x="2557" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0006" x="2963" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0007" x="2963" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0008" x="2963" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0009" x="2963" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0010" x="2963" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0011" x="2963" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0012" x="2963" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down0013" x="2963" y="10" width="396" height="548" frameX="-6" frameY="0" frameWidth="402" frameHeight="548"/>
+	<SubTexture name="fever down miss0000" x="3369" y="10" width="396" height="544" frameX="-13" frameY="0" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0001" x="10" y="623" width="434" height="530" frameX="0" frameY="-15" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0002" x="10" y="623" width="434" height="530" frameX="0" frameY="-15" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0003" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0004" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0005" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0006" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0007" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0008" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0009" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0010" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0011" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0012" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever down miss0013" x="454" y="623" width="417" height="534" frameX="-6" frameY="-9" frameWidth="434" frameHeight="545"/>
+	<SubTexture name="fever fear0000" x="881" y="623" width="412" height="617" frameX="-3" frameY="-1" frameWidth="422" frameHeight="618"/>
+	<SubTexture name="fever fear0001" x="1303" y="623" width="411" height="618" frameX="-4" frameY="0" frameWidth="422" frameHeight="618"/>
+	<SubTexture name="fever fear0002" x="1724" y="623" width="404" height="617" frameX="-11" frameY="-1" frameWidth="422" frameHeight="618"/>
+	<SubTexture name="fever fear0003" x="2138" y="623" width="422" height="617" frameX="0" frameY="-1" frameWidth="422" frameHeight="618"/>
+	<SubTexture name="fever hey0000" x="2570" y="623" width="395" height="617" frameX="-25" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0001" x="2570" y="623" width="395" height="617" frameX="-25" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0002" x="2975" y="623" width="401" height="616" frameX="-22" frameY="-1" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0003" x="3386" y="623" width="405" height="616" frameX="-22" frameY="-1" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0004" x="10" y="1251" width="420" height="617" frameX="-10" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0005" x="440" y="1251" width="431" height="617"/>
+	<SubTexture name="fever hey0006" x="881" y="1251" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0007" x="1300" y="1251" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0008" x="1719" y="1251" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0009" x="1300" y="1251" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0010" x="1719" y="1251" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0011" x="1300" y="1251" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0012" x="1719" y="1251" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever hey0013" x="1300" y="1251" width="409" height="617" frameX="-8" frameY="0" frameWidth="431" frameHeight="617"/>
+	<SubTexture name="fever idle0000" x="2138" y="1251" width="395" height="601" frameX="0" frameY="-16" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0001" x="2138" y="1251" width="395" height="601" frameX="0" frameY="-16" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0002" x="2543" y="1251" width="392" height="600" frameX="-1" frameY="-17" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0003" x="2543" y="1251" width="392" height="600" frameX="-1" frameY="-17" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0004" x="2945" y="1251" width="396" height="607" frameX="-5" frameY="-10" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0005" x="2945" y="1251" width="396" height="607" frameX="-5" frameY="-10" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0006" x="3351" y="1251" width="395" height="616" frameX="-9" frameY="-1" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0007" x="3351" y="1251" width="395" height="616" frameX="-9" frameY="-1" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0008" x="10" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0009" x="10" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0010" x="10" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0011" x="10" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0012" x="10" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle0013" x="10" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0000" x="415" y="1878" width="395" height="601" frameX="0" frameY="-16" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0001" x="415" y="1878" width="395" height="601" frameX="0" frameY="-16" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0002" x="820" y="1878" width="392" height="600" frameX="-1" frameY="-17" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0003" x="820" y="1878" width="392" height="600" frameX="-1" frameY="-17" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0004" x="1222" y="1878" width="396" height="607" frameX="-5" frameY="-10" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0005" x="1222" y="1878" width="396" height="607" frameX="-5" frameY="-10" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0006" x="1628" y="1878" width="395" height="616" frameX="-9" frameY="-1" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0007" x="1628" y="1878" width="395" height="616" frameX="-9" frameY="-1" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0008" x="2033" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0009" x="2033" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0010" x="2033" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0011" x="2033" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0012" x="2033" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever idle frown0013" x="2033" y="1878" width="395" height="617" frameX="-9" frameY="0" frameWidth="404" frameHeight="617"/>
+	<SubTexture name="fever left0000" x="2438" y="1878" width="403" height="619" frameX="0" frameY="0" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0001" x="2438" y="1878" width="403" height="619" frameX="0" frameY="0" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0002" x="2851" y="1878" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0003" x="2851" y="1878" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0004" x="3267" y="1878" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0005" x="3267" y="1878" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0006" x="3267" y="1878" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0007" x="3267" y="1878" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0008" x="10" y="2507" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0009" x="10" y="2507" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0010" x="10" y="2507" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0011" x="10" y="2507" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0012" x="10" y="2507" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left0013" x="10" y="2507" width="406" height="618" frameX="-2" frameY="-1" frameWidth="408" frameHeight="619"/>
+	<SubTexture name="fever left miss0000" x="426" y="2507" width="403" height="618" frameX="0" frameY="0" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0001" x="839" y="2507" width="411" height="610" frameX="-5" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0002" x="839" y="2507" width="411" height="610" frameX="-5" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0003" x="1260" y="2507" width="414" height="610" frameX="-10" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0004" x="1260" y="2507" width="414" height="610" frameX="-10" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0005" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0006" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0007" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0008" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0009" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0010" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0011" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0012" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever left miss0013" x="1684" y="2507" width="413" height="610" frameX="-8" frameY="-7" frameWidth="424" frameHeight="618"/>
+	<SubTexture name="fever right0000" x="2107" y="2507" width="398" height="609" frameX="-3" frameY="-3" frameWidth="402" frameHeight="612"/>
+	<SubTexture name="fever right0001" x="2107" y="2507" width="398" height="609" frameX="-3" frameY="-3" frameWidth="402" frameHeight="612"/>
+	<SubTexture name="fever right0002" x="2515" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0003" x="2515" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0004" x="2927" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0005" x="2927" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0006" x="2927" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0007" x="2927" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0008" x="3339" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0009" x="3339" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0010" x="3339" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0011" x="3339" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0012" x="3339" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right0013" x="3339" y="2507" width="402" height="612"/>
+	<SubTexture name="fever right miss0000" x="10" y="3135" width="397" height="609" frameX="-6" frameY="0" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0001" x="417" y="3135" width="403" height="608" frameX="-4" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0002" x="417" y="3135" width="403" height="608" frameX="-4" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0003" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0004" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0005" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0006" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0007" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0008" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0009" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0010" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0011" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0012" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever right miss0013" x="830" y="3135" width="400" height="608" frameX="0" frameY="-1" frameWidth="407" frameHeight="609"/>
+	<SubTexture name="fever up0000" x="1240" y="3135" width="391" height="622" frameX="-3" frameY="0" frameWidth="395" frameHeight="622"/>
+	<SubTexture name="fever up0001" x="1240" y="3135" width="391" height="622" frameX="-3" frameY="0" frameWidth="395" frameHeight="622"/>
+	<SubTexture name="fever up0002" x="1641" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0003" x="1641" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0004" x="2046" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0005" x="2046" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0006" x="2451" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0007" x="2451" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0008" x="2451" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0009" x="2451" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0010" x="2451" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0011" x="2451" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0012" x="2451" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up0013" x="2451" y="3135" width="395" height="622"/>
+	<SubTexture name="fever up miss0000" x="2856" y="3135" width="391" height="622" frameX="0" frameY="-8" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0001" x="3257" y="3135" width="396" height="627" frameX="0" frameY="-8" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0002" x="3257" y="3135" width="396" height="627" frameX="0" frameY="-8" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0003" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0004" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0005" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0006" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0007" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0008" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0009" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0010" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0011" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0012" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
+	<SubTexture name="fever up miss0013" x="3663" y="3135" width="389" height="635" frameX="-3" frameY="0" frameWidth="396" frameHeight="635"/>
 </TextureAtlas>
