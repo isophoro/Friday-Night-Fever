@@ -84,6 +84,7 @@ function onCreate()
 	mainBG = new FlxSprite(sky.x, sky.y).loadGraphic(image("back_bg"));
 	mainBG.antialiasing = true;
 	add(mainBG);
+	setGlobalVar("mainBG", mainBG);
 
 	lights = new FlxSprite(sky.x, sky.y).loadGraphic(image("building_lights"));
 	lights.antialiasing = true;
