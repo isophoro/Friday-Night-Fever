@@ -15,7 +15,7 @@ function onCreate()
 {
 	game.defaultCamZoom = PlayState.SONG.song == "Bloom" ? 0.6 : 0.7;
 
-	whittyBG = new FlxSprite(-728, -230).loadGraphic(Paths.image('roboStage/alleywaybroken'));
+	whittyBG = new FlxSprite(-728, -230).loadGraphic(Paths.image(PlayState.SONG.song == "Bloom" ? 'roboStage/alleyway-night' : 'roboStage/alleywaybroken'));
 	whittyBG.antialiasing = true;
 	whittyBG.scrollFactor.set(0.9, 0.9);
 	whittyBG.scale.set(1.25, 1.25);
@@ -60,7 +60,7 @@ function onCreate()
 		add(clockScar);
 		clockScar.visible = false;
 
-		clockFever = new FlxSprite(990, 680).loadGraphic(Paths.image("roboStage/princessClock"));
+		clockFever = new FlxSprite(990, 695).loadGraphic(Paths.image("roboStage/princessClock"));
 		clockFever.scale.set(1.25, 1.25);
 		clockFever.antialiasing = true;
 		add(clockFever);
@@ -75,6 +75,8 @@ function onCreate()
 		clocks.shader = wiggleEffect.shader;
 		setGlobalVar("shader", wiggleEffect.shader);
 		setGlobalVar("bgElements", [clocks, clockScar, clockFever]);
+		dad.color = 0xFFA569BC;
+		boyfriend.color = 0xFFA569BC;
 	}
 }
 
@@ -107,6 +109,7 @@ function onStepHit(curStep)
 		case 'bloom':
 			if (curStep == 256)
 			{
+				dad.color = boyfriend.color = FlxColor.WHITE;
 				game.defaultCamZoom = 0.53;
 				camHUD.flash(FlxColor.WHITE, 0.5);
 				clocks.visible = true;
