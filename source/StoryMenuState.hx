@@ -25,7 +25,7 @@ class StoryMenuState extends InteractableState
 			['Mild', 'Spice', 'Party-Crasher'],
 			['Ur-Girl', 'Chicken-Sandwich', 'Funkin-God'],
 			['Hallow', 'Eclipse', 'SOUL', 'Dead-Mans-Melody'],
-			['C354R', 'Loaded', 'Gears'],
+			['Preparation', 'C354R', 'Loaded', 'Gears'],
 			['Tranquility', 'Princess', 'Crack', 'Bloom'],
 			['DUI', 'Cosmic-Swing', 'Cell-From-Hell', 'W00F']
 		];

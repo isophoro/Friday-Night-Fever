@@ -1,17 +1,16 @@
 <file>    
-	<action msg='That looks NOTHING like me!' portrait="fever" emotion="shocked"/>
-    <action msg='Seriously.' portrait="tea" emotion="thinking"/>
-    <action msg='I wonder if this is just a big stunt so people will tune in.'/>
+    <action msg='That looks NOTHING like me!' portrait="fever" emotion="shocked"/>
+    <action msg="This is probably a big stunt so people will tune in or somethin'."/>
     <action msg='I say we ignore it.' portrait="tea" emotion="flushed"/>
     <action msg='Hm... you’re probably right.' portrait="fever" emotion="facepalm-stare"/>
-    <action msg='It’s been pretty peaceful for a little bit. I guess we don’t have to ruin it.' portrait="fever" emotion="ugh"/>
+    <action msg='It’s been pretty peaceful for a little bit. I guess we could let someone else deal with it.' portrait="fever" emotion="ugh"/>
     <action msg='...'/>
     <action msg='...' portrait="fever" emotion="embarrassed"/>
-    <action msg='...really?' portrait="tea" emotion="pointing"/>
-    <action msg='Aren’t you the one that asked for some peace and quiet?'/>
-    <action msg='I mean, isn’t it the responsibility of the mayor to check this kinda stuff out?' portrait="fever" emotion="shocked"/>
+    <action msg="Seriously? Aren't you the one that asked for some peace and quiet?"/>
+    <action msg="I mean, isn’t it the responsibility of the mayor to check this kinda stuff out?" portrait="fever" emotion="shocked"/>
     <action msg='You’re just bored!' portrait="tea" emotion="pointing-wtf"/>
-    <action msg='Fine... maybe a lil’.' portrait="fever" emotion="neutral"/>
     <action msg='Ugh.' portrait="tea" emotion="pointing"/>
-    <action msg='Fineee. But let’s make this quick. I’d like things to be quiet again soon.' portrait="tea" emotion="neutral"/>
+    <action msg="Sure, let's go check this out..." portrait="tea" emotion="neutral"/>
+    <action msg="We should probably practice a little though, make sure you haven't lost your touch from sleeping and working out all day." portrait="tea" emotion="thinking"/>
+    <action msg='Lose my touch? Never! Come on, throw something at me!' portrait="fever" emotion="point"/>
 </file>

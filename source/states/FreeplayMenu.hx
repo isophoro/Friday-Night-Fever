@@ -79,7 +79,12 @@ class FreeplayMenu extends MusicBeatSubstate
 	static final FRENZY_SONGS:Array<FreeplayWeek> = [
 		{
 			"image": "week7",
-			"songs": [["C354R", "robo-cesar"], ["Loaded", "robo-cesar"], ["Gears", "robofvr-final"]]
+			"songs": [
+				["Preparation", "gf"],
+				["C354R", "robo-cesar"],
+				["Loaded", "robo-cesar"],
+				["Gears", "robofvr-final"]
+			]
 		},
 		{
 			"image": "week8",

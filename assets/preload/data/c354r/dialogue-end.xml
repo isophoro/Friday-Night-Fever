@@ -1,0 +1,11 @@
+<file>
+    <action narrate='...' proceedImmediately="true"/> 
+    <action msg="Heeeey... we're kinda surrounded..." portrait="tea" emotion="worried"/>
+    <action msg='Is this some sort of alien invasion?' portrait="fever" emotion="facepalm-stare"/>
+    <action msg='Aliens? What a foul term...' portrait="robo-fever" emotion="neutral"/>
+    <action msg='Excuse me?' portrait="tea" emotion="pointing-wtf"/>
+    <action msg='I guess in your tongue... you could call us robots...' portrait="robo-fever" emotion="neutral"/>
+    <action msg='Robots?' portrait="fever" emotion="ugh"/>
+    <action msg='Hey! Get back here!' portrait="fever" emotion="point-forward"/>
+
+</file>

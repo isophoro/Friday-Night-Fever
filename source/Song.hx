@@ -55,7 +55,7 @@ class Song
 	];
 
 	public static var costumeDisabledSongs:Array<String> = [
-		"mechanical", "erm", "cosmic-swing", "cell-from-hell", "w00f", "gears", "space-demons", "ur-girl", "funkin-god", "chicken-sandwich", "dui"
+		"shadow", "mechanical", "erm", "cosmic-swing", "cell-from-hell", "w00f", "gears", "space-demons", "ur-girl", "funkin-god", "chicken-sandwich", "dui"
 	];
 
 	public static function getArtist(_song:String):String

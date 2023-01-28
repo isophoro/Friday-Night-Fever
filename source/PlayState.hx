@@ -538,8 +538,6 @@ class PlayState extends MusicBeatState
 		if (curStage == "schoolEvil")
 			meat = new Character(260, 100.9, 'meat');
 
-		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
-
 		switch (SONG.player2)
 		{
 			case 'toothpaste':
@@ -576,11 +574,9 @@ class PlayState extends MusicBeatState
 			case 'peakek':
 				dad.y += 60;
 				dad.x -= 100;
-				camPos.x += 400;
 			case 'peasus':
 				dad.y += 60;
 				dad.x -= 100;
-				camPos.x += 400;
 			case 'mako':
 				dad.y += 445;
 				dad.x += 25;
@@ -594,15 +590,12 @@ class PlayState extends MusicBeatState
 				dad.x += 150;
 				dad.y += 320;
 				dad.scrollFactor.set(0.9, 0.9);
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'mega-angry':
 				dad.x += 150;
 				dad.y += 350;
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'flippy':
 				dad.y += 300;
 				dad.x += 100;
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'mako-demon': // 275 350
 				dad.y += 250;
 				dad.x -= 15;
@@ -973,14 +966,17 @@ class PlayState extends MusicBeatState
 
 		boyfriend.setPosition(boyfriend.x + boyfriend.positionOffset.x, boyfriend.y + boyfriend.positionOffset.y);
 
-		for (i in [false, true]) // call both of these so BF_CAM_POS and DAD_CAM_POS are set
-			moveCamera(i);
+		if (!disableCamera)
+		{
+			for (i in [false, true]) // call both of these so BF_CAM_POS and DAD_CAM_POS are set
+				moveCamera(i);
 
-		moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
-		FlxG.camera.focusOn((prevCamFollow != null ? prevCamFollow : camFollow).getPosition());
+			moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
+			FlxG.camera.focusOn((prevCamFollow != null ? prevCamFollow : camFollow).getPosition());
 
-		if (prevCamFollow != null)
-			prevCamFollow = null;
+			if (prevCamFollow != null)
+				prevCamFollow = null;
+		}
 
 		System.gc();
 	}
@@ -2562,7 +2558,7 @@ class PlayState extends MusicBeatState
 			var rating:ComboRating = ratingsGrp.recycle(ComboRating);
 			rating.create(daRating);
 			rating.cameras = [camHUD];
-			rating.setPosition((FlxG.width * 0.55) - 125, (FlxG.height * 0.5) - (rating.height / 2) - 50);
+			rating.setPosition((FlxG.width * 0.55) - 125, (FlxG.height * 0.5) - (rating.height / 2) + 100);
 
 			if (songScript.variables["forceComboPos"] != null
 				&& (songScript.variables["forceComboPos"].x != 0 || songScript.variables["forceComboPos"].y != 0))
@@ -3173,29 +3169,18 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = previousTiming;
 	}
 
-	private function onKeyRelease(event:KeyboardEvent)
+	private function onKeyRelease(input:KeyboardEvent)
 	{
-		if (paused || inCutscene)
+		if (ClientPrefs.botplay || paused || inCutscene)
 			return;
 
-		var key:Int = -1;
-
-		@:privateAccess
-		key = ClientPrefs.keybinds.indexOf(FlxKey.toStringMap[event.keyCode]);
-
-		if (key == -1)
+		var key:Int = switch (input.keyCode)
 		{
-			switch (event.keyCode) // arrow keys
-			{
-				case 37:
-					key = 0;
-				case 40:
-					key = 1;
-				case 38:
-					key = 2;
-				case 39:
-					key = 3;
-			}
+			case 37: 0; // LEFT ARROW
+			case 40: 1; // DOWN ARROW
+			case 38: 2; // UP ARROW
+			case 39: 3; // RIGHT ARROW
+			default: ClientPrefs.keybinds.indexOf(FlxKey.toStringMap[input.keyCode]); // NOT AN ARROW KEY
 		}
 
 		if (key == -1)

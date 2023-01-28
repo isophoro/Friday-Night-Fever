@@ -156,11 +156,6 @@ function onUpdate(elapsed:Float)
 	backBuildings.x -= 2100 * elapsed;
 	buildings.x -= 4600 * elapsed;
 
-	if (FlxG.keys.justPressed.SHIFT)
-	{
-		shootTrain();
-	}
-
 	if (boyfriend.animation.curAnim.name == "fall" && boyfriend.animation.curAnim.curFrame > 7)
 	{
 		boyfriend.y += elapsed * 2060;
@@ -171,6 +166,9 @@ function onUpdate(elapsed:Float)
 	{
 		dad.y += elapsed * 3660;
 	}
+
+	if (FlxG.keys.justPressed.SHIFT)
+		shootTrain();
 }
 
 var introBumps:Array<Int> = [40, 50, 57, 59, 60, 61, 62, 63];
@@ -212,7 +210,7 @@ function onBeatHit(curBeat:Int)
 
 			game.curPlayer = boyfriend;
 			game.curOpponent = dad;
-		case 428:
+		case 420:
 			shootTrain();
 		case 555:
 			feverFalling.visible = false;
@@ -232,7 +230,8 @@ function onBeatHit(curBeat:Int)
 					game.curOpponent = roboFlying;
 					game.curPlayer = feverFlying;
 					game.disableCamera = true;
-					snapCamera(new FlxPoint(feverFlying.x - 800, feverFlying.y + 300));
+					snapCamera(new FlxPoint(feverFlying.x + 3200, feverFlying.y + 300));
+					FlxTween.tween(camFollow, {x: camFollow.x - 4000}, 0.75);
 					teaFlying.alpha = 1;
 					roboFlying.alpha = 1;
 					feverFlying.alpha = 1;
@@ -243,6 +242,11 @@ function onBeatHit(curBeat:Int)
 			}
 			roboGuh.alpha = 1;
 		case 432:
+			getGlobalVar("train").visible = false;
+			dad.visible = false;
+			boyfriend.visible = false;
+
+			camGame.fade(FlxColor.BLACK, 0.6, true);
 			boyfriend.setPosition(ogBF.x, ogBF.y);
 			dad.setPosition(ogDad.x, ogDad.y);
 
@@ -290,7 +294,7 @@ function onBeatHit(curBeat:Int)
 			game.curOpponent = roboFallingCool;
 			bfAltSuffix = '';
 		case 684:
-			FlxTween.tween(roboFlying, {x: roboFlying.x - 4500}, 0.98);
+			FlxTween.tween(roboFlying, {x: roboFlying.x - 4500}, 1.98, {ease: FlxEase.quadInOut});
 	}
 
 	if (curBeat >= 464 && curBeat < 496)
@@ -322,9 +326,11 @@ function handleNonEvents(curBeat:Int)
 function shootTrain()
 {
 	trace("SHOOT");
-	getGlobalVar("outerBuilding").x = boyfriend.x + 1500;
+	game.disableCamera = true;
+	camGame.zoom += 0.1;
+	FlxG.state.defaultCamZoom = camGame.zoom;
+	getGlobalVar("outerBuilding").x = boyfriend.x - 2150;
 	getGlobalVar("outerBuilding").visible = true;
-	FlxTween.tween(getGlobalVar("outerBuilding"), {x: boyfriend.x - 2150}, 0.5);
 
 	ogDad.set(dad.x, dad.y);
 	ogBF.set(boyfriend.x, boyfriend.y);
@@ -336,7 +342,7 @@ function shootTrain()
 	new FlxTimer().start(0.245, function(t)
 	{
 		FlxTween.tween(boyfriend, {y: boyfriend.y - 190}, 0.25, {startDelay: 0.1});
-		FlxTween.tween(boyfriend, {x: boyfriend.x + 800}, 0.71, {ease: FlxEase.cubeInOut});
+		FlxTween.tween(boyfriend, {x: boyfriend.x + 500}, 0.71, {ease: FlxEase.cubeInOut});
 	});
 	boyfriend.playAnim("fall");
 	camGame.shake(0.09, 0.2);
@@ -345,6 +351,14 @@ function shootTrain()
 		trace("finish");
 		dad.animation.finishCallback = null;
 		dad.playAnim("fall", true);
+		new FlxTimer().start(0.39, function(t)
+		{
+			FlxTween.tween(camFollow, {y: 3950}, 0.95);
+			new FlxTimer().start(0.45, function(t)
+			{
+				camGame.fade(FlxColor.BLACK, 1.15);
+			});
+		});
 	}
 
 	game.curOpponent = roboFalling;

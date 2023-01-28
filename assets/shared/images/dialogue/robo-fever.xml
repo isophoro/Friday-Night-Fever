@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
-<!-- $TexturePacker:SmartUpdate:a2876a97cc6b23c97cc7c052db4bed70:99e0742783be93ea69fd5f93ba6c4a24:469f48ad7ae02dcebee556090e09c94d$ -->
-<TextureAtlas imagePath="robo-fever.png" width="1300" height="600">
+<!-- $TexturePacker:SmartUpdate:912721de9d9d29c2b26caa43ada7f98f:a24bef8c8d11a4ee1cbe0333f67288c9:469f48ad7ae02dcebee556090e09c94d$ -->
+<TextureAtlas imagePath="robo-fever.png" width="1950" height="600">
     <SubTexture name="robo-fever angry" x="0" y="0" width="650" height="600"/>
-    <SubTexture name="robo-fever neutral" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="robo-fever crazy" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="robo-fever neutral" x="1300" y="0" width="650" height="600"/>
 </TextureAtlas>

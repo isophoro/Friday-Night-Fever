@@ -1,7 +1,15 @@
+import PlayState;
 import flixel.util.FlxTimer;
 
 function onCreatePost()
 {
+	if (PlayState.deaths >= 0 || !PlayState.isStoryMode)
+	{
+		onUpdate = null;
+		onOpponentNoteHit = null;
+		return game.startCountdown();
+	}
+
 	iconP2.swapCharacter("robo-cesar");
 	healthBar.createFilledBar(0xFF9236B4, FlxColor.fromString('#FF' + game.curPlayer.iconColor));
 	healthBar.updateBar();
@@ -12,7 +20,6 @@ function onCreatePost()
 	video.playVideo(Paths.video("gearsIntro"));
 	video.finishCallback = function()
 	{
-		ogHPPos = [healthBar.x, healthBar.y];
 		trace("VIDEO FINISH!");
 		video.stop();
 		FlxTimer.globalManager.clear();

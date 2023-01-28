@@ -61,6 +61,11 @@ function onCreate()
 	buildings3.x -= 600;
 	add(buildings3);
 
+	var fakeBuilding:FlxSprite = new FlxSprite(0, buildings3.y + buildings3.height - 5).makeGraphic(60, 60, 0xFF2E125D);
+	fakeBuilding.origin.set(0, 0);
+	fakeBuilding.scale.set(100, 100); // is this legal
+	add(fakeBuilding);
+
 	tunnelBG = createBackdrop(Paths.image('roboStage/gears/tunnel'));
 	tunnelBG.antialiasing = true;
 	tunnelBG.y -= 950;
@@ -75,13 +80,6 @@ function onCreate()
 	lights.setGraphicSize(Std.int(lights.width * 1.6));
 	add(lights);
 	lights.visible = false;
-
-	outerBuilding = new FlxSprite(32900, -490).loadGraphic(Paths.image("roboStage/gears/randomBuilding"));
-	outerBuilding.antialiasing = true;
-	// outerBuilding.velocity.x = (FlxG.random.int(120, 170) / FlxG.elapsed) * -0.95;
-	add(outerBuilding);
-	outerBuilding.visible = false;
-	setGlobalVar("outerBuilding", outerBuilding);
 
 	train = new FlxSprite(0, 666);
 	train.frames = Paths.getSparrowAtlas('roboStage/train');
@@ -142,6 +140,16 @@ function onCreate()
 	tunnelEnterance.antialiasing = true;
 	tunnelEnterance.x = FlxG.width;
 	add(tunnelEnterance, 1, camHUD);
+}
+
+function onCreatePost()
+{
+	outerBuilding = new FlxSprite(32900, 1700).loadGraphic(Paths.image("roboStage/gears/randomBuilding"));
+	outerBuilding.antialiasing = true;
+	// outerBuilding.velocity.x = (FlxG.random.int(120, 170) / FlxG.elapsed) * -0.95;
+	add(outerBuilding);
+	outerBuilding.visible = false;
+	setGlobalVar("outerBuilding", outerBuilding);
 }
 
 var p_elapsedT:Float = 0;
