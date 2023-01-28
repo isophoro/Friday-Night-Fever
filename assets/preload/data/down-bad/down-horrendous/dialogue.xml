@@ -1,0 +1,35 @@
+<file>
+	<action msg="Huff....huff...this is the most fun I've had in a long time." portrait="peakek" emotion="combined" setBG="dialogue_backgrounds/room" fadeInMus="down-bad"/>
+	<action msg="Especially compared to my days at the lab..." portrait="peakek" emotion="combined"/>
+	<action msg="Lab?" portrait="tea" emotion="neutral"/>
+	<action msg="(Psst. A lab is a type of dog. They're cute, four legged creatures that run around and wag their tails.)" portrait="fever" emotion="neutral"/>
+	<action msg="Oh, I think we have those back on my planet, too." portrait="tea" emotion="thinking"/>
+	<action msg="Truth be told, I didn't even care about being mayor of this boring ass town." portrait="peakek" emotion="combined"/>
+	<action msg="I was just bored, and you entertained me well enough." portrait="peakek" emotion="combined"/>
+	<action msg="Annoying." portrait="feverd" emotion="frown"/>
+	<action msg="Eh?-" portrait="peakek" emotion="wtf"/>
+	<action msg="What makes you think I have any time for your shit?" portrait="feverd" emotion="frown"/>
+	<action msg="You peep and invade our privacy, you don’t know how to SHUT the fuck up-" portrait="feverd" emotion="frown"/>
+	<action msg="And worst of all, you’ve got me all pissed off. I'd call the cops on you, if there were police in Fever Town ." portrait="feverd" emotion="wtf"/>
+	<action msg="Just get the fuck out. Go. Leave. Fuck off." portrait="feverd" emotion="neutral"/>
+	<action msg="Woah, Fever, maybe we should just-" portrait="tea" emotion="worried"/>
+	<action msg=". . ." portrait="peakek" emotion="wtf"/>
+	<action msg="..." portrait="feverd" emotion="wtf"/>
+	<action msg="What the-?" portrait="feverd" emotion="wtf"/>
+	<action msg="..." portrait="peakek" emotion="combined"/>
+	<action msg="AAAAHHH~! IT'S TOO MUCH! I CAN'T TAKE THIS ANYMORE!" portrait="peakek" emotion="sus"/>
+	<action msg="YOU'RE SO CRUEL TO TEASE ME LIKE THIS, FEVER!" portrait="peakek" emotion="sus"/>
+	<action msg="What the fuck is wrong with him?" portrait="tea" emotion="pointing"/>
+	<action msg="Did he stub his toe or some shit?" portrait="feverd" emotion="wtf"/>
+	<action msg="Your insults are so violently sweet, Fever! I can feel the disgust in both of your eyes burning a hole into me." portrait="peakek" emotion="sus"/>
+	<action msg="And you're a demon, too, so it hurts even more...~" portrait="peakek" emotion="sus"/>
+	<action msg="What's with people and bringing up race on this planet?" portrait="tea" emotion="pointing"/>
+	<action msg="I THINK I MIGHT GO CRAZY! PLEASE BE EVEN MORE MEAN! INSULT ME LIKE THE LOWLY TRASH THAT I AM!" portrait="peakek" emotion="sus"/>
+	<action msg="Excuse me? You're going to do something like this IN front of me?" portrait="tea" emotion="pointing"/>
+	<action msg="Yeah! I'm not gonna do anything like that with you! That's weird-" portrait="feverd" emotion="wtf"/>
+	<action msg="Oh, I'm not into you at all Fever.-" portrait="peakek" emotion="happy"/>
+	<action msg="I just like really like the idea of being belittled.'.-" portrait="peakek" emotion="happy"/>
+	<action msg="Oh." portrait="feverd" emotion="frown"/>
+	<action msg="Oh." portrait="tea" emotion="thinking"/>
+	<action msg="Yeah, that's okay, I guess..." portrait="feverd" emotion="wtf" fadeOutMus=""/>
+</file>

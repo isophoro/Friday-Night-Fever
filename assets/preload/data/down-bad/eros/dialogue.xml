@@ -1,0 +1,22 @@
+<file>
+	<action msg="Hey, hey! You're a lot more fun to play with than I thought you'd be! But..." portrait="peakek" emotion="sus2" setBG="dialogue_backgrounds/room" fadeInMus="void"/>
+	<action msg="I think it's time to get a bit more serious. . ." portrait="peakek" emotion="combined"/>
+	<action msg="Can you please just leave-" portrait="fever" emotion="ugh"/>
+	<action msg="Gotta say, there's something about harmonizing with you instead of other people." portrait="peakek" emotion="combined"/>
+	<action msg="Most people would've ran away by now..." portrait="peakek" emotion="combined"/>
+	<action msg="But this is my house-" portrait="fever" emotion="ugh"/>
+	<action msg="But here you are, allowing me to play these games with you..." portrait="peakek" emotion="combined"/>
+	<action msg="Although, your whole work vibe is still SUPER boring. Don't you ever get bored of it?" portrait="peakek" emotion="combined"/>>
+	<action msg="Sometimes. But Tea here keeps me busy." portrait="fever" emotion="chill/>
+	<action msg="Pffft, youre lame." portrait="tea" emotion="pointing-flushed"/>
+	<action msg="Oh, I know. I’ve been spying on you two." portrait="peakek" emotion="neutral"/>
+	<action msg="?!" portrait="tea" emotion="worried" effect="jump" playSound="recordscratch" fadeOutMus=""/>
+	<action msg="HUH?" portrait="tea" emotion="worried"/>
+	<action msg="Well, obviously I needed some pics if I wanted to blackmail you two." portrait="peakek" emotion="sus2"/>
+	<action msg="That’s FUCKING crazy! You're a fucking creep!" portrait="fever" emotion="point"/>
+	<action msg="I hear that one a lot." portrait="peakek" emotion="neutral"/>
+	<action msg="BRUH." portrait="tea" emotion="pointing"/>
+	<action msg="Gah. Tea, just start the next song!." portrait="fever" emotion="point"/>
+	<action msg="You guys don't know how much I'm loving your expressions right now." portrait="peakek" emotion="sus2"/>
+	<action msg="Let's see if I can get some more out of you..." portrait="peakek" emotion="sus2"/>
+</file>

@@ -1,0 +1,22 @@
+<file>
+	<action msg="Aight, I see you. You're pretty okay." portrait="mako" emotion="neutral" fadeInMus="vim"/>
+	<action msg="For a melon, that is." portrait="feverc" emotion="hey"/>
+	<action msg="Huh? What's THAT supposed to mean?" portrait="mako" emotion="confused"/>
+	<action msg="Oh, uh- y'know, cause I wasn't aware that... you guys could talk and all." portrait="feverc" emotion="ugh"/>
+	<action msg="Nice save." portrait="tea" emotion="neutral"/>
+	<action msg="...right. Anyway, you ready for another song?" portrait="mako" emotion="neutral"/>
+	<action msg="Yeah sure let's go for another one!" portrait="feverc" emotion="point"/>
+	<action msg="Try to keep up with me this time! You were super slow last song!" portrait="mako" emotion="angry"/>
+	<action msg="What do you mean? I thought I did fine-" portrait="feverc" emotion="ugh"/>
+	<action msg="You call those rhymes fine?" portrait="mako" emotion="neutral"/>
+	<action msg="..." portrait="feverc" emotion="ugh"/>
+	<action msg="Out of all people, I didn't expect a talking melon to make fun of your flow." portrait="tea" emotion="thinking"/>
+	<action msg="You mean his LACK of flow." portrait="mako" emotion="neutral"/>
+	<action msg="Whatever man. Also, man. I just realized something...." portrait="feverc" emotion="point"/>
+	<action msg="What?" portrait="mako" emotion="neutral"/>
+	<action msg="I'm feeling..." portrait="feverc" emotion="chill"/>
+	<action msg="Hungry..." portrait="feverc" emotion="facepalm-blush"/>
+	<action msg="..." portrait="tea" emotion="thinking"/>
+	<action msg="Yo! Snap the fuck out of it! You're looking at me funny!" portrait="mako" emotion="angry"/>
+	<action msg="What's up with you today?" portrait="tea" emotion="worried" fadeOutMus=""/>
+</file>

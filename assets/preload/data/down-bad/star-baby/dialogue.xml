@@ -1,0 +1,45 @@
+<file>
+	<action msg="So, is there a reason why we're in the shady part of town?" portrait="tea" emotion="thinking" setBG="dialogue_backgrounds/plainblacklol"/>
+	<action msg="Isn't every part shady?" portrait="fever" emotion="neutral"/>
+	<action msg="Anyways, there's been word of a &quot;monster&quot; lurking near here..." portrait="fever" emotion="neutral"/>
+	<action msg="This part of town hasn't been renovated like the others, so it's still a bit... abandoned." portrait="fever" emotion="neutral"/>
+	<action msg="Luckily, there's no such things as monsters, so I'm guessing it's just some silly rumor." portrait="fever" emotion="point"/>
+	<action msg="You... do realize that I'm from space, right?" portrait="tea" emotion="pointing"/>
+	<action msg="And... you yourself are a demon. In fact, last week we had an encounter with a shapeshifter." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="Your point?" portrait="fever" emotion="point"/>
+	<action msg="Ugh, nevermind. Let's just get this over with. You sure this the right building" portrait="tea" emotion="neutral"/>
+	<action msg="I can't say for sure. Every building on this side of town looks the goddamn same. Is there a light switch?" portrait="fever" emotion="ugh"/>
+	<action msg="Can't you summon some cool demon fire magic or something?" portrait="tea" emotion="thinking"/>
+	<action msg="The only fire I can summon is from my love for you." portrait="fever" emotion="hey"/>
+	<action msg="I dunno... probably not as hot as actual fire..." portrait="tea" emotion="thinking"/>
+	<action msg="I can prove it." portrait="fever" emotion="hey"/>
+	<action msg="The only thing burning here is your flirting." portrait="tea" emotion="thinking"/>
+	<action msg="Did someone say fire?" portrait="wee" emotion="neutral"/>
+	<action msg="HUH? It's-" portrait="fever" emotion="shocked"/>
+	<action msg="Oh, it's just a cat." portrait="fever" emotion="neutral"/>
+	<action msg="Sup." portrait="wee" emotion="neutral" fadeInMus="star-baby"/>
+	<action msg="Uh, hey. You uh, live here?" portrait="fever" emotion="neutral"/>
+	<action msg="Maybe I do. Why, you here to kick me out?" portrait="wee" emotion="neutral"/>
+	<action msg="Nah, it's not like that. We're looking for a monster." portrait="fever" emotion="neutral"/>
+	<action msg="..." portrait="tea" emotion="neutral"/>
+	<action msg="Hey, don't I know you?" portrait="tea" emotion="neutral"/>
+	<action msg="?" portrait="wee" emotion="neutral"/>
+	<action msg="Oh, shoot- Tea? I was wondering if you were actually in this town or not." portrait="wee" emotion="neutral"/>
+	<action msg="Huh? You know the cat?" portrait="fever" emotion="ugh"/>
+	<action msg="Yeah, Wee and I used to hang out a LONG time ago on a different planet." portrait="tea" emotion="neutral"/>
+	<action msg="So you're the guy dating Tea?" portrait="wee" emotion="wtf"/>
+	<action msg="Uhm." portrait="fever" emotion="ugh"/>
+	<action msg="..." portrait="wee" emotion="wtf"/>
+	<action msg="You seem okay." portrait="wee" emotion="neutral"/>
+	<action msg="Uh, cool." portrait="fever" emotion="embarrased"/>
+	<action msg="Well, if I were to guess, whoever made the report must've mistaken Wee for a monster or something." portrait="fever" emotion="neutral"/>
+	<action msg="Makes sense, nothing weirder than a talking cat." portrait="fever" emotion="neutral"/>
+	<action msg="A monster? Hm... I have seen something like that around here." portrait="wee" emotion="neutral"/>
+	<action msg="But hey, is that a microphone?" portrait="wee" emotion="neutral"/>
+	<action msg="I already see where this is going." portrait="tea" emotion="thinking"/>
+	<action msg="I dunno... I'm kind of on a schedule here..." portrait="fever" emotion="ugh"/>
+	<action msg="Afraid that I'm gonna beat you in front of your girl?" portrait="wee" emotion="neutral" setBG="dialogue_backgrounds/wolfiewee"/>
+	<action msg="Oh nah- now you've said too much!" portrait="fever" emotion="point"/>
+	<action msg="I'm about to send you back to the pound! Come on Tea, let's show him how strong my flow is!" portrait="fever" emotion="point"/>
+	<action msg="...bruh." portrait="tea" emotion="pointing" fadeOutMus=""/>
+</file>

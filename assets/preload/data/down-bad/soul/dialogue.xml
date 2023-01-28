@@ -1,0 +1,21 @@
+<file>
+	<action msg="(The room is spinning...)" portrait="feverd" emotion="wtf" fadeInMus="soul"/>
+	<action msg="Damn! So, what's this? A pocket dimension?" portrait="feverd" emotion="frown"/>
+	<action msg="Hehe... so you're not entirely dumb..." portrait="hallow" emotion="neutral"/>
+	<action msg="In here, I'm at my strongest..." portrait="hallow" emotion="neutral"/>
+	<action msg="And you?... You're going to become my new host..." portrait="hallow" emotion="neutral"/>
+	<action msg="(Shit. This place is sapping all of my strength. It's hard just to stand up.)" portrait="feverd" emotion="frown"/>
+	<action msg="(This was exactly its plan... I need to think of something.)" portrait="feverd" emotion="frown"/>
+	<action msg="So, you want my body, huh? Sure." portrait="feverd" emotion="neutral"/>
+	<action msg="I guess I can give it up. No point in struggling if I'm caught with no way out." portrait="feverd" emotion="point"/>
+	<action msg="Kekeke..." portrait="hallow" emotion="neutral"/>
+	<action msg="...is what I would say." portrait="feverd" emotion="neutral"/>
+	<action msg="..." portrait="hallow" emotion="neutral"/>
+	<action msg="You've given me exactly what I've wanted. I've seperated you from the other ghosts." portrait="feverd" emotion="neutral"/>
+	<action msg="And while you're super strong now, I don't sense your power rising anymore..." portrait="feverd" emotion="neutral"/>
+	<action msg="Which means, there's no one stopping me from beating the fuck outta you now, is there?" portrait="feverd" emotion="point"/>
+	<action msg="GrRrRrR?..." portrait="hallow" emotion="angry"/>
+	<action msg="You're just... bluffing... I sense no strength from you whatsoever..." portrait="hallow" emotion="neutral"/>
+	<action msg="Fine. I'll just send you to hell myself, then." portrait="feverd" emotion="neutral"/>
+	<action msg="Rrr..." portrait="hallow" emotion="rage"/>
+</file>

@@ -1,0 +1,30 @@
+<file>
+	<action msg="Shit. This is a lot different than just punching someone." portrait="feverd" emotion="frown" fadeInMus="portrait"/>
+	<action msg="If it were a weaker ghost, this wouldn't be an issue." portrait="feverd" emotion="frown"/>
+	<action msg="Heeey.." portrait="paste" emotion="laugh"/>
+	<action msg="What? More ghosts??" portrait="feverd" emotion="wtf"/>
+	<action msg="You... annoying..." portrait="paste" emotion="neutral"/>	
+	<action msg="Would... look... good... painting..." portrait="paste" emotion="laugh"/>	
+	<action msg="Nananana!~" portrait="hallow" emotion="neutral"/>
+	<action msg="*Hallow claps their hands to a familiar beat.*" portrait="hallow" emotion="neutral"/>
+	<action msg="Great... I guess I'm alone." portrait="feverd" emotion="frown"/>
+	<action msg="Phhbt!~ Kakaka!" portrait="hallow" emotion="neutral"/>
+	<action msg="So that's where you're getting your power from. You feed off of your lackeys..." portrait="feverd" emotion="frown"/>
+	<action msg="There's not much I can do here... I'm going to lose!..." portrait="feverd" emotion="wtf"/>
+	<action msg="Hahahaha!~" portrait="hallow" emotion="neutral"/>
+	<action msg="*Hallow begins to slowly inch closer towards Fever, clutching an empty painting in their hands...*" portrait="hallow" emotion="neutral"/>
+	<action msg="BOO." portrait="feverd" emotion="wtf"/>
+	<action msg="KAH?!?!" portrait="hallow" emotion="angry"/>
+	<action msg="Hah. Did the big, bad, boss ghost get scared just by a little &quot;boo?&quot;" portrait="feverd" emotion="neutral"/>
+	<action msg="And here I thought you'd actually live up to the face you're wearing." portrait="feverd" emotion="neutral"/>
+	<action msg="But I guess that, even a powerful spirit like you can feel fear. How reassuring." portrait="feverd" emotion="point"/>
+	<action msg="GrRrRrRr...!" portrait="hallow" emotion="angry"/>
+	<action msg="..." portrait="hallow" emotion="angry"/>
+	<action msg="Kekeke..." portrait="hallow" emotion="neutral"/>
+	<action msg="Stay calm, Fever. I know you want to get mad..." portrait="feverd" emotion="frown"/>
+	<action msg="*But things are different now.*" portrait="tea" emotion="painting"/>
+	<action msg="Kekeke... ehehehe..." portrait="hallow" emotion="neutral"/>
+	<action msg="YOU... WILL... MEET... GOD..." portrait="hallow" emotion="neutral"/>
+	<action msg="..." portrait="feverd" emotion="frown"/>
+	<action msg="Hang on, Tea. I'll finish this quickly." portrait="feverd" emotion="frown"/>
+</file>

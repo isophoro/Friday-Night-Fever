@@ -1,0 +1,37 @@
+<file>
+	<action msg="Nice job! You haven't lost your touch, it seems." portrait="tea" emotion="neutral" setBG="dialogue_backgrounds/room"/>
+	<action msg="Sweet, I've still got it." portrait="fever" emotion="neutral"/>
+	<action msg="I'm surprised my vocal cords can keep up- I've kinda strained them in the past." portrait="fever" emotion="neutral"/>
+	<action msg="Huh? You heard that too, right?" portrait="tea" emotion="worried" narrate="Yeah! I'd say that was really cute!" setBG="dialogue_backgrounds/peakekisanidiot" fadeInMus="metamorphosis"/>
+	<action msg="What does it look like I'm doing? I'm doing my own insurrection to usurp your position as mayor of fevertown obviously." portrait="peakek" emotion="neutral" setBG="" narrate="Fever"/>
+	<action msg="Like I'd ever let you do that!" portrait="fever" emotion="point"/>
+	<action msg="(Psst, Tea. What the fuck did he just say?)" portrait="fever" emotion="point"/>
+	<action msg="I think he said he wants your title as mayor of Fever Town." portrait="tea" emotion="neutral"/>
+	<action msg="That's stupid! Why would I ever give it up to YOU of all people?" portrait="fever" emotion="point"/>
+	<action msg="Well, it's a rule here in town that you'll need to accept any and all challenges related to your title." portrait="peakek" emotion="sus2"/>
+	<action msg="That's a STUPID rule! Who came up with that shit?" portrait="fever" emotion="point"/>
+	<action msg="You did, dummy." portrait="tea" emotion="pointing"/>
+	<action msg="Oh, yeah." portrait="fever" emotion="neutral"/>
+	<action msg="I need to stop drinking while coming up with new laws." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="But that's besides the point! How'd you even get in here?" portrait="fever" emotion="point"/>
+	<action msg="Through the same hole I use to peep." portrait="peakek" emotion="neutral"/>
+	<action msg="So that's where the roaches are coming from." portrait="tea" emotion="thinking"/>
+	<action msg="We have ROACHES?" portrait="fever" emotion="shocked"/>
+	<action msg="They're kinda cute, actually." portrait="tea" emotion="neutral"/>
+	<action msg="Whatever, back to you! What do you even gain from trying something like this?" portrait="fever" emotion="point"/>
+	<action msg="You're too laidback to even handle a position like mine. Unlike you, I'm-" portrait="fever" emotion="point"/>
+	<action msg="A furry." portrait="peakek" emotion="sus2"/>
+	<action msg="What." portrait="fever" emotion="shocked" effect="jump" playSound="recordscratch" fadeOutMus=""/>
+	<action msg="He's not wrong." portrait="tea" emotion="flushed"/>
+	<action msg="Besides, things are way too boring... this place needs more chaos. I already have the perfect smear campaign ready." portrait="peakek" emotion="neutral" fadeInMus="metamorphosis"/>
+	<action msg="You've only been here for like a month-" portrait="fever" emotion="ugh"/>
+	<action msg="People will surely begin to understand that we'll have a lot more fun when I'M ruling over." portrait="peakek" emotion="combined"/>
+	<action msg="I think the suit fits me a lot better than it ever will on you, wouldn't you agree?~" portrait="peakek" emotion="fever"/>
+	<action msg="Just look at how silly you are, doesn't looking into a mirror hurt?~" portrait="peakek" emotion="clown"/>
+	<action msg="Identity Theft won't help your image, you know!" portrait="fever" emotion="point"/>
+	<action msg="Babe." portrait="tea" emotion="pointing"/>
+	<action msg="Whatever! He copied my style and made fun of it, and for that they have to learn who's in charge around here!" portrait="fever" emotion="point"/>
+	<action msg="They also gave me a headache." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="I could keep going if you want~." portrait="peakek" emotion="combined"/>
+	<action msg="Just gimme the mic and let's hurry!" portrait="fever" emotion="point" fadeOutMus=""/>
+</file>
