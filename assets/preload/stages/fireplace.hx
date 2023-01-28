@@ -6,6 +6,18 @@ var fire:FlxSprite;
 var portal:FlxSprite;
 var hallow:FlxSprite;
 var hallowSCARY:FlxSprite;
+var fGrp = [];
+
+var furniture = [
+	["book", -500, -650],
+	["chair", 1720, 110],
+	["lester", 450, 900],
+	["lamp", 1650, -310],
+	["plank0", -700, 750],
+	["plank 2", 2030, 1000],
+	["plant", -1000, 380],
+	["skelly", 1800, 800]
+];
 
 function onCreate()
 {
@@ -42,6 +54,20 @@ function onCreate()
 	add(hallowSCARY);
 	hallowSCARY.visible = false;
 
+	for (i in 0...furniture.length)
+	{
+		var f = new FlxSprite(furniture[i][1], furniture[i][2]);
+		f.frames = Paths.getSparrowAtlas('paste/furnitures');
+		f.animation.addByPrefix("idle", furniture[i][0], 0, true);
+		f.animation.play("idle");
+		f.scale.set(1.3, 1.3);
+		f.antialiasing = true;
+		f.visible = false;
+		FlxTween.tween(f, {y: f.y - FlxG.random.int(-50, -35)}, 1.9 + FlxG.random.float(-0.6, 0.9), {type: FlxTweenType.PINGPONG, ease: FlxEase.quadInOut});
+		fGrp.push(f);
+		add(f);
+	}
+
 	boyfriend.x -= 90;
 	boyfriend.y -= 150;
 	gf.y -= 150;
@@ -59,6 +85,11 @@ function changeBG()
 	hallowSCARY.visible = true;
 	hallowSCARY.alpha = 0;
 	portal.visible = true;
+
+	for (i in fGrp)
+	{
+		i.visible = true;
+	}
 }
 
 function onStepHit(curStep)

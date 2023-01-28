@@ -63,8 +63,8 @@ function onCreate()
 	{
 		FlxTimer.globalManager.clear();
 		game.startSong();
-		game.disableCamera = true;
-		snapCamera(DAD_CAM_POS);
+		// game.disableCamera = true;
+
 		FlxG.sound.music.time = 42950;
 		Conductor.songPosition = 42950;
 		gf.visible = false;

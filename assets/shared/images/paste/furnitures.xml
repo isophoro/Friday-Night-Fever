@@ -4,7 +4,7 @@
 	<!-- http://www.adobe.com/products/flash.html -->
 	<SubTexture name="book0000" x="1" y="1" width="139" height="149"/>
 	<SubTexture name="chair0000" x="140" y="1" width="267" height="264"/>
-	<SubTexture name="ethin0000" x="1" y="265" width="236" height="183"/>
+	<SubTexture name="lester0000" x="1" y="265" width="236" height="183"/>
 	<SubTexture name="lamp0000" x="237" y="265" width="239" height="285"/>
 	<SubTexture name="plank0000" x="1" y="550" width="104" height="155"/>
 	<SubTexture name="plank 20000" x="105" y="550" width="168" height="131"/>
