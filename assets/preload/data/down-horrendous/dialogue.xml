@@ -3,22 +3,21 @@
 	<action msg="Especially compared to my days at the lab..." portrait="peakek" emotion="combined"/>
 	<action msg="Lab?" portrait="tea" emotion="neutral"/>
 	<action msg="(Psst. A lab is a type of dog. They're cute, four legged creatures that run around and wag their tails.)" portrait="fever" emotion="neutral"/>
-	<action msg="Oh, I think we have those back home, too." portrait="tea" emotion="thinking"/>
-	<action msg="Truth be told, I didn't even care about being mayor of this boring ass town. I'm not much of a leader anyway." portrait="peakek" emotion="combined"/>
-	<action msg="You don't say?" portrait="fever" emotion="point"/>
-	<action msg="I just wanted to fight, and you entertained that urge well enough." portrait="peakek" emotion="combined"/>
-	<action msg="How fucking annoying." portrait="feverd" emotion="frown"/>
+	<action msg="Oh, I think we have those back on my planet, too." portrait="tea" emotion="thinking"/>
+	<action msg="Truth be told, I didn't even care about being mayor of this boring ass town." portrait="peakek" emotion="combined"/>
+	<action msg="I was just bored, and you entertained me well enough." portrait="peakek" emotion="combined"/>
+	<action msg="Annoying." portrait="feverd" emotion="frown"/>
 	<action msg="Eh?-" portrait="peakek" emotion="wtf"/>
-	<action msg="What makes you think I have any FUCKING time for your shenanigans?" portrait="feverd" emotion="frown"/>
+	<action msg="What makes you think I have any time for your shit?" portrait="feverd" emotion="frown"/>
 	<action msg="You peep and invade our privacy, you don’t know how to SHUT the fuck up-" portrait="feverd" emotion="frown"/>
-	<action msg="And worst of all, you’ve got me all pissed off. Go annoy some other bitches, and get the fuck off my property." portrait="feverd" emotion="wtf"/>
-	<action msg="Hijueputa." portrait="feverd" emotion="neutral"/>
+	<action msg="And worst of all, you’ve got me all pissed off. I'd call the cops on you, if there were police in Fever Town ." portrait="feverd" emotion="wtf"/>
+	<action msg="Just get the fuck out. Go. Leave. Fuck off." portrait="feverd" emotion="neutral"/>
 	<action msg="Woah, Fever, maybe we should just-" portrait="tea" emotion="worried"/>
 	<action msg=". . ." portrait="peakek" emotion="wtf"/>
 	<action msg="..." portrait="feverd" emotion="wtf"/>
 	<action msg="What the-?" portrait="feverd" emotion="wtf"/>
 	<action msg="..." portrait="peakek" emotion="combined"/>
-	<action msg="AAAAHHH~! IT'S TOO MUCH! I CAN'T TAKE THIS DISPLAY ANYMORE!" portrait="peakek" emotion="sus"/>
+	<action msg="AAAAHHH~! IT'S TOO MUCH! I CAN'T TAKE THIS ANYMORE!" portrait="peakek" emotion="sus"/>
 	<action msg="YOU'RE SO CRUEL TO TEASE ME LIKE THIS, FEVER!" portrait="peakek" emotion="sus"/>
 	<action msg="What the fuck is wrong with him?" portrait="tea" emotion="pointing"/>
 	<action msg="Did he stub his toe or some shit?" portrait="feverd" emotion="wtf"/>
@@ -26,10 +25,11 @@
 	<action msg="And you're a demon, too, so it hurts even more...~" portrait="peakek" emotion="sus"/>
 	<action msg="What's with people and bringing up race on this planet?" portrait="tea" emotion="pointing"/>
 	<action msg="I THINK I MIGHT GO CRAZY! PLEASE BE EVEN MORE MEAN! INSULT ME LIKE THE LOWLY TRASH THAT I AM!" portrait="peakek" emotion="sus"/>
-	<action msg="WHAT THE FUCK IS WRONG WITH EVERYONE IN THIS TOWN?" portrait="feverd" emotion="wtf"/>
-	<action msg="I want to go back home." portrait="tea" emotion="tea-pointing-wtf"/>
-	<action msg="Your words wound me so~! this is all so...." portrait="peakek" emotion="sus"/>
-	<action msg="THRILLING!" portrait="peakek" emotion="sus"/>
-	<action msg="Fever-" portrait="tea" emotion="pointing"/>
-	<action msg="Fine, I'm on it..." portrait="feverd" emotion="wtf" fadeOutMus=""/>
+	<action msg="Excuse me? You're going to do something like this IN front of me?" portrait="tea" emotion="pointing"/>
+	<action msg="Yeah! I'm not gonna do anything like that with you! That's weird-" portrait="feverd" emotion="wtf"/>
+	<action msg="Oh, I'm not into you at all Fever.-" portrait="peakek" emotion="happy"/>
+	<action msg="I just like really like the idea of being belittled.'.-" portrait="peakek" emotion="happy"/>
+	<action msg="Oh." portrait="feverd" emotion="frown"/>
+	<action msg="Oh." portrait="tea" emotion="thinking"/>
+	<action msg="Yeah, that's okay, I guess..." portrait="feverd" emotion="wtf" fadeOutMus=""/>
 </file>

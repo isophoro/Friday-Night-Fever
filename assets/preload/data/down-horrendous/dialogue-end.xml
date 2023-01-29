@@ -1,18 +1,19 @@
 <file>
 	<action msg="Huff. . . thanks for the beatdown. . . I really needed that." portrait="peakek" emotion="neutral" fillBG="BLACK" fadeOutMus=""/>
-	<action msg="Bruh. . . you need to leave right the fuck now." portrait="fever" emotion="point"/>
-	<action msg="You're only encouraging me! By the way, you fight really well." portrait="peakek" emotion="sus2"/>
+	<action msg="I think you should leave." portrait="fever" emotion="ugh"/>
+	<action msg="By the way, you fight really well." portrait="peakek" emotion="sus2"/>
 	<action msg="It's a dirty type of style, I sensed the feelings that you had for Tea in every note." portrait="peakek" emotion="fever"/>
-	<action msg="Even if you beat me, I'm still way hotter than you'll ever be." portrait="peakek" emotion="clown"/>
-	<action msg="Bitch if you don't shut the fuck up--" portrait="fever" emotion="facepalm"/>
+	<action msg="And even if you did beat me, I'm still way hotter than you'll ever be." portrait="peakek" emotion="clown"/>
+	<action msg="Okay." portrait="fever" emotion="facepalm"/>
 	<action msg="And, tea..." portrait="peakek" emotion="happy"/>
 	<action msg="?" portrait="tea" emotion="neutral"/>
-	<action msg="You're really lucky to have Fever in your life. I can only hope that I'll have someone that cares for me the same way you do." portrait="peakek" emotion="happy"/>
-	<action msg="And if not. . ." portrait="peakek" emotion="combined"/>
-	<action msg="I'll fucking kill them and take their identity like I did with the last person I made the mistake of trusting." portrait="peakek" emotion="combined"/>
-	<action msg="Get out before I kick you out. Edgy piece of garbage." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="You're really lucky to have Fever by your side. I can only hope that I'll have someone that cares for me the same way he does." portrait="peakek" emotion="happy"/>
+	<action msg="And if they betray me. . ." portrait="peakek" emotion="combined"/>
+	<action msg="I'll kill them and take their identity, just like I did with the last person I made the mistake of trusting." portrait="peakek" emotion="combined"/>
+	<action msg="Get out already." portrait="fever" emotion="facepalm-stare"/>
 	<action msg="Fineeee, I bid you adieu. Until next time, Fever. . ." portrait="peakek" emotion="neutral"/>
-	<action msg="Seriously. Is everyone on Earth an idiot?" portrait="tea" emotion="pointing" narrate=". . ."/>
+	<action msg="Seriously. Is everyone on Earth an idiot?" portrait="tea" emotion="pointing"/>
+	<action narrate=". . ."/>
 	<action msg="I know, right? It's a good thing I'm not like that." portrait="fever" emotion="neutral"/>
 	<action msg="..." portrait="tea" emotion="neutral"/>
 	<action msg="...I said, right babe?" portrait="fever" emotion="neutral"/>

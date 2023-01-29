@@ -7,8 +7,6 @@
 	<action msg="..." portrait="tea" emotion="painting"/>
 	<action msg="...!" portrait="tea" emotion="painting" playSound="oHShIT"/>
 	<action msg="Huh?... What?... I..." portrait="tea" emotion="worried" narrate="..."/>
-	<action msg="Thank God, you're okay..." portrait="feverd" emotion="frown"/>
-	<action msg="?!?!" portrait="hallow" emotion="rage"/>
 	<action msg="It's over now, give me a second, okay? Then we can go home." portrait="feverd" emotion="neutral"/>
 	<action msg="..." portrait="tea" emotion="worried"/>
 	<action msg="..." portrait="feverd" emotion="neutral"/>
@@ -21,12 +19,10 @@
 	<action msg="AAAAAA!-" portrait="hallow" emotion="rage" narrate="I want you to burn. Taking your soul ISN'T ENOUGH!" setBG=""/>
 	<action msg="Aa..." portrait="hallow" emotion="rage"/>
 	<action msg="...whew. The rest of you, run away." portrait="feverd" emotion="frown" setBG="" narrate="..."/>
-	<action msg="Krrr! Let's leave!..." portrait="hallow" emotion="rage"/>
 	<action msg="Huh? Fever? Where are we? What were you yelling about?..." portrait="tea" emotion="worried" narrate="The rest of the ghosts run away."/>
 	<action msg="Hey, don't worry about it. Just had to deal with someone." portrait="feverd" emotion="neutral"/>
 	<action msg="No one's gonna bug us anymore. Come on, let's go home." portrait="feverd" emotion="neutral"/>
 	<action msg="Uh, okay..." portrait="tea" emotion="worried"/>
 	<action msg="Don't try to walk. I've got you." portrait="feverd" emotion="neutral"/>
 	<action msg="..." portrait="feverd" emotion="frown"/>
-	<action msg="(I should stay in my demon form more...)" portrait="feverd" emotion="frown"/>
 </file>

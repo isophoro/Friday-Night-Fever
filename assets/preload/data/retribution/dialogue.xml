@@ -3,17 +3,17 @@
 	<action msg="Yeah, I was hungry." portrait="feverc" emotion="ugh"/>
 	<action msg="So, you took a bite out of him??" portrait="tea" emotion="pointing"/>
 	<action msg="I don't see why not. He's a melon." portrait="feverc" emotion="ugh"/>
-	<action msg="And the little shit kept talking. I was getting annoyed." portrait="feverc" emotion="ugh"/>
-	<action msg="That's not a fucking good excuse-" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="Melons are made to be eaten." portrait="feverc" emotion="ugh"/>
+	<action msg="That's not a fucking good excuse at all!" portrait="tea" emotion="tea-pointing-wtf"/>
 	<action msg="DID YOU SERIOUSLY TAKE A BITE OUT OF MY FUCKING HEAD?" portrait="mako" emotion="corrupt" fadeInMus="farmed"/>
 	<action msg="What-" portrait="feverc" emotion="shocked"/>
 	<action msg="Huh?-" portrait="tea" emotion="worried"/>
 	<action msg="LOOK AT ME." portrait="mako" emotion="corrupt"/>
 	<action msg="I'M MISSING PART OF MY HEAD." portrait="mako" emotion="corrupt"/>
-	<action msg="Oh, my bad. I was super hungry." portrait="feverc" emotion="ugh"/>
-	<action msg="SO YOU TOOK A BITE OUT OF MY HEAD." portrait="mako" emotion="corrupt"/>
-	<action msg="Uhh!- I can do it on the other side so it matches..." portrait="feverc" emotion="shocked"/>
-	<action msg="FINE." portrait="mako" emotion="corrupt"/>
+	<action msg="Oh, my bad. I was hungry." portrait="feverc" emotion="ugh"/>
+	<action msg="THAT DOESN'T GIVE YOU THE RIGHT TO TAKE A BITE OUT OF ME." portrait="mako" emotion="corrupt"/>
+	<action msg="Uhh, sorry!  I can do it on the other side so it matches if you want.." portrait="feverc" emotion="shocked"/>
+	<action msg="GRAH. FINE." portrait="mako" emotion="corrupt"/>
 	<action msg="I SHOULD HAVE KNOWN THINGS WOULD END UP THIS WAY." portrait="mako" emotion="corrupt"/>
 	<action msg="CURSE YOU, CURSE YOU AND THE FILTH THAT BROUGHT YOU INTO THIS WORLD." portrait="mako" emotion="corrupt"/>
 	<action msg="Oh shit." portrait="feverc" emotion="shocked"/>
