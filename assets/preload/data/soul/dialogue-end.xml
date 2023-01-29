@@ -1,5 +1,5 @@
 <file>
-	<action msg="Finally out of that painting." portrait="feverd" emotion="frown" setBG="dialogue_backgrounds/plainblacklol"/>
+	<action msg="Finally out of that painting." portrait="feverd" emotion="frown" fillBG="BLACK"/>
 	<action msg="It was getting way too hot in there." portrait="feverd" emotion="frown"/>
 	<action msg="GrRrR?!?! AaAaAa!?!?" portrait="hallow" emotion="rage"/>
 	<action msg="Hold on, I'll deal with you and your friends in a second." portrait="feverd" emotion="frown"/>
@@ -10,15 +10,15 @@
 	<action msg="It's over now, give me a second, okay? Then we can go home." portrait="feverd" emotion="neutral"/>
 	<action msg="..." portrait="tea" emotion="worried"/>
 	<action msg="..." portrait="feverd" emotion="neutral"/>
-	<action msg="Now. About YOU." portrait="feverd" emotion="frown" fadeInMus="hostagesituation"/>
+	<action msg="Now. About YOU." portrait="feverd" emotion="frown"/>
 	<action msg="...!?" portrait="hallow" emotion="rage"/>
 	<action msg="I promised you hell, didn't I? You chose to mess with me, that's one thing." portrait="feverd" emotion="frown"/>
 	<action msg="But you brought her into the mix." portrait="feverd" emotion="frown"/>
 	<action msg="There's a place MUCH worse waiting for you." portrait="feverd" emotion="frown"/>
 	<action msg="AaAaAaA???" portrait="hallow" emotion="rage"/>
-	<action msg="AAAAAA!-" portrait="hallow" emotion="rage" narrate="I want you to burn. Taking your soul ISN'T ENOUGH!" setBG=""/>
+	<action msg="AAAAAA!-" portrait="hallow" emotion="rage" narrate="I want you to burn. Taking your soul ISN'T ENOUGH!"/>
 	<action msg="Aa..." portrait="hallow" emotion="rage"/>
-	<action msg="...whew. The rest of you, run away." portrait="feverd" emotion="frown" setBG="" narrate="..."/>
+	<action msg="...whew. The rest of you, run away." portrait="feverd" emotion="frown" narrate="..."/>
 	<action msg="Huh? Fever? Where are we? What were you yelling about?..." portrait="tea" emotion="worried" narrate="The rest of the ghosts run away."/>
 	<action msg="Hey, don't worry about it. Just had to deal with someone." portrait="feverd" emotion="neutral"/>
 	<action msg="No one's gonna bug us anymore. Come on, let's go home." portrait="feverd" emotion="neutral"/>

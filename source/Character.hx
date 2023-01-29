@@ -344,7 +344,10 @@ class Character extends FlxSprite
 					case 'scarlet':
 						playAnim('idle' + (useAlternateIdle ? '-mad' : ''));
 					default:
-						playAnim('idle' + (useAlternateIdle ? '-alt' : ''));
+						if (useAlternateIdle && (animOffsets.exists('idle-frown') || animOffsets.exists('idle-alt')))
+							playAnim(animOffsets.exists('idle-frown') ? 'idle-frown' : 'idle-alt');
+						else
+							playAnim('idle');
 				}
 			}
 		}

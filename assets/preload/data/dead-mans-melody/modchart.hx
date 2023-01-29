@@ -78,17 +78,25 @@ function onCreate()
 		for (i in [getGlobalVar("bg"), getGlobalVar("fire"), boyfriend, gf])
 		{
 			i.color = 0xFF000000;
-			FlxTween.color(i, 10, 0xFF000000, 0xFFFFFFFF);
 		}
-
-		camGame.zoom = 1;
-		camTween = FlxTween.tween(camGame, {zoom: 0.76}, 15, {
-			onComplete: function(twn)
-			{
-				game.defaultCamZoom = 0.76;
-			}
-		});
 	}
+}
+
+function onDialogueFinish()
+{
+	game.startCountdown();
+	for (i in [getGlobalVar("bg"), getGlobalVar("fire"), boyfriend, gf])
+	{
+		FlxTween.color(i, 10, 0xFF000000, 0xFFFFFFFF);
+	}
+
+	camGame.zoom = 1;
+	camTween = FlxTween.tween(camGame, {zoom: 0.76}, 15, {
+		onComplete: function(twn)
+		{
+			game.defaultCamZoom = 0.76;
+		}
+	});
 }
 
 function onUpdate(elapsed:Float)

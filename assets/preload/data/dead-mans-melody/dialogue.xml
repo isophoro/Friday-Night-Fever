@@ -1,5 +1,5 @@
 <file>
-    <action msg="Ughhh..." portrait="tea" emotion="worried"/>
+    <action msg="Ughhh..." portrait="tea" emotion="worried" fillBG="BLACK"/>
     <action msg="Huh? Oh, I wasn’t expecting you to get up so early." portrait="feverd-casual" emotion="frown"/>
     <action msg="Don’t worry, I already handled it. Let’s just go home."/>
     <action narrate="..."/>

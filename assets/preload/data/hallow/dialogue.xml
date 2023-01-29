@@ -1,5 +1,5 @@
 <file>
-	<action msg="And... then what did you see?" portrait="tea" emotion="worried" narrate="..." fadeInMus="heartbeat" setBG="dialogue_backgrounds/plainblacklol"/>
+	<action msg="And... then what did you see?" portrait="tea" emotion="worried" narrate="..." fadeInMus="heartbeat:0.7" fillBG="BLACK"/>
 	<action msg="Darkness." portrait="feverd" emotion="neutral"/>
 	<action msg="Pitch black, everlasting darkness wherever I looked. Darker than the darkest hole of the ancient ones..." portrait="feverd" emotion="neutral"/>
 	<action msg="It was so dark that closing my eyes made no difference..." portrait="feverd" emotion="neutral"/>
@@ -14,23 +14,23 @@
 	<action msg="..." portrait="feverd" emotion="frown"/>
 	<action msg="I was ATTACKED BY THE UNDEAD! ZOMBIES ATTACKING ME FROM ALL ANGLES, GUTS FLYING EVERYWHERE! BAHAHAHA!" portrait="feverd" emotion="neutral"/>
 	<action msg="!" portrait="tea" emotion="worried" fadeOutMus=""/>
-	<action msg="YOU FUCKING-" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="YOU FUCKING-" portrait="tea" emotion="pointing-wtf"/>
 	<action msg="OW." portrait="fever" emotion="shocked"/>
-	<action msg="YOU DESERVE THAT." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="YOU DESERVE THAT." portrait="tea" emotion="pointing-wtf"/>
 	<action msg="Ow, owww! Okay, sorry!  Fuck, I forgot you're actually super strong..." portrait="fever" emotion="facepalm"/>
-	<action msg="And here I thought that you were ACTUALLY telling me something cool you did in the past..." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="And here I thought that you were ACTUALLY telling me something cool you did in the past..." portrait="tea" emotion="pointing-wtf"/>
 	<action msg="I DID do that! I'm telling you babe, I was surrounded by brains, guts and more! I nearly lost my mind!" portrait="fever" emotion="shocked"/>
-	<action msg="Yeah, forgive me if I uh, find that hard to believe." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="Yeah, forgive me if I uh, find that hard to believe." portrait="tea" emotion="pointing-wtf"/>
 	<action msg="I tell you, punchin' a hole in a zombie brain just isn't as satisfying as the real deal." portrait="fever" emotion="hey"/>
 	<action msg="Let's just go home. It's cold as FUCK in here." portrait="tea" emotion="neutral"/>
 	<action msg="Huh?" portrait="fever" emotion="shocked"/>
 	<action narrate="!" playSound="oHShIT"/>
-	<action msg="Oh cool, what now?" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="Oh cool, what now?" portrait="tea" emotion="pointing-wtf"/>
 	<action msg="I thought I heard something fall." portrait="fever" emotion="shocked"/>
-	<action msg="Oh no, I'm not falling for your shit this time, Fever." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="Oh no, I'm not falling for your shit this time, Fever." portrait="tea" emotion="pointing-wtf"/>
 	<action msg="No, I mean it!" portrait="fever" emotion="facepalm"/>
-	<action msg="I said I'm do-" portrait="tea" emotion="tea-pointing-wtf"/>
-	<action msg="..." portrait="hallow" emotion="neutral" fadeInMus="hallow"/>
+	<action msg="I said I'm do-" portrait="tea" emotion="pointing-wtf"/>
+	<action msg="..." portrait="hallow" emotion="neutral" fadeInMus="hallow:0.5"/>
 	<action msg="AH!" portrait="fever" emotion="shocked" effect="jump"/>
 	<action msg="T-TAKI?!" portrait="tea" emotion="worried"/>
 	<action msg="Shouldn't you be at-" portrait="fever" emotion="shocked"/>
@@ -42,15 +42,15 @@
 	<action msg="~" portrait="hallow" emotion="neutral"/>
 	<action msg="Oh, what's up little guy?" portrait="tea" emotion="neutral"/>
 	<action msg="It's gripping onto that painting pretty tight..." portrait="fever" emotion="neutral"/>
-	<action msg="" portrait="fever" emotion="neutral"/>
+	<action msg="..." portrait="fever" emotion="neutral" proceedImmediately="true"/>
 	<action msg="AH-" portrait="fever" emotion="shocked"/>
 	<action msg="BABE, MOVE!" portrait="tea" emotion="worried"/>
-	<action narrate="Kekeke!" setBG="dialogue_backgrounds/hallowBG"/>
-	<action msg="HUH? FUCK-" portrait="fever" emotion="shocked"/>
+	<action narrate="Kekeke!" setBG="dialogue_backgrounds/hallow" showOnlyBG="true"/>
+	<action msg="HUH? FUCK-" portrait="fever" emotion="shocked" showOnlyBG="false" removePortrait="tea"/>
 	<action msg="Kekekekeke!~" portrait="hallow" emotion="neutral"/>
 	<action msg="Phew! It almost got me. Tea, are you-" portrait="fever" emotion="neutral"/>
 	<action narrate="Thanks to Teas call, the attack directed at Fever manages to barely miss."/>
-	<action msg="" portrait="tea" emotion="painting"/>
+	<action msg="..." portrait="tea" emotion="painting"/>
 	<action msg="!" portrait="fever" emotion="shocked"/>
 	<action msg="Kekekeke!" portrait="hallow" emotion="neutral"/>
 	<action msg="Tea!" portrait="fever" emotion="shocked"/>

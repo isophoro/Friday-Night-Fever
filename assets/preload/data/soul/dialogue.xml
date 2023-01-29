@@ -1,5 +1,5 @@
 <file>
-	<action msg="(The room is spinning...)" portrait="feverd" emotion="wtf" fadeInMus="soul"/>
+	<action msg="(The room is spinning...)" portrait="feverd" emotion="wtf" fadeInMus="old-soul:0.6"/>
 	<action msg="Damn! So, what's this? A pocket dimension?" portrait="feverd" emotion="frown"/>
 	<action msg="Hehe... so you're not entirely dumb..." portrait="hallow" emotion="neutral"/>
 	<action msg="In here, I'm at my strongest..." portrait="hallow" emotion="neutral"/>

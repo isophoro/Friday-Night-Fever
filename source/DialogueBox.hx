@@ -131,6 +131,15 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		FlxTween.tween(skipDia, {alpha: 0}, 3, {startDelay: 3});
 
 		box.y = FlxG.height;
+		if (actions[0].setBG != null)
+		{
+			setBG(actions[0].setBG);
+		}
+		else if (actions[0].fillBG != null)
+		{
+			fillBG(actions[0].fillBG);
+		}
+
 		FlxTween.tween(box, {y: 460}, 0.5, {
 			ease: FlxEase.elasticOut,
 			onComplete: (t) ->
@@ -208,34 +217,14 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 		if (action.fillBG != null)
 		{
-			bg.makeGraphic(1280, 720, action.fillBG);
-			bg.alpha = 1;
+			fillBG(action.fillBG);
 		}
 		else if (action.setBG != null)
 		{
-			if (action.setBG.length > 0)
-			{
-				var diaPath:String = 'dialogue_backgrounds/${action.setBG}';
-				bg.loadGraphic(Paths.image(Assets.exists(Paths.image(diaPath)) ? diaPath : action.setBG, daLibrary));
-				bg.alpha = 1;
-			}
-			else
-			{
-				bg.makeGraphic(1280, 720, FlxColor.BLACK);
-				bg.alpha = 0.7;
-			}
+			setBG(action.setBG);
 		}
 
-		if (action.narrate)
-		{
-			text.sounds = null;
-
-			if (curLeft != null)
-				curLeft.color = 0xFF828282;
-			if (curRight != null)
-				curRight.color = 0xFF828282;
-		}
-		else if (action.portrait != null && portraits[action.portrait] != null)
+		if (action.portrait != null && portraits[action.portrait] != null)
 		{
 			setCorrectPortrait(action);
 
@@ -260,6 +249,16 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 			var prev = portraits[action.portraits[0]];
 			prev.color = 0xFFFFFFFF;
+		}
+
+		if (action.narrate)
+		{
+			text.sounds = null;
+
+			if (curLeft != null)
+				curLeft.color = 0xFF828282;
+			if (curRight != null)
+				curRight.color = 0xFF828282;
 		}
 
 		if (action.emotion != null && curPortrait != null)
@@ -297,6 +296,27 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		}
 		else if (actions[0] != null)
 			startDialogue();
+	}
+
+	function fillBG(color:FlxColor)
+	{
+		bg.makeGraphic(1280, 720, color);
+		bg.alpha = 1;
+	}
+
+	function setBG(bgStr:String)
+	{
+		if (bgStr.length > 0)
+		{
+			var diaPath:String = 'dialogue_backgrounds/${bgStr}';
+			bg.loadGraphic(Paths.image(Assets.exists(Paths.image(diaPath)) ? diaPath : bgStr, daLibrary));
+			bg.alpha = 1;
+		}
+		else
+		{
+			bg.makeGraphic(1280, 720, FlxColor.BLACK);
+			bg.alpha = 0.7;
+		}
 	}
 
 	var showOnlyBG:Null<Bool> = null;
@@ -458,7 +478,12 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				action.emotion = a.att.emotion.toLowerCase();
 
 			if (a.has.msg)
-				action.msg = a.att.msg.replace('’', "'").replace("&quot;", '"');
+			{
+				if (a.att.msg.length < 1)
+					action.msg = "...";
+				else
+					action.msg = a.att.msg.replace('’', "'").replace("&quot;", '"');
+			}
 			else if (a.has.narrate)
 			{
 				action.msg = a.att.narrate;

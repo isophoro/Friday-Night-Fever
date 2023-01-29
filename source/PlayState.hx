@@ -1028,7 +1028,16 @@ class PlayState extends MusicBeatState
 
 		var doof:DialogueBox = new DialogueBox(dialoguePath);
 		doof.cameras = [camHUD];
-		doof.finishCallback = callback == null ? startCountdown : callback;
+		doof.finishCallback = () ->
+		{
+			if (callback == null)
+				if (songScript != null && songScript.variables.exists("onDialogueFinish"))
+					songScript.callFunction("onDialogueFinish", []);
+				else
+					startCountdown();
+			else
+				callback;
+		}
 		add(doof);
 	}
 
