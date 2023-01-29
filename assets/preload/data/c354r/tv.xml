@@ -6,7 +6,7 @@
     <action msg='It’s been pretty peaceful for a little bit. I guess we could let someone else deal with it.' portrait="fever" emotion="ugh"/>
     <action msg='...'/>
     <action msg='...' portrait="fever" emotion="embarrassed"/>
-    <action msg="Seriously? Aren't you the one that asked for some peace and quiet?"/>
+    <action msg="Seriously? Aren't you the one that asked for some peace and quiet?" portrait="tea" />
     <action msg="I mean, isn’t it the responsibility of the mayor to check this kinda stuff out?" portrait="fever" emotion="shocked"/>
     <action msg='You’re just bored!' portrait="tea" emotion="pointing-wtf"/>
     <action msg='Ugh.' portrait="tea" emotion="pointing"/>

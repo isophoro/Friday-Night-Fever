@@ -33,7 +33,9 @@ typedef DialogueAction =
 	?setBG:String,
 	?effect:String,
 	?narrate:Bool,
-	?proceedImmediately:Bool
+	?proceedImmediately:Bool,
+	?showOnlyBackground:Null<Bool>,
+	?removePortrait:String
 }
 
 class DialoguePortrait extends FlxSprite
@@ -271,6 +273,8 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			startDialogue();
 	}
 
+	var showOnlyBG:Bool = false;
+
 	function setCorrectPortrait(action:DialogueAction)
 	{
 		var portrait = portraits[action.portrait];
@@ -327,6 +331,26 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				curLeft.setPosition(box.x, -90);
 		}
 
+		if (action.showOnlyBackground != null)
+		{
+			showOnlyBG = action.showOnlyBackground;
+			if (curLeft != null)
+				curLeft.visible = showOnlyBG;
+			if (curRight != null)
+				curRight.visible = showOnlyBG;
+		}
+
+		if (action.removePortrait != null)
+		{
+			var portrait = (curLeft.character == action.removePortrait ? curLeft : curRight);
+			portrait.visible = false;
+
+			if (curLeft.character == action.removePortrait)
+				curLeft = null;
+			else
+				curRight = null;
+		}
+
 		var char = portrait.character.split("-")[0];
 		text.sounds = [
 			FlxG.sound.load(Paths.sound("dialogue/" + (char.startsWith("fever") ? "fever" : char)), 0.6)
@@ -377,6 +401,14 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		for (a in data.nodes.action)
 		{
 			var action:DialogueAction = {};
+
+			if (a.has.showOnlyBG)
+			{
+				action.showOnlyBackground = a.att.showOnlyBG.charAt(0).toLowerCase() == "t" ? true : false;
+			}
+
+			if (a.has.removePortrait)
+				action.removePortrait = a.att.removePortrait;
 
 			if (a.has.portrait || a.has.portraits)
 			{

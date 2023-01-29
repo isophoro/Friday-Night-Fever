@@ -3,7 +3,7 @@ import flixel.util.FlxTimer;
 
 function onCreatePost()
 {
-	if (PlayState.deaths >= 0 || !PlayState.isStoryMode)
+	if (!PlayState.isStoryMode)
 	{
 		onUpdate = null;
 		onOpponentNoteHit = null;

@@ -13,7 +13,7 @@
     <action msg="Considering that you'll both be ash by the end of the day, I guess I can tell you." />
 	<action msg='I was made with one sole purpose.' />
     <action msg='Destroying you.' />
-    <action msg='Pfft, whatever. I’ve already dealt with loads of people like you.' portrait="fever" emotion="pointing"/>
+    <action msg='Pfft, whatever. I’ve already dealt with loads of people like you.' portrait="fever" emotion="point"/>
     <action msg='I’m already aware. I know that your toughest battle was with the ghost in the painting.' portrait="robo-fever" emotion="neutral"/>
     <action msg='I know about your encounter with the alien nun.' />
     <action msg='I even know that you’re self-conscious about how loud you snore.' />

@@ -256,7 +256,6 @@ class RoboBackground
 		}
 	}
 
-
 	public function switchStage(stage:String)
 	{
 		trace('Switching stage to $stage');
@@ -464,14 +463,14 @@ class RoboBackground
 		{
 			case 'taki':
 				instance.gf.visible = false;
-				instance.remove(instance.boyfriend);
-				instance.remove(instance.dad);
-				instance.remove(instance.roboForeground);
+				instance.remove(instance.boyfriend, true);
+				instance.remove(instance.dad, true);
+				instance.remove(instance.roboForeground, true);
 				instance.add(taki);
 				instance.add(instance.dad);
 				instance.add(instance.boyfriend);
 				instance.add(instance.roboForeground);
-				taki.setPosition(instance.gf.x, instance.gf.y - 190);
+				taki.setPosition(245, 149 - 190);
 			case 'die':
 				instance.gf.visible = false;
 			default:

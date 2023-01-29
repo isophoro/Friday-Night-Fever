@@ -1,5 +1,5 @@
 <file>
-    <action narrate='...' proceedImmediately="true"/> 
+    <action narrate='...' proceedImmediately="true" fillBG="black"/> 
     <action msg='Weird outfit.' portrait="tea" emotion="thinking"/>
     <action msg='Seriously. This is what’s causing a pile up? Some guy in an outfit?' portrait="fever" emotion="facepalm-stare"/>
     <action msg='Hey, dude! What’s your problem? People are thinking that I’M holding up traffic!' portrait="fever" emotion="point-forward"/>

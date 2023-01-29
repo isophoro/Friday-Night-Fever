@@ -22,6 +22,7 @@ function onCreate()
 		game.startCountdown();
 		return;
 	}
+	game.disableCamera = true;
 
 	camGame.zoom += 0.12;
 	camGame.flash(FlxColor.BLACK, 1.3);

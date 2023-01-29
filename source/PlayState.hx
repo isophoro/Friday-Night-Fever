@@ -959,6 +959,9 @@ class PlayState extends MusicBeatState
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		onGameResize(FlxG.stage.window.width, FlxG.stage.window.height);
 
+		for (i in [false, true]) // call both of these so BF_CAM_POS and DAD_CAM_POS are set
+			moveCamera(i);
+
 		songScript = new HaxeScript(null, "modchart");
 		scripts.add(songScript);
 		songScript.callFunction("onCreate");
@@ -966,11 +969,9 @@ class PlayState extends MusicBeatState
 
 		boyfriend.setPosition(boyfriend.x + boyfriend.positionOffset.x, boyfriend.y + boyfriend.positionOffset.y);
 
+		FlxG.camera.focusOn(camFollow.getPosition());
 		if (!disableCamera)
 		{
-			for (i in [false, true]) // call both of these so BF_CAM_POS and DAD_CAM_POS are set
-				moveCamera(i);
-
 			moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
 			FlxG.camera.focusOn((prevCamFollow != null ? prevCamFollow : camFollow).getPosition());
 
@@ -2158,7 +2159,7 @@ class PlayState extends MusicBeatState
 			keyShit();
 
 		#if debug
-		if (FlxG.keys.justPressed.ONE)
+		if (FlxG.keys.justPressed.ONE && FlxG.sound.music != null)
 			FlxG.sound.music.onComplete();
 		#end
 
@@ -2558,7 +2559,7 @@ class PlayState extends MusicBeatState
 			var rating:ComboRating = ratingsGrp.recycle(ComboRating);
 			rating.create(daRating);
 			rating.cameras = [camHUD];
-			rating.setPosition((FlxG.width * 0.55) - 125, (FlxG.height * 0.5) - (rating.height / 2) + 100);
+			rating.setPosition((FlxG.width / 2) - (rating.width / 2), (FlxG.height * 0.5) - (rating.height / 2) + 100);
 
 			if (songScript.variables["forceComboPos"] != null
 				&& (songScript.variables["forceComboPos"].x != 0 || songScript.variables["forceComboPos"].y != 0))
@@ -2607,14 +2608,14 @@ class PlayState extends MusicBeatState
 				{
 					var numScore:ComboNumber = numbersGrp.recycle(ComboNumber);
 					numScore.create(seperatedScore[i]);
-					numScore.x = rating.x + (36 * i) - 50;
+					numScore.x = rating.x + (33 * i) - 8;
 					numScore.y = rating.y + 100 + (usePixelAssets ? 30 : 0);
 					numScore.cameras = [camHUD];
 
 					numbersGrp.add(numScore);
 					add(numScore);
 
-					FlxTween.tween(numScore, {alpha: 0}, 0.5, {
+					FlxTween.tween(numScore, {alpha: 0}, 0.2, {
 						onComplete: function(tween:FlxTween)
 						{
 							numScore.kill();
