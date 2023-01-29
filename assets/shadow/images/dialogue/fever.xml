@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="fever.png">
-	<!-- Created with Adobe Animate version 21.0.1.37179 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="fever distressed" x="5" y="5" width="628" height="580"/>
-	<SubTexture name="fever sigh" x="638" y="5" width="628" height="580"/>
-	<SubTexture name="fever smile" x="1271" y="5" width="628" height="580"/>
-	<SubTexture name="fever talk" x="5" y="590" width="628" height="580"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:ec20c1aa12b7215ab7aa68f596ac2007:e33c0f246f93f6ab03bfd1ca0246da6b:764903a4088b5ad9515317f9c27e8717$ -->
+<TextureAtlas imagePath="fever.png" width="1170" height="1080">
+    <SubTexture name="fever distressed" x="0" y="0" width="585" height="540"/>
+    <SubTexture name="fever sigh" x="585" y="0" width="585" height="540"/>
+    <SubTexture name="fever smile" x="0" y="540" width="585" height="540"/>
+    <SubTexture name="fever talk" x="585" y="540" width="585" height="540"/>
 </TextureAtlas>

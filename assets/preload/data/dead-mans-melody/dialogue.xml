@@ -1,10 +1,10 @@
 <file>
     <action msg="Ughhh..." portrait="tea" emotion="worried" fillBG="BLACK"/>
-    <action msg="Huh? Oh, I wasn’t expecting you to get up so early." portrait="feverd-casual" emotion="frown"/>
+    <action msg="Huh? Oh, I wasn’t expecting you to get up so early." portrait="feverd" emotion="frown"/>
     <action msg="Don’t worry, I already handled it. Let’s just go home."/>
     <action narrate="..."/>
     <action msg="Hey..." portrait="paste"/>
-    <action msg="Oh... didn’t I tell the rest of you to get out of here?" portrait="feverd-casual"/>
+    <action msg="Oh... didn’t I tell the rest of you to get out of here?" portrait="feverd"/>
     <action msg="Come on, shoo."/>
     <action msg="Where is... love?..." portrait="paste"/>
     <action msg="Your LOVE trapped me in a painting." portrait="tea" emotion="pointing-wtf" side="right"/>
@@ -12,5 +12,5 @@
     <action msg="Gone." portrait="tea" emotion="pointing-wtf" side="right" effect="jump"/>
     <action msg="And you’re about to be next if you don’t move." portrait="tea" emotion="pointing-wtf" side="right"/>
     <action msg="Gone?.." portrait="paste"/>
-    <action msg="Man. I feel awkward." portrait="feverd-casual" emotion="sweat"/>
+    <action msg="Man. I feel awkward." portrait="feverd" emotion="sweat"/>
  </file>

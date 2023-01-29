@@ -33,7 +33,7 @@ class ComboRating extends FlxSprite
 		}
 		else
 		{
-			setGraphicSize(Std.int(frameWidth * 0.53));
+			setGraphicSize(Std.int(frameWidth * 0.49));
 		}
 
 		updateHitbox();

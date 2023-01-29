@@ -844,7 +844,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.borderSize = 1.25;
 		FlxG.signals.gameResized.add(onGameResize);
 
-		emitter = new FlxEmitter(50, 75, 200);
+		emitter = new FlxEmitter(50, healthBarBG.y + 25, 200);
 		emitter.makeParticles(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor), 200);
 		emitter.launchMode = FlxEmitterMode.CIRCLE;
 		emitter.launchAngle.set(-45, 45);
@@ -1031,12 +1031,14 @@ class PlayState extends MusicBeatState
 		doof.finishCallback = () ->
 		{
 			if (callback == null)
+			{
 				if (songScript != null && songScript.variables.exists("onDialogueFinish"))
 					songScript.callFunction("onDialogueFinish", []);
 				else
 					startCountdown();
+			}
 			else
-				callback;
+				callback();
 		}
 		add(doof);
 	}

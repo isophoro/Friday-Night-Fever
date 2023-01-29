@@ -36,7 +36,8 @@ typedef DialogueAction =
 	?narrate:Bool,
 	?proceedImmediately:Bool,
 	?showOnlyBackground:Null<Bool>,
-	?removePortrait:String
+	?removePortrait:String,
+	?fadeBG:String
 }
 
 class DialoguePortrait extends FlxSprite
@@ -223,6 +224,23 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		{
 			setBG(action.setBG);
 		}
+		else if (action.fadeBG != null) // this doesnt work
+		{
+			var newBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image(action.fadeBG, daLibrary));
+			newBG.antialiasing = true;
+			preAdd(newBG);
+			members.insert(0, newBG);
+			var oldBG = bg;
+			bg = newBG;
+			FlxTween.tween(oldBG, {alpha: 0}, 0.7, {
+				onComplete: function(t)
+				{
+					oldBG.destroy();
+					remove(oldBG);
+					bg = newBG;
+				}
+			});
+		}
 
 		if (action.portrait != null && portraits[action.portrait] != null)
 		{
@@ -347,6 +365,9 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 					FlxTween.tween(portrait, {x: portrait.x - 40}, 0.18);
 					portrait.alpha = 0;
 					FlxTween.tween(portrait, {alpha: 1}, 0.13);
+
+					if (PlayState.SONG.song.toLowerCase() == "shadow")
+						portrait.y += 20;
 				}
 
 				portrait.flipX = !portrait.character.startsWith("fever");
@@ -494,6 +515,8 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				action.fillBG = FlxColor.fromString(a.att.fillBG);
 			else if (a.has.setBG)
 				action.setBG = a.att.setBG;
+			else if (a.has.fadeBG)
+				action.fadeBG = a.att.fadeBG;
 
 			if (a.has.library)
 			{

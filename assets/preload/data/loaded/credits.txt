@@ -1,5 +1,0 @@
-Song:Biddle3
-Animation:Roll,EMG
-Backgrounds:Zarrene,Vaikyia,Puma,Impy [Week 1 BG],Corazon [Week 2 BG],Winkel [Week 6 BG]
-Chart | Modchart:Vortmite
-Programming:Rifxii

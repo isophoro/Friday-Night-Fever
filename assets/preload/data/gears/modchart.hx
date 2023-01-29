@@ -142,6 +142,9 @@ function onCreate()
 
 function onUpdate(elapsed:Float)
 {
+	var cB = (Conductor.songPosition / 1000) * (Conductor.bpm / 60);
+	dad.y = -450 + (6 * Math.cos((cB / 4) * Math.PI));
+
 	if (curBeat >= 528 && curBeat < 558)
 	{
 		roboFallingCool.visible = roboFallingCool.animation.curAnim.name != "idle";

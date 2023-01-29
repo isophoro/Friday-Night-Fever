@@ -33,7 +33,7 @@ class ComboNumber extends FlxSprite
 		}
 		else
 		{
-			setGraphicSize(Std.int(frameWidth * 0.54));
+			setGraphicSize(Std.int(frameWidth * 0.5));
 		}
 	}
 

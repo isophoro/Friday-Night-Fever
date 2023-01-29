@@ -124,7 +124,7 @@ function onUpdate(elapsed:Float)
 
 		if (ClientPrefs.botplay)
 		{
-			parried = true;
+			parried = FlxG.random.bool(10);
 			PlayState.instance.spacePressed = true;
 		}
 
