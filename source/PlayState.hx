@@ -969,14 +969,17 @@ class PlayState extends MusicBeatState
 
 		boyfriend.setPosition(boyfriend.x + boyfriend.positionOffset.x, boyfriend.y + boyfriend.positionOffset.y);
 
-		FlxG.camera.focusOn(camFollow.getPosition());
-		if (!disableCamera)
+		if (camGame.target != null)
 		{
-			moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
-			FlxG.camera.focusOn((prevCamFollow != null ? prevCamFollow : camFollow).getPosition());
+			FlxG.camera.focusOn(camFollow.getPosition());
+			if (!disableCamera)
+			{
+				moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
+				FlxG.camera.focusOn((prevCamFollow != null ? prevCamFollow : camFollow).getPosition());
 
-			if (prevCamFollow != null)
-				prevCamFollow = null;
+				if (prevCamFollow != null)
+					prevCamFollow = null;
+			}
 		}
 
 		System.gc();
@@ -1202,6 +1205,7 @@ class PlayState extends MusicBeatState
 
 		var dialoguePath = 'assets/data/${SONG.song.toLowerCase()}/dialogue-end.xml';
 		var doof:DialogueBox = new DialogueBox(dialoguePath);
+		doof.fadeOut = false;
 		doof.cameras = [camPause];
 		doof.finishCallback = endSong;
 		add(doof);
@@ -2159,7 +2163,7 @@ class PlayState extends MusicBeatState
 			keyShit();
 
 		#if debug
-		if (FlxG.keys.justPressed.ONE && FlxG.sound.music != null)
+		if (FlxG.keys.justPressed.ONE && FlxG.sound.music != null && FlxG.sound.music.onComplete != null)
 			FlxG.sound.music.onComplete();
 		#end
 
@@ -2496,6 +2500,7 @@ class PlayState extends MusicBeatState
 				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
 				FlxG.sound.music.stop();
 
+				deaths = 0;
 				FlxG.switchState(new PlayState());
 			}
 		}
@@ -2503,6 +2508,7 @@ class PlayState extends MusicBeatState
 		{
 			trace('WENT BACK TO FREEPLAY??');
 			Main.playFreakyMenu();
+			deaths = 0;
 			FlxG.switchState(new FreeplayState(true));
 		}
 	}
@@ -2794,8 +2800,6 @@ class PlayState extends MusicBeatState
 
 			note.kill();
 			note.exists = false;
-
-			scripts.callFunction("onGoodNoteHit", [note]);
 
 			totalPlayed++;
 			updateScoring(!note.isSustainNote);

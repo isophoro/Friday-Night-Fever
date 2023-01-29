@@ -55,7 +55,7 @@ class Note extends FlxSprite
 		{
 			case 'pixel':
 				antialiasing = false;
-				if(PlayState.SONG.song.toLowerCase() == 'loaded')
+				if (PlayState.SONG.song.toLowerCase() == 'loaded')
 				{
 					if (!mustPress)
 						loadGraphic(Paths.image('notes/ROBO-NOTES-PIXEL', 'shared'), true, 17, 17);
@@ -64,8 +64,6 @@ class Note extends FlxSprite
 				}
 				else
 					loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
-				
-				
 
 				animation.add('greenScroll', [6]);
 				animation.add('redScroll', [7]);
@@ -74,7 +72,7 @@ class Note extends FlxSprite
 
 				if (isSustainNote)
 				{
-					if(PlayState.SONG.song.toLowerCase() == 'loaded')
+					if (PlayState.SONG.song.toLowerCase() == 'loaded')
 					{
 						if (!mustPress)
 							loadGraphic(Paths.image('notes/ROBO-NOTES-PIXELENDS', 'shared'), true, 7, 6);
@@ -83,7 +81,6 @@ class Note extends FlxSprite
 					}
 					else
 						loadGraphic(Paths.image('weeb/pixelUI/arrowEnds', 'week6'), true, 7, 6);
-				
 
 					animation.add('purpleholdend', [4]);
 					animation.add('greenholdend', [6]);
@@ -114,7 +111,8 @@ class Note extends FlxSprite
 							case 'shadow':
 								if (!mustPress) frames = Paths.getSparrowAtlas('NOTE_sg', 'shadow'); else frames = Paths.getSparrowAtlas('notes/defaultNotes');
 							case 'c354r' | 'loaded' | 'gears' | 'tranquility' | 'princess' | 'bloom' | 'crack' | 'grando' | 'mechanical':
-								if (!mustPress) frames = Paths.getSparrowAtlas('notes/ROBO-NOTE_assets'); else frames = Paths.getSparrowAtlas('notes/defaultNotes');
+								if (!mustPress) frames = Paths.getSparrowAtlas('notes/ROBO-NOTE_assets'); else
+									frames = Paths.getSparrowAtlas('notes/defaultNotes');
 							default:
 								frames = Paths.getSparrowAtlas('notes/defaultNotes');
 						}
@@ -213,8 +211,7 @@ class Note extends FlxSprite
 		{
 			if (isSustainNote)
 			{
-				if (strumTime - Conductor.songPosition <= (((125 * Conductor.timeScale) * 0.5))
-					&& strumTime - Conductor.songPosition >= (((-125 * Conductor.timeScale))))
+				if (strumTime - Conductor.songPosition <= ((166 * 0.5)) && strumTime - Conductor.songPosition >= -166)
 					canBeHit = true;
 				else
 					canBeHit = false;

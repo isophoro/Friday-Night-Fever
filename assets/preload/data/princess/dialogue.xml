@@ -1,0 +1,26 @@
+<file>
+    <action msg="..." portrait="scarlet"/>
+    <action msg="I believe I have fully deciphered your language."/>
+    <action msg="Bout time. I don’t even know how that just happened." portrait="feverc" emotion="facepalm-stare"/>
+    <action msg="I will now introduce myself." portrait="scarlet"/>
+    <action msg="In your language, the most proximate thing to a name would be Scarlet."/>
+    <action msg="I emanate from the far future. And I am searching for a pair of lifeforms that closely fit your physical appearances."/>
+    <action msg="Aww, she’s super cute." portrait="tea" side="right"/>
+    <action msg="You can just call me Tea." portrait="tea" emotion="flushed"/>
+    <action msg="Just call me Fever." portrait="feverc" emotion="neutral"/>
+    <action msg="My sensors are scanning low belligerence levels." portrait="scarlet"/>
+    <action msg="You two aren't exasperated at me after assaulting you?"/>
+    <action msg="Oh, most of our friends started off by attacking us." portrait="tea" emotion="neutral" side="right"/>
+    <action msg="It’s pretty much the norm here." portrait="tea" emotion="flushed"/>
+    <action msg="Understood." portrait="scarlet"/>
+    <action msg="Previously, I spoke of my search for two individuals."/>
+    <action msg="A harsh demon, and a white individual wearing headware similar to yours."/>
+    <action msg="This duo will copulate, produce offspring and as their bloodline continues, a tyrant capable of ruling the universe will be born."/>
+    <action msg="My mission is to extinguish them before their bloodline has a chance to commence."/>
+    <action msg="Yeesh. Hardcore." portrait="feverc" emotion="ugh"/>
+    <action msg="My core is made from Flowidium. It is meant to be hard." portrait="scarlet"/>
+    <action msg="I think he’s trying to say that it seems a little extreme, don’t you think?" portrait="tea" emotion="neutral" side="right"/>
+    <action msg="I am a soldier made for war. I must take extreme measures." portrait="scarlet"/>
+    <action msg="Sure, but have you tried taking it easy?" portrait="feverc" emotion="chill"/>
+    <action msg="..." portrait="scarlet"/>
+ </file>

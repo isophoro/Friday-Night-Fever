@@ -127,7 +127,7 @@
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 
 	<!-- Show debug traces for hxCodec -->
-	<haxedef name="HXC_DEBUG_TRACE" if="debug" />
+	<!--<haxedef name="HXC_DEBUG_TRACE" if="debug" />-->
 
 	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
 

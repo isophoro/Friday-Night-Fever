@@ -1,0 +1,12 @@
+<file>
+    <action msg="Singing can be genuinely... fun." portrait="scarlet" emotion="happy"/>
+    <action msg="It’s kind of a common thing around here. Don’t do it often?" portrait="feverc" emotion="hey"/>
+    <action msg="The manner is familiar… but it’s main use for us has been combat." portrait="scarlet"/>
+    <action msg="But now, I must continue my orchestration." portrait="scarlet" emotion="neutral" fadeInMus="crack:0.5"/>
+    <action msg="You two still fit my description near perfectly. I must eliminate you two."/>
+    <action msg="But… I thought we were becoming friends." portrait="tea" emotion="worried" effect="jump"/>
+    <action msg="Again, you’re getting us mixed up with someone else." portrait="feverc" emotion="shocked" effect="jump"/>
+    <action msg="You’d really still try and kill us, even after that?" portrait="feverc" emotion="ugh"/>
+    <action msg="Forgive me. I am simply a soldier following orders." portrait="scarlet"/>
+    <action msg="Do not struggle."/>
+ </file>

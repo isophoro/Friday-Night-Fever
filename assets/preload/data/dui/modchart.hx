@@ -125,5 +125,5 @@ function swapIcon(char:String, color:Int)
 
 	healthBar.createFilledBar(color, FlxColor.fromString('#FF' + game.boyfriend.iconColor));
 	iconP2.swapCharacter(char);
-	game.healthTween(1, false);
+	game.health = 1;
 }

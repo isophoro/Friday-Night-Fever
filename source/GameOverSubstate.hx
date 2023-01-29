@@ -68,7 +68,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			daBf = 'bf-smushed';
 		}
 
-		bf = new Boyfriend(x, y, daBf);
+		bf = new Boyfriend(x, y, daBf, false);
 		add(bf);
 
 		bf.playAnim('firstDeath');

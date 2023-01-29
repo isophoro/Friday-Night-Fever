@@ -13,9 +13,10 @@ class Boyfriend extends Character
 
 	private var nonFlipped:Array<String> = ["rolldogDeathAnim"];
 
-	public function new(x:Float, y:Float, ?char:String = 'bf')
+	public function new(x:Float, y:Float, ?char:String = 'bf', useCostume:Bool = true)
 	{
-		if (!PlayState.isStoryMode
+		if (useCostume
+			&& !PlayState.isStoryMode
 			&& CostumeHandler.curCostume != FEVER
 			&& Song.costumesEnabled
 			&& PlayState.SONG.player1 != CostumeHandler.data[CostumeHandler.curCostume].character)

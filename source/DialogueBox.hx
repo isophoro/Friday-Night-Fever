@@ -14,6 +14,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxDirection;
 import flixel.util.FlxTimer;
 import haxe.xml.Access;
+import openfl.Assets;
 
 using StringTools;
 
@@ -82,6 +83,8 @@ class DialoguePortrait extends FlxSprite
 
 class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 {
+	public var fadeOut:Bool = true;
+
 	var bg:FlxSprite;
 	var box:FlxSprite;
 	var text:FlxTypeText;
@@ -90,6 +93,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 	var portraits:Map<String, DialoguePortrait> = [];
 	var curLeft:DialoguePortrait;
 	var curRight:DialoguePortrait;
+	var curPortrait:DialoguePortrait;
 
 	var dialogueStarted:Bool = false;
 	var skip:Bool = false;
@@ -188,11 +192,12 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 		if (action.fadeInMus != null)
 		{
-			if (lime.utils.Assets.exists(Paths.inst(action.fadeInMus)))
-				FlxG.sound.playMusic(Paths.inst(action.fadeInMus), 0);
+			var split = action.fadeInMus.split(":");
+			if (lime.utils.Assets.exists(Paths.inst(split[0])))
+				FlxG.sound.playMusic(Paths.inst(split[0]), 0);
 			else
-				FlxG.sound.playMusic(Paths.music(action.fadeInMus, daLibrary), 0);
-			FlxG.sound.music.fadeIn(1, 0, 1);
+				FlxG.sound.playMusic(Paths.music(split[0], daLibrary), 0);
+			FlxG.sound.music.fadeIn(1, 0, split[1] != null ? Std.parseFloat(split[1]) : 1);
 		}
 
 		if (action.fadeOutMus != null)
@@ -210,7 +215,8 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		{
 			if (action.setBG.length > 0)
 			{
-				bg.loadGraphic(Paths.image(action.setBG, daLibrary));
+				var diaPath:String = 'dialogue_backgrounds/${action.setBG}';
+				bg.loadGraphic(Paths.image(Assets.exists(Paths.image(diaPath)) ? diaPath : action.setBG, daLibrary));
 				bg.alpha = 1;
 			}
 			else
@@ -256,11 +262,31 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			prev.color = 0xFFFFFFFF;
 		}
 
+		if (action.emotion != null && curPortrait != null)
+		{
+			curPortrait.animation.play(action.emotion);
+		}
+
+		if (action.showOnlyBackground != null)
+		{
+			showOnlyBG = action.showOnlyBackground;
+		}
+
+		if (showOnlyBG != null)
+		{
+			if (curLeft != null)
+				curLeft.visible = !showOnlyBG;
+			if (curRight != null)
+				curRight.visible = !showOnlyBG;
+
+			box.alpha = showOnlyBG ? 0.65 : 1;
+		}
+
 		skip = action.proceedImmediately;
 
 		if (action.msg != null)
 		{
-			text.resetText(action.msg);
+			text.resetText(action.msg.trim());
 			text.start(0.04, true);
 
 			@:privateAccess
@@ -273,7 +299,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			startDialogue();
 	}
 
-	var showOnlyBG:Bool = false;
+	var showOnlyBG:Null<Bool> = null;
 
 	function setCorrectPortrait(action:DialogueAction)
 	{
@@ -307,6 +333,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 				curRight = portrait;
 				curRight.visible = true;
+				curPortrait = curRight;
 			default:
 				if (curLeft != null && curLeft != portrait)
 					curLeft.visible = false;
@@ -329,15 +356,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				curLeft = portrait;
 				curLeft.visible = true;
 				curLeft.setPosition(box.x, -90);
-		}
-
-		if (action.showOnlyBackground != null)
-		{
-			showOnlyBG = action.showOnlyBackground;
-			if (curLeft != null)
-				curLeft.visible = showOnlyBG;
-			if (curRight != null)
-				curRight.visible = showOnlyBG;
+				curPortrait = curLeft;
 		}
 
 		if (action.removePortrait != null)
@@ -355,9 +374,6 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		text.sounds = [
 			FlxG.sound.load(Paths.sound("dialogue/" + (char.startsWith("fever") ? "fever" : char)), 0.6)
 		];
-
-		if (action.emotion != null)
-			portrait.animation.play(action.emotion);
 	}
 
 	function endDialogue()
@@ -367,6 +383,11 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		if (FlxG.sound.music.volume >= 0.1)
 		{
 			FlxG.sound.music.stop();
+		}
+
+		if (!fadeOut)
+		{
+			return finishCallback();
 		}
 
 		for (i in [curLeft, curRight, box, text, bg])
@@ -406,6 +427,8 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			{
 				action.showOnlyBackground = a.att.showOnlyBG.charAt(0).toLowerCase() == "t" ? true : false;
 			}
+			else
+				action.showOnlyBackground = null;
 
 			if (a.has.removePortrait)
 				action.removePortrait = a.att.removePortrait;
@@ -428,14 +451,14 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 					if (a.has.side)
 						action.side = a.att.side.toLowerCase().charAt(0) == "r" ? RIGHT : LEFT;
-
-					if (a.has.emotion)
-						action.emotion = a.att.emotion.toLowerCase();
 				}
 			}
 
+			if (a.has.emotion)
+				action.emotion = a.att.emotion.toLowerCase();
+
 			if (a.has.msg)
-				action.msg = a.att.msg;
+				action.msg = a.att.msg.replace('’', "'").replace("&quot;", '"');
 			else if (a.has.narrate)
 			{
 				action.msg = a.att.narrate;

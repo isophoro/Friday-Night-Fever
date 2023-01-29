@@ -1,36 +1,36 @@
 <file>
-<action msg='Hahaha. I wasn’t expecting you to tire out this easily.' portrait="robo-fever"/>
+<action msg="Hahaha. I wasn't expecting you to tire out this easily." portrait="robo-fever"/>
 <action msg='I guess what the boss said about mortals was true.'/>
 <action msg='(He has a boss? Nevermind that...)' portrait="fever" emotion="ugh"/>
-<action msg='(All those songs took all the energy right out of me... What are these techniques he’s using?)'/>
-<action msg='(I can’t get a read on this guy, nor can I get a single HIT in...)'/>
-<action msg='Frozen in fear, already? I suppose a mortal such as yourself can’t begin to comprehend how outmatched you are.' portrait="robo-fever"/>
-<action msg='I know everything you’re going to do before the thought even forms.'/>
-<action msg='You’re limited by your human capability... while I’m only limited by interest.'/>
-<action msg='That’s not true! You’ll run out of power eventually!' portrait="fever" emotion="point-forward"/>
+<action msg="(All those songs took all the energy right out of me... What are these techniques he's using?)"/>
+<action msg="(I can't get a read on this guy, nor can I get a single HIT in...)"/>
+<action msg="Frozen in fear, already? I suppose a mortal such as yourself can't begin to comprehend how outmatched you are." portrait="robo-fever"/>
+<action msg="I know everything you're going to do before the thought even forms."/>
+<action msg="You're limited by your human capability... while I'm only limited by interest."/>
+<action msg="That's not true! You'll run out of power eventually!" portrait="fever" emotion="point-forward"/>
 <action msg='Nah, solar power.' portrait="robo-fever"/>
 <action msg='FUCK.' portrait="fever" emotion="point-forward" effect="jump"/>
 <action msg='(I have to think of something, quick...)' portrait="fever" emotion="ugh"/>
-<action msg='You’re not so smart. I bet you don’t know what’s inside my hand.' portrait="fever" emotion="point-forward"/>
+<action msg="You're not so smart. I bet you don't know what's inside my hand." portrait="fever" emotion="point-forward"/>
 <action msg='I already scanned you. You have nothing on you besides a microphone, that gun, and-' portrait="robo-fever" proceedImmediately="BAM"/>
 <action msg='HA!' portrait="fever" effect="jump"/>
-<action narrate='. . .'/> <!--first cutscene image of robo getting punched goes heree-->
-<action narrate='Ow! Ow OUCH FUCK. That hurt so fucking bad ow how do people do this without a demon form...' portrait="fever"/> <!--switches to robo on the ground-->
+<action narrate='. . .' setBG="roboPunch" showOnlyBG="true"/> <!--first cutscene image of robo getting punched goes heree-->
+<action narrate='Ow! Ow OUCH FUCK. That hurt so fucking bad ow how do people do this without a demon form...' portrait="fever" setBG="roboBomb"/> <!--switches to robo on the ground-->
 <action narrate='At least I got dudes battery to fall out. Guess he was lying about the solar part-'/>
-<action msg='DUMBASS, MOVE!' portrait="robo-fever" emotion="angry"/> <!--put portraits back up here-->
+<action msg='DUMBASS, MOVE!' portrait="robo-fever" emotion="angry" showOnlyBG="false"/> <!--put portraits back up here-->
 <action msg='Huh? Move? What do you mean-' portrait="fever" emotion="shocked"/>
-<action narrate='Woah! It jumped out at me!'/> <!--switch to fever dodging bomb-->
+<action narrate='Woah! It jumped out at me!' setBG="roboBombFly" showOnlyBG="t"/> <!--switch to fever dodging bomb-->
 <action msg='YOU HALFWIT! You doomed not only us, but the ENTIRETY of this town of fools!' portrait="robo-fever"/>
 <action msg='Your sweaty, disgusting punch made me drop the B.O.M.B by accident...'/>
-<action msg="That bomb is a last-resort option for the lowly chance we weren’t able to handle your sorry asses..."/>
-<action msg='That BOMB is heat-seeking... if it makes contact with you, IT’S OVER. WE’LL ALL BE A MERE MEMORY.'/>
-<action msg='AND YOU JUST HAD SOMETHING LIKE THIS ON YOU?' portrait="fever"/> <!--get rid of fever dodging bomb here-->
+<action msg="That bomb is a last-resort option for the lowly chance we weren't able to handle your sorry asses..."/>
+<action msg="That BOMB is heat-seeking... if it makes contact with you, IT'S OVER. WE'LL ALL BE A MERE MEMORY."/>
+<action msg='AND YOU JUST HAD SOMETHING LIKE THIS ON YOU?' portrait="fever" showOnlyBG="f" fillBG="BLACK"/> <!--get rid of fever dodging bomb here-->
 <action msg='How do we stop it?'/>
-<action msg='Imbecile. There’s NOTHING we can do.' portrait="robo-fever"/>
-<action msg='Whatever. I was hoping it didn’t come to this... but it seems I’ll have to as a last resort...'/>
-<action msg='Prepare your gaze, for I’ll have to use my final form..' portrait="robo-fever" emotion="neutral"/> <!--remove fever from screen-->
+<action msg="Imbecile. There's NOTHING we can do." portrait="robo-fever"/>
+<action msg="Whatever. I was hoping it didn't come to this... but it seems I'll have to as a last resort..."/>
+<action msg="Prepare your gaze, for I'll have to use my final form.." portrait="robo-fever" emotion="neutral" removePortrait="fever"/> <!--remove fever from screen-->
 <action msg='A form so beautiful that none match it...!'/>
-<action msg='A form that’ll-'/>
+<action msg="A form that'll-"/>
 <action narrate='. . .'/>
 <action msg='...hey! Where did that moron... rahhhhhHHH!' portrait="robo-fever" emotion="crazy" effect="jump"/>
 </file>

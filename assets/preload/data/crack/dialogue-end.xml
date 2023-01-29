@@ -1,0 +1,38 @@
+<file>
+	<action msg="STOP YOUR STRUGGLING! YOU TWO WILL FALL BY MY HAND!" portrait="scarlet" emotion="final"/>
+	<action msg="Great, so this is where we die." portrait="tea" emotion="thinking"/>
+	<action msg="I'll take some pride in knowing it took a time-traveling robot to take me down." portrait="feverc" emotion="hey"/>
+	<action msg="Babe?" emotion="neutral"/>
+	<action msg="Huh?" portrait="tea" emotion="worried"/>
+	<action msg="I love you." portrait="feverc"/>
+	<action msg="... I love you too." portrait="tea" emotion="flushed"/>
+	<action msg="..." portrait="scarlet" emotion="final" proceedImmediately="true"/>
+	<action msg="..." proceedImmediately="true"/>
+	<action msg="LOVE." fadeInMus="erm:0.5"/>
+	<action msg=".............." proceedImmediately="true" showOnlyBG="t" playSound="powerdown"/>
+	<action msg="Perhaps..." portrait="scarlet" emotion="neutral" showOnlyBG="f"/>
+	<action msg="I was erroneous."/>
+	<action msg="Evidently, the one named Tea is not actually white, they seem to simply have white fur. I was instructed that their skin was white."/>
+	<action msg="I have a lot to learn."/>
+	<action msg="Oh... I guess... it's fine." portrait="tea" emotion="pointing"/>
+	<action msg="You okay, babe?" portrait="feverc" emotion="neutral"/>
+	<action msg="Yeah, just, really tired. I wanna go home." portrait="tea" emotion="neutral"/>
+	<action msg="Me too. We should probably head back. I'm starving." portrait="feverc" emotion="ugh"/>
+	<action msg="Again, the both of you have been assaulted, but you don't seem to be angered. Is this mundane with everyone here?" portrait="scarlet"/>
+	<action msg="Mhm. Fever Town is a great place to live." portrait="feverc" emotion="point"/>
+	<action msg="Sure, there's a lot of weirdos, and crimes a little high..." portrait="feverc" emotion="ugh"/>
+	<action msg="100% to be exact." portrait="tea" emotion="pointing" side="r"/>
+	<action msg="...but there's some genuinely good people here." portrait="feverc" emotion="neutral"/>
+	<action msg="I understand. I will report this back home." portrait="scarlet"/>
+	<action msg="Leaving so soon?" portrait="tea" side="r" emotion="neutral"/>
+	<action msg="I was fit with a task. I have to carry it out." portrait="scarlet"/>
+	<action msg="Sure, but... maybe you could... do it later?" portrait="feverc" emotion="chill"/>
+	<action msg="..." portrait="scarlet"/>
+	<action msg="Do it. Later"/>
+	<action msg="...I will try this." emotion="happy"/>
+	<action msg="You... wanna stay at our place for a bit?" portrait="tea" side="r" emotion="thinking"/>
+	<action msg="Affirmative. I will learn more about this place. For... research. And go back later." portrait="scarlet" emotion="neutral"/>
+	<action msg="Sheesh. Real glad things turned out well." fillBG="BLACK" portrait="feverc" emotion="facepalm" removePortrait="scarlet"/>
+	<action msg="I wonder though... what would have happened if she... they went all out?" emotion="ugh"/>
+	<action msg="Oh well, that's a problem for another me." emotion="chill"/> 
+</file>
