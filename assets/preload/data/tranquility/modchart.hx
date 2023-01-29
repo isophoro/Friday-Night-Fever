@@ -128,6 +128,7 @@ function onBeatHit(curBeat)
 			game.disableCamera = false;
 			game.moveCamera(true);
 		case 97:
+			forceComboPos = null;
 			var yAdd:Int = ClientPrefs.downscroll ? -200 : 200;
 			FlxTween.tween(scoreTxt, {y: scoreTxt.y - (ClientPrefs.downscroll ? yAdd / 3.3 : 0), alpha: 1}, 0.4, {
 				startDelay: 0.46,
