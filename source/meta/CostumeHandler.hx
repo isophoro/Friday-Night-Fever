@@ -241,7 +241,8 @@ class CostumeHandler
 			description: "",
 			character: "bf-cedar",
 			creator: "No-Mi",
-			characterOffset: [0, -100]
+			characterOffset: [0, -100],
+			unlocked: true
 		},
 		MONGUS => {
 			displayName: "Fever (mongus)",
