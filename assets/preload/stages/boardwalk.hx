@@ -1,11 +1,15 @@
+import PlayState;
+
 function onCreate()
 {
 	game.defaultCamZoom = 0.65;
 	game.camZooming = true;
 
+	var suffix = PlayState.SONG.song.toLowerCase() == "throw-it-back" ? "-night" : "";
+
 	for (i in ["sky", "city", "water", "boardwalk"])
 	{
-		var spr = new FlxSprite(-300, -300).loadGraphic(Paths.image(i, 'week4'));
+		var spr = new FlxSprite(-300, -300).loadGraphic(Paths.image(i == "city" ? i : i + suffix, 'week4'));
 		spr.scale.set(1.4, 1.4);
 		spr.antialiasing = true;
 		add(spr);

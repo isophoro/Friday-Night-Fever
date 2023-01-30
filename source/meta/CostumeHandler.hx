@@ -223,7 +223,7 @@ class CostumeHandler
 			displayName: "Fever (Shelton Outfit)",
 			description: "",
 			character: "shelton",
-			creator: "???",
+			creator: "No-Mi",
 			unlocked: true,
 			characterOffset: [5, 27],
 			camOffset: [-50, -5]
@@ -240,7 +240,7 @@ class CostumeHandler
 			displayName: "Cedar",
 			description: "",
 			character: "bf-cedar",
-			creator: "IDK",
+			creator: "No-Mi",
 			characterOffset: [0, -100]
 		},
 		MONGUS => {

@@ -31,10 +31,12 @@ class CostumeState extends MusicBeatState
 	var desc:FlxText;
 
 	var name:FlxText;
+	var credits:FlxText;
 
 	override function create()
 	{
 		super.create();
+		FlxG.sound.playMusic(Paths.music("credits"));
 
 		CostumeHandler.checkRequisites();
 
@@ -64,6 +66,11 @@ class CostumeState extends MusicBeatState
 		name.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 36, 0xFFFFFFFF);
 		name.cameras = [camHUD];
 		add(name);
+
+		credits = new FlxText(FlxG.height, FlxG.width, 0, "", 30);
+		credits.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 20, 0xFFFFFFFF, RIGHT, OUTLINE, FlxColor.BLACK);
+		credits.cameras = [camHUD];
+		add(credits);
 
 		boxEnd = new FlxSprite(-50, FlxG.height * 0.9).loadGraphic(Paths.image("costumeMenu/lockerArrow"));
 		boxEnd.antialiasing = true;
@@ -162,6 +169,8 @@ class CostumeState extends MusicBeatState
 			{
 				CostumeHandler.save();
 				FlxG.sound.play(Paths.sound('return'));
+				FlxG.sound.music.stop();
+				Main.playFreakyMenu();
 				FlxG.switchState(new MainMenuState(true));
 			}
 		}
@@ -212,6 +221,9 @@ class CostumeState extends MusicBeatState
 		box.x = desc.x;
 		box.scale.x = (desc.width + 2) / box.width;
 		boxEnd.x = box.x - boxEnd.width;
+
+		credits.text = "Sprites by " + charData.creator;
+		credits.setPosition(FlxG.width - credits.width - 5, FlxG.height - credits.height - 5);
 	}
 
 	function addCharacter()

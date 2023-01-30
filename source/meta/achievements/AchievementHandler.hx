@@ -110,6 +110,12 @@ class AchievementHandler
 	{
 		if (callback != null)
 			callback();
+
+		for (i in AchievementHandler.Trophy.order)
+		{
+			if (AchievementHandler.hasTrophy(i))
+				unlockTrophy(i);
+		}
 	}
 
 	public static function check()

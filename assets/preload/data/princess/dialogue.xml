@@ -2,7 +2,7 @@
     <action msg="..." portrait="scarlet"/>
     <action msg="I believe I have fully deciphered your language."/>
     <action msg="Bout time. I don’t even know how that just happened." portrait="feverc" emotion="facepalm-stare"/>
-    <action msg="I will now introduce myself." portrait="scarlet"/>
+    <action msg="I will now introduce myself." portrait="scarlet" fadeInMus="tranquility"/>
     <action msg="In your language, the most proximate thing to a name would be Scarlet."/>
     <action msg="I emanate from the far future. And I am searching for a pair of lifeforms that closely fit your physical appearances."/>
     <action msg="Aww, she’s super cute." portrait="tea" side="right"/>
@@ -22,5 +22,5 @@
     <action msg="I think he’s trying to say that it seems a little extreme, don’t you think?" portrait="tea" emotion="neutral" side="right"/>
     <action msg="I am a soldier made for war. I must take extreme measures." portrait="scarlet"/>
     <action msg="Sure, but have you tried taking it easy?" portrait="feverc" emotion="chill"/>
-    <action msg="..." portrait="scarlet"/>
+    <action msg="..." portrait="scarlet" fadeOutMus=""/>
  </file>
