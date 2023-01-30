@@ -1,6 +1,8 @@
 package meta;
 
 import flixel.FlxG;
+import meta.achievements.AchievementHandler;
+import meta.achievements.AchievementHandler;
 
 enum CostumeName
 {
@@ -92,11 +94,29 @@ class CostumeHandler
 		if (fullCombo(["tranquility", "princess", "crack", "bloom"]))
 			unlockCostume(SOULSPLIT);
 
+		if (fullCombo(["mild", "spice", "party-crasher"]))
+			unlockCostume(MONGUS);
+
+		if (fullCombo(["ur-girl", "chicken-sandwich", "funkin-god"]))
+			unlockCostume(MTALE);
+
+		if (fullCombo(["space-demons"]))
+			unlockCostume(BIRTHDAY_BUILD);
+
+		if (fullCombo(["dui"]))
+			unlockCostume(MCDIETIS);
+
 		if (fullCombo(["dui", "cosmic-swing", "cell-from-hell", "w00f"]))
 			unlockCostume(DOODLE);
 
 		if (fullCombo(["grando", "feel-the-rage"]))
 			unlockCostume(FEVER_MINUS);
+
+		if (AchievementHandler.hasTrophy(ALL_ACHIEVEMENTS))
+			unlockCostume(FEVER_COAT);
+
+		if (AchievementHandler.hasTrophy(FC_ALL_OG_WEEKS))
+			unlockCostume(CLASSIC);
 
 		save();
 	}
@@ -142,7 +162,7 @@ class CostumeHandler
 		},
 		FEVER_MINUS => {
 			displayName: "Fever (Minus Outfit)",
-			description: "Full combo \"Minus Taki\" and \"Grando\"",
+			description: "Full combo \"Feel the Rage\" and \"Grando\"",
 			character: "bf-minus",
 			creator: "EMG",
 			characterOffset: [-20, -30],
@@ -210,7 +230,7 @@ class CostumeHandler
 		},
 		MCDIETIS => {
 			displayName: "Fever (McDietis Outfit)",
-			description: "",
+			description: "Full Combo \"DUI\"",
 			character: "mcdietis",
 			creator: "Pancho",
 			unlocked: true,
@@ -255,7 +275,7 @@ class CostumeHandler
 		},
 		BIRTHDAY_BUILD => {
 			displayName: "Fever (Birthday Build)",
-			description: "Full combo Space Demons",
+			description: "Full combo \"Space Demons\"",
 			character: "bday",
 			creator: "Rosamay",
 			characterOffset: [-10, -10]
