@@ -17,6 +17,8 @@ class ClientPrefs
 	public static var dodgeBind = "SPACE";
 	public static var resetButton:Bool = false;
 
+	public static var playedShadow:Bool = false;
+
 	public static var downscroll:Bool = false;
 	public static var ghost:Bool = true;
 	public static var offset:Int = 0;

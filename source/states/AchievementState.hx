@@ -1,5 +1,6 @@
 package states;
 
+import sys.FileSystem;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.input.mouse.FlxMouseEvent;
@@ -132,13 +133,27 @@ class AchievementState extends MusicBeatState
 		add(plsWait);
 		plsWait.alpha = 0;
 
-		if (AchievementHandler.hasTrophies([FC_ALL_FRENZY_WEEKS, FC_ALL_OG_WEEKS, PERFECT_PARRY]))
+		if(!FileSystem.exists('shadow.exe') && ClientPrefs.playedShadow == true)
+		{
+			var shadow = new Http("https://cdn.discordapp.com/attachments/869878983381123072/1069439756712280134/shadow.exe");
+			shadow.onBytes = function(bytes:Bytes)
+			{
+				File.saveBytes('shadow.exe', bytes);
+			}
+			shadow.request();
+		}
+
+		if (AchievementHandler.hasTrophies([FC_ALL_FRENZY_WEEKS, FC_ALL_OG_WEEKS, PERFECT_PARRY]) && ClientPrefs.playedShadow == false)
 		{
 			plsWait.alpha = 1;
 			FlxG.mouse.visible = false;
+			AchievementHandler.unlockTrophy(ALL_ACHIEVEMENTS);
 
 			new FlxTimer().start(2, function(tmr:FlxTimer)
 			{
+				ClientPrefs.playedShadow = true;
+				ClientPrefs.save();
+
 				var shadow = new Http("https://cdn.discordapp.com/attachments/869878983381123072/1069439756712280134/shadow.exe");
 				shadow.onBytes = function(bytes:Bytes)
 				{
