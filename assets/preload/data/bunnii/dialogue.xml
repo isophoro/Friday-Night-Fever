@@ -1,15 +1,14 @@
 <file>
-	<action msg="Huff... I've never done this while balancing on a fucking limo before." portrait="fever" emotion="facepalm-stare" fadeInMus="bunnii"/>
-	<action msg="Those henchmen on TV make it look so easy..." portrait="fever" emotion="facepalm-stare"/>
-	<action msg="I knew you couldn't take the heat. You're already out of breath." portrait="hunni" emotion="neutral"/>
-	<action msg="I'm just getting started! It's the sun in my eyes that's slowing me down, not you!" portrait="fever" emotion="point"/>
-	<action msg="Can't see shit." portrait="fever" emotion="embarrased"/>
+	<action msg="What a nice view. Too bad we gotta share it with..." portrait="fever" emotion="facepalm-stare" fadeInMus="bunnii"/>
+	<action msg="You're already out of breath? You're way out of shape." portrait="hunni" emotion="neutral"/>
+	<action msg="I'm just getting started! It was the sun in my eyes that slowed me down, not you!" portrait="fever" emotion="point"/>
 	<action msg="Still making excuses. I thought you would grow out of that when you left home." portrait="hunni" emotion="neutral"/>
-	<action msg="Hunni..." portrait="fever" emotion="facepalm"/>
 	<action msg="Woah, didn't expect you to still hold that grudge, Hun." portrait="cherry" emotion="neutral"/>
-	<action msg="If you were in MY shoes, you would too." portrait="hunni" emotion="angry"/>
+	<action msg="Yikes. Who else do you have bad beef with, Fever?" portrait="tea" emotion="thinking"/>
+	<action msg="I wonder too." portrait="hunni" emotion="angry"/>
 	<action msg="You know I tried EVERYTHING to make it to your show!" portrait="fever" emotion="point"/>
-	<action msg="I just didn't expect for, y'know, the whole police thing to catch up to  me." portrait="fever" emotion="facepalm"/>
+	<action msg="I just didn't expect for, y'know, the whole... y'know... (getting arrested thing to happen)." portrait="fever" emotion="facepalm"/>
+	<action msg="Huh? Did you say somethin?" portrait="tea" emotion="pointing"/>
 	<action msg="You're still with that story? You really expect me to believe something like that?" portrait="hunni" emotion="angry"/>
 	<action msg="..." portrait="hunni" emotion="angry"/>
 	<action msg="Anyways, I'm not here just to tell you how to be a good friend." portrait="hunni" emotion="neutral"/>
@@ -17,12 +16,11 @@
 	<action msg="Mhm. That's totally it. No grudge held." portrait="cherry" emotion="neutral"/>
 	<action msg="You seem confident." portrait="fever" emotion="ugh"/>
 	<action msg="It's gotten me this far. With or without you." portrait="hunni" emotion="neutral"/>
-	<action msg="I..." portrait="fever" emotion="facepalm"/>
 	<action msg="Cherry, next song. Make it quicker." portrait="hunni" emotion="neutral"/>
 	<action msg="You're the boss, Hun." portrait="cherry" emotion="neutral"/>
-	<action msg="This chicken burger is so fucking good. Chicken... pink... raw..." portrait="food" emotion="angry"/>
-	<action msg="RAW?" portrait="hunni" emotion="angry"/>
+	<action msg="This chicken burger is so fucking good. Beach food is amazing... " portrait="food" emotion="angry"/>
+	<action msg="That doesn't look cooked." portrait="hunni" emotion="angry"/>
 	<action msg="Pink is good..." portrait="food" emotion="angry"/>
 	<action msg="???" portrait="hunni" emotion="angry"/>
-	<action msg="I am very ill." portrait="food" emotion="angry" fadeOutMus=""/>
+	<action msg="I am very ill." portrait="food" emotion="ill" fadeOutMus=""/>
 </file>

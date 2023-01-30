@@ -3,7 +3,7 @@
 	<action msg="There's like, no signal here." portrait="fever" emotion="ugh"/>
 	<action msg="I'm starving." portrait="tea" emotion="pointing"/>
 	<action msg="For my affection?" portrait="fever" emotion="hey"/>
-	<action msg="For food, FEVER." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="For food, FEVER." portrait="tea" emotion="pointing-wtf"/>
 	<action msg="Right, right." portrait="fever" emotion="facepalm-stare"/>
 	<action msg="Where are we, anyways?" portrait="tea" emotion="thinking"/>
 	<action msg="I didn't think Fever Town spanned this far out." portrait="fever" emotion="ugh"/>
@@ -37,7 +37,7 @@
 	<action msg="You're annoying." portrait="tea" emotion="pointing-flushed"/>
 	<action msg="Uh-HELLO?" portrait="mega" emotion="confused"/>
 	<action msg="STILL HERE." portrait="mega" emotion="confused"/>
-	<action msg="Don't fucking raise your voice at me, kay?" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="Don't fucking raise your voice at me, kay?" portrait="tea" emotion="pointing-wtf"/>
 	<action msg="R-right..." portrait="mega" emotion="embarassed3"/>
 	<action msg="So lemme get this straight." portrait="fever" emotion="ugh"/>
 	<action msg="You wanna battle through singing." portrait="fever" emotion="ugh"/>
@@ -57,11 +57,11 @@
 	<action msg="That's silly." portrait="tea" emotion="neutral"/>
 	<action msg="Singing is always fun, but this reasoning behind it is-" portrait="tea" emotion="flushed"/>
 	<action msg="Bet!" portrait="fever" emotion="point"/>
-	<action msg="WHAT." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="WHAT." portrait="tea" emotion="pointing-wtf"/>
 	<action msg="Oh thank god you accepted." portrait="mega" emotion="wtf"/>
 	<action msg="I mean, of course you did! Here I was afraid you were gonna be a chicken in front of your girl." portrait="mega" emotion="swag"/>
 	<action msg="You can't phase me with your weak ass insults!" portrait="fever" emotion="point"/>
 	<action msg="(Shit. How did they know I'm super hungry?)" portrait="fever" emotion="point"/>
 	<action msg="" portrait="tea" emotion="pointing"/>
-	<action msg="Ugh. Let me get the fucking speakers I guess." portrait="tea" emotion="tea-pointing-wtf" fadeOutMus=""/>
+	<action msg="Ugh. Let me get the fucking speakers I guess." portrait="tea" emotion="pointing-wtf" fadeOutMus=""/>
 </file>

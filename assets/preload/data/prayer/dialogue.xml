@@ -1,9 +1,9 @@
 <file>
-	<action msg="Well, this is it." portrait="feverd" emotion="frown"/>
+	<action msg="Well, this is it." portrait="feverd" emotion="frown" setBG="dialogue_backgrounds/prayer"/>
 	<action msg="..." portrait="taki" emotion="neutral"/>
-	<action narrate="This... is Fever Town Church." setBG="dialogue_backgrounds/prayer"/>
+	<action narrate="This... is Fever Town Church." showOnlyBG="true"/>
 	<action msg="Hey, I never said it would be pretty." portrait="feverd" emotion="frown"/>
-	<action msg="This place is creeping me out." portrait="tea" emotion="worried"/>
+	<action msg="This place is creeping me out." portrait="tea" emotion="worried" showOnlyBG="false"/>
 	<action msg="I feel like someone's watching us..." portrait="tea" emotion="worried"/>
 	<action msg="Well, we ARE in the presence of God." portrait="feverd" emotion="neutral"/>
 	<action msg="Speaking of, aren't you a demon? Shouldn't this place be burning you alive or something?" portrait="tea" emotion="pointing"/>

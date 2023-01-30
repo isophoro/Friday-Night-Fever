@@ -5,10 +5,10 @@
 	<action msg="W-where did Wee go?" portrait="tea" emotion="worried"/>
 	<action msg="H-hey! The fuck do you think you're doing here?" portrait="fever" emotion="point"/>
 	<action msg=". . ." portrait="taki" emotion="neutral"/>
-	<action msg=". . ." portrait="fever" emotion="point"/>
-	<action msg="Fuck." portrait="fever" emotion="point"/>
+	<action msg=". . ." portrait="fever" emotion="neutral"/>
+	<action msg="Fuck." portrait="fever" emotion="neutral"/>
 	<action msg="You... got any bullets in that gun of yours?" portrait="tea" emotion="worried"/>
-	<action msg="Sadly no, I think I ran out when trying to shoo away Pea." portrait="fever" emotion="point"/>
+	<action msg="Sadly no, I think I ran out when trying to shoo away Pea." portrait="fever" emotion="facepalm"/>
 	<action msg=". . ." portrait="taki" emotion="neutral"/>
 	<action msg="Fuck." portrait="feverd" emotion="frown"/>
 </file>

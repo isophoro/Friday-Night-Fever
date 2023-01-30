@@ -17,5 +17,5 @@
 	<action msg="..." portrait="taki" emotion="angry"/>
 	<action msg="~" portrait="taki" emotion="happy"/>
 	<action msg="I still don't like the feel of this." portrait="tea" emotion="worried"/>
-	<action msg="Things should be okay. You know Taki, you aren't that bad honestly." portrait="feverd" emotion="neutral" setBG="dialogue_backgrounds/takiaanime"/>
+	<action msg="Things should be okay. You know Taki, you aren't that bad honestly." portrait="feverd" emotion="neutral" setBG="dialogue_backgrounds/taki" showOnlyBG="true"/>
 </file>

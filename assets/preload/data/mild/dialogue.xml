@@ -1,9 +1,9 @@
 <file>
 	<action msg="Hey, dad!" portrait="pepper" emotion="neutral" fadeInMus="mild"/>
-	<action msg="Oh, it's this kid again." portrait="fever" emotion="facepalm-stare" setBG="dialogue_backgrounds/pepper"/>
+	<action msg="Oh, it's this kid again." portrait="fever" emotion="facepalm-stare" setBG="dialogue_backgrounds/pepper" showOnlyBG="true"/>
 	<action msg="Aww. What was their name?" portrait="tea" emotion="neutral"/>
 	<action msg="I can't remember... I just wish they'd stop calling me dad." portrait="fever" emotion="facepalm-stare"/>
-	<action msg="Hey! I'm right here." portrait="pepper" emotion="sad"/>
+	<action msg="Hey! I'm right here." portrait="pepper" emotion="sad" showOnlyBG="false"/>
 	<action msg="Besides, I'm not a kid! I'm at least. Uh." portrait="pepper" emotion="neutral"/>
 	<action msg="" portrait="pepper" emotion="neutral"/>
 	<action msg="This many." portrait="pepper" emotion="neutral"/>

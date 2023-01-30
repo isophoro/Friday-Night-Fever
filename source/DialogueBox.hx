@@ -50,13 +50,6 @@ class DialoguePortrait extends FlxSprite
 		antialiasing = true;
 		this.character = character;
 
-		if (character == "mega")
-		{
-			origin.set(0, 0);
-			scale.set(2.3, 2.3);
-			antialiasing = false;
-		}
-
 		frames = Paths.getSparrowAtlas('dialogue/${character.toLowerCase()}', library);
 		for (i in frames.frames)
 		{
@@ -69,6 +62,15 @@ class DialoguePortrait extends FlxSprite
 
 		if (animation.exists("neutral"))
 			animation.play("neutral");
+
+		if (character == "mega")
+		{
+			origin.set(0, 0);
+			setGraphicSize(Std.int(width * 2.6));
+			updateHitbox();
+			width -= 250;
+			antialiasing = false;
+		}
 	}
 
 	public function jump()
@@ -361,7 +363,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 				if (curRight != portrait)
 				{
-					portrait.setPosition(box.x + box.width - portrait.width + 40, -90);
+					portrait.setPosition(box.x + box.width - portrait.width + 40, box.y - portrait.height + 15);
 					FlxTween.tween(portrait, {x: portrait.x - 40}, 0.18);
 					portrait.alpha = 0;
 					FlxTween.tween(portrait, {alpha: 1}, 0.13);
@@ -386,7 +388,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 				if (curLeft != portrait)
 				{
-					portrait.setPosition(box.x - 40, -90);
+					portrait.setPosition(box.x - 40, box.y - portrait.height + 15);
 					FlxTween.tween(portrait, {x: portrait.x + 40}, 0.18);
 					portrait.alpha = 0;
 					FlxTween.tween(portrait, {alpha: 1}, 0.13);
@@ -396,7 +398,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 
 				curLeft = portrait;
 				curLeft.visible = true;
-				curLeft.setPosition(box.x, -90);
+				curLeft.setPosition(box.x, box.y - curLeft.height + 15);
 				curPortrait = curLeft;
 		}
 

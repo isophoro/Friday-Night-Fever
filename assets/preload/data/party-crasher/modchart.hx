@@ -19,10 +19,6 @@ function onCreate()
 	boyfriend.x += 70;
 	game.defaultCamZoom = 0.6;
 
-	FlxTimer.globalManager.clear();
-	game.startSong();
-	FlxG.sound.music.time = 0;
-	Conductor.songPosition = 0;
 	getGlobalVar("bop").y += 30;
 	getGlobalVar("bop").x += 50;
 	setHUDVisibility(false);

@@ -934,6 +934,8 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
+				case 'bazinga':
+					jumpscare();
 				default:
 					if (curSong.toLowerCase() == 'chicken-sandwich')
 						FlxG.sound.play(Paths.sound('ANGRY'));
@@ -977,7 +979,7 @@ class PlayState extends MusicBeatState
 		System.gc();
 	}
 
-	function jumpscare(?dialogueBox:DialogueBox):Void
+	function jumpscare():Void
 	{
 		inCutscene = true;
 		var culo:Bool = FlxG.random.bool(1);
@@ -996,7 +998,7 @@ class PlayState extends MusicBeatState
 		new FlxTimer().start(1.4, function(tmr:FlxTimer)
 		{
 			jumpscare.destroy();
-			add(dialogueBox);
+			openDialogue();
 		});
 	}
 
@@ -2328,7 +2330,7 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 					case 'school' | 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 330;
-						camFollow.y = boyfriend.getMidpoint().y - 15;
+						camFollow.y = boyfriend.getMidpoint().y - 30;
 					case 'spooky' | 'spookyBOO':
 						camFollow.x = boyfriend.getMidpoint().x - 355;
 						camFollow.y = boyfriend.getMidpoint().y - 250;

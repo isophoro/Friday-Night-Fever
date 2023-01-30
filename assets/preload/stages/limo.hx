@@ -51,7 +51,7 @@ function onCreate()
 
 function onCreatePost()
 {
-	dad.setPosition(15, 170);
+	dad.setPosition(15, 185);
 	gf.setPosition(310, 169);
 	gf.scrollFactor.set(1, 1);
 

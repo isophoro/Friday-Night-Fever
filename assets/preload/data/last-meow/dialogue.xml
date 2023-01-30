@@ -1,5 +1,5 @@
 <file>
-	<action msg="HA! That all you got?" portrait="fever" emotion="point"/>
+	<action msg="HA! That all you got?" portrait="fever" emotion="point" fillBG="BLACK"/>
 	<action msg="Will you be quiet? Just let everyone know we're here while we're at it!" portrait="tea" emotion="pointing"/>
 	<action msg="Oh, oops. Guess I was getting into it." portrait="fever" emotion="neutral"/>
 	<action msg="You've got pretty great flow." portrait="wee" emotion="neutral"/>
@@ -10,8 +10,8 @@
 	<action msg="Oh... okay, then." portrait="fever" emotion="shocked"/>
 	<action msg="Well, I guess we should... leave? Sorry, I'm not used to this." portrait="fever" emotion="neutral"/>
 	<action msg="Yeah, it's all good." portrait="wee" emotion="neutral"/>
-	<action msg="AH-" portrait="fever" emotion="shocked" />
-	<action narrate="Fever walks away, stepping on wee's tail in the process."/>
+	<action msg="AH-" portrait="fever" emotion="shocked" removePortrait="wee"/>
+	<action narrate="Fever walks away, stepping on Wee's tail in the process."/>
 	<action msg="Oops." portrait="fever" emotion="shocked"/>
 	<action msg="Oh shit." portrait="tea" emotion="worried"/>
 </file>

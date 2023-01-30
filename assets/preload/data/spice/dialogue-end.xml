@@ -12,7 +12,7 @@
 	<action msg="Now, Pepper Demon, THAT'S a name that'll strike something in peoples minds." portrait="fever" emotion="hey"/>
 	<action msg="You're incredibly biased." portrait="tea" emotion="pointing"/>
 	<action msg="A little bit." portrait="fever" emotion="cocky"/>
-	<action msg="..." portrait="fever" emotion="embarrased"/>
+	<action msg="..." portrait="fever" emotion="embarrassed"/>
 	<action msg="Okay, Pepper, how about you-" portrait="fever" emotion="neutral"/>
 	<action msg="" portrait="fever" emotion="ugh"/>
 	<action msg="Do you hear that?" portrait="fever" emotion="shocked"/>

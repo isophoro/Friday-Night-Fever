@@ -9,8 +9,8 @@
 	<action msg="Did that pepper just call you dad?" portrait="yukichi" emotion="neutral"/>
 	<action msg="It's a long story." portrait="tea" emotion="neutral"/>
 	<action msg="Huh? No it isn-" portrait="feverd" emotion="frown"/>
-	<action msg="No, it is, isn't it Fever? A long, tragic story." portrait="tea" emotion="tea-pointing-wtf"/>
-	<action msg="One where if you were to leave, that'd make Pepper here an orphan again." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="No, it is, isn't it Fever? A long, tragic story." portrait="tea" emotion="pointing-wtf"/>
+	<action msg="One where if you were to leave, that'd make Pepper here an orphan again." portrait="tea" emotion="pointing-wtf"/>
 	<action msg="..." portrait="feverd" emotion="frown"/>
 	<action msg="Oh, yeah. I mean, I suppose if you have to take me in, you might as well do it now." portrait="feverd" emotion="frown"/>
 	<action msg="..." portrait="yukichi" emotion="neutral"/>

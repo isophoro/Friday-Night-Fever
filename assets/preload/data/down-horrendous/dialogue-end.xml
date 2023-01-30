@@ -1,5 +1,5 @@
 <file>
-	<action msg="Huff. . . thanks for the beatdown. . . I really needed that." portrait="peakek" emotion="neutral" fillBG="BLACK" fadeOutMus=""/>
+	<action msg="Huff. . . thanks for the beatdown. . . I really needed that." portrait="peakek" emotion="neutral" fillBG="BLACK"/>
 	<action msg="I think you should leave." portrait="fever" emotion="ugh"/>
 	<action msg="By the way, you fight really well." portrait="peakek" emotion="sus2"/>
 	<action msg="It's a dirty type of style, I sensed the feelings that you had for Tea in every note." portrait="peakek" emotion="fever"/>

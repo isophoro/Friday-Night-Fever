@@ -1,37 +1,27 @@
 <file>
-	<action msg="..." portrait="feverd" emotion="neutral" fadeOutMus=""/>
+	<action msg="..." portrait="feverd" emotion="neutral"/>
 	<action msg="..." portrait="hunni" emotion="neutral"/>
 	<action msg="I win." portrait="fever" emotion="neutral"/>
 	<action msg="Huh? You mean I won-" portrait="hunni" emotion="angry"/>
-	<action msg="Nah, I won. Did you see me dancing side to side and shit?" portrait="fever" emotion="neutral"/>
+	<action msg="Nah, I won." portrait="fever" emotion="neutral"/>
 	<action msg="I totally aced that!" portrait="fever" emotion="point"/>
 	<action msg="Ugh! Fucking-" portrait="hunni" emotion="angry"/>
 	<action msg="I-" portrait="hunni" emotion="angry"/>
 	<action msg="Man, whatever. Fine, I guess you win this one." portrait="hunni" emotion="neutral"/>
 	<action msg="You should feel proud, not many can hold that title to their name." portrait="hunni" emotion="neutral"/>
-	<action msg="Huh? Hunni admitting that she lost? What kind of fucking universe is this?" portrait="fever" emotion="hey"/>
+	<action msg="Huh? Hunni admitting that she lost? What kind of universe is this?" portrait="fever" emotion="hey"/>
 	<action msg="Don't get too cocky about one victory." portrait="hunni" emotion="angry"/>
 	<action msg="Besides, no one's gonna know about this." portrait="hunni" emotion="neutral"/>
 	<action msg="I know about this." portrait="cherry" emotion="neutral"/>
-	<action msg="Glad you two have stuck together this long. I wish Tea came along." portrait="fever" emotion="facepalm-stare"/>
-	<action msg="Oh, she did." portrait="hunni" emotion="neutral"/>
-	<action msg="What-" portrait="fever" emotion="shocked"/>
-	<action msg="She came along in the other limo. I think she changed her mind." portrait="hunni" emotion="neutral"/>
-	<action msg="Uh oh- my covers blown." portrait="tea" emotion="worried"/>
-	<action msg="Hey! Why would she-" portrait="fever" emotion="embarrased"/>
-	<action msg="Aww. She must've felt bad for leaving." portrait="cherry" emotion="neutral"/>
-	<action msg="How sappy." portrait="hunni" emotion="neutral"/>
-	<action msg="Didn't think you'd date someone so soft." portrait="cherry" emotion="neutral"/>
-	<action msg="Okay..." portrait="fever" emotion="embarrased"/>
-	<action msg="You've really softened up." portrait="cherry" emotion="neutral"/>
-	<action msg="Fevers into kind girls now? What happened to being into tough, mean girls?" portrait="hunni" emotion="neutral"/>
+	<action msg="Glad you two have stuck together this long. I wish we at least could've gone for a swim." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="Who says we all still can'?" portrait="hunni" emotion="neutral"/>>
+	<action msg="I don't have the clothes necessary for that." portrait="tea" emotion="pointing"/>
+	<action msg="We can just go buy some, you know." portrait="cherry" emotion="neutral"/>
+	<action msg="Hunni's a sucker for shopping." portrait="cherry" emotion="neutral"/>
+	<action msg="Cherry." portrait="hunni" emotion="neutral"/>
+	<action msg="Also Fever, you're into sweet girls? What happened to being into tough girls?" portrait="hunni" emotion="neutral"/>
 	<action msg="Or guys?" portrait="cherry" emotion="neutral"/>
-	<action msg="I'm leaving now." portrait="fever" emotion="facepalm-stare"/>
-	<action msg="..." portrait="fever" emotion="facepalm-stare"/>
-	<action msg="Hey." portrait="fever" emotion="embarrased"/>
-	<action msg="?" portrait="hunni" emotion="neutral"/>
-	<action msg="You've changed too, y'know. I'm glad you're okay after all this time." portrait="fever" emotion="embarrased"/>
-	<action msg="Alls well that ends well, right?" portrait="cherry" emotion="neutral"/>
-	<action narrate="Fever quickly hops off the parked limo, and heads towards Tea."/>
-	<action msg="I have to pee." portrait="food" emotion="angry"/>
+	<action msg="Buff guys?" portrait="hunni" emotion="neutral"/>
+	<action msg="Can we go shopping now." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="I really have to pee." portrait="food" emotion="angry"/>
 </file>

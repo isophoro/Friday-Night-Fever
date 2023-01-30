@@ -1,59 +1,41 @@
 <file>
-	<action msg="So, what crazy shit are we dealing with today?" portrait="tea" emotion="thinking" setBG="dialogue_backgrounds/plainblacklol"/>
+	<action msg="So, what crazy shit are we dealing with today?" portrait="tea" emotion="thinking" fillBG="BLACK"/>
 	<action msg="Psychotic nun? Talking fruit? Horny shapeshifter? Dealing with the raccoons?" portrait="tea" emotion="thinking"/>
 	<action msg="This one's new. Someone in town gave me a letter, and told them to go to this spot at this time." portrait="fever" emotion="ugh"/>
 	<action msg="So, you're just gonna do it?" portrait="tea" emotion="neutral"/>
-	<action msg="Might as well. Not like I had much to do." portrait="fever" emotion="neutral"/>
+	<action msg="Might as well. Not like I had much to do. It's at the beach, too." portrait="fever" emotion="neutral"/>
 	<action msg="Call me crazy, but I feel like this handwritings familiar... letter smells nice, too." portrait="fever" emotion="ugh"/>
 	<action msg="And anyways, I kinda have to, y'know." portrait="fever" emotion="neutral"/>
 	<action msg="That rule where you HAVE to accept all challenges is pretty lame." portrait="tea" emotion="pointing"/>
-	<action msg="Yeah, yeah- I know, hell. I'll change it soon, maybe after this." portrait="fever" emotion="embarrased"/>
+	<action msg="Yeah, yeah- I know, hell. I'll change it soon, maybe after this." portrait="fever" emotion="embarrassed"/>
 	<action msg="Let's just go." portrait="fever" emotion="neutral"/>
 	<action msg="There sure are a lot of limos in this parking lot." portrait="fever" emotion="neutral"/>
-	<action narrate="..."/>
 	<action msg="Maybe someone famous is in town?" portrait="tea" emotion="thinking"/>
 	<action msg="Oddly enough, Fever Town IS a hot vacation spot..." portrait="fever" emotion="neutral"/>
 	<action msg="Probably cause rules are so scarce here. Anyone can come into Fever Town, do shady shit, then probably leave without any repercussions." portrait="tea" emotion="neutral"/>
 	<action msg="Thanks for making me feel better about the way I run things." portrait="fever" emotion="facepalm-stare"/>
 	<action msg="Huh?" portrait="fever" emotion="ugh"/>
-	<action narrate="???"/>
-	<action msg="Sup, Fever." portrait="hunni" emotion="neutral" fadeInMus="honey" setBG="dialogue_backgrounds/hunni"/>
+	<action msg="Sup, Fever." portrait="hunni" emotion="neutral" fadeInMus="honey" setBG="dialogue_backgrounds/hunni" showOnlyBG="true"/>
 	<action msg="Huh, wait, YOU?..." portrait="fever" emotion="shocked"/>
-	<action msg="Oh? Who's this?" portrait="tea" emotion="neutral"/>
+	<action msg="Oh? Who's this?" portrait="tea" emotion="neutral" showOnlyBG="false"/>
 	<action msg="So you're Tea. I've heard a bit about the both of you together already. Taking the world by storm, huh?" portrait="hunni" emotion="neutral"/>
 	<action msg="I'm Hunni, but there's no need to tell you my name." portrait="hunni" emotion="neutral"/>
 	<action msg="Cause after I beat you, the rest of the world will soon know." portrait="hunni" emotion="neutral"/>
-	<action msg="Cherry here WOULD have just opened a portal to your location, but I forgot about the demon rule." portrait="hunni" emotion="neutral"/>
-	<action msg="Uh, what's the demon rule?" portrait="tea" emotion="neutral"/>
-	<action msg="It's that demons can't summon a portal to another demons location. Cause y'know, it'd be rude for someone trying to take anothers soul to butt in." portrait="fever" emotion="embarrased"/>
-	<action msg="Oh, so Hunni's also a demon?" portrait="tea" emotion="thinking"/>
-	<action msg="Me? That's cute. Let me introduce Cherry." portrait="hunni" emotion="neutral"/>
-	<action msg="Hey Fever. What's up?" portrait="cherry" emotion="neutral"/>
-	<action msg="Oh, y'know. Just... getting by." portrait="fever" emotion="embarrased"/>
-	<action msg="Sweet." portrait="cherry" emotion="neutral"/>
-	<action msg="Wait, but she has a halo..." portrait="tea" emotion="tea-pointing-wtf"/>
-	<action msg="I'm half angel, too." portrait="cherry" emotion="neutral"/>
-	<action msg="WHAT- HOW DOES THAT MAKE ANY SENSE?" portrait="tea" emotion="tea-pointing-wtf"/>
-	<action msg="About as much sense as a demon dating a bunny." portrait="cherry" emotion="neutral"/>
-	<action msg="Uh- okay, got me there." portrait="tea" emotion="worried"/>
 	<action msg="Anyways, it's been a while huh Fever? Doesn't seem like you got much taller from the last time we met, though." portrait="cherry" emotion="neutral"/>
 	<action msg="Not fair to say that when you're on top of that limo." portrait="fever" emotion="point"/>
-	<action msg="Then why dont you two hurry up and get on already? Unless you're already intimidated by our aura?" portrait="hunni" emotion="neutral"/>
+	<action msg="Then why dont you two hurry up and get on that one? Unless you're already intimidated by our aura?" portrait="hunni" emotion="neutral"/>
 	<action msg="Pfft, intimidated? As if! Tea and I are a power couple, there's nothing that could-" portrait="fever" emotion="hey"/>
-	<action msg="EUGH." portrait="tea" emotion="tea-pointing-wtf"/>
-	<action msg="WHAT THE FUCK IS THAT?" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="EUGH." portrait="tea" emotion="tea-point-wtf"/>
+	<action msg="WHAT THE FUCK IS THAT?" portrait="tea" emotion="tea-point-wtf"/>
 	<action msg="Huh? What are what?" portrait="fever" emotion="ugh"/>
-	<action msg="Those... large, fluffy, white creatures. They look like..." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="Those... large, fluffy, white creatures. They look like..." portrait="tea" emotion="tea-point-wtf"/>
 	<action msg="You mean the bunnies?" portrait="fever" emotion="ugh"/>
 	<action msg="Aren't they beautiful? Every one of them answer to me, and me only." portrait="hunni" emotion="neutral"/>
 	<action msg="I guess you can say I'm their leader in a way." portrait="hunni" emotion="neutral"/>
 	<action msg="That's cute. Y'know, once you get past the fact they're freakishly large. Reminds me of..." portrait="fever" emotion="neutral"/>
-	<action msg="Why do ya'll have my ancestors enslaved???" portrait="tea" emotion="tea-pointing-wtf"/>
-	<action msg="Yeah, no, I'm out." portrait="tea" emotion="pointing"/>
-	<action msg="Tea? Hey, wait- where are you going???" portrait="fever" emotion="shocked"/>
-	<action msg="I'm gonna be sick. I'll see you back home, Fever." portrait="tea" emotion="pointing"/>
+	<action msg="Large bunnies? That's fucking freaky." portrait="tea" emotion="tea-point-wtf"/>
+	<action msg="Yeah, no, I think I'll just chill in the limo rather than on it." portrait="tea" emotion="pointing"/>
 	<action msg="Power couple, huh?" portrait="hunni" emotion="neutral" setBG=""/>
-	<action narrate=". . ."/>
 	<action msg="You know it!" portrait="fever" emotion="point"/>
 	<action msg="I wasn't expecting this either... but hey, this just tips the scales in my favor. Not like you had any chance against me anyway." portrait="hunni" emotion="neutral"/>
 	<action msg="I don't need someone backing me up to win! Tea's just a bonus!" portrait="fever" emotion="point"/>
@@ -64,11 +46,11 @@
 	<action msg="Bitch." portrait="cherry" emotion="neutral"/>
 	<action msg="Whatever! You can have them cheer you on all you want, it won't make a difference either way!" portrait="fever" emotion="point"/>
 	<action msg="You sure are confident. Reminds me of an earlier time, huh?" portrait="hunni" emotion="neutral"/>
-	<action msg="Hunni..." portrait="fever" emotion="embarrased"/>
+	<action msg="Man..." portrait="fever" emotion="embarrassed"/>
 	<action msg="GET THE FUCK OFF MY CAR OR I WILL PISS MYSELF." portrait="food" emotion="angry"/>
 	<action msg="Huh? Who was-" portrait="fever" emotion="point"/>
 	<action msg="The driver, obviously. Don't mind her." portrait="hunni" emotion="neutral"/>
-	<action msg="So, this isn't your limo?..." portrait="fever" emotion="point"/>
-	<action msg="Well it's my limo now." portrait="hunni" emotion="neutral"/>
+	<action msg="So, these aren't your limos?..." portrait="fever" emotion="point"/>
+	<action msg="I rented them. Nevermind that, let's continue." portrait="hunni" emotion="neutral"/>
 	<action msg="I'm going to have an anuerysm." portrait="food" emotion="angry" fadeOutMus=""/>
 </file>
