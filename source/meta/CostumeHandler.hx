@@ -21,9 +21,9 @@ enum CostumeName
 	MCDIETIS; // DONE
 	SKELLY; // DONE
 	SHELTON; // DONE
-	MTALE;
-	SOULSPLIT;
-	MONGUS;
+	MTALE; // DONE
+	SOULSPLIT; // DONE
+	MONGUS; // DONE
 }
 
 typedef CostumeInfo =
@@ -88,6 +88,9 @@ class CostumeHandler
 
 		if (fullCombo(["prayer", "bad-nun"]))
 			unlockCostume(FEVER_NUN);
+
+		if (fullCombo(["tranquility", "princess", "crack", "bloom"]))
+			unlockCostume(SOULSPLIT);
 
 		if (fullCombo(["dui", "cosmic-swing", "cell-from-hell", "w00f"]))
 			unlockCostume(DOODLE);
@@ -209,7 +212,7 @@ class CostumeHandler
 			displayName: "Fever (McDietis Outfit)",
 			description: "",
 			character: "mcdietis",
-			creator: "???",
+			creator: "Pancho",
 			unlocked: true,
 			characterOffset: [-10, -5]
 		},
@@ -219,6 +222,41 @@ class CostumeHandler
 			character: "bf-cedar",
 			creator: "IDK",
 			characterOffset: [0, -100]
+		},
+		MONGUS => {
+			displayName: "Fever (mongus)",
+			description: "Full combo all Week 5 songs",
+			character: "mongus",
+			creator: "Kip",
+			characterOffset: [-125, 250]
+		},
+		SOULSPLIT => {
+			displayName: "Fever (Rae's Outfit)",
+			description: "Full combo all Week 8 songs",
+			character: "soulsplit",
+			creator: "Roll",
+			characterOffset: [20, -15]
+		},
+		MTALE => {
+			displayName: "Fever (M-Tale)",
+			description: "Full combo all Week 6 songs",
+			character: "mtale",
+			creator: "TheCouchPotato170",
+			characterOffset: [-20, 15]
+		},
+		TANNER => {
+			displayName: "Tanner",
+			description: "",
+			character: "tanner",
+			unlocked: true,
+			creator: "Circle"
+		},
+		BIRTHDAY_BUILD => {
+			displayName: "Fever (Birthday Build)",
+			description: "Full combo Space Demons",
+			character: "bday",
+			creator: "Rosamay",
+			characterOffset: [-10, -10]
 		}
 	];
 }

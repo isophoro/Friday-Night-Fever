@@ -1,0 +1,99 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-22,
+				100
+			],
+			"fps": 24,
+			"anim": "mong right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				33,
+				76
+			],
+			"fps": 24,
+			"anim": "mong down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-88,
+				123
+			],
+			"fps": 24,
+			"anim": "mong up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				40,
+				91
+			],
+			"fps": 24,
+			"anim": "mong left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "mong idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-66,
+				93
+			],
+			"fps": 24,
+			"anim": "mong right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				47,
+				63
+			],
+			"fps": 24,
+			"anim": "mong down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				40,
+				96
+			],
+			"fps": 24,
+			"anim": "mong left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-59,
+				132
+			],
+			"fps": 24,
+			"anim": "mong up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		}
+	],
+	"noAntialiasing": false,
+	"isDeathAnim": false,
+	"facingLeft": true,
+	"file": "costumes/mongus",
+	"color": "C353E3"
+}

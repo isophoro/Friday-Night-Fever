@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="CedarHD.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="CEDAR DODGE0000" x="10" y="10" width="494" height="717" frameX="-8" frameY="-2" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0001" x="514" y="10" width="496" height="719" frameX="-10" frameY="0" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0002" x="1020" y="10" width="496" height="719" frameX="-10" frameY="0" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0003" x="1526" y="10" width="506" height="714" frameX="-6" frameY="-5" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0004" x="2042" y="10" width="501" height="705" frameX="-1" frameY="-13" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0005" x="2042" y="10" width="501" height="705" frameX="-1" frameY="-13" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0006" x="2042" y="10" width="501" height="705" frameX="-1" frameY="-13" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0007" x="2553" y="10" width="498" height="707" frameX="0" frameY="-12" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0008" x="2553" y="10" width="498" height="707" frameX="0" frameY="-12" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0009" x="2553" y="10" width="498" height="707" frameX="0" frameY="-12" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0010" x="2553" y="10" width="498" height="707" frameX="0" frameY="-12" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0011" x="2553" y="10" width="498" height="707" frameX="0" frameY="-12" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0012" x="2553" y="10" width="498" height="707" frameX="0" frameY="-12" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0013" x="2553" y="10" width="498" height="707" frameX="0" frameY="-12" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DODGE0014" x="2553" y="10" width="498" height="707" frameX="0" frameY="-12" frameWidth="512" frameHeight="719"/>
+	<SubTexture name="CEDAR DOWN0000" x="3061" y="10" width="434" height="639" frameX="0" frameY="-12" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0001" x="3061" y="10" width="434" height="639" frameX="0" frameY="-12" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0002" x="3505" y="10" width="430" height="646" frameX="0" frameY="-5" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0003" x="3505" y="10" width="430" height="646" frameX="0" frameY="-5" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0004" x="3945" y="10" width="425" height="650" frameX="-1" frameY="-1" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0005" x="3945" y="10" width="425" height="650" frameX="-1" frameY="-1" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0006" x="3945" y="10" width="425" height="650" frameX="-1" frameY="-1" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0007" x="4380" y="10" width="425" height="651" frameX="-1" frameY="0" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0008" x="4380" y="10" width="425" height="651" frameX="-1" frameY="0" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0009" x="4380" y="10" width="425" height="651" frameX="-1" frameY="0" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0010" x="4380" y="10" width="425" height="651" frameX="-1" frameY="0" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0011" x="4380" y="10" width="425" height="651" frameX="-1" frameY="0" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0012" x="4380" y="10" width="425" height="651" frameX="-1" frameY="0" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0013" x="4380" y="10" width="425" height="651" frameX="-1" frameY="0" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR DOWN0014" x="4380" y="10" width="425" height="651" frameX="-1" frameY="0" frameWidth="434" frameHeight="651"/>
+	<SubTexture name="CEDAR HEY0000" x="4815" y="10" width="473" height="713" frameX="-3" frameY="0" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0001" x="4815" y="10" width="473" height="713" frameX="-3" frameY="0" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0002" x="5298" y="10" width="479" height="702" frameX="0" frameY="-11" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0003" x="5298" y="10" width="479" height="702" frameX="0" frameY="-11" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0004" x="5787" y="10" width="479" height="708" frameX="0" frameY="-5" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0005" x="5787" y="10" width="479" height="708" frameX="0" frameY="-5" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0006" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0007" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0008" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0009" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0010" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0011" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0012" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0013" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR HEY0014" x="6276" y="10" width="479" height="707" frameX="0" frameY="-6" frameWidth="479" frameHeight="713"/>
+	<SubTexture name="CEDAR IDLE0000" x="6765" y="10" width="423" height="688" frameX="-1" frameY="-11" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0001" x="6765" y="10" width="423" height="688" frameX="-1" frameY="-11" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0002" x="7198" y="10" width="423" height="689" frameX="0" frameY="-10" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0003" x="7198" y="10" width="423" height="689" frameX="0" frameY="-10" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0004" x="7631" y="10" width="398" height="697" frameX="-13" frameY="-2" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0005" x="7631" y="10" width="398" height="697" frameX="-13" frameY="-2" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0006" x="10" y="739" width="389" height="699" frameX="-18" frameY="0" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0007" x="10" y="739" width="389" height="699" frameX="-18" frameY="0" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0008" x="10" y="739" width="389" height="699" frameX="-18" frameY="0" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0009" x="409" y="739" width="389" height="699" frameX="-18" frameY="0" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0010" x="409" y="739" width="389" height="699" frameX="-18" frameY="0" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0011" x="409" y="739" width="389" height="699" frameX="-18" frameY="0" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0012" x="409" y="739" width="389" height="699" frameX="-18" frameY="0" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR IDLE0013" x="409" y="739" width="389" height="699" frameX="-18" frameY="0" frameWidth="424" frameHeight="699"/>
+	<SubTexture name="CEDAR LEFT0000" x="808" y="739" width="458" height="686" frameX="0" frameY="-1" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0001" x="808" y="739" width="458" height="686" frameX="0" frameY="-1" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0002" x="1276" y="739" width="453" height="687" frameX="-5" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0003" x="1276" y="739" width="453" height="687" frameX="-5" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0004" x="1739" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0005" x="1739" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0006" x="1739" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0007" x="2200" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0008" x="2200" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0009" x="2200" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0010" x="2200" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0011" x="2200" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0012" x="2200" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0013" x="2200" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR LEFT0014" x="2200" y="739" width="451" height="687" frameX="-7" frameY="0" frameWidth="458" frameHeight="687"/>
+	<SubTexture name="CEDAR RIGHT0000" x="2661" y="739" width="385" height="672" frameX="-13" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0001" x="2661" y="739" width="385" height="672" frameX="-13" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0002" x="3056" y="739" width="383" height="672" frameX="-7" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0003" x="3056" y="739" width="383" height="672" frameX="-7" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0004" x="3449" y="739" width="384" height="672" frameX="-1" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0005" x="3449" y="739" width="384" height="672" frameX="-1" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0006" x="3449" y="739" width="384" height="672" frameX="-1" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0007" x="3843" y="739" width="384" height="672" frameX="0" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0008" x="3843" y="739" width="384" height="672" frameX="0" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0009" x="3843" y="739" width="384" height="672" frameX="0" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0010" x="3843" y="739" width="384" height="672" frameX="0" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0011" x="3843" y="739" width="384" height="672" frameX="0" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0012" x="3843" y="739" width="384" height="672" frameX="0" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0013" x="3843" y="739" width="384" height="672" frameX="0" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR RIGHT0014" x="3843" y="739" width="384" height="672" frameX="0" frameY="0" frameWidth="398" frameHeight="672"/>
+	<SubTexture name="CEDAR SCARED0000" x="4237" y="739" width="398" height="697" frameX="-2" frameY="0" frameWidth="401" frameHeight="697"/>
+	<SubTexture name="CEDAR SCARED0001" x="4645" y="739" width="399" height="697" frameX="-1" frameY="0" frameWidth="401" frameHeight="697"/>
+	<SubTexture name="CEDAR SCARED0002" x="5054" y="739" width="401" height="697"/>
+	<SubTexture name="CEDAR SCARED0003" x="5465" y="739" width="400" height="696" frameX="-1" frameY="-1" frameWidth="401" frameHeight="697"/>
+	<SubTexture name="CEDAR UP0000" x="5875" y="739" width="392" height="719"/>
+	<SubTexture name="CEDAR UP0001" x="5875" y="739" width="392" height="719"/>
+	<SubTexture name="CEDAR UP0002" x="6277" y="739" width="391" height="715" frameX="0" frameY="-4" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0003" x="6277" y="739" width="391" height="715" frameX="0" frameY="-4" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0004" x="6678" y="739" width="391" height="711" frameX="0" frameY="-8" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0005" x="6678" y="739" width="391" height="711" frameX="0" frameY="-8" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0006" x="6678" y="739" width="391" height="711" frameX="0" frameY="-8" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0007" x="7079" y="739" width="391" height="710" frameX="0" frameY="-9" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0008" x="7079" y="739" width="391" height="710" frameX="0" frameY="-9" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0009" x="7079" y="739" width="391" height="710" frameX="0" frameY="-9" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0010" x="7079" y="739" width="391" height="710" frameX="0" frameY="-9" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0011" x="7079" y="739" width="391" height="710" frameX="0" frameY="-9" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0012" x="7079" y="739" width="391" height="710" frameX="0" frameY="-9" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0013" x="7079" y="739" width="391" height="710" frameX="0" frameY="-9" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="CEDAR UP0014" x="7079" y="739" width="391" height="710" frameX="0" frameY="-9" frameWidth="392" frameHeight="719"/>
+	<SubTexture name="DOWN MISS0000" x="7480" y="739" width="458" height="621" frameX="0" frameY="-26" frameWidth="458" frameHeight="648"/>
+	<SubTexture name="DOWN MISS0001" x="7480" y="739" width="458" height="621" frameX="0" frameY="-26" frameWidth="458" frameHeight="648"/>
+	<SubTexture name="DOWN MISS0002" x="10" y="1468" width="437" height="648" frameX="-11" frameY="0" frameWidth="458" frameHeight="648"/>
+	<SubTexture name="DOWN MISS0003" x="10" y="1468" width="437" height="648" frameX="-11" frameY="0" frameWidth="458" frameHeight="648"/>
+	<SubTexture name="DOWN MISS0004" x="457" y="1468" width="440" height="643" frameX="-9" frameY="-5" frameWidth="458" frameHeight="648"/>
+	<SubTexture name="FROWN0000" x="907" y="1468" width="409" height="688" frameX="0" frameY="-9" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0001" x="907" y="1468" width="409" height="688" frameX="0" frameY="-9" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0002" x="1326" y="1468" width="408" height="689" frameX="0" frameY="-8" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0003" x="1326" y="1468" width="408" height="689" frameX="0" frameY="-8" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0004" x="1744" y="1468" width="399" height="694" frameX="-5" frameY="-3" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0005" x="1744" y="1468" width="399" height="694" frameX="-5" frameY="-3" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0006" x="2153" y="1468" width="395" height="696" frameX="-7" frameY="-1" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0007" x="2153" y="1468" width="395" height="696" frameX="-7" frameY="-1" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0008" x="2153" y="1468" width="395" height="696" frameX="-7" frameY="-1" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0009" x="2558" y="1468" width="394" height="697" frameX="-7" frameY="0" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0010" x="2558" y="1468" width="394" height="697" frameX="-7" frameY="0" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0011" x="2558" y="1468" width="394" height="697" frameX="-7" frameY="0" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0012" x="2558" y="1468" width="394" height="697" frameX="-7" frameY="0" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="FROWN0013" x="2558" y="1468" width="394" height="697" frameX="-7" frameY="0" frameWidth="409" frameHeight="697"/>
+	<SubTexture name="left miss0000" x="2962" y="1468" width="521" height="609" frameX="0" frameY="0" frameWidth="524" frameHeight="609"/>
+	<SubTexture name="left miss0001" x="2962" y="1468" width="521" height="609" frameX="0" frameY="0" frameWidth="524" frameHeight="609"/>
+	<SubTexture name="left miss0002" x="3493" y="1468" width="500" height="609" frameX="-24" frameY="0" frameWidth="524" frameHeight="609"/>
+	<SubTexture name="left miss0003" x="3493" y="1468" width="500" height="609" frameX="-24" frameY="0" frameWidth="524" frameHeight="609"/>
+	<SubTexture name="left miss0004" x="4003" y="1468" width="497" height="609" frameX="-24" frameY="0" frameWidth="524" frameHeight="609"/>
+	<SubTexture name="Right miss0000" x="4510" y="1468" width="848" height="639" frameX="-3" frameY="0" frameWidth="851" frameHeight="639"/>
+	<SubTexture name="Right miss0001" x="4510" y="1468" width="848" height="639" frameX="-3" frameY="0" frameWidth="851" frameHeight="639"/>
+	<SubTexture name="Right miss0002" x="5368" y="1468" width="831" height="639" frameX="0" frameY="0" frameWidth="851" frameHeight="639"/>
+	<SubTexture name="Right miss0003" x="5368" y="1468" width="831" height="639" frameX="0" frameY="0" frameWidth="851" frameHeight="639"/>
+	<SubTexture name="Right miss0004" x="6209" y="1468" width="828" height="639" frameX="-3" frameY="0" frameWidth="851" frameHeight="639"/>
+	<SubTexture name="UP MISS (FNFever)0000" x="7047" y="1468" width="366" height="673" frameX="-8" frameY="0" frameWidth="383" frameHeight="673"/>
+	<SubTexture name="UP MISS (FNFever)0001" x="7047" y="1468" width="366" height="673" frameX="-8" frameY="0" frameWidth="383" frameHeight="673"/>
+	<SubTexture name="UP MISS (FNFever)0002" x="7423" y="1468" width="383" height="656" frameX="0" frameY="-17" frameWidth="383" frameHeight="673"/>
+	<SubTexture name="UP MISS (FNFever)0003" x="7423" y="1468" width="383" height="656" frameX="0" frameY="-17" frameWidth="383" frameHeight="673"/>
+	<SubTexture name="UP MISS (FNFever)0004" x="10" y="2175" width="383" height="657" frameX="0" frameY="-16" frameWidth="383" frameHeight="673"/>
+</TextureAtlas>

@@ -26,8 +26,8 @@ import flixel.addons.api.FlxGameJolt;
 	private static function get_order():Array<Trophy>
 	{
 		return [
-			FC_TUTORIAL, FC_WEEK1, FC_WEEK2, FC_WEEK3, FC_WEEK4, FC_WEEK5, FC_WEEK6, FC_WEEK_HALLOW, FC_WEEK7, FC_WEEK8, FC_WEEK_ROLLDOG, PERFECT_PARRY,
-			FC_ALL_OG_WEEKS, FC_ALL_FRENZY_WEEKS
+			FC_TUTORIAL, FC_WEEK1, FC_WEEK2, FC_WEEK2_5, FC_WEEK3, FC_WEEK4, FC_WEEK5, FC_WEEK6, FC_WEEK_HALLOW, FC_WEEK7, FC_WEEK8, FC_WEEK_ROLLDOG,
+			PERFECT_PARRY, FC_ALL_OG_WEEKS, FC_ALL_FRENZY_WEEKS
 		];
 	}
 
@@ -50,20 +50,21 @@ import flixel.addons.api.FlxGameJolt;
 		PERFECT_PARRY => "Robot Reflexes"
 	];
 	public static var descriptions:Map<Int, String> = [
-		FC_TUTORIAL => "Full Combo Tutorial\n(Story Mode Only)\nUnlocks \"Teasar\" costume.",
-		FC_WEEK1 => "Full Combo Week 1\n(Story Mode Only)\nUnlocks \"Ceabun\" costume.",
-		FC_WEEK2 => "Full Combo Week 2\n(Story Mode Only)",
-		FC_WEEK2_5 => "Full Combo Week 2.5\n(Story Mode Only)\nUnlocks \"Nun\" costume.",
-		FC_WEEK3 => "Full Combo Week 3\n(Story Mode Only)\nUnlocks \"Casual\" costume.",
-		FC_WEEK4 => "Full Combo Week 4\n(Story Mode Only)",
-		FC_WEEK5 => "Full Combo Week 5\n(Story Mode Only)",
-		FC_WEEK6 => "Full Combo Week 6\n(Story Mode Only)\nUnlocks \"Old Fever\" costume.",
-		FC_ALL_OG_WEEKS => "Earn all Full Combo achievements\n(Week 1 - 6)\nUnlocks \"Birthday Build\" costume.",
-		FC_WEEK7 => "Full Combo Week 7\n(Story Mode Only)",
-		FC_WEEK8 => "Full Combo Week 8\n(Story Mode Only)",
-		FC_WEEK_ROLLDOG => "Full Combo Week 9\n(Story Mode Only)\nUnlocks \"Doodle\" costume.",
-		ALL_ACHIEVEMENTS => "Complete all achievements\nUnlocks \"Coat\" costume.",
-		FC_ALL_FRENZY_WEEKS => "Earn all Full Combo achievements\n(Week ??? - 9)",
+		FC_TUTORIAL => "Full Combo Tutorial\n(\"Milk Tea\")",
+		FC_WEEK1 => "Full Combo all Week 1 songs.",
+		FC_WEEK2 => "Full Combo all Week 2 songs",
+		FC_WEEK2_5 => "Full Combo all Week 2.5 songs",
+		FC_WEEK3 => "Full Combo all Week 3 songs",
+		FC_WEEK4 => "Full Combo all Week 4 songs",
+		FC_WEEK5 => "Full Combo all Week 5 songs",
+		FC_WEEK6 => "Full Combo all Week 6 songs",
+		FC_ALL_OG_WEEKS => "Earn all previous Full Combo achievements",
+		FC_WEEK_HALLOW => "Full Combo all Week ??? songs",
+		FC_WEEK7 => "Full Combo all Week 7 songs",
+		FC_WEEK8 => "Full Combo all Week 8",
+		FC_WEEK_ROLLDOG => "Full Combo all Week 9 songs",
+		ALL_ACHIEVEMENTS => "Complete all achievements",
+		FC_ALL_FRENZY_WEEKS => "Earn all previous Full Combo achievements",
 		PERFECT_PARRY => "Hit a perfect parry once\nin Dead Man's Melody"
 	];
 }
@@ -111,23 +112,81 @@ class AchievementHandler
 			callback();
 	}
 
-	public static function getFCTrophy(curWeek:Int)
+	public static function check()
 	{
-		return switch (curWeek)
+		if (fullCombo(StoryMenuState.weekData[0]))
+			unlockTrophy(FC_TUTORIAL);
+
+		if (fullCombo(StoryMenuState.weekData[1]))
+			unlockTrophy(FC_WEEK1);
+
+		if (fullCombo(StoryMenuState.weekData[2]))
+			unlockTrophy(FC_WEEK2);
+
+		if (fullCombo(StoryMenuState.weekData[3]))
+			unlockTrophy(FC_WEEK2_5);
+
+		if (fullCombo(StoryMenuState.weekData[4]))
+			unlockTrophy(FC_WEEK3);
+
+		if (fullCombo(StoryMenuState.weekData[5]))
+			unlockTrophy(FC_WEEK4);
+
+		if (fullCombo(StoryMenuState.weekData[6]))
+			unlockTrophy(FC_WEEK5);
+
+		if (fullCombo(StoryMenuState.weekData[7]))
+			unlockTrophy(FC_WEEK6);
+
+		if (fullCombo(StoryMenuState.weekData[8]))
+			unlockTrophy(FC_WEEK_HALLOW);
+
+		if (fullCombo(StoryMenuState.weekData[9]))
+			unlockTrophy(FC_WEEK7);
+
+		if (fullCombo(StoryMenuState.weekData[10]))
+			unlockTrophy(FC_WEEK8);
+
+		if (fullCombo(StoryMenuState.weekData[11]))
+			unlockTrophy(FC_WEEK_ROLLDOG);
+
+		if (hasTrophies([
+			FC_TUTORIAL,
+			FC_WEEK1,
+			FC_WEEK2,
+			FC_WEEK2_5,
+			FC_WEEK3,
+			FC_WEEK4,
+			FC_WEEK5,
+			FC_WEEK6
+		]))
+			unlockTrophy(FC_ALL_OG_WEEKS);
+
+		if (hasTrophies([FC_WEEK_HALLOW, FC_WEEK7, FC_WEEK8, FC_WEEK_ROLLDOG]))
+			unlockTrophy(FC_ALL_FRENZY_WEEKS);
+	}
+
+	private static function fullCombo(songs:Array<String>):Bool
+	{
+		for (i in songs)
 		{
-			default: FC_TUTORIAL;
-			case 1: FC_WEEK1;
-			case 2: FC_WEEK2;
-			case 3: FC_WEEK2_5;
-			case 4: FC_WEEK3;
-			case 5: FC_WEEK4;
-			case 6: FC_WEEK5;
-			case 7: FC_WEEK6;
-			case 8: FC_WEEK_HALLOW;
-			case 9: FC_WEEK7;
-			case 10: FC_WEEK8;
-			case 11: FC_WEEK_ROLLDOG;
+			if (!Highscore.fullCombos.exists(i))
+				return false;
 		}
+
+		trace("FULL COMBO: " + songs);
+		return true;
+	}
+
+	private static function hasTrophies(trophies:Array<Trophy>):Bool
+	{
+		for (i in trophies)
+		{
+			if (!ClientPrefs.curTrophies.exists(i))
+				return false;
+		}
+
+		return true;
 	}
 
 	public static function hasTrophy(trophy:Trophy)

@@ -1,0 +1,129 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				4,
+				92
+			],
+			"fps": 24,
+			"anim": "mtaleidlemad",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				52,
+				44
+			],
+			"fps": 24,
+			"anim": "mtaledown0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				-20,
+				88
+			],
+			"fps": 24,
+			"anim": "mtalerightmiss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				-13,
+				128
+			],
+			"fps": 24,
+			"anim": "mtaleup0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				92
+			],
+			"fps": 24,
+			"anim": "mtaleleftmiss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				2,
+				92
+			],
+			"fps": 24,
+			"anim": "mtalehey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "mtaleidle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-20,
+				88
+			],
+			"fps": 24,
+			"anim": "mtaleright0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				52,
+				44
+			],
+			"fps": 24,
+			"anim": "mtaledownmiss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-14,
+				131
+			],
+			"fps": 24,
+			"anim": "mtaleupmiss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				-3,
+				93
+			],
+			"fps": 24,
+			"anim": "mtaleleft0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				79,
+				90
+			],
+			"fps": 24,
+			"anim": "mtaledoge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": false,
+	"isDeathAnim": false,
+	"facingLeft": true,
+	"file": "costumes/mtale",
+	"color": "C353E3"
+}

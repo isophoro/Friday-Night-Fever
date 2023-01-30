@@ -1,0 +1,129 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-52,
+				99
+			],
+			"fps": 24,
+			"anim": "fever right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				148,
+				16
+			],
+			"fps": 24,
+			"anim": "fever down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "fever idle frown",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				70,
+				121
+			],
+			"fps": 24,
+			"anim": "fever left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				-27,
+				95
+			],
+			"fps": 24,
+			"anim": "fever up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				-3,
+				93
+			],
+			"fps": 24,
+			"anim": "fever hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				6,
+				93
+			],
+			"fps": 24,
+			"anim": "fever idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				155,
+				31
+			],
+			"fps": 24,
+			"anim": "fever down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-49,
+				92
+			],
+			"fps": 24,
+			"anim": "fever right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				51,
+				92
+			],
+			"fps": 24,
+			"anim": "fever left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-31,
+				98
+			],
+			"fps": 24,
+			"anim": "fever up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				111,
+				92
+			],
+			"fps": 24,
+			"anim": "fever dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"noAntialiasing": false,
+	"isDeathAnim": false,
+	"facingLeft": true,
+	"file": "costumes/bday",
+	"color": "C353E3"
+}
