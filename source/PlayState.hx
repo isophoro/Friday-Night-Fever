@@ -886,7 +886,7 @@ class PlayState extends MusicBeatState
 				dark.cameras = [camHUD];
 				add(dark);
 				dark.visible = false;
-			case 'bazinga' | 'crucify' | 'hallow' | 'hardships' | 'portrait' | 'run':
+			case 'bazinga' | 'crucify' | 'hallow' | 'hardships' | 'old-hardships' | 'portrait' | 'run':
 				moreDark = new FlxSprite(0, 0).makeGraphic(1280, 720, FlxColor.BLACK);
 				moreDark.alpha = 0.498;
 				moreDark.scale.scale(1.5);

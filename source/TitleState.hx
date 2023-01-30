@@ -92,7 +92,10 @@ class TitleState extends MusicBeatState
 		#elseif CHARTING
 		FlxG.switchState(new ChartingState());
 		#else
-		startIntro();
+		new FlxTimer().start(0.1, (t) ->
+		{
+			startIntro();
+		});
 		#end
 	}
 

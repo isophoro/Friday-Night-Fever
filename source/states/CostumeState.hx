@@ -36,7 +36,6 @@ class CostumeState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		FlxG.sound.playMusic(Paths.music("credits"));
 
 		CostumeHandler.checkRequisites();
 
@@ -169,8 +168,6 @@ class CostumeState extends MusicBeatState
 			{
 				CostumeHandler.save();
 				FlxG.sound.play(Paths.sound('return'));
-				FlxG.sound.music.stop();
-				Main.playFreakyMenu();
 				FlxG.switchState(new MainMenuState(true));
 			}
 		}

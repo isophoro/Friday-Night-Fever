@@ -79,6 +79,9 @@ function onCreate()
 		{
 			i.color = 0xFF000000;
 		}
+
+		if (!PlayState.isStoryMode)
+			onDialogueFinish();
 	}
 }
 
@@ -218,7 +221,7 @@ function onMoveCamera(dad:Bool)
 
 function onBeatHit(curBeat:Int)
 {
-	if (curBeat == 363)
+	if (curBeat == 363 || curBeat == 716)
 	{
 		game.healthTween(0.1, false, 1);
 		camGame.shake(0.005, 1);

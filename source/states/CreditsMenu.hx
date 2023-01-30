@@ -48,6 +48,7 @@ class CreditsMenu extends MusicBeatState
 	override function create()
 	{
 		super.create();
+		FlxG.sound.playMusic(Paths.music("credits"));
 
 		var raw:Array<String> = CoolUtil.coolTextFile(Paths.txt("credits"));
 		for (i in raw)
@@ -204,7 +205,11 @@ class CreditsMenu extends MusicBeatState
 		}
 
 		if (controls.BACK)
+		{
+			FlxG.sound.music.stop();
+			Main.playFreakyMenu();
 			FlxG.switchState(new MainMenuState(true));
+		}
 	}
 }
 
