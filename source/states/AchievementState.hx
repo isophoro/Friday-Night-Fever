@@ -128,6 +128,11 @@ class AchievementState extends MusicBeatState
 		hand.updateHitbox();
 		add(hand);
 
+		var txt:FlxText = new FlxText(5, FlxG.height - 27, 0, "PRESS G TO ACCESS GAMEJOLT LOGIN PAGE", 24);
+		txt.setFormat("VCR OSD Mono", 24, 0xFFFFFFFF, LEFT, OUTLINE, 0xFF000000);
+		add(txt);
+
+
 		plsWait = new FlxSprite().loadGraphic(Paths.image("achievements/plsWait"));
 		plsWait.antialiasing = true;
 		add(plsWait);
@@ -148,6 +153,7 @@ class AchievementState extends MusicBeatState
 			plsWait.alpha = 1;
 			FlxG.mouse.visible = false;
 			AchievementHandler.unlockTrophy(ALL_ACHIEVEMENTS);
+			shadowTime = true;
 
 			new FlxTimer().start(2, function(tmr:FlxTimer)
 			{
@@ -177,6 +183,10 @@ class AchievementState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if(FlxG.keys.justPressed.G && !shadowTime)
+			FlxG.switchState(new GamejoltLogin());
+
 		if (controls.BACK && !shadowTime)
 			FlxG.switchState(new MainMenuState());
 
