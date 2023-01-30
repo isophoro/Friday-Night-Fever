@@ -1,0 +1,137 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-3,
+				92
+			],
+			"fps": 24,
+			"anim": "fever fear",
+			"loop": true,
+			"name": "scared"
+		},
+		{
+			"offsets": [
+				-9,
+				91
+			],
+			"fps": 24,
+			"anim": "fever right miss",
+			"loop": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"offsets": [
+				40,
+				15
+			],
+			"fps": 24,
+			"anim": "fever down0",
+			"loop": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				7,
+				93
+			],
+			"fps": 24,
+			"anim": "fever idle frown",
+			"loop": false,
+			"name": "idle-frown"
+		},
+		{
+			"offsets": [
+				40,
+				93
+			],
+			"fps": 24,
+			"anim": "fever left miss",
+			"loop": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"offsets": [
+				-35,
+				96
+			],
+			"fps": 24,
+			"anim": "fever up0",
+			"loop": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				89
+			],
+			"fps": 24,
+			"anim": "fever hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				7,
+				93
+			],
+			"fps": 24,
+			"anim": "fever idle0",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				45,
+				14
+			],
+			"fps": 24,
+			"anim": "fever down miss",
+			"loop": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"offsets": [
+				-6,
+				89
+			],
+			"fps": 24,
+			"anim": "fever right0",
+			"loop": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				43,
+				95
+			],
+			"fps": 24,
+			"anim": "fever left0",
+			"loop": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				-14,
+				103
+			],
+			"fps": 24,
+			"anim": "fever up miss",
+			"loop": false,
+			"name": "singUPmiss"
+		},
+		{
+			"offsets": [
+				21,
+				92
+			],
+			"fps": 24,
+			"anim": "fever dodge",
+			"loop": false,
+			"name": "dodge"
+		}
+	],
+	"facingLeft": true,
+	"file": "fever/demon_fever_assets_week4",
+	"color": "C353E3"
+}
