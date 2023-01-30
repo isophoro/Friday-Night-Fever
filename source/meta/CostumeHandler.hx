@@ -161,7 +161,7 @@ class CostumeHandler
 			character: "bf-teasar",
 			creator: "Circle",
 			characterOffset: [-70, -10],
-			camOffset: [0, 60]
+			camOffset: [0, 45]
 		},
 		CEABUN => {
 			displayName: "Ceabun",
@@ -228,7 +228,8 @@ class CostumeHandler
 			description: "Full combo all Week 5 songs",
 			character: "mongus",
 			creator: "Kip",
-			characterOffset: [-125, 250]
+			characterOffset: [-125, 250],
+			camOffset: [0, -30]
 		},
 		SOULSPLIT => {
 			displayName: "Fever (Rae's Outfit)",
