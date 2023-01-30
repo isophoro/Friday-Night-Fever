@@ -31,6 +31,7 @@
 	<action msg="Hey." portrait="fever" emotion="embarrased"/>
 	<action msg="?" portrait="hunni" emotion="neutral"/>
 	<action msg="You've changed too, y'know. I'm glad you're okay after all this time." portrait="fever" emotion="embarrased"/>
-	<action msg="Alls well that ends well, right?" portrait="cherry" emotion="neutral" narrate="Fever quickly hops off the parked limo, and heads towards Tea."/>
+	<action msg="Alls well that ends well, right?" portrait="cherry" emotion="neutral"/>
+	<action narrate="Fever quickly hops off the parked limo, and heads towards Tea."/>
 	<action msg="I have to pee." portrait="food" emotion="angry"/>
 </file>

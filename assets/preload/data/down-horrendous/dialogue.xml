@@ -9,8 +9,8 @@
 	<action msg="Annoying." portrait="feverd" emotion="frown"/>
 	<action msg="Eh?-" portrait="peakek" emotion="wtf"/>
 	<action msg="What makes you think I have any time for your shit?" portrait="feverd" emotion="frown"/>
-	<action msg="You peep and invade our privacy, you don’t know how to SHUT the fuck up-" portrait="feverd" emotion="frown"/>
-	<action msg="And worst of all, you’ve got me all pissed off. I'd call the cops on you, if there were police in Fever Town ." portrait="feverd" emotion="wtf"/>
+	<action msg="You peep and invade our privacy, you don't know how to SHUT the fuck up-" portrait="feverd" emotion="frown"/>
+	<action msg="And worst of all, you've got me all pissed off. I'd call the cops on you, if there were police in Fever Town ." portrait="feverd" emotion="wtf"/>
 	<action msg="Just get the fuck out. Go. Leave. Fuck off." portrait="feverd" emotion="neutral"/>
 	<action msg="Woah, Fever, maybe we should just-" portrait="tea" emotion="worried"/>
 	<action msg=". . ." portrait="peakek" emotion="wtf"/>

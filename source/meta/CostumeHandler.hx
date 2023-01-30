@@ -249,7 +249,8 @@ class CostumeHandler
 			description: "",
 			character: "tanner",
 			unlocked: true,
-			creator: "Circle"
+			creator: "Circle",
+			characterOffset: [0, 40]
 		},
 		BIRTHDAY_BUILD => {
 			displayName: "Fever (Birthday Build)",

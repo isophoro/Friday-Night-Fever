@@ -29,7 +29,7 @@
     <action narrate="Shit."/>
     <action narrate="There's someone here."/>
     <action narrate="Even as I am now, I can sense their strength..."/>
-    <action msg="Hey! Who the fuck's there? Come out alre-"/>
+    <action msg="Hey! Who the fuck's there? Come out alre-" portrait="fever"/>
     <action portrait="fever" emotion="distressed"/>
     <action narrate="!"/>
     <action narrate="No."/>

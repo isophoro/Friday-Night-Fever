@@ -9,12 +9,14 @@
 	<action msg="That rule where you HAVE to accept all challenges is pretty lame." portrait="tea" emotion="pointing"/>
 	<action msg="Yeah, yeah- I know, hell. I'll change it soon, maybe after this." portrait="fever" emotion="embarrased"/>
 	<action msg="Let's just go." portrait="fever" emotion="neutral"/>
-	<action msg="There sure are a lot of limos in this parking lot." portrait="fever" emotion="neutral" narrate="..."/>
+	<action msg="There sure are a lot of limos in this parking lot." portrait="fever" emotion="neutral"/>
+	<action narrate="..."/>
 	<action msg="Maybe someone famous is in town?" portrait="tea" emotion="thinking"/>
 	<action msg="Oddly enough, Fever Town IS a hot vacation spot..." portrait="fever" emotion="neutral"/>
 	<action msg="Probably cause rules are so scarce here. Anyone can come into Fever Town, do shady shit, then probably leave without any repercussions." portrait="tea" emotion="neutral"/>
 	<action msg="Thanks for making me feel better about the way I run things." portrait="fever" emotion="facepalm-stare"/>
-	<action msg="Huh?" portrait="fever" emotion="ugh" narrate="???"/>
+	<action msg="Huh?" portrait="fever" emotion="ugh"/>
+	<action narrate="???"/>
 	<action msg="Sup, Fever." portrait="hunni" emotion="neutral" fadeInMus="honey" setBG="dialogue_backgrounds/hunni"/>
 	<action msg="Huh, wait, YOU?..." portrait="fever" emotion="shocked"/>
 	<action msg="Oh? Who's this?" portrait="tea" emotion="neutral"/>
@@ -50,7 +52,8 @@
 	<action msg="Yeah, no, I'm out." portrait="tea" emotion="pointing"/>
 	<action msg="Tea? Hey, wait- where are you going???" portrait="fever" emotion="shocked"/>
 	<action msg="I'm gonna be sick. I'll see you back home, Fever." portrait="tea" emotion="pointing"/>
-	<action msg="Power couple, huh?" portrait="hunni" emotion="neutral" setBG="" narrate=". . ."/>
+	<action msg="Power couple, huh?" portrait="hunni" emotion="neutral" setBG=""/>
+	<action narrate=". . ."/>
 	<action msg="You know it!" portrait="fever" emotion="point"/>
 	<action msg="I wasn't expecting this either... but hey, this just tips the scales in my favor. Not like you had any chance against me anyway." portrait="hunni" emotion="neutral"/>
 	<action msg="I don't need someone backing me up to win! Tea's just a bonus!" portrait="fever" emotion="point"/>

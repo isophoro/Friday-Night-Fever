@@ -4,7 +4,9 @@ function onCreate()
 {
 	game.defaultCamZoom = 0.9;
 
-	var bg:FlxSprite = new FlxSprite(-90, -20).loadGraphic(Paths.image(PlayState.SONG.song == "Retribution" ? 'skyMoon' : 'sky', 'week3'));
+	var scary = PlayState.SONG.song == "Retribution" || PlayState.SONG.song == "Farmed";
+
+	var bg:FlxSprite = new FlxSprite(-90, -20).loadGraphic(Paths.image(scary ? 'skyMoon' : 'sky', 'week3'));
 	bg.antialiasing = true;
 	bg.scrollFactor.set(0.7, 0.7);
 	add(bg);
@@ -19,7 +21,7 @@ function onCreate()
 	innerBuilding.antialiasing = true;
 	add(innerBuilding);
 
-	var ground:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('mako_ground', 'week3'));
+	var ground:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image(scary ? 'mako_ground_2' : 'mako_ground', 'week3'));
 	ground.antialiasing = true;
 	add(ground);
 }

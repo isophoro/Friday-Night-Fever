@@ -3,12 +3,13 @@
 	<action msg="I can't even remember the reason why you guys locked me up." portrait="feverd-jail" emotion="frown"/>
 	<action msg="Bahaha!" portrait="npc" emotion="neutral"/>
 	<action msg="You do realize tomorrow's your trial right?." portrait="npc" emotion="neutral"/>
-	<action msg="Then again, I wouldn't be surprised if you've lost count of time in here, everyone does.." portrait="npc" emotion="neutral"/>
+	<action msg="Then again, I wouldn't be surprised if you've lost count of time in here, everyone does..." portrait="npc" emotion="neutral"/>
 	<action msg="I can promise you, there's a much worse place than hell waiting for you." portrait="feverd-jail" emotion="frown"/>
 	<action msg="Whatever. It's probably better than being in your shoes right now!" portrait="npc" emotion="neutral"/>
 	<action msg="Bahaha! Have fun rotting till tomorrow!" portrait="npc" emotion="neutral"/>
 	<action msg="..." portrait="feverd-jail" emotion="frown"/>
-	<action msg="Hey, wake up!" portrait="tea" emotion="flushed" fadeInMus="milk-tea" setBG="" fadeOutMus="" narrate=". . ."/>
+	<action msg="Hey, wake up!" portrait="tea" emotion="flushed" fadeInMus="milk-tea" setBG="" fadeOutMus=""/>
+	<action narrate=". . ."/>
 	<action msg="Huh? What?-" portrait="fever" emotion="shocked" effect="jump"/>
 	<action msg="You were having another nightmare. Let me guess, dark void again?" portrait="tea" emotion="flushed"/>
 	<action msg="Oh, yeah. Pretty much." portrait="fever" emotion="ugh"/>
@@ -18,8 +19,8 @@
 	<action msg="No no, I should finish this work. Keeping this shit piled up will annoy me." portrait="fever" emotion="neutral"/>
 	<action msg="What, so you can drool on those papers some more? After the first three times, it's less cute y'know." portrait="tea" emotion="pointing"/>
 	<action msg="Hrmm... you're right. Fine, let's end the night early." portrait="fever" emotion="facepalm-stare"/>
-	<action msg="I still wish you’d tell me more on what's bugging you." portrait="tea" emotion="thinking"/>
-	<action msg="I will, soon. Sorry, it’s just a little hard to put into words.." portrait="fever" emotion="facepalm-stare"/>
+	<action msg="I still wish you'd tell me more on what's bugging you." portrait="tea" emotion="thinking"/>
+	<action msg="I will, soon. Sorry, it's just a little hard to put into words..." portrait="fever" emotion="facepalm-stare"/>
 	<action msg="Well, I can think of a way we can help you relax." portrait="tea" emotion="neutral"/>
 	<action msg="Oh yeah? It's been a while since we've done this..." portrait="fever" emotion="hey" fadeOutMus=""/>
 </file>

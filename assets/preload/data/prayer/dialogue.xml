@@ -1,6 +1,7 @@
 <file>
 	<action msg="Well, this is it." portrait="feverd" emotion="frown"/>
-	<action msg="..." portrait="taki" emotion="neutral" narrate="This... is Fever Town Church." setBG="dialogue_backgrounds/prayerBG"/>
+	<action msg="..." portrait="taki" emotion="neutral"/>
+	<action narrate="This... is Fever Town Church." setBG="dialogue_backgrounds/prayer"/>
 	<action msg="Hey, I never said it would be pretty." portrait="feverd" emotion="frown"/>
 	<action msg="This place is creeping me out." portrait="tea" emotion="worried"/>
 	<action msg="I feel like someone's watching us..." portrait="tea" emotion="worried"/>

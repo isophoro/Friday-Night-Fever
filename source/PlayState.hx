@@ -3266,4 +3266,15 @@ class PlayState extends MusicBeatState
 		vocals.time = strumTime;
 		Conductor.songPosition = strumTime;
 	}
+
+	var parried(default, set):Bool = false;
+
+	function set_parried(p):Bool
+	{
+		if (p)
+		{
+			AchievementHandler.unlockTrophy(PERFECT_PARRY);
+		}
+		return parried = p;
+	}
 }

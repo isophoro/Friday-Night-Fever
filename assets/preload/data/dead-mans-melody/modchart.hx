@@ -174,6 +174,7 @@ function onUpdate(elapsed:Float)
 	if (pasteSlam.animation.curAnim.curFrame >= 14 && parried == true)
 	{
 		PlayState.instance.spacePressed = false;
+		game.parried = true;
 
 		if (boyfriend.curCharacter == 'bf-demon')
 		{

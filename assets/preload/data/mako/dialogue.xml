@@ -34,7 +34,7 @@
 	<action msg="I don't have a british accent." portrait="feverc" emotion="ugh"/>
 	<action msg="British?" portrait="tea" emotion="thinking"/>
 	<action setBG=""/>
-	<action setBG="dialogue_backgrounds/ripmako"/>
+	<action setBG="dialogue_backgrounds/mako"/>
 	<action fadeInMus="mako"/>
 	<action msg="Yo! Down here!" portrait="mako" emotion="angry"/>
 	<action msg="Also I'm AUSTRALIAN, not bri'ish!" portrait="mako" emotion="angry"/>

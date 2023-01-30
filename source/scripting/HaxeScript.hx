@@ -28,7 +28,7 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		Math, Std, FlxG, FlxSprite, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, Character, FlxAnimate
 	];
 
-	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGameJolt"];
+	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGameJolt", "Highscore"];
 
 	static var functions(default, never):Map<String, Dynamic> = [
 		"add" => (item:flixel.FlxBasic, pos:Int = -1, ?camera:flixel.FlxCamera) ->
