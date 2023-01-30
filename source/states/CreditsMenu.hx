@@ -34,6 +34,7 @@ class CreditsMenu extends MusicBeatState
 	var name:FlxText;
 	var desc:FlxText;
 	var funny:FlxText;
+	var makoGrippers:FlxSprite;
 
 	inline function get_passwords():Array<KeyCombo>
 	{
@@ -123,6 +124,14 @@ class CreditsMenu extends MusicBeatState
 		funny.setFormat("VCR OSD Mono", 24, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		add(funny);
 
+		makoGrippers = new FlxSprite(funny.x, funny.y).loadGraphic(Paths.image("credits-icons/makogrippers"));
+		makoGrippers.antialiasing = true;
+		makoGrippers.scale.set(0.8, 0.8);
+		makoGrippers.updateHitbox();
+		add(makoGrippers);
+		makoGrippers.visible = false;
+
+
 		hand = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 		hand.frames = Paths.getSparrowAtlas('newMain/cursor');
 		hand.animation.addByPrefix('idle', 'cursor nonselect', 0);
@@ -159,6 +168,13 @@ class CreditsMenu extends MusicBeatState
 		funny.visible = true;
 		funny.text = i.funny;
 		funny.setPosition(bigIcon.x + (bigIcon.width / 2) - (funny.width / 2), desc.y + desc.height + 10);
+
+		if(funny.text == 'makogrippers.png')
+		{
+			makoGrippers.visible = true;
+			makoGrippers.setPosition(bigIcon.x + (bigIcon.width / 2) - (funny.width / 2) + 10, desc.y + desc.height - 5);
+			funny.visible = false;
+		}
 	}
 
 	function onMouseOut(obj:FlxSprite)
@@ -168,6 +184,7 @@ class CreditsMenu extends MusicBeatState
 		name.visible = false;
 		desc.visible = false;
 		funny.visible = false;
+		makoGrippers.visible = false;
 	}
 
 	override function update(elapsed:Float)

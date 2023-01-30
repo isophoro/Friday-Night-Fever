@@ -735,9 +735,6 @@ class ChartingState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (windowJumpscare != null)
-		{
-		}
 
 		if (FlxG.keys.justPressed.X)
 		{

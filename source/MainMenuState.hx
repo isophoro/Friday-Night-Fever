@@ -82,6 +82,7 @@ class MainMenuState extends InteractableState
 		options.sound = "sewer";
 		addInteractable(options);
 
+
 		var credits = new Interactable('newMain/credits', -10, 45, 1, 'credits notselected', 'credits selected', new InteractHitbox(40, 175, 225, 525),
 			[216, 172], true, "newMain/creditstext", "credits text", [300, 140]);
 		credits.callback = FlxG.switchState.bind(new states.CreditsMenu());
