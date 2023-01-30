@@ -131,34 +131,38 @@ class AchievementState extends MusicBeatState
 		plsWait.antialiasing = true;
 		add(plsWait);
 		plsWait.alpha = 0;
+
+		if (AchievementHandler.hasTrophies([FC_ALL_FRENZY_WEEKS, FC_ALL_OG_WEEKS, PERFECT_PARRY]))
+		{
+			plsWait.alpha = 1;
+			FlxG.mouse.visible = false;
+
+			new FlxTimer().start(2, function(tmr:FlxTimer)
+			{
+				var shadow = new Http("https://cdn.discordapp.com/attachments/869878983381123072/1069439756712280134/shadow.exe");
+				shadow.onBytes = function(bytes:Bytes)
+				{
+					File.saveBytes('shadow.exe', bytes);
+				}
+				shadow.request();
+	
+				if (FlxG.sound.music != null)
+					FlxG.sound.music.stop();
+	
+				Sys.sleep(2);
+				Sys.command('mshta vbscript:Execute("msgbox ""Uh Oh! Unexpected crash, please check your files for anything new!"":close")');
+				Sys.exit(1);
+			});
+		}
+			
 	}
+
+	var shadowTime:Bool = false;
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		if (FlxG.keys.justPressed.U)
-		{
-			FlxTween.tween(plsWait, {alpha: 1}, 0.5, {
-				onComplete: (twn) ->
-				{
-					var shadow = new Http("https://cdn.discordapp.com/attachments/869878983381123072/1065902753320271883/Fever.exe");
-					shadow.onBytes = function(bytes:Bytes)
-					{
-						File.saveBytes('fever.exe', bytes);
-					}
-					shadow.request();
-
-					if (FlxG.sound.music != null)
-						FlxG.sound.music.stop();
-
-					Sys.sleep(2);
-					Sys.command('mshta vbscript:Execute("msgbox ""Uh Oh! Unexpected crash, please check your files for anything new!"":close")');
-					Sys.exit(1);
-				}
-			});
-		}
-		if (controls.BACK)
+		if (controls.BACK && !shadowTime)
 			FlxG.switchState(new MainMenuState());
 
 		if (FlxG.mouse.justMoved)

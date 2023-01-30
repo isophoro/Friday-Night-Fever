@@ -144,6 +144,7 @@ class MainMenuState extends InteractableState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+			
 
 		if (controls.BACK)
 			FlxG.switchState(new TitleState());

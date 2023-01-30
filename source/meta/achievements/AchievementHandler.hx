@@ -178,7 +178,7 @@ class AchievementHandler
 		return true;
 	}
 
-	private static function hasTrophies(trophies:Array<Trophy>):Bool
+	public static function hasTrophies(trophies:Array<Trophy>):Bool
 	{
 		for (i in trophies)
 		{
