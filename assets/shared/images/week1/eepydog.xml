@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="eepydog.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="r dogh0000" x="0" y="0" width="163" height="121" pivotX="3.35" pivotY="45.15" frameX="-1" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0001" x="0" y="0" width="163" height="121" frameX="-1" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0002" x="188" y="0" width="163" height="121" frameX="-1" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0003" x="188" y="0" width="163" height="121" frameX="-1" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0004" x="0" y="146" width="164" height="121" frameX="0" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0005" x="0" y="146" width="164" height="121" frameX="0" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0006" x="0" y="146" width="164" height="121" frameX="0" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0007" x="0" y="146" width="164" height="121" frameX="0" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0008" x="189" y="146" width="169" height="111" frameX="0" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0009" x="189" y="146" width="169" height="111" frameX="0" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0010" x="189" y="146" width="169" height="111" frameX="0" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0011" x="189" y="146" width="169" height="111" frameX="0" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0012" x="189" y="146" width="169" height="111" frameX="0" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0013" x="189" y="146" width="169" height="111" frameX="0" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0014" x="189" y="146" width="169" height="111" frameX="0" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0015" x="0" y="146" width="164" height="121" frameX="0" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0016" x="0" y="146" width="164" height="121" frameX="0" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0017" x="188" y="0" width="163" height="121" frameX="-1" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0018" x="188" y="0" width="163" height="121" frameX="-1" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0019" x="0" y="0" width="163" height="121" frameX="-1" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0020" x="0" y="0" width="163" height="121" frameX="-1" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0021" x="0" y="292" width="162" height="121" frameX="-2" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0022" x="0" y="292" width="162" height="121" frameX="-2" frameY="0" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0023" x="187" y="292" width="167" height="111" frameX="-2" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0024" x="187" y="292" width="167" height="111" frameX="-2" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0025" x="187" y="292" width="167" height="111" frameX="-2" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0026" x="187" y="292" width="167" height="111" frameX="-2" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0027" x="187" y="292" width="167" height="111" frameX="-2" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0028" x="187" y="292" width="167" height="111" frameX="-2" frameY="-10" frameWidth="169" frameHeight="121"/>
+	<SubTexture name="r dogh0029" x="187" y="292" width="167" height="111" frameX="-2" frameY="-10" frameWidth="169" frameHeight="121"/>
+</TextureAtlas>

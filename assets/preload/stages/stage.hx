@@ -35,6 +35,12 @@ function onCreate()
 	stageCurtains.scrollFactor.set(0.9, 0.9);
 	add(stageCurtains);
 
+	var dog:FlxSprite = new FlxSprite(stageCurtains.x + (880 * 0.9), stageCurtains.y + (745 * 0.9));
+	dog.frames = Paths.getSparrowAtlas("week1/eepydog");
+	dog.animation.addByPrefix("idle", "r", 24);
+	dog.animation.play("idle");
+	add(dog);
+
 	leftAd = new FlxSprite(stageCurtains.x + (244 * 0.9), stageCurtains.y + (428 * 0.9));
 	leftAd.frames = Paths.getSparrowAtlas("week1/ads");
 	leftAd.animation.addByPrefix("a", "leftAds0", 0);

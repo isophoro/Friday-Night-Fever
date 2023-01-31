@@ -6,7 +6,7 @@
 	<action msg="Yeah, same to you." portrait="feverc" emotion="hey"/>
 	<action msg="What." portrait="tea" emotion="pointing"/>
 	<action msg="What, you thought that I'd still be mad afterwards?" portrait="mako" emotion="neutral"/>
-	<action msg="He... took a bite out of your head." portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="He... took a bite out of your head." portrait="tea" emotion="pointing-wtf"/>
 	<action msg="Well yeah." portrait="mako" emotion="neutral"/>
 	<action msg="It hurt like hell." portrait="mako" emotion="angry"/>
 	<action msg="But I can just grow it back." portrait="mako" emotion="neutral"/>

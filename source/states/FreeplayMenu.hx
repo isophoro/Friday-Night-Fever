@@ -222,7 +222,7 @@ class FreeplayMenu extends MusicBeatSubstate
 
 		changeSelection();
 		FlxG.camera.scroll.y = -500;
-		FlxTween.tween(FlxG.camera.scroll, {y: 0}, 0.92, {
+		FlxTween.tween(FlxG.camera.scroll, {y: 0}, 0.65, {
 			onComplete: (t) ->
 			{
 				allowInput = true;
@@ -250,7 +250,16 @@ class FreeplayMenu extends MusicBeatSubstate
 		else if (controls.DOWN_P)
 			changeSelection(1);
 		else if (controls.BACK)
-			close();
+		{
+			allowInput = false;
+			FlxTween.tween(FlxG.camera.scroll, {y: -950}, 0.65, {
+				onComplete: (t) ->
+				{
+					close();
+				},
+				ease: FlxEase.quadInOut
+			});
+		}
 
 		if (controls.LEFT_P)
 			changeDifficulty(-1);

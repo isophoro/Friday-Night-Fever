@@ -174,13 +174,14 @@ class Main extends Sprite
 		#end
 	}
 
-	public static function playFreakyMenu()
+	public static function playFreakyMenu(fade:Bool = true)
 	{
 		PlayState.skipDialogue = false;
-		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), fade ? 0 : 0.5);
 		Conductor.changeBPM(120);
 
-		FlxG.sound.music.fadeIn(4, 0, 0.5);
+		if (fade)
+			FlxG.sound.music.fadeIn(4, 0, 0.5);
 	}
 }
 

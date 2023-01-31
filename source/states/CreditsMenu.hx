@@ -9,6 +9,7 @@ import flixel.input.mouse.FlxMouseEvent;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
+import openfl.Assets;
 
 using StringTools;
 
@@ -36,7 +37,7 @@ class CreditsMenu extends MusicBeatState
 	var name:FlxText;
 	var desc:FlxText;
 	var funny:FlxText;
-	var makoGrippers:FlxSprite;
+	var image:FlxSprite;
 	var border:FlxSprite;
 
 	inline function get_passwords():Array<KeyCombo>
@@ -93,21 +94,22 @@ class CreditsMenu extends MusicBeatState
 		var row = [];
 		for (i in credits)
 		{
-			var icon = new FlxSprite().loadGraphic(Paths.image("credits-icons/" + i.name.toLowerCase()));
+			var img:String = "credits-icons/" + i.name.toLowerCase();
+			var icon = new FlxSprite().loadGraphic(Paths.image(Assets.exists(Paths.image(img)) ? img : "credits-icons/placeholder"));
 			icon.antialiasing = true;
 			icon.origin.set(0, 0);
-			icon.scale.set(0.35, 0.35);
+			icon.scale.set(0.29, 0.29);
 			icon.updateHitbox();
 			icon.ID = credits.indexOf(i);
 			add(icon);
 			row.push(icon);
 			icons.push(icon);
 
-			icon.x = ((bg.width / 2)) - ((icon.width + 4) * (6 / 2)) + ((icon.width + 4) * curIcon);
-			icon.y = 10 + ((icon.height + 15) * curRow);
+			icon.x = ((bg.width / 2)) - ((icon.width + 4) * (7 / 2)) + ((icon.width + 4) * curIcon);
+			icon.y = 10 + ((icon.height + 10) * curRow);
 			curIcon++;
 
-			if (curIcon >= 6)
+			if (curIcon >= 7)
 			{
 				curIcon = 0;
 				curRow++;
@@ -115,7 +117,16 @@ class CreditsMenu extends MusicBeatState
 				row = [];
 			}
 
-			FlxMouseEvent.add(icon, null, null, onMouseOver, onMouseOut);
+			var shelton = null;
+			if (i.name == "Shelton883")
+			{
+				shelton = (obj) ->
+				{
+					FlxG.sound.play(Paths.sound("ohmygod"));
+				}
+			}
+
+			FlxMouseEvent.add(icon, shelton, null, onMouseOver, onMouseOut);
 		}
 
 		selector = new FlxSprite(icons[0].x, icons[0].y).makeGraphic(cast icons[0].width, cast icons[0].height, 0x0);
@@ -139,12 +150,12 @@ class CreditsMenu extends MusicBeatState
 		funny.borderSize = 1.5;
 		add(funny);
 
-		makoGrippers = new FlxSprite(funny.x, funny.y).loadGraphic(Paths.image("credits-icons/makogrippers"));
-		makoGrippers.antialiasing = true;
-		makoGrippers.scale.set(0.8, 0.8);
-		makoGrippers.updateHitbox();
-		add(makoGrippers);
-		makoGrippers.visible = false;
+		image = new FlxSprite(funny.x, funny.y).loadGraphic(Paths.image("credits-icons/makogrippers"));
+		image.antialiasing = true;
+		image.scale.set(0.8, 0.8);
+		image.updateHitbox();
+		add(image);
+		image.visible = false;
 
 		hand = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
 		hand.frames = Paths.getSparrowAtlas('newMain/cursor');
@@ -164,7 +175,9 @@ class CreditsMenu extends MusicBeatState
 		selector.setPosition(obj.x, obj.y);
 
 		var i = credits[obj.ID];
-		bigIcon.loadGraphic(Paths.image("credits-icons/" + i.name.toLowerCase()));
+
+		var img:String = "credits-icons/" + i.name.toLowerCase();
+		bigIcon.loadGraphic(Paths.image(Assets.exists(Paths.image(img)) ? img : "credits-icons/placeholder"));
 		bigIcon.setPosition(968 - (bigIcon.width / 2), FlxG.height * 0.1);
 		bigIcon.updateHitbox();
 		bigIcon.visible = true;
@@ -187,10 +200,12 @@ class CreditsMenu extends MusicBeatState
 		funny.text = i.funny.length > 0 ? '"${i.funny}"' : "";
 		funny.setPosition(bigIcon.x + (bigIcon.width / 2) - (funny.width / 2), desc.y + desc.height + 10);
 
-		if (funny.text.contains('makogrippers.png'))
+		if (funny.text.contains(".png"))
 		{
-			makoGrippers.visible = true;
-			makoGrippers.setPosition(bigIcon.x + (bigIcon.width / 2) - (makoGrippers.width / 2) + 10, desc.y + desc.height - 5);
+			image.loadGraphic(Paths.image('credits-icons/' + funny.text.replace('.png', '').replace('"', '')));
+			image.visible = true;
+			image.setPosition(bigIcon.x + (bigIcon.width / 2) - (image.width / 2), funny.y + funny.height + 5);
+			image.updateHitbox();
 			funny.visible = false;
 		}
 	}
@@ -202,7 +217,7 @@ class CreditsMenu extends MusicBeatState
 		name.visible = false;
 		desc.visible = false;
 		funny.visible = false;
-		makoGrippers.visible = false;
+		image.visible = false;
 		border.visible = false;
 	}
 
@@ -212,6 +227,17 @@ class CreditsMenu extends MusicBeatState
 
 		if (FlxG.mouse.justMoved)
 			hand.setPosition(FlxG.mouse.x, FlxG.mouse.y);
+
+		if (FlxG.mouse.pressed || FlxG.keys.anyPressed([ENTER, SPACE]))
+		{
+			hand.animation.play('select');
+			hand.offset.y = 8;
+		}
+		else
+		{
+			hand.animation.play('idle');
+			hand.offset.y = 0;
+		}
 
 		if (FlxG.keys.justPressed.ANY)
 		{
@@ -245,7 +271,7 @@ class CreditsMenu extends MusicBeatState
 			if (FlxG.sound.music.fadeTween != null && !FlxG.sound.music.fadeTween.finished)
 				FlxG.sound.music.fadeTween.cancel();
 
-			Main.playFreakyMenu();
+			Main.playFreakyMenu(false);
 			FlxG.sound.music.time = prevTime;
 			FlxG.switchState(new MainMenuState(true));
 		}

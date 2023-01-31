@@ -21,13 +21,13 @@
 	<action msg="" portrait="fever" emotion="neutral" removePortrait="mega" showOnlyBG="false"/>
 	<action msg="YOU CAN'T FOOL ME!" portrait="fever" emotion="point"/>
 	<action msg="HUH? WHAT-" portrait="mega" emotion="confused"/>
-	<action msg="What-" portrait="tea" emotion="worried" fillBG="BLACK"/>
+	<action msg="What-" portrait="tea" emotion="worried" setBG="week6"/>
 	<action msg="I knew it, they found me AGAIN! Hurry Tea, curse them out in your space language!" portrait="fever" emotion="shocked"/>
 	<action msg="You [VIOLENT ALIEN CURSING] with your [%#@#%^&amp;^$%$@#$%^&amp;*(%#] and you think you're so-" portrait="tea" emotion="pointing"/>
 	<action msg="No, you idiot! I meant that I'm here to take the girl besides you!" portrait="mega" emotion="confused"/>
 	<action msg="Huh?" portrait="fever" emotion="ugh"/>
 	<action msg="Pfft." portrait="fever" emotion="neutral"/>
-	<action msg="Yo? What's so funny?" portrait="mega" emotion="embarassed3"/>
+	<action msg="Yo? What's so funny?" portrait="mega" emotion="embarrassed3"/>
 	<action msg="You aren't serious, right?" portrait="fever" emotion="neutral"/>
 	<action msg="I've been serious since the day my momma held me." portrait="mega" emotion="swag"/>
 	<action msg="And after I beat you by serenading your girl, we'll go do something incredibly romantic." portrait="mega" emotion="cocky"/>
@@ -38,7 +38,7 @@
 	<action msg="Uh-HELLO?" portrait="mega" emotion="confused"/>
 	<action msg="STILL HERE." portrait="mega" emotion="confused"/>
 	<action msg="Don't fucking raise your voice at me, kay?" portrait="tea" emotion="pointing-wtf"/>
-	<action msg="R-right..." portrait="mega" emotion="embarassed3"/>
+	<action msg="R-right..." portrait="mega" emotion="embarrassed3"/>
 	<action msg="So lemme get this straight." portrait="fever" emotion="ugh"/>
 	<action msg="You wanna battle through singing." portrait="fever" emotion="ugh"/>
 	<action msg="And if you win, you get...her?" portrait="fever" emotion="ugh"/>
@@ -61,7 +61,7 @@
 	<action msg="Oh thank god you accepted." portrait="mega" emotion="wtf"/>
 	<action msg="I mean, of course you did! Here I was afraid you were gonna be a chicken in front of your girl." portrait="mega" emotion="swag"/>
 	<action msg="You can't phase me with your weak ass insults!" portrait="fever" emotion="point"/>
-	<action msg="(Shit. How did they know I'm super hungry?)" portrait="fever" emotion="point"/>
+	<action msg="(Shit. How did they know I'm super hungry?)" portrait="fever" emotion="embarrassed"/>
 	<action msg="" portrait="tea" emotion="pointing"/>
 	<action msg="Ugh. Let me get the fucking speakers I guess." portrait="tea" emotion="pointing-wtf" fadeOutMus=""/>
 </file>

@@ -7,8 +7,8 @@
 	<action msg="That's a lie." portrait="tea" emotion="pointing"/>
 	<action msg="We've been walking through this melon patch for like ten minutes." portrait="tea" emotion="pointing"/>
 	<action msg="You could've easily picked the first few we've seen." portrait="tea" emotion="pointing"/>
-	<action msg="But you decided to keep walking, and continuously change discussion topics. So lemme ask again-" portrait="tea" emotion="tea-pointing-wtf"/>
-	<action msg="What's the reason for bringing us here, Fever?" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="But you decided to keep walking, and continuously change discussion topics. So lemme ask again-" portrait="tea" emotion="pointing-wtf"/>
+	<action msg="What's the reason for bringing us here, Fever?" portrait="tea" emotion="pointing-wtf"/>
 	<action msg="..." portrait="feverc" emotion="ugh"/>
 	<action msg="Okay, so maybe I just needed to get away from town." portrait="feverc" emotion="ugh"/>
 	<action msg="Aww. I get it, babe. You should've just said that." portrait="tea" emotion="flushed"/>
@@ -52,5 +52,5 @@
 	<action msg="Yeah. It can get boring here sometimes, so I decided to pick up a hobby." portrait="mako" emotion="neutral"/>
 	<action msg="Well then, fine. Just one song- after that, I'm getting back to making out with my girl!" portrait="feverc" emotion="ugh"/>
 	<action fadeOutMus=""/>
-	<action msg="So no one's gonna answer my-" portrait="tea" emotion="tea-pointing-wtf"/>
+	<action msg="So no one's gonna answer my-" portrait="tea" emotion="pointing-wtf"/>
 </file>

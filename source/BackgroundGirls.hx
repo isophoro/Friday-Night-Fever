@@ -17,7 +17,7 @@ class BackgroundGirls extends FlxSprite
 
 	public function getScared():Void
 	{
-		animation.addByPrefix('dance', 'FTRS - Ur Girl ', 24, false);
+		animation.addByPrefix('dance', 'FTRS - Chicken Sandwich', 24, false);
 		dance();
 	}
 

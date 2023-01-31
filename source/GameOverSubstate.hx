@@ -90,10 +90,13 @@ class GameOverSubstate extends MusicBeatSubstate
 		switch (daBf)
 		{
 			case 'rolldogDeathAnim':
-				FlxG.sound.play(Paths.sound('car_death'));
+				FlxG.sound.play(Paths.sound('deaths/car_death'));
 			case 'madDeath':
+				FlxG.sound.play(Paths.sound('deaths/laser'));
+			case 'bf-smushed':
+				FlxG.sound.play(Paths.sound('deaths/paste'));
 			default:
-				FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+				FlxG.sound.play(Paths.sound('deaths/generic'));
 		}
 		Conductor.changeBPM(100);
 

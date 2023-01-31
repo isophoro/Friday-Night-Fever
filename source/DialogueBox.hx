@@ -37,7 +37,8 @@ typedef DialogueAction =
 	?proceedImmediately:Bool,
 	?showOnlyBackground:Null<Bool>,
 	?removePortrait:String,
-	?fadeBG:String
+	?fadeBG:String,
+	?shake:Bool
 }
 
 class DialoguePortrait extends FlxSprite
@@ -66,10 +67,15 @@ class DialoguePortrait extends FlxSprite
 		if (character == "mega")
 		{
 			origin.set(0, 0);
-			setGraphicSize(Std.int(width * 2.6));
+			setGraphicSize(Std.int(width * 2.4));
 			updateHitbox();
 			width -= 250;
 			antialiasing = false;
+		}
+		else
+		{
+			setGraphicSize(Std.int(width * 0.9));
+			updateHitbox();
 		}
 	}
 
@@ -172,7 +178,10 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		{
 			@:privateAccess
 			if (!text._typing)
+			{
+				// FlxG.sound.play(Paths.sound("dialogue"), 0.4);
 				startDialogue();
+			}
 			else
 				text.skip();
 		}
@@ -210,6 +219,12 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			else
 				FlxG.sound.playMusic(Paths.music(split[0], daLibrary), 0);
 			FlxG.sound.music.fadeIn(1, 0, split[1] != null ? Std.parseFloat(split[1]) : 1);
+		}
+
+		if (action.shake)
+		{
+			for (i in cameras)
+				i.shake(0.05, 0.5);
 		}
 
 		if (action.fadeOutMus != null)
@@ -356,11 +371,6 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				if (curRight != null && curRight != portrait)
 					curRight.visible = false;
 
-				if (curLeft != null)
-					curLeft.color = 0xFF828282;
-				if (curRight != null)
-					curRight.color = 0xFFFFFFFF;
-
 				if (curRight != portrait)
 				{
 					portrait.setPosition(box.x + box.width - portrait.width + 40, box.y - portrait.height + 15);
@@ -377,19 +387,19 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				curRight = portrait;
 				curRight.visible = true;
 				curPortrait = curRight;
+
+				if (curLeft != null)
+					curLeft.color = 0xFF828282;
+				if (curRight != null)
+					curRight.color = 0xFFFFFFFF;
 			default:
 				if (curLeft != null && curLeft != portrait)
 					curLeft.visible = false;
 
-				if (curRight != null)
-					curRight.color = 0xFF828282;
-				if (curLeft != null)
-					curLeft.color = 0xFFFFFFFF;
-
 				if (curLeft != portrait)
 				{
 					portrait.setPosition(box.x - 40, box.y - portrait.height + 15);
-					FlxTween.tween(portrait, {x: portrait.x + 40}, 0.18);
+					FlxTween.tween(portrait, {x: portrait.x + 40 + (portrait.character == "mega" ? -130 : 0)}, 0.18);
 					portrait.alpha = 0;
 					FlxTween.tween(portrait, {alpha: 1}, 0.13);
 				}
@@ -400,6 +410,14 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 				curLeft.visible = true;
 				curLeft.setPosition(box.x, box.y - curLeft.height + 15);
 				curPortrait = curLeft;
+
+				if (curLeft.character == "mega")
+					curLeft.x -= 130;
+
+				if (curRight != null)
+					curRight.color = 0xFF828282;
+				if (curLeft != null)
+					curLeft.color = 0xFFFFFFFF;
 		}
 
 		if (action.removePortrait != null)
@@ -465,6 +483,8 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		for (a in data.nodes.action)
 		{
 			var action:DialogueAction = {};
+
+			action.shake = (a.has.shake && a.att.shake.charAt(0).toLowerCase() == "t");
 
 			if (a.has.showOnlyBG)
 			{

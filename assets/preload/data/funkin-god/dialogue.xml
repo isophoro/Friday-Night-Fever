@@ -3,23 +3,23 @@
 	<action msg="I did it to throw you off, and it worked!" portrait="fever" emotion="point"/>
 	<action msg="I thought you did it cause you're hungry." portrait="tea" emotion="neutral"/>
 	<action msg="Okay, maybe that's half of the reason!" portrait="fever" emotion="point"/>
-	<action msg="EUDHG-" portrait="mega" emotion="huh"/>
+	<action msg="EUDHG-" portrait="mega" emotion="confused"/>
 	<action msg="YOU KNOW WHAT??? IM DONE WITH YALL-" portrait="mega" emotion="insane"/>
 	<action msg="DUMB FRICKS-" portrait="mega" emotion="insane"/>
 	<action msg="The only dumb one here is you!" portrait="fever" emotion="point"/>
 	<action msg="You knew what you were getting into, and you lost!" portrait="fever" emotion="point"/>
 	<action msg="STOP." portrait="mega" emotion="cocky-angry"/>
 	<action msg="I'm so tired of the both of you NOT taking me SERIOUSLY!" portrait="mega" emotion="cocky-angry"/>
-	<action msg="Y'ALL LITERALLY NEED JESUS! LITERALLY!" portrait="mega" emotion="cocky-angry"/>
-	<action msg="IM SUMMONING GOD FOR THIS, AHAHA!" portrait="mega" emotion="cocky-angry"/>
+	<action msg="Y'ALL LITERALLY NEED JESUS! LITERALLY!" portrait="mega" emotion="insane"/>
+	<action msg="IM SUMMONING GOD FOR THIS, AHAHA!" portrait="mega" emotion="god"/>
 	<action msg="I think they've lost it." portrait="fever" emotion="ugh"/>
 	<action msg="Sorry- did they say they're summoning God?" portrait="tea" emotion="thinking"/>
 	<action msg="This is the second time we've ran into some crazy religious nut." portrait="fever" emotion="ugh"/>
 	<action msg="Wait, what are you doi-" portrait="tea" emotion="worried"/>
 	<action msg="Hey, don't do anything stu-" portrait="fever" emotion="point"/>
-	<action msg="G-God?" portrait="fever" emotion="shocked" setBG=""/>
-	<action narrate=". . ." playSound="heavenlychoir"/>
-	<action msg="..." portrait="flippy" emotion="ugh"/>
+	<action narrate=". . . . . . . . . . ." playSound="heavenlychoir" shake="true" proceedImmediately="true" fillBG="WHITE" showOnlyBG="true"/>
+	<action msg="G-God?" portrait="fever" emotion="shocked" showOnlyBG="false" removePortrait="tea"/>
+	<action msg="..." portrait="flippy" emotion="ugh" fillBG="BLACK"/>
 	<action msg="Hello, my children." portrait="flippy" emotion="neutral"/>
 	<action msg="Woah. Nice." portrait="fever" emotion="neutral"/>
 	<action msg="God's kinda good looking." portrait="tea" emotion="neutral"/>

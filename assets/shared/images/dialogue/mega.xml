@@ -8,7 +8,7 @@
     <SubTexture name="mega embarrassed2" x="0" y="243" width="282" height="243"/>
     <SubTexture name="mega embarrassed3" x="282" y="243" width="282" height="243"/>
     <SubTexture name="mega god" x="564" y="243" width="282" height="243"/>
-    <SubTexture name="mega huh" x="0" y="486" width="282" height="243"/>
+    <SubTexture name="mega confused" x="0" y="486" width="282" height="243"/>
     <SubTexture name="mega insane" x="282" y="486" width="282" height="243"/>
     <SubTexture name="mega neutral" x="564" y="486" width="282" height="243"/>
     <SubTexture name="mega swag" x="0" y="729" width="282" height="243"/>

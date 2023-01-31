@@ -191,10 +191,12 @@ class PlayState extends MusicBeatState
 		{
 			obj.loadFrames();
 		});
+		ratingsGrp.maxSize = usePixelAssets ? 1 : ComboRating.MAX_RENDERED;
 		numbersGrp.forEach(function(obj)
 		{
 			obj.loadFrames();
 		});
+		ratingsGrp.maxSize = usePixelAssets ? 3 : ComboNumber.MAX_RENDERED;
 		return set;
 	}
 
@@ -450,7 +452,7 @@ class PlayState extends MusicBeatState
 				}
 			case 'school':
 				{
-					defaultCamZoom = 1.02;
+					defaultCamZoom = 0.94;
 					curStage = 'school';
 					usePixelAssets = true;
 
@@ -578,13 +580,10 @@ class PlayState extends MusicBeatState
 				dad.x += 80;
 				dad.y += 560;
 				dad.scrollFactor.set(0.9, 0.9);
-			case 'mega':
+			case 'mega' | 'mega-angry':
 				dad.x += 150;
 				dad.y += 320;
 				dad.scrollFactor.set(0.9, 0.9);
-			case 'mega-angry':
-				dad.x += 150;
-				dad.y += 350;
 			case 'flippy':
 				dad.y += 300;
 				dad.x += 100;
@@ -2245,7 +2244,7 @@ class PlayState extends MusicBeatState
 					case 'mom' | 'mom-carnight' | 'mom-car':
 						camFollow.y = dad.getMidpoint().y + 90;
 					case 'mega' | 'mega-angry':
-						camFollow.y = dad.getMidpoint().y - 130;
+						camFollow.y = dad.getMidpoint().y - 80;
 						camFollow.x = dad.getMidpoint().x + 175;
 					case 'peakek' | 'peasus':
 						camFollow.x = dad.getMidpoint().x - -400;
@@ -2331,7 +2330,10 @@ class PlayState extends MusicBeatState
 						camFollow.y -= 100;
 					case 'mall':
 						camFollow.y = boyfriend.getMidpoint().y - 200;
-					case 'school' | 'schoolEvil':
+					case 'school':
+						camFollow.x = boyfriend.getMidpoint().x - 130;
+						camFollow.y = boyfriend.getMidpoint().y - 85;
+					case 'schoolEvil': // 200 , -100
 						camFollow.x = boyfriend.getMidpoint().x - 330;
 						camFollow.y = boyfriend.getMidpoint().y - 30;
 					case 'spooky' | 'spookyBOO':
