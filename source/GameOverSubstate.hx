@@ -96,7 +96,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			case 'bf-smushed':
 				FlxG.sound.play(Paths.sound('deaths/paste'));
 			default:
-				FlxG.sound.play(Paths.sound('deaths/generic'));
+				FlxG.sound.play(Paths.sound('deaths/general'));
 		}
 		Conductor.changeBPM(100);
 

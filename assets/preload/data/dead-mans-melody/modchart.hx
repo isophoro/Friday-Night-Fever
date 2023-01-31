@@ -169,7 +169,8 @@ function onUpdate(elapsed:Float)
 			PlayState.canPressSpace = false;
 			PlayState.instance.gotSmushed = true;
 			PlayState.instance.canHey = true;
-			PlayState.instance.health -= 2;
+			PlayState.instance.health = -1;
+			return; // possible fix?? idk i've never crashed.
 		}
 	}
 

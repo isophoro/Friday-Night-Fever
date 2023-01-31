@@ -1,14 +1,21 @@
+import PlayState;
+
 function onCreatePost()
 {
-	camHUD.fade(FlxColor.BLACK, 0);
-	var video = new MP4Handler();
-	video.playVideo(Paths.video("tranquility"));
-	video.finishCallback = function()
+	if (PlayState.isStoryMode)
 	{
-		trace("VIDEO FINISH!");
-		video.stop();
+		camHUD.fade(FlxColor.BLACK, 0);
+		var video = new MP4Handler();
+		video.playVideo(Paths.video("tranquility"));
+		video.finishCallback = function()
+		{
+			trace("VIDEO FINISH!");
+			video.stop();
 
-		camHUD.fade(FlxColor.BLACK, 0.7, true);
-		game.startCountdown();
+			camHUD.fade(FlxColor.BLACK, 0.7, true);
+			game.startCountdown();
+		}
 	}
+	else
+		game.startCountdown();
 }

@@ -111,6 +111,7 @@ function onBeatHit(curBeat:Int)
 		for (i in blackBars)
 			i.visible = true;
 
+		game.defaultCamZoom = 0.6;
 		game.camGame.zoom = 0.6;
 		game.curOpponent = charR;
 		bgRCar.visible = charR.visible = bgR.visible = true;
@@ -132,6 +133,7 @@ function onBeatHit(curBeat:Int)
 		for (i in blackBars)
 			i.visible = false;
 
+		game.defaultCamZoom = 0.36;
 		camGame.flash(FlxColor.WHITE, 0.45);
 		bgF.visible = charF.visible = false;
 		game.curPlayer = boyfriend;
