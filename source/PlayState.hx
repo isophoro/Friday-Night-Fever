@@ -929,7 +929,7 @@ class PlayState extends MusicBeatState
 			scripts.add(cutsceneScript);
 			cutsceneScript.callFunction("onCreate");
 		}
-		else if (isStoryMode || curSong == "Shadow")
+		else if (isStoryMode && !skipDialogue || curSong == "Shadow" && !skipDialogue)
 		{
 			switch (curSong.toLowerCase())
 			{
@@ -1109,8 +1109,11 @@ class PlayState extends MusicBeatState
 		skipDialogue = true;
 		inCutscene = false;
 
-		generateStaticArrows(cpuStrums, FlxG.width * 0.25, false);
-		generateStaticArrows(playerStrums, FlxG.width * 0.75, true);
+		if (strumLineNotes.length < 1)
+		{
+			generateStaticArrows(cpuStrums, FlxG.width * 0.25, false);
+			generateStaticArrows(playerStrums, FlxG.width * 0.75, true);
+		}
 
 		#if windows
 		if (executeModchart)
@@ -3278,8 +3281,9 @@ class PlayState extends MusicBeatState
 
 	function set_parried(p):Bool
 	{
-		if (p)
+		if (p && !parried)
 		{
+			trace("PARRY ACHIEVEMENT");
 			AchievementHandler.unlockTrophy(PERFECT_PARRY);
 		}
 		return parried = p;

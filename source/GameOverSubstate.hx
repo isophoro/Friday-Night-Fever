@@ -25,6 +25,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	public function new(x:Float, y:Float)
 	{
 		super();
+		PlayState.skipDialogue = true;
 
 		var daBf:String = PlayState.instance.boyfriend.curCharacter;
 

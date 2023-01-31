@@ -50,6 +50,12 @@ class PauseSubState extends MusicBeatSubstate
 		}
 		difficultyChoices.push('BACK');
 
+		var song = StringTools.replace(PlayState.SONG.song.toLowerCase(), " ", "-");
+		if (!lime.utils.Assets.exists(Paths.json('$song/$song')))
+		{
+			menuItemsOG.remove('Change Difficulty');
+		}
+
 		pauseMusic = new FlxSound().loadEmbedded(Paths.music('breakfast'), true, true);
 		pauseMusic.volume = 0;
 		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
@@ -130,10 +136,10 @@ class PauseSubState extends MusicBeatSubstate
 				{
 					var name:String = PlayState.SONG.song.toLowerCase();
 					var poop = Highscore.formatSong(name, curSelected + 1);
+					trace("Loading song: " + poop + " " + curSelected);
 					PlayState.SONG = Song.loadFromJson(poop, name);
-					PlayState.storyDifficulty = curSelected;
+					PlayState.storyDifficulty = curSelected + 1;
 					FlxG.resetState();
-					FlxG.sound.music.volume = 0;
 					return;
 				}
 			}

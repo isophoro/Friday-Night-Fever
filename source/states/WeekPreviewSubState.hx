@@ -253,6 +253,7 @@ class WeekPreviewSubState extends MusicBeatSubstate
 
 		if (controls.ACCEPT)
 		{
+			allowInputs = false;
 			FlxG.sound.play(Paths.sound("select"));
 			for (i in characters)
 			{

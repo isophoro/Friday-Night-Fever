@@ -45,6 +45,8 @@ class DialoguePortrait extends FlxSprite
 {
 	public var character:String = "";
 
+	var ogScale:Float = 0.9;
+
 	public function new(character:String, library:String)
 	{
 		super(0, -90);
@@ -77,14 +79,16 @@ class DialoguePortrait extends FlxSprite
 			setGraphicSize(Std.int(width * 0.9));
 			updateHitbox();
 		}
+
+		ogScale = scale.x;
 	}
 
 	public function jump()
 	{
-		FlxTween.tween(this, {"scale.y": 1.025, y: y - 18}, 0.05, {
+		FlxTween.tween(this, {"scale.y": ogScale + 0.025, y: y - 18}, 0.05, {
 			onComplete: function(twn:FlxTween)
 			{
-				FlxTween.tween(this, {"scale.y": 1, y: y + 18}, 0.04, {ease: FlxEase.elasticInOut});
+				FlxTween.tween(this, {"scale.y": ogScale, y: y + 18}, 0.04, {ease: FlxEase.elasticInOut});
 			}
 		});
 	}
