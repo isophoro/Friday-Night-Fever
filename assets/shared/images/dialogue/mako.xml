@@ -3,8 +3,8 @@
 <!-- $TexturePacker:SmartUpdate:9e39ac57086f331a14332fe075ff7655:69226da3255d7b78f0b3c3e47f89ef51:65b4105391be0b2f09b76b4360dbc562$ -->
 <TextureAtlas imagePath="mako.png" width="1950" height="1200">
     <SubTexture name="mako angry" x="0" y="0" width="650" height="600"/>
-    <SubTexture name="mako blush" x="650" y="0" width="650" height="600"/>
+    <SubTexture name="mako embarrassed" x="650" y="0" width="650" height="600"/>
     <SubTexture name="mako corrupt" x="1300" y="0" width="650" height="600"/>
-    <SubTexture name="mako cringe" x="0" y="600" width="650" height="600"/>
+    <SubTexture name="mako confused" x="0" y="600" width="650" height="600"/>
     <SubTexture name="mako neutral" x="650" y="600" width="650" height="600"/>
 </TextureAtlas>
