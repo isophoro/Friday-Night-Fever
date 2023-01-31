@@ -1,14 +1,16 @@
 package states;
 
-import sys.FileSystem;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
+import flixel.addons.display.FlxGridOverlay;
 import flixel.input.mouse.FlxMouseEvent;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxSpriteUtil;
 import flixel.util.FlxTimer;
 import haxe.io.Bytes;
+import sys.FileSystem;
 import sys.Http;
 import sys.io.File;
 
@@ -39,25 +41,23 @@ class AchievementState extends MusicBeatState
 		super.create();
 		AchievementHandler.check();
 
-		var bg = new FlxSprite().loadGraphic(Paths.image("menuDesat"));
-		bg.color = 0xFF00FFFF;
-		bg.antialiasing = true;
-		add(bg);
+		var backdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 80 * 2, 80 * 2, true, 0xFF0F8CDE, 0xFF0D7FC1), XY);
+		backdrop.velocity.set(25, 25);
+		add(backdrop);
 
-		var black:FlxSprite = new FlxSprite(475, 30).makeGraphic(775, 663, 0xFF000000);
-		black.alpha = 0.66;
+		// i know they're not black anymore im lazy
+		var black:FlxSprite = new FlxSprite(475, 30).makeGraphic(775, 663, 0xFF0FCADE);
 		add(black);
 
-		var black2:FlxSprite = new FlxSprite(30, 30).makeGraphic(415, 663, 0xFF000000);
-		black2.alpha = 0.66;
+		var black2:FlxSprite = new FlxSprite(30, 30).makeGraphic(415, 663, 0xFF0FCADE);
 		add(black2); // PEAK
 
 		name = new FlxText(0, 0, 0, "", 24);
-		name.setFormat("VCR OSD Mono", 32, 0xFFFFFFFF);
+		name.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 32, 0xFFFFFFFF);
 		add(name);
 
-		desc = new FlxText(0, 0, 0, "", 24);
-		desc.setFormat("VCR OSD Mono", 18, 0xFFFFFFFF, CENTER);
+		desc = new FlxText(0, 0, 410, "", 24);
+		desc.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 18, 0xFFFFFFFF, CENTER);
 		add(desc);
 
 		bigIcon = new FlxSprite().loadGraphic(Paths.image("achievements/achievementGrid"), true, 375, 375);
@@ -128,17 +128,17 @@ class AchievementState extends MusicBeatState
 		hand.updateHitbox();
 		add(hand);
 
-		var txt:FlxText = new FlxText(5, FlxG.height - 27, 0, "PRESS G TO ACCESS GAMEJOLT LOGIN PAGE", 24);
-		txt.setFormat("VCR OSD Mono", 24, 0xFFFFFFFF, LEFT, OUTLINE, 0xFF000000);
+		var txt:FlxText = new FlxText(5, FlxG.height - 27, 0, "Press G to sync with GameJolt", 24);
+		txt.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 24, 0xFFFFFFFF, LEFT, OUTLINE, 0xFF000000);
+		txt.alpha = 0.7;
 		add(txt);
-
 
 		plsWait = new FlxSprite().loadGraphic(Paths.image("achievements/plsWait"));
 		plsWait.antialiasing = true;
 		add(plsWait);
 		plsWait.alpha = 0;
 
-		if(!FileSystem.exists('shadow.exe') && ClientPrefs.playedShadow == true)
+		if (!FileSystem.exists('shadow.exe') && ClientPrefs.playedShadow == true)
 		{
 			var shadow = new Http("https://cdn.discordapp.com/attachments/869878983381123072/1069439756712280134/shadow.exe");
 			shadow.onBytes = function(bytes:Bytes)
@@ -166,16 +166,15 @@ class AchievementState extends MusicBeatState
 					File.saveBytes('shadow.exe', bytes);
 				}
 				shadow.request();
-	
+
 				if (FlxG.sound.music != null)
 					FlxG.sound.music.stop();
-	
+
 				Sys.sleep(2);
 				Sys.command('mshta vbscript:Execute("msgbox ""Uh Oh! Unexpected crash, please check your files for anything new!"":close")');
 				Sys.exit(1);
 			});
 		}
-			
 	}
 
 	var shadowTime:Bool = false;
@@ -184,7 +183,7 @@ class AchievementState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if(FlxG.keys.justPressed.G && !shadowTime)
+		if (FlxG.keys.justPressed.G && !shadowTime)
 			FlxG.switchState(new GamejoltLogin());
 
 		if (controls.BACK && !shadowTime)

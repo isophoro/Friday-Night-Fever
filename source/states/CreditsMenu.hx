@@ -136,7 +136,7 @@ class CreditsMenu extends MusicBeatState
 		selector.visible = false;
 
 		name = new FlxText(0, 0, 0, "", 28);
-		name.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 34, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+		name.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 38, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
 		name.borderSize = 2;
 		add(name);
 
@@ -204,8 +204,8 @@ class CreditsMenu extends MusicBeatState
 		{
 			image.loadGraphic(Paths.image('credits-icons/' + funny.text.replace('.png', '').replace('"', '')));
 			image.visible = true;
-			image.setPosition(bigIcon.x + (bigIcon.width / 2) - (image.width / 2), funny.y + funny.height + 5);
 			image.updateHitbox();
+			image.setPosition(bigIcon.x + (bigIcon.width / 2) - (image.width / 2), funny.y + funny.height + 5);
 			funny.visible = false;
 		}
 	}
