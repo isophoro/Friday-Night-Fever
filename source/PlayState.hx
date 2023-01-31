@@ -1643,17 +1643,34 @@ class PlayState extends MusicBeatState
 	var iconHurtTimer:Float = 0;
 
 	public var cameraSpeed:Float = 1.3;
-
 	static public var canPressSpace:Bool = false;
+
+
+	public var spaceDelay:Float = 0;
+	var spaceDelayTime:Float = 1; // a second delay
+
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (controls.DODGE && canPressSpace && !ClientPrefs.botplay && SONG.song.toLowerCase() == 'dead-mans-melody')
+		if (controls.DODGE  && !ClientPrefs.botplay && SONG.song.toLowerCase() == 'dead-mans-melody' && spaceDelay <= 0)
 		{
 			trace("GAY");
-			spacePressed = true;
+
+			spaceDelay = spaceDelayTime;
+			
+			if(canPressSpace)
+				spacePressed = true;
+		}
+
+		if(spaceDelay > 0)
+		{
+			spaceDelay -= FlxG.elapsed;
+		}
+		else
+		{
+			spaceDelay = 0;
 		}
 
 		if (FlxG.keys.justPressed.E)

@@ -179,6 +179,7 @@ function onUpdate(elapsed:Float)
 	{
 		PlayState.instance.spacePressed = false;
 		game.parried = true;
+		PlayState.instance.spaceDelay = 0;
 
 		if (boyfriend.curCharacter == 'bf-demon')
 		{
