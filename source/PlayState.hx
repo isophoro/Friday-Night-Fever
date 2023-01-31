@@ -22,7 +22,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import lime.utils.Assets;
-import openfl.Lib;
 import openfl.display.BlendMode;
 import openfl.events.KeyboardEvent;
 import openfl.filters.BitmapFilter;
@@ -451,6 +450,7 @@ class PlayState extends MusicBeatState
 				}
 			case 'school':
 				{
+					defaultCamZoom = 1.02;
 					curStage = 'school';
 					usePixelAssets = true;
 
@@ -2090,16 +2090,19 @@ class PlayState extends MusicBeatState
 							}
 						case 'monster' | 'taki':
 							iconHurtTimer = 0.45;
+							var mult = storyDifficulty == 1 ? 0.6 : 1;
 							switch (curSong)
 							{
 								case 'Prayer':
-									if (curStep >= 1359 && curStep < 1422) health -= 0.025; else if (curStep < 1681) health -= health > 0.2 ? 0.02 : 0.0065;
+									if (curStep >= 1359 && curStep < 1422) // CHAINSAW
+										health -= 0.0215 * mult; else if (curStep < 1681) // NORMAL
+										health -= health > 0.165 ? 0.0165 * mult : 0.0065 * mult;
 								case 'Crucify':
-									health -= (daNote.isSustainNote ? 0.01 : 0.03);
+									health -= (daNote.isSustainNote ? 0.01 : 0.03 * mult);
 								case 'Bazinga':
-									health -= (daNote.isSustainNote ? 0.01435 : 0.025);
+									health -= (daNote.isSustainNote ? 0.01435 : 0.025 * mult);
 								default:
-									health -= 0.02;
+									health -= 0.02 * mult;
 							}
 
 							gf.playAnim('scared');

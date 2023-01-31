@@ -6,10 +6,10 @@
 	<action msg="Huh?" portrait="tea" emotion="worried"/>
 	<action msg="I love you." portrait="feverc"/>
 	<action msg="... I love you too." portrait="tea" emotion="flushed"/>
-	<action msg="..." portrait="scarlet" emotion="final" proceedImmediately="true"/>
-	<action msg="..." proceedImmediately="true"/>
+	<action narrate="..." portrait="scarlet" emotion="final" proceedImmediately="true"/>
+	<action narrate="..." proceedImmediately="true"/>
 	<action msg="LOVE." fadeInMus="erm:0.5"/>
-	<action msg=".............." proceedImmediately="true" showOnlyBG="t" playSound="powerdown"/>
+	<action narrate=".............." proceedImmediately="true" showOnlyBG="t" playSound="powerdown"/>
 	<action msg="Perhaps..." portrait="scarlet" emotion="neutral" showOnlyBG="f"/>
 	<action msg="I was erroneous."/>
 	<action msg="Evidently, the one named Tea is not actually white, they seem to simply have white fur. I was instructed that their skin was white."/>

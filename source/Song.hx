@@ -38,7 +38,8 @@ class Song
 	public static var songArtists:Map<Array<String>, String> = [
 		[
 			"hallow", "eclipse", "soul", "hardships", "banish", "bloom", "dead-mans-melody", "grando", "old-portrait", "old-hallow", "old-soul",
-			"cell-from-hell"
+			"cell-from-hell",
+			"old-hardships"
 		] => "FPLester",
 		[
 			"c354r",
@@ -55,7 +56,8 @@ class Song
 	];
 
 	public static var costumeDisabledSongs:Array<String> = [
-		"shadow", "mechanical", "erm", "loaded", "cosmic-swing", "cell-from-hell", "w00f", "gears", "space-demons", "ur-girl", "funkin-god", "chicken-sandwich", "dui"
+		"shadow", "mechanical", "erm", "loaded", "cosmic-swing", "cell-from-hell", "w00f", "gears", "space-demons", "ur-girl", "funkin-god",
+		"chicken-sandwich", "dui"
 	];
 
 	public static function getArtist(_song:String):String

@@ -1,6 +1,5 @@
 <file>
-	<action msg=" " portrait="mega" emotion="cocky-angry" setBG="dialogue_backgrounds/plainblacklol"/>
-	<action msg="You made the song about food?!" portrait="mega" emotion="cocky-angry"/>
+	<action msg="You made the song about food?!" portrait="mega" emotion="cocky-angry" fillBG="BLACK"/>
 	<action msg="I did it to throw you off, and it worked!" portrait="fever" emotion="point"/>
 	<action msg="I thought you did it cause you're hungry." portrait="tea" emotion="neutral"/>
 	<action msg="Okay, maybe that's half of the reason!" portrait="fever" emotion="point"/>
@@ -19,7 +18,7 @@
 	<action msg="Wait, what are you doi-" portrait="tea" emotion="worried"/>
 	<action msg="Hey, don't do anything stu-" portrait="fever" emotion="point"/>
 	<action msg="G-God?" portrait="fever" emotion="shocked" setBG=""/>
-	<action narrate="" playSound="heavenlychoir"/>
+	<action narrate=". . ." playSound="heavenlychoir"/>
 	<action msg="..." portrait="flippy" emotion="ugh"/>
 	<action msg="Hello, my children." portrait="flippy" emotion="neutral"/>
 	<action msg="Woah. Nice." portrait="fever" emotion="neutral"/>

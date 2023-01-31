@@ -43,9 +43,9 @@ class PauseSubState extends MusicBeatSubstate
 			menuItems.splice(menuItems.length - 2, 2); // removes change difficulty and exit to menu from shadow
 		}
 
-		for (i in 0...CoolUtil.difficultyArray.length)
+		for (i in Difficulty.DIFFICULTY_MIN...Difficulty.DIFFICULTY_MAX + 1)
 		{
-			var diff:String = '' + CoolUtil.difficultyArray[i];
+			var diff:String = '' + Difficulty.data[i].name;
 			difficultyChoices.push(diff);
 		}
 		difficultyChoices.push('BACK');
@@ -132,7 +132,6 @@ class PauseSubState extends MusicBeatSubstate
 					var poop = Highscore.formatSong(name, curSelected + 1);
 					PlayState.SONG = Song.loadFromJson(poop, name);
 					PlayState.storyDifficulty = curSelected;
-					// CustomFadeTransition.nextCamera = transCamera;
 					FlxG.resetState();
 					FlxG.sound.music.volume = 0;
 					return;

@@ -124,7 +124,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 		text.font = 'Plunge';
 		text.color = 0xffffff;
 		text.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
-		text.delay = 0.04;
+		text.delay = 0.033;
 		text.setTypingVariation(0.5, true);
 		add(text);
 
@@ -165,7 +165,7 @@ class DialogueBox extends FlxTypedSpriteGroup<FlxSprite>
 			return endDialogue();
 		}
 
-		text.delay = FlxG.keys.pressed.SHIFT ? 0.02 : 0.04;
+		text.delay = FlxG.keys.pressed.SHIFT ? 0.02 : 0.033;
 
 		@:privateAccess
 		if (FlxG.keys.anyJustPressed([ENTER, SPACE]) || !text._typing && skip)

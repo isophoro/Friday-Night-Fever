@@ -176,7 +176,7 @@ class AchievementHandler
 	{
 		for (i in songs)
 		{
-			if (!Highscore.fullCombos.exists(i))
+			if (!Highscore.fullCombos.exists(i.toLowerCase()) && !Highscore.fullCombos.exists(i))
 				return false;
 		}
 

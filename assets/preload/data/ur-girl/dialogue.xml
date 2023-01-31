@@ -1,5 +1,5 @@
 <file>
-	<action msg="Where the funk is this place at?" portrait="tea" emotion="flushed" fadeInMus="ur-girl"/>
+	<action msg="Where the funk is this place at?" portrait="tea" emotion="flushed" fadeInMus="ur-girl" fillBG="black"/>
 	<action msg="There's like, no signal here." portrait="fever" emotion="ugh"/>
 	<action msg="I'm starving." portrait="tea" emotion="pointing"/>
 	<action msg="For my affection?" portrait="fever" emotion="hey"/>
@@ -17,11 +17,11 @@
 	<action msg="Though thats not a bad bonus, haha." portrait="mega" emotion="swag"/>
 	<action msg="My name is Mega, and I want *ya girl~.*" portrait="mega" emotion="neutral"/>
 	<action msg="Wha-??" portrait="tea" emotion="pointing"/>
-	<action msg="Do you mind if we take a picture together? I'd like to show Santa that you're all I want for Christmas~." portrait="mega" emotion="cocky" setBG="dialogue_backgrounds/megagay"/>
-	<action msg="" portrait="fever" emotion="neutral"/>
+	<action msg="Do you mind if we take a picture together? I'd like to show Santa that you're all I want for Christmas~." portrait="mega" emotion="cocky" setBG="dialogue_backgrounds/megagay" showOnlyBG="true"/>
+	<action msg="" portrait="fever" emotion="neutral" removePortrait="mega" showOnlyBG="false"/>
 	<action msg="YOU CAN'T FOOL ME!" portrait="fever" emotion="point"/>
 	<action msg="HUH? WHAT-" portrait="mega" emotion="confused"/>
-	<action msg="What-" portrait="tea" emotion="worried"/>
+	<action msg="What-" portrait="tea" emotion="worried" fillBG="BLACK"/>
 	<action msg="I knew it, they found me AGAIN! Hurry Tea, curse them out in your space language!" portrait="fever" emotion="shocked"/>
 	<action msg="You [VIOLENT ALIEN CURSING] with your [%#@#%^&amp;^$%$@#$%^&amp;*(%#] and you think you're so-" portrait="tea" emotion="pointing"/>
 	<action msg="No, you idiot! I meant that I'm here to take the girl besides you!" portrait="mega" emotion="confused"/>
