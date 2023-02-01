@@ -128,8 +128,8 @@ class AchievementState extends MusicBeatState
 		hand.updateHitbox();
 		add(hand);
 
-		var txt:FlxText = new FlxText(5, FlxG.height - 27, 0, "Press G to sync with GameJolt", 24);
-		txt.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 24, 0xFFFFFFFF, LEFT, OUTLINE, 0xFF000000);
+		var txt:FlxText = new FlxText(5, FlxG.height - 30, 0, "Press G to sync with GameJolt", 24);
+		txt.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 20, 0xFFFFFFFF, LEFT, OUTLINE, 0xFF000000);
 		txt.alpha = 0.7;
 		add(txt);
 

@@ -42,13 +42,21 @@ class OptionsState extends MusicBeatState
 						shiftInterval: 10
 					}),
 				new Option("Ghost Tapping", "When enabled, misinputs will no longer cause misses.", "ghost", BOOL),
-				new Option("Play with Modcharts", "When enabled, modcharts will be automatically forced on for every song.", "modcharts", BOOL),
+				new Option("Play with Modcharts", "When enabled, LUA modcharts will be automatically forced on for every song.", "modcharts", BOOL),
 				new Option("Botplay", "When enabled, player input will be locked and songs will automatically play themselves.", "botplay", BOOL)
 			]
 		},
 		{
 			"name": "Visuals",
 			options: [
+				new Option("Adjust Combo Positioning", "", "", STATE, {state: ComboAdjustmentState}),
+				new Option("Background Dim", "When above 0% the game's stage will become dimmed.\nThe higher the number the less visible it is.",
+					"laneTransparency", INT,
+					{
+						range: [0, 100],
+						suffix: "%",
+						shiftInterval: 10
+					}),
 				new Option("Show Note Splashes", "When enabled, \"Sick\" ratings will causes the corresponding arrow to sparkle.", "notesplash", BOOL),
 				new Option("Show Note Precision", "When enabled, the precision of hit notes (in milliseconds) will be displayed next to your combo.",
 					"showPrecision", BOOL),
@@ -113,7 +121,7 @@ class OptionsState extends MusicBeatState
 		bg.antialiasing = true;
 		add(bg);
 
-		var water = new FlxSprite(-48, -8);
+		var water = new FlxSprite(-48, -3);
 		water.frames = Paths.getSparrowAtlas("options/water");
 		water.animation.addByPrefix("water", "water", 24, true);
 		water.animation.play("water");
@@ -352,6 +360,8 @@ class OptionsState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('select'));
 				FlxFlicker.flicker(items.members[curSelected], 0, 0.06, true);
 				items.members[curSelected].text = "Awaiting input...";
+			case STATE:
+				FlxG.switchState(Type.createInstance(categories[curCategory].options[curSelected].state, []));
 			default:
 				// do nothing
 		}
@@ -362,7 +372,7 @@ class OptionsState extends MusicBeatState
 		// kill all members of both groups
 		for (c in [items, checkboxes])
 		{
-			for (i in(cast c : FlxTypedGroup<flixel.FlxBasic>).members)
+			for (i in (cast c : FlxTypedGroup<flixel.FlxBasic>).members)
 			{
 				(cast i : flixel.FlxBasic).kill();
 			}

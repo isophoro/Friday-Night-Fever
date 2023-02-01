@@ -121,6 +121,9 @@ class Ratings
 
 	public static function CalculateRanking(score:Int, accuracy:Float):String
 	{
+		if (score > 100000) // it shows Score: 100001 sometimes and that scares me!! probably has to do with doing ceil instead of floor but i dont feel like testing that
+			score = 100000;
+
 		if (PlayState.SONG.song == 'Bad-Nun' && BadNun.translate)
 		{
 			return new UnicodeString("スコア: "

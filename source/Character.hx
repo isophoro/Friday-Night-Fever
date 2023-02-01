@@ -202,16 +202,15 @@ class Character extends FlxSprite
 					flipX = true;
 					isDeathAnim = true;
 				case 'bf-hallow-dead':
-					frames = getSparrowAtlas('characters/Hallow_Death');
-					addByPrefix('singUP', "BF dies", 24, false);
-					addByPrefix('firstDeath', "BF dies", 24, false);
-					addByPrefix('deathLoop', "BF Dead Loop", 24, true);
-					addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
+					frames = getSparrowAtlas('characters/deathAnims/hallow');
+					addByPrefix('firstDeath', "Fever dies0", 24, false);
+					addByPrefix('deathLoop', "Fever dies loop", 24, true);
+					addByPrefix('deathConfirm', "Fever Dead confirm", 24, false);
 					animation.play('firstDeath');
 
 					addOffset('firstDeath');
-					addOffset('deathLoop', -93, -75);
-					addOffset('deathConfirm', -30, -121);
+					addOffset('deathLoop', -73, -35);
+					addOffset('deathConfirm', -26, -187);
 					playAnim('firstDeath');
 
 					flipX = true;

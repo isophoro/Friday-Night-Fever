@@ -136,7 +136,7 @@ class TVCutscene extends MusicBeatState
 										var dialogue = new DialogueBox("assets/data/c354r/tv.xml");
 										dialogue.finishCallback = () ->
 										{
-											FlxG.switchState(new PlayState());
+											FlxG.switchState(new PlayState(true));
 										}
 										add(dialogue);
 									}

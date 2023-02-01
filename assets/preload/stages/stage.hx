@@ -39,6 +39,8 @@ function onCreate()
 	dog.frames = Paths.getSparrowAtlas("week1/eepydog");
 	dog.animation.addByPrefix("idle", "r", 24);
 	dog.animation.play("idle");
+	dog.scrollFactor.set(0.9, 0.9);
+	dog.antialiasing = true;
 	add(dog);
 
 	leftAd = new FlxSprite(stageCurtains.x + (244 * 0.9), stageCurtains.y + (428 * 0.9));

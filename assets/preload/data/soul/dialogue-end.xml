@@ -16,10 +16,12 @@
 	<action msg="But you brought her into the mix." portrait="feverd" emotion="frown"/>
 	<action msg="There's a place MUCH worse waiting for you." portrait="feverd" emotion="frown"/>
 	<action msg="AaAaAaA???" portrait="hallow" emotion="rage"/>
-	<action msg="AAAAAA!-" portrait="hallow" emotion="rage" narrate="I want you to burn. Taking your soul ISN'T ENOUGH!"/>
+	<action msg="I want you to burn. Taking your soul ISN'T ENOUGH!" portrait="fever" showOnlyBG="true" setBG="feverfight"/>
+	<action msg="AAAAAA!-" portrait="hallow" emotion="rage"/>
 	<action msg="Aa..." portrait="hallow" emotion="rage"/>
-	<action msg="...whew. The rest of you, run away." portrait="feverd" emotion="frown" narrate="..."/>
-	<action msg="Huh? Fever? Where are we? What were you yelling about?..." portrait="tea" emotion="worried" narrate="The rest of the ghosts run away."/>
+	<action msg="...whew. The rest of you, run away." portrait="feverd" emotion="frown" showOnlyBG="false" fillBG="BLACK" removePortrait="hallow"/>
+	<action msg="Huh? Fever? Where are we? What were you yelling about?..." portrait="tea" emotion="worried"/>
+	<action narrate="The rest of the ghosts run away."/>
 	<action msg="Hey, don't worry about it. Just had to deal with someone." portrait="feverd" emotion="neutral"/>
 	<action msg="No one's gonna bug us anymore. Come on, let's go home." portrait="feverd" emotion="neutral"/>
 	<action msg="Uh, okay..." portrait="tea" emotion="worried"/>

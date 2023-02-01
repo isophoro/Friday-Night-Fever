@@ -56,16 +56,13 @@ function onCreate()
 	add(t4);
 	t4.alpha = 0.000000009;
 
-	if (ClientPrefs.shaders)
-	{
-		wiggleEffect = new WiggleEffect();
-		wiggleEffect.waveAmplitude = 0.0055;
-		wiggleEffect.waveFrequency = 7;
-		wiggleEffect.waveSpeed = 1.15;
+	wiggleEffect = new WiggleEffect();
+	wiggleEffect.waveAmplitude = 0.0055;
+	wiggleEffect.waveFrequency = 7;
+	wiggleEffect.waveSpeed = 1.15;
 
-		for (i in [iconP1, iconP2, whittyBG, currentTimingShown, scoreTxt])
-			i.shader = wiggleEffect.shader;
-	}
+	for (i in [iconP1, iconP2, whittyBG, currentTimingShown, scoreTxt])
+		i.shader = wiggleEffect.shader;
 }
 
 function onUpdate(elapsed:Float)

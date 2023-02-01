@@ -276,8 +276,8 @@ class WeekPreviewSubState extends MusicBeatSubstate
 
 					LoadingState.loadAndSwitchState(switch (week)
 					{
-						case 9: if (curDifficulty.ID != 3) new states.TVCutscene(); else new PlayState();
-						default: new PlayState();
+						case 9: if (curDifficulty.ID != 3) new states.TVCutscene(); else new PlayState(true);
+						default: new PlayState(true);
 					}, true);
 				});
 			}

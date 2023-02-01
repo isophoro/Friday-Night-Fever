@@ -22,6 +22,16 @@
 		},
 		{
 			"offsets": [
+				265,
+				96
+			],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
 				6,
 				93
 			],
@@ -103,7 +113,7 @@
 		{
 			"offsets": [
 				21,
-				122
+				142
 			],
 			"fps": 24,
 			"anim": "dodge",

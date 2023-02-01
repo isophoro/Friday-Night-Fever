@@ -18,14 +18,6 @@ function onCreatePost()
 {
 	camGame.zoom = game.defaultCamZoom = 0.47;
 	gf.scrollFactor.set(1, 1);
-
-	if (getSong("song") != "Bazinga")
-		return;
-
-	game.disableCamera = true;
-	snapCamera(BF_CAM_POS);
-	game.camFollow.y += 120;
-	camGame.zoom = 0.97;
 }
 
 function onOpponentNoteHit()

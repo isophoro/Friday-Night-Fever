@@ -16,7 +16,7 @@ class ComboNumber extends FlxSprite
 
 	public function loadFrames()
 	{
-		var pixel = PlayState.instance.usePixelAssets;
+		var pixel = PlayState.instance != null && PlayState.instance.usePixelAssets;
 		antialiasing = !pixel;
 
 		var animName:String = animation.curAnim != null ? animation.curAnim.name : "0";

@@ -27,7 +27,7 @@ import flixel.addons.api.FlxGameJolt;
 	{
 		return [
 			FC_TUTORIAL, FC_WEEK1, FC_WEEK2, FC_WEEK2_5, FC_WEEK3, FC_WEEK4, FC_WEEK5, FC_WEEK6, FC_ALL_OG_WEEKS, FC_WEEK7, FC_WEEK8, FC_WEEK_ROLLDOG,
-			FC_WEEK_HALLOW, PERFECT_PARRY, FC_ALL_FRENZY_WEEKS
+			FC_WEEK_HALLOW, PERFECT_PARRY, FC_ALL_FRENZY_WEEKS, ALL_ACHIEVEMENTS
 		];
 	}
 
@@ -65,7 +65,7 @@ import flixel.addons.api.FlxGameJolt;
 		FC_WEEK_ROLLDOG => "Full Combo all Week 9 songs",
 		ALL_ACHIEVEMENTS => "Complete all achievements",
 		FC_ALL_FRENZY_WEEKS => "Earn all previous Full Combo achievements",
-		PERFECT_PARRY => "Hit a perfect parry once\nin Dead Man's Melody"
+		PERFECT_PARRY => "Hit a parry once\nin Dead Man's Melody"
 	];
 }
 
@@ -120,7 +120,13 @@ class AchievementHandler
 
 	public static function check()
 	{
-		if (fullCombo(StoryMenuState.weekData[0]))
+		for (k => v in Highscore.fullCombos)
+		{
+			if (k.toLowerCase() != k)
+				Highscore.fullCombos.set(k.toLowerCase(), v);
+		}
+
+		if (fullCombo(["milk-tea"]))
 			unlockTrophy(FC_TUTORIAL);
 
 		if (fullCombo(StoryMenuState.weekData[1]))
@@ -176,7 +182,7 @@ class AchievementHandler
 	{
 		for (i in songs)
 		{
-			if (!Highscore.fullCombos.exists(i.toLowerCase()) && !Highscore.fullCombos.exists(i))
+			if (!Highscore.fullCombos.exists(i.toLowerCase()))
 				return false;
 		}
 

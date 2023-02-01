@@ -186,7 +186,7 @@ class FreeplayState extends MusicBeatState
 
 			if (PlayState.SONG.song.toLowerCase() == "mechanical" || PlayState.SONG.song.toLowerCase() == "erm")
 			{
-				LoadingState.loadAndSwitchState(new PlayState());
+				LoadingState.loadAndSwitchState(new PlayState(true));
 				return;
 			}
 
@@ -219,7 +219,7 @@ class FreeplayState extends MusicBeatState
 					});
 					enter.animation.finishCallback = (a) ->
 					{
-						LoadingState.loadAndSwitchState(new PlayState());
+						LoadingState.loadAndSwitchState(new PlayState(true));
 					}
 				}
 			});

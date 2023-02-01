@@ -26,10 +26,14 @@ class ClientPrefs
 	public static var scrollSpeed:Float = 1;
 	public static var botplay:Bool = false;
 
+	public static var laneTransparency:Int = 0;
 	public static var showPrecision:Bool = true;
-	public static var changedHit = false;
-	public static var changedHitX = -1;
-	public static var changedHitY = -1;
+	public static var ratingX:Float = -1;
+	public static var ratingY:Float = -1;
+	public static var numX:Float = -1;
+	public static var numY:Float = -1;
+	public static var msX:Float = -1;
+	public static var msY:Float = -1;
 
 	public static var fpsCap:Int = 120;
 	public static var antialiasing:Bool = true;
