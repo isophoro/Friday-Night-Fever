@@ -22,6 +22,9 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
 #end
 
+/**
+ *  the scripting stuff for the mod's a little wack, i know how to implement hscript stuff a lot better now so ignore my old take on it :)
+ */
 class HaxeScript extends Interp implements IFlxDestroyable
 {
 	static final AUTOIMPORTS:Array<Class<Dynamic>> = [

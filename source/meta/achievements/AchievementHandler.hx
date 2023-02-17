@@ -58,13 +58,13 @@ import flixel.addons.api.FlxGameJolt;
 		FC_WEEK4 => "Full Combo all Week 4 songs",
 		FC_WEEK5 => "Full Combo all Week 5 songs",
 		FC_WEEK6 => "Full Combo all Week 6 songs",
-		FC_ALL_OG_WEEKS => "Earn all previous Full Combo achievements",
+		FC_ALL_OG_WEEKS => "Earn all achievements for Classic Weeks",
 		FC_WEEK_HALLOW => "Full Combo all Week ??? songs",
 		FC_WEEK7 => "Full Combo all Week 7 songs",
 		FC_WEEK8 => "Full Combo all Week 8",
 		FC_WEEK_ROLLDOG => "Full Combo all Week 9 songs",
 		ALL_ACHIEVEMENTS => "Complete all achievements",
-		FC_ALL_FRENZY_WEEKS => "Earn all previous Full Combo achievements",
+		FC_ALL_FRENZY_WEEKS => "Earn all achievements for Frenzy Weeks",
 		PERFECT_PARRY => "Hit a parry once\nin Dead Man's Melody"
 	];
 }

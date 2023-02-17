@@ -78,8 +78,6 @@ class ClientPrefs
 			}
 		}
 
-		PlayerSettings.player1.controls.loadKeyBinds();
-
 		(cast(openfl.Lib.current.getChildAt(0), Main)).setFPSCap(ClientPrefs.fpsCap);
 	}
 

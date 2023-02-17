@@ -13,8 +13,6 @@ var prevScore:String = "";
 var prevHealth:Float = 1;
 var prevTime:Float = 0;
 var BW:BWShader;
-var help:FlxText;
-var clocks:FlxSprite;
 var screen:ScreenMultiply;
 
 function onCreate()

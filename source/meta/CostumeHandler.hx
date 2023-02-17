@@ -2,7 +2,6 @@ package meta;
 
 import flixel.FlxG;
 import meta.achievements.AchievementHandler;
-import meta.achievements.AchievementHandler;
 
 enum CostumeName
 {

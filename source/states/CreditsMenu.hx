@@ -138,16 +138,19 @@ class CreditsMenu extends MusicBeatState
 		name = new FlxText(0, 0, 0, "", 28);
 		name.setFormat(Paths.font("OpenSans-ExtraBold.ttf"), 38, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
 		name.borderSize = 2;
+		name.antialiasing = true;
 		add(name);
 
 		desc = new FlxText(0, 0, 560, "", 18);
 		desc.setFormat(name.font, 18, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		desc.borderSize = 1.3;
+		desc.antialiasing = true;
 		add(desc);
 
 		funny = new FlxText(0, 0, 560, "", 24);
 		funny.setFormat(name.font, 24, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		funny.borderSize = 1.5;
+		funny.antialiasing = true;
 		add(funny);
 
 		image = new FlxSprite(funny.x, funny.y).loadGraphic(Paths.image("credits-icons/makogrippers"));
