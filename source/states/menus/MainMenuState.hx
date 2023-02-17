@@ -1,11 +1,11 @@
-package;
+package states.menus;
 
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import states.InteractableState;
+import states.internal.InteractableState;
 #if windows
 import Discord.DiscordClient;
 #end
@@ -61,7 +61,7 @@ class MainMenuState extends InteractableState
 
 		train.callback = () ->
 		{
-			FlxG.switchState(new states.BrochureMenu());
+			FlxG.switchState(new BrochureMenu());
 		}
 
 		train.sound = "subway";
@@ -76,16 +76,15 @@ class MainMenuState extends InteractableState
 			FlxTween.tween(FlxG.camera, {y: -60}, 2);
 			FlxG.camera.fade(FlxColor.BLACK, 0.5, false, () ->
 			{
-				FlxG.switchState(new states.OptionsState());
+				FlxG.switchState(new OptionsState());
 			});
 		}
 		options.sound = "sewer";
 		addInteractable(options);
 
-
 		var credits = new Interactable('newMain/credits', -10, 45, 1, 'credits notselected', 'credits selected', new InteractHitbox(40, 175, 225, 525),
 			[216, 172], true, "newMain/creditstext", "credits text", [300, 140]);
-		credits.callback = FlxG.switchState.bind(new states.CreditsMenu());
+		credits.callback = FlxG.switchState.bind(new CreditsMenu());
 		addInteractable(credits);
 
 		var freeplay = new Interactable('newMain/freeplay', 1100, 160, 1, 'Freeplay not selected', 'Freeplay selected',
@@ -96,20 +95,20 @@ class MainMenuState extends InteractableState
 		var boombox = new Interactable('newMain/boombox', 779, 433, 1, 'boombox not selected', 'boombox selected', new InteractHitbox(779, 433, 165, 135),
 			[0, 5], true, "newMain/boomboxtext", "boombox text", [639, 520]);
 		boombox.sound = "boombox";
-		boombox.callback = FlxG.switchState.bind(new states.BoomboxState());
+		boombox.callback = FlxG.switchState.bind(new BoomboxState());
 		addInteractable(boombox);
 
 		var costumes = new Interactable('newMain/costumes', 505, 580, 1, 'costume notselected', 'costume selected', new InteractHitbox(505, 580, 240, 115),
 			[83, 102]);
 		costumes.sound = "paper";
-		costumes.callback = FlxG.switchState.bind(new states.CostumeState());
+		costumes.callback = FlxG.switchState.bind(new CostumeState());
 		addInteractable(costumes);
 
 		var extras = new Interactable('newMain/extra', 839, 210, 1, 'extras notselected', 'extras selected', new InteractHitbox(839, 210, 150, 175),
 			[258, 258], true, "newMain/extratext", "extra text", [990, 190], 0.35);
 		extras.callback = () ->
 		{
-			FlxG.switchState(new states.AchievementState());
+			FlxG.switchState(new AchievementState());
 		}
 		addInteractable(extras);
 
@@ -145,7 +144,6 @@ class MainMenuState extends InteractableState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-			
 
 		if (controls.BACK)
 			FlxG.switchState(new TitleState());

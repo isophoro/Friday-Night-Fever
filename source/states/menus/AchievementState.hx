@@ -1,4 +1,4 @@
-package states;
+package states.menus;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -6,7 +6,6 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.input.mouse.FlxMouseEvent;
 import flixel.text.FlxText;
-import flixel.tweens.FlxTween;
 import flixel.util.FlxSpriteUtil;
 import flixel.util.FlxTimer;
 import haxe.io.Bytes;

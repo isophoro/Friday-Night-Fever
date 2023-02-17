@@ -1,4 +1,4 @@
-package;
+package states;
 
 import Note.QueuedNote;
 import Song.SwagSong;

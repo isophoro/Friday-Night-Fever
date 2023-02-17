@@ -1,4 +1,4 @@
-package;
+package states.menus;
 
 import flixel.FlxG;
 import flixel.FlxSprite;

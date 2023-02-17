@@ -1,4 +1,4 @@
-package states;
+package states.internal;
 
 /**
  * [Handles the main logic for the interactable menus such as the Main Menu and Story Mode Menu]

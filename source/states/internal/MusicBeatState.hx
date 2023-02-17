@@ -1,18 +1,10 @@
-package;
+package states.internal;
 
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
-import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxUIState;
-import flixel.math.FlxRect;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 import openfl.Lib;
 import openfl.system.System;
-#if windows
-import Discord.DiscordClient;
-#end
 
 class MusicBeatState extends FlxUIState
 {

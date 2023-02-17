@@ -1,8 +1,8 @@
-package;
+package states.menus;
 
 import flixel.FlxG;
 import flixel.addons.transition.FlxTransitionableState;
-import states.InteractableState;
+import states.internal.InteractableState;
 #if windows
 import Discord.DiscordClient;
 #end
@@ -152,7 +152,7 @@ class StoryMenuState extends InteractableState
 
 		if (allowInput && controls.BACK)
 		{
-			FlxG.switchState(new states.BrochureMenu());
+			FlxG.switchState(new BrochureMenu());
 		}
 	}
 
@@ -161,7 +161,7 @@ class StoryMenuState extends InteractableState
 		super.addInteractable(i);
 		i.callback = () ->
 		{
-			openSubState(new states.WeekPreviewSubState((isFrenzy ? 8 : 0) + order.indexOf(i.hitbox)));
+			openSubState(new WeekPreviewSubState((isFrenzy ? 8 : 0) + order.indexOf(i.hitbox)));
 		}
 	}
 

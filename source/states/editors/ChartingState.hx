@@ -1,4 +1,4 @@
-package;
+package states.editors;
 
 import Conductor.BPMChangeEvent;
 import Song.SwagSection;
@@ -735,7 +735,6 @@ class ChartingState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-
 		if (FlxG.keys.justPressed.X)
 		{
 			curStyle++;

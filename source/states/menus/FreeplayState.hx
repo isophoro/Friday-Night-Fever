@@ -1,4 +1,4 @@
-package;
+package states.menus;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -142,12 +142,12 @@ class FreeplayState extends MusicBeatState
 		{
 			allowInput = false;
 			waitTimer = 0;
-			openSubState(new states.FreeplayMenu(selectingFrenzy));
+			openSubState(new FreeplayMenu(selectingFrenzy));
 		}
 
 		if (waitTimer >= 20 && allowInput)
 		{
-			states.FreeplayMenu.loadSong(selectingFrenzy ? "Mechanical" : "Erm", 2);
+			FreeplayMenu.loadSong(selectingFrenzy ? "Mechanical" : "Erm", 2);
 		}
 		else if (allowInput)
 			waitTimer += elapsed;

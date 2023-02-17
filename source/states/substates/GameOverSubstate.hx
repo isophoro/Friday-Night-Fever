@@ -1,13 +1,7 @@
-package;
+package states.substates;
 
-import flash.system.System;
-import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxObject;
-import flixel.FlxSprite;
-import flixel.FlxSubState;
-import flixel.math.FlxPoint;
-import flixel.system.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
