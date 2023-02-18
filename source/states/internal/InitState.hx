@@ -64,6 +64,7 @@ class InitState extends MusicBeatState
 			FlxG.stage.window.title = "Friday Night Fever: The Winkel Build";
 		}
 
+		FlxTransitionableState.skipNextTransIn = true;
 		FlxG.switchState(new TitleState());
 		#end
 	}

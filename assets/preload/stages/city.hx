@@ -232,7 +232,6 @@ function spawnCar()
 {
 	var cShader = new ColorShader();
 	cShader.hue = FlxG.random.float(-1, 1);
-	cShader.onUpdate();
 
 	var carNum = FlxG.random.int(1, 3);
 	var car:FlxSprite = new FlxSprite(-8550, boyfriend.y - 125 + (carNum == 3 ? -85 : 0)).loadGraphic(image("car_" + carNum));

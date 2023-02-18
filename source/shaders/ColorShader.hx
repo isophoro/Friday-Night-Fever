@@ -8,8 +8,22 @@ import flixel.system.FlxAssets.FlxShader;
  */
 class ColorShader extends FlxShader
 {
-	public var hue:Float = 0;
-	public var saturation:Float = 0;
+	public var hue(default, set):Float = 0;
+	public var saturation(default, set):Float = 0;
+
+	private function set_hue(hue:Float)
+	{
+		this.hue = hue;
+		data._hue.value = [this.hue];
+		return this.hue;
+	}
+
+	private function set_saturation(sat:Float)
+	{
+		this.saturation = FlxMath.bound(sat, -1, 1);
+		data._saturation.value = [this.saturation];
+		return this.saturation;
+	}
 
 	@:glFragmentSource("
 		#pragma header
@@ -46,17 +60,5 @@ class ColorShader extends FlxShader
 	public function new()
 	{
 		super();
-		// flixel.FlxG.stage.addEventListener(openfl.events.Event.ENTER_FRAME, onUpdate);
-	}
-
-	public function onUpdate(?_):Void
-	{
-		data._hue.value = [hue = FlxMath.bound(hue, -1, 1)];
-		data._saturation.value = [saturation = FlxMath.bound(saturation, -1, 1)];
-	}
-
-	public function destroy()
-	{
-		// flixel.FlxG.stage.removeEventListener(openfl.events.Event.ENTER_FRAME, onUpdate);
 	}
 }

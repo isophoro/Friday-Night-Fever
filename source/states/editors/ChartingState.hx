@@ -1703,7 +1703,6 @@ class ChartNote extends FlxSprite
 								var cshader = new ColorShader();
 								cshader.saturation = 0.65;
 								cshader.hue = 0.45;
-								cshader.onUpdate();
 								shader = cshader;
 							}
 						default:

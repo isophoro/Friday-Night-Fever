@@ -3,6 +3,7 @@ package scripting;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxBackdrop;
+import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -16,12 +17,6 @@ import sys.io.File;
 
 using StringTools;
 
-#if (flixel < "5.0.0")
-import flixel.math.FlxPoint;
-#else
-import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
-#end
-
 /**
  *  the scripting stuff for the mod's a little wack, i know how to implement hscript stuff a lot better now so ignore my old take on it :)
  */
@@ -31,7 +26,7 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		Math, Std, FlxG, FlxSprite, FlxTween, FlxEase, Conductor, Paths, ClientPrefs, Character, FlxAnimate
 	];
 
-	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGameJolt", "Highscore"];
+	static final BLOCKED_IMPORTS:Array<String> = ["AchievementHandler", "APIKeys", "FlxGameJolt", "Highscore", "CostumeHandler"];
 
 	static var functions(default, never):Map<String, Dynamic> = [
 		"add" => (item:flixel.FlxBasic, pos:Int = -1, ?camera:flixel.FlxCamera) ->

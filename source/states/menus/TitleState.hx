@@ -11,17 +11,49 @@ import shaders.ColorShader;
 
 using StringTools;
 
+enum TitleEvent
+{
+	CreateText(beat:Int, text:String);
+	CreateMultipleText(beat:Int, array:Array<String>);
+	SetLogoVisibility(beat:Int, visible:Bool);
+	BeginRandomSequence(beat:Int);
+	EndRandomSequence(beat:Int);
+	EraseText(beat:Int);
+	Finish(beat:Int);
+}
+
 class TitleState extends MusicBeatState
 {
-	static var initialized:Bool = false;
+	static var events:Array<TitleEvent> = [
+		CreateMultipleText(0, ["Friday Night", "Fever Dev Team"]),
+		CreateText(3, "present"),
+		EraseText(4),
+		CreateMultipleText(5, ["In collaboration", "with"]),
+		SetLogoVisibility(6, true),
+		SetLogoVisibility(7, false),
+		EraseText(7),
+		BeginRandomSequence(8),
+		EndRandomSequence(28),
+		CreateText(28, "Friday"),
+		CreateText(29, "Night"),
+		CreateText(30, "Fever"),
+		CreateText(31, "Frenzy"),
+		Finish(32)
+	];
 
-	var hueShader:ColorShader;
-	var credGroup:FlxGroup;
-	var credTextShit:Alphabet;
-	var textGroup:FlxGroup;
+	var hueShader:ColorShader = new ColorShader();
+	var credGroup:FlxGroup = new FlxGroup();
+	var textGroup:FlxGroup = new FlxGroup();
 	var ngSpr:FlxSprite;
 
-	var curWacky:Array<String> = [];
+	var logoBl:FlxSprite;
+	var feva:FlxSprite;
+	var tea:FlxSprite;
+
+	var skippedIntro:Bool = false;
+	var transitioning:Bool = false;
+	var randomText:Array<Array<String>> = [];
+	var inRandomSequence:Bool = false;
 
 	override public function create():Void
 	{
@@ -32,19 +64,12 @@ class TitleState extends MusicBeatState
 			Main.playFreakyMenu();
 		}
 
-		hueShader = new ColorShader();
+		var bg:FlxSprite = new FlxSprite(-20, -1).loadGraphic(Paths.image('title/bg'));
+		bg.antialiasing = true;
 
 		logoBl = new FlxSprite(55, 40).loadGraphic(Paths.image('title/logo'));
 		logoBl.antialiasing = true;
 		logoBl.shader = hueShader;
-
-		curWacky = FlxG.random.getObject(getIntroTextShit());
-
-		var bg:FlxSprite = new FlxSprite(-20, -1).loadGraphic(Paths.image('title/bg'));
-		bg.antialiasing = true;
-		add(bg);
-
-		add(logoBl);
 
 		var cool = FlxG.random.bool(50);
 		tea = new FlxSprite(cool ? 698 : 963, cool ? 355 : 290);
@@ -54,7 +79,6 @@ class TitleState extends MusicBeatState
 		tea.origin.set(0, 0);
 		tea.scale.scale(0.66);
 		tea.antialiasing = true;
-		add(tea);
 
 		feva = new FlxSprite(cool ? 945 : 755, cool ? 247 : 282);
 		feva.frames = Paths.getSparrowAtlas('title/fever');
@@ -63,65 +87,53 @@ class TitleState extends MusicBeatState
 		feva.origin.set(0, 0);
 		feva.scale.scale(0.66);
 		feva.antialiasing = true;
-		add(feva);
 
 		var front = new FlxSprite(544, 616).loadGraphic(Paths.image('title/front'));
 		front.antialiasing = true;
+
+		add(bg);
+		add(logoBl);
+		add(tea);
+		add(feva);
 		add(front);
 
-		new FlxTimer().start(0.1, (t) ->
+		if (events.length > 0)
 		{
-			startIntro();
-		});
-	}
+			var textArray:Array<String> = CoolUtil.coolTextFile(Paths.txt('introText'));
+			var maxValidIndex = textArray.length - 1;
+			for (i in 0...maxValidIndex) // FlxRandom.shuffle() keeps giving .cpp compliation issues so im doing this for now
+			{
+				var j = FlxG.random.int(i, maxValidIndex);
+				var tmp = textArray[i];
+				textArray[i] = textArray[j];
+				textArray[j] = tmp;
+			}
+			randomText = [for (i in textArray) i.split('--')];
 
-	var logoBl:FlxSprite;
-	var feva:FlxSprite;
-	var tea:FlxSprite;
+			var blackScreen = new FlxSprite().makeGraphic(10, 10, FlxColor.BLACK);
+			blackScreen.origin.set(0, 0);
+			blackScreen.scale.set(FlxG.width / 10, FlxG.height / 10);
 
-	function startIntro()
-	{
-		credGroup = new FlxGroup();
-		add(credGroup);
-		textGroup = new FlxGroup();
+			ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('teamfever'));
+			ngSpr.visible = false;
+			ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.9));
+			ngSpr.updateHitbox();
+			ngSpr.screenCenter(X);
+			ngSpr.antialiasing = true;
 
-		var blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		credGroup.add(blackScreen);
-
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('teamfever'));
-		add(ngSpr);
-		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.9));
-		ngSpr.updateHitbox();
-		ngSpr.screenCenter(X);
-		ngSpr.antialiasing = true;
-
-		hueShader.hue = 0;
-		if (initialized)
+			add(credGroup);
+			credGroup.add(blackScreen);
+			add(ngSpr);
+		}
+		else
 			skipIntro();
 	}
 
-	function getIntroTextShit():Array<Array<String>>
-	{
-		var fullText:String = Assets.getText(Paths.txt('introText'));
-
-		var firstArray:Array<String> = fullText.split('\n');
-		var swagGoodArray:Array<Array<String>> = [];
-
-		for (i in firstArray)
-		{
-			swagGoodArray.push(i.split('--'));
-		}
-
-		return swagGoodArray;
-	}
-
-	var transitioning:Bool = false;
-
 	override function update(elapsed:Float)
 	{
-		if (!transitioning)
-			camera.zoom = FlxMath.lerp(1, camera.zoom, 0.95);
+		super.update(elapsed);
+
+		camera.zoom = FlxMath.lerp(1, camera.zoom, 0.95);
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
@@ -131,7 +143,16 @@ class TitleState extends MusicBeatState
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
 
-		if (!transitioning && skippedIntro)
+		if (transitioning)
+			return;
+
+		if (!skippedIntro)
+		{
+			// catch up immediately instead of waiting for the next beat
+			if (events[0].getParameters()[0] <= curBeat)
+				beatHit();
+		}
+		else
 		{
 			if (FlxG.keys.pressed.LEFT)
 			{
@@ -143,45 +164,27 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		hueShader.onUpdate();
-
 		if (controls.ACCEPT)
 		{
-			if (!transitioning && skippedIntro)
-			{
-				initialized = true;
-				transitioning = true;
-
-				FlxG.camera.flash(FlxColor.WHITE, 1);
-				FlxG.sound.play(Paths.sound('select'), 0.7);
-
-				new FlxTimer().start(0.4, function(tmr:FlxTimer)
-				{
-					FlxG.switchState(new MainMenuState());
-				});
-			}
-			else if (!skippedIntro)
+			if (!skippedIntro)
 			{
 				skipIntro();
+				return;
 			}
-		}
 
-		super.update(elapsed);
-	}
+			transitioning = true;
 
-	function createCoolText(textArray:Array<String>)
-	{
-		for (i in 0...textArray.length)
-		{
-			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
-			money.screenCenter(X);
-			money.y += (i * 60) + 200;
-			credGroup.add(money);
-			textGroup.add(money);
+			FlxG.camera.flash(FlxColor.WHITE, 1);
+			FlxG.sound.play(Paths.sound('select'), 0.7);
+
+			new FlxTimer().start(0.4, function(tmr:FlxTimer)
+			{
+				FlxG.switchState(new MainMenuState());
+			});
 		}
 	}
 
-	function addMoreText(text:String)
+	function addText(text:String)
 	{
 		var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
 		coolText.screenCenter(X);
@@ -190,7 +193,7 @@ class TitleState extends MusicBeatState
 		textGroup.add(coolText);
 	}
 
-	function deleteCoolText()
+	function deleteText()
 	{
 		while (textGroup.members.length > 0)
 		{
@@ -206,59 +209,59 @@ class TitleState extends MusicBeatState
 		logoBl.scale.set(1.075, 1.075);
 		FlxTween.tween(logoBl.scale, {x: 1, y: 1}, (Conductor.crochet / 1000) / 1.5);
 
-		if (!initialized && !skippedIntro)
+		if (!skippedIntro)
 		{
 			FlxG.camera.zoom += 0.015;
-			switch (curBeat)
+
+			while (events.length > 0 && cast(events[0].getParameters()[0], Int) <= curBeat)
 			{
-				case 1:
-					createCoolText(['Friday Night', 'Fever Dev Team']);
-				case 3:
-					addMoreText('present');
-				case 4:
-					deleteCoolText();
-				case 5:
-					createCoolText(['In collaboration', 'with']);
-				case 6:
-					ngSpr.visible = true;
-				case 7:
-					deleteCoolText();
-					ngSpr.visible = false;
-				case 8 | 12 | 15 | 18 | 21 | 24:
-					createCoolText([curWacky[0]]);
-				case 10 | 13 | 16 | 19 | 22 | 25:
-					addMoreText(curWacky[1]);
-				case 11 | 14 | 17 | 20 | 23 | 26:
-					curWacky = FlxG.random.getObject(getIntroTextShit());
-					deleteCoolText();
-				case 28:
-					deleteCoolText();
-					createCoolText(['Friday']);
-				case 29:
-					addMoreText('Night');
-				case 30:
-					addMoreText('Fever');
-				case 31:
-					addMoreText("Frenzy");
-				case 32:
-					skipIntro();
+				switch (events[0])
+				{
+					case CreateMultipleText(beat, array):
+						for (i in array)
+							addText(i);
+					case CreateText(beat, text):
+						addText(text);
+					case SetLogoVisibility(beat, visible):
+						ngSpr.visible = visible;
+					case BeginRandomSequence(beat) | EndRandomSequence(beat):
+						inRandomSequence = !inRandomSequence;
+						deleteText();
+					case EraseText(beat):
+						deleteText();
+					case Finish(beat):
+						skipIntro();
+				}
+
+				events.shift();
+			}
+
+			if (inRandomSequence)
+			{
+				switch (textGroup.length)
+				{
+					case 0 | 1:
+						addText(randomText[0][textGroup.length]);
+					default:
+						deleteText();
+						randomText.shift();
+				}
 			}
 		}
 	}
 
-	var skippedIntro:Bool = false;
-
 	function skipIntro():Void
 	{
-		if (!skippedIntro)
+		skippedIntro = true;
+		events = [];
+
+		if (ngSpr != null)
 		{
+			deleteText();
 			remove(ngSpr);
-
-			if (!initialized)
-				FlxG.camera.flash(FlxColor.WHITE, 4);
-
 			remove(credGroup);
-			skippedIntro = true;
+
+			FlxG.camera.flash(FlxColor.WHITE, 4);
 		}
 	}
 }
