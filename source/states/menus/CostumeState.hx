@@ -7,6 +7,7 @@ import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import meta.CostumeHandler.CostumeName;
 
 class CostumeState extends MusicBeatState
 {

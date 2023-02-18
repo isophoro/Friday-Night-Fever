@@ -1,8 +1,8 @@
 package states.internal;
 
-import Conductor.BPMChangeEvent;
 import flixel.FlxG;
 import flixel.addons.ui.FlxUIState;
+import meta.Conductor.BPMChangeEvent;
 import openfl.Lib;
 import openfl.system.System;
 

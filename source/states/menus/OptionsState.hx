@@ -7,6 +7,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxDirection;
+import meta.CostumeHandler.CostumeName;
 import sprites.Checkbox;
 
 using StringTools;

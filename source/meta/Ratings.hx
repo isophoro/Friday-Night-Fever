@@ -1,3 +1,5 @@
+package meta;
+
 import flixel.FlxG;
 import shaders.BadNun;
 

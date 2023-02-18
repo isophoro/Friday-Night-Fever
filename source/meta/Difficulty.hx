@@ -1,4 +1,4 @@
-package;
+package meta;
 
 typedef DifficutlyData =
 {

@@ -1,7 +1,5 @@
 package;
 
-import Note.QueuedNote;
-import Song.SwagSong;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
@@ -22,6 +20,8 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import lime.utils.Assets;
+import meta.Discord.DiscordClient;
+import meta.Song.SwagSong;
 import openfl.display.BlendMode;
 import openfl.events.KeyboardEvent;
 import openfl.filters.BitmapFilter;
@@ -30,6 +30,7 @@ import openfl.system.System;
 import scripting.*;
 import shaders.*;
 import sprites.*;
+import sprites.Note.QueuedNote;
 
 using StringTools;
 
@@ -39,7 +40,6 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
 #end
 #if (sys && !mobile)
-import Discord.DiscordClient;
 import sys.FileSystem;
 #end
 

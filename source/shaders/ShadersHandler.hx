@@ -1,7 +1,6 @@
-package;
+package shaders;
 
 import openfl.filters.ShaderFilter;
-import shaders.*;
 import shaders.WiggleEffect.WiggleShader;
 
 class ShadersHandler

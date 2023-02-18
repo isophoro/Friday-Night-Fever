@@ -1,6 +1,6 @@
-package;
+package meta;
 
-import Song.SwagSong;
+import meta.Song.SwagSong;
 
 typedef BPMChangeEvent =
 {

@@ -9,7 +9,7 @@ import flixel.util.FlxTimer;
 using StringTools;
 
 #if windows
-import Discord.DiscordClient;
+import meta.Discord.DiscordClient;
 #end
 
 class FreeplayState extends MusicBeatState

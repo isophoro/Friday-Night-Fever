@@ -1,9 +1,7 @@
 package states.internal;
 
 import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
-import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
 import flixel.graphics.FlxGraphic;
@@ -17,7 +15,7 @@ import sys.FileSystem;
 using StringTools;
 
 #if windows
-import Discord.DiscordClient;
+import meta.Discord.DiscordClient;
 #end
 
 class InitState extends MusicBeatState

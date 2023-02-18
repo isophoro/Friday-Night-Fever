@@ -8,6 +8,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import openfl.display.BitmapData;
+import shaders.ShadersHandler;
 
 /*
 	Contains all of the code for the background switching in Loaded.

@@ -1,4 +1,4 @@
-package;
+package meta;
 
 import lime.app.Application;
 #if windows

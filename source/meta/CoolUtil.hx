@@ -1,4 +1,4 @@
-package;
+package meta;
 
 import StringBuf;
 import lime.utils.Assets;

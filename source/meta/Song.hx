@@ -1,4 +1,4 @@
-package;
+package meta;
 
 import haxe.Json;
 import lime.utils.Assets;

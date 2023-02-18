@@ -1,12 +1,11 @@
-package;
+package sprites;
 
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
-
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
 using StringTools;
@@ -62,7 +61,6 @@ class Alphabet extends FlxSpriteGroup
 			{
 				addText();
 			}
-
 		}
 	}
 
@@ -78,8 +76,7 @@ class Alphabet extends FlxSpriteGroup
 				lastWasSpace = true;
 			}
 
-			if (AlphaCharacter.alphabet.indexOf(character.toLowerCase()) != -1 || 
-				AlphaCharacter.numbers.contains(character))
+			if (AlphaCharacter.alphabet.indexOf(character.toLowerCase()) != -1 || AlphaCharacter.numbers.contains(character))
 			{
 				if (lastSprite != null)
 				{

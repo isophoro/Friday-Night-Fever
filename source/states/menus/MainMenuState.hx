@@ -7,7 +7,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import states.internal.InteractableState;
 #if windows
-import Discord.DiscordClient;
+import meta.Discord.DiscordClient;
 #end
 
 class MainMenuState extends InteractableState

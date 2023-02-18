@@ -1,7 +1,7 @@
 package states.internal;
 
-import Conductor.BPMChangeEvent;
 import flixel.FlxSubState;
+import meta.Conductor.BPMChangeEvent;
 
 class MusicBeatSubstate extends FlxSubState
 {
