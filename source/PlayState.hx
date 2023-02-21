@@ -92,7 +92,7 @@ class PlayState extends MusicBeatState
 	public var disableCamera:Bool = false;
 	public var disableHUD:Bool = false;
 	public var disableModCamera:Bool = false; // disables the modchart from messing around with the camera
-	public var camFollow:FlxObject;
+	public var camFollow:FlxObject = new FlxObject(0, 0, 1, 1);
 
 	private static var prevCamFollow:FlxObject;
 
@@ -149,8 +149,7 @@ class PlayState extends MusicBeatState
 	var takiBGSprites:Array<FlxSprite> = [];
 	var bgGirls:BackgroundGirls; // week 6
 
-	public var roboStage:RoboBackground;
-	public var roboBackground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	public var roboStage:LoadedStage;
 	public var roboForeground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
 	// HEALTH BAR
@@ -446,8 +445,8 @@ class PlayState extends MusicBeatState
 			case 'robocesbg':
 				{
 					curStage = 'robocesbg';
-					add(roboBackground);
-					roboStage = new RoboBackground();
+					roboStage = new LoadedStage();
+					add(roboStage);
 				}
 			case 'school':
 				{
@@ -753,7 +752,7 @@ class PlayState extends MusicBeatState
 
 		if (roboStage != null)
 		{
-			add(roboForeground);
+			add(roboStage.foreground);
 			roboStage.switchStage(roboStage.curStage);
 		}
 
@@ -778,7 +777,6 @@ class PlayState extends MusicBeatState
 
 		generateSong(SONG.song);
 
-		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04);

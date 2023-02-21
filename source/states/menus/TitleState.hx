@@ -6,15 +6,14 @@ import flixel.group.FlxGroup;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import openfl.Assets;
+import flixel.util.typeLimit.OneOfTwo;
 import shaders.ColorShader;
 
 using StringTools;
 
 enum TitleEvent
 {
-	CreateText(beat:Int, text:String);
-	CreateMultipleText(beat:Int, array:Array<String>);
+	CreateText(beat:Int, text:OneOfTwo<String, Array<String>>);
 	SetLogoVisibility(beat:Int, visible:Bool);
 	BeginRandomSequence(beat:Int);
 	EndRandomSequence(beat:Int);
@@ -25,10 +24,10 @@ enum TitleEvent
 class TitleState extends MusicBeatState
 {
 	static var events:Array<TitleEvent> = [
-		CreateMultipleText(0, ["Friday Night", "Fever Dev Team"]),
+		CreateText(0, ["Friday Night", "Fever Dev Team"]),
 		CreateText(3, "present"),
 		EraseText(4),
-		CreateMultipleText(5, ["In collaboration", "with"]),
+		CreateText(5, ["In collaboration", "with"]),
 		SetLogoVisibility(6, true),
 		SetLogoVisibility(7, false),
 		EraseText(7),
@@ -211,17 +210,22 @@ class TitleState extends MusicBeatState
 
 		if (!skippedIntro)
 		{
-			FlxG.camera.zoom += 0.015;
+			FlxG.camera.zoom = 1.015;
 
 			while (events.length > 0 && cast(events[0].getParameters()[0], Int) <= curBeat)
 			{
 				switch (events[0])
 				{
-					case CreateMultipleText(beat, array):
-						for (i in array)
-							addText(i);
 					case CreateText(beat, text):
-						addText(text);
+						if (text is String)
+						{
+							addText(text);
+						}
+						else
+						{
+							for (i in (cast text : Array<String>))
+								addText(i);
+						}
 					case SetLogoVisibility(beat, visible):
 						ngSpr.visible = visible;
 					case BeginRandomSequence(beat) | EndRandomSequence(beat):

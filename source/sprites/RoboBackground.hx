@@ -30,9 +30,6 @@ class RoboBackground
 	var fever_pixel:Character;
 	var cherry:Character;
 
-	var floor:FlxSprite;
-	var sign:FlxSprite;
-
 	public function new()
 	{
 		instance = PlayState.instance;
