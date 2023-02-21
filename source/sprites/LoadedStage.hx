@@ -113,6 +113,17 @@ class LoadedStage extends FlxTypedGroup<FlxSprite>
 		}
 	}
 
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		// Catch up if there's any cringe lag spikes
+		if (events[0] != null && events[0].getParameters()[0] <= instance.curBeat)
+		{
+			beatHit(instance.curBeat);
+		}
+	}
+
 	public function addStage(name:String, stage:Stage)
 	{
 		// null prevention stuff
