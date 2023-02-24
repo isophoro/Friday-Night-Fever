@@ -118,7 +118,8 @@ class PlayState extends MusicBeatState
 	public var displayedScore:Int = 0;
 	public var combo:Int = 0;
 
-	private var accuracy:Float = 0;
+	public var accuracy:Float = 0;
+
 	private var totalNotesHit:Float = 0;
 	private var totalPlayed:Int = 0;
 
@@ -288,7 +289,7 @@ class PlayState extends MusicBeatState
 			+ " ("
 			+ storyDifficultyText
 			+ ") "
-			+ Ratings.GenerateLetterRank(accuracy),
+			+ Ratings.getDiscordPreview(),
 			"\nAcc: "
 			+ FlxMath.roundDecimal(accuracy, 2)
 			+ "% | Score: "
@@ -303,7 +304,6 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
-		// FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		currentTimingShown = new TimingText();
 		currentTimingShown.cameras = [camHUD];
@@ -733,8 +733,6 @@ class PlayState extends MusicBeatState
 		}
 
 		add(gf);
-		if (curStage == 'train')
-			gf.visible = false;
 
 		if (curStage == 'schoolEvil')
 		{
@@ -1340,7 +1338,7 @@ class PlayState extends MusicBeatState
 			+ " ("
 			+ storyDifficultyText
 			+ ") "
-			+ Ratings.GenerateLetterRank(accuracy),
+			+ Ratings.getDiscordPreview(),
 			"\nAcc: "
 			+ FlxMath.roundDecimal(accuracy, 2)
 			+ "% | Score: "
@@ -1529,7 +1527,7 @@ class PlayState extends MusicBeatState
 				+ " ("
 				+ storyDifficultyText
 				+ ") "
-				+ Ratings.GenerateLetterRank(accuracy),
+				+ Ratings.getDiscordPreview(),
 				"Acc: "
 				+ FlxMath.roundDecimal(accuracy, 2)
 				+ "% | Score: "
@@ -1581,7 +1579,7 @@ class PlayState extends MusicBeatState
 					+ " ("
 					+ storyDifficultyText
 					+ ") "
-					+ Ratings.GenerateLetterRank(accuracy),
+					+ Ratings.getDiscordPreview(),
 					"\nAcc: "
 					+ FlxMath.roundDecimal(accuracy, 2)
 					+ "% | Score: "
@@ -1593,7 +1591,7 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + '($storyDifficultyText)' + Ratings.GenerateLetterRank(accuracy), iconRPC);
+				DiscordClient.changePresence(detailsText, SONG.song + '($storyDifficultyText)' + Ratings.getDiscordPreview(), iconRPC);
 			}
 			#end
 		}
@@ -1886,7 +1884,7 @@ class PlayState extends MusicBeatState
 				+ " ("
 				+ storyDifficultyText
 				+ ") "
-				+ Ratings.GenerateLetterRank(accuracy),
+				+ Ratings.getDiscordPreview(),
 				"\nAcc: "
 				+ FlxMath.roundDecimal(accuracy, 2)
 				+ "% | Score: "
@@ -1917,7 +1915,7 @@ class PlayState extends MusicBeatState
 				+ " ("
 				+ storyDifficultyText
 				+ ") "
-				+ Ratings.GenerateLetterRank(accuracy),
+				+ Ratings.getDiscordPreview(),
 				"\nAcc: "
 				+ FlxMath.roundDecimal(accuracy, 2)
 				+ "% | Score: "
@@ -2897,7 +2895,7 @@ class PlayState extends MusicBeatState
 			+ " ("
 			+ storyDifficultyText
 			+ ") "
-			+ Ratings.GenerateLetterRank(accuracy),
+			+ Ratings.getDiscordPreview(),
 			"Acc: "
 			+ FlxMath.roundDecimal(accuracy, 2)
 			+ "% | Score: "
@@ -3031,7 +3029,6 @@ class PlayState extends MusicBeatState
 		if (SONG.notes[Math.floor(curStep / 16)] != null && SONG.notes[Math.floor(curStep / 16)].changeBPM)
 		{
 			Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
-			FlxG.log.add('CHANGED BPM!');
 		}
 
 		#if windows

@@ -16,7 +16,7 @@ class TVCutscene extends MusicBeatState
 	var randomLines:Array<Array<Dynamic>> = [
 		[
 			"This just in, multiple reports are coming in, 
-            suggesting that our VERY MAYOR is currently stopping traffic near Kips Pizzeria. 
+            suggesting that our VERY MAYOR is currently stopping traffic near Kip's Pizzeria. 
             Could this be the first look of the mayors insanity letting loose?",
 			"lettingloose",
 			4
@@ -35,10 +35,7 @@ class TVCutscene extends MusicBeatState
 		]
 	];
 
-	var lines:Array<Array<Dynamic>> = [
-		// ["Hahaha, I don't get paid enough for this job.", "paidenough", 3],
-		// ["I need some coffee.", "anger", 2]
-	];
+	var lines:Array<Array<Dynamic>> = [];
 
 	var robo:FlxSprite;
 

@@ -3,122 +3,93 @@ package meta;
 import flixel.FlxG;
 import shaders.BadNun;
 
+enum RatingsData
+{
+	TimeWindow(milliseconds:Int, rating:String);
+	WifeCondition(percent:Float, display:String);
+}
+
 class Ratings
 {
-	public static function GenerateLetterRank(accuracy:Float) // generate a letter ranking
+	public static final TIME_WINDOWS:Array<RatingsData> = [
+		TimeWindow(45, "sick"),
+		TimeWindow(90, "good"),
+		TimeWindow(135, "bad"),
+		TimeWindow(166, "shit")
+	];
+
+	public static final WIFE_CONDITIONS:Array<RatingsData> = [
+		WifeCondition(99.9935, "AAAAA"),
+		WifeCondition(99.980, "AAAA:"),
+		WifeCondition(99.970, "AAAA."),
+		WifeCondition(99.955, "AAAA"),
+		WifeCondition(99.90, "AAA:"),
+		WifeCondition(99.80, "AAA."),
+		WifeCondition(99.70, "AAA"),
+		WifeCondition(99, "AA:"),
+		WifeCondition(96.50, "AA."),
+		WifeCondition(93, "AA"),
+		WifeCondition(90, "A:"),
+		WifeCondition(85, "A."),
+		WifeCondition(80, "A"),
+		WifeCondition(70, "B"),
+		WifeCondition(60, "C"),
+		WifeCondition(80, "D")
+	];
+
+	public static final SICK_FC = "SFC";
+	public static final GOOD_FC = "GFC";
+	public static final FC = "FC";
+	public static final SINGLE_DIGIT_COMBO_BREAK = "SDCB";
+
+	public static function getComboRating():String
 	{
-		var ranking:String = "N/A";
+		if (ClientPrefs.botplay)
+			return SICK_FC;
 
-		if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods == 0) // Marvelous (SICK) Full Combo
-			ranking = "(SFC)";
-		else if (PlayState.misses == 0 && PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods >= 1) // Good Full Combo (Nothing but Goods & Sicks)
-			ranking = "(GFC)";
-		else if (PlayState.misses == 0) // Regular FC
-			ranking = "(FC)";
-		else if (PlayState.misses < 10) // Single Digit Combo Breaks
-			ranking = "(SDCB)";
-		else
-			ranking = "";
-
-		// WIFE TIME :)))) (based on Wife3)
-		var wifeConditions:Array<Bool> = [
-			accuracy >= 99.9935, // AAAAA
-			accuracy >= 99.980, // AAAA:
-			accuracy >= 99.970, // AAAA.
-			accuracy >= 99.955, // AAAA
-			accuracy >= 99.90, // AAA:
-			accuracy >= 99.80, // AAA.
-			accuracy >= 99.70, // AAA
-			accuracy >= 99, // AA:
-			accuracy >= 96.50, // AA.
-			accuracy >= 93, // AA
-			accuracy >= 90, // A:
-			accuracy >= 85, // A.
-			accuracy >= 80, // A
-			accuracy >= 70, // B
-			accuracy >= 60, // C
-			accuracy < 60 // D
-		];
-
-		var cutSpace:Bool = ranking.length == 0;
-
-		for (i in 0...wifeConditions.length)
+		if (PlayState.misses == 0)
 		{
-			var b = wifeConditions[i];
-			if (b)
+			if (PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods == 0) // Marvelous (SICK) Full Combo
+				return SICK_FC;
+			else if (PlayState.bads == 0 && PlayState.shits == 0) // Good Full Combo (Nothing but Goods & Sicks)
+				return GOOD_FC;
+			else
+				return FC;
+		}
+		else
+		{
+			return PlayState.misses + (PlayState.misses > 1 ? " misses" : " miss");
+		}
+	}
+
+	public static function getWife3Rating(accuracy:Float):String
+	{
+		for (i in WIFE_CONDITIONS)
+		{
+			if (accuracy >= i.getParameters()[0])
 			{
-				switch (i)
-				{
-					case 0:
-						ranking += " AAAAA";
-					case 1:
-						ranking += " AAAA:";
-					case 2:
-						ranking += " AAAA.";
-					case 3:
-						ranking += " AAAA";
-					case 4:
-						ranking += " AAA:";
-					case 5:
-						ranking += " AAA.";
-					case 6:
-						ranking += " AAA";
-					case 7:
-						ranking += " AA:";
-					case 8:
-						ranking += " AA.";
-					case 9:
-						ranking += " AA";
-					case 10:
-						ranking += " A:";
-					case 11:
-						ranking += " A.";
-					case 12:
-						ranking += " A";
-					case 13:
-						ranking += " B";
-					case 14:
-						ranking += " C";
-					case 15:
-						ranking += " D";
-				}
-				break;
+				return i.getParameters()[1];
 			}
 		}
 
-		if (cutSpace)
-			ranking = ranking.substring(1, ranking.length);
-
-		return ranking;
+		return WIFE_CONDITIONS[0].getParameters()[1];
 	}
 
-	public static function CalculateRating(noteDiff:Float, ?customSafeZone:Float):String // Generate a judgement through some timing shit
+	public static function CalculateRating(noteDiff:Float):String // Generate a judgement through some timing shit
 	{
-		var customTimeScale = FlxG.sound.music.pitch;
-
-		if (customSafeZone != null)
-			customTimeScale = customSafeZone / 166;
-
 		if (ClientPrefs.botplay)
-			return "sick";
+			return TIME_WINDOWS[0].getParameters()[0];
 
-		if (noteDiff > 166 * customTimeScale) // so god damn early its a miss
-			return "miss";
-		if (noteDiff > 135 * customTimeScale) // way early
-			return "shit";
-		else if (noteDiff > 90 * customTimeScale) // early
-			return "bad";
-		else if (noteDiff > 45 * customTimeScale) // your kinda there
-			return "good";
-		else if (noteDiff < -45 * customTimeScale) // little late
-			return "good";
-		else if (noteDiff < -90 * customTimeScale) // late
-			return "bad";
-		else if (noteDiff < -135 * customTimeScale) // late as fuck
-			return "shit";
-		else if (noteDiff < -166 * customTimeScale) // so god damn late its a miss
-			return "miss";
-		return "sick";
+		for (i in TIME_WINDOWS)
+		{
+			var params = i.getParameters();
+			if (Math.abs(noteDiff) < params[0] * FlxG.sound.music.pitch)
+			{
+				return params[1];
+			}
+		}
+
+		return "miss";
 	}
 
 	public static function CalculateRanking(score:Int, accuracy:Float):String
@@ -137,25 +108,23 @@ class Ratings
 				" | 正確さ: "
 				+ (FlxG.save.data.botplay ? "N/A" : (Math.isNaN(accuracy) ? 100 : FlxMath.roundDecimal(accuracy, 2)) + "%")
 				+ // Accuracy
-				" • "
-				+ GenerateLetterRank(accuracy));
+				" • ");
 		}
 		else
 		{
 			BadNun.translate = false;
 
-			return ("Score: "
-				+ score
-				+ // Score
-				" | Misses: "
-				+ PlayState.misses
-				+ // Misses/Combo Breaks
-				" | Accuracy: "
-				+ (FlxG.save.data.botplay ? "N/A" : (Math.isNaN(accuracy) ? 100 : FlxMath.roundDecimal(accuracy, 2)) + "%")
-				+ // Accuracy
-				" • "
-				+ GenerateLetterRank(accuracy)); // Letter Rank
+			var acc:String = ClientPrefs.botplay ? "N/A" : (Math.isNaN(accuracy) ? 100 : FlxMath.roundDecimal(accuracy, 2)) + "%";
+			return 'Accuracy: $acc | ${getComboRating()} • ${getWife3Rating(accuracy)}';
 		}
+	}
+
+	public static function getDiscordPreview():String
+	{
+		var acc:String = ClientPrefs.botplay ? "N/A" : (Math.isNaN(PlayState.instance.accuracy) ? 100 : FlxMath.roundDecimal(PlayState.instance.accuracy, 2))
+			+ "%";
+
+		return 'Accuracy: $acc | Missed: ${PlayState.misses}';
 	}
 
 	public static function wife3(maxms:Float, ts:Float)
