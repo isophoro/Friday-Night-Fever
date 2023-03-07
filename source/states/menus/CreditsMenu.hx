@@ -33,7 +33,7 @@ class CreditsMenu extends MusicBeatState
 	var passwords(get, never):Array<KeyCombo>;
 	var userInput:String = '';
 	var selector:FlxSprite;
-	var hand:FlxSprite;
+	var hand:Cursor;
 	var name:FlxText;
 	var desc:FlxText;
 	var funny:FlxText;
@@ -160,16 +160,7 @@ class CreditsMenu extends MusicBeatState
 		add(image);
 		image.visible = false;
 
-		hand = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
-		hand.frames = Paths.getSparrowAtlas('newMain/cursor');
-		hand.animation.addByPrefix('idle', 'cursor nonselect', 0);
-		hand.animation.addByPrefix('select', 'cursor select', 0);
-		hand.animation.addByPrefix('qidle', 'cursor qnonselect', 0);
-		hand.animation.addByPrefix('qselect', 'cursor qselect', 0);
-		hand.animation.play('idle');
-		hand.setGraphicSize(Std.int(hand.width / 1.5));
-		hand.antialiasing = true;
-		hand.updateHitbox();
+		hand = new Cursor();
 		add(hand);
 	}
 

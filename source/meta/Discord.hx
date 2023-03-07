@@ -60,6 +60,11 @@ class DiscordClient
 		var DiscordDaemon = sys.thread.Thread.create(() ->
 		{
 			new DiscordClient();
+
+			Application.current.onExit.add(function(exitCode)
+			{
+				shutdown();
+			});
 		});
 		trace("Discord Client initialized");
 	}

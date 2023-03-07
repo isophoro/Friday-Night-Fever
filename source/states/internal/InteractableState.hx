@@ -21,30 +21,18 @@ class InteractableState extends MusicBeatState
 
 	public var interactables:FlxTypedGroup<InteractHitbox> = new FlxTypedGroup<InteractHitbox>();
 	public var order:Array<InteractHitbox> = [];
-	public var hand:FlxSprite;
+	public var hand:Cursor;
 
 	override function create()
 	{
 		super.create();
 
-		hand = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y);
-		hand.frames = Paths.getSparrowAtlas('newMain/cursor');
-		hand.animation.addByPrefix('idle', 'cursor nonselect', 0);
-		hand.animation.addByPrefix('select', 'cursor select', 0);
-		hand.animation.addByPrefix('qidle', 'cursor qnonselect', 0);
-		hand.animation.addByPrefix('qselect', 'cursor qselect', 0);
-		hand.animation.play('idle');
-		hand.setGraphicSize(Std.int(hand.width / 1.5));
-		hand.antialiasing = true;
-		hand.updateHitbox();
+		hand = new Cursor();
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		if (FlxG.mouse.justMoved)
-			hand.setPosition(FlxG.mouse.x, FlxG.mouse.y);
 
 		if (allowInput && controls.LEFT_P)
 		{
@@ -80,7 +68,6 @@ class InteractableState extends MusicBeatState
 		if (FlxG.mouse.pressed || FlxG.keys.anyPressed([ENTER, SPACE]))
 		{
 			hand.animation.play(curSelected != null ? 'qselect' : 'select');
-			hand.offset.y = curSelected != null ? 34 : 8;
 
 			if (curSelected != null && !FlxG.mouse.pressed && FlxG.keys.anyJustPressed([ENTER, SPACE]))
 			{
@@ -90,7 +77,6 @@ class InteractableState extends MusicBeatState
 		else
 		{
 			hand.animation.play(curSelected != null ? 'qidle' : 'idle');
-			hand.offset.y = curSelected != null ? 24 : 0;
 		}
 	}
 
