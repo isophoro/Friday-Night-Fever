@@ -77,7 +77,7 @@ function onPostUpdate(elapsed:Float)
 {
 	if (curBeat >= 192 && curBeat <= 255)
 	{
-		PlayState.songPosBar = prevTime;
+		songPosBar = prevTime;
 		iconP1.scale.set(1, 1);
 		iconP2.scale.set(1, 1);
 		scoreTxt.scale.set(1, 1);
@@ -131,7 +131,7 @@ function onBeatHit(curBeat:Int)
 
 		prevScore = scoreTxt.text;
 		prevHealth = game.health;
-		prevTime = PlayState.songPosBar;
+		prevTime = songPosBar;
 
 		currentTimingShown.alpha = 0;
 		forceComboPos = new FlxPoint(FlxG.width * 1.5, 0);

@@ -68,6 +68,7 @@ class Character extends FlxSprite
 		curCharacter = character;
 		this.isPlayer = isPlayer;
 		antialiasing = true;
+		moves = false;
 
 		var path = 'assets/characters/$character.json';
 		if (Assets.exists(path))

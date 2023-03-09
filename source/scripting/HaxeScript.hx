@@ -12,6 +12,7 @@ import flxanimate.FlxAnimate;
 import hscript.Interp;
 import hscript.Parser;
 import shaders.ScreenMultiply;
+import shaders.WiggleEffect;
 import sys.FileSystem;
 import sys.io.File;
 
@@ -56,15 +57,15 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		"tween" => FlxTween.tween,
 		"setNoteX" => (x:Float, num:Int) ->
 		{
-			PlayState.strumLineNotes.members[num].x = x;
+			PlayState.instance.strumLineNotes.members[num].x = x;
 		},
 		"setNoteY" => (y:Float, num:Int) ->
 		{
-			PlayState.strumLineNotes.members[num].y = y;
+			PlayState.instance.strumLineNotes.members[num].y = y;
 		},
 		"setNoteAngle" => (angle:Float, num:Int) ->
 		{
-			PlayState.strumLineNotes.members[num].angle = angle;
+			PlayState.instance.strumLineNotes.members[num].angle = angle;
 		},
 		"setNoteProperty" => (note:Note, property:String, val:Dynamic) ->
 		{
@@ -269,18 +270,18 @@ class HaxeScript extends Interp implements IFlxDestroyable
 
 		variables.set("game", FlxG.state);
 
-		if (PlayState.strumLineNotes != null && PlayState.strumLineNotes.members != null)
+		if (PlayState.instance.strumLineNotes != null)
 		{
-			variables.set("strumLineNotes", PlayState.strumLineNotes.members); // WHY ARE THESE STATIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			variables.set("playerStrums", PlayState.playerStrums.members); // WHO HURT YOU KADE ENGINE
-			variables.set("cpuStrums", PlayState.cpuStrums.members);
+			variables.set("strumLineNotes", PlayState.instance.strumLineNotes.members); // WHY ARE THESE STATIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			variables.set("playerStrums", PlayState.instance.playerStrums.members); // WHO HURT YOU KADE ENGINE
+			variables.set("cpuStrums", PlayState.instance.cpuStrums.members);
 
-			for (i in 0...PlayState.strumLineNotes.length)
+			for (i in 0...PlayState.instance.strumLineNotes.length)
 			{
-				if (PlayState.strumLineNotes.members[i] == null)
+				if (PlayState.instance.strumLineNotes.members[i] == null)
 					continue;
 
-				var babyArrow = PlayState.strumLineNotes.members[i];
+				var babyArrow = PlayState.instance.strumLineNotes.members[i];
 				if (variables.exists("defaultStrumPos"))
 					variables.get("defaultStrumPos")[i] = new FlxPoint(babyArrow.x, babyArrow.y);
 				else
@@ -292,9 +293,9 @@ class HaxeScript extends Interp implements IFlxDestroyable
 		{
 			switch (shader)
 			{
+				case "WiggleEffect":
+					item.shader = new WiggleEffect().shader;
 				case "BWShader":
-					// Not sure how this works it mighhttt have something to do with DCE?
-					// but when i remove this line this shader does NOT work at all when imported into the bloom modchart
 					item.shader = new shaders.BWShader();
 				case "SolidColorShader":
 					item.shader = new shaders.BadNun.SolidColorShader();

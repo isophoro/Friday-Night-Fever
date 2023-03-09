@@ -5,10 +5,10 @@ import openfl.Assets;
 
 class HealthIcon extends FlxSprite
 {
-	/**
-	 * Used for FreeplayState! If you use it elsewhere, prob gonna annoying
-	 */
-	public var sprTracker:FlxSprite;
+	public var sprTracker:FlxSprite; // Used for the Freeplay Menu
+
+	public var winningThreshold:Float = 1.75;
+	public var losingThreshold:Float = 0.65;
 
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = '';

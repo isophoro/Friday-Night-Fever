@@ -160,6 +160,7 @@ class FPS_MEM extends FPS
 	{
 		super(x, y, color);
 		autoSize = NONE;
+		defaultTextFormat.size = 14;
 	}
 
 	override function __enterFrame(deltaTime:Float):Void

@@ -1,12 +1,10 @@
 package scripting;
 
-import flixel.graphics.FlxGraphic;
-import flixel.graphics.frames.FlxAtlasFrames;
-#if windows
-import flixel.FlxBasic;
-import flixel.FlxCamera;
+#if cpp
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -16,7 +14,6 @@ import llua.Lua;
 import llua.LuaL;
 import llua.State;
 import openfl.display.BitmapData;
-import openfl.filters.ShaderFilter;
 import openfl.geom.Matrix;
 
 class LuaScript
@@ -248,7 +245,7 @@ class LuaScript
 		{
 			if (Std.parseInt(id) == null)
 				return Reflect.getProperty(PlayState.instance, id);
-			return PlayState.PlayState.strumLineNotes.members[Std.parseInt(id)];
+			return PlayState.instance.strumLineNotes.members[Std.parseInt(id)];
 		}
 		return luaSprites.get(id);
 	}
@@ -366,7 +363,7 @@ class LuaScript
 
 	// LUA SHIT
 
-	function new()
+	public function new()
 	{
 		trace('Opening LUA State');
 		lua = LuaL.newstate();
@@ -567,8 +564,8 @@ class LuaScript
 		Lua_helper.add_callback(lua, "getRenderedNoteCalcX", function(id:Int)
 		{
 			if (PlayState.instance.notes.members[id].mustPress)
-				return PlayState.playerStrums.members[Math.floor(Math.abs(PlayState.instance.notes.members[id].noteData))].x;
-			return PlayState.strumLineNotes.members[Math.floor(Math.abs(PlayState.instance.notes.members[id].noteData))].x;
+				return PlayState.instance.playerStrums.members[Math.floor(Math.abs(PlayState.instance.notes.members[id].noteData))].x;
+			return PlayState.instance.strumLineNotes.members[Math.floor(Math.abs(PlayState.instance.notes.members[id].noteData))].x;
 		});
 
 		Lua_helper.add_callback(lua, "anyNotes", function()
@@ -1231,9 +1228,9 @@ class LuaScript
 
 		// default strums
 
-		for (i in 0...PlayState.strumLineNotes.length)
+		for (i in 0...PlayState.instance.strumLineNotes.length)
 		{
-			var member = PlayState.strumLineNotes.members[i];
+			var member = PlayState.instance.strumLineNotes.members[i];
 			// setVar("strum" + i + "X", Math.floor(member.x));
 			setVar("defaultStrum" + i + "X", Math.floor(member.x));
 			// setVar("strum" + i + "Y", Math.floor(member.y));
@@ -1246,11 +1243,6 @@ class LuaScript
 	public function executeState(name, args:Array<Dynamic>)
 	{
 		return Lua.tostring(lua, callLua(name, args));
-	}
-
-	public static function createModchartState():LuaScript
-	{
-		return new LuaScript();
 	}
 }
 #end

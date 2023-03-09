@@ -10,6 +10,7 @@ import states.internal.InteractableState;
 import meta.Discord.DiscordClient;
 #end
 
+@presence("In the Main Menu")
 class MainMenuState extends InteractableState
 {
 	public static var firstTime:Bool = true;

@@ -8,6 +8,8 @@ class ComboRating extends FlxSprite
 {
 	public static var MAX_RENDERED:Int = 15;
 
+	private var tween:FlxTween;
+
 	public function new()
 	{
 		super();
@@ -29,7 +31,7 @@ class ComboRating extends FlxSprite
 		animation.play(animName);
 		if (pixel)
 		{
-			setGraphicSize(Std.int(frameWidth * PlayState.daPixelZoom * 0.7));
+			setGraphicSize(Std.int(frameWidth * 6 * 0.7));
 		}
 		else
 		{
@@ -41,12 +43,28 @@ class ComboRating extends FlxSprite
 
 	public function create(rating:String)
 	{
-		FlxTween.cancelTweensOf(this);
+		if (tween != null && !tween.finished)
+		{
+			onTweenComplete(tween);
+			tween.cancel();
+		}
+
 		alpha = 1;
 
 		animation.play(rating);
 
 		velocity.set(-FlxG.random.int(0, 10), -FlxG.random.int(140, 175));
 		acceleration.y = 550;
+
+		tween = FlxTween.tween(this, {alpha: 0}, 0.45, {
+			onComplete: onTweenComplete,
+			startDelay: 0.27
+		});
+	}
+
+	private function onTweenComplete(tween:FlxTween)
+	{
+		kill();
+		FlxG.state.remove(this, true);
 	}
 }

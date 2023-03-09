@@ -77,7 +77,7 @@ class BadNun
 				bgColorShader.color.value = [0, 0, 0];
 
 				instance.purpleOverlay.visible = false;
-				PlayState.setModCamera(true);
+				instance.disableModCamera = true;
 				instance.camZooming = false;
 				FlxTween.tween(instance.camGame, {zoom: instance.camGame.zoom + 0.2}, 7, {
 					onComplete: (twn) ->
@@ -163,7 +163,7 @@ class BadNun
 			case 224 | 448:
 				FlxTween.tween(instance.church, {alpha: 1}, Conductor.crochet / 1000);
 				instance.disableCamera = false;
-				PlayState.setModCamera(false);
+				instance.disableModCamera = false;
 				resetPos();
 
 				if (curBeat == 224)
@@ -208,7 +208,7 @@ class BadNun
 				colorShader.color.value = [1, 1, 1];
 			case 344:
 				instance.camZooming = false;
-				PlayState.setModCamera(true);
+				instance.disableModCamera = true;
 
 				FlxTween.tween(instance.camGame, {zoom: instance.camGame.zoom + 0.1}, 2);
 			case 348:

@@ -3,7 +3,14 @@ package meta;
 import flixel.FlxG;
 import shaders.BadNun;
 
-enum RatingsData
+typedef JudgedRatings = // Used to keep track of the player's current amount of ratings recieved.
+{
+	shits:Int,
+	bads:Int,
+	goods:Int
+}
+
+enum RatingData
 {
 	TimeWindow(milliseconds:Int, rating:String);
 	WifeCondition(percent:Float, display:String);
@@ -11,14 +18,14 @@ enum RatingsData
 
 class Ratings
 {
-	public static final TIME_WINDOWS:Array<RatingsData> = [
+	public static final TIME_WINDOWS:Array<RatingData> = [
 		TimeWindow(45, "sick"),
 		TimeWindow(90, "good"),
 		TimeWindow(135, "bad"),
 		TimeWindow(166, "shit")
 	];
 
-	public static final WIFE_CONDITIONS:Array<RatingsData> = [
+	public static final WIFE_CONDITIONS:Array<RatingData> = [
 		WifeCondition(99.9935, "AAAAA"),
 		WifeCondition(99.980, "AAAA:"),
 		WifeCondition(99.970, "AAAA."),
@@ -49,9 +56,10 @@ class Ratings
 
 		if (PlayState.misses == 0)
 		{
-			if (PlayState.bads == 0 && PlayState.shits == 0 && PlayState.goods == 0) // Marvelous (SICK) Full Combo
+			var r = PlayState.instance.totalRatings;
+			if (r.bads == 0 && r.shits == 0 && r.goods == 0) // Marvelous (SICK) Full Combo
 				return SICK_FC;
-			else if (PlayState.bads == 0 && PlayState.shits == 0) // Good Full Combo (Nothing but Goods & Sicks)
+			else if (r.bads == 0 && r.shits == 0) // Good Full Combo (Nothing but Goods & Sicks)
 				return GOOD_FC;
 			else
 				return FC;
@@ -175,8 +183,12 @@ class Ratings
 
 	public static function init(_totalNotes:Int)
 	{
-		for (i in ['bads', 'goods', 'shits', 'misses'])
-			Reflect.setField(PlayState, i, 0);
+		PlayState.misses = 0;
+		PlayState.instance.totalRatings = {
+			shits: 0,
+			bads: 0,
+			goods: 0
+		};
 
 		totalNotes = _totalNotes;
 		scorePerNote = 100000 / _totalNotes;

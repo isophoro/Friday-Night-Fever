@@ -12,6 +12,7 @@ import sprites.Checkbox;
 
 using StringTools;
 
+@presence("Changing some options around...")
 class OptionsState extends MusicBeatState
 {
 	var sprites:Array<FlxSprite> = [];
@@ -200,7 +201,7 @@ class OptionsState extends MusicBeatState
 				items.members[curSelected].text = categories[curCategory].options[curSelected].getDisplay();
 				FlxFlicker.stopFlickering(items.members[curSelected]);
 				awaitingInput = false;
-				controls.loadKeyBinds();
+				controls.loadKeybinds();
 			}
 
 			return;

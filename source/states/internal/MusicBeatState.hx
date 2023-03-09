@@ -2,13 +2,15 @@ package states.internal;
 
 import flixel.FlxG;
 import flixel.addons.ui.FlxUIState;
+import haxe.rtti.Meta;
 import meta.Conductor.BPMChangeEvent;
 import openfl.Lib;
 import openfl.system.System;
+import scripting.HScriptGroup;
+import scripting.HaxeScript;
 
 class MusicBeatState extends FlxUIState
 {
-	private var lastBeat:Float = 0;
 	private var lastStep:Float = 0;
 
 	public var curStep:Int = 0;
@@ -22,6 +24,8 @@ class MusicBeatState extends FlxUIState
 
 	private var _clearMemory:Bool = false;
 
+	var scripts:HScriptGroup = new HScriptGroup();
+
 	public function new(clearMemory:Bool = false)
 	{
 		super();
@@ -30,6 +34,12 @@ class MusicBeatState extends FlxUIState
 
 	override function create()
 	{
+		var metadata = Meta.getType(Type.getClass(FlxG.state));
+		if (metadata.presence != null)
+			FlxG.stage.window.title = "Friday Night Fever: Frenzy - " + metadata.presence[0];
+		else
+			FlxG.stage.window.title = "Friday Night Fever: Frenzy";
+
 		if (_clearMemory)
 			Main.clearMemory(false);
 
@@ -54,7 +64,6 @@ class MusicBeatState extends FlxUIState
 
 	private function updateBeat():Void
 	{
-		lastBeat = curStep;
 		curBeat = Math.floor(curStep / 4);
 	}
 
@@ -104,5 +113,10 @@ class MusicBeatState extends FlxUIState
 	{
 		System.gc();
 		super.onFocusLost();
+	}
+
+	public function addScript(script:HaxeScript)
+	{
+		scripts.add(script);
 	}
 }

@@ -15,7 +15,7 @@ class PlayerSettings
 
 	public function setKeyboardScheme(scheme)
 	{
-		controls.setKeyboardScheme(scheme);
+		controls.loadKeybinds();
 	}
 
 	static public function init():Void

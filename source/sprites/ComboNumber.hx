@@ -8,6 +8,8 @@ class ComboNumber extends FlxSprite
 {
 	public static var MAX_RENDERED:Int = 30;
 
+	public var tween:FlxTween;
+
 	public function new()
 	{
 		super();
@@ -29,7 +31,7 @@ class ComboNumber extends FlxSprite
 		animation.play(animName);
 		if (pixel)
 		{
-			setGraphicSize(Std.int(frameWidth * PlayState.daPixelZoom));
+			setGraphicSize(Std.int(frameWidth * 6));
 		}
 		else
 		{
@@ -39,7 +41,12 @@ class ComboNumber extends FlxSprite
 
 	public function create(num:String)
 	{
-		FlxTween.cancelTweensOf(this);
+		if (tween != null && !tween.finished)
+		{
+			onTweenComplete(tween);
+			tween.cancel();
+		}
+
 		alpha = 1;
 
 		animation.play('$num');
@@ -47,5 +54,16 @@ class ComboNumber extends FlxSprite
 		acceleration.y = FlxG.random.int(200, 300);
 		velocity.y = -FlxG.random.int(140, 160);
 		velocity.x = FlxG.random.float(-5, 5);
+
+		tween = FlxTween.tween(this, {alpha: 0}, 0.23, {
+			onComplete: onTweenComplete,
+			startDelay: 0.3
+		});
+	}
+
+	private function onTweenComplete(tween:FlxTween)
+	{
+		kill();
+		FlxG.state.remove(this, true);
 	}
 }

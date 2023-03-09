@@ -7,6 +7,7 @@ import states.internal.InteractableState;
 import meta.Discord.DiscordClient;
 #end
 
+@presence("In the Story Mode Menu")
 class StoryMenuState extends InteractableState
 {
 	public static var weekData(get, never):Array<Array<String>>;
