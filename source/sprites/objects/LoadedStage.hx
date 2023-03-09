@@ -1,4 +1,4 @@
-package sprites;
+package sprites.objects;
 
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;

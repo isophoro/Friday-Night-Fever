@@ -3,6 +3,8 @@ import flixel.math.FlxMath;
 import meta.*;
 import meta.achievements.AchievementHandler;
 import sprites.*;
+import sprites.objects.*;
+import sprites.ui.*;
 import states.*;
 import states.editors.*;
 import states.internal.*;

@@ -9,7 +9,6 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import lime.app.Application;
-import sprites.CharacterTrail;
 
 /**
  * This was made before I added HScript support so dont look at me like that

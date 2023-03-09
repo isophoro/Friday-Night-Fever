@@ -8,9 +8,6 @@ import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import sprites.ComboNumber;
-import sprites.ComboRating;
-import sprites.TimingText;
 
 enum CurrentObject
 {

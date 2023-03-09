@@ -30,8 +30,7 @@ import openfl.filters.ShaderFilter;
 import openfl.system.System;
 import scripting.*;
 import shaders.*;
-import sprites.*;
-import sprites.Note.QueuedNote;
+import sprites.objects.Note.QueuedNote;
 
 using StringTools;
 
