@@ -160,7 +160,7 @@ class FPS_MEM extends FPS
 	{
 		super(x, y, color);
 		autoSize = NONE;
-		defaultTextFormat.size = 14;
+		defaultTextFormat = new openfl.text.TextFormat("_sans", 13, color);
 	}
 
 	override function __enterFrame(deltaTime:Float):Void

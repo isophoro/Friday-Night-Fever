@@ -97,7 +97,7 @@ class Ratings
 			}
 		}
 
-		return "miss";
+		return "shit";
 	}
 
 	public static function CalculateRanking(score:Int, accuracy:Float):String

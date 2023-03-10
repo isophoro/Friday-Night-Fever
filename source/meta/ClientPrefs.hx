@@ -38,6 +38,7 @@ class ClientPrefs
 	public static var fpsCap:Int = 120;
 	public static var antialiasing:Bool = true;
 	public static var shaders:Bool = true;
+	public static var adaptiveText:Bool = true;
 
 	public static var songPosition:Bool = false;
 	public static var subtitles:Bool = true;

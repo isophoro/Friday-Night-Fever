@@ -45,7 +45,28 @@ class SongPosBar extends FlxBar
 		numDivisions = 750;
 
 		createFilledBar(0xFF662C77, 0xFFC353E3);
+		updateAdaptiveScaling();
 		screenCenter(X);
+	}
+
+	public function updateAdaptiveScaling()
+	{
+		if (ClientPrefs.adaptiveText)
+		{
+			time.size = Math.round(Math.max(26, 26 * (FlxG.stage.window.width / 1280)));
+			name.size = Math.round(Math.max(18, 18 * (FlxG.stage.window.width / 1280)));
+			time.scale.x = time.scale.y = Math.min(1, 1 * (1280 / FlxG.stage.window.width));
+			name.scale.copyFrom(time.scale);
+		}
+		else
+		{
+			time.size = 26;
+			name.size = 18;
+			for (i in [time.scale, name.scale])
+				i.set(1, 1);
+		}
+
+		setPosition(x, y); // Updates the positoning stuff since we use setters
 	}
 
 	var curSegment:Int = 1;

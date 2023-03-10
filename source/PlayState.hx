@@ -109,7 +109,7 @@ class PlayState extends MusicBeatState
 	public var playerStrums:FlxTypedGroup<FlxSprite> = null;
 	public var cpuStrums:FlxTypedGroup<FlxSprite> = null;
 
-	public var health:Float = 1;
+	public var health(default, set):Float = 1;
 	public var songScore:Float = 0;
 	public var displayedScore:Int = 0;
 	public var combo:Int = 0;
@@ -154,8 +154,7 @@ class PlayState extends MusicBeatState
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 
-	public var scoreTxt:FlxText;
-	public var scoreBop:FlxTween;
+	public var scoreTxt:ScoreText;
 	public var disableScoreBop:Bool = false;
 	public var subtitles:Subtitles;
 
@@ -769,11 +768,9 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 
-		scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 35, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), #if !mobile 18 #else 24 #end, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt = new ScoreText(healthBarBG.y + 35);
 		updateScoring();
 
-		scoreTxt.borderSize = 1.25;
 		FlxG.signals.gameResized.add(onGameResize);
 
 		emitter = new FlxEmitter(50, healthBarBG.y + 25, 200);
@@ -888,7 +885,6 @@ class PlayState extends MusicBeatState
 		FlxG.keys.preventDefaultKeys = [];
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
-		onGameResize(FlxG.stage.window.width, FlxG.stage.window.height);
 
 		for (i in [false, true]) // call both of these so BF_CAM_POS and DAD_CAM_POS are set
 			moveCamera(i);
@@ -914,6 +910,7 @@ class PlayState extends MusicBeatState
 		}
 
 		System.gc();
+		onGameResize(FlxG.stage.window.width, FlxG.stage.window.height);
 	}
 
 	function jumpscare():Void
@@ -952,7 +949,7 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'shadow')
 		{
 			camFollow.setPosition(boyfriend.getMidpoint().x - 90, boyfriend.getMidpoint().y - 150);
-			camLocked = true;
+			disableCamera = true;
 		}
 		else
 			camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
@@ -1686,9 +1683,6 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		if (health >= 2)
-			health = 2;
-
 		switch (healthBar.fillDirection)
 		{
 			default:
@@ -1754,37 +1748,6 @@ class PlayState extends MusicBeatState
 		{
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, FlxMath.bound(1 - (elapsed * 3.125), 0, 1));
 			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, FlxMath.bound(1 - (elapsed * 3.125), 0, 1));
-		}
-
-		if (health <= 0)
-		{
-			persistentUpdate = false;
-			persistentDraw = false;
-			paused = true;
-
-			vocals.stop();
-			FlxG.sound.music.stop();
-
-			if (SONG.song.toLowerCase() == 'shadow') // so its underhud
-				camGame.filtersEnabled = false;
-
-			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-
-			#if windows
-			// Game Over doesn't get his own variable because it's only used here
-			DiscordClient.changePresence("GAME OVER -- "
-				+ SONG.song
-				+ " ("
-				+ storyDifficultyText
-				+ ") "
-				+ Ratings.getDiscordPreview(),
-				"\nAcc: "
-				+ FlxMath.roundDecimal(accuracy, 2)
-				+ "% | Score: "
-				+ displayedScore
-				+ " | Misses: "
-				+ misses, iconRPC);
-			#end
 		}
 
 		if (!inCutscene && ClientPrefs.resetButton && FlxG.keys.justPressed.R)
@@ -2077,11 +2040,8 @@ class PlayState extends MusicBeatState
 	public var DAD_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
 	public var BF_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
 
-	var camLocked:Bool = false;
-
 	var hpTweening:Bool = false;
 	var healthTweenOBJ:FlxTween;
-	var startShredding:Bool = false;
 
 	public function healthTween(amt:Float, ?adding:Bool = true, ?time:Float = 0.5)
 	{
@@ -2092,41 +2052,22 @@ class PlayState extends MusicBeatState
 
 		hpTweening = true;
 
-		if (adding)
+		healthTweenOBJ = FlxTween.num(health, (adding ? health + amt : amt), time, {ease: FlxEase.cubeInOut}, function(v:Float)
 		{
-			healthTweenOBJ = FlxTween.num(health, health + amt, time, {ease: FlxEase.cubeInOut}, function(v:Float)
-			{
-				health = v;
-				hpTweening = false;
+			health = v;
+			hpTweening = false;
 
-				new FlxTimer().start(1, function(tmr:FlxTimer)
-				{
-					emitter.kill();
-				});
-			});
-		}
-		else
-		{
-			healthTweenOBJ = FlxTween.num(health, amt, time, {ease: FlxEase.cubeInOut}, function(v:Float)
+			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				health = v;
-				hpTweening = false;
-
-				new FlxTimer().start(1, function(tmr:FlxTimer)
-				{
-					emitter.kill();
-				});
+				emitter.kill();
 			});
-		}
+		});
 
 		scripts.callFunction("onHealthTween", [amt]);
 	}
 
 	public function moveCamera(isDad:Bool = false)
 	{
-		if (camLocked)
-			return;
-
 		if (isDad)
 		{
 			camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
@@ -2299,23 +2240,10 @@ class PlayState extends MusicBeatState
 		accuracy = Math.max(0, totalNotesHit / totalPlayed * 100);
 
 		scoreTxt.text = Ratings.CalculateRanking(displayedScore, accuracy);
-		scoreTxt.screenCenter(X);
 
-		if (bop)
+		if (bop && !disableScoreBop)
 		{
-			if (disableScoreBop)
-				return;
-
-			if (scoreBop != null)
-				scoreBop.cancel();
-
-			scoreTxt.scale.set(scoreTxt.scale.x < 0.9 ? 0.875 : 1.05, scoreTxt.scale.y < 0.9 ? 0.875 : 1.05);
-			scoreBop = FlxTween.tween(scoreTxt.scale, {x: scoreTxt.scale.x < 0.9 ? 0.8 : 1, y: scoreTxt.scale.y < 0.9 ? 0.8 : 1}, 0.24, {
-				onComplete: (twn) ->
-				{
-					scoreBop = null;
-				}
-			});
+			scoreTxt.bop();
 		}
 	}
 
@@ -2713,7 +2641,7 @@ class PlayState extends MusicBeatState
 			switch (curStep)
 			{
 				case 255:
-					camLocked = false;
+					disableCamera = false;
 			}
 		}
 
@@ -2818,7 +2746,7 @@ class PlayState extends MusicBeatState
 						beatSpeed = 6;
 					case 511:
 						moveCamera(true);
-						camLocked = true;
+						disableCamera = true;
 
 						zoomTwn = FlxTween.tween(camGame, {zoom: 0.7}, 10, {
 							ease: FlxEase.sineInOut,
@@ -2981,7 +2909,6 @@ class PlayState extends MusicBeatState
 		{
 			if (anim == "idle")
 			{
-				trace("BYE");
 				remove(mechanic, true);
 				mechanic.exists = false;
 			}
@@ -2994,9 +2921,6 @@ class PlayState extends MusicBeatState
 		{
 			Reflect.setProperty(object, "antialiasing", false);
 		}
-
-		if (members.contains(object)) // Should fix weird combo number ghosting effect
-			remove(object);
 
 		return super.add(object);
 	}
@@ -3079,8 +3003,9 @@ class PlayState extends MusicBeatState
 
 	function onGameResize(width, height)
 	{
-		var textAntialiasing:Bool = width > 1280 ? true : false;
-		scoreTxt.antialiasing = textAntialiasing;
+		scoreTxt.updateAdaptiveScaling();
+		if (songPosBar != null)
+			songPosBar.updateAdaptiveScaling();
 	}
 
 	override function switchTo(_):Bool
@@ -3152,5 +3077,44 @@ class PlayState extends MusicBeatState
 			AchievementHandler.unlockTrophy(PERFECT_PARRY);
 		}
 		return parried = p;
+	}
+
+	private function set_health(health:Float):Float
+	{
+		health = FlxMath.bound(health, 0, 2);
+
+		if (health == 0)
+		{
+			persistentUpdate = false;
+			persistentDraw = false;
+			paused = true;
+
+			vocals.stop();
+			FlxG.sound.music.stop();
+
+			if (SONG.song.toLowerCase() == 'shadow') // so its underhud
+				camGame.filtersEnabled = false;
+
+			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+
+			#if windows
+			// Game Over doesn't get his own variable because it's only used here
+			DiscordClient.changePresence("GAME OVER -- "
+				+ SONG.song
+				+ " ("
+				+ storyDifficultyText
+				+ ") "
+				+ Ratings.getDiscordPreview(),
+				"\nAcc: "
+				+ FlxMath.roundDecimal(accuracy, 2)
+				+ "% | Score: "
+				+ displayedScore
+				+ " | Misses: "
+				+ misses, iconRPC);
+			#end
+		}
+
+		this.health = health;
+		return health;
 	}
 }
