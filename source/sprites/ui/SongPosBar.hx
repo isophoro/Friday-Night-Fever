@@ -66,6 +66,9 @@ class SongPosBar extends FlxBar
 				i.set(1, 1);
 		}
 
+		time.borderSize = 1.7 * (1 / time.scale.x);
+		name.borderSize = 1.25 * (1 / name.scale.x);
+
 		setPosition(x, y); // Updates the positoning stuff since we use setters
 	}
 
