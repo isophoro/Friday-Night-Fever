@@ -90,8 +90,6 @@ class PlayState extends MusicBeatState
 	public var disableModCamera:Bool = false; // disables the modchart from messing around with the camera
 	public var camFollow:FlxObject = new FlxObject(0, 0, 1, 1);
 
-	private static var prevCamFollow:FlxObject;
-
 	public var filters:Array<BitmapFilter> = [];
 
 	public var useDirectionalCamera:Bool = false;
@@ -103,7 +101,7 @@ class PlayState extends MusicBeatState
 
 	private var unspawnNotes:Array<QueuedNote> = [];
 
-	public var strumLine:FlxSprite;
+	public var strumLine:FlxObject;
 
 	public var strumLineNotes:FlxTypedGroup<FlxSprite> = null;
 	public var playerStrums:FlxTypedGroup<FlxSprite> = null;
@@ -124,14 +122,11 @@ class PlayState extends MusicBeatState
 	public static var misses:Int = 0;
 	public static var deaths:Int = 0;
 
-	public var songPosBar:SongPosBar;
-
 	#if windows
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
 	var iconRPC:String = "";
 	var detailsText:String = "";
-	var detailsPausedText:String = "";
 	#end
 
 	// stage sprites
@@ -141,7 +136,6 @@ class PlayState extends MusicBeatState
 	var spookyBG:FlxSprite; // week 2
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
-	var takiBGSprites:Array<FlxSprite> = [];
 	var bgGirls:BackgroundGirls; // week 6
 
 	public var roboStage:LoadedStage;
@@ -154,14 +148,13 @@ class PlayState extends MusicBeatState
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 
+	public var songPosBar:SongPosBar;
 	public var scoreTxt:ScoreText;
-	public var disableScoreBop:Bool = false;
 	public var subtitles:Subtitles;
-
-	var currentTimingShown:TimingText;
 
 	public var ratingsGrp:FlxTypedGroup<ComboRating> = new FlxTypedGroup<ComboRating>(ComboRating.MAX_RENDERED);
 	public var numbersGrp:FlxTypedGroup<ComboNumber> = new FlxTypedGroup<ComboNumber>(ComboNumber.MAX_RENDERED);
+	public var currentTimingShown:TimingText;
 
 	public var usePixelAssets(default, set):Bool = false;
 
@@ -177,7 +170,7 @@ class PlayState extends MusicBeatState
 		{
 			obj.loadFrames();
 		});
-		ratingsGrp.maxSize = usePixelAssets ? 3 : ComboNumber.MAX_RENDERED;
+		numbersGrp.maxSize = usePixelAssets ? 3 : ComboNumber.MAX_RENDERED;
 		return set;
 	}
 
@@ -201,12 +194,24 @@ class PlayState extends MusicBeatState
 
 	var emitter:FlxEmitter; // health tween shred effect
 
+	public function new(clearMemory:Bool = false, ?prevCamFollow:FlxObject)
+	{
+		super(clearMemory);
+
+		if (prevCamFollow != null)
+			camFollow = prevCamFollow;
+	}
+
 	override public function create()
 	{
 		instance = this;
 		endingSong = false;
 		persistentUpdate = true;
 		persistentDraw = true;
+
+		#if cpp
+		executeModchart = FlxG.save.data.disableModCharts ? false : FileSystem.exists(Paths.lua(SONG.song.toLowerCase() + "/modchart"));
+		#end
 
 		if (!isStoryMode || StoryMenuState.get_weekData()[storyWeek][0].toLowerCase() == SONG.song.toLowerCase())
 		{
@@ -241,11 +246,6 @@ class PlayState extends MusicBeatState
 		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
 
 		#if windows
-		executeModchart = FlxG.save.data.disableModCharts ? false : FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
-		trace('Mod chart: ' + executeModchart + " - " + Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart"));
-		#end
-
-		#if windows
 		// Discord Rich Presence
 		storyDifficultyText = Difficulty.data[storyDifficulty].name;
 
@@ -260,7 +260,7 @@ class PlayState extends MusicBeatState
 			default:
 				SONG.player2.split('-')[0]; // To avoid having duplicate images in Discord assets
 		}
-		detailsPausedText = "Paused - " + detailsText; // String for when the game is paused
+
 		detailsText = isStoryMode ? ("Story Mode: Week " + storyWeek) : "Freeplay";
 
 		// Updating Discord Rich Presence.
@@ -405,13 +405,11 @@ class PlayState extends MusicBeatState
 					bgSky.scrollFactor.set(0.9, 0.9);
 					add(bgSky);
 
-					var repositionShit = -200;
-
-					var bgSchool:FlxSprite = new FlxSprite(repositionShit, 0).loadGraphic(Paths.image('weeb/weebSchool', 'week6'));
+					var bgSchool:FlxSprite = new FlxSprite(-200, 0).loadGraphic(Paths.image('weeb/weebSchool', 'week6'));
 					bgSchool.scrollFactor.set(0.9, 0.9);
 					add(bgSchool);
 
-					var bgStreet:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('weeb/weebStreet', 'week6'));
+					var bgStreet:FlxSprite = new FlxSprite(bgSchool.x).loadGraphic(Paths.image('weeb/weebStreet', 'week6'));
 					bgStreet.scrollFactor.set(0.9, 0.9);
 					add(bgStreet);
 
@@ -440,11 +438,11 @@ class PlayState extends MusicBeatState
 						add(bgGirls);
 					}
 
-					var bgFront:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('weeb/weebfront', 'week6'));
+					var bgFront:FlxSprite = new FlxSprite(bgSchool.x).loadGraphic(Paths.image('weeb/weebfront', 'week6'));
 					bgFront.scrollFactor.set(0.9, 0.9);
 					add(bgFront);
 
-					var bgOverlay:FlxSprite = new FlxSprite(repositionShit).loadGraphic(Paths.image('weeb/weeboverlay', 'week6'));
+					var bgOverlay:FlxSprite = new FlxSprite(bgSchool.x).loadGraphic(Paths.image('weeb/weeboverlay', 'week6'));
 					bgOverlay.scrollFactor.set(0.9, 0.9);
 					add(bgOverlay);
 
@@ -459,10 +457,7 @@ class PlayState extends MusicBeatState
 					curStage = 'schoolEvil';
 					usePixelAssets = true;
 
-					var posX = 400;
-					var posY = 200;
-
-					var bg:FlxSprite = new FlxSprite(posX, posY);
+					var bg:FlxSprite = new FlxSprite(400, 200);
 					bg.frames = Paths.getSparrowAtlas('weeb/animatedEvilSchool', 'week6');
 					bg.animation.addByPrefix('idle', 'background 2', 24);
 					bg.animation.play('idle');
@@ -481,13 +476,11 @@ class PlayState extends MusicBeatState
 		{
 			case 'toothpaste':
 				dad.scrollFactor.set(0.9, 0.9);
-
 			case 'gf':
 				dad.setPosition(gf.x, gf.y);
 				gf.visible = false;
 			case "spooky":
 				dad.y -= 30;
-				// dad.y += 150;
 				dad.x -= 50;
 			case "feralspooky":
 				dad.y -= 160;
@@ -551,6 +544,7 @@ class PlayState extends MusicBeatState
 				dad.y -= 500;
 				dad.scrollFactor.set(0.9, 0.9);
 		}
+
 		curPlayer = boyfriend;
 		curOpponent = dad;
 
@@ -703,26 +697,15 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -5000;
 
-		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
-		strumLine.scrollFactor.set();
-
-		if (ClientPrefs.downscroll)
-			strumLine.y = FlxG.height - 150;
+		strumLine = new FlxObject(0, ClientPrefs.downscroll ? FlxG.height - 150 : 50, FlxG.width, 10);
 
 		strumLineNotes = new FlxTypedGroup<FlxSprite>();
 		add(strumLineNotes);
-
-		if (playerStrums != null)
-		{
-			playerStrums.clear();
-		}
 
 		playerStrums = new FlxTypedGroup<FlxSprite>();
 		cpuStrums = new FlxTypedGroup<FlxSprite>();
 
 		generateSong(SONG.song);
-
-		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04);
 		FlxG.camera.zoom = defaultCamZoom;
@@ -754,9 +737,7 @@ class PlayState extends MusicBeatState
 			FlxTween.tween(vig, {alpha: 0.7}, 3, {type: PINGPONG});
 		}
 
-		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).makeGraphic(601, 19, FlxColor.BLACK);
-		if (ClientPrefs.downscroll)
-			healthBarBG.y = 50;
+		healthBarBG = new FlxSprite(0, FlxG.height * (ClientPrefs.downscroll ? 0.1 : 0.9)).makeGraphic(601, 19, FlxColor.BLACK);
 		healthBarBG.screenCenter(X);
 		healthBarBG.antialiasing = true;
 		add(healthBarBG);
@@ -765,7 +746,6 @@ class PlayState extends MusicBeatState
 			'health', 0, 2);
 		healthBar.createFilledBar(FlxColor.fromString('#FF' + curOpponent.iconColor), FlxColor.fromString('#FF' + curPlayer.iconColor));
 		healthBar.antialiasing = true;
-		// healthBar
 		add(healthBar);
 
 		scoreTxt = new ScoreText(healthBarBG.y + 35);
@@ -898,14 +878,11 @@ class PlayState extends MusicBeatState
 
 		if (camGame.target != null)
 		{
-			FlxG.camera.focusOn(camFollow.getPosition());
+			camGame.focusOn(camFollow.getPosition());
 			if (!disableCamera)
 			{
 				moveCamera(!PlayState.SONG.notes[curSection].mustHitSection);
-				FlxG.camera.focusOn((prevCamFollow != null ? prevCamFollow : camFollow).getPosition());
-
-				if (prevCamFollow != null)
-					prevCamFollow = null;
+				camGame.focusOn(camFollow.getPosition());
 			}
 		}
 
@@ -2241,10 +2218,8 @@ class PlayState extends MusicBeatState
 
 		scoreTxt.text = Ratings.CalculateRanking(displayedScore, accuracy);
 
-		if (bop && !disableScoreBop)
-		{
+		if (bop)
 			scoreTxt.bop();
-		}
 	}
 
 	function endSong():Void
@@ -2318,13 +2293,12 @@ class PlayState extends MusicBeatState
 
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
-				prevCamFollow = camFollow;
 
 				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
 				FlxG.sound.music.stop();
 
 				deaths = 0;
-				FlxG.switchState(new PlayState(curStage != SONG.stage));
+				FlxG.switchState(new PlayState(curStage != SONG.stage, camFollow));
 			}
 		}
 		else

@@ -151,27 +151,6 @@ class FreeplayState extends MusicBeatState
 		}
 		else if (allowInput)
 			waitTimer += elapsed;
-
-		/*if (controls.ACCEPT)
-			{
-				FlxTransitionableState.skipNextTransOut = false;
-				var poop:String = Highscore.formatSong(StringTools.replace(songs[curSelected].songName, " ", "-").toLowerCase(), curDifficulty);
-
-				trace(poop);
-
-				if (poop.toLowerCase().contains("mechanical"))
-				{
-					FlxTransitionableState.skipNextTransOut = true;
-					FlxTransitionableState.skipNextTransIn = true;
-				}
-
-				PlayState.SONG = Song.loadFromJson(poop, StringTools.replace(songs[curSelected].songName, " ", "-").toLowerCase());
-				PlayState.isStoryMode = false;
-				PlayState.storyDifficulty = curDifficulty;
-				PlayState.storyWeek = songs[curSelected].week;
-				trace('CUR WEEK' + PlayState.storyWeek);
-				LoadingState.loadAndSwitchState(new PlayState());
-		}*/
 	}
 
 	override function closeSubState()

@@ -11,6 +11,7 @@ class ScoreText extends FlxText
 	public var defaultSize:Int = 18;
 	public var defaultScale:FlxPoint = new FlxPoint(1, 1);
 	public var bopTween:FlxTween;
+	public var disableBop:Bool = false;
 
 	public function new(y:Float = 0)
 	{
@@ -22,6 +23,9 @@ class ScoreText extends FlxText
 
 	public function bop()
 	{
+		if (disableBop)
+			return;
+
 		cancelBop();
 
 		scale.set(defaultScale.x * 1.05, defaultScale.y * 1.05);
