@@ -100,17 +100,11 @@ class Ratings
 		return "shit";
 	}
 
-	public static function CalculateRanking(score:Int, accuracy:Float):String
+	public static function CalculateRanking(accuracy:Float):String
 	{
-		if (score > 100000) // it shows Score: 100001 sometimes and that scares me!! probably has to do with doing ceil instead of floor but i dont feel like testing that
-			score = 100000;
-
 		if (PlayState.SONG.song == 'Bad-Nun' && BadNun.translate)
 		{
-			return new UnicodeString("スコア: "
-				+ score
-				+ // Score
-				" | 見逃した: "
+			return new UnicodeString("見逃した: "
 				+ PlayState.misses
 				+ // Misses/Combo Breaks
 				" | 正確さ: "
@@ -178,10 +172,7 @@ class Ratings
 		return sign * y;
 	}
 
-	static var totalNotes:Int = 0;
-	public static var scorePerNote:Float = 350;
-
-	public static function init(_totalNotes:Int)
+	public static function init()
 	{
 		PlayState.misses = 0;
 		PlayState.instance.totalRatings = {
@@ -189,8 +180,5 @@ class Ratings
 			bads: 0,
 			goods: 0
 		};
-
-		totalNotes = _totalNotes;
-		scorePerNote = 100000 / _totalNotes;
 	}
 }

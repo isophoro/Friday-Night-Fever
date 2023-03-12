@@ -54,7 +54,6 @@ class PlayState extends MusicBeatState
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
-	public static var campaignScore:Int = 0;
 
 	public static var curStage:String = '';
 	public static var endingSong:Bool;
@@ -108,8 +107,6 @@ class PlayState extends MusicBeatState
 	public var cpuStrums:FlxTypedGroup<FlxSprite> = null;
 
 	public var health(default, set):Float = 1;
-	public var songScore:Float = 0;
-	public var displayedScore:Int = 0;
 	public var combo:Int = 0;
 
 	public var accuracy:Float = 0;
@@ -273,9 +270,7 @@ class PlayState extends MusicBeatState
 			+ Ratings.getDiscordPreview(),
 			"\nAcc: "
 			+ FlxMath.roundDecimal(accuracy, 2)
-			+ "% | Score: "
-			+ displayedScore
-			+ " | Misses: "
+			+ "% | Misses: "
 			+ misses, iconRPC);
 		#end
 
@@ -1216,9 +1211,7 @@ class PlayState extends MusicBeatState
 			+ Ratings.getDiscordPreview(),
 			"\nAcc: "
 			+ FlxMath.roundDecimal(accuracy, 2)
-			+ "% | Score: "
-			+ displayedScore
-			+ " | Misses: "
+			+ "% | Misses: "
 			+ misses, iconRPC);
 		#end
 	}
@@ -1283,7 +1276,7 @@ class PlayState extends MusicBeatState
 			return FlxSort.byValues(FlxSort.ASCENDING, Obj1.strumTime, Obj2.strumTime);
 		});
 
-		Ratings.init(totalPlayerNotes);
+		Ratings.init();
 	}
 
 	private function generateStaticArrows(grp:FlxTypedGroup<FlxSprite>, centerPoint:Float, isPlayer:Bool = true):Void
@@ -1405,9 +1398,7 @@ class PlayState extends MusicBeatState
 				+ Ratings.getDiscordPreview(),
 				"Acc: "
 				+ FlxMath.roundDecimal(accuracy, 2)
-				+ "% | Score: "
-				+ displayedScore
-				+ " | Misses: "
+				+ "% | Misses: "
 				+ misses, iconRPC);
 			#end
 
@@ -1457,11 +1448,8 @@ class PlayState extends MusicBeatState
 					+ Ratings.getDiscordPreview(),
 					"\nAcc: "
 					+ FlxMath.roundDecimal(accuracy, 2)
-					+ "% | Score: "
-					+ displayedScore
-					+ " | Misses: "
-					+ misses, iconRPC, true,
-					FlxG.sound.music.length
+					+ "% | Misses: "
+					+ misses, iconRPC, true, FlxG.sound.music.length
 					- Conductor.songPosition);
 			}
 			else
@@ -1751,9 +1739,7 @@ class PlayState extends MusicBeatState
 				+ Ratings.getDiscordPreview(),
 				"\nAcc: "
 				+ FlxMath.roundDecimal(accuracy, 2)
-				+ "% | Score: "
-				+ displayedScore
-				+ " | Misses: "
+				+ "% | Misses: "
 				+ misses, iconRPC);
 			#end
 		}
@@ -2216,7 +2202,7 @@ class PlayState extends MusicBeatState
 	{
 		accuracy = Math.max(0, totalNotesHit / totalPlayed * 100);
 
-		scoreTxt.text = Ratings.CalculateRanking(displayedScore, accuracy);
+		scoreTxt.text = Ratings.CalculateRanking(accuracy);
 
 		if (bop)
 			scoreTxt.bop();
@@ -2250,14 +2236,10 @@ class PlayState extends MusicBeatState
 
 			if (misses == 0)
 				Highscore.fullCombos.set(SONG.song.toLowerCase(), 0);
-
-			Highscore.saveScore(SONG.song, displayedScore, storyDifficulty);
 		}
 
 		if (isStoryMode)
 		{
-			campaignScore += displayedScore;
-
 			storyPlaylist.remove(storyPlaylist[0]);
 
 			if (storyPlaylist.length <= 0)
@@ -2274,9 +2256,7 @@ class PlayState extends MusicBeatState
 				}
 				#end
 
-				Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
-
-				FlxG.save.flush();
+				Highscore.save();
 
 				endingSong = true;
 
@@ -2288,8 +2268,6 @@ class PlayState extends MusicBeatState
 
 				if (storyDifficulty >= 2)
 					difficulty = '-hard';
-
-				trace('LOADING NEXT SONG: ' + PlayState.storyPlaylist[0].toLowerCase() + difficulty);
 
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
@@ -2303,7 +2281,6 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			trace('WENT BACK TO FREEPLAY??');
 			Main.playFreakyMenu();
 			deaths = 0;
 			FlxG.switchState(new FreeplayState(true));
@@ -2314,7 +2291,6 @@ class PlayState extends MusicBeatState
 	{
 		var noteDiff:Float = Math.abs(Conductor.songPosition - daNote.strumTime);
 		var wife:Float = Ratings.wife3(noteDiff, Conductor.timeScale);
-		var score:Float = Ratings.scorePerNote;
 		var daRating = daNote.rating;
 
 		vocals.volume = 1;
@@ -2323,17 +2299,14 @@ class PlayState extends MusicBeatState
 		switch (daRating)
 		{
 			case 'shit':
-				score = 0;
 				combo = 0;
 				misses++;
 				health -= 0.2;
 				totalRatings.shits++;
 			case 'bad':
-				score /= 3;
 				health -= 0.06;
 				totalRatings.bads++;
 			case 'good':
-				score /= 2;
 				totalRatings.goods++;
 				if (!hpTweening)
 					health += 0.02;
@@ -2348,9 +2321,6 @@ class PlayState extends MusicBeatState
 					add(splash);
 				}
 		}
-
-		songScore += score;
-		displayedScore = Math.ceil(songScore);
 
 		if (SONG.song.toLowerCase() == 'shadow')
 		{
@@ -2403,15 +2373,15 @@ class PlayState extends MusicBeatState
 		if (combo != 0 && combo < 10) // Don't show combo stuff if it's broken or lower than 10
 			return;
 
-		var seperatedScore:Array<String> = (combo + "").split('');
+		var seperatedCombo:Array<String> = (combo + "").split('');
 
-		while (seperatedScore.length < 3)
-			seperatedScore.insert(0, "0");
+		while (seperatedCombo.length < 3)
+			seperatedCombo.insert(0, "0");
 
-		for (i in 0...seperatedScore.length)
+		for (i in 0...seperatedCombo.length)
 		{
 			var numScore:ComboNumber = numbersGrp.recycle(ComboNumber);
-			numScore.create(seperatedScore[i]);
+			numScore.create(seperatedCombo[i]);
 			numScore.x = (ClientPrefs.numX != -1 && !forcedCombo ? ClientPrefs.numX : rating.x) + (33 * i) - 8;
 			numScore.y = (ClientPrefs.numY != -1 && !forcedCombo ? ClientPrefs.numY : rating.y + 100) + (usePixelAssets ? 30 : 0);
 			numScore.cameras = [camHUD];
@@ -2528,8 +2498,6 @@ class PlayState extends MusicBeatState
 			if (!note.isSustainNote)
 			{
 				combo += 1;
-
-				// if(SONG.song.toLowerCase() != 'shadow')
 				popUpScore(note);
 			}
 			else
@@ -2673,11 +2641,8 @@ class PlayState extends MusicBeatState
 			+ Ratings.getDiscordPreview(),
 			"Acc: "
 			+ FlxMath.roundDecimal(accuracy, 2)
-			+ "% | Score: "
-			+ displayedScore
-			+ " | Misses: "
-			+ misses, iconRPC, true,
-			FlxG.sound.music.length
+			+ "% | Misses: "
+			+ misses, iconRPC, true, FlxG.sound.music.length
 			- Conductor.songPosition);
 		#end
 	}
@@ -3081,9 +3046,7 @@ class PlayState extends MusicBeatState
 				+ Ratings.getDiscordPreview(),
 				"\nAcc: "
 				+ FlxMath.roundDecimal(accuracy, 2)
-				+ "% | Score: "
-				+ displayedScore
-				+ " | Misses: "
+				+ "% | Misses: "
 				+ misses, iconRPC);
 			#end
 		}

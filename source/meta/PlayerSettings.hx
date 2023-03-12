@@ -35,9 +35,4 @@ class PlayerSettings
 			player1.controls.addDefaultGamepad(0);
 		}
 	}
-
-	static public function reset()
-	{
-		player1 = null;
-	}
 }

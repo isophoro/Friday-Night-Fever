@@ -272,7 +272,6 @@ class WeekPreviewSubState extends MusicBeatSubstate
 					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(PlayState.storyPlaylist[0], curDifficulty.ID),
 						Highscore.formatSong(PlayState.storyPlaylist[0]));
 					PlayState.storyWeek = week;
-					PlayState.campaignScore = 0;
 
 					LoadingState.loadAndSwitchState(switch (week)
 					{
