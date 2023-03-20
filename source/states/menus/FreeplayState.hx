@@ -12,6 +12,7 @@ using StringTools;
 import meta.Discord.DiscordClient;
 #end
 
+@presence("In the Freeplay Menu.")
 class FreeplayState extends MusicBeatState
 {
 	@:allow(states.FreeplayMenu)

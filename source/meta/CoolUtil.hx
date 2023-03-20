@@ -1,6 +1,9 @@
 package meta;
 
 import StringBuf;
+import flixel.FlxBasic;
+import flixel.FlxCamera;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import lime.utils.Assets;
 
 using StringTools;
@@ -8,6 +11,23 @@ using StringTools;
 class CoolUtil
 {
 	public static var difficultyArray:Array<String> = ["EASY", "NORMAL"];
+
+	public static function fillTypedGroup(grp:FlxTypedGroup<Dynamic>, type:Class<FlxBasic>, max:Int = 0, ?cam:FlxCamera)
+	{
+		if (max == 0)
+			max = grp.maxSize;
+
+		for (i in 0...max)
+		{
+			var item:FlxBasic = Type.createInstance(type, []);
+			grp.add(item);
+			item.kill();
+			item.exists = false;
+
+			if (cam != null)
+				item.cameras = [cam];
+		}
+	}
 
 	// GITHUB CO-PILOT IS GOATED
 	public static function capitalizeFirstLetters(str:String):String

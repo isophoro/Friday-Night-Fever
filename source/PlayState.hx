@@ -149,6 +149,7 @@ class PlayState extends MusicBeatState
 	public var scoreTxt:ScoreText;
 	public var subtitles:Subtitles;
 
+	public var splashGrp:FlxTypedGroup<NoteSplash> = new FlxTypedGroup<NoteSplash>(4);
 	public var ratingsGrp:FlxTypedGroup<ComboRating> = new FlxTypedGroup<ComboRating>(ComboRating.MAX_RENDERED);
 	public var numbersGrp:FlxTypedGroup<ComboNumber> = new FlxTypedGroup<ComboNumber>(ComboNumber.MAX_RENDERED);
 	public var currentTimingShown:TimingText;
@@ -217,24 +218,16 @@ class PlayState extends MusicBeatState
 
 		super.create();
 
-		for (i in 0...ComboRating.MAX_RENDERED)
-		{
-			var cr = new ComboRating();
-			ratingsGrp.add(cr);
-			cr.kill();
-			cr.exists = false;
-		}
+		camGame = new FlxCamera();
+		camHUD = new FlxCamera();
+		camHUD.bgColor.alpha = 0;
 
-		for (i in 0...ComboNumber.MAX_RENDERED)
-		{
-			var cn = new ComboNumber();
-			numbersGrp.add(cn);
-			cn.kill();
-			cn.exists = false;
-		}
+		FlxG.cameras.reset(camGame);
+		FlxG.cameras.add(camHUD, false);
 
-		// Preload
-		add(new NoteSplash(0, 0, 0));
+		CoolUtil.fillTypedGroup(ratingsGrp, ComboRating, ComboRating.MAX_RENDERED, camHUD);
+		CoolUtil.fillTypedGroup(numbersGrp, ComboNumber, ComboNumber.MAX_RENDERED, camHUD);
+		CoolUtil.fillTypedGroup(splashGrp, NoteSplash, ComboNumber.MAX_RENDERED, camHUD);
 
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -273,13 +266,6 @@ class PlayState extends MusicBeatState
 			+ "% | Misses: "
 			+ misses, iconRPC);
 		#end
-
-		camGame = new FlxCamera();
-		camHUD = new FlxCamera();
-		camHUD.bgColor.alpha = 0;
-
-		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camHUD, false);
 
 		currentTimingShown = new TimingText();
 		currentTimingShown.cameras = [camHUD];
@@ -2316,8 +2302,8 @@ class PlayState extends MusicBeatState
 
 				if (ClientPrefs.notesplash)
 				{
-					var splash:NoteSplash = new NoteSplash(playerStrums.members[daNote.noteData].x, playerStrums.members[daNote.noteData].y, daNote.noteData);
-					splash.cameras = [camHUD];
+					var splash:NoteSplash = splashGrp.recycle();
+					splash.splash(playerStrums.members[daNote.noteData].x, playerStrums.members[daNote.noteData].y, daNote.noteData);
 					add(splash);
 				}
 		}
@@ -2332,7 +2318,6 @@ class PlayState extends MusicBeatState
 
 		var rating:ComboRating = ratingsGrp.recycle(ComboRating);
 		rating.create(daRating);
-		rating.cameras = [camHUD];
 		rating.setPosition((FlxG.width / 2) - (rating.width / 2), (FlxG.height * 0.5) - (rating.height / 2) + 100);
 
 		if (forcedCombo)
@@ -2384,7 +2369,6 @@ class PlayState extends MusicBeatState
 			numScore.create(seperatedCombo[i]);
 			numScore.x = (ClientPrefs.numX != -1 && !forcedCombo ? ClientPrefs.numX : rating.x) + (33 * i) - 8;
 			numScore.y = (ClientPrefs.numY != -1 && !forcedCombo ? ClientPrefs.numY : rating.y + 100) + (usePixelAssets ? 30 : 0);
-			numScore.cameras = [camHUD];
 
 			numbersGrp.add(numScore);
 			add(numScore);

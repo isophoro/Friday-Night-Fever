@@ -1,4 +1,3 @@
-import Character;
 import PlayState;
 import flixel.effects.FlxFlicker;
 import flixel.text.FlxTextAlign;

@@ -1,5 +1,6 @@
 package;
 
+import cpp.vm.Gc;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
@@ -11,6 +12,7 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.system.System;
+import openfl.utils.AssetCache;
 
 class Main extends Sprite
 {
@@ -77,32 +79,63 @@ class Main extends Sprite
 
 	public static function clearMemory(destroyMusic:Bool = true)
 	{
-		if (FlxG.sound.music != null && destroyMusic)
-			FlxG.sound.music.destroy();
+		var destroyedCount:Int = 0;
+		var c:AssetCache = cast openfl.utils.Assets.cache;
+
+		if (destroyMusic)
+		{
+			if (FlxG.sound.music != null && destroyMusic)
+				FlxG.sound.music.destroy();
+
+			for (i in c.sound)
+			{
+				if (i != null)
+				{
+					i.close();
+					destroyedCount++;
+				}
+			}
+
+			c.sound.clear();
+		}
 
 		for (i in FlxG.sound.list)
 		{
 			if (i != null)
 			{
 				i.destroy();
+				destroyedCount++;
 			}
 		}
+
+		FlxG.sound.list.clear();
 
 		@:privateAccess
 		{
-			for (k in FlxG.bitmap._cache.keys())
+			for (i in c.bitmapData)
 			{
-				var bmp = FlxG.bitmap._cache.get(k);
-				if (k == null)
-					continue;
-
-				bmp.destroy();
-				openfl.Assets.cache.removeBitmapData(k);
-				FlxG.bitmap._cache.remove(k);
-				openfl.Assets.cache.clear(k);
+				if (i != null)
+				{
+					i.dispose();
+					destroyedCount++;
+				}
 			}
+
+			c.bitmapData.clear();
+
+			for (i in FlxG.bitmap._cache)
+			{
+				if (i != null)
+				{
+					i.destroy();
+					destroyedCount++;
+				}
+			}
+
+			FlxG.bitmap._cache.clear();
 		}
 
+		trace('Cache: Destroyed $destroyedCount assets.');
 		System.gc();
 	}
 
@@ -182,7 +215,7 @@ class FPS_MEM extends FPS
 
 		if (currentCount != cacheCount)
 		{
-			var mem:Float = Math.round(cpp.NativeGc.memInfo(0) / 1024 / 1024 * 100) / 100;
+			var mem:Float = Math.round(Gc.memInfo64(Gc.MEM_INFO_CURRENT) / 1000000);
 			text = "FPS: " + currentFPS + '\nMem: ' + mem + 'MB';
 		}
 

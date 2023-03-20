@@ -3,7 +3,6 @@ bf-coat
 bf-tutorial
 bf-iso
 bf-cedar
-rf
 bf-rolldog
 gf-rolldog
 rolldog
@@ -18,7 +17,6 @@ peakek
 peasus
 spooky
 feralspooky
-monster
 bf-casual
 mako
 mako-demon
