@@ -2,10 +2,11 @@ package sprites.objects;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
 
 class NoteSplash extends FlxSprite
 {
+	public static var MAX_RENDERED:Int = 10;
+
 	public function new()
 	{
 		super();
@@ -14,15 +15,12 @@ class NoteSplash extends FlxSprite
 		alpha = 0.69;
 
 		frames = Paths.getSparrowAtlas('notesplash', 'shared');
-		animation.addByPrefix('idle', 'notesplash', 36, false);
+		animation.addByPrefix('splash', 'notesplash', 36, false);
 
 		animation.finishCallback = function(t)
 		{
 			kill();
-			exists = false;
-
-			if (flixel.FlxG.state.members.contains(this))
-				flixel.FlxG.state.remove(this);
+			flixel.FlxG.state.remove(this);
 		}
 	}
 
@@ -37,6 +35,6 @@ class NoteSplash extends FlxSprite
 		else
 			offset.set(0.33 * width, 0.315 * height);
 
-		animation.play('idle', true);
+		animation.play('splash', true);
 	}
 }

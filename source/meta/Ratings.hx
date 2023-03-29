@@ -54,7 +54,7 @@ class Ratings
 		if (ClientPrefs.botplay)
 			return SICK_FC;
 
-		if (PlayState.misses == 0)
+		if (PlayState.instance.misses == 0)
 		{
 			var r = PlayState.instance.totalRatings;
 			if (r.bads == 0 && r.shits == 0 && r.goods == 0) // Marvelous (SICK) Full Combo
@@ -66,7 +66,7 @@ class Ratings
 		}
 		else
 		{
-			return PlayState.misses + (PlayState.misses > 1 ? " misses" : " miss");
+			return PlayState.instance.misses + (PlayState.instance.misses > 1 ? " misses" : " miss");
 		}
 	}
 
@@ -105,7 +105,7 @@ class Ratings
 		if (PlayState.SONG.song == 'Bad-Nun' && BadNun.translate)
 		{
 			return new UnicodeString("見逃した: "
-				+ PlayState.misses
+				+ PlayState.instance.misses
 				+ // Misses/Combo Breaks
 				" | 正確さ: "
 				+ (FlxG.save.data.botplay ? "N/A" : (Math.isNaN(accuracy) ? 100 : FlxMath.roundDecimal(accuracy, 2)) + "%")
@@ -126,7 +126,7 @@ class Ratings
 		var acc:String = ClientPrefs.botplay ? "N/A" : (Math.isNaN(PlayState.instance.accuracy) ? 100 : FlxMath.roundDecimal(PlayState.instance.accuracy, 2))
 			+ "%";
 
-		return 'Accuracy: $acc | Missed: ${PlayState.misses}';
+		return 'Accuracy: $acc | Missed: ${PlayState.instance.misses}';
 	}
 
 	public static function wife3(maxms:Float, ts:Float)
@@ -170,15 +170,5 @@ class Ratings
 		var y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
 
 		return sign * y;
-	}
-
-	public static function init()
-	{
-		PlayState.misses = 0;
-		PlayState.instance.totalRatings = {
-			shits: 0,
-			bads: 0,
-			goods: 0
-		};
 	}
 }

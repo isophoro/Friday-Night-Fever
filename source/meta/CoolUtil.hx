@@ -12,6 +12,15 @@ class CoolUtil
 {
 	public static var difficultyArray:Array<String> = ["EASY", "NORMAL"];
 
+	public static function setTweensActive(active:Bool)
+	{
+		@:privateAccess
+		for (i in flixel.tweens.FlxTween.globalManager._tweens)
+		{
+			i.active = false;
+		}
+	}
+
 	public static function fillTypedGroup(grp:FlxTypedGroup<Dynamic>, type:Class<FlxBasic>, max:Int = 0, ?cam:FlxCamera)
 	{
 		if (max == 0)

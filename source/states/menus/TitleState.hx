@@ -7,6 +7,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.util.typeLimit.OneOfTwo;
+import openfl.filters.ShaderFilter;
 import shaders.ColorShader;
 
 using StringTools;
