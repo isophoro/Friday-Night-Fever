@@ -231,6 +231,9 @@ class FreeplayMenu extends MusicBeatSubstate
 		});
 	}
 
+	var waitTimer:Float = 0;
+	var intervalTimer:Float = 0.16;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -259,6 +262,27 @@ class FreeplayMenu extends MusicBeatSubstate
 				},
 				ease: FlxEase.quadInOut
 			});
+		}
+
+		if (controls.UP || controls.DOWN)
+		{
+			waitTimer += elapsed;
+
+			if (waitTimer >= 0.45)
+			{
+				intervalTimer += elapsed;
+
+				if (intervalTimer > 0.16)
+				{
+					intervalTimer = 0;
+					changeSelection(controls.UP ? -1 : 1);
+				}
+			}
+		}
+		else
+		{
+			waitTimer = 0;
+			intervalTimer = 0.16;
 		}
 
 		if (controls.LEFT_P)

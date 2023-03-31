@@ -12,10 +12,30 @@ import scripting.HaxeScript;
 
 class MusicBeatState extends FlxUIState
 {
-	private var lastStep:Float = 0;
-
-	public var curStep:Int = 0;
+	public var curStep(default, set):Int = 0;
 	public var curBeat:Int = 0;
+
+	private function set_curStep(newStep:Int)
+	{
+		if (curStep != newStep)
+		{
+			curBeat = Math.floor(newStep / 4);
+
+			if (curStep > 0)
+			{
+				Conductor.callStepReceivers(newStep);
+				stepHit();
+
+				if (curStep % 4 == 0 && !disableBeathit)
+				{
+					Conductor.callBeatReceivers(curBeat);
+					beatHit();
+				}
+			}
+		}
+
+		return curStep = newStep;
+	}
 
 	private var controls(get, never):Controls;
 	private var disableBeathit:Bool = false;
@@ -51,13 +71,7 @@ class MusicBeatState extends FlxUIState
 
 	override function update(elapsed:Float)
 	{
-		var oldStep:Int = curStep;
-
 		updateCurStep();
-		curBeat = Math.floor(curStep / 4);
-
-		if (oldStep != curStep && curStep > 0)
-			stepHit();
 
 		super.update(elapsed);
 	}
@@ -69,6 +83,7 @@ class MusicBeatState extends FlxUIState
 			songTime: 0,
 			bpm: 0
 		}
+
 		for (i in 0...Conductor.bpmChangeMap.length)
 		{
 			if (Conductor.songPosition >= Conductor.bpmChangeMap[i].songTime)
@@ -80,15 +95,12 @@ class MusicBeatState extends FlxUIState
 
 	public function stepHit():Void
 	{
-		Conductor.callStepReceivers(curStep);
-
-		if (curStep % 4 == 0 && !disableBeathit)
-			beatHit();
+		// Override this with your state's step logic
 	}
 
 	public function beatHit():Void
 	{
-		Conductor.callBeatReceivers(curBeat);
+		// Override this with your state's beat logic
 	}
 
 	inline public function fancyOpenURL(schmancy:String)

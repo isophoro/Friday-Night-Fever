@@ -54,11 +54,6 @@ class InitState extends MusicBeatState
 		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.6, new FlxPoint(0, 1), {asset: diamond, width: 32, height: 32},
 			new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
 
-		if (FlxG.random.bool(0.2))
-		{
-			FlxG.stage.window.title = "Friday Night Fever: The Winkel Build";
-		}
-
 		FlxTransitionableState.skipNextTransIn = true;
 		FlxG.switchState(new TitleState());
 		#end
