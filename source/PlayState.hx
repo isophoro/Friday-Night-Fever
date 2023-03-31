@@ -7,7 +7,6 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.addons.transition.FlxTransitionableState;
-import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxRect;
@@ -102,9 +101,9 @@ class PlayState extends MusicBeatState
 
 	public var strumLine:FlxObject;
 
-	public var strumLineNotes:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(7);
-	public var playerStrums:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(3);
-	public var cpuStrums:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(3);
+	public var strumLineNotes:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(8);
+	public var playerStrums:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(4);
+	public var cpuStrums:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(4);
 
 	public var health(default, set):Float = 1;
 	public var combo:Int = 0;
@@ -184,19 +183,8 @@ class PlayState extends MusicBeatState
 	var songScript:HaxeScript;
 	var curSection:Int = 0;
 
-	var snowOn:Bool = false;
-	var snowShader:ShaderFilter;
-
-	var boyfriendReflection:Boyfriend;
-	var zoomTwn:FlxTween;
-
-	var keybindTxt:FlxText;
-
 	public var canHey:Bool = true;
-	public var spacePressed:Bool = false;
 	public var gotSmushed:Bool = false; // death stuff
-
-	var emitter:FlxEmitter; // health tween shred effect
 
 	public function new(clearMemory:Bool = false, ?prevCamFollow:FlxObject)
 	{
@@ -300,8 +288,6 @@ class PlayState extends MusicBeatState
 		gf.scrollFactor.set(0.95, 0.95);
 
 		boyfriend = new Boyfriend(770, SONG.player1 == "bf" ? 400 : 450, SONG.player1);
-		if (SONG.song.toLowerCase() == 'shadow')
-			boyfriendReflection = new Boyfriend(770, 450, "bf-CoatReflection"); // this is for shadow fever reflection
 
 		var dadCharacter = SONG.player2;
 		if (SONG.player2 == "peasus" && Song.isChildCostume)
@@ -352,31 +338,6 @@ class PlayState extends MusicBeatState
 					var bg:FlxSprite = new FlxSprite(-200, -100).loadGraphic(Paths.image('week2bgtaki'));
 					bg.antialiasing = true;
 					add(bg);
-				}
-			case 'cave':
-				{
-					curStage = 'cave';
-					defaultCamZoom = 1.6;
-
-					var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer', 'shadow'));
-					bg.antialiasing = true;
-					bg.scrollFactor.set(0.85, 0.85);
-					bg.setGraphicSize(Std.int(bg.width * 1.5));
-					bg.updateHitbox();
-					add(bg);
-
-					var layer1:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer1', 'shadow'));
-					layer1.antialiasing = true;
-					layer1.scrollFactor.set(0.9, 0.9);
-					layer1.setGraphicSize(Std.int(layer1.width * 1.5));
-					layer1.updateHitbox();
-					add(layer1);
-
-					var layer2:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('icecavelayer2', 'shadow'));
-					layer2.antialiasing = true;
-					layer2.setGraphicSize(Std.int(layer2.width * 1.5));
-					layer2.updateHitbox();
-					add(layer2);
 				}
 			case 'robocesbg':
 				{
@@ -544,13 +505,6 @@ class PlayState extends MusicBeatState
 				boyfriend.x = 2535.35;
 				boyfriend.y = 1290.3;
 
-				boyfriendReflection.x = 2535.35;
-				boyfriendReflection.y = boyfriend.y + boyfriend.height - 125;
-				boyfriendReflection.flipY = true;
-				boyfriendReflection.scale.y = 0.7;
-				boyfriendReflection.alpha = 0.5;
-				boyfriendReflection.blend = BlendMode.ADD;
-
 				var evilTrail = new CharacterTrail(dad, null, 4, 24, 0.3, 0.069);
 				add(evilTrail);
 
@@ -669,9 +623,6 @@ class PlayState extends MusicBeatState
 		}
 		add(dad);
 
-		if (curStage == 'cave')
-			add(boyfriendReflection);
-
 		add(boyfriend);
 
 		if (roboStage != null)
@@ -693,33 +644,6 @@ class PlayState extends MusicBeatState
 		FlxG.camera.follow(camFollow, LOCKON, 0.04);
 		FlxG.camera.zoom = defaultCamZoom;
 
-		if (SONG.song.toLowerCase() == 'shadow') // so its underhud
-		{
-			var snow:Snow = new Snow();
-			var bloom:Bloom = new Bloom();
-
-			var bloomShader = new ShaderFilter(bloom);
-			snowShader = new ShaderFilter(snow);
-
-			camGame.setFilters([snowShader, bloomShader]);
-			snowOn = true;
-
-			camGame.filtersEnabled = true;
-
-			var blue:FlxSprite = new FlxSprite().makeGraphic(1280, 720, FlxColor.BLUE);
-			blue.alpha = 0.15;
-			blue.cameras = [camHUD];
-			add(blue);
-
-			var vig:FlxSprite = new FlxSprite().loadGraphic(Paths.image("effectShit/vignette-whitez", 'shared'));
-			vig.cameras = [camHUD];
-			vig.blend = BlendMode.OVERLAY;
-			vig.alpha = 0.2;
-			add(vig);
-
-			FlxTween.tween(vig, {alpha: 0.7}, 3, {type: PINGPONG});
-		}
-
 		healthBarBG = new FlxSprite(0, FlxG.height * (ClientPrefs.downscroll ? 0.1 : 0.9)).makeGraphic(601, 19, FlxColor.BLACK);
 		healthBarBG.screenCenter(X);
 		healthBarBG.antialiasing = true;
@@ -735,15 +659,6 @@ class PlayState extends MusicBeatState
 		updateScoring();
 
 		FlxG.signals.gameResized.add(onGameResize);
-
-		emitter = new FlxEmitter(50, healthBarBG.y + 25, 200);
-		emitter.makeParticles(11, 11, FlxColor.fromString('#FF' + curPlayer.iconColor), 200);
-		emitter.launchMode = FlxEmitterMode.CIRCLE;
-		emitter.launchAngle.set(-45, 45);
-		emitter.lifespan.set(0.1, 1);
-		emitter.alpha.set(1, 1, 0, 0);
-		emitter.acceleration.set(0, 0, 0, 0, 200, 200, 400, 400);
-		add(emitter);
 
 		iconP1 = new HealthIcon(boyfriend.curCharacter, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -770,7 +685,6 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
-		emitter.cameras = [camHUD];
 
 		if (subtitles != null)
 		{
@@ -796,28 +710,12 @@ class PlayState extends MusicBeatState
 				vignette.cameras = [camHUD];
 				add(vignette);
 				vignette.alpha = 0;
-			case 'dead-mans-melody':
-				keybindTxt = new FlxText(0, 0, FlxG.width, "YOUR DODGE/PARRY KEY IS " + ClientPrefs.dodgeBind, 20);
-				keybindTxt.setFormat(Paths.font("vcr.ttf"), 34, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-				keybindTxt.cameras = [camHUD];
-				keybindTxt.screenCenter();
-				keybindTxt.antialiasing = true;
-				keybindTxt.y = FlxG.height - 100;
-				add(keybindTxt);
-				keybindTxt.alpha = 0;
 		}
 
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
 		startingSong = true;
-
-		if (SONG.song.toLowerCase() == 'shadow') // hide hud without removing it plus dialogue stuff
-		{
-			dark = new FlxSprite(0, 0).makeGraphic(1280, 720, FlxColor.BLACK);
-			dark.cameras = [camHUD];
-			add(dark);
-		}
 
 		var cutscenePath:String = 'assets/data/${SONG.song.toLowerCase()}/cutscene.hx';
 		if (Assets.exists(cutscenePath))
@@ -901,13 +799,7 @@ class PlayState extends MusicBeatState
 		}
 
 		inCutscene = true;
-		if (SONG.song.toLowerCase() == 'shadow')
-		{
-			camFollow.setPosition(boyfriend.getMidpoint().x - 90, boyfriend.getMidpoint().y - 150);
-			disableCamera = true;
-		}
-		else
-			camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
+		camFollow.setPosition(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 
 		var doof:DialogueBox = new DialogueBox(dialoguePath);
 		doof.cameras = [camHUD];
@@ -1033,9 +925,6 @@ class PlayState extends MusicBeatState
 			gf.dance();
 			boyfriend.dance();
 
-			if (boyfriendReflection != null)
-				boyfriendReflection.dance();
-
 			var altSuffix:String = "";
 
 			if (introAssets[0].endsWith("-pixel"))
@@ -1049,28 +938,25 @@ class PlayState extends MusicBeatState
 			}
 
 			FlxG.sound.play(Paths.sound('intro' + (swagCounter == 3 ? 'Go' : '${3 - swagCounter}') + altSuffix), 0.6);
-			if (SONG.song.toLowerCase() != 'shadow')
-			{
-				var sprite:FlxSprite = new FlxSprite().loadGraphic(Paths.image("countdown/" + introAssets[swagCounter]));
+			var sprite:FlxSprite = new FlxSprite().loadGraphic(Paths.image("countdown/" + introAssets[swagCounter]));
 
-				if (introAssets[0].endsWith("-pixel"))
-					sprite.setGraphicSize(Std.int(sprite.width * 4.8));
-				else if (camHUD.zoom != 1)
-					sprite.scale.set(sprite.scale.x * (1 / camHUD.zoom), sprite.scale.y * (1 / camHUD.zoom));
+			if (introAssets[0].endsWith("-pixel"))
+				sprite.setGraphicSize(Std.int(sprite.width * 4.8));
+			else if (camHUD.zoom != 1)
+				sprite.scale.set(sprite.scale.x * (1 / camHUD.zoom), sprite.scale.y * (1 / camHUD.zoom));
 
-				sprite.screenCenter();
-				sprite.cameras = [camHUD];
-				add(sprite);
+			sprite.screenCenter();
+			sprite.cameras = [camHUD];
+			add(sprite);
 
-				FlxTween.tween(sprite, {alpha: 0}, Conductor.crochet / 1000, {
-					ease: FlxEase.cubeInOut,
-					onComplete: function(twn:FlxTween)
-					{
-						remove(sprite);
-						sprite.destroy();
-					}
-				});
-			}
+			FlxTween.tween(sprite, {alpha: 0}, Conductor.crochet / 1000, {
+				ease: FlxEase.cubeInOut,
+				onComplete: function(twn:FlxTween)
+				{
+					remove(sprite);
+					sprite.destroy();
+				}
+			});
 
 			System.gc();
 			swagCounter++;
@@ -1118,27 +1004,6 @@ class PlayState extends MusicBeatState
 				video.stop();
 				camGame.fade(FlxColor.BLACK, 0.3, true);
 			}
-		}
-
-		if (SONG.song.toLowerCase() == 'shadow') // so its underhud
-		{
-			dark.alpha = 0;
-			camGame.flash(FlxColor.BLACK, 10);
-			camHUD.alpha = 0;
-			camZooming = true;
-
-			for (i in 0...cpuStrums.length)
-			{
-				FlxTween.tween(cpuStrums.members[i], {alpha: 0.6}, 2, {type: PINGPONG, startDelay: 0.5 + (0.2 * i)});
-			}
-
-			zoomTwn = FlxTween.tween(camGame, {zoom: 1.0}, 19, {
-				ease: FlxEase.sineInOut,
-				onComplete: (twn) ->
-				{
-					defaultCamZoom = camGame.zoom;
-				}
-			});
 		}
 
 		if (!paused)
@@ -1457,49 +1322,9 @@ class PlayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (controls.DODGE && !ClientPrefs.botplay && SONG.song.toLowerCase() == 'dead-mans-melody' && spaceDelay <= 0)
-		{
-			trace("GAY");
-
-			spaceDelay = spaceDelayTime;
-
-			if (canPressSpace)
-				spacePressed = true;
-		}
-
-		if (spaceDelay > 0)
-		{
-			spaceDelay -= FlxG.elapsed;
-		}
-		else
-		{
-			spaceDelay = 0;
-		}
-
-		if (FlxG.keys.justPressed.E)
-		{
-			healthTween(-0.02);
-		}
-
-		if (snowOn) // snow stuff ig idk stealing from hypno
-			snowShader.shader.data.time.value = [Conductor.songPosition / (Conductor.stepCrochet * 8)];
-
 		// Using 180 here since that's the framerate I test with
 		FlxG.camera.followLerp = elapsed * cameraSpeed * (180 / FlxG.drawFramerate);
 		iconHurtTimer -= elapsed;
-
-		if (SONG.song.toLowerCase() == 'shadow')
-		{
-			if (health >= 2) // for sum reason, the health goes above 2, then its like a timer for the thing to work so i did this to fix it
-			{
-				health = 2;
-			}
-
-			if (health == 2 || healthBar.percent == 100)
-			{
-				healthTween(-1);
-			}
-		}
 
 		scripts.updateVars();
 
@@ -1551,12 +1376,6 @@ class PlayState extends MusicBeatState
 			{
 				if (boyfriend.animation.curAnim.name.startsWith("idle"))
 					boyfriend.playAnim('hey');
-
-				if (boyfriendReflection != null)
-				{
-					if (boyfriendReflection.animation.curAnim.name.startsWith("idle"))
-						boyfriendReflection.playAnim('hey');
-				}
 
 				if (!gf.animation.paused && gf.animation.curAnim.name.startsWith("dance"))
 					gf.playAnim('cheer');
@@ -1616,8 +1435,6 @@ class PlayState extends MusicBeatState
 				iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 100, 0, 100, 0) * 0.01)) - (iconP2.width - 26);
 		}
 
-		emitter.x = iconP2.x + 60;
-
 		if (health >= 1.75 && iconHurtTimer <= 0)
 		{
 			iconP2.animation.play('hurt');
@@ -1635,7 +1452,7 @@ class PlayState extends MusicBeatState
 		}
 
 		#if debug
-		if (FlxG.keys.justPressed.EIGHT && SONG.song.toLowerCase() != 'shadow')
+		if (FlxG.keys.justPressed.EIGHT)
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player2));
 			#if windows
@@ -1681,9 +1498,6 @@ class PlayState extends MusicBeatState
 
 			vocals.stop();
 			FlxG.sound.music.stop();
-
-			if (SONG.song.toLowerCase() == 'shadow') // so its underhud
-				camGame.filtersEnabled = false;
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -1884,7 +1698,7 @@ class PlayState extends MusicBeatState
 
 							gf.playAnim('scared');
 						case 'SG':
-							if (healthBar.percent > 5 && !hpTweening)
+							if (healthBar.percent > 5)
 								health -= (daNote.isSustainNote ? 0.03 : 0.02);
 						case 'hallow':
 							if (healthBar.percent > 5)
@@ -1960,32 +1774,6 @@ class PlayState extends MusicBeatState
 
 	public var DAD_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
 	public var BF_CAM_OFFSET:FlxPoint = new FlxPoint(0, 0);
-
-	var hpTweening:Bool = false;
-	var healthTweenOBJ:FlxTween;
-
-	public function healthTween(amt:Float, ?adding:Bool = true, ?time:Float = 0.5)
-	{
-		if (healthTweenOBJ != null)
-			healthTweenOBJ.cancel();
-
-		emitter.start(false, 0.01, 0);
-
-		hpTweening = true;
-
-		healthTweenOBJ = FlxTween.num(health, (adding ? health + amt : amt), time, {ease: FlxEase.cubeInOut}, function(v:Float)
-		{
-			health = v;
-			hpTweening = false;
-
-			new FlxTimer().start(1, function(tmr:FlxTimer)
-			{
-				emitter.kill();
-			});
-		});
-
-		scripts.callFunction("onHealthTween", [amt]);
-	}
 
 	public function moveCamera(isDad:Bool = false)
 	{
@@ -2182,11 +1970,6 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
 
-		if (SONG.song.toLowerCase() == 'shadow')
-		{
-			Sys.exit(0);
-		}
-
 		if (!ClientPrefs.botplay)
 		{
 			if (accuracy <= 41)
@@ -2266,11 +2049,9 @@ class PlayState extends MusicBeatState
 				totalRatings.bads++;
 			case 'good':
 				totalRatings.goods++;
-				if (!hpTweening)
-					health += 0.02;
+				health += 0.02;
 			case 'sick':
-				if (!hpTweening)
-					health += 0.04;
+				health += 0.04;
 
 				if (ClientPrefs.notesplash)
 				{
@@ -2278,11 +2059,6 @@ class PlayState extends MusicBeatState
 					splash.splash(playerStrums.members[daNote.noteData].x, playerStrums.members[daNote.noteData].y, daNote.noteData);
 					add(splash);
 				}
-		}
-
-		if (SONG.song.toLowerCase() == 'shadow')
-		{
-			return;
 		}
 
 		var forcedCombo = songScript.variables["forceComboPos"] != null
@@ -2429,9 +2205,6 @@ class PlayState extends MusicBeatState
 		if (curPlayer.animation.curAnim.name != 'dodge' || curPlayer.animation.curAnim.name != 'hey')
 		{
 			curPlayer.playAnim('sing' + dataSuffix[direction] + 'miss', true);
-
-			if (boyfriendReflection != null)
-				boyfriendReflection.playAnim('sing' + dataSuffix[direction] + 'miss', true);
 		}
 
 		#if windows
@@ -2475,12 +2248,6 @@ class PlayState extends MusicBeatState
 					curPlayer.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
 				else
 					curPlayer.playAnim(note.properties.singAnim, true);
-
-				if (boyfriendReflection != null)
-				{
-					boyfriendReflection.holdTimer = 0;
-					boyfriendReflection.playAnim('sing' + dataSuffix[note.noteData] + altSuffix, true);
-				}
 			}
 
 			#if windows
@@ -2531,15 +2298,6 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.6;
 				case 1524:
 					health += 0.40;
-			}
-		}
-
-		if (curSong == 'Shadow')
-		{
-			switch (curStep)
-			{
-				case 255:
-					disableCamera = false;
 			}
 		}
 
@@ -2622,63 +2380,9 @@ class PlayState extends MusicBeatState
 
 		switch (curSong.toLowerCase())
 		{
-			case 'shadow':
-				switch (curBeat)
-				{
-					case 64:
-						FlxTween.tween(camHUD, {alpha: 1}, 0.5);
-					case 96:
-						defaultCamZoom = 0.5;
-					case 128:
-						beatSpeed = 1;
-					case 256:
-						beatSpeed = 2;
-						defaultCamZoom += 0.05;
-					case 320:
-						defaultCamZoom -= 0.05;
-						beatSpeed = 1;
-					case 448:
-						beatSpeed = 6;
-					case 511:
-						moveCamera(true);
-						disableCamera = true;
-
-						zoomTwn = FlxTween.tween(camGame, {zoom: 0.7}, 10, {
-							ease: FlxEase.sineInOut,
-							onComplete: (twn) ->
-							{
-								defaultCamZoom = camGame.zoom;
-							}
-						});
-					case 512:
-						FlxTween.tween(camHUD, {alpha: 0}, 1);
-						dad.playAnim('bye', true);
-						dad.animation.finishCallback = function(anim)
-						{
-							dad.alpha = 0;
-						}
-				}
-
-				if (curBeat >= 64 && curBeat <= 511)
-				{
-					if ((FlxG.camera.zoom < 1.35 && curBeat % beatSpeed == 0))
-					{
-						FlxG.camera.zoom += 0.015;
-						camHUD.zoom += 0.05;
-					}
-				}
-
 			case 'hardships':
 				if (curBeat == 158)
 					boyfriend.useAlternateIdle = true;
-			case 'dead-mans-melody':
-				switch (curBeat)
-				{
-					case 148:
-						FlxTween.tween(keybindTxt, {alpha: 1, y: keybindTxt.y - 15}, 1, {ease: FlxEase.circOut});
-					case 176:
-						FlxTween.tween(keybindTxt, {alpha: 0, y: keybindTxt.y + 15}, 1, {ease: FlxEase.circIn});
-				}
 			case 'loaded':
 				roboStage.beatHit(curBeat);
 			case 'star-baby':
@@ -2772,9 +2476,6 @@ class PlayState extends MusicBeatState
 			if (!specialAnims.contains(curPlayer.animation.curAnim.name) || curPlayer.animation.finished)
 			{
 				curPlayer.dance();
-
-				if (boyfriendReflection != null)
-					boyfriendReflection.dance();
 			}
 		}
 
@@ -2986,9 +2687,6 @@ class PlayState extends MusicBeatState
 
 			vocals.stop();
 			FlxG.sound.music.stop();
-
-			if (SONG.song.toLowerCase() == 'shadow') // so its underhud
-				camGame.filtersEnabled = false;
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
