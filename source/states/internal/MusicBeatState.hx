@@ -1,5 +1,6 @@
 package states.internal;
 
+import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.addons.ui.FlxUIState;
 import haxe.rtti.Meta;
@@ -22,9 +23,9 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-	private var _clearMemory:Bool = false;
+	public var scripts:HScriptGroup = new HScriptGroup();
 
-	var scripts:HScriptGroup = new HScriptGroup();
+	private var _clearMemory:Bool = false;
 
 	public function new(clearMemory:Bool = false)
 	{
@@ -50,21 +51,15 @@ class MusicBeatState extends FlxUIState
 
 	override function update(elapsed:Float)
 	{
-		// everyStep();
 		var oldStep:Int = curStep;
 
 		updateCurStep();
-		updateBeat();
+		curBeat = Math.floor(curStep / 4);
 
 		if (oldStep != curStep && curStep > 0)
 			stepHit();
 
 		super.update(elapsed);
-	}
-
-	private function updateBeat():Void
-	{
-		curBeat = Math.floor(curStep / 4);
 	}
 
 	private function updateCurStep():Void
@@ -85,13 +80,15 @@ class MusicBeatState extends FlxUIState
 
 	public function stepHit():Void
 	{
+		Conductor.callStepReceivers(curStep);
+
 		if (curStep % 4 == 0 && !disableBeathit)
 			beatHit();
 	}
 
 	public function beatHit():Void
 	{
-		// do literally nothing dumbass
+		Conductor.callBeatReceivers(curBeat);
 	}
 
 	inline public function fancyOpenURL(schmancy:String)
@@ -101,6 +98,13 @@ class MusicBeatState extends FlxUIState
 		#else
 		return FlxG.openURL(schmancy);
 		#end
+	}
+
+	override function add(obj:FlxBasic)
+	{
+		Conductor.pushPossibleReceivers(obj);
+
+		return super.add(obj);
 	}
 
 	override function onFocus()

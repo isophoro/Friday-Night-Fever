@@ -9,9 +9,9 @@ import flixel.FlxSubState;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
+import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxSound;
-import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxBar;
@@ -22,28 +22,22 @@ import lime.utils.Assets;
 import meta.Discord.DiscordClient;
 import meta.Ratings.JudgedRatings;
 import meta.Song.SwagSong;
-import openfl.display.BlendMode;
 import openfl.events.KeyboardEvent;
-import openfl.filters.BitmapFilter;
-import openfl.filters.ShaderFilter;
 import openfl.system.System;
 import scripting.*;
-import shaders.*;
 import sprites.objects.Note.QueuedNote;
 
 using StringTools;
 
-#if (flixel < "5.0.0")
-import flixel.math.FlxPoint;
-#else
-import flixel.math.FlxPoint.FlxBasePoint as FlxPoint;
-#end
-#if (sys && !mobile)
+#if sys
 import sys.FileSystem;
 #end
 
 class PlayState extends MusicBeatState
 {
+	public static final dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
+	public static final colorData:Array<String> = ['purple', 'blue', 'green', 'red'];
+
 	public static var instance:PlayState = null;
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
@@ -51,8 +45,15 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
+	public static var deaths:Int = 0;
+	public static var skipDialogue:Bool = false;
+
 	public static var curStage:String = '';
 	public static var endingSong:Bool;
+
+	#if windows // Deprecated Kade Engine Lua stuff, use HScript!!
+	public static var luaModchart:LuaScript = null;
+	#end
 
 	public var curSong(get, never):String;
 
@@ -66,10 +67,6 @@ class PlayState extends MusicBeatState
 
 	public var gfSpeed:Int = 1;
 
-	private var executeModchart = false;
-
-	public static var skipDialogue:Bool = false;
-
 	public var curOpponent:Character; // these two variables are for the "swapping sides" portion
 	public var curPlayer:Character; // just use the dad / boyfriend variables so stuff doesnt break
 
@@ -80,35 +77,29 @@ class PlayState extends MusicBeatState
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
 
-	private var camPause:FlxCamera;
+	private var camPause:FlxCamera; // Will be null if the pause menu isn't open!
 
 	public var defaultCamZoom:Float = 1.05;
 	public var camZooming:Bool = false;
 	public var disableCamera:Bool = false;
-	public var disableModCamera:Bool = false; // disables the modchart from messing around with the camera
+	public var disableModCamera:Bool = false; // little workaround to disable lua access to the cameras
 	public var camFollow:FlxObject = new FlxObject(0, 0, 1, 1);
-
-	public var filters:Array<BitmapFilter> = [];
 
 	public var useDirectionalCamera:Bool = false;
 	public var directionalCameraDist:Int = 15;
 
-	private var dataSuffix:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT']; // we do a little backporting
-
 	public var notes:FlxTypedGroup<Note> = new FlxTypedGroup<Note>();
-
-	private var unspawnNotes:Array<QueuedNote> = [];
+	public var unspawnNotes:Array<QueuedNote> = []; // Holds all data for notes waiting to be spawned in
 
 	public var strumLine:FlxObject;
-
 	public var strumLineNotes:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(8);
 	public var playerStrums:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(4);
 	public var cpuStrums:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>(4);
 
 	public var health(default, set):Float = 1;
-	public var combo:Int = 0;
-
 	public var accuracy:Float = 0;
+	public var combo:Int = 0;
+	public var misses:Int = 0;
 
 	private var totalNotesHit:Float = 0;
 	private var totalPlayed:Int = 0;
@@ -119,10 +110,6 @@ class PlayState extends MusicBeatState
 		goods: 0
 	};
 
-	public var misses:Int = 0;
-
-	public static var deaths:Int = 0;
-
 	#if windows
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
@@ -130,7 +117,7 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	#end
 
-	// stage sprites
+	// LEGACY STAGE STUFF
 	public var purpleOverlay:FlxSprite;
 	public var church:FlxSprite; // week 2.5 / bad nun
 
@@ -138,6 +125,9 @@ class PlayState extends MusicBeatState
 	var dark:FlxSprite;
 	var moreDark:FlxSprite;
 	var bgGirls:BackgroundGirls; // week 6
+
+	var vignette:FlxSprite;
+	var meat:Character;
 
 	public var roboStage:LoadedStage;
 	public var roboForeground:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
@@ -160,7 +150,7 @@ class PlayState extends MusicBeatState
 
 	public var usePixelAssets(default, set):Bool = false;
 
-	function set_usePixelAssets(set:Bool)
+	private function set_usePixelAssets(set:Bool)
 	{
 		usePixelAssets = set;
 		ratingsGrp.forEach(function(obj)
@@ -175,10 +165,6 @@ class PlayState extends MusicBeatState
 		numbersGrp.maxSize = usePixelAssets ? 3 : ComboNumber.MAX_RENDERED;
 		return set;
 	}
-
-	var vignette:FlxSprite;
-
-	var meat:Character;
 
 	var songScript:HaxeScript;
 	var curSection:Int = 0;
@@ -201,10 +187,6 @@ class PlayState extends MusicBeatState
 		persistentUpdate = true;
 		persistentDraw = true;
 
-		#if cpp
-		executeModchart = FlxG.save.data.disableModCharts ? false : FileSystem.exists(Paths.lua(SONG.song.toLowerCase() + "/modchart"));
-		#end
-
 		if (!isStoryMode || StoryMenuState.get_weekData()[storyWeek][0].toLowerCase() == SONG.song.toLowerCase())
 		{
 			Main.clearMemory();
@@ -217,6 +199,7 @@ class PlayState extends MusicBeatState
 		camHUD.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
+		FlxG.cameras.useBufferLocking = true;
 		FlxG.cameras.add(camHUD, false);
 
 		CoolUtil.fillTypedGroup(ratingsGrp, ComboRating, ComboRating.MAX_RENDERED, camHUD);
@@ -264,13 +247,6 @@ class PlayState extends MusicBeatState
 		currentTimingShown = new TimingText();
 		currentTimingShown.cameras = [camHUD];
 
-		if (ClientPrefs.shaders)
-		{
-			camGame.setFilters(filters);
-			camGame.filtersEnabled = true;
-			camHUD.filtersEnabled = true;
-		}
-
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
@@ -280,7 +256,7 @@ class PlayState extends MusicBeatState
 
 			if (CoolUtil.fileExists(Paths.json(subtitleString)))
 			{
-				subtitles = new Subtitles(FlxG.height * 0.68, haxe.Json.parse(CoolUtil.getFile(Paths.json(subtitleString))));
+				subtitles = new Subtitles(haxe.Json.parse(CoolUtil.getFile(Paths.json(subtitleString))), FlxG.height * 0.68);
 			}
 		}
 
@@ -377,11 +353,6 @@ class PlayState extends MusicBeatState
 					{
 						bgGirls = new BackgroundGirls(-1205, -290);
 						bgGirls.scrollFactor.set(0.9, 0.9);
-
-						if (SONG.song.toLowerCase() == 'chicken-sandwich')
-						{
-							bgGirls.getScared();
-						}
 
 						bgGirls.setGraphicSize(Std.int(bgGirls.width * 6));
 						bgGirls.updateHitbox();
@@ -820,10 +791,6 @@ class PlayState extends MusicBeatState
 
 	private var startTimer:FlxTimer;
 
-	#if cpp
-	public static var luaModchart:LuaScript = null;
-	#end
-
 	public function changeStrums(?pixel:Bool) // stolen from yknow that one thing
 	{
 		if (pixel)
@@ -865,10 +832,8 @@ class PlayState extends MusicBeatState
 		{
 			strumLineNotes.forEach(function(babyArrow:FlxSprite)
 			{
-				var dataColor:Array<String> = ['purple', 'blue', 'green', 'red'];
-
 				babyArrow.frames = Paths.getSparrowAtlas('notes/defaultNotes');
-				babyArrow.animation.addByPrefix(dataColor[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);
+				babyArrow.animation.addByPrefix(colorData[babyArrow.ID], 'arrow' + dataSuffix[babyArrow.ID]);
 
 				var lowerDir:String = dataSuffix[babyArrow.ID].toLowerCase();
 
@@ -895,7 +860,8 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(playerStrums, FlxG.width * 0.75, true);
 
 		#if windows
-		if (executeModchart)
+		// Legacy lua script stuff
+		if (!FlxG.save.data.disableModCharts && FileSystem.exists(Paths.lua(SONG.song.toLowerCase() + "/modchart")))
 		{
 			luaModchart = new LuaScript();
 			luaModchart.executeState('start', [PlayState.SONG.song]);
@@ -1338,8 +1304,8 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.botplay && FlxG.keys.justPressed.ONE)
 			camHUD.visible = !camHUD.visible;
 
-		#if windows
-		if (executeModchart && luaModchart != null && !startingSong)
+		#if cpp
+		if (luaModchart != null && !startingSong)
 		{
 			luaModchart.setVar('songPos', Conductor.songPosition);
 			luaModchart.setVar('hudZoom', camHUD.zoom);
@@ -2031,7 +1997,7 @@ class PlayState extends MusicBeatState
 	private function popUpScore(daNote:Note):Void
 	{
 		var noteDiff:Float = Math.abs(Conductor.songPosition - daNote.strumTime);
-		var wife:Float = Ratings.wife3(noteDiff, Conductor.timeScale);
+		var wife:Float = Ratings.wife3(noteDiff);
 		var daRating = daNote.rating;
 
 		vocals.volume = 1;
@@ -2192,7 +2158,7 @@ class PlayState extends MusicBeatState
 		});
 	}
 
-	function noteMiss(direction:Int = 1):Void
+	private function noteMiss(direction:Int = 1):Void
 	{
 		if (combo >= 10)
 			gf.playAnim('sad');
@@ -2216,7 +2182,7 @@ class PlayState extends MusicBeatState
 		updateScoring();
 	}
 
-	function goodNoteHit(note:Note):Void
+	private function goodNoteHit(note:Note):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition);
 
@@ -2281,11 +2247,6 @@ class PlayState extends MusicBeatState
 
 		scripts.callFunction("onStepHit", [curStep]);
 
-		if (subtitles != null)
-		{
-			subtitles.stepHit(curStep);
-		}
-
 		if (curSong == 'Bazinga')
 		{
 			switch (curStep)
@@ -2337,7 +2298,7 @@ class PlayState extends MusicBeatState
 		}
 
 		#if windows
-		if (executeModchart && luaModchart != null)
+		if (luaModchart != null)
 		{
 			luaModchart.setVar('curStep', curStep);
 			luaModchart.executeState('stepHit', [curStep]);
@@ -2360,8 +2321,6 @@ class PlayState extends MusicBeatState
 			- Conductor.songPosition);
 		#end
 	}
-
-	static public var beatSpeed:Int = 4;
 
 	override function beatHit()
 	{
@@ -2425,7 +2384,7 @@ class PlayState extends MusicBeatState
 		}
 
 		#if windows
-		if (executeModchart && luaModchart != null)
+		if (luaModchart != null)
 		{
 			luaModchart.setVar('curBeat', curBeat);
 			luaModchart.executeState('beatHit', [curBeat]);
@@ -2484,11 +2443,6 @@ class PlayState extends MusicBeatState
 			case 'schoolEvil':
 				if (meat != null && !meat.animation.curAnim.name.startsWith("sing"))
 					meat.dance();
-			case 'school':
-				if (SONG.song.toLowerCase() != 'space-demons')
-				{
-					bgGirls.dance();
-				}
 		}
 	}
 

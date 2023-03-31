@@ -392,7 +392,6 @@ class LuaScript
 		setVar("curStep", 0);
 		setVar("curBeat", 0);
 		setVar("crochet", Conductor.stepCrochet);
-		setVar("safeZoneOffset", Conductor.safeZoneOffset);
 
 		setVar("hudZoom", PlayState.instance.camHUD.zoom);
 		setVar("cameraZoom", FlxG.camera.zoom);

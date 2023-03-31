@@ -17,7 +17,7 @@ class CoolUtil
 		@:privateAccess
 		for (i in flixel.tweens.FlxTween.globalManager._tweens)
 		{
-			i.active = false;
+			i.active = active;
 		}
 	}
 

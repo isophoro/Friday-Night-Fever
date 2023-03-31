@@ -5,6 +5,7 @@ import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import meta.interfaces.IStepReceiver;
 
 typedef SubtitleJSON =
 {
@@ -13,29 +14,33 @@ typedef SubtitleJSON =
 	var endStep:Int;
 }
 
-class Subtitles extends FlxTypedSpriteGroup<FlxSprite>
+class Subtitles extends FlxTypedSpriteGroup<FlxSprite> implements IStepReceiver
 {
 	public var array:Array<SubtitleJSON> = [];
 
 	var textBG:FlxSprite = new FlxSprite().makeGraphic(10, 10, FlxColor.BLACK);
 	var text:FlxText = new FlxText();
 
-	public function new(Y:Float, json:Array<SubtitleJSON>)
+	public function new(json:Array<SubtitleJSON>, y:Float = 0)
 	{
-		super();
+		super(0, y);
 		array = json;
 
 		textBG.origin.y = 0;
-		textBG.y = Y;
 		add(textBG);
 		textBG.alpha = 0;
 
-		text.y = Y;
 		text.setFormat('VCR OSD Mono', 28, FlxColor.WHITE, CENTER, OUTLINE_FAST, FlxColor.BLACK);
 		text.borderSize = 1.4;
 		text.antialiasing = true;
 		text.alpha = 0;
 		add(text);
+	}
+
+	override function set_y(y:Float):Float
+	{
+		textBG.y = text.y = y;
+		return this.y = y;
 	}
 
 	public function stepHit(curStep:Int)

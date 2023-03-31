@@ -129,7 +129,7 @@ class Ratings
 		return 'Accuracy: $acc | Missed: ${PlayState.instance.misses}';
 	}
 
-	public static function wife3(maxms:Float, ts:Float)
+	public static function wife3(maxms:Float, ts:Float = 1)
 	{
 		var max_points = 1.0;
 		var miss_weight = -5.5;

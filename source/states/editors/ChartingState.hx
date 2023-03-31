@@ -1135,7 +1135,7 @@ class ChartingState extends MusicBeatState
 		}
 
 		curStep = lastChange.stepTime + Math.floor((FlxG.sound.music.time - lastChange.songTime) / Conductor.stepCrochet);
-		updateBeat();
+		curBeat = Math.floor(curStep / 4);
 
 		return curStep;
 	}
@@ -1806,23 +1806,18 @@ class ChartNote extends FlxSprite
 			// ass
 			if (isSustainNote)
 			{
-				if (strumTime - Conductor.songPosition <= (((166 * Conductor.timeScale) * 0.5))
-					&& strumTime - Conductor.songPosition >= (((-166 * Conductor.timeScale))))
+				if (strumTime - Conductor.songPosition <= (((166) * 0.5)) && strumTime - Conductor.songPosition >= (((-166))))
 					canBeHit = true;
 				else
 					canBeHit = false;
 			}
 			else
 			{
-				if (strumTime - Conductor.songPosition <= (((166 * Conductor.timeScale)))
-					&& strumTime - Conductor.songPosition >= (((-166 * Conductor.timeScale))))
+				if (strumTime - Conductor.songPosition <= (((166))) && strumTime - Conductor.songPosition >= (((-166))))
 					canBeHit = true;
 				else
 					canBeHit = false;
 			}
-
-			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset * Conductor.timeScale && !wasGoodHit)
-				tooLate = true;
 		}
 		else
 		{

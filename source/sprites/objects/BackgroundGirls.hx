@@ -1,27 +1,29 @@
 package sprites.objects;
 
 import flixel.FlxSprite;
+import meta.interfaces.IBeatReceiver;
 
-class BackgroundGirls extends FlxSprite
+class BackgroundGirls extends FlxSprite implements IBeatReceiver
 {
 	public function new(x:Float, y:Float)
 	{
 		super(x, y);
 
-		// BG fangirls dissuaded
 		frames = Paths.getSparrowAtlas('weeb/bgCrowd', 'week6');
 
-		animation.addByPrefix('dance', 'FTRS - Ur Girl ', 24, false);
-		dance();
+		if (PlayState.SONG.song.toLowerCase() == 'chicken-sandwich')
+		{
+			animation.addByPrefix('dance', 'FTRS - Chicken Sandwich', 24, false);
+		}
+		else
+		{
+			animation.addByPrefix('dance', 'FTRS - Ur Girl ', 24, false);
+		}
+
+		beatHit(0);
 	}
 
-	public function getScared():Void
-	{
-		animation.addByPrefix('dance', 'FTRS - Chicken Sandwich', 24, false);
-		dance();
-	}
-
-	public function dance():Void
+	public function beatHit(curBeat:Int):Void
 	{
 		animation.play('dance', true);
 	}
